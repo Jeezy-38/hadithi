@@ -1,0 +1,87 @@
+{
+  "4309": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4309",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "695ec06231a0c73b10110a5d0f1e236b3e22b61cc5fd64b0066a1d2c28e80b4b"
+  },
+  "4308": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4308",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "f3ab804ac6517719e9c7be334c97f3a826ce3dcd9da76cf11d9273bd082ee29b"
+  },
+  "10101": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=10101",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "8d07c83ee72b361e85b04aae02e0117959bf45dd36f8ffb0be78215896a5e576"
+  },
+  "4560": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4560",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "b853d14b21cbfbac47df4606918d0abe4e562231fa280d2122e46e1c70fe39d8"
+  },
+  "5351": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=5351",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "cce6a7a4e8748c31ff5328123b0cfc295fb3b635236cc350ac4dc7072f185fb4"
+  },
+  "4717": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4717",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "98527ced7889a15c8d5872924624de0b61d9caf0784fcb4cd7844300d2751b60"
+  },
+  "en-4709": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4709",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "4644cdf5246c3f72307d512f28d8a1864f42b95c2eac47fd32826cb89e57b878"
+  },
+  "en-5437": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=5437",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "a23150b984905e53deb4f317a2d42329290454b798dbc24f4560fcbc916bca97"
+  },
+  "en-4308": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4308",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "e9f92cba9d0dae660497f169aa2dae1eb5b4a70e7cd9baa397fe7a8a824b3018"
+  },
+  "4709": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4709",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "69d4e90d129d1e70a8da2518634500781d79ea1ce4e8743a82a38716057b705a"
+  },
+  "5437": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=5437",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "fa0836844f117d8abf3695e79c89ac99b33e67294bbe90cb467bd60208b510ab"
+  },
+  "en-4309": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4309",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "2d2429f5b7d2f48c9ee2489829bce23b123e10531e778fc40c044e0b806afea0"
+  },
+  "en-4717": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4717",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "7020f6b8f22625fb8a242cb9ddb9b85856ea46d6b22c9fcaca40309dd6555588"
+  },
+  "en-5351": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=5351",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "6c2ea109ebdec42d1c4d461d69cbae39ea00e6f8aee26ce8b158ba36fd6e7555"
+  },
+  "en-4560": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4560",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "3c60ae78376426c92af1823ff8ebf856c5c626a9b4d5a10a60acb7aad9bcee95"
+  },
+  "en-10101": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=10101",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "f34a0b16454d540fd19c36e09991d12a33b82c3084ecb5b1db18f3de3cf90af5"
+  },
+  "discovery-batch-2026-09-19": {
+    "file": "database/data/discovery/candidates.json",
+    "sha256": "2c8cffa78b74ccd4b0116699e7c4c2f20095165fcd9944e8ee3557a511e0e0eb",
+    "note": "Kundi la hadith 96 zilizogunduliwa na scripts/discover-hadeethenc.php (grade=Sahihi tu). Namba za hadith bado ni za MUDA (ona numbering_system ya kila rekodi husika)."
+  }
+}
