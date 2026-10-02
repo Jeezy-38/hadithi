@@ -1,0 +1,626 @@
+[
+  {
+    "reference": "bukhari:hadeethenc:3354",
+    "title": "Hakika Mwenyezi Mungu hupata wivu, na hakika muumini hupata wivu, na wivu wa Mwenyezi Mungu ni pale muumini anapoyafanya yale aliyomharamishia juu yake",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.692,
+      "number": "5223"
+    },
+    "reason": "Kiarabu kinalingana na muslim 2761 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc-provisional:2956",
+    "title": "Nilimuendea Mtume -Rehema na Amani ziwe juu yake- Nikasema: Ewe Mjumbe wa Mwenyezi Mungu, Hakika sisi tuko katika ardhi ya watu wa kitabu, je tule katika vyombo vyao",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "own": {
+      "score": 0.691,
+      "number": "5478"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "muslim:hadeethenc-provisional:3064",
+    "title": "Paliletwa mashtaka kwa Mtume -Rehema na Amani ziwe juu yake- kuhusu mtu anayepata wasiwasi kuwa anapata kitu ndani ya swala (katika vitenguzi vya udhu), Akasema: asiondoke mpaka asikie sauti, au apate harufu",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "own": {
+      "score": 0.686,
+      "number": "361"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:5367",
+    "title": "Haingii peponi mkata udugu",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.684,
+      "number": "5984"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:66515",
+    "title": "Hakika halali iko wazi, na hakika haramu iko wazi",
+    "attribution": "Imepokelewa na Bukhari na Muslim",
+    "own": {
+      "score": 0.667,
+      "number": "52"
+    },
+    "reason": "Kiarabu kinalingana na muslim 1599 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc:4314",
+    "title": "Hakika halali iko wazi, na hakika haramu iko wazi",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.667,
+      "number": "52"
+    },
+    "reason": "Kiarabu kinalingana na muslim 1599 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc:8945",
+    "title": "Tulikuwa kwa Omari akasema: \"Tumekatazwa kujilazimisha",
+    "attribution": "Imepokelewa na Al-Bukhaariy",
+    "own": {
+      "score": 0.667,
+      "number": "7293"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:5344",
+    "title": "Kila mwanadamu ni mkosefu, na mbora wa wakosefu ni wale wenye kutubia",
+    "attribution": "Imepokelewa na Ibnu Maajah - Imepokelewa na Imamu Tirmidhiy - Imepokelewa na Ahmad - Imepokelewa na Addaaramy",
+    "own": {
+      "score": 0.667,
+      "number": "2499"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:66519",
+    "title": "Acha yanayokutia shaka na uende katika yale yasiyokutia shaka",
+    "attribution": "Imepokelewa na Tirmidhiy na Nasaai",
+    "own": {
+      "score": 0.667,
+      "number": "2518"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc-provisional:3081",
+    "title": "Amekataza Mtume -Rehema na Amani ziwe juu yake- kuswali baada ya swala ya sub-hi mpaka lichomoze jua, na baada ya laasiri mpaka lizame",
+    "attribution": "Imepokelewa na Al-Bukhaariy na Muslim kwa riwaya zake",
+    "own": {
+      "score": 0.647,
+      "number": "581"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:5517",
+    "title": "Atakayesema: Laa ilaaha illa llaahu wahdahu Laa shariika lahu, Lahul-Mulku walahul hamdu Wahuwa a'laa kulli shai-in qadiir, mara kumi (10)",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.643,
+      "number": "3293"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:3636",
+    "title": "Mimi nipo katika dhana ya mja wangu kwangu, na Mimi nipo naye wakati anaponitaja",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.634,
+      "number": "7405"
+    },
+    "reason": "Kiarabu kinalingana na muslim 2675 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc:5478",
+    "title": "Haya ni katika imani",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.609,
+      "number": "6118"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:66531",
+    "title": "Haifai kujidhuru wala kumdhuru mwingine",
+    "attribution": "Imepokelewa na Ibnu Maajah,  Daaruqutni na wengineo huku inafika kwa Mtume",
+    "own": {
+      "score": 0.609,
+      "number": "1912"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "muslim:hadeethenc:66524",
+    "title": "Nieleze ndani ya Uislamu kauli ambayo sitomuuliza yeyote zaidi yako, akasema: \"Sema: Nimemuamini Mwenyezi Mungu, kisha kuwa na msimamo",
+    "attribution": "Imepokelewa Imamu Muslim",
+    "own": {
+      "score": 0.606,
+      "number": "38"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:3356",
+    "title": "Mtakapo vaa, na mtakapo tawadha, basi anzeni na kuliani kwenu",
+    "attribution": "Imepokelewa na Ibnu Maajah - Imepokelewa na Imamu Tirmidhiy - Imepokelewa na Abuu Daud - Imepokelewa na Ahmad",
+    "own": {
+      "score": 0.6,
+      "number": "4141"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:66513",
+    "title": "Hakika mmoja wenu hukusanywa umbile lake ndani ya tumbo la mama yake siku arobaini",
+    "attribution": "Imepokelewa na Bukhari na Muslim",
+    "own": {
+      "score": 0.593,
+      "number": "3332"
+    },
+    "reason": "Kiarabu kinalingana na muslim 2643 (alama 0.932), si bukhari"
+  },
+  {
+    "reference": "muslim:hadeethenc-provisional:2995",
+    "title": "Atakaye apa juu ya kiapo cha mila isiyokuwa ya uislamu kwa uongo tena kwa makusudi basi atakuwa kama alivyosema",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "own": {
+      "score": 0.571,
+      "number": "110"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:4721",
+    "title": "Lau kama nyinyi mngelimtegemea Mwenyezi Mungu ukweli wa kumtegemea, basi angekuruzukuni kama anavyomruzuku ndege, anatoka asubuhi akiwa na njaa anarudi mchana akiwa kashiba",
+    "attribution": "Imepokelewa na Tirmidhiy, Ibn Majah na Ahmad",
+    "own": {
+      "score": 0.571,
+      "number": "2344"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:5792",
+    "title": "Muumini iliyekamilika zaidi imani yake ni yule mwenye tabia nzuri zaidi kuliko wengine, na mbora wenu ni yule mbora wenu kwa wake zake",
+    "attribution": "Imepokelewa na Abu Daud, Tirmidhiy na Ahmad",
+    "own": {
+      "score": 0.571,
+      "number": "4682"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:3359",
+    "title": "Atayeapa kinyume na Mwenyezi Mungu basi atakuwa amekufuru au kafanya ushirikina",
+    "attribution": "Imepokelewa na Abu Daud, Tirmidhiy na Ahmad",
+    "own": {
+      "score": 0.571,
+      "number": "3251"
+    },
+    "reason": "Kiarabu kinalingana na tirmidhi 1535 (alama 1.0), si abudawud"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:66522",
+    "title": "Ewe kijana, hakika mimi ninakufundisha maneno: Muhifadhi Mwenyezi Mungu naye atakuhifadhi, muhifadhi Mwenyezi Mungu utamkuta uendako, utakapo omba basi muombe Mwenyezi Mungu, na ukitaka msaada muombe msaada Mwenyezi Mungu",
+    "attribution": "Imepokelewa naTirmidhiy na wengineo",
+    "own": {
+      "score": 0.57,
+      "number": "2516"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:4792",
+    "title": "Atakayezua katika dini yetu hii, yale yasiyokuwemo, basi yatarejeshwa",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.562,
+      "number": "2697"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:5375",
+    "title": "Atakayedhuru Mwenyezi Mungu naye atamdhuru, na atakayewatia watu ugumu Mwenyezi Mungu naye atamtilia ugumu",
+    "attribution": "Imepokelewa na Abu Daud, Tirmidhiy, Ibn Majah na Ahmad",
+    "own": {
+      "score": 0.556,
+      "number": "3635"
+    },
+    "reason": "Kiarabu kinalingana na tirmidhi 1940 (alama 0.778), si abudawud"
+  },
+  {
+    "reference": "bukhari:hadeethenc:3421",
+    "title": "Katika kauli ya Mwenyezi Mungu Mtukufu:- \"Na wakasema msiwaache waungu wenu, wala msimuache Wadda, wala Suwa'u wala Yaghuth na Yauq na Nasr\" Amesema Ibn Abbas Radhi za Mwenyezi Mungu ziwe juu yao- Haya ni majina ya watu wema katika watu wa Nuhu.",
+    "attribution": "Imepokelewa na Al-Bukhaariy",
+    "own": {
+      "score": 0.544,
+      "number": "4920"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:66541",
+    "title": "Ulimi wako usiache kuwa mbichi kwa kumtaja Mwenyezi Mungu",
+    "attribution": "Imepokelewa na Ahmad, Tirmidhiy, Ibn Majah na Ibn Hibban",
+    "own": {
+      "score": 0.538,
+      "number": "3375"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:6763",
+    "title": "Mwenye kukitegemea kitu hufungamanishwa kwacho",
+    "attribution": "Imepokelewa na Imamu Tirmidhiy - Imepokelewa na Ahmad",
+    "own": {
+      "score": 0.538,
+      "number": "2072"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "muslim:hadeethenc-provisional:3260",
+    "title": "Hebu rudi kwa wazazi wako, na ukaishi nao vizuri",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "own": {
+      "score": 0.526,
+      "number": "2549"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:3402",
+    "title": "Yakwamba Mtume rehema na Amani zimfikie aliulizwa kuhusu Nushra (kutibu uchawi kwa uchawi)? Akasema: Hiyo ni katika kazi za shetani.",
+    "attribution": "Imepokelewa na Abuu Daud - Imepokelewa na Ahmad",
+    "own": {
+      "score": 0.526,
+      "number": "3868"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:65258",
+    "title": "Alikuwa Mtume rehema na amani ziwe juu yake akitusomesha Qur'ani katika kila hali madamu hana janaba",
+    "attribution": "Imepokelewa na Abu Daud, Tirmidhiy, Nasai, Ibn Majah na Ahmad",
+    "own": {
+      "score": 0.524,
+      "number": "760"
+    },
+    "reason": "Kiarabu kinalingana na tirmidhi 146 (alama 0.81), si abudawud"
+  },
+  {
+    "reference": "bukhari:hadeethenc-provisional:3177",
+    "title": "Yakwamba Nabii -Rehema na Amani ziwe juu yake- alikuwa safarini, akaswali swala ya ishaa ya mwisho, akasoma katika moja ya rakaa mbili kwa sura ya wattin wazzaitun, sijawahi kumsikia yeyote mwenye sauti nzuri au kisomo kizuri zaidi yake",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "own": {
+      "score": 0.52,
+      "number": "767"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:3504",
+    "title": "Atakayesema: -Yaani: anapotoka nyumbani kwake-: Bismillaahi tawakkaltu a'la llaahi -kwa jina la Mwenyezi Mungu nimemtegemea Mwenyezi Mungu, Laa haulaa walaa quwwata illaa billaa- hakuna ujanja wala nguvu isipokuwa kwa Mwenyezi Mungu, huambiwa: Umeongozwa na umetoshelezwa na umekingwa, na shetani hujitenga mbali naye",
+    "attribution": "Imepokelewa na Imamu Tirmidhiy - Imepokelewa na Abuu Daud",
+    "own": {
+      "score": 0.514,
+      "number": "5095"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc-provisional:3021",
+    "title": "Ewe Mjumbe wa Mwenyezi Mungu Je anaweza kulala mmoja wetu akiwa na janaba? Akasema: Ndiyo, atakapotawadha mmoja wenu basi na alale",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "own": {
+      "score": 0.481,
+      "number": "287"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:65057",
+    "title": "Shikamaneni na kumcha Mwenyezi Mungu, na usikivu na utii, hata kama (mzungumzaji) atakuwa mtumwa tena muhabeshi (Muethiopia), na mtakuja kuona baada yangu hitilafu nyingi",
+    "attribution": "Imepokelewa na Abu Daud, Tirmidhiy, Ibn Majah na Ahmad",
+    "own": {
+      "score": 0.464,
+      "number": "4607"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:5907",
+    "title": "Shikamaneni vizuri na hii Qur'ani, namuapa yule ambaye nafsi ya Muhammadi iko mkononi mwake, hutoroka kwa kasi mno kuliko hata Ngamia katika kamba yake",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.462,
+      "number": "5033"
+    },
+    "reason": "Kiarabu kinalingana na muslim 791 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc:5504",
+    "title": "Kutoka kwa Abdillah bin Mas'udi -radhi za Mwenyezi Mungu ziwe juu yake- Amesema: Amesema Mtume -rehema na amani ziwe juu yake-: \"Shikamaneni na ukweli, kwani ukweli hupelekea katika wema, na hakika wema hupelekea katika pepo",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.459,
+      "number": "6094"
+    },
+    "reason": "Kiarabu kinalingana na muslim 2607 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc:66514",
+    "title": "Yeyote atakayezua (kitu) katika jambo letu hili (dini) ambalo si miongoni mwake, basi hilo litakataliwa",
+    "attribution": "Imepokelewa na Bukhari na Muslim",
+    "own": {
+      "score": 0.438,
+      "number": "2697"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc-provisional:3055",
+    "title": "\"Haya (Aibu) haiji ila kwa kheri\"",
+    "attribution": "Imepokelewa na Imamu Muslim - Wamekubaliana Bukhaariy na Muslim",
+    "own": {
+      "score": 0.4,
+      "number": "6117"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:3345",
+    "title": "Ataletwa mtu siku ya Kiyama, kisha atupwe motoni, ujiviringishe utumbo na vyote vilivyomo tumboni mwake, atazunguka nao (motoni) kama punda anavyozunguka na jiwe la kusagia nafaka",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.381,
+      "number": "3267"
+    },
+    "reason": "Kiarabu kinalingana na muslim 2989 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc:5439",
+    "title": "Asiyewahurumia watu naye Mwenyezi Mungu Mtukufu hamhurumii",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.375,
+      "number": "7376"
+    },
+    "reason": "Kiarabu kinalingana na muslim 2319 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:65218",
+    "title": "Tulikuwa pamoja Mtume rehema na amani ziwe juu yake nasi tukiwa vijana karibu na balehe, tukajifunza imani kabla ya kujifunza Qur'ani, kisha tukajifunza Qur'ani, tukaongeza imani kupitia Qur'ani",
+    "attribution": "Imepokelewa na Ibnu Maajah",
+    "own": {
+      "score": 0.367,
+      "number": "3374"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "muslim:hadeethenc:3415",
+    "title": "Ni nani anayejiapiza kwangu kuwa sitomsamehe fulani? Hakika mimi nimemsamehe,na nimeyaporomosha matendo yako",
+    "attribution": "Imepokelewa na Imamu Muslim",
+    "own": {
+      "score": 0.364,
+      "number": "2621"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:10113",
+    "title": "Anayesoma Qur'ani kwa uhodari huwa pamoja na msafara wa Malaika watukufu, na anayesoma Qur'ani huku anasitasita na huku kwake bado ni ngumu huyo anamalipo mara mbili",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.333,
+      "number": "4937"
+    },
+    "reason": "Kiarabu kinalingana na muslim 798 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:66535",
+    "title": "Hatokuwa na imani mmoja wenu mpaka yawe matamanio yake ni yenye kufuata yale niliyokujua nayo",
+    "attribution": "Imepokelewa na katika kitabu cha Al-Hujjah kwa msururu sahihi wa wasimulizi",
+    "own": {
+      "score": 0.333,
+      "number": "2515"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:5496",
+    "title": "Dua ndio ibada",
+    "attribution": "Imepokelewa na Abu Daud, Tirmidhiy, Ibn Majah na Ahmad",
+    "own": {
+      "score": 0.312,
+      "number": "1479"
+    },
+    "reason": "Kiarabu kinalingana na tirmidhi 3247 (alama 0.875), si abudawud"
+  },
+  {
+    "reference": "abudawud:hadeethenc:65034",
+    "title": "Mwenyezi  Mungu alipoumba Pepo na Moto alimtuma   Malaika Jibril -Amani iwe juu yake- aende peponi",
+    "attribution": "Imepokelewa na Abuu Daud, Tirmidhiy na Nasaai",
+    "own": {
+      "score": 0.264,
+      "number": "4744"
+    },
+    "reason": "Kiarabu kinalingana na tirmidhi 2560 (alama 0.764), si abudawud"
+  },
+  {
+    "reference": "bukhari:hadeethenc:3366",
+    "title": "Hakika swala nzito zaidi kwa wanafiki ni swala ya Ishaa na swala ya Alfajiri, na lau kama wangejua (malipo) yaliyomo, basi wangeziendea hata kwa kutambaa",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.256,
+      "number": "657"
+    },
+    "reason": "Kiarabu kinalingana na muslim 651 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc:4725",
+    "title": "Niliyokukatazeni basi yaepukeni, na yale niliyokuamrisheni basi yaleteni katika hayo kadiri muwezavyo, na hakika waliangamia wale waliokuwa kabla yenu, kwa kukithiri maswali yao, na kuhitilafiana kwao na Manabii wao",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "own": {
+      "score": 0.25,
+      "number": "7288"
+    },
+    "reason": "Kiarabu kinalingana na muslim 1337 (alama 0.9), si bukhari"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:66532",
+    "title": "Laiti wangepewa watu yote wanayodai basi kuna watu wangedai mali za wenzao na damu zao, lakini ushahidi ni kwa mwenye kudai na kiapo ni kwa mwenye kukanusha",
+    "attribution": "Imepokelewa na Baihaqiy na wengineo hivi na baadhi yake iko katika Swahihi mbili",
+    "own": {
+      "score": 0.25,
+      "number": "1341"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:4711",
+    "title": "Hakuna kujidhuru wala kusababisha madhara, na atakayedhuru Allah naye atamdhuru, na atakayemtia mtu uzito Mwenyezi Mungu atamtia uzito naye",
+    "attribution": "Imepokelewa na Addar- Alqutni",
+    "own": {
+      "score": 0.25,
+      "number": "1940"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:3396",
+    "title": "Nilikuwa kwa Saidi bin Jubair akasema: Ni nani kati yenu aliyeiona nyota iliyodondoka jana usiku? Nikasema: Mimi, kisha nikasema: Ama mimi sikuwa katika swala, lakini niling'atwa (na Nge)",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "own": {
+      "score": 0.241,
+      "number": "5705"
+    },
+    "reason": "Kiarabu kinalingana na muslim 220 (alama 0.824), si bukhari"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:3384",
+    "title": "Kwani hawaharamishi aliyoyahalalisha Mwenyezi Mungu nanyi mkayaharamisha? na wanahalalisha aliyoyaharamisha Mwenyezi Mungu nanyi mkayahalalisha? Nikasema: Ndivyo, Akasema: Basi huko ndiko kuwaabudu.",
+    "attribution": "Imepokelewa na Imamu Tirmidhiy",
+    "own": {
+      "score": 0.213,
+      "number": "3095"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "bukhari:hadeethenc:66517",
+    "title": "Yale niliyokukatazeni basi yaepukeni, na yale niliyokuamrisheni basi fanyeni katika hayo kadiri muwezavyo",
+    "attribution": "Imepokelewa na Bukhari na Muslim",
+    "own": {
+      "score": 0.2,
+      "number": "7288"
+    },
+    "reason": "Kiarabu kinalingana na muslim 1337 (alama 1.0), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc:4817",
+    "title": "Mja alifanya dhambi akasema: Ee Mola wangu nisamehe dhambi yangu",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "own": {
+      "score": 0.189,
+      "number": "7507"
+    },
+    "reason": "Kiarabu kinalingana na muslim 2758 (alama 0.973), si bukhari"
+  },
+  {
+    "reference": "bukhari:hadeethenc:66536",
+    "title": "Kila kilevi ni haramu.",
+    "attribution": "Imepokelewa na Bukhari na Muslim",
+    "own": {
+      "score": 0.154,
+      "number": "4343"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:10044",
+    "title": "Jisafisheni vizuri kutokana na mkojo; kwani adhabu nyingi za kaburini zinatokana na hilo.",
+    "attribution": "Imepokelewa na Addaar- Alqutni",
+    "own": {
+      "score": 0.143,
+      "number": "1071"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "abudawud:hadeethenc:3236",
+    "title": "Mahala pa karibu zaidi anapokuwa Mola Mlezi na mja ni katikati ya usiku wa mwisho",
+    "attribution": "Imepokelewa na Abuu Daud, Tirmidhiy na Nasaai",
+    "own": {
+      "score": 0.1,
+      "number": "875"
+    },
+    "reason": "Kiarabu kinalingana na tirmidhi 3579 (alama 1.0), si abudawud"
+  },
+  {
+    "reference": "tirmidhi:hadeethenc:66510",
+    "title": "Hakika Mwenyezi Mungu Mtukufu amefaradhisha faradhi basi msizipoteze, na akaweka mipaka basi msiivuke, na akaharamisha vitu basi msivivamie, na akayanyamazia mambo kwa kukuhurumieni si kwa kusahau basi msiyatafute",
+    "attribution": "Imepokelewa na Addar- Alqutni katika Sunanu yake na wengineo",
+    "own": {
+      "score": 0.043,
+      "number": "3748"
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "reference": "ahmad:hadeethenc:66540",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:3336",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:3588",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:3375",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:3381",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:3416",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:65058",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:65247",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:65300",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:65331",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  },
+  {
+    "reference": "ahmad:hadeethenc:65018",
+    "reason": "hakuna nakala kamili ya kulinganisha (Ahmad)"
+  }
+]

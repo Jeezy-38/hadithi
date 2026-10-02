@@ -1,0 +1,245 @@
+[
+  {
+    "id": "3344",
+    "title": "Waelezeni watu yale wanayoyafahamu, Hivi mnataka akadhibishwe (apingwe) Mwenyezi Mungu na Mtume wake",
+    "attribution": "Imepokelewa na Al-Bukhaariy",
+    "matches": {
+      "bukhari": {
+        "score": 0.471,
+        "number": "4744"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "3348",
+    "title": "Nilikuwa ni mtu mwenye kutokwa na madhii kwa wingi na nilikuwa nikiona haya kumuuliza Mtume Rehema na amani ziwe juu yake kutokana na nafasi ya binti yake kwangu, nikamuamrisha Mikidadi bin Aswadi, akamuuliza, akasema: \"Aoshe tupu yake na atawadhe",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "matches": {
+      "bukhari": {
+        "score": 0.4,
+        "number": "269"
+      },
+      "muslim": {
+        "score": 0.4,
+        "number": "303"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "3389",
+    "title": "Tukasema: Wewe ni bwana yetu, akasema: \"Bwana ni Mwenyezi Mungu\", Tukasema: Na mbora zaidi kuliko sisi katika fadhila, na mtoaji zaidi kuliko sisi, akasema: \"Semeni kwa maneno mliyozoea, au baadhi yake, na wala asikukokoteni Shetani",
+    "attribution": "Imepokelewa na Abu Daud na Ahmad",
+    "matches": {},
+    "reason": "hakuna mkusanyo wenye chanzo (mf. Ahmad)"
+  },
+  {
+    "id": "3393",
+    "title": "Nyanyua kichwa chako na sema yasikilizwe, na omba upewe, na taka utetezi utetewe",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "matches": {
+      "bukhari": {
+        "score": 0.364,
+        "number": "7510"
+      },
+      "muslim": {
+        "score": 0.333,
+        "number": "193"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "3443",
+    "title": "Alikuwa Mtume -Rehema na Amani ziwe juu yake- akiitembelea msikiti wa Qubaa kwa kipando na pia kwa miguu, anaswali ndani yake rakaa mbili",
+    "attribution": "Imepokelewa na Al-Bukhaariy na Muslim kwa riwaya zake",
+    "matches": {
+      "bukhari": {
+        "score": 0.559,
+        "number": "1193"
+      },
+      "muslim": {
+        "score": 0.441,
+        "number": "1399"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "3456",
+    "title": "Nilimjia Mtume -Rehema na Amani ziwe juu yake- naye akiwa anapiga mswaki kwa mswaki wa mti mbichi, Akasema: na ncha ya mswaki ikiwa katika ulimi wake, naye akisema: AAGH, AAGH (sauti ya kujigogoa), na mswaki ukiwa mdomoni mwake, kana kwamba anajigogoa",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "matches": {
+      "bukhari": {
+        "score": 0.452,
+        "number": "244"
+      },
+      "muslim": {
+        "score": 0.323,
+        "number": "1221"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "3535",
+    "title": "Adhabu kali ya moto itazipata nyayo za miguu",
+    "attribution": "Imepokelewa na Imamu Muslim - Imepokelewa na Al-Bukhaariy na Muslim kwa riwaya zake",
+    "matches": {
+      "bukhari": {
+        "score": 0.478,
+        "number": "96"
+      },
+      "muslim": {
+        "score": 0.478,
+        "number": "241"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "3557",
+    "title": "Ewe Mjumbe wa Mwenyezi Mungu, hivi wasemaje endapo atakuja mtu anataka kuchukua mali yangu?",
+    "attribution": "Imepokelewa Imamu Muslim",
+    "matches": {
+      "muslim": {
+        "score": 0.625,
+        "number": "140"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "3565",
+    "title": "Simama na uswali witiri ewe Aisha",
+    "attribution": "Wamekubaliana Bukhaariy na Muslim",
+    "matches": {
+      "bukhari": {
+        "score": 0.375,
+        "number": "1162"
+      },
+      "muslim": {
+        "score": 0.531,
+        "number": "744"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "3705",
+    "title": "Hakika umesema neno ambalo lau lingechanganywa na maji ya Bahari basi (lingeyabadili rangi) kwa kuchanganyika nayo",
+    "attribution": "Imepokelewa na Abu Daud, Tirmidhiy na Ahmad",
+    "matches": {
+      "tirmidhi": {
+        "score": 0.375,
+        "number": "2503"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "3758",
+    "title": "Tulikuwa tukimuandalia Mjumbe wa Mwenyezi Mungu -Rehema na Amani ziwe juu yake- mswaki wake na (maji yake kwaajili ya) twahara, basi Mwenyezi Mungu anamuamsha kwa muda anaotaka aamke nyakati za usiku, anapiga mswaki, na anatawadha na anaswali",
+    "attribution": "Imepokelewa na Imamu Muslim",
+    "matches": {
+      "muslim": {
+        "score": 0.654,
+        "number": "746"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "4177",
+    "title": "Mfano wa yule anayemtaja Mola wake na yule asiyemtaja Mola wake, ni mfano wa aliyehai na aliyekufa",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "matches": {
+      "bukhari": {
+        "score": 0.444,
+        "number": "6407"
+      },
+      "muslim": {
+        "score": 0.667,
+        "number": "779"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "4182",
+    "title": "Ewe Mjumbe wa Mwenyezi Mungu, ni nani mwenye haki zaidi ya kumfanyia wema wa karibu? akasema: mama yako, kisha mama yako kisha mama yako, kisha baba yako, kisha anayefuata kwa ukaribu kisha nayemfuata kwa ukaribu",
+    "attribution": "Imepokelewa na Imamu Muslim - Wamekubaliana Bukhaariy na Muslim",
+    "matches": {
+      "bukhari": {
+        "score": 0.0,
+        "number": null
+      },
+      "muslim": {
+        "score": 0.444,
+        "number": "2548"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "4243",
+    "title": "Amsalimie aliyepanda anayetembea, na anayetembea aliyekaa, na wachache kwa wengi",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "matches": {
+      "bukhari": {
+        "score": 0.6,
+        "number": "6232"
+      },
+      "muslim": {
+        "score": 0.6,
+        "number": "2160"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "4244",
+    "title": "Hivi leo hii nyinyi si mnapata chakula na kinywaji mkitakacho? Kwa hakika mimi nilimuona Nabii wenu rehema na amani ziwe juu yake inafika mahala hapati hata tende mbovu ya kutosha kujaza tumbo lake",
+    "attribution": "Imepokelewa Imamu Muslim",
+    "matches": {
+      "muslim": {
+        "score": 0.286,
+        "number": "1153"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "4503",
+    "title": "Si katika wema kufunga safarini",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "matches": {
+      "bukhari": {
+        "score": 0.462,
+        "number": "1946"
+      },
+      "muslim": {
+        "score": 0.385,
+        "number": "1115"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  },
+  {
+    "id": "4850",
+    "title": "Atakayekula kitunguusaumu, au kitunguu maji, basi na ajitenge nasi, au ajitenge na msikiti wetu, na akae nyumbani kwake",
+    "attribution": "Wamekubaliana Bukhari na Muslim juu ya usahihi wake",
+    "matches": {
+      "bukhari": {
+        "score": 0.425,
+        "number": "855"
+      },
+      "muslim": {
+        "score": 0.35,
+        "number": "564"
+      }
+    },
+    "reason": "alama chini ya 0.70 — kagua kwa mkono"
+  }
+]

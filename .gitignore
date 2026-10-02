@@ -1,0 +1,42 @@
+*.log
+.DS_Store
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+/.venv-tts
+__pycache__/
+Homestead.json
+Homestead.yaml
+Thumbs.db
+exit
+
+
+
+
+
+rm -rf .git
+git init
+git branch -M hadith-app2
+git add .
+git status
+
+
+# Environment files
+.env
+.env.bak
+.env.*
+!.env.example

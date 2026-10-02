@@ -1,0 +1,1515 @@
+{
+  "4309": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4309",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "695ec06231a0c73b10110a5d0f1e236b3e22b61cc5fd64b0066a1d2c28e80b4b"
+  },
+  "4308": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4308",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "f3ab804ac6517719e9c7be334c97f3a826ce3dcd9da76cf11d9273bd082ee29b"
+  },
+  "10101": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=10101",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "8d07c83ee72b361e85b04aae02e0117959bf45dd36f8ffb0be78215896a5e576"
+  },
+  "4560": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4560",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "b853d14b21cbfbac47df4606918d0abe4e562231fa280d2122e46e1c70fe39d8"
+  },
+  "5351": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=5351",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "cce6a7a4e8748c31ff5328123b0cfc295fb3b635236cc350ac4dc7072f185fb4"
+  },
+  "4717": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4717",
+    "fetched_at": "2026-09-19 13:51:39",
+    "sha256": "98527ced7889a15c8d5872924624de0b61d9caf0784fcb4cd7844300d2751b60"
+  },
+  "en-4709": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4709",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "4644cdf5246c3f72307d512f28d8a1864f42b95c2eac47fd32826cb89e57b878"
+  },
+  "en-5437": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=5437",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "a23150b984905e53deb4f317a2d42329290454b798dbc24f4560fcbc916bca97"
+  },
+  "en-4308": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4308",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "e9f92cba9d0dae660497f169aa2dae1eb5b4a70e7cd9baa397fe7a8a824b3018"
+  },
+  "4709": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4709",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "69d4e90d129d1e70a8da2518634500781d79ea1ce4e8743a82a38716057b705a"
+  },
+  "5437": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=5437",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "fa0836844f117d8abf3695e79c89ac99b33e67294bbe90cb467bd60208b510ab"
+  },
+  "en-4309": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4309",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "2d2429f5b7d2f48c9ee2489829bce23b123e10531e778fc40c044e0b806afea0"
+  },
+  "en-4717": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4717",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "7020f6b8f22625fb8a242cb9ddb9b85856ea46d6b22c9fcaca40309dd6555588"
+  },
+  "en-5351": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=5351",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "6c2ea109ebdec42d1c4d461d69cbae39ea00e6f8aee26ce8b158ba36fd6e7555"
+  },
+  "en-4560": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4560",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "3c60ae78376426c92af1823ff8ebf856c5c626a9b4d5a10a60acb7aad9bcee95"
+  },
+  "en-10101": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=10101",
+    "fetched_at": "2026-09-19 18:38:05",
+    "sha256": "f34a0b16454d540fd19c36e09991d12a33b82c3084ecb5b1db18f3de3cf90af5"
+  },
+  "discovery-batch-2026-09-19": {
+    "file": "database/data/discovery/candidates.json",
+    "sha256": "2c8cffa78b74ccd4b0116699e7c4c2f20095165fcd9944e8ee3557a511e0e0eb",
+    "note": "Kundi la hadith 96 zilizogunduliwa na scripts/discover-hadeethenc.php (grade=Sahihi tu). Namba za hadith bado ni za MUDA (ona numbering_system ya kila rekodi husika)."
+  },
+  "3284": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3284",
+    "fetched_at": "2026-09-30 21:35:31",
+    "sha256": "a575f56d87c4705a5161d5bd7c48a3775ea52a7bb8ca7d572810cef550e6d4af",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3284": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3284",
+    "fetched_at": "2026-09-30 21:35:31",
+    "sha256": "df346c88fa07c04bfc9dc3572102cdd6679844308ad13dda26dfe16c5033456e",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3293": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3293",
+    "fetched_at": "2026-09-30 21:35:37",
+    "sha256": "83d37870d70af411a69023089d49a3af9940eb880173217140de62aa74d5e853",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3293": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3293",
+    "fetched_at": "2026-09-30 21:35:37",
+    "sha256": "cf050354b21fc530be28143485e54dc96f6ef8c03143827627a9a343b68e85c2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3303": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3303",
+    "fetched_at": "2026-09-30 21:35:41",
+    "sha256": "f17de5790201c03addfd2d5002e44cb1904a170cc2cf444fafcb98b7539abbe7",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3303": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3303",
+    "fetched_at": "2026-09-30 21:35:41",
+    "sha256": "4018b80558c94a127dca6df2c2bcf0920e88a68bbb0137dbc9acf8e404b3a5ad",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3306": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3306",
+    "fetched_at": "2026-09-30 21:35:43",
+    "sha256": "1e4c132e7240b9fc29f8d5d7db7d9d8a8621c1e68f26735e527e987f3c72b55a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3306": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3306",
+    "fetched_at": "2026-09-30 21:35:43",
+    "sha256": "bb76b57eeb824d9db7a24e2e1491bc5695b825de5cc8734df5e40a52e20477e3",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3310": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3310",
+    "fetched_at": "2026-09-30 21:35:46",
+    "sha256": "f132e1084379da3d91d119d787f5977759bbbed7173b52582904cf3ad39b1266",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3310": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3310",
+    "fetched_at": "2026-09-30 21:35:46",
+    "sha256": "70bf014f09b0e4e8ad8dc129d192f9c69998a7a7c68200ba32556b3c86378c7b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3316": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3316",
+    "fetched_at": "2026-09-30 21:35:50",
+    "sha256": "225f78ce9ed461dc43e5c8f615507c1d2dc365acc241ab3eb1b61d6e32d9f02f",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3316": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3316",
+    "fetched_at": "2026-09-30 21:35:50",
+    "sha256": "7a40aaa2fddf51fd328c05fc7e5c678f778c7b4b6e025c21e0940159ff103df2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3341": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3341",
+    "fetched_at": "2026-09-30 21:36:07",
+    "sha256": "3f02ad9d64f8e6ccc66d302e70d72858753c651ae64880ef417314fc76de1a43",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3341": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3341",
+    "fetched_at": "2026-09-30 21:36:07",
+    "sha256": "026f3600ad4d9ee26c92be2703a60d0f12c0a69a79a8a7120cc229faabf262af",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3355": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3355",
+    "fetched_at": "2026-09-30 21:36:27",
+    "sha256": "85d35c32aee234fc7646ca01bb17cf1f7a12eba3b455ed16055a5a12a6b9275e",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3355": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3355",
+    "fetched_at": "2026-09-30 21:36:27",
+    "sha256": "8719b49cda3c259e84b8adb53329a2031da27c82ef7c08724cd76a79972c6828",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3358": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3358",
+    "fetched_at": "2026-09-30 21:36:32",
+    "sha256": "42ab4f2fb2cd1945ca5562ee40c314e0995ade030da43340949d65b7cccea7c7",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3358": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3358",
+    "fetched_at": "2026-09-30 21:36:32",
+    "sha256": "997a255462e7cb6d3b8a3fa1b27390096f6af12a5a671bed94388249b98d1967",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3364": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3364",
+    "fetched_at": "2026-09-30 21:36:40",
+    "sha256": "b642d4970641d03561831d4b531af61b65645d55b676af33bd02e8c42c58640c",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3364": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3364",
+    "fetched_at": "2026-09-30 21:36:40",
+    "sha256": "a756c09e6356d06944e3e41b443452d553bbf6ea94dd4ff3a2bcbb0122717bcc",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3367": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3367",
+    "fetched_at": "2026-09-30 21:36:47",
+    "sha256": "af8f508db2096a711fe56d48e8be63d620e00288167895e82b67e67acef63345",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3367": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3367",
+    "fetched_at": "2026-09-30 21:36:47",
+    "sha256": "09c7178638ffafb326e42cba02e3475686c6eda280abb99234d322c637571e5f",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3373": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3373",
+    "fetched_at": "2026-09-30 21:36:53",
+    "sha256": "81a2782a278430b3e1cfdedd42bcf4aab95db57adbdb9e20333e6631c184e098",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3373": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3373",
+    "fetched_at": "2026-09-30 21:36:53",
+    "sha256": "3be8a919c384b9e377879e5d4b9bde3fe40e9dc1745e8e1e0162faece202c475",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3379": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3379",
+    "fetched_at": "2026-09-30 21:36:57",
+    "sha256": "1dacea4e76fe288fa555eb96a7a633976bdfe7a48ef488fadedeb2b6b0da6090",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3379": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3379",
+    "fetched_at": "2026-09-30 21:36:57",
+    "sha256": "5c3e05be1b5b8a7253caee3a959f66c80299bd1325dcdc5cd762ffb31a2ea432",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3422": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3422",
+    "fetched_at": "2026-09-30 21:37:50",
+    "sha256": "888cd8ebd2b79eabdaf1ebeab4ac97be60e62bda9ad8c312fbc405a00c7ffb31",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3422": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3422",
+    "fetched_at": "2026-09-30 21:37:50",
+    "sha256": "8156c99b14d4f68a3269496d7bbea7fcb454e1d9832817eb107d037b2fb8ea47",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3437": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3437",
+    "fetched_at": "2026-09-30 21:37:53",
+    "sha256": "0ce38ce3662894c8bf2318589c722a66b7d95cedeb6b405959334130a7c2db45",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3437": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3437",
+    "fetched_at": "2026-09-30 21:37:53",
+    "sha256": "75d214ab0e97d8627eca9602885e3d3408236d7076b7fd5d21da03d06a97ef82",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3438": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3438",
+    "fetched_at": "2026-09-30 21:37:56",
+    "sha256": "e3c782ae5356d2d901c5a10cc8ce4adc9f432e635173263d2cbe3188930ccb7f",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3438": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3438",
+    "fetched_at": "2026-09-30 21:37:56",
+    "sha256": "851b779ee34435ae714560af773e92219bdbf87d5b27bf071d614cc857ad30a2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3440": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3440",
+    "fetched_at": "2026-09-30 21:37:58",
+    "sha256": "7af3938936bee807fcfe93216d30aaaf606b74e59fdeeb904c206dd3596abace",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3440": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3440",
+    "fetched_at": "2026-09-30 21:37:58",
+    "sha256": "01ca020ae81e9cc1c196ec19e903605ebd97789589712904627eccca9c272c92",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3444": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3444",
+    "fetched_at": "2026-09-30 21:38:02",
+    "sha256": "9b0c3d04d6bdf0e15ecf135a5b0ca548234075a98f3ee3e970168fe5fe71d421",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3444": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3444",
+    "fetched_at": "2026-09-30 21:38:02",
+    "sha256": "778a2af37029ba42e8b4ab248c7eb37dbb2ae7e4def17bb99d12062b8324fcb9",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3447": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3447",
+    "fetched_at": "2026-09-30 21:38:09",
+    "sha256": "769b96e8ac0c9406ece3c2edf96af503a12c15e1f2dcbbb1a32d2160a5eae3aa",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3447": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3447",
+    "fetched_at": "2026-09-30 21:38:09",
+    "sha256": "4333758314c12b295a3460213d7f3fb9bc724069c1f8cab5d673d6e2820c2c0c",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3449": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3449",
+    "fetched_at": "2026-09-30 21:38:11",
+    "sha256": "e4ada5770e8bab075568630fd0658d459831a044e4fbac507a9e5cce4b462625",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3449": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3449",
+    "fetched_at": "2026-09-30 21:38:11",
+    "sha256": "535269ea9b2a2f08f6eefb51af3b0e5b9ba73671c49cf23b25ed8ca73afb47aa",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3461": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3461",
+    "fetched_at": "2026-09-30 21:38:16",
+    "sha256": "a859fccb70b4887ffc9d4118acd7c39c49b2bd538965e4d97abb28a65325c7a3",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3461": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3461",
+    "fetched_at": "2026-09-30 21:38:16",
+    "sha256": "9cc2244f5e3aa325f1b5154b9a55584c3e8891f42b89d0a2587fe6060356c884",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3469": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3469",
+    "fetched_at": "2026-09-30 21:38:18",
+    "sha256": "55d1502bce3825c42ec1c4dffd1dc4e56b96f0db0bb3e89b9f4adf24d239c515",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3469": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3469",
+    "fetched_at": "2026-09-30 21:38:18",
+    "sha256": "91145b2cb5ff92e98b9f8a4627034a6f06492f11f26f95de7230536f717981ee",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3476": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3476",
+    "fetched_at": "2026-09-30 21:38:24",
+    "sha256": "834107ad994f789bc4fe461214c75f2ddc25b0f49ba96b55531dc6e44c5f2e3a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3476": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3476",
+    "fetched_at": "2026-09-30 21:38:24",
+    "sha256": "0d9dc0ce43f86851676cbb3d145b1ec4ec9a3715cefc21ab7e7ebb5838dd8d7f",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3480": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3480",
+    "fetched_at": "2026-09-30 21:38:30",
+    "sha256": "40a3a86303de14e0df196d592c1ff27197c66cdf1ed57f31a91b1e1802b7afb2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3480": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3480",
+    "fetched_at": "2026-09-30 21:38:30",
+    "sha256": "211e16c0706ca720e50f2bfb91c8d7dd983e5118a96f033378488edcc68c25c5",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3481": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3481",
+    "fetched_at": "2026-09-30 21:38:32",
+    "sha256": "602e84845df6de71a5e7eeb4fb4fd4cd9eecc704daf8c5c9fdfbb03edea091e2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3481": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3481",
+    "fetched_at": "2026-09-30 21:38:32",
+    "sha256": "c801f94bd04f2d45bfdb50e5a36688864e1228c48830a56d78c624602234e98e",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3484": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3484",
+    "fetched_at": "2026-09-30 21:38:34",
+    "sha256": "a6031ddb35460ade3cf580024f3cf13c2530c08e22c1f2b548500f096352be76",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3484": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3484",
+    "fetched_at": "2026-09-30 21:38:34",
+    "sha256": "6b22a0aedab122e0ea86da22aaf1344d730c1de1676500bb645dc150cf6f0fdc",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3503": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3503",
+    "fetched_at": "2026-09-30 21:38:38",
+    "sha256": "9aa5d743fdeb859ad58f3cdc88cae1172b576cfa1a55b6fd180b4339d4381c06",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3503": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3503",
+    "fetched_at": "2026-09-30 21:38:38",
+    "sha256": "a299170168f67b8620b2f0be4591ddfd3308d27ca252814005aefeb50587873f",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3507": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3507",
+    "fetched_at": "2026-09-30 21:38:42",
+    "sha256": "cbbc7653a8ca6a20eb1ad2fa1c838c3d68f994d1b4d662adce00348d039a609a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3507": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3507",
+    "fetched_at": "2026-09-30 21:38:42",
+    "sha256": "6732f2e12d415c7661486a26e165664c8599eb58607c0af81155e76894e4d8dc",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3512": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3512",
+    "fetched_at": "2026-09-30 21:38:44",
+    "sha256": "400fec91c658bb0cd431d22b757ed09a7fe131740fef452b4005186479ce8c11",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3512": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3512",
+    "fetched_at": "2026-09-30 21:38:44",
+    "sha256": "30efcd01922ce2e92a64d695e5b974b14e9b78408ea43cf01d1fba9da7b542b0",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3529": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3529",
+    "fetched_at": "2026-09-30 21:38:49",
+    "sha256": "26b8be2e992044b45bc4830c82a6ef8d04015834f5df423f0d855e5f54767757",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3529": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3529",
+    "fetched_at": "2026-09-30 21:38:49",
+    "sha256": "d753cba9f3ea1495c8509e313243e4a467cd47ba54edfb6cdca4afb9370fdac5",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3537": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3537",
+    "fetched_at": "2026-09-30 21:38:56",
+    "sha256": "c1d157bb31ad077df66ec090679b2015fbc57c50520ea1c6f2ebd8b071dc3f8b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3537": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3537",
+    "fetched_at": "2026-09-30 21:38:56",
+    "sha256": "656f871965df9743c5638daec6f9e27167f953abe6be947ec80ebb6b82884794",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3546": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3546",
+    "fetched_at": "2026-09-30 21:39:00",
+    "sha256": "ff14eff1107ba1bc5cfbbf47de59371b25e82ae9588f1670b4261b1179c47a6f",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3546": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3546",
+    "fetched_at": "2026-09-30 21:39:00",
+    "sha256": "803b51ddc4227198324576fb39b26e4403e421f4a7b1cda645646892e14edf41",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3553": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3553",
+    "fetched_at": "2026-09-30 21:39:03",
+    "sha256": "95f073c87d7c4880a02f1ef5de689a11a279a39874f0ff5dcef3172c48f73e8d",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3553": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3553",
+    "fetched_at": "2026-09-30 21:39:03",
+    "sha256": "35b850937bc2a6612e6382254c74c916a5e8af86f6127529ea7e1a08ca5550df",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3554": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3554",
+    "fetched_at": "2026-09-30 21:39:05",
+    "sha256": "a7ef6de2b7e07c1b96f952489683c963d1e3711edc03857ac3da9fd1291484f8",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3554": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3554",
+    "fetched_at": "2026-09-30 21:39:05",
+    "sha256": "f9b2c412caa7d51b913618f846ef892bab9a8e3f70b6b733be0f37e3c9f0da26",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3561": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3561",
+    "fetched_at": "2026-09-30 21:39:09",
+    "sha256": "fbac96965d52e5c45aae1acd699e9bbc6b6d6f7822b666b09c15e198b67b1a55",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3561": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3561",
+    "fetched_at": "2026-09-30 21:39:09",
+    "sha256": "19ea448f4ed4991439cb47973552e88d23a2d28339c9db6a506bc94a24b304f8",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3566": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3566",
+    "fetched_at": "2026-09-30 21:39:16",
+    "sha256": "486bb2baadf5cf1d4df71c05b667a9b81a6bd201bcc90b217dc4fbaeccd03257",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3566": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3566",
+    "fetched_at": "2026-09-30 21:39:16",
+    "sha256": "a6e2e1163f151de4f840ae182122a1d49da2c88be93010b5934ee2b010753328",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3569": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3569",
+    "fetched_at": "2026-09-30 21:39:19",
+    "sha256": "7cef29332803ec67722f13d1bd8d127923618fcd9f3496c7b0a366576d95650f",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3569": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3569",
+    "fetched_at": "2026-09-30 21:39:19",
+    "sha256": "6599cfba3485aa864bd2b54b330524fd777f4044b123047abf32f9f60832d628",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3573": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3573",
+    "fetched_at": "2026-09-30 21:39:24",
+    "sha256": "58975cf656ec0b493f758f22985741548357eed9825a151c169a5bb366a6d024",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3573": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3573",
+    "fetched_at": "2026-09-30 21:39:24",
+    "sha256": "7ac8bdaf744778f7fd44648bc388024c4522f1d201c9447deefcfe1d84b92dcb",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3584": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3584",
+    "fetched_at": "2026-09-30 21:39:35",
+    "sha256": "856a5b36097a43ae844d4c945410a441b57f5a5924138c23f477081babe627e8",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3584": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3584",
+    "fetched_at": "2026-09-30 21:39:35",
+    "sha256": "0236e7d64880df7ad567c0744422069781b48b9d98165aa016224ee9073a23a8",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3596": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3596",
+    "fetched_at": "2026-09-30 21:39:43",
+    "sha256": "7f061ab8f115dd638b040303e7d904c4baf620f3586adccca796e7284268d191",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3596": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3596",
+    "fetched_at": "2026-09-30 21:39:43",
+    "sha256": "2b874426a5c751c1828ed4539dc91702faab81ae315929389d9a49e70e9103d0",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3599": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3599",
+    "fetched_at": "2026-09-30 21:39:46",
+    "sha256": "b489df2221fc8eecd5b3da6a7c18457581f704f177bb5d37fe6b634f6e91101d",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3599": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3599",
+    "fetched_at": "2026-09-30 21:39:46",
+    "sha256": "41b219219654dd05c31059e46dfb38ace2f01f316cdab3f11af796c22edd2e4b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3652": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3652",
+    "fetched_at": "2026-09-30 21:39:55",
+    "sha256": "5e32e61e864a9537a765a5afb0244418dbca818f28c32b39a3625b5bbc4fed7b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3652": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3652",
+    "fetched_at": "2026-09-30 21:39:55",
+    "sha256": "d882b2d843af45c1963c46cf32f70e1ffc131e81784fc4937ed88d93d8e25cbf",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3686": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3686",
+    "fetched_at": "2026-09-30 21:39:58",
+    "sha256": "95ce9dc2203940fd0893899b46bd4fc9fede85df51e7f9591cebe1c7077ffc8d",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3686": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3686",
+    "fetched_at": "2026-09-30 21:39:58",
+    "sha256": "db893ff495e4478f1e87f6f286350d122f516f35e4fbc9323826e9375b086d6a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3700": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3700",
+    "fetched_at": "2026-09-30 21:40:06",
+    "sha256": "e50b7dab9c26581c389790d00637db493c4713ce8ceabddb0aa5f28731ba4f8a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3700": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3700",
+    "fetched_at": "2026-09-30 21:40:06",
+    "sha256": "996c0c6618443eb28a95b2dbce0800a038f40a42b94edad3484d71b955b67b6f",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3703": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3703",
+    "fetched_at": "2026-09-30 21:40:14",
+    "sha256": "f79cf6ff493dca4cb83ce6ee699e8ad7a599410af747dc619a893345294c18a6",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3703": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3703",
+    "fetched_at": "2026-09-30 21:40:14",
+    "sha256": "279eaab67b22e9d0fdb7f648ac37c7d04df6578539515cadee3d481c8f6cd820",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3711": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3711",
+    "fetched_at": "2026-09-30 21:40:22",
+    "sha256": "ada585939d358eb5cd90e149744341e74a5623a5a853d3b901a76d758c4a895c",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3711": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3711",
+    "fetched_at": "2026-09-30 21:40:22",
+    "sha256": "eead9b66b7e2e81f5e127d8bda4b6ef9974131ade67ffb57b9d13c95900b6bc9",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3714": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3714",
+    "fetched_at": "2026-09-30 21:40:24",
+    "sha256": "c097efe95b9b062e8e44f825c8ee4da785c04cde3e68f11747d18e0f98bfbe82",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3714": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3714",
+    "fetched_at": "2026-09-30 21:40:24",
+    "sha256": "6a0745d66d6807d554d6ec00a33d13f7fb200061e335f603740049e5a2509b2e",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3715": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3715",
+    "fetched_at": "2026-09-30 21:40:26",
+    "sha256": "9040891327f5aa3083a3a7af5b80a2308e4e770e479b3bd2d3b31667e199144a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3715": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3715",
+    "fetched_at": "2026-09-30 21:40:26",
+    "sha256": "25051b77a56944ccd1ab15b2c49c5e255878a25923bb400cd0e681c0e250892e",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3730": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3730",
+    "fetched_at": "2026-09-30 21:40:36",
+    "sha256": "1d51a65f0f26be8f52e0cca2b12164b7652d49678af7dfa38e757288cd797527",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3730": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3730",
+    "fetched_at": "2026-09-30 21:40:36",
+    "sha256": "ad17d3c37ec404462e678a2a99277d150336d98af7e298504c460322f0244d36",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3732": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3732",
+    "fetched_at": "2026-09-30 21:40:43",
+    "sha256": "c9fd5568fd1af3903dbffa5c29fcce5ed192abf1279c5eabcadfaf708a857a87",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3732": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3732",
+    "fetched_at": "2026-09-30 21:40:43",
+    "sha256": "ae4a7c4ff2c376cdbbb076a7dde10619af08e3aa056a3a23691c0b9119041c0b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3738": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3738",
+    "fetched_at": "2026-09-30 21:40:48",
+    "sha256": "f3bfd112218a6c001520c8aa7fdc2641f3e71756e35a6ad10e6078fec8d49b04",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3738": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3738",
+    "fetched_at": "2026-09-30 21:40:48",
+    "sha256": "505c0d3dce80de5d6efa65a0a8404b70521974c33869b731101eae02de778efa",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3755": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3755",
+    "fetched_at": "2026-09-30 21:40:52",
+    "sha256": "ab55deb04b00cd7a1874c4e2370bb18cb426da2d9a4ab96c0a34f2aaf5781f20",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3755": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3755",
+    "fetched_at": "2026-09-30 21:40:52",
+    "sha256": "e2e742b35f51885e1305f35ad3e3fc052d5ea932dddb3a56dcd76dc013e07873",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3762": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3762",
+    "fetched_at": "2026-09-30 21:40:58",
+    "sha256": "c83a993a5f512258a5d90e8940ba602d7a2c9d63fd6aab55690d77c5f6fb214e",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3762": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3762",
+    "fetched_at": "2026-09-30 21:40:58",
+    "sha256": "ee6211f161ab867671ea74b08ac0033478199caa938e000d3209094a831a2cc2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3773": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3773",
+    "fetched_at": "2026-09-30 21:41:00",
+    "sha256": "407205b1ad95c63d3ed200d980492f0a5a05f73ef4798f901a196a7eda77bcf7",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3773": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3773",
+    "fetched_at": "2026-09-30 21:41:00",
+    "sha256": "e6f32b9d94e70b7e51e326540cb1d10e59f8938d477ccc36eda07ce9738d4a47",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3776": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3776",
+    "fetched_at": "2026-09-30 21:41:02",
+    "sha256": "3adec3d4a56d0d6c58e280a95df806e963e830732cd31ce68d39343bc9521fd7",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3776": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3776",
+    "fetched_at": "2026-09-30 21:41:02",
+    "sha256": "cec589d84cb48a118cbd08327e95c49d888719d402bff0f0d2ef4a9db3e3e7e9",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3777": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3777",
+    "fetched_at": "2026-09-30 21:41:05",
+    "sha256": "643cba030181d5ae6909955041e7ec21d5dd6c7b1c680494a32dba7945a3b2c6",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3777": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3777",
+    "fetched_at": "2026-09-30 21:41:05",
+    "sha256": "3593418bb28e7acfef36eb16c1dd617b8f0dcf22e25b32c61fac0d628cdc948f",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3779": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3779",
+    "fetched_at": "2026-09-30 21:41:09",
+    "sha256": "337760a709e12141ddcebe2a22a98312b503f350cc293c1e49f08768f24c25e2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3779": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3779",
+    "fetched_at": "2026-09-30 21:41:09",
+    "sha256": "0b3f83f01b3e7682aa1c1f202f4f7d7bc4f7f219721023ec3a25a2e3fe046e08",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3785": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3785",
+    "fetched_at": "2026-09-30 21:41:12",
+    "sha256": "ed954377283ca357afb81dfe1cff4bf6b9c1202534156c88331915c5efeaf535",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3785": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3785",
+    "fetched_at": "2026-09-30 21:41:12",
+    "sha256": "62fe7c31b53cb4da0959ee5c8d439dc337656af649311ea92a7538fc34ef31d7",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3795": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3795",
+    "fetched_at": "2026-09-30 21:41:17",
+    "sha256": "72f7fe6cf298d908296aa3afbedbe6e5ff2c52be63f9398893b0411c404726f4",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3795": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3795",
+    "fetched_at": "2026-09-30 21:41:17",
+    "sha256": "7b1ded98f9e8ec481b60b9516f99290483924b2c0115a57a80aa89988d3a2cd2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3850": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3850",
+    "fetched_at": "2026-09-30 21:41:19",
+    "sha256": "f2899b73b7eeae72e47280b00004de0386cf79b8156c9e7595b91272decd4da2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3850": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3850",
+    "fetched_at": "2026-09-30 21:41:19",
+    "sha256": "1fac1ec72e76771a8ef487e0f2907b0aa9b7eaddefbffdf3c72c73c1628ce011",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3863": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3863",
+    "fetched_at": "2026-09-30 21:41:25",
+    "sha256": "d2321435cd4fabc24aff4d3dee7001afdf097064925b8e924534fd9b10eeaac3",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3863": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3863",
+    "fetched_at": "2026-09-30 21:41:25",
+    "sha256": "710cbbfecd7c920c3ff1ffc5ed66a6af395af0abd200b2d2e5f769587b27cf6a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3868": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3868",
+    "fetched_at": "2026-09-30 21:41:27",
+    "sha256": "ea37d7d17ae85070896ba9b4872c6be11306c8c2f995d11b90a5dd7d438fd9e3",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3868": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3868",
+    "fetched_at": "2026-09-30 21:41:27",
+    "sha256": "7b8c0c84979d6c34a60ff7ad42f58ad2807c51a3e3be64bb0df75e35ab8254fb",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3876": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3876",
+    "fetched_at": "2026-09-30 21:41:29",
+    "sha256": "f753aecf1d8fe00680259b0d7338d4b893d88808ff23800468ff646e973aabce",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3876": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3876",
+    "fetched_at": "2026-09-30 21:41:29",
+    "sha256": "7c89faa1db1ae34215d49070ae7872463c844c2d7d718c9fcac760c3c51ca97a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "3916": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=3916",
+    "fetched_at": "2026-09-30 21:41:33",
+    "sha256": "0e0e23a17fe625a923d904bef33f8d6543b04e35c96b22a8d75249a4c06ffff7",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-3916": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=3916",
+    "fetched_at": "2026-09-30 21:41:33",
+    "sha256": "b83ce14e5e6c79d32f2f70a190acea24a15bada2c6a3ae52f863ac7222f1494a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4176": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4176",
+    "fetched_at": "2026-09-30 21:41:35",
+    "sha256": "38aa4a393c2417a5798f8498298a8819dbcce39ec7682e20c2f455c76433ab28",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4176": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4176",
+    "fetched_at": "2026-09-30 21:41:35",
+    "sha256": "b30d95cd585dd4036cb083f4d148b6ac4fddd95019913d75c743f8d1446dee9d",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4180": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4180",
+    "fetched_at": "2026-09-30 21:41:39",
+    "sha256": "a30498486bb93f701797b3af31854682f27f0e5ee7e24cf4c129c165887756f4",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4180": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4180",
+    "fetched_at": "2026-09-30 21:41:39",
+    "sha256": "563d4788add9a9fd6a990dbc9fb4e10ee4c0d936bfeb925a3782f94014adf7f2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4183": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4183",
+    "fetched_at": "2026-09-30 21:41:44",
+    "sha256": "2ea9975c818fbb0566363a3aba716f1e3b17e86119a27cf8e932facfca7c2b4d",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4183": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4183",
+    "fetched_at": "2026-09-30 21:41:44",
+    "sha256": "8b8acad19f20a51cd9f61fd252b3386efd2d59d306e5322445d8f0e322588712",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4187": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4187",
+    "fetched_at": "2026-09-30 21:41:49",
+    "sha256": "05fc08ea62c4fecd2305fd341b82384cde4e44c1005add3e74d136d3d2e307ed",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4187": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4187",
+    "fetched_at": "2026-09-30 21:41:49",
+    "sha256": "0c76599b6c90fa40ded05355daaa0fc09f700849052fd7370dac07f0065af669",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4192": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4192",
+    "fetched_at": "2026-09-30 21:41:54",
+    "sha256": "cbd300f2695febc6910f8b2f8a5bb6a69ec901c973751e31af2ee867d7da2bd3",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4192": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4192",
+    "fetched_at": "2026-09-30 21:41:54",
+    "sha256": "cf7dbe18e854e6c5d568461164653f024d25ebcbc61b4f34cba500f776e35d44",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4193": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4193",
+    "fetched_at": "2026-09-30 21:41:56",
+    "sha256": "b1487dce1057d5f15b2579e2f1d1d815b03559f7aa116d4de69faf9c751bf960",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4193": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4193",
+    "fetched_at": "2026-09-30 21:41:56",
+    "sha256": "07a4bf1dd80572cc228723fcf65191203f1c94a362de41ad89d89a6e2bc0b000",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4195": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4195",
+    "fetched_at": "2026-09-30 21:41:58",
+    "sha256": "29e2f3ee76a3b105f7cef131cc5607c9fa7d17853b062916b2ff34c113d03553",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4195": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4195",
+    "fetched_at": "2026-09-30 21:41:58",
+    "sha256": "cde294f3a0386541e8d5ecd3270c19943eb993bcd6ae032eb359f08079bcaa1a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4198": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4198",
+    "fetched_at": "2026-09-30 21:42:04",
+    "sha256": "39ddd4a8724b9cac922d58e3b0ee378638519d4efa17b7d62e5b2b3456bd61f1",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4198": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4198",
+    "fetched_at": "2026-09-30 21:42:04",
+    "sha256": "c7126c75e63cbc939134f9adf5ffd317b30da12e510af6ae9687f1f7a8158ebc",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4201": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4201",
+    "fetched_at": "2026-09-30 21:42:06",
+    "sha256": "00ef21e921262352316393a2655924b839288bbc69810a9baddd01bb104f0e7e",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4201": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4201",
+    "fetched_at": "2026-09-30 21:42:06",
+    "sha256": "3a0e0d82c6565db95b1c97f07dca48147014f2c7769136f187a1c355e07e1cb0",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4206": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4206",
+    "fetched_at": "2026-09-30 21:42:12",
+    "sha256": "cd4cb5d6c1da3149c5de3a7301b5ca066026ac140b63b21bee7126787012a6c8",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4206": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4206",
+    "fetched_at": "2026-09-30 21:42:12",
+    "sha256": "2527ab00c6bb0beac048eb42e25532b8a44828fcbde71c897ca43a780836fca5",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4211": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4211",
+    "fetched_at": "2026-09-30 21:42:15",
+    "sha256": "ac7b275eaef9abb5ea63002eab70209aebeb4055628f14d403494eba3b3c473a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4211": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4211",
+    "fetched_at": "2026-09-30 21:42:15",
+    "sha256": "f8b146d940f22bb42f7d6e116d34ade8972c30c6326d3eea910c0ca5adbd6351",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4220": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4220",
+    "fetched_at": "2026-09-30 21:42:19",
+    "sha256": "37648702c37e0bc7bb412f385e5911fef6df4d182711d0590f1be96e50ddd7bf",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4220": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4220",
+    "fetched_at": "2026-09-30 21:42:19",
+    "sha256": "3ee01d3e821444da0e4b93464019a11c273e5d38f758b244350a906692024e80",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4227": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4227",
+    "fetched_at": "2026-09-30 21:42:21",
+    "sha256": "9b38a7dac5ee74ed6cca368ada8a81a7a09fdc37da82cb37fc45303e2041eb2e",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4227": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4227",
+    "fetched_at": "2026-09-30 21:42:21",
+    "sha256": "b8c36f4cc4d4f4ee2cbb57d32ad3a73e35917b98f9f87be4155bd1ca85d8c400",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4233": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4233",
+    "fetched_at": "2026-09-30 21:42:25",
+    "sha256": "6a7b38f705d97509e5deabd06f44c9bbf595b40635a14a7d8430e967d383cf28",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4233": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4233",
+    "fetched_at": "2026-09-30 21:42:25",
+    "sha256": "f4caec3fc3eb364bbdf71cc6e65fd167d09f29766d58865f8420872e537d1bf6",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4236": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4236",
+    "fetched_at": "2026-09-30 21:42:27",
+    "sha256": "a6378477d44e5888a1d4ed1c879f06ccf771465838805d322c98f4ada4fc9f84",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4236": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4236",
+    "fetched_at": "2026-09-30 21:42:27",
+    "sha256": "b8d74df0b6c4cb2764f60e9c50691bd51743b30529a4fb8eb9550f7e03a69155",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4239": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4239",
+    "fetched_at": "2026-09-30 21:42:30",
+    "sha256": "6c8d33b68f897142db9ad3cc23f2bd9e61e643c80f9140d668beb3670cf29fe3",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4239": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4239",
+    "fetched_at": "2026-09-30 21:42:30",
+    "sha256": "fb6d946c51e616d82a96cc2519f5120b8e2cfe84b08305e290ed7bb08a781c17",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4240": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4240",
+    "fetched_at": "2026-09-30 21:42:32",
+    "sha256": "1d210b508e024d1d7befd2e4d6729e69c49dfaacdbdc976b0b2e7bfb3a81f120",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4240": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4240",
+    "fetched_at": "2026-09-30 21:42:32",
+    "sha256": "531883f6e8b76d25d68594b52f2ffa5381bf269f90c130c4847cc45874a9100a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4242": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4242",
+    "fetched_at": "2026-09-30 21:42:34",
+    "sha256": "ece98c0d34c490b7fc192b84cf354558b9da2e2c3f947df68ca775a5eac36e75",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4242": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4242",
+    "fetched_at": "2026-09-30 21:42:34",
+    "sha256": "f31f98aaa9953fabbd459d91a47d0088b9dd98b8b93c699bab0cfd3373da5c9b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4289": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4289",
+    "fetched_at": "2026-09-30 21:42:41",
+    "sha256": "571dbd56fa23f0a6f2c8c2ff95fe788f0e8406d9f33a66f08be1488f9c4e417b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4289": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4289",
+    "fetched_at": "2026-09-30 21:42:41",
+    "sha256": "8b4941d6640725f496c7b51251263ef389ace88927dbcbec9c667850ce2e341a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4311": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4311",
+    "fetched_at": "2026-09-30 21:43:03",
+    "sha256": "01c9f603015217444d91c5ae6b6c9bbef408c2056a9763acf9f5a2281bc67372",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4311": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4311",
+    "fetched_at": "2026-09-30 21:43:03",
+    "sha256": "211837a740fb2521c84a1f78c7e72b0011925c04cfb5ffcea9b33b93f1c2579a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4316": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4316",
+    "fetched_at": "2026-09-30 21:43:07",
+    "sha256": "80c72240854b45bc945b3fdc718a894a7216033eb9543ae26afad17ccb4f12dc",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4316": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4316",
+    "fetched_at": "2026-09-30 21:43:07",
+    "sha256": "e209290e44aa222ca732d08176f9961b177acb4210d48e0b332dd00a71deb8b0",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4318": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4318",
+    "fetched_at": "2026-09-30 21:43:10",
+    "sha256": "e98f98b6c6df382b39722d9da86aca2fce3e388703392af43ddb869efc50b440",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4318": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4318",
+    "fetched_at": "2026-09-30 21:43:10",
+    "sha256": "a84436c9b0bec3f187393ff6b26ad75a262fa09d73876187bdcb90f119e7a63d",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4436": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4436",
+    "fetched_at": "2026-09-30 21:43:17",
+    "sha256": "c4e142d78efce1e647b623f961264038448f7e20c7927bbc4974e4ddc0f29488",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4436": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4436",
+    "fetched_at": "2026-09-30 21:43:17",
+    "sha256": "e1087fa88cdcf62f412936905ff20cb4f23f4c83561fd6d54c7a484db6a0b66d",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4438": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4438",
+    "fetched_at": "2026-09-30 21:43:19",
+    "sha256": "1e9337085787314d256d8c4a64bbb7969bc9415c51d22a91258b240527f9f483",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4438": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4438",
+    "fetched_at": "2026-09-30 21:43:19",
+    "sha256": "d25b109f53f6df3b1c7fb763ec2a5a659cc310d9819bf4ae1a3e02d8831ca8d8",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4454": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4454",
+    "fetched_at": "2026-09-30 21:43:21",
+    "sha256": "e31359683195b940d86241c03d55c06eb772bde1937a6b6bcdfa959626b46687",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4454": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4454",
+    "fetched_at": "2026-09-30 21:43:21",
+    "sha256": "b98b5199a3f8a6cd4565ce2f24faf71cb698fe9ee6e72d83cc3ce0b8ddc0f844",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4457": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4457",
+    "fetched_at": "2026-09-30 21:43:24",
+    "sha256": "80786acc94bba40c2368022b49aeb9c69a8c6c062f0adac58c35085a9e9b1477",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4457": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4457",
+    "fetched_at": "2026-09-30 21:43:24",
+    "sha256": "bc0a05d5d10ccab69541816eabcc290137d6abcd28a27d184e4c8b497218c3c9",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4495": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4495",
+    "fetched_at": "2026-09-30 21:43:27",
+    "sha256": "d842495d2eee4ca31812568723a2850ea85dac11074a54ff2de157b27ae99a4b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4495": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4495",
+    "fetched_at": "2026-09-30 21:43:27",
+    "sha256": "b375ee40a3e0eecd85d2cc20e32eb64247e6c2fd973cc3ce0524174dc48f62e9",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4498": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4498",
+    "fetched_at": "2026-09-30 21:43:29",
+    "sha256": "367433787e830e7f76f94bacbe63678d7ad2c2b3064b81e057b1452ac6d2a200",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4498": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4498",
+    "fetched_at": "2026-09-30 21:43:29",
+    "sha256": "9d9ad2105423f641c52f56df303623a222a83c24137267573929377df4c364fb",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4508": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4508",
+    "fetched_at": "2026-09-30 21:43:34",
+    "sha256": "98fc5b4bd190bfce0d84d2f0d1719cc92bd43e36197d49962be7906b20a1052b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4508": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4508",
+    "fetched_at": "2026-09-30 21:43:34",
+    "sha256": "b701d930ac4c0a62f0e2f0e1a97f8a76d6f0ca0460f0fb7175ac0a49d0d8c774",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4520": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4520",
+    "fetched_at": "2026-09-30 21:43:36",
+    "sha256": "953d25316f6ce86f5351369781a573092ddf25a7a5c1b38e52d957d7c1fcb6a8",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4520": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4520",
+    "fetched_at": "2026-09-30 21:43:36",
+    "sha256": "95eae6647875dd52c77dde93ea2650f8630634f12c999d27b462db7a6673e3dc",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4521": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4521",
+    "fetched_at": "2026-09-30 21:43:38",
+    "sha256": "170c760910beca78bfe7e54e35d36a040508fefa6ea5dbf2a03bdf853e41c513",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4521": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4521",
+    "fetched_at": "2026-09-30 21:43:38",
+    "sha256": "b9f664381f18e154003c7bd585a0a271e9c73000f3b6710b6aed024361f04973",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4525": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4525",
+    "fetched_at": "2026-09-30 21:43:40",
+    "sha256": "2f8cd88a33cf811328837dc4e84522d7fea8be0d2197c200eb64d9b3878c504e",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4525": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4525",
+    "fetched_at": "2026-09-30 21:43:40",
+    "sha256": "0576a5d87f89b1028933e370fde58ed73dfd96610a0a796356bc67d71c293338",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4527": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4527",
+    "fetched_at": "2026-09-30 21:43:43",
+    "sha256": "0eabed321ddc0d054ce978c7478f2f2a033ed1d47cdcf49fd61b916303fba85a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4527": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4527",
+    "fetched_at": "2026-09-30 21:43:43",
+    "sha256": "6c05b7b8e981c6c4ad0c1933cbb698ce3db18988d7ffcdd2e6c9e580599a5b9b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4535": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4535",
+    "fetched_at": "2026-09-30 21:43:45",
+    "sha256": "a5fc4ff3111650ff3c7a4992a7863a78d071850da7d777a887e31f701fa01592",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4535": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4535",
+    "fetched_at": "2026-09-30 21:43:45",
+    "sha256": "9223042753e3f0090d4dcbdd1a2c3dd8bcb531aa669d996a0021dde267a096cb",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4538": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4538",
+    "fetched_at": "2026-09-30 21:43:47",
+    "sha256": "f7aa47341d544cb1589e9596392098a63ab39d716aec353930371a6c0b55754a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4538": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4538",
+    "fetched_at": "2026-09-30 21:43:47",
+    "sha256": "eda99f5b4242bd64f13499a416ce275a93a236af9a7cc264eb5fa89d375f3143",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4540": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4540",
+    "fetched_at": "2026-09-30 21:43:49",
+    "sha256": "b26a5f2a31838fa8b0b426590e0c83f6341986808249c7eaaa2ef30acf0c6572",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4540": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4540",
+    "fetched_at": "2026-09-30 21:43:49",
+    "sha256": "c7696055f978f528284c37d818e45b2b656b8875711802f63aecad641b6aab52",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4545": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4545",
+    "fetched_at": "2026-09-30 21:43:52",
+    "sha256": "f3fa68044795576eb831188cc658eb590085f823166320c94f8af98f0d4dc7c9",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4545": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4545",
+    "fetched_at": "2026-09-30 21:43:52",
+    "sha256": "e4a8a9e0b3062c9f2a0eee2e6c6be33e2f34f371b095bd97158c16914d6aab6b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4549": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4549",
+    "fetched_at": "2026-09-30 21:43:54",
+    "sha256": "1a8ef3c7ed65f0b7538a6ffa2d4d44e54c8d8b0c7f8fa01c06745e2ad58cc52a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4549": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4549",
+    "fetched_at": "2026-09-30 21:43:54",
+    "sha256": "b80342ffb7539729450bbcd6d12e6cab46fe239d140d94aac3723736bb53d67c",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4556": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4556",
+    "fetched_at": "2026-09-30 21:43:59",
+    "sha256": "d4f516c83c0dfef9909b1f9f4eb341cc023bbd957f65ac39dbb77c68f6dcb255",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4556": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4556",
+    "fetched_at": "2026-09-30 21:43:59",
+    "sha256": "ebd25ac295774484029a20155c245888d0b247e6abac5dd3f4592b4f754e6b68",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4558": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4558",
+    "fetched_at": "2026-09-30 21:44:01",
+    "sha256": "b3958e08e48416ef71ef628c1500fd29cdbffe85aa9f0d5fb23c9f7045331fe1",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4558": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4558",
+    "fetched_at": "2026-09-30 21:44:01",
+    "sha256": "181da1fad8b7af1f3730001631a189eeb1106e75010f309453a96b524a272a5c",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4559": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4559",
+    "fetched_at": "2026-09-30 21:44:03",
+    "sha256": "7bbd7d5d450999adce019d72084dd51b63beac93b86d27d872ddf62992daa102",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4559": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4559",
+    "fetched_at": "2026-09-30 21:44:03",
+    "sha256": "020b931065e59b3ab7312f61b38cdb3ce7735bf62f24d7a2b8e3dac26774640d",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4566": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4566",
+    "fetched_at": "2026-09-30 21:44:14",
+    "sha256": "5a6fdee0923f76021cc2918a402b3324a45bc5e1e0dca298c7fd4a7c23195ad1",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4566": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4566",
+    "fetched_at": "2026-09-30 21:44:14",
+    "sha256": "94b2f6adb111ce4e956e0f9181fa55b20372d68e1ed004be85fe2d1440e760dd",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4568": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4568",
+    "fetched_at": "2026-09-30 21:44:17",
+    "sha256": "3f82bad8b32e2fa4917b9ac5d21594172de7109e23eda4329a51b3588e02c456",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4568": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4568",
+    "fetched_at": "2026-09-30 21:44:17",
+    "sha256": "c7541073eb3897cb034e4ac3a579e6b579e9a5d2025c36946982a492706ba384",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4704": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4704",
+    "fetched_at": "2026-09-30 21:44:19",
+    "sha256": "d8b57805c275a330901aebba1d21bc23d92c7bc7266fd88372a67c400973c5fe",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4704": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4704",
+    "fetched_at": "2026-09-30 21:44:19",
+    "sha256": "c86228b4114e2968286cd5d9d8496ae377c65bf21d01081bc89174f2d5f40efc",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4706": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4706",
+    "fetched_at": "2026-09-30 21:44:22",
+    "sha256": "89356def67f7c2079696cdb5fefe450642558160ee7202a3c83bbeaf0dc147b9",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4706": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4706",
+    "fetched_at": "2026-09-30 21:44:22",
+    "sha256": "da622064b8589633acaee2a925d5a8d77e221df2eb5dbaf34ad69d0a40e571b6",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4714": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4714",
+    "fetched_at": "2026-09-30 21:44:28",
+    "sha256": "33e1d2882bfc21513a8a2eade01ffff9f96afeea9b8f2552712b680fda029054",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4714": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4714",
+    "fetched_at": "2026-09-30 21:44:28",
+    "sha256": "4b0eaaab2d19d2df1bab15c14e59e1cb853b3b9c47d4b18655b24e1346f20ee4",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4801": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4801",
+    "fetched_at": "2026-09-30 21:44:42",
+    "sha256": "d06d64b7b6405748384406af40073e105e1c9917e2d7ea28306448bebd349051",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4801": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4801",
+    "fetched_at": "2026-09-30 21:44:42",
+    "sha256": "dc66250444876d360928eecf31b90afedee093a65dbe29665e6bc2a0837acc11",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4809": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4809",
+    "fetched_at": "2026-09-30 21:44:44",
+    "sha256": "7b6876818d29730fc35d71b9cf3825d8800c8d47484486483ce23c170f0901f5",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4809": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4809",
+    "fetched_at": "2026-09-30 21:44:44",
+    "sha256": "d2f3136d9398854e2acd5ae01b87ef3e7943d60ea9406d1a2347b9427dee4695",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4814": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4814",
+    "fetched_at": "2026-09-30 21:44:52",
+    "sha256": "db24e99381ff136801c18ee07cfd56956b06b3c97a9fc6041b3c8d709fb79421",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4814": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4814",
+    "fetched_at": "2026-09-30 21:44:52",
+    "sha256": "5ff1136c43a9316f30dbd20765141ba5ffc278959a877ca01f48e0ddefa7dfde",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4815": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4815",
+    "fetched_at": "2026-09-30 21:44:54",
+    "sha256": "3a098026b34b25bc8926609dd8015759c89c89b5e58e49d04d8cfe889f721021",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4815": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4815",
+    "fetched_at": "2026-09-30 21:44:54",
+    "sha256": "edb5da6eae518d20e43ed86f24bb47fb140474b9c6051da24a6f3020f648a563",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4849": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4849",
+    "fetched_at": "2026-09-30 21:44:58",
+    "sha256": "8d6958e673af9741a235f9db10d549e57aa4428a9cbabefdb840ddea104e83be",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4849": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4849",
+    "fetched_at": "2026-09-30 21:44:58",
+    "sha256": "c9ef3fbe74c6579342cdc5870da4c80cb9b84e7a8492766aeac0c1f1660b9703",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4933": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4933",
+    "fetched_at": "2026-09-30 21:45:03",
+    "sha256": "061162566f7656b8bc6e5d39020ec5a3919a1b32bc943677c0fb2e5b05dbe7b2",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4933": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4933",
+    "fetched_at": "2026-09-30 21:45:03",
+    "sha256": "631d35b6b66eaf6e00c6a6aca40fd9df014ea25e40557f0946ffc387f38975cb",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4936": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4936",
+    "fetched_at": "2026-09-30 21:45:10",
+    "sha256": "9b9df10382ff3a12df20e040682b4746cbf31ed0c921daa677890e4d52cba65a",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4936": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4936",
+    "fetched_at": "2026-09-30 21:45:10",
+    "sha256": "4051b2c660ee9bc643350625531836a6a011b88d970b737cbc55051390072b5d",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4944": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4944",
+    "fetched_at": "2026-09-30 21:45:14",
+    "sha256": "60d15270265a2b238e680412661d207cd5c1f5a4a015e79930b05ff7ff4b1faa",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4944": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4944",
+    "fetched_at": "2026-09-30 21:45:14",
+    "sha256": "3728c72a91d1c8ebe26713bb41345da28401f5e32cffbf4bc144a86eca98bb9b",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "4950": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=sw&id=4950",
+    "fetched_at": "2026-09-30 21:45:18",
+    "sha256": "bfbdd5f456ca4b0cbbce7426492bbd4d4db0bf4ff4b604c97c2802737db53087",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  },
+  "en-4950": {
+    "url": "https://hadeethenc.com/api/v1/hadeeths/one/?language=en&id=4950",
+    "fetched_at": "2026-09-30 21:45:18",
+    "sha256": "3af0be4923a294709969d17c5d4c530cd274859af1219d839ae7e7317cbda678",
+    "note": "Rekodi ya API kama ilivyohifadhiwa na discover-hadeethenc.py (candidates.json)"
+  }
+}
