@@ -357,7 +357,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -393,7 +393,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -537,7 +537,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -609,7 +609,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -717,7 +717,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -753,7 +753,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -825,7 +825,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -933,7 +933,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1005,7 +1005,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1041,7 +1041,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -1149,7 +1149,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1185,7 +1185,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -1293,7 +1293,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1329,7 +1329,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -1437,7 +1437,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1509,7 +1509,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1581,7 +1581,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1653,7 +1653,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1725,7 +1725,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1797,7 +1797,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1869,7 +1869,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1941,7 +1941,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -1977,7 +1977,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -2049,7 +2049,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -2121,7 +2121,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -2193,7 +2193,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -2301,7 +2301,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -2409,7 +2409,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -2481,7 +2481,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -2553,7 +2553,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -2625,7 +2625,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -2697,7 +2697,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -2769,7 +2769,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -2841,7 +2841,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -2877,7 +2877,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -2949,7 +2949,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -3057,7 +3057,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -3273,7 +3273,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -3309,7 +3309,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -3417,7 +3417,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -3453,7 +3453,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -3561,7 +3561,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -3633,7 +3633,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -3669,7 +3669,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -3777,7 +3777,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -3849,7 +3849,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -3957,7 +3957,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -4029,7 +4029,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -4065,7 +4065,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -4173,7 +4173,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -4245,7 +4245,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -4317,7 +4317,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -4425,7 +4425,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -4461,7 +4461,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -4533,7 +4533,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -4605,7 +4605,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -4677,7 +4677,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -4785,7 +4785,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -4857,7 +4857,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -4929,7 +4929,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -5001,7 +5001,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -5145,7 +5145,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -5253,7 +5253,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -5325,7 +5325,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -5397,7 +5397,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -5469,7 +5469,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -5541,7 +5541,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -5613,7 +5613,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -5685,7 +5685,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -5757,7 +5757,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -5865,7 +5865,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -5973,7 +5973,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -6045,7 +6045,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -6117,7 +6117,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -6225,7 +6225,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -6297,7 +6297,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -6333,7 +6333,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -6441,7 +6441,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -6513,7 +6513,7 @@
     "reviewed_at": "2026-09-20",
     "source_fetched_at": null,
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -6693,7 +6693,7 @@
     "reviewed_at": "2026-09-22",
     "source_fetched_at": "2026-09-22",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -6729,7 +6729,7 @@
     "reviewed_at": "2026-09-22",
     "source_fetched_at": "2026-09-22",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -6765,7 +6765,7 @@
     "reviewed_at": "2026-09-22",
     "source_fetched_at": "2026-09-22",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -6801,7 +6801,7 @@
     "reviewed_at": "2026-09-22",
     "source_fetched_at": "2026-09-22",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "muslim",
@@ -7809,7 +7809,7 @@
     "reviewed_at": "2026-09-22",
     "source_fetched_at": "2026-09-22",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "tirmidhi",
@@ -9717,7 +9717,7 @@
     "reviewed_at": "2026-09-22",
     "source_fetched_at": "2026-09-22",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -11553,7 +11553,7 @@
     "reviewed_at": "2026-09-22",
     "source_fetched_at": "2026-09-22",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -13677,7 +13677,7 @@
     "reviewed_at": "2026-09-23",
     "source_fetched_at": "2026-09-23",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -13749,7 +13749,7 @@
     "reviewed_at": "2026-09-23",
     "source_fetched_at": "2026-09-23",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "ahmad",
@@ -14181,7 +14181,7 @@
     "reviewed_at": "2026-09-23",
     "source_fetched_at": "2026-09-23",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "bukhari",
@@ -14253,7 +14253,7 @@
     "reviewed_at": "2026-09-23",
     "source_fetched_at": "2026-09-23",
     "source_sha256": null,
-    "is_published": false
+    "is_published": true
   },
   {
     "collection": "abudawud",

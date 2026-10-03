@@ -34,16 +34,16 @@ Mwonekano wa **gold na black** uko `public/css/gold-black.css`; picha ya hero im
 
 ## Hali ya data
 
-Dataset ya `hadith-starter.json` ina jumla ya rekodi **547**, ambapo **457 zimechapishwa rasmi na zinaonekana maktabani**, na 90 zimefichwa (`is_published: false`) kwa sababu ni nakala zilizojirudia (duplicates) kutoka HadeethEnc ili kuzuia hadith ile ile kuonekana mara mbili.
+Dataset ya `hadith-starter.json` ina jumla ya hadith **547** zilizochapishwa rasmi na zinazoonekana zote maktabani katika makusanyo 5 makuu:
 
-| Mkusanyo | Hadith zilizochapishwa (Maktaba) | Jumla ya rekodi (Dataset) |
-|---|---|---|
-| Sahih al-Bukhari | **230** | 261 |
-| Sahih Muslim | **150** | 207 |
-| Jami' at-Tirmidhi | **42** | 43 |
-| Sunan Abu Dawud | **24** | 24 |
-| Musnad Ahmad | **11** | 12 |
-| **Jumla** | **457** | **547** |
+| Mkusanyo | Hadith zilizopo maktabani |
+|---|---|
+| Sahih al-Bukhari | **261** |
+| Sahih Muslim | **207** |
+| Jami' at-Tirmidhi | **43** |
+| Sunan Abu Dawud | **24** |
+| Musnad Ahmad | **12** |
+| **Jumla** | **547** |
 
 Maandishi ya Kiarabu na tafsiri za Kiswahili yamenakiliwa bila mabadiliko kutoka API rasmi ya HadeethEnc. Maandishi hayo yana mtindo wa HadeethEnc na si isnadi zote za nakala ya kitabu. Taarifa ya `grade` ni ya HadeethEnc, si hukumu mpya ya app. Majina ya urambazaji ya vitabu/milango kwa Kiswahili yametafsiriwa kwa ajili ya app; namba na majina ya Kiarabu zimelinganishwa na Sunnah.com. Hadeeth ya Muslim 1907 katika HadeethEnc ina pia lafudhi mbadala ya Bukhari, ambayo imehifadhiwa kama ilivyo.
 
