@@ -1515,3 +1515,46 @@
         startHdQueue({ auto: true });
     }
 })();
+
+// Mobile Nav Drawer (Menyu ya Pembeni - Pendekezo la 2)
+(function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navDrawer = document.getElementById('nav-drawer');
+    const backdrop = document.getElementById('nav-drawer-backdrop');
+    const closeBtn = document.getElementById('nav-drawer-close');
+    if (!menuToggle || !navDrawer || !backdrop) return;
+
+    function openNav() {
+        backdrop.hidden = false;
+        requestAnimationFrame(() => {
+            backdrop.classList.add('is-open');
+            navDrawer.classList.add('is-open');
+        });
+        navDrawer.setAttribute('aria-hidden', 'false');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('nav-drawer-open');
+    }
+
+    function closeNav() {
+        navDrawer.classList.remove('is-open');
+        backdrop.classList.remove('is-open');
+        navDrawer.setAttribute('aria-hidden', 'true');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-drawer-open');
+        setTimeout(() => { backdrop.hidden = true; }, 250);
+    }
+
+    menuToggle.addEventListener('click', openNav);
+    if (closeBtn) closeBtn.addEventListener('click', closeNav);
+    backdrop.addEventListener('click', closeNav);
+
+    document.querySelectorAll('[data-close-nav-drawer]').forEach(el => {
+        el.addEventListener('click', closeNav);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navDrawer.classList.contains('is-open')) {
+            closeNav();
+        }
+    });
+})();

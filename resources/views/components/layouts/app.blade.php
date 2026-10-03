@@ -88,12 +88,20 @@
                             <span class="auth-trigger-label" data-i18n="auth_login">Ingia</span>
                         </button>
                     @endauth
+                    <button type="button" id="menu-toggle" class="menu-toggle-btn" aria-controls="nav-drawer" aria-expanded="false" aria-label="Fungua menyu">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
                 </div>
             </nav>
         </div>
     </header>
     <main id="main">{{ $slot }}</main>
     @include('partials.auth-drawer')
+    @include('partials.nav-drawer')
     @if (session('auth_status'))
         <div class="auth-toast" role="status" data-auth-toast>{{ session('auth_status') }}</div>
     @endif
@@ -111,35 +119,6 @@
             </div>
         </div>
     </footer>
-    <nav class="mobile-bottom-nav no-print" aria-label="Urambazaji wa simu">
-        <div class="mobile-bottom-nav-inner">
-            <a href="{{ route('library') }}" class="mobile-nav-item {{ request()->routeIs('library') ? 'active' : '' }}" aria-label="Maktaba">
-                <span class="mobile-nav-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                    </svg>
-                </span>
-                <span class="mobile-nav-label" data-i18n="nav_library">Maktaba</span>
-            </a>
-            <a href="{{ route('hadith.today') }}" class="mobile-nav-item {{ request()->routeIs('hadith.today') ? 'active' : '' }}" aria-label="Hadith ya leo">
-                <span class="mobile-nav-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                </span>
-                <span class="mobile-nav-label" data-i18n="nav_today">Hadith ya leo</span>
-            </a>
-            <a href="{{ route('bookmarks') }}" class="mobile-nav-item {{ request()->routeIs('bookmarks') ? 'active' : '' }}" aria-label="Vipendwa">
-                <span class="mobile-nav-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                </span>
-                <span class="mobile-nav-label" data-i18n="nav_bookmarks">Vipendwa</span>
-            </a>
-        </div>
-    </nav>
     <script src="{{ asset('js/reader.js') }}" defer></script>
     <script src="{{ url('js/pwa.js') }}" defer></script>
     <script src="{{ asset('js/auth-drawer.js') }}" defer></script>
