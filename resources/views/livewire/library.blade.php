@@ -145,14 +145,14 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
             <div class="quick-topics" aria-label="Mada maarufu">
                 <span class="quick-topics-label" data-i18n="quick_topics_label">Mada za haraka:</span>
                 <div class="topic-chips">
-                    <button type="button" class="topic-chip {{ $search === 'sala' ? 'active' : '' }}" wire:click="{{ $search === 'sala' ? '$set(\'search\', \'\')' : '$set(\'search\', \'sala\')' }}">🕌 Sala</button>
-                    <button type="button" class="topic-chip {{ $search === 'tawheed' ? 'active' : '' }}" wire:click="{{ $search === 'tawheed' ? '$set(\'search\', \'\')' : '$set(\'search\', \'tawheed\')' }}">☝️ Tawheed</button>
-                    <button type="button" class="topic-chip {{ $search === 'tabia' ? 'active' : '' }}" wire:click="{{ $search === 'tabia' ? '$set(\'search\', \'\')' : '$set(\'search\', \'tabia\')' }}">🤝 Tabia Njema</button>
-                    <button type="button" class="topic-chip {{ $search === 'subira' ? 'active' : '' }}" wire:click="{{ $search === 'subira' ? '$set(\'search\', \'\')' : '$set(\'search\', \'subira\')' }}">🛡️ Subira</button>
-                    <button type="button" class="topic-chip {{ $search === 'ndoa' ? 'active' : '' }}" wire:click="{{ $search === 'ndoa' ? '$set(\'search\', \'\')' : '$set(\'search\', \'ndoa\')' }}">💍 Ndoa</button>
-                    <button type="button" class="topic-chip {{ $search === 'riziki' ? 'active' : '' }}" wire:click="{{ $search === 'riziki' ? '$set(\'search\', \'\')' : '$set(\'search\', \'riziki\')' }}">🌱 Riziki</button>
-                    <button type="button" class="topic-chip {{ $search === 'dua' ? 'active' : '' }}" wire:click="{{ $search === 'dua' ? '$set(\'search\', \'\')' : '$set(\'search\', \'dua\')' }}">🤲 Dua</button>
-                    <button type="button" class="topic-chip {{ $search === 'funga' ? 'active' : '' }}" wire:click="{{ $search === 'funga' ? '$set(\'search\', \'\')' : '$set(\'search\', \'funga\')' }}">🌙 Funga</button>
+                    <button type="button" class="topic-chip {{ $search === 'sala' ? 'active' : '' }}" wire:click="{{ $search === 'sala' ? '$set(\'search\', \'\')' : '$set(\'search\', \'sala\')' }}">Sala</button>
+                    <button type="button" class="topic-chip {{ $search === 'tawheed' ? 'active' : '' }}" wire:click="{{ $search === 'tawheed' ? '$set(\'search\', \'\')' : '$set(\'search\', \'tawheed\')' }}">Tawheed</button>
+                    <button type="button" class="topic-chip {{ $search === 'tabia' ? 'active' : '' }}" wire:click="{{ $search === 'tabia' ? '$set(\'search\', \'\')' : '$set(\'search\', \'tabia\')' }}">Tabia Njema</button>
+                    <button type="button" class="topic-chip {{ $search === 'subira' ? 'active' : '' }}" wire:click="{{ $search === 'subira' ? '$set(\'search\', \'\')' : '$set(\'search\', \'subira\')' }}">Subira</button>
+                    <button type="button" class="topic-chip {{ $search === 'ndoa' ? 'active' : '' }}" wire:click="{{ $search === 'ndoa' ? '$set(\'search\', \'\')' : '$set(\'search\', \'ndoa\')' }}">Ndoa</button>
+                    <button type="button" class="topic-chip {{ $search === 'riziki' ? 'active' : '' }}" wire:click="{{ $search === 'riziki' ? '$set(\'search\', \'\')' : '$set(\'search\', \'riziki\')' }}">Riziki</button>
+                    <button type="button" class="topic-chip {{ $search === 'dua' ? 'active' : '' }}" wire:click="{{ $search === 'dua' ? '$set(\'search\', \'\')' : '$set(\'search\', \'dua\')' }}">Dua</button>
+                    <button type="button" class="topic-chip {{ $search === 'funga' ? 'active' : '' }}" wire:click="{{ $search === 'funga' ? '$set(\'search\', \'\')' : '$set(\'search\', \'funga\')' }}">Funga</button>
                 </div>
             </div>
 
