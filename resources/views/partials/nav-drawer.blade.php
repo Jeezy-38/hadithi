@@ -39,6 +39,34 @@
                 <span class="nav-drawer-text" data-i18n="nav_today">Hadith ya leo</span>
                 <span class="nav-drawer-arrow" aria-hidden="true">→</span>
             </a>
+            <a href="{{ route('duaa.index') }}" class="nav-drawer-link {{ request()->routeIs('duaa.*') ? 'active' : '' }}">
+                <span class="nav-drawer-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 11v-1a5 5 0 0 1 10 0v1"></path>
+                        <path d="M12 4v2"></path>
+                        <path d="M18 18a6 6 0 0 1-12 0c0-3.5 3-7 6-11 3 4 6 7.5 6 11z"></path>
+                    </svg>
+                </span>
+                <span class="nav-drawer-text" data-i18n="nav_duaa">Dua & Adhkar</span>
+                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="{{ route('tasbih') }}" class="nav-drawer-link {{ request()->routeIs('tasbih') ? 'active' : '' }}">
+                <span class="nav-drawer-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <circle cx="12" cy="7" r="1.5" fill="currentColor"></circle>
+                        <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"></circle>
+                        <circle cx="17" cy="12" r="1.5" fill="currentColor"></circle>
+                        <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"></circle>
+                        <circle cx="12" cy="17" r="1.5" fill="currentColor"></circle>
+                        <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor"></circle>
+                        <circle cx="7" cy="12" r="1.5" fill="currentColor"></circle>
+                        <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"></circle>
+                    </svg>
+                </span>
+                <span class="nav-drawer-text" data-i18n="nav_tasbih">Digital Tasbih</span>
+                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+            </a>
             <a href="{{ route('bookmarks') }}" class="nav-drawer-link {{ request()->routeIs('bookmarks') ? 'active' : '' }}">
                 <span class="nav-drawer-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

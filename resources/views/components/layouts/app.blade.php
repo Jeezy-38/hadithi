@@ -41,6 +41,8 @@
                 <div class="nav-links">
                     <a href="{{ route('library') }}" class="{{ request()->routeIs('library') ? 'active' : '' }}" data-i18n="nav_library">Maktaba</a>
                     <a href="{{ route('hadith.today') }}" class="{{ request()->routeIs('hadith.today') ? 'active' : '' }}" data-i18n="nav_today">Hadith ya leo</a>
+                    <a href="{{ route('duaa.index') }}" class="{{ request()->routeIs('duaa.*') ? 'active' : '' }}" data-i18n="nav_duaa">Dua & Adhkar</a>
+                    <a href="{{ route('tasbih') }}" class="{{ request()->routeIs('tasbih') ? 'active' : '' }}" data-i18n="nav_tasbih">Tasbih</a>
                     <a href="{{ route('bookmarks') }}" class="{{ request()->routeIs('bookmarks') ? 'active' : '' }}" data-i18n="nav_bookmarks">Vipendwa</a>
                 </div>
                 <div class="nav-controls">

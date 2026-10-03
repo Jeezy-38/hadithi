@@ -3369,3 +3369,756 @@ a, button, select, input {
     .library-summary { margin-left: 12px; margin-right: 12px; }
     .hero-copy { padding: 20px 16px; }
 }
+
+/* --------------------------------------------------------------------------
+   Dua & Adhkar (Hisn al-Muslim) Styles
+   -------------------------------------------------------------------------- */
+.dua-hero .hero-copy {
+    max-width: 820px;
+}
+
+.dua-content-shell {
+    max-width: 1280px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+.dua-search-bar {
+    margin: 20px 0 18px;
+}
+
+.dua-search-bar .search-form {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.search-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search-input-icon {
+    position: absolute;
+    left: 14px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+[dir="rtl"] .search-input-icon {
+    left: auto;
+    right: 14px;
+}
+
+.search-input-wrap input {
+    width: 100%;
+    padding: 12px 42px;
+    border-radius: 24px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.search-input-wrap input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(218, 181, 106, 0.2);
+}
+
+.clear-search-btn {
+    position: absolute;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+}
+
+[dir="rtl"] .clear-search-btn {
+    right: auto;
+    left: 14px;
+}
+
+/* Category Pills Navigation */
+.dua-categories-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 8px 4px 18px;
+    margin-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.dua-categories-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.category-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-pill:hover {
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+}
+
+.category-pill.active {
+    background: var(--gold-subtle);
+    border-color: rgba(218, 181, 106, 0.45);
+    color: var(--gold);
+    box-shadow: 0 2px 8px rgba(218, 181, 106, 0.15);
+}
+
+.pill-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.category-pill.active .pill-count {
+    background: rgba(218, 181, 106, 0.25);
+    color: var(--gold);
+}
+
+/* Dua Cards Grid */
+.dua-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 22px;
+}
+
+.dua-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.dua-card:hover {
+    border-color: rgba(218, 181, 106, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 16px rgba(218, 181, 106, 0.12);
+}
+
+.dua-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.dua-category-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 11px;
+    border-radius: 12px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.dua-repeat-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: var(--gold-subtle);
+    color: var(--gold);
+    border: 1px solid rgba(218, 181, 106, 0.35);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.dua-repeat-badge--single {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    border-color: var(--border-subtle);
+}
+
+.dua-card-title {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 14px;
+}
+
+.dua-card-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.dua-card-title a:hover {
+    color: var(--gold);
+}
+
+.dua-arabic-box {
+    background: rgba(218, 181, 106, 0.04);
+    border: 1px solid rgba(218, 181, 106, 0.2);
+    border-right: 3.5px solid var(--gold);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    text-align: right;
+}
+
+[dir="rtl"] .dua-arabic-box {
+    border-right: 1px solid rgba(218, 181, 106, 0.2);
+    border-left: 3.5px solid var(--gold);
+    text-align: right;
+}
+
+.dua-arabic-text {
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    font-size: 22px;
+    line-height: 2;
+    color: #fef8ec;
+    margin: 0;
+}
+
+[data-theme="light"] .dua-arabic-text {
+    color: #1a202c;
+}
+
+.dua-translation-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 0 16px;
+    flex: 1;
+}
+
+.dua-card-ref {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.dua-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.dua-read-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 15px;
+    border-radius: 14px;
+    background: var(--gold-subtle);
+    border: 1px solid rgba(218, 181, 106, 0.35);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.dua-read-btn:hover {
+    background: var(--gold);
+    color: #0a0e13;
+    transform: translateX(2px);
+}
+
+/* Dua Detail Page */
+.dua-detail-shell {
+    max-width: 900px;
+}
+
+.dua-detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.transliteration-box {
+    background: rgba(251, 191, 36, 0.05);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-top: 8px;
+}
+
+.transliteration-text {
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.7;
+    color: #f3d790;
+    margin: 0;
+}
+
+[data-theme="light"] .transliteration-text {
+    color: #b45309;
+}
+
+/* Dua Counter Widget */
+.dua-counter-widget {
+    background: var(--bg-surface-elevated);
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    padding: 22px;
+    margin: 28px 0;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.counter-widget-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.counter-widget-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.counter-target-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.counter-widget-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.dua-count-btn {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 3px solid var(--gold);
+    color: var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 24px rgba(218, 181, 106, 0.15);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.dua-count-btn:active {
+    transform: scale(0.94);
+    box-shadow: 0 0 30px rgba(218, 181, 106, 0.35);
+}
+
+.dua-count-btn.is-completed {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.12);
+    color: #34d399;
+    box-shadow: 0 0 28px rgba(16, 185, 129, 0.25);
+}
+
+.dua-count-number {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.dua-count-slash, .dua-count-total {
+    display: none;
+}
+
+.dua-count-hint {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+.counter-reset-btn {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.counter-reset-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.counter-completed-msg {
+    margin-top: 14px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34d399;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.dua-virtue-callout {
+    background: rgba(218, 181, 106, 0.06);
+    border: 1px solid rgba(218, 181, 106, 0.25);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin: 22px 0;
+}
+
+.virtue-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 6px;
+}
+
+.virtue-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Digital Tasbih Tool Styles
+   -------------------------------------------------------------------------- */
+.tasbih-shell {
+    max-width: 720px;
+    margin: 0 auto 60px;
+    padding: 0 16px;
+}
+
+.tasbih-heading {
+    margin-bottom: 24px;
+}
+
+.tasbih-app-card {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 28px;
+    padding: 26px 22px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.tasbih-presets-wrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+}
+
+@media (max-width: 540px) {
+    .tasbih-presets-wrap {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.tasbih-preset-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 8px;
+    border-radius: 14px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.tasbih-preset-btn:hover {
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.tasbih-preset-btn.active {
+    background: var(--gold-subtle);
+    border-color: rgba(218, 181, 106, 0.5);
+    color: var(--gold);
+    box-shadow: 0 0 12px rgba(218, 181, 106, 0.15);
+}
+
+.preset-ar {
+    font-size: 16px;
+    line-height: 1.2;
+    margin-bottom: 2px;
+}
+
+.preset-sw {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.preset-target {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--text-muted);
+}
+
+.tasbih-preset-btn.active .preset-target {
+    color: var(--gold);
+}
+
+.tasbih-active-display {
+    text-align: center;
+    padding: 6px 12px;
+}
+
+.active-dhikr-ar {
+    font-size: 34px;
+    color: #fef8ec;
+    margin: 0 0 4px;
+    line-height: 1.4;
+}
+
+[data-theme="light"] .active-dhikr-ar {
+    color: #0f172a;
+}
+
+.active-dhikr-sw {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 4px;
+}
+
+.active-dhikr-meaning {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Radial Progress Ring */
+.tasbih-ring-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 10px 0;
+}
+
+.tasbih-tap-btn {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: transform 0.1s ease;
+}
+
+.tasbih-tap-btn:active {
+    transform: scale(0.96);
+}
+
+.tasbih-ring-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.ring-bg {
+    fill: none;
+    stroke: var(--bg-surface-elevated);
+    stroke-width: 14;
+}
+
+.ring-progress {
+    fill: none;
+    stroke: url(#goldGradient) var(--gold);
+    stroke-width: 14;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.15s ease-out;
+}
+
+.tasbih-center-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasbih-count-val {
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--text-primary);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.tasbih-target-info {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.tasbih-target-info strong {
+    color: var(--gold);
+}
+
+.tasbih-tap-hint {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-top: 6px;
+    text-transform: uppercase;
+}
+
+/* Controls Bar */
+.tasbih-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+}
+
+.tasbih-stat-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.tasbih-stat-pill strong {
+    font-size: 16px;
+    color: var(--gold);
+}
+
+.tasbih-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-toggle-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.control-toggle-btn.active {
+    border-color: rgba(218, 181, 106, 0.4);
+    background: var(--gold-subtle);
+}
+
+.tasbih-reset-action-btn {
+    padding: 7px 12px;
+    border-radius: 10px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tasbih-reset-action-btn:hover {
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+.tasbih-footer-stats {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.tasbih-footer-stats strong {
+    color: var(--text-primary);
+}
+

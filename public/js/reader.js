@@ -106,6 +106,8 @@
         sw: {
             nav_library: 'Maktaba',
             nav_today: 'Hadith ya leo',
+            nav_duaa: 'Dua & Adhkar',
+            nav_tasbih: 'Tasbih',
             nav_bookmarks: 'Vipendwa',
             auth_login: 'Ingia',
             auth_logout: 'Toka',
@@ -250,6 +252,8 @@
         en: {
             nav_library: 'Library',
             nav_today: 'Hadith of the Day',
+            nav_duaa: 'Dua & Adhkar',
+            nav_tasbih: 'Tasbih',
             nav_bookmarks: 'Favorites',
             auth_login: 'Sign in',
             auth_logout: 'Sign out',
@@ -394,6 +398,8 @@
         ar: {
             nav_library: 'المكتبة',
             nav_today: 'حديث اليوم',
+            nav_duaa: 'الأدعية والأذكار',
+            nav_tasbih: 'السبحة الإلكترونية',
             nav_bookmarks: 'المفضلة',
             auth_login: 'تسجيل الدخول',
             auth_logout: 'تسجيل الخروج',

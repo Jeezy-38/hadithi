@@ -3,13 +3,33 @@ use App\Http\Controllers\Auth\EmailAuthController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\HadithAudioController;
+use App\Livewire\DuaIndex;
 use App\Livewire\Library;
+use App\Models\Dua;
 use App\Models\Hadith;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 Route::get('/', Library::class)->name('library');
+
+Route::get('/duaa', DuaIndex::class)->name('duaa.index');
+
+Route::get('/duaa/{dua}', function (Dua $dua) {
+    abort_unless($dua->is_published, 404);
+    $dua->load('category');
+    $related = Dua::published()
+        ->where('category_id', $dua->category_id)
+        ->where('id', '!=', $dua->id)
+        ->orderBy('order')
+        ->limit(4)
+        ->get();
+    $next = Dua::published()->where('category_id', $dua->category_id)->where('id', '>', $dua->id)->orderBy('id')->first()
+        ?? Dua::published()->where('id', '>', $dua->id)->orderBy('id')->first();
+    return view('dua-show', compact('dua', 'related', 'next'));
+})->name('duaa.show');
+
+Route::get('/tasbih', fn () => view('tasbih'))->name('tasbih');
 
 Route::get('/hadith/{hadith}', function (Hadith $hadith) {
     abort_unless($hadith->is_published, 404);
