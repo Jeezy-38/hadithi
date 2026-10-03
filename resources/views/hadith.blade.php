@@ -34,10 +34,16 @@
                 @if($next) data-next-url="{{ route('hadith.show', $next) }}" data-next-audio-base="{{ url('/audio/hadith/'.$next->id) }}" @endif>
                 <div class="audio-header">
                     <div class="audio-header-title">
-                        <span class="audio-icon" aria-hidden="true">🔊</span>
+                        <span class="audio-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle;">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                            </svg>
+                        </span>
                         <h2>Sikiliza hadith</h2>
                     </div>
-                    <span class="audio-badge badge-hd" id="audio-badge">✨ Sauti Fasaha (HD)</span>
+                    <span class="audio-badge badge-hd" id="audio-badge">Sauti Fasaha (HD)</span>
                 </div>
                 <p class="audio-desc">Sikiliza hadith ikisomwa kwa matamshi fasaha na ya asili katika Kiswahili, Kiarabu au Kiingereza.</p>
                 <div class="audio-options">
@@ -158,7 +164,14 @@
 
             @if($hadith->grade)
                 <div class="hadith-grade-card">
-                    <span class="grade-icon">📜</span>
+                    <span class="grade-icon" aria-hidden="true">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle;">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                    </span>
                     <p class="source-note">Daraja kwa mujibu wa {{ $hadith->source_name }}: <strong>{{ $hadith->grade }}</strong> · {{ $hadith->attribution }}</p>
                 </div>
             @endif

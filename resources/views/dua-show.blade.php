@@ -19,7 +19,6 @@
                 <span class="btn-text">Nakili / Shiriki</span>
             </button>
             <a class="text-button action-pill-btn" href="{{ route('tasbih') }}">
-                <span class="btn-icon" aria-hidden="true">📿</span>
                 <span>Fungua Digital Tasbih</span>
             </a>
             <a class="text-button action-pill-btn" href="{{ route('duaa.index') }}">
@@ -103,7 +102,7 @@
                 </div>
 
                 <div class="counter-completed-msg" id="counter-completed-msg" hidden>
-                    ✨ MashaAllah! Umekamilisha idadi ya kusoma dua hii. Mwenyezi Mungu akukubalie.
+                    MashaAllah! Umekamilisha idadi ya kusoma dua hii. Mwenyezi Mungu akukubalie.
                 </div>
             </section>
 
@@ -111,7 +110,6 @@
             @if($dua->virtue_sw)
                 <div class="dua-virtue-callout">
                     <div class="virtue-header">
-                        <span class="virtue-icon">✨</span>
                         <strong>Fadhila za Dua Hii:</strong>
                     </div>
                     <p class="virtue-text">{{ $dua->virtue_sw }}</p>

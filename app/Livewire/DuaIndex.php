@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\Dua;
 use App\Models\DuaCategory;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Schema;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -43,6 +45,15 @@ class DuaIndex extends Component
 
     public function render()
     {
+        if (! Schema::hasTable('dua_categories') || ! Schema::hasTable('duas')) {
+            return view('livewire.dua-index', [
+                'categories' => collect(),
+                'duas' => new LengthAwarePaginator([], 0, 12),
+                'selectedCategory' => null,
+                'totalCount' => 0,
+            ])->layout('components.layouts.app', ['title' => 'Dua & Adhkar · Hisn al-Muslim']);
+        }
+
         $categories = DuaCategory::orderBy('order')->withCount('publishedDuas')->get();
 
         $query = Dua::published()->with('category')

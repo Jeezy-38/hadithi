@@ -76,13 +76,36 @@
 
                 <div class="tasbih-actions-group">
                     <button type="button" id="tasbih-sound-toggle" class="control-toggle-btn active" title="Sauti ya mbofyo">
-                        <span id="sound-icon">🔊</span>
+                        <svg id="sound-icon-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                        </svg>
+                        <svg id="sound-icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <line x1="23" y1="9" x2="17" y2="15"></line>
+                            <line x1="17" y1="9" x2="23" y2="15"></line>
+                        </svg>
                     </button>
                     <button type="button" id="tasbih-vibrate-toggle" class="control-toggle-btn active" title="Mtetemo (Vibration)">
-                        <span id="vibrate-icon">📳</span>
+                        <svg id="vibrate-icon-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            <path d="M1 9l2 3-2 3"></path>
+                            <path d="M23 9l-2 3 2 3"></path>
+                        </svg>
+                        <svg id="vibrate-icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
                     </button>
                     <button type="button" id="tasbih-reset-btn" class="tasbih-reset-action-btn" title="Anza upya">
-                        <span>↺ Anza Upya</span>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:3px;">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                            <path d="M3 3v5h5"></path>
+                        </svg>
+                        <span>Anza Upya</span>
                     </button>
                 </div>
             </div>
@@ -251,23 +274,43 @@
                 });
             });
 
+            function updateSoundUi() {
+                soundToggle.classList.toggle('active', soundEnabled);
+                const onIcon = document.getElementById('sound-icon-on');
+                const offIcon = document.getElementById('sound-icon-off');
+                if (onIcon && offIcon) {
+                    onIcon.style.display = soundEnabled ? 'block' : 'none';
+                    offIcon.style.display = soundEnabled ? 'none' : 'block';
+                }
+            }
+
+            function updateVibrateUi() {
+                vibrateToggle.classList.toggle('active', vibrateEnabled);
+                const onIcon = document.getElementById('vibrate-icon-on');
+                const offIcon = document.getElementById('vibrate-icon-off');
+                if (onIcon && offIcon) {
+                    onIcon.style.display = vibrateEnabled ? 'block' : 'none';
+                    offIcon.style.display = vibrateEnabled ? 'none' : 'block';
+                }
+            }
+
             // Sound Toggle
             soundToggle.addEventListener('click', () => {
                 soundEnabled = !soundEnabled;
-                soundToggle.classList.toggle('active', soundEnabled);
-                document.getElementById('sound-icon').textContent = soundEnabled ? '🔊' : '🔇';
+                updateSoundUi();
                 try { localStorage.setItem('tasbih_sound', soundEnabled); } catch (_) {}
             });
 
             // Vibrate Toggle
             vibrateToggle.addEventListener('click', () => {
                 vibrateEnabled = !vibrateEnabled;
-                vibrateToggle.classList.toggle('active', vibrateEnabled);
-                document.getElementById('vibrate-icon').textContent = vibrateEnabled ? '📳' : '📴';
+                updateVibrateUi();
                 try { localStorage.setItem('tasbih_vibrate', vibrateEnabled); } catch (_) {}
             });
 
             // Initial render
+            updateSoundUi();
+            updateVibrateUi();
             updateProgressRing();
         });
     </script>
