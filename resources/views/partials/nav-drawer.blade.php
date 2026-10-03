@@ -52,6 +52,64 @@
 
         <div class="nav-drawer-divider"></div>
 
+        <div class="nav-drawer-section-label" data-i18n="drawer_settings_label">MIPANGILIO</div>
+
+        {{-- 1. Lugha ya Kusoma --}}
+        <div class="nav-drawer-setting-item">
+            <div class="nav-drawer-setting-header">
+                <span class="nav-drawer-setting-title" data-i18n="lang_label">Lugha ya kusoma:</span>
+            </div>
+            <div class="nav-drawer-lang-grid" role="group" aria-label="Lugha ya kusoma hadith">
+                <button type="button" class="drawer-lang-btn" data-lang-val="both">
+                    <span class="drawer-lang-main">Kiswahili</span>
+                    <span class="drawer-lang-sub">+ العربية</span>
+                </button>
+                <button type="button" class="drawer-lang-btn" data-lang-val="sw">
+                    <span class="drawer-lang-main">Kiswahili</span>
+                    <span class="drawer-lang-sub">Pekee</span>
+                </button>
+                <button type="button" class="drawer-lang-btn" data-lang-val="en">
+                    <span class="drawer-lang-main">English</span>
+                    <span class="drawer-lang-sub">Only</span>
+                </button>
+                <button type="button" class="drawer-lang-btn" data-lang-val="ar">
+                    <span class="drawer-lang-main font-arabic">العربية</span>
+                    <span class="drawer-lang-sub">فقط</span>
+                </button>
+            </div>
+        </div>
+
+        {{-- 2. Mwonekano (Light Mode / Dark Mode) --}}
+        <div class="nav-drawer-setting-item">
+            <div class="nav-drawer-setting-header">
+                <span class="nav-drawer-setting-title" data-i18n="theme_section_title">Mwonekano:</span>
+            </div>
+            <div class="nav-drawer-theme-switch" role="group" aria-label="Mwonekano wa giza au nuru">
+                <button type="button" class="drawer-theme-btn" data-theme-val="dark" aria-label="Giza (Usiku)">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <span data-i18n="theme_dark_mode">Giza (Usiku)</span>
+                </button>
+                <button type="button" class="drawer-theme-btn" data-theme-val="light" aria-label="Nuru (Mchana)">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <span data-i18n="theme_light_mode">Nuru (Mchana)</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="nav-drawer-divider"></div>
+
         <div class="nav-drawer-section-label">AKAUNTI</div>
         <div class="nav-drawer-account">
             @auth

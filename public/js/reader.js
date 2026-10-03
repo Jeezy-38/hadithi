@@ -15,20 +15,28 @@
 
     const updateThemeUI = theme => {
         document.documentElement.setAttribute('data-theme', theme);
-        if (!themeToggle) return;
         const isDark = theme === 'dark';
-        themeToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-        const curLang = document.documentElement.dataset.readingLanguage || 'both';
-        const dictKey = (curLang === 'en' || curLang === 'ar') ? curLang : 'sw';
-        const darkTitles = { sw: 'Badili kuwa Nuru (Light Mode)', en: 'Switch to Light Mode', ar: 'التبديل إلى الوضع الفاتح' };
-        const lightTitles = { sw: 'Badili kuwa Giza (Dark Mode)', en: 'Switch to Dark Mode', ar: 'التبديل إلى الوضع الداكن' };
-        const darkLabels = { sw: 'Giza', en: 'Dark', ar: 'داكن' };
-        const lightLabels = { sw: 'Nuru', en: 'Light', ar: 'فاتح' };
-        themeToggle.setAttribute('title', isDark ? darkTitles[dictKey] : lightTitles[dictKey]);
-        const label = themeToggle.querySelector('.theme-label');
-        if (label) {
-            label.textContent = isDark ? darkLabels[dictKey] : lightLabels[dictKey];
+        if (themeToggle) {
+            themeToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+            const curLang = document.documentElement.dataset.readingLanguage || 'both';
+            const dictKey = (curLang === 'en' || curLang === 'ar') ? curLang : 'sw';
+            const darkTitles = { sw: 'Badili kuwa Nuru (Light Mode)', en: 'Switch to Light Mode', ar: 'التبديل إلى الوضع الفاتح' };
+            const lightTitles = { sw: 'Badili kuwa Giza (Dark Mode)', en: 'Switch to Dark Mode', ar: 'التبديل إلى الوضع الداكن' };
+            const darkLabels = { sw: 'Giza', en: 'Dark', ar: 'داكن' };
+            const lightLabels = { sw: 'Nuru', en: 'Light', ar: 'فاتح' };
+            themeToggle.setAttribute('title', isDark ? darkTitles[dictKey] : lightTitles[dictKey]);
+            const label = themeToggle.querySelector('.theme-label');
+            if (label) {
+                label.textContent = isDark ? darkLabels[dictKey] : lightLabels[dictKey];
+            }
         }
+
+        // Sawazisha vitufe vya mwonekano vilivyomo ndani ya Nav Drawer
+        document.querySelectorAll('.drawer-theme-btn').forEach(btn => {
+            const isMatch = btn.getAttribute('data-theme-val') === theme;
+            btn.classList.toggle('active', isMatch);
+            btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+        });
     };
 
     const initialTheme = getStoredTheme() || getSystemTheme();
@@ -42,6 +50,15 @@
             updateThemeUI(next);
         });
     }
+
+    document.querySelectorAll('.drawer-theme-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTheme = btn.getAttribute('data-theme-val');
+            if (!targetTheme) return;
+            try { localStorage.setItem(THEME_KEY, targetTheme); } catch (_) {}
+            updateThemeUI(targetTheme);
+        });
+    });
 
     if (window.matchMedia) {
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
@@ -137,6 +154,10 @@
             brand_sub: 'MAKTABA YA ELIMU',
             theme_dark: 'Giza',
             theme_light: 'Nuru',
+            drawer_settings_label: 'MIPANGILIO',
+            theme_section_title: 'Mwonekano:',
+            theme_dark_mode: 'Giza (Usiku)',
+            theme_light_mode: 'Nuru (Mchana)',
             hero_eyebrow: 'BUKHARI · MUSLIM · TIRMIDHI · ABU DAWUD · AHMAD',
             hero_title: 'HAZINA YA <br><em>HADITHI .</em>',
             hero_desc: 'Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.',
@@ -277,6 +298,10 @@
             brand_sub: 'KNOWLEDGE LIBRARY',
             theme_dark: 'Dark',
             theme_light: 'Light',
+            drawer_settings_label: 'PREFERENCES',
+            theme_section_title: 'Appearance:',
+            theme_dark_mode: 'Dark (Night)',
+            theme_light_mode: 'Light (Day)',
             hero_eyebrow: 'BUKHARI · MUSLIM · TIRMIDHI · ABU DAWUD · AHMAD',
             hero_title: 'TREASURY OF <br><em>HADITH .</em>',
             hero_desc: 'Welcome to Bayt Al-Hadith — home of the timeless authentic teachings of Prophet Muhammad ﷺ.<br> Explore verified Hadiths, deepen your understanding of the Sunnah, and make its guidance part of your daily life.',
@@ -417,6 +442,10 @@
             brand_sub: 'مكتبة المعرفة',
             theme_dark: 'داكن',
             theme_light: 'فاتح',
+            drawer_settings_label: 'الإعدادات والتفضيلات',
+            theme_section_title: 'المظهر:',
+            theme_dark_mode: 'داكن (ليلي)',
+            theme_light_mode: 'فاتح (نهاري)',
             hero_eyebrow: 'البخاري · مسلم · الترمذي · أبو داود · أحمد',
             hero_title: 'كنز <br><em>الأحاديث النبوية .</em>',
             hero_desc: 'مرحباً بكم في بيت الحديث — مستودع الهدي النبوي الخالد لرسول الله ﷺ.<br> اكتشف الأحاديث الصحيحة، وعمّق فهمك للسنة النبوية، واجعل تعاليمها منهجاً لحياتك اليومية.',
@@ -791,6 +820,13 @@
             }
         }
 
+        // Sync Nav Drawer language buttons
+        document.querySelectorAll('.drawer-lang-btn').forEach(btn => {
+            const isMatch = btn.getAttribute('data-lang-val') === value;
+            btn.classList.toggle('active', isMatch);
+            btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+        });
+
         // Apply translations across all elements in the entire app
         runSafeTranslations(value);
     };
@@ -800,6 +836,13 @@
     if (selector) {
         selector.addEventListener('change', () => setLanguage(selector.value));
     }
+
+    document.querySelectorAll('.drawer-lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetLang = btn.getAttribute('data-lang-val');
+            if (targetLang) setLanguage(targetLang);
+        });
+    });
 
     // Safely re-apply translations when Livewire mutates results or user navigates
     if (mainEl && window.MutationObserver) {
