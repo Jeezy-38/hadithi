@@ -7,7 +7,11 @@
         <div class="reader-heading">
             <span class="eyebrow"><span class="eyebrow-dot"></span> VIPENDWA</span>
             <h1>Hadith ulizozihifadhi</h1>
-            <p>Zinahifadhiwa kwenye kifaa/kivinjari chako pekee; hazitumwi wala kuonekana na mtu mwingine.</p>
+            @auth
+                <p>Zinasawazishwa kwenye akaunti yako ili uweze kuzisoma kwenye kifaa chochote ulichoingia.</p>
+            @else
+                <p>Zinahifadhiwa kwenye kifaa hiki. Ukiingia au kufungua akaunti, zitasawazishwa moja kwa moja kwenye akaunti yako.</p>
+            @endauth
         </div>
         <div id="bookmarks-list" aria-live="polite">
             <div class="loading">
@@ -19,6 +23,8 @@
     <script>
     (() => {
         const container = document.getElementById('bookmarks-list');
+        const isAuth = document.body?.dataset.auth === '1';
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
         const esc = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
         let ids = [];
         try { ids = JSON.parse(localStorage.getItem('hadith-bookmarks')) || []; } catch (_) {}
@@ -34,12 +40,24 @@
                 </div>`;
         };
 
-        if (!ids.length) { showEmpty('Bado hujahifadhi hadith yoyote.'); return; }
+        if (!isAuth && !ids.length) {
+            showEmpty('Bado hujahifadhi hadith yoyote.');
+            return;
+        }
 
-        fetch('{{ route('bookmarks.data') }}?ids=' + encodeURIComponent(ids.join(',')))
+        const queryUrl = '{{ route('bookmarks.data') }}' + (ids.length ? '?ids=' + encodeURIComponent(ids.join(',')) : '');
+
+        fetch(queryUrl)
             .then(response => { if (!response.ok) throw new Error('bad response'); return response.json(); })
             .then(items => {
-                if (!items.length) { showEmpty('Hadith ulizohifadhi hazipatikani tena kwenye maktaba.'); return; }
+                if (!items.length) {
+                    showEmpty(isAuth ? 'Bado hujahifadhi hadith yoyote kwenye akaunti yako.' : 'Hadith ulizohifadhi hazipatikani tena.');
+                    return;
+                }
+                // Once synced to account, update localStorage cache with all active IDs
+                if (isAuth) {
+                    try { localStorage.setItem('hadith-bookmarks', JSON.stringify(items.map(i => String(i.id)))); } catch (_) {}
+                }
                 container.innerHTML = items.map(item => `
                     <article class="hadith-card" data-id="${item.id}">
                         <div class="card-top">
@@ -64,13 +82,28 @@
             })
             .catch(() => showEmpty('Imeshindwa kupakia Vipendwa. Jaribu tena baadaye.'));
 
-        container.addEventListener('click', event => {
+        container.addEventListener('click', async event => {
             const button = event.target.closest('.remove-bookmark');
             if (!button) return;
+            const hadithId = String(button.dataset.id);
             let list = [];
             try { list = JSON.parse(localStorage.getItem('hadith-bookmarks')) || []; } catch (_) {}
-            list = list.filter(id => id !== button.dataset.id);
+            list = list.filter(id => String(id) !== hadithId);
             try { localStorage.setItem('hadith-bookmarks', JSON.stringify(list)); } catch (_) {}
+
+            if (isAuth && csrfToken) {
+                try {
+                    await fetch(`/vipendwa/toggle/${hadithId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Accept': 'application/json',
+                        },
+                    });
+                } catch (_) {}
+            }
+
             button.closest('.hadith-card')?.remove();
             if (!container.querySelector('.hadith-card')) showEmpty('Umeondoa hadith zote kwenye Vipendwa.');
         });

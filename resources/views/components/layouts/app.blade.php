@@ -24,12 +24,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/gold-black.css') }}">
     <link rel="stylesheet" href="{{ asset('css/auth-drawer.css') }}">
     @livewireStyles
 </head>
-<body>
+<body data-auth="{{ auth()->check() ? '1' : '0' }}">
     <a class="skip-link" href="#main" data-i18n="nav_skip">Ruka kwenda maudhui</a>
     <header class="site-header">
         <div class="header-container">

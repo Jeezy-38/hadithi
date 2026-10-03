@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(SocialAccount::class);
     }
+
+    public function bookmarks(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Hadith::class, 'bookmarks')->withTimestamps();
+    }
 }

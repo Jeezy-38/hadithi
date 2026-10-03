@@ -14,7 +14,7 @@
 <div>
     <section class="hero">
         <div class="hero-copy">
-            <span class="eyebrow" data-i18n="hero_eyebrow"><span class="eyebrow-dot"></span> SAHIH AL-BUKHARI & SAHIH MUSLIM</span>
+            <span class="eyebrow" data-i18n="hero_eyebrow"><span class="eyebrow-dot"></span> BUKHARI · MUSLIM · TIRMIDHI · ABU DAWUD · AHMAD</span>
             <h1 data-i18n="hero_h1">BAYT AL<br><em>HADITH.</em></h1>
             <p data-i18n="hero_desc">
 Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.</p>
@@ -186,10 +186,18 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                         
                         <div class="card-bottom">
                             <span class="card-location"><span data-i18n="card_book_label">Kitabu</span> {{ $hadith->chapter->book->number }} · <span data-i18n="card_chapter_label">Mlango</span> {{ $hadith->chapter->number }}</span>
-                            <a href="{{ route('hadith.show', $hadith) }}" class="read-btn">
-                                <span data-i18n="card_read_btn">Soma / Sikiliza</span>
-                                <span class="read-arrow" aria-hidden="true">↗</span>
-                            </a>
+                            <div class="card-actions">
+                                <button type="button" class="action-icon-btn quick-bookmark-btn" data-hadith-id="{{ $hadith->id }}" title="Hifadhi kwenye Vipendwa" aria-label="Hifadhi kwenye Vipendwa">
+                                    <span class="bookmark-star" aria-hidden="true">☆</span>
+                                </button>
+                                <button type="button" class="action-icon-btn quick-copy-btn" data-copy-text="{{ $hadith->chapter->book->collection->name.' '.$hadith->number.': '.\Illuminate\Support\Str::limit($hadith->swahili, 200).' '.route('hadith.show', $hadith) }}" title="Nakili hadith" aria-label="Nakili hadith">
+                                    <span class="copy-icon" aria-hidden="true">⧉</span>
+                                </button>
+                                <a href="{{ route('hadith.show', $hadith) }}" class="read-btn">
+                                    <span data-i18n="card_read_btn">Soma / Sikiliza</span>
+                                    <span class="read-arrow" aria-hidden="true">↗</span>
+                                </a>
+                            </div>
                         </div>
                     </article>
                 @empty

@@ -1,6 +1,6 @@
 # Hadith — Maktaba ya elimu
 
-Project mpya ya kusoma na kutafuta Sahih al-Bukhari na Sahih Muslim kwa Kiarabu na Kiswahili. Laravel 12, Livewire 4, MySQL/MariaDB na CSS ya moja kwa moja; hakuna Node/Vite build inayohitajika kwa kurasa hizi.
+Mfumo wa kusoma, kusikiliza na kutafuta hadith za Mtume Muhammad ﷺ (Sahih al-Bukhari, Sahih Muslim, Jami' at-Tirmidhi, Sunan Abu Dawud, na Musnad Ahmad) kwa Kiarabu, Kiswahili na Kiingereza. Laravel 12, Livewire 4, MySQL/MariaDB na CSS ya moja kwa moja; hakuna Node/Vite build inayohitajika kwa kurasa hizi.
 
 ## Kuendesha
 
@@ -14,36 +14,36 @@ php artisan hadith:import database/data/hadith-starter.json
 php artisan serve --host=127.0.0.1 --port=8012
 ```
 
-Fungua http://127.0.0.1:8012. Project hii sasa inatumia **database `hadith_library` kwenye XAMPP MariaDB 10.4.28**, kupitia driver ya Laravel `mysql`. MariaDB ndiyo server iliyokuwa kwenye XAMPP na iliyochaguliwa kwa app hii; si Oracle MySQL Server.
+Fungua http://127.0.0.1:8012. Project hii inatumia **database `hadith_library` kwenye XAMPP MariaDB 10.4.28**, kupitia driver ya Laravel `mysql`.
 
-Muunganisho wa local `.env` unatumia socket `/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock`. Washa MySQL katika XAMPP kabla ya kuendesha app. `.env.example` ina muundo wa TCP kwa MySQL; rekebisha credentials na socket kulingana na mashine yako. PHP 8.2+ yenye pdo_mysql na mbstring inahitajika. SQLite ya awali imeachwa kama ilivyokuwa na haitumiki kuendesha app.
+Muunganisho wa local `.env` unatumia socket `/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock`. Washa MySQL katika XAMPP kabla ya kuendesha app. `.env.example` ina muundo wa TCP kwa MySQL; rekebisha credentials na socket kulingana na mashine yako. PHP 8.2+ yenye pdo_mysql na mbstring inahitajika. SQLite ya memory inatumika kwa tests (`php artisan test`).
 
 Mwonekano wa **gold na black** uko `public/css/gold-black.css`; picha ya hero imehifadhiwa locally kwenye `public/images/library-gold-black.jpg`. Hakuna hotlink au API ya picha inayohitajika wakati wa kutumia app.
 
 ## Vipengele
 
-- Makusanyo mawili, vitabu na milango yenye vichujio vinavyounganishwa.
-- Livewire search kwa maandishi ya Kiswahili, Kiarabu, namba na rejea.
+- Makusanyo 5 makuu (Bukhari, Muslim, Tirmidhi, Abu Dawud, Ahmad), vitabu na milango yenye vichujio vinavyounganishwa.
+- Livewire search kwa maandishi ya Kiswahili, Kiarabu, Kiingereza, namba na rejea.
 - Utafutaji wa Kiarabu hupuuza irabu/tatweel na tofauti za alif. Maandishi asilia hayabadilishwi.
-- Matokeo 10 kwa ukurasa; vichujio huhifadhiwa kwenye URL kwa kushiriki.
-- Ukurasa wa hadith wenye maandishi kamili, tafsiri na marejeo.
-- Responsive CSS, labels, keyboard focus na Kiarabu chenye RTL.
+- Mfumo wa kisasa wa **Vipendwa (Bookmarks)** unaosawazisha moja kwa moja na akaunti ya mtumiaji (Database sync) au `localStorage` kwa wageni.
+- Vitufe vya haraka vya **Quick Copy** na **Quick Bookmark** kwenye kila kadi ya hadith kwenye maktaba.
+- Msomaji wa hadith wenye maandishi kamili, tafsiri ya Kiswahili na Kiingereza, na sauti ya HD (Edge-TTS).
+- Matokeo 10 kwa ukurasa; vichujio huhifadhiwa kwenye URL kwa ajili ya kushiriki.
+- Responsive CSS, dark/light mode toggle, labels, keyboard focus na Kiarabu chenye RTL.
 - Import ya JSON yenye validation kabla ya transaction; kurudia reference husasisha rekodi.
 
 ## Hali ya data
 
-**Hadith halisi 8 zimeingizwa**, nne kutoka kila mkusanyo. Huu ni mwanzo, si makusanyo kamili.
+**Hadith halisi 547 zimeingizwa** katika makusanyo 5:
 
-| Mkusanyo | Namba | Kitabu / mlango |
+| Mkusanyo | Hadith zilizopo | Maelezo |
 |---|---|---|
-| Bukhari | 10 | 2 / 4 |
-| Bukhari | 13 | 2 / 7 |
-| Bukhari | 6114 | 78 / 76 |
-| Bukhari | 6116 | 78 / 76 |
-| Muslim | 47 | 1 / 19 |
-| Muslim | 55 | 1 / 23 |
-| Muslim | 1907 | 33 / 45 |
-| Muslim | 2553 | 45 / 5 |
+| Sahih al-Bukhari | 261 | Zimehakikiwa na kupewa namba rasmi |
+| Sahih Muslim | 207 | Zimehakikiwa na kupewa namba rasmi |
+| Jami' at-Tirmidhi | 43 | Zimehakikiwa na kupewa namba rasmi |
+| Sunan Abu Dawud | 24 | Zimehakikiwa na kupewa namba rasmi |
+| Musnad Ahmad | 12 | Zimehakikiwa na kupewa namba rasmi |
+| **Jumla** | **547** | **Hadith zote ziko `database/data/hadith-starter.json`** |
 
 Maandishi ya Kiarabu na tafsiri za Kiswahili yamenakiliwa bila mabadiliko kutoka API rasmi ya HadeethEnc. Maandishi hayo yana mtindo wa HadeethEnc na si isnadi zote za nakala ya kitabu. Taarifa ya `grade` ni ya HadeethEnc, si hukumu mpya ya app. Majina ya urambazaji ya vitabu/milango kwa Kiswahili yametafsiriwa kwa ajili ya app; namba na majina ya Kiarabu zimelinganishwa na Sunnah.com. Hadeeth ya Muslim 1907 katika HadeethEnc ina pia lafudhi mbadala ya Bukhari, ambayo imehifadhiwa kama ilivyo.
 

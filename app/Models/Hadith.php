@@ -35,6 +35,11 @@ class Hadith extends Model
         return $this->belongsTo(Chapter::class);
     }
 
+    public function bookmarkedBy(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'bookmarks')->withTimestamps();
+    }
+
     public function scopePublished(Builder $query): void
     {
         $query->where('is_published', true);

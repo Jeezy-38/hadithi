@@ -828,35 +828,152 @@
     // -------------------------------------------------------------
     // 4. Bookmarks Management
     // -------------------------------------------------------------
-    const bookmarkBtn = document.getElementById('bookmark-toggle');
-    if (bookmarkBtn) {
-        const id = bookmarkBtn.dataset.hadithId;
-        const readBookmarks = () => { try { return JSON.parse(localStorage.getItem('hadith-bookmarks')) || []; } catch (_) { return []; } };
-        const writeBookmarks = list => { try { localStorage.setItem('hadith-bookmarks', JSON.stringify(list)); } catch (_) {} };
-        const syncBookmark = () => {
-            const saved = readBookmarks().includes(id);
-            bookmarkBtn.setAttribute('aria-pressed', saved ? 'true' : 'false');
-            const icon = bookmarkBtn.querySelector('.btn-icon');
-            const text = bookmarkBtn.querySelector('.btn-text');
-            const currentLang = document.documentElement.dataset.readingLanguage || 'both';
-            const dictKey = (currentLang === 'en' || currentLang === 'ar') ? currentLang : 'sw';
-            const t = UI_TRANSLATIONS[dictKey] || UI_TRANSLATIONS.sw;
-            const label = saved ? t.btn_bookmark_saved : t.btn_bookmark_add;
+    // 4. Bookmarks Management (Database Sync & Quick Toggles)
+    // -------------------------------------------------------------
+    const readBookmarks = () => { try { return (JSON.parse(localStorage.getItem('hadith-bookmarks')) || []).map(String); } catch (_) { return []; } };
+    const writeBookmarks = list => { try { localStorage.setItem('hadith-bookmarks', JSON.stringify(list.map(String))); } catch (_) {} };
+
+    const updateAllBookmarkUI = () => {
+        const savedIds = readBookmarks();
+        const currentLang = document.documentElement.dataset.readingLanguage || 'both';
+        const dictKey = (currentLang === 'en' || currentLang === 'ar') ? currentLang : 'sw';
+        const t = UI_TRANSLATIONS[dictKey] || UI_TRANSLATIONS.sw;
+
+        const mainBtn = document.getElementById('bookmark-toggle');
+        if (mainBtn) {
+            const id = String(mainBtn.dataset.hadithId);
+            const isSaved = savedIds.includes(id);
+            mainBtn.setAttribute('aria-pressed', isSaved ? 'true' : 'false');
+            const icon = mainBtn.querySelector('.btn-icon');
+            const text = mainBtn.querySelector('.btn-text');
+            const label = isSaved ? t.btn_bookmark_saved : t.btn_bookmark_add;
             if (icon && text) {
-                icon.textContent = saved ? '★' : '☆';
+                icon.textContent = isSaved ? '★' : '☆';
                 text.textContent = label;
             } else {
-                bookmarkBtn.textContent = `${saved ? '★' : '☆'} ${label}`;
+                mainBtn.textContent = `${isSaved ? '★' : '☆'} ${label}`;
             }
-        };
-        bookmarkBtn.addEventListener('click', () => {
-            const list = readBookmarks();
-            const next = list.includes(id) ? list.filter(saved => saved !== id) : [...list, id];
-            writeBookmarks(next);
-            syncBookmark();
+        }
+
+        document.querySelectorAll('.quick-bookmark-btn').forEach(btn => {
+            const id = String(btn.dataset.hadithId);
+            const isSaved = savedIds.includes(id);
+            btn.classList.toggle('is-bookmarked', isSaved);
+            btn.setAttribute('aria-pressed', isSaved ? 'true' : 'false');
+            btn.setAttribute('title', isSaved ? (t.btn_bookmark_saved || 'Imehifadhiwa kwenye Vipendwa') : (t.btn_bookmark_add || 'Hifadhi kwenye Vipendwa'));
+            const star = btn.querySelector('.bookmark-star');
+            if (star) star.textContent = isSaved ? '★' : '☆';
         });
-        syncBookmark();
+    };
+
+    const toggleBookmark = async (hadithId) => {
+        hadithId = String(hadithId);
+        let list = readBookmarks();
+        const wasSaved = list.includes(hadithId);
+        list = wasSaved ? list.filter(id => id !== hadithId) : [...list, hadithId];
+        writeBookmarks(list);
+        updateAllBookmarkUI();
+
+        if (document.body?.dataset.auth === '1') {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+            if (csrfToken) {
+                try {
+                    await fetch(`/vipendwa/toggle/${hadithId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Accept': 'application/json',
+                        },
+                    });
+                } catch (_) {}
+            }
+        }
+    };
+
+    const bookmarkBtn = document.getElementById('bookmark-toggle');
+    if (bookmarkBtn) {
+        bookmarkBtn.addEventListener('click', () => {
+            const id = bookmarkBtn.dataset.hadithId;
+            if (id) toggleBookmark(id);
+        });
     }
+
+    // Delegated listener for quick action buttons (.quick-bookmark-btn, .quick-copy-btn)
+    document.addEventListener('click', async (e) => {
+        const bkmkBtn = e.target.closest('.quick-bookmark-btn');
+        if (bkmkBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            const id = bkmkBtn.dataset.hadithId;
+            if (id) toggleBookmark(id);
+            return;
+        }
+
+        const copyBtn = e.target.closest('.quick-copy-btn');
+        if (copyBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            const text = copyBtn.dataset.copyText || '';
+            const icon = copyBtn.querySelector('.copy-icon');
+            const curLang = document.documentElement.dataset.readingLanguage || 'both';
+            const curDictKey = (curLang === 'en' || curLang === 'ar') ? curLang : 'sw';
+            const curT = UI_TRANSLATIONS[curDictKey] || UI_TRANSLATIONS.sw;
+            try {
+                await navigator.clipboard.writeText(text);
+                if (icon) icon.textContent = '✓';
+                copyBtn.classList.add('is-copied');
+                copyBtn.setAttribute('title', curT.btn_copied || 'Imenakiliwa!');
+                setTimeout(() => {
+                    if (icon) icon.textContent = '⧉';
+                    copyBtn.classList.remove('is-copied');
+                    copyBtn.setAttribute('title', 'Nakili hadith');
+                }, 2000);
+            } catch (_) {}
+            return;
+        }
+    });
+
+    // Initial bookmark sync for authenticated users
+    if (document.body?.dataset.auth === '1') {
+        const localList = readBookmarks();
+        fetch('/vipendwa/ids')
+            .then(r => r.ok ? r.json() : null)
+            .then(data => {
+                if (!data || !Array.isArray(data.ids)) return;
+                const serverIds = data.ids.map(String);
+                const unsynced = localList.filter(id => !serverIds.includes(String(id)));
+                const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+                if (unsynced.length > 0 && csrfToken) {
+                    fetch('/vipendwa/sync', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Accept': 'application/json',
+                        },
+                        body: JSON.stringify({ ids: unsynced }),
+                    }).then(r => r.ok ? r.json() : null)
+                      .then(syncData => {
+                          if (syncData?.ids) {
+                              writeBookmarks(syncData.ids.map(String));
+                              updateAllBookmarkUI();
+                          }
+                      }).catch(() => {});
+                } else {
+                    writeBookmarks(serverIds);
+                    updateAllBookmarkUI();
+                }
+            }).catch(() => { updateAllBookmarkUI(); });
+    } else {
+        updateAllBookmarkUI();
+    }
+
+    document.addEventListener('livewire:init', () => {
+        Livewire.hook('morph.updated', () => {
+            updateAllBookmarkUI();
+        });
+    });
 
     // -------------------------------------------------------------
     // 5. Copy / Share Hadith
