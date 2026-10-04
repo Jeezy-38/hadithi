@@ -14,14 +14,18 @@ class QuranIndex extends Component
     public string $search = '';
 
     #[Url(as: 'aina', history: true)]
-    public string $type = 'all'; // 'all', 'Makki', 'Madani'
+    public string $type = 'all'; // 'all', 'Makka', 'Madina'
 
     #[Url(as: 'juz', history: true)]
     public string $juz = '';
 
     public function setType(string $type): void
     {
-        $this->type = in_array($type, ['all', 'Makki', 'Madani']) ? $type : 'all';
+        $this->type = match (strtolower($type)) {
+            'makka', 'makki' => 'Makka',
+            'madina', 'madani' => 'Madina',
+            default => 'all',
+        };
     }
 
     public function setJuz(string $juz): void
@@ -46,8 +50,20 @@ class QuranIndex extends Component
 
         $filtered = $allSurahs->filter(function ($surah) {
             // Type filter
-            if ($this->type !== 'all' && strtolower($surah->revelation_type) !== strtolower($this->type)) {
-                return false;
+            if ($this->type !== 'all') {
+                $targetType = match (strtolower($this->type)) {
+                    'makka', 'makki' => 'makki',
+                    'madina', 'madani' => 'madani',
+                    default => 'all',
+                };
+                $surahType = match (strtolower($surah->revelation_type)) {
+                    'makka', 'makki' => 'makki',
+                    'madina', 'madani' => 'madani',
+                    default => strtolower($surah->revelation_type),
+                };
+                if ($surahType !== $targetType) {
+                    return false;
+                }
             }
 
             // Juz filter
@@ -73,8 +89,8 @@ class QuranIndex extends Component
         });
 
         $totalSurahs = $allSurahs->count();
-        $makkiCount = $allSurahs->where('revelation_type', 'Makki')->count();
-        $madaniCount = $allSurahs->where('revelation_type', 'Madani')->count();
+        $makkiCount = $allSurahs->filter(fn ($s) => in_array(strtolower($s->revelation_type), ['makki', 'makka']))->count();
+        $madaniCount = $allSurahs->filter(fn ($s) => in_array(strtolower($s->revelation_type), ['madani', 'madina']))->count();
 
         return view('livewire.quran-index', [
             'surahs' => $filtered,

@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="summary-item summary-note-item">
-            <span class="summary-badge" data-i18n="quran_stat_note">Makki 86 · Madani 28</span>
+            <span class="summary-badge" data-i18n="quran_stat_note">Makka 86 · Madina 28</span>
         </div>
     </section>
 
@@ -130,21 +130,21 @@
                 </button>
                 <button
                     type="button"
-                    wire:click="setType('Makki')"
-                    class="quran-tab-btn category-tab-btn {{ $type === 'Makki' ? 'active' : '' }}"
+                    wire:click="setType('Makka')"
+                    class="quran-tab-btn category-tab-btn {{ in_array($type, ['Makka', 'Makki']) ? 'active' : '' }}"
                     role="tab"
-                    aria-selected="{{ $type === 'Makki' ? 'true' : 'false' }}"
+                    aria-selected="{{ in_array($type, ['Makka', 'Makki']) ? 'true' : 'false' }}"
                 >
-                    <span>Makki ({{ $makkiCount }})</span>
+                    <span>Makka ({{ $makkiCount }})</span>
                 </button>
                 <button
                     type="button"
-                    wire:click="setType('Madani')"
-                    class="quran-tab-btn category-tab-btn {{ $type === 'Madani' ? 'active' : '' }}"
+                    wire:click="setType('Madina')"
+                    class="quran-tab-btn category-tab-btn {{ in_array($type, ['Madina', 'Madani']) ? 'active' : '' }}"
                     role="tab"
-                    aria-selected="{{ $type === 'Madani' ? 'true' : 'false' }}"
+                    aria-selected="{{ in_array($type, ['Madina', 'Madani']) ? 'true' : 'false' }}"
                 >
-                    <span>Madani ({{ $madaniCount }})</span>
+                    <span>Madina ({{ $madaniCount }})</span>
                 </button>
             </div>
         </div>
@@ -164,8 +164,8 @@
                         </div>
                         <p class="surah-card-meaning">{{ $surah->translation_sw }}</p>
                         <div class="surah-card-meta">
-                            <span class="surah-card-badge {{ strtolower($surah->revelation_type) === 'makki' ? 'badge-makki' : 'badge-madani' }}">
-                                {{ $surah->revelation_type }}
+                            <span class="surah-card-badge {{ in_array(strtolower($surah->revelation_type), ['makki', 'makka']) ? 'badge-makki' : 'badge-madani' }}">
+                                {{ in_array(strtolower($surah->revelation_type), ['makki', 'makka']) ? 'Makka' : 'Madina' }}
                             </span>
                             <span class="surah-card-verses">{{ $surah->total_verses }} Aya</span>
                             <span class="surah-card-juz">Juz {{ $surah->juz_start }}</span>

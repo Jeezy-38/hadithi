@@ -25,8 +25,8 @@
         <div class="quran-header-card">
             <div class="quran-header-badge-row">
                 <span class="quran-header-pill">SURA YA {{ $surah->number }}</span>
-                <span class="quran-header-pill {{ strtolower($surah->revelation_type) === 'makki' ? 'pill-makki' : 'pill-madani' }}">
-                    {{ $surah->revelation_type }}
+                <span class="quran-header-pill {{ in_array(strtolower($surah->revelation_type), ['makki', 'makka']) ? 'pill-makki' : 'pill-madani' }}">
+                    {{ in_array(strtolower($surah->revelation_type), ['makki', 'makka']) ? 'MAKKA' : 'MADINA' }}
                 </span>
                 <span class="quran-header-pill">{{ $surah->total_verses }} AYA</span>
                 <span class="quran-header-pill">JUZ {{ $surah->juz_start }}</span>

@@ -272,7 +272,7 @@
             quran_stat_surahs: 'Sura kamili',
             quran_stat_ayahs: 'Jumla ya Aya',
             quran_stat_juz: 'Juz / Sehemu',
-            quran_stat_note: 'Makki 86 · Madani 28'
+            quran_stat_note: 'Makka 86 · Madina 28'
         },
         en: {
             nav_library: 'Library',
@@ -443,7 +443,7 @@
             quran_stat_surahs: 'complete Surahs',
             quran_stat_ayahs: 'total Ayahs',
             quran_stat_juz: 'Juz / Parts',
-            quran_stat_note: 'Makki 86 · Madani 28'
+            quran_stat_note: 'Makka 86 · Madina 28'
         },
         ar: {
             nav_library: 'المكتبة',

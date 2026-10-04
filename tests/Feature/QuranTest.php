@@ -40,10 +40,14 @@ class QuranTest extends TestCase
     public function test_quran_surah_filter_by_revelation_type(): void
     {
         Livewire::test(QuranIndex::class)
-            ->call('setType', 'Madani')
-            ->assertSet('type', 'Madani')
+            ->call('setType', 'Madina')
+            ->assertSet('type', 'Madina')
             ->assertSee('Al-Baqara')
-            ->assertDontSee("Al-An'aam");
+            ->assertDontSee("Al-An'aam")
+            ->call('setType', 'Makka')
+            ->assertSet('type', 'Makka')
+            ->assertSee("Al-An'aam")
+            ->assertDontSee('Al-Baqara');
     }
 
     public function test_quran_show_renders_surah_detail(): void
