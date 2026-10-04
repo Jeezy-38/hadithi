@@ -4558,11 +4558,81 @@ a, button, select, input {
 .quran-header-card {
     padding: 32px 24px;
     border-radius: 20px;
-    background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(26, 26, 26, 0.8) 100%);
-    border: 1.5px solid rgba(218, 181, 106, 0.3);
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
     text-align: center;
     margin-bottom: 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .quran-header-card {
+    background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(20, 20, 20, 0.95) 100%);
+    border-color: rgba(218, 181, 106, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] .quran-header-card {
+    background: linear-gradient(180deg, #ffffff 0%, #faf8f2 100%) !important;
+    border-color: rgba(180, 83, 9, 0.3) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .quran-header-pill {
+    background: #ffffff !important;
+    border-color: #d1c7b5 !important;
+    color: #3a4555 !important;
+}
+
+[data-theme="light"] .quran-header-title-ar {
+    color: #92400e !important;
+}
+
+[data-theme="light"] .quran-header-title-sw {
+    color: #0a0f18 !important;
+}
+
+[data-theme="light"] .quran-header-meaning {
+    color: #3a4555 !important;
+}
+
+[data-theme="light"] .quran-bismillah-box {
+    background: linear-gradient(180deg, #fdfbf7 0%, #f7f3e8 100%) !important;
+    border-color: rgba(180, 83, 9, 0.3) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .bismillah-badge {
+    background: rgba(180, 83, 9, 0.1) !important;
+    border-color: rgba(180, 83, 9, 0.25) !important;
+    color: #92400e !important;
+}
+
+[data-theme="light"] .bismillah-ar {
+    color: #92400e !important;
+}
+
+[data-theme="light"] .bismillah-sw {
+    color: #3a4555 !important;
+}
+
+[data-theme="light"] .quran-ayah-card {
+    background: #ffffff !important;
+    border-color: #e2dbce !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] .ayah-arabic-text {
+    color: #000000 !important;
+}
+
+[data-theme="light"] .ayah-translation-sw {
+    color: #1a222f !important;
+}
+
+[data-theme="light"] .ayah-translation-en {
+    color: #4b5563 !important;
 }
 
 .quran-header-badge-row {
@@ -4870,32 +4940,295 @@ a, button, select, input {
     display: none !important;
 }
 
-.reader-surah-jumper {
+/* ==========================================================================
+   Quran Reader Top Navigation Bar
+   ========================================================================== */
+.quran-reader-top-bar,
+.reader-top-nav {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
 }
 
+.quran-nav-back,
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.quran-nav-back:hover,
+.back-link:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: var(--gold-subtle);
+    transform: translateX(-2px);
+}
+
+.quran-surah-pager,
+.reader-surah-jumper {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-surface);
+    padding: 4px;
+    border-radius: 9999px;
+    border: 1.5px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 640px) {
+    .quran-reader-top-bar,
+    .reader-top-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .quran-surah-pager,
+    .reader-surah-jumper {
+        width: 100%;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+    .pager-btn-name {
+        display: none;
+    }
+}
+
+.surah-pager-btn,
 .surah-jump-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
     font-size: 12.5px;
     font-weight: 700;
-    color: var(--text-muted);
     text-decoration: none;
-    padding: 4px 10px;
-    border-radius: 8px;
-    border: 1px solid var(--border-subtle);
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
 }
 
+.surah-pager-btn:hover,
 .surah-jump-btn:hover {
     color: var(--gold);
-    border-color: rgba(218, 181, 106, 0.4);
+    border-color: var(--gold);
+    background: var(--gold-subtle);
 }
 
+.surah-pager-btn.is-disabled {
+    opacity: 0.35;
+    pointer-events: none;
+    cursor: default;
+}
+
+.surah-pager-current,
 .surah-jump-current {
     font-size: 13px;
     font-weight: 800;
     color: var(--gold);
+    padding: 0 10px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Quran Reader Bottom Navigation Deck (Vitufe vya Next/Prev Sura)
+   ========================================================================== */
+.quran-bottom-nav,
+.reader-bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+    .quran-bottom-nav,
+    .reader-bottom-nav {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+.quran-nav-card,
+.reader-nav-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.quran-nav-card:hover,
+.reader-nav-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 15px rgba(218, 181, 106, 0.1);
+}
+
+.nav-prev {
+    justify-content: flex-start;
+}
+
+.nav-next {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.nav-center {
+    justify-content: center;
+    text-align: center;
+}
+
+.nav-disabled {
+    opacity: 0.45;
+    pointer-events: none;
+    background: var(--bg-surface-elevated);
+}
+
+.nav-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: var(--gold-subtle);
+    border: 1px solid rgba(218, 181, 106, 0.3);
+    color: var(--gold);
+    font-size: 16px;
+    font-weight: 800;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.quran-nav-card:hover .nav-card-icon,
+.reader-nav-card:hover .nav-card-icon {
+    background: var(--gold);
+    color: #111;
+}
+
+.nav-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.nav-card-hint,
+.nav-dir-label {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.nav-card-title,
+.nav-surah-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+.nav-card-arabic,
+.nav-surah-ar {
+    font-size: 16px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Light Theme Overrides for Navigation */
+[data-theme="light"] .quran-reader-top-bar,
+[data-theme="light"] .reader-top-nav,
+[data-theme="light"] .quran-nav-back,
+[data-theme="light"] .back-link,
+[data-theme="light"] .quran-surah-pager,
+[data-theme="light"] .reader-surah-jumper {
+    background: #ffffff !important;
+    border-color: #d1c7b5 !important;
+}
+
+[data-theme="light"] .surah-pager-btn,
+[data-theme="light"] .surah-jump-btn {
+    background: #f7f5ef !important;
+    border-color: #e2dbce !important;
+    color: #1a222f !important;
+}
+
+[data-theme="light"] .surah-pager-btn:hover,
+[data-theme="light"] .surah-jump-btn:hover {
+    background: rgba(180, 83, 9, 0.1) !important;
+    color: #b45309 !important;
+    border-color: #b45309 !important;
+}
+
+[data-theme="light"] .surah-pager-current,
+[data-theme="light"] .surah-jump-current {
+    color: #b45309 !important;
+}
+
+[data-theme="light"] .quran-nav-card,
+[data-theme="light"] .reader-nav-card {
+    background: #ffffff !important;
+    border-color: #d1c7b5 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .quran-nav-card:hover,
+[data-theme="light"] .reader-nav-card:hover {
+    border-color: #b45309 !important;
+    box-shadow: 0 6px 18px rgba(180, 83, 9, 0.12) !important;
+}
+
+[data-theme="light"] .nav-card-icon {
+    background: rgba(180, 83, 9, 0.1) !important;
+    border-color: rgba(180, 83, 9, 0.25) !important;
+    color: #b45309 !important;
+}
+
+[data-theme="light"] .quran-nav-card:hover .nav-card-icon,
+[data-theme="light"] .reader-nav-card:hover .nav-card-icon {
+    background: #b45309 !important;
+    color: #ffffff !important;
+}
+
+[data-theme="light"] .nav-card-title,
+[data-theme="light"] .nav-surah-name {
+    color: #0a0f18 !important;
+}
+
+[data-theme="light"] .nav-card-arabic,
+[data-theme="light"] .nav-surah-ar {
+    color: #92400e !important;
 }
 
 

@@ -1,21 +1,23 @@
 <x-layouts.app :title="$surah->name_sw . ' (' . $surah->name_ar . ') · Qur\'ani Tukufu'">
     <div class="reader-shell quran-reader-shell">
         {{-- Upau wa Urambazaji wa Juu --}}
-        <div class="reader-top-nav">
-            <a href="{{ route('quran.index') }}" class="back-link">
+        <div class="quran-reader-top-bar reader-top-nav">
+            <a href="{{ route('quran.index') }}" class="quran-nav-back back-link" title="Rudi kwenye Orodha ya Sura">
                 <span aria-hidden="true">←</span>
                 <span>Orodha ya Sura</span>
             </a>
-            <div class="reader-surah-jumper">
+            <div class="quran-surah-pager reader-surah-jumper">
                 @if($prev)
-                    <a href="{{ route('quran.show', $prev->number) }}" class="surah-jump-btn" title="Sura Iliyotangulia: {{ $prev->name_sw }}">
-                        <span>← {{ $prev->name_sw }}</span>
+                    <a href="{{ route('quran.show', $prev->number) }}" class="surah-pager-btn surah-jump-btn" title="Sura Iliyotangulia: {{ $prev->name_sw }}">
+                        <span aria-hidden="true">←</span>
+                        <span class="pager-btn-name">{{ $prev->name_sw }}</span>
                     </a>
                 @endif
-                <span class="surah-jump-current">{{ $surah->number }}. {{ $surah->name_sw }}</span>
+                <span class="surah-pager-current surah-jump-current">{{ $surah->number }}. {{ $surah->name_sw }}</span>
                 @if($next)
-                    <a href="{{ route('quran.show', $next->number) }}" class="surah-jump-btn" title="Sura Inayofuata: {{ $next->name_sw }}">
-                        <span>{{ $next->name_sw }} →</span>
+                    <a href="{{ route('quran.show', $next->number) }}" class="surah-pager-btn surah-jump-btn" title="Sura Inayofuata: {{ $next->name_sw }}">
+                        <span class="pager-btn-name">{{ $next->name_sw }}</span>
+                        <span aria-hidden="true">→</span>
                     </a>
                 @endif
             </div>
@@ -121,32 +123,56 @@
         </div>
 
         {{-- Urambazaji wa Chini --}}
-        <div class="reader-bottom-nav">
+        <nav class="quran-bottom-nav reader-bottom-nav" aria-label="Urambazaji wa Sura">
             @if($prev)
-                <a href="{{ route('quran.show', $prev->number) }}" class="reader-nav-card nav-prev">
-                    <span class="nav-dir-label">← SURA ILIYOTANGULIA</span>
-                    <strong class="nav-surah-name">{{ $prev->name_sw }}</strong>
-                    <span class="nav-surah-ar font-arabic" dir="rtl">{{ $prev->name_ar }}</span>
+                <a href="{{ route('quran.show', $prev->number) }}" class="quran-nav-card reader-nav-card nav-prev">
+                    <span class="nav-card-icon" aria-hidden="true">←</span>
+                    <div class="nav-card-content">
+                        <span class="nav-card-hint nav-dir-label">SURA ILIYOTANGULIA</span>
+                        <strong class="nav-card-title nav-surah-name">{{ $prev->number }}. {{ $prev->name_sw }}</strong>
+                        <span class="nav-card-arabic nav-surah-ar font-arabic" dir="rtl">{{ $prev->name_ar }}</span>
+                    </div>
                 </a>
             @else
-                <div></div>
+                <div class="quran-nav-card reader-nav-card nav-disabled">
+                    <div class="nav-card-content">
+                        <span class="nav-card-hint nav-dir-label">MWANZO WA QUR'ANI</span>
+                        <strong class="nav-card-title nav-surah-name">Sura ya Kwanza</strong>
+                    </div>
+                </div>
             @endif
 
-            <a href="{{ route('quran.index') }}" class="reader-nav-card nav-center">
-                <span class="nav-dir-label">MAKTABA</span>
-                <strong class="nav-surah-name">Sura Zote 114</strong>
+            <a href="{{ route('quran.index') }}" class="quran-nav-card reader-nav-card nav-center" title="Orodha ya Sura Zote 114">
+                <span class="nav-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                </span>
+                <div class="nav-card-content">
+                    <span class="nav-card-hint nav-dir-label">MAKTABA</span>
+                    <strong class="nav-card-title nav-surah-name">Sura Zote 114</strong>
+                </div>
             </a>
 
             @if($next)
-                <a href="{{ route('quran.show', $next->number) }}" class="reader-nav-card nav-next">
-                    <span class="nav-dir-label">SURA INAYOFUATA →</span>
-                    <strong class="nav-surah-name">{{ $next->name_sw }}</strong>
-                    <span class="nav-surah-ar font-arabic" dir="rtl">{{ $next->name_ar }}</span>
+                <a href="{{ route('quran.show', $next->number) }}" class="quran-nav-card reader-nav-card nav-next">
+                    <div class="nav-card-content">
+                        <span class="nav-card-hint nav-dir-label">SURA INAYOFUATA</span>
+                        <strong class="nav-card-title nav-surah-name">{{ $next->number }}. {{ $next->name_sw }}</strong>
+                        <span class="nav-card-arabic nav-surah-ar font-arabic" dir="rtl">{{ $next->name_ar }}</span>
+                    </div>
+                    <span class="nav-card-icon" aria-hidden="true">→</span>
                 </a>
             @else
-                <div></div>
+                <div class="quran-nav-card reader-nav-card nav-disabled">
+                    <div class="nav-card-content">
+                        <span class="nav-card-hint nav-dir-label">MWISHO WA QUR'ANI</span>
+                        <strong class="nav-card-title nav-surah-name">Sura ya Mwisho</strong>
+                    </div>
+                </div>
             @endif
-        </div>
+        </nav>
     </div>
 
     {{-- Kicheza Sauti Kinachofanya Kazi Chini (Global Quran Audio Player Logic) --}}
