@@ -105,6 +105,7 @@
     const UI_TRANSLATIONS = {
         sw: {
             nav_library: 'Maktaba',
+            nav_quran: "Qur'ani",
             nav_today: 'Hadith ya leo',
             nav_duaa: 'Dua & Adhkar',
             nav_tasbih: 'Tasbih',
@@ -251,6 +252,7 @@
         },
         en: {
             nav_library: 'Library',
+            nav_quran: "Qur'an",
             nav_today: 'Hadith of the Day',
             nav_duaa: 'Dua & Adhkar',
             nav_tasbih: 'Tasbih',
@@ -397,6 +399,7 @@
         },
         ar: {
             nav_library: 'المكتبة',
+            nav_quran: 'القرآن الكريم',
             nav_today: 'حديث اليوم',
             nav_duaa: 'الأدعية والأذكار',
             nav_tasbih: 'السبحة الإلكترونية',

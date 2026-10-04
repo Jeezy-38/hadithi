@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         Collection::updateOrCreate(['slug' => 'riyadhadussalihin'], ['name' => 'Riyadh as-Salihin', 'name_ar' => 'رياض الصالحين']);
 
         $this->call(DuaSeeder::class);
+        $this->call(QuranSeeder::class);
     }
 }

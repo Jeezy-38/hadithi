@@ -3,8 +3,10 @@ use App\Http\Controllers\Auth\EmailAuthController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\HadithAudioController;
+use App\Http\Controllers\QuranController;
 use App\Livewire\DuaIndex;
 use App\Livewire\Library;
+use App\Livewire\QuranIndex;
 use App\Models\Dua;
 use App\Models\Hadith;
 use Illuminate\Http\Request;
@@ -12,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 Route::get('/', Library::class)->name('library');
+
+Route::get('/quran', QuranIndex::class)->name('quran.index');
+Route::get('/quran/{number}', [QuranController::class, 'show'])->whereNumber('number')->name('quran.show');
 
 Route::get('/duaa', DuaIndex::class)->name('duaa.index');
 

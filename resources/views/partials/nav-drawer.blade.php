@@ -30,6 +30,16 @@
                 <span class="nav-drawer-text" data-i18n="nav_library">Maktaba</span>
                 <span class="nav-drawer-arrow" aria-hidden="true">→</span>
             </a>
+            <a href="{{ route('quran.index') }}" class="nav-drawer-link {{ request()->routeIs('quran.*') ? 'active' : '' }}">
+                <span class="nav-drawer-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                </span>
+                <span class="nav-drawer-text" data-i18n="nav_quran">Qur'ani Tukufu</span>
+                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+            </a>
             <a href="{{ route('hadith.today') }}" class="nav-drawer-link {{ request()->routeIs('hadith.today') ? 'active' : '' }}">
                 <span class="nav-drawer-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

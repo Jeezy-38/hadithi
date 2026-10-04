@@ -4122,3 +4122,456 @@ a, button, select, input {
     color: var(--text-primary);
 }
 
+/* ==========================================================================
+   Moduli ya Qur'ani Tukufu (Holy Qur'an Module Styling)
+   ========================================================================== */
+
+.quran-surah-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.quran-surah-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-subtle);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.quran-surah-card:hover {
+    border-color: rgba(218, 181, 106, 0.5);
+    background: var(--bg-surface-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 0 15px rgba(218, 181, 106, 0.08);
+}
+
+.surah-card-num-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--gold-subtle);
+    border: 1.5px solid rgba(218, 181, 106, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.quran-surah-card:hover .surah-card-num-box {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.surah-card-num {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--gold);
+    transition: color 0.2s ease;
+}
+
+.quran-surah-card:hover .surah-card-num {
+    color: #111;
+}
+
+.surah-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.surah-card-name-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.surah-card-name-sw {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.surah-card-trans {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.surah-card-meaning {
+    margin: 3px 0 6px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.surah-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.surah-card-badge {
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.badge-makki, .pill-makki {
+    background: rgba(218, 181, 106, 0.15);
+    color: var(--gold);
+    border: 1px solid rgba(218, 181, 106, 0.3);
+}
+
+.badge-madani, .pill-madani {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.surah-card-arabic-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.surah-card-ar {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.surah-card-arrow {
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.quran-surah-card:hover .surah-card-arrow {
+    transform: translateX(3px);
+    color: var(--gold);
+}
+
+/* Surah Reader Specifics */
+.quran-header-card {
+    padding: 32px 24px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(26, 26, 26, 0.8) 100%);
+    border: 1.5px solid rgba(218, 181, 106, 0.3);
+    text-align: center;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.quran-header-badge-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.quran-header-pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.quran-header-title-ar {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.4;
+}
+
+.quran-header-title-sw {
+    margin: 8px 0 4px;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.quran-header-meaning {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.quran-bismillah-box {
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--gold-subtle);
+    border: 1.5px solid rgba(218, 181, 106, 0.3);
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.bismillah-ar {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+}
+
+.bismillah-sw {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Controls Bar */
+.quran-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-group-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.font-size-buttons, .display-mode-buttons {
+    display: inline-flex;
+    background: var(--bg-surface-hover);
+    border-radius: 10px;
+    padding: 3px;
+    border: 1px solid var(--border-subtle);
+}
+
+.control-btn, .display-mode-btn {
+    padding: 5px 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-btn:hover, .display-mode-btn:hover {
+    color: var(--text-primary);
+}
+
+.display-mode-btn.active {
+    background: var(--gold);
+    color: #111;
+    font-weight: 800;
+}
+
+.quran-play-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 10px;
+    background: var(--gold-subtle);
+    border: 1.5px solid rgba(218, 181, 106, 0.4);
+    color: var(--gold);
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quran-play-all-btn:hover, .quran-play-all-btn.is-playing {
+    background: var(--gold);
+    color: #111;
+    border-color: var(--gold);
+}
+
+.audio-reciter-note {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* Ayah Cards */
+.quran-ayahs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.quran-ayah-card {
+    padding: 24px;
+    border-radius: 16px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-subtle);
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.quran-ayah-card:hover {
+    border-color: rgba(218, 181, 106, 0.4);
+}
+
+.quran-ayah-card.active-audio-ayah {
+    border-color: var(--gold);
+    background: rgba(218, 181, 106, 0.08);
+    box-shadow: 0 0 20px rgba(218, 181, 106, 0.2);
+}
+
+.ayah-card-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.ayah-number-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--gold-subtle);
+    border: 1.5px solid rgba(218, 181, 106, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ayah-num-val {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--gold);
+}
+
+.ayah-actions-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ayah-action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--bg-surface-hover);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ayah-action-btn:hover {
+    color: var(--gold);
+    border-color: rgba(218, 181, 106, 0.4);
+}
+
+.ayah-arabic-wrap {
+    margin-bottom: 18px;
+    padding: 10px 0;
+}
+
+.ayah-arabic-text {
+    margin: 0;
+    font-size: 30px;
+    line-height: 2.3;
+    color: var(--text-primary);
+    text-align: right;
+    word-spacing: 2px;
+}
+
+.ayah-translation-wrap {
+    padding-top: 14px;
+    border-top: 1px dashed var(--border-subtle);
+}
+
+.ayah-translation-sw {
+    margin: 0 0 8px;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.ayah-translation-en {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+/* Modes */
+.mode-ar-only .ayah-translation-wrap {
+    display: none !important;
+}
+
+.mode-sw-only .ayah-arabic-wrap {
+    display: none !important;
+}
+
+.reader-surah-jumper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.surah-jump-btn {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    transition: all 0.2s ease;
+}
+
+.surah-jump-btn:hover {
+    color: var(--gold);
+    border-color: rgba(218, 181, 106, 0.4);
+}
+
+.surah-jump-current {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--gold);
+}
+
+
