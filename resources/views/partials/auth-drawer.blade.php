@@ -53,28 +53,51 @@
             </form>
         @else
             <div class="auth-intro text-center">
-                <h2 id="auth-drawer-title" style="font-size: 20px; font-weight: 800; color: var(--text-primary); margin: 0 0 8px;">
+                <h2 id="auth-drawer-title" class="auth-welcome-title">
                     Karibu Bayt Al-Hadith
                 </h2>
-                <p class="auth-lead" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin: 0 0 24px;">
-                    Ingia kwa kubofya kitufe cha Google hapa chini ili vipendwa vyako na hadith unazosoma zikufuate kwenye kila kifaa chako.
+                <p class="auth-lead auth-welcome-lead">
+                    Ingia kwa kubofya kitufe cha Google hapa chini ili vipendwa vyako na aya unazosoma zikufuate kwenye kila kifaa chako.
                 </p>
             </div>
 
-            <div class="auth-providers auth-google-only" style="margin-bottom: 24px;">
-                <a class="auth-provider auth-provider--google" href="{{ route('auth.redirect', 'google') }}" style="padding: 14px 18px; border-radius: 14px; font-size: 14.5px; font-weight: 700; display: flex; align-items: center; justify-content: space-between; background: var(--bg-surface); border: 1.5px solid rgba(218, 181, 106, 0.4); text-decoration: none; color: var(--text-primary); transition: all 0.2s ease;">
-                    <span class="auth-provider-icon" style="display:flex; align-items:center;">
-                        <svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
-                    </span>
-                    <span data-i18n="auth_google" style="margin: 0 auto 0 12px;">Endelea na Google</span>
-                    <span style="color: var(--gold); font-size: 16px;">→</span>
-                </a>
-            </div>
+            <div class="auth-google-box">
+                <div class="auth-google-badge">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>KUINGIA KWA HARAKA & SALAMA</span>
+                </div>
 
-            <div class="auth-benefits-box" style="padding: 16px; border-radius: 12px; background: var(--gold-subtle); border: 1px solid var(--border-subtle); font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
-                <div>✓ <strong>Haraka & Salama:</strong> Hakuna haja ya kukariri nenosiri</div>
-                <div>✓ <strong>Sawazisha Kiotomatiki:</strong> Hadith na Aya ulizohifadhi ziko salama</div>
-                <div>✓ <strong>Ufikiaji Popote:</strong> Fungua kwenye simu, kompyuta au tableti</div>
+                <div class="auth-providers auth-google-only">
+                    <a class="auth-provider auth-provider--google auth-google-action-btn" href="{{ route('auth.redirect', 'google') }}">
+                        <span class="auth-google-icon-pill">
+                            <svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true">
+                                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/>
+                                <path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+                                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/>
+                            </svg>
+                        </span>
+                        <span class="auth-google-text" data-i18n="auth_google">Endelea na Google</span>
+                        <span class="auth-google-arrow" aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <div class="auth-benefits-list">
+                    <div class="auth-benefit-item">
+                        <span class="benefit-check" aria-hidden="true">✓</span>
+                        <span><strong>Bofyo Moja Tu:</strong> Hakuna nenosiri la kukariri au kupoteza</span>
+                    </div>
+                    <div class="auth-benefit-item">
+                        <span class="benefit-check" aria-hidden="true">✓</span>
+                        <span><strong>Sawazisha Kiotomatiki:</strong> Vipendwa na alama za kurasa ziko salama</span>
+                    </div>
+                    <div class="auth-benefit-item">
+                        <span class="benefit-check" aria-hidden="true">✓</span>
+                        <span><strong>Vifaa Vyote:</strong> Endelea kusoma kwenye simu, tableti au kompyuta</span>
+                    </div>
+                </div>
             </div>
 
             @if (session('auth_forgot_sent'))

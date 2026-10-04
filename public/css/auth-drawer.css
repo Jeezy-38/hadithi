@@ -764,3 +764,156 @@ body.auth-drawer-open { overflow: hidden; }
     margin-top: -4px;
 }
 .auth-row-between .auth-forgot-link { font-size: 13px; }
+
+/* ==========================================================================
+   Google-First Luxury Auth Box & Benefits
+   ========================================================================== */
+.auth-welcome-title {
+    font-size: 21px !important;
+    font-weight: 800 !important;
+    color: var(--text-primary) !important;
+    margin: 0 0 8px !important;
+    letter-spacing: -0.3px;
+}
+
+.auth-welcome-lead {
+    font-size: 13.5px !important;
+    color: var(--text-muted) !important;
+    line-height: 1.6 !important;
+    margin: 0 0 20px !important;
+}
+
+.auth-google-box {
+    margin: 8px 0 20px;
+    padding: 22px 18px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(218, 181, 106, 0.09) 0%, rgba(218, 181, 106, 0.02) 100%);
+    border: 1.5px solid rgba(218, 181, 106, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    text-align: center;
+}
+
+.auth-google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    background: rgba(218, 181, 106, 0.15);
+    border: 1px solid rgba(218, 181, 106, 0.3);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.auth-google-action-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 18px !important;
+    border-radius: 14px !important;
+    background: #ffffff !important;
+    color: #1f1f1f !important;
+    border: 1.5px solid #dadce0 !important;
+    text-decoration: none !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.auth-google-action-btn:hover {
+    border-color: var(--gold) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(218, 181, 106, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.auth-google-action-btn:active {
+    transform: translateY(0) scale(0.99) !important;
+}
+
+.auth-google-icon-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    flex-shrink: 0;
+}
+
+.auth-google-text {
+    flex: 1;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1f1f1f;
+    letter-spacing: 0.2px;
+}
+
+.auth-google-arrow {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.auth-google-action-btn:hover .auth-google-arrow {
+    transform: translateX(4px);
+}
+
+[dir="rtl"] .auth-google-action-btn:hover .auth-google-arrow {
+    transform: translateX(-4px);
+}
+
+.auth-benefits-list {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(218, 181, 106, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+[dir="rtl"] .auth-benefits-list {
+    text-align: right;
+}
+
+.auth-benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.auth-benefit-item strong {
+    color: var(--text-primary);
+}
+
+.benefit-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: rgba(218, 181, 106, 0.2);
+    color: var(--gold);
+    font-size: 10.5px;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 2px;
+}

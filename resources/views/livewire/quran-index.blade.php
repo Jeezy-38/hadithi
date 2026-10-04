@@ -76,26 +76,31 @@
     </section>
 
     {{-- Maktaba ya Sura --}}
-    <section class="library-shell quran-shell" aria-label="Orodha ya Sura za Qur'ani">
-        {{-- Sura za Haraka --}}
-        <div class="quick-topics-wrapper" aria-label="Sura Maarufu za Haraka">
-            <span class="quick-topics-label">SURA MAARUFU:</span>
-            <div class="quick-topics-scroll">
-                <a href="{{ route('quran.show', 1) }}" class="quick-topic-chip">Al-Faatiha</a>
-                <a href="{{ route('quran.show', 36) }}" class="quick-topic-chip">Yaasiin</a>
-                <a href="{{ route('quran.show', 67) }}" class="quick-topic-chip">Al-Mulk</a>
-                <a href="{{ route('quran.show', 18) }}" class="quick-topic-chip">Al-Kahf</a>
-                <a href="{{ route('quran.show', 55) }}" class="quick-topic-chip">Ar-Rahmaan</a>
-                <a href="{{ route('quran.show', 56) }}" class="quick-topic-chip">Al-Waaqi'ah</a>
-                <a href="{{ route('quran.show', 112) }}" class="quick-topic-chip">Al-Ikhlaas</a>
-                <a href="{{ route('quran.show', 114) }}" class="quick-topic-chip">An-Naas</a>
+    <section class="quran-shell" aria-label="Orodha ya Sura za Qur'ani">
+        {{-- Sura Maarufu za Haraka --}}
+        <div class="quran-quick-wrapper quick-topics-wrapper" aria-label="Sura Maarufu za Haraka">
+            <span class="quran-quick-label quick-topics-label">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>SURA MAARUFU:</span>
+            </span>
+            <div class="quran-quick-scroll quick-topics-scroll">
+                <a href="{{ route('quran.show', 1) }}" class="quran-quick-chip quick-topic-chip">Al-Faatiha</a>
+                <a href="{{ route('quran.show', 36) }}" class="quran-quick-chip quick-topic-chip">Yaasiin</a>
+                <a href="{{ route('quran.show', 67) }}" class="quran-quick-chip quick-topic-chip">Al-Mulk</a>
+                <a href="{{ route('quran.show', 18) }}" class="quran-quick-chip quick-topic-chip">Al-Kahf</a>
+                <a href="{{ route('quran.show', 55) }}" class="quran-quick-chip quick-topic-chip">Ar-Rahmaan</a>
+                <a href="{{ route('quran.show', 56) }}" class="quran-quick-chip quick-topic-chip">Al-Waaqi'ah</a>
+                <a href="{{ route('quran.show', 112) }}" class="quran-quick-chip quick-topic-chip">Al-Ikhlaas</a>
+                <a href="{{ route('quran.show', 114) }}" class="quran-quick-chip quick-topic-chip">An-Naas</a>
             </div>
         </div>
 
         {{-- Utafutaji na Vichujio --}}
-        <div class="library-toolbar">
-            <div class="search-input-wrapper">
-                <span class="search-icon" aria-hidden="true">
+        <div class="quran-toolbar library-toolbar">
+            <div class="quran-search-wrap search-input-wrapper">
+                <span class="quran-search-icon search-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -104,20 +109,20 @@
                 <input
                     type="search"
                     wire:model.live.debounce.250ms="search"
-                    placeholder="Tafuta Sura kwa jina (Al-Faatiha, Ya-Sin), namba (1-114), au maana..."
-                    class="library-search-input"
+                    placeholder="Tafuta Sura kwa jina (Al-Faatiha, Yaasiin), namba (1-114), au maana..."
+                    class="quran-search-input library-search-input"
                     aria-label="Tafuta Sura"
                 >
                 @if($search !== '' || $type !== 'all' || $juz !== '')
-                    <button type="button" wire:click="clearFilters" class="clear-search-btn" title="Ondoa utafutaji">✕</button>
+                    <button type="button" wire:click="clearFilters" class="quran-search-clear clear-search-btn" title="Ondoa utafutaji" aria-label="Ondoa utafutaji">✕</button>
                 @endif
             </div>
 
-            <div class="category-tabs" role="tablist" aria-label="Chuja kwa uteremsho">
+            <div class="quran-filter-tabs category-tabs" role="tablist" aria-label="Chuja kwa uteremsho">
                 <button
                     type="button"
                     wire:click="setType('all')"
-                    class="category-tab-btn {{ $type === 'all' ? 'active' : '' }}"
+                    class="quran-tab-btn category-tab-btn {{ $type === 'all' ? 'active' : '' }}"
                     role="tab"
                     aria-selected="{{ $type === 'all' ? 'true' : 'false' }}"
                 >
@@ -126,7 +131,7 @@
                 <button
                     type="button"
                     wire:click="setType('Makki')"
-                    class="category-tab-btn {{ $type === 'Makki' ? 'active' : '' }}"
+                    class="quran-tab-btn category-tab-btn {{ $type === 'Makki' ? 'active' : '' }}"
                     role="tab"
                     aria-selected="{{ $type === 'Makki' ? 'true' : 'false' }}"
                 >
@@ -135,7 +140,7 @@
                 <button
                     type="button"
                     wire:click="setType('Madani')"
-                    class="category-tab-btn {{ $type === 'Madani' ? 'active' : '' }}"
+                    class="quran-tab-btn category-tab-btn {{ $type === 'Madani' ? 'active' : '' }}"
                     role="tab"
                     aria-selected="{{ $type === 'Madani' ? 'true' : 'false' }}"
                 >

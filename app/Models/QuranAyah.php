@@ -32,4 +32,30 @@ class QuranAyah extends Model
     {
         return $this->belongsTo(QuranSurah::class, 'surah_number', 'number');
     }
+
+    /**
+     * Ensure Bismillah is separated from Ayah 1 for Surahs 2 to 114.
+     */
+    public function getArabicTextAttribute(?string $value): ?string
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        if ((int) $this->surah_number > 1 && (int) $this->verse_number === 1) {
+            return self::stripBismillahPrefix($value);
+        }
+
+        return $value;
+    }
+
+    /**
+     * Strip leading Bismillah prefix from Arabic text if present.
+     */
+    public static function stripBismillahPrefix(string $text): string
+    {
+        $pattern = '/^(\x{FEFF}|\s)*(بِ?سْمِ?\s*[\x{0600}-\x{06FF}\s]+?(?:ٱلرَّحِيمِ|الرَّحِيمِ|الرَّحِيم|ٱلرَّحِيم))\s*/u';
+
+        return preg_replace($pattern, '', $text) ?? $text;
+    }
 }

@@ -37,25 +37,18 @@
             <p class="quran-header-meaning">Maana: "{{ $surah->translation_sw }}"</p>
         </div>
 
-        {{-- Bismillah Frame (Isipokuwa Sura ya 9 At-Tawbah na Sura ya 1 ambayo tayari Bismillah ni Aya ya 1) --}}
+        {{-- Bismillah Frame (Inasimama Kujitegemea kwa Sura Zote isipokuwa Sura ya 9 At-Tawbah na Sura ya 1 Al-Faatiha) --}}
         @if($surah->number !== 9 && $surah->number !== 1)
-            <div class="quran-bismillah-box">
-                <div class="bismillah-ar font-arabic" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+            <div class="quran-bismillah-box" role="region" aria-label="Bismillah">
+                <span class="bismillah-badge">BISMILLAHIR RAHMAANIR RAHIIM</span>
+                <div class="bismillah-ar font-arabic" dir="rtl">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
                 <div class="bismillah-sw">Kwa jina la Mwenyezi Mungu, Mwingi wa Rehema, Mwenye Kurehemu</div>
             </div>
         @endif
 
         {{-- Upau wa Udhibiti wa Msomaji (Reader Toolbar) --}}
         <div class="quran-controls-bar">
-            {{-- Ukubwa wa Maandishi --}}
-            <div class="control-group">
-                <span class="control-group-label">Ukubwa wa herufi:</span>
-                <div class="font-size-buttons">
-                    <button type="button" id="btn-font-decrease" class="control-btn" title="Punguza ukubwa wa herufi">A-</button>
-                    <button type="button" id="btn-font-reset" class="control-btn" title="Ukubwa wa kawaida">A</button>
-                    <button type="button" id="btn-font-increase" class="control-btn" title="Ongeza ukubwa wa herufi">A+</button>
-                </div>
-            </div>
+
 
             {{-- Mifumo ya Kusoma --}}
             <div class="control-group">
@@ -167,21 +160,7 @@
             const playAllLabel = document.getElementById('play-all-label');
             const playAllIcon = document.getElementById('play-all-icon');
 
-            // 1. Font Size Control
-            let currentFontSize = parseInt(localStorage.getItem('quran_arabic_size') || '30', 10);
-            function updateArabicFontSize(size) {
-                currentFontSize = Math.min(Math.max(size, 20), 48);
-                const arabicTexts = document.querySelectorAll('.ayah-arabic-text');
-                arabicTexts.forEach(el => el.style.fontSize = `${currentFontSize}px`);
-                try { localStorage.setItem('quran_arabic_size', currentFontSize); } catch (_) {}
-            }
-            updateArabicFontSize(currentFontSize);
-
-            document.getElementById('btn-font-increase')?.addEventListener('click', () => updateArabicFontSize(currentFontSize + 3));
-            document.getElementById('btn-font-decrease')?.addEventListener('click', () => updateArabicFontSize(currentFontSize - 3));
-            document.getElementById('btn-font-reset')?.addEventListener('click', () => updateArabicFontSize(30));
-
-            // 2. Display Modes (both, ar, sw)
+            // Display Modes (both, ar, sw)
             const modeButtons = document.querySelectorAll('.display-mode-btn');
             modeButtons.forEach(btn => {
                 btn.addEventListener('click', () => {

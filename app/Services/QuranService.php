@@ -156,6 +156,11 @@ class QuranService
                 $verseNum = (int) ($arAyah['numberInSurah'] ?? ($index + 1));
                 $swText = $swAyahs[$index]['text'] ?? '';
                 $enText = $enAyahs[$index]['text'] ?? '';
+                $arText = $arAyah['text'] ?? '';
+
+                if ($number > 1 && $verseNum === 1) {
+                    $arText = QuranAyah::stripBismillahPrefix($arText);
+                }
 
                 $audioCode = sprintf('%03d%03d', $number, $verseNum);
                 $audioUrl = "https://everyayah.com/data/Alafasy_128kbps/{$audioCode}.mp3";
@@ -168,7 +173,7 @@ class QuranService
                     [
                         'juz_number' => (int) ($arAyah['juz'] ?? 1),
                         'page_number' => (int) ($arAyah['page'] ?? 1),
-                        'arabic_text' => $arAyah['text'] ?? '',
+                        'arabic_text' => $arText,
                         'translation_sw' => $swText,
                         'translation_en' => $enText,
                         'audio_url' => $audioUrl,

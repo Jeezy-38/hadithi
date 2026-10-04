@@ -4142,6 +4142,273 @@ a, button, select, input {
    Moduli ya Qur'ani Tukufu (Holy Qur'an Module Styling)
    ========================================================================== */
 
+.quran-shell {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin: 28px auto 60px;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+    .quran-shell {
+        margin: 18px auto 40px;
+        padding: 0 16px;
+    }
+}
+
+/* Sura Maarufu za Haraka (Quick Topics Horizontal Scroll) */
+.quran-quick-wrapper,
+.quick-topics-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 18px;
+    padding: 4px 0 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.quran-quick-wrapper::-webkit-scrollbar,
+.quick-topics-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.quran-quick-label,
+.quick-topics-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--gold);
+    white-space: nowrap;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.quran-quick-scroll,
+.quick-topics-scroll {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 2px 0;
+}
+
+.quran-quick-scroll::-webkit-scrollbar,
+.quick-topics-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.quran-quick-chip,
+.quick-topic-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 15px;
+    border-radius: 9999px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quran-quick-chip:hover,
+.quick-topic-chip:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--gold-subtle);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(218, 181, 106, 0.15);
+}
+
+/* Upau wa Utafutaji na Vichujio vya Qur'ani (Search & Toolbar) */
+.quran-toolbar,
+.library-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .quran-toolbar,
+    .library-toolbar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+    }
+}
+
+.quran-search-wrap,
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+}
+
+.quran-search-icon,
+.search-input-wrapper .search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    pointer-events: none;
+    z-index: 2;
+}
+
+[dir="rtl"] .quran-search-icon,
+[dir="rtl"] .search-input-wrapper .search-icon {
+    left: auto;
+    right: 18px;
+}
+
+.quran-search-input,
+.library-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 44px 13px 48px;
+    border-radius: 9999px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 14px;
+    outline: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+[dir="rtl"] .quran-search-input,
+[dir="rtl"] .library-search-input {
+    padding: 13px 48px 13px 44px;
+}
+
+.quran-search-input:focus,
+.library-search-input:focus {
+    border-color: var(--gold);
+    background: var(--bg-surface-hover);
+    box-shadow: 0 0 0 3px rgba(218, 181, 106, 0.25), 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.quran-search-input::placeholder,
+.library-search-input::placeholder {
+    color: var(--text-muted);
+    font-size: 13.5px;
+}
+
+.quran-search-clear,
+.search-input-wrapper .clear-search-btn {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-surface-hover);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 12px;
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+[dir="rtl"] .quran-search-clear,
+[dir="rtl"] .search-input-wrapper .clear-search-btn {
+    right: auto;
+    left: 14px;
+}
+
+.quran-search-clear:hover,
+.search-input-wrapper .clear-search-btn:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: var(--gold-subtle);
+}
+
+/* Vichujio vya Makki na Madani (Segmented Filter Tabs) */
+.quran-filter-tabs,
+.category-tabs {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg-surface);
+    padding: 4px;
+    border-radius: 9999px;
+    border: 1.5px solid var(--border-color);
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .quran-filter-tabs,
+    .category-tabs {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+}
+
+.quran-tab-btn,
+.category-tab-btn {
+    padding: 8px 18px;
+    border: none;
+    background: transparent;
+    border-radius: 9999px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .quran-tab-btn,
+    .category-tab-btn {
+        flex: 1;
+        padding: 9px 8px;
+        font-size: 12px;
+    }
+}
+
+.quran-tab-btn:hover,
+.category-tab-btn:hover {
+    color: var(--text-primary);
+}
+
+.quran-tab-btn.active,
+.category-tab-btn.active {
+    background: var(--gold);
+    color: #111;
+    font-weight: 800;
+    box-shadow: 0 2px 8px rgba(218, 181, 106, 0.35);
+}
+
 .quran-surah-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -4340,25 +4607,50 @@ a, button, select, input {
 }
 
 .quran-bismillah-box {
-    padding: 24px;
-    border-radius: 16px;
-    background: var(--gold-subtle);
-    border: 1.5px solid rgba(218, 181, 106, 0.3);
+    padding: 24px 20px;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(218, 181, 106, 0.12) 0%, rgba(218, 181, 106, 0.03) 100%);
+    border: 1.5px solid rgba(218, 181, 106, 0.35);
     text-align: center;
     margin-bottom: 24px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+.bismillah-badge {
+    display: inline-block;
+    padding: 3px 14px;
+    border-radius: 9999px;
+    background: rgba(218, 181, 106, 0.16);
+    border: 1px solid rgba(218, 181, 106, 0.35);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
 }
 
 .bismillah-ar {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     color: var(--gold);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    line-height: 1.8;
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+}
+
+@media (max-width: 640px) {
+    .bismillah-ar {
+        font-size: 25px;
+        line-height: 1.7;
+    }
 }
 
 .bismillah-sw {
-    font-size: 13px;
-    color: var(--text-muted);
+    font-size: 13.5px;
+    color: var(--text-secondary);
     font-style: italic;
+    line-height: 1.6;
 }
 
 /* Controls Bar */
@@ -4527,11 +4819,19 @@ a, button, select, input {
 
 .ayah-arabic-text {
     margin: 0;
-    font-size: 30px;
+    font-size: 28px;
     line-height: 2.3;
     color: var(--text-primary);
     text-align: right;
-    word-spacing: 2px;
+    word-spacing: normal;
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
+}
+
+@media (max-width: 640px) {
+    .ayah-arabic-text {
+        font-size: 24.5px;
+        line-height: 2.2;
+    }
 }
 
 .ayah-translation-wrap {
@@ -4540,16 +4840,24 @@ a, button, select, input {
 }
 
 .ayah-translation-sw {
-    margin: 0 0 8px;
-    font-size: 15.5px;
-    line-height: 1.7;
+    margin: 0 0 10px;
+    font-size: 16px;
+    line-height: 1.75;
     color: var(--text-secondary);
+    letter-spacing: 0.15px;
+}
+
+@media (max-width: 640px) {
+    .ayah-translation-sw {
+        font-size: 15px;
+        line-height: 1.7;
+    }
 }
 
 .ayah-translation-en {
     margin: 0;
     font-size: 13.5px;
-    line-height: 1.6;
+    line-height: 1.65;
     color: var(--text-muted);
 }
 
