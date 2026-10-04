@@ -100,32 +100,6 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                 @endforeach
             </div>
 
-            <div class="sidebar-block">
-                <div class="filter-group">
-                    <label for="book" data-i18n="sidebar_book">KITABU</label>
-                    <div class="select-wrapper">
-                        <select id="book" wire:model.live="book">
-                            <option value="" data-i18n="sidebar_book_all">Vitabu vyote</option>
-                            @foreach($books as $item)
-                                <option value="{{ $item->id }}">{{ $collection === '' ? $item->collection->name.' · ' : '' }}{{ $item->number }}. {{ $item->title_sw }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <div class="filter-group">
-                    <label for="chapter" data-i18n="sidebar_chapter">MLANGO</label>
-                    <div class="select-wrapper">
-                        <select id="chapter" wire:model.live="chapter" @disabled($book === '')>
-                            <option value="" data-i18n="sidebar_chapter_all">{{ $book === '' ? 'Chagua kitabu kwanza' : 'Milango yote' }}</option>
-                            @foreach($chapters as $item)
-                                <option value="{{ $item->id }}">{{ $item->number }}. {{ $item->title_sw }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-
             <div class="sidebar-note">
                 <span class="note-icon" aria-hidden="true">◈</span>
                 <div class="note-content">

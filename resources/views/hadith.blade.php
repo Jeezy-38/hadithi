@@ -46,7 +46,7 @@
                     <span class="audio-badge badge-hd" id="audio-badge">Sauti Fasaha (HD)</span>
                 </div>
                 <p class="audio-desc">Sikiliza hadith ikisomwa kwa matamshi fasaha na ya asili katika Kiswahili, Kiarabu au Kiingereza.</p>
-                <div class="audio-options">
+                <div class="audio-options audio-options--simple">
                     <label>
                         <span>Lugha ya sauti</span>
                         <div class="select-wrapper">
@@ -57,37 +57,9 @@
                             </select>
                         </div>
                     </label>
-                    <label>
-                        <span>Msomaji</span>
-                        <div class="select-wrapper">
-                            <select id="audio-voice" aria-describedby="audio-status">
-                                <option value="hd-natural" selected>Kiume · HD</option>
-                            </select>
-                        </div>
-                    </label>
-                    <label>
-                        <span>Kasi ya kusoma</span>
-                        <div class="select-wrapper">
-                            <select id="audio-rate">
-                                <option value="0.75">0.75×</option>
-                                <option value="0.9">0.9×</option>
-                                <option value="1" selected>1×</option>
-                                <option value="1.15">1.15×</option>
-                                <option value="1.25">1.25×</option>
-                                <option value="1.5">1.5×</option>
-                            </select>
-                        </div>
-                    </label>
-                    <label>
-                        <span>Mfululizo</span>
-                        <div class="select-wrapper">
-                            <select id="audio-sequence" title="Soma Kiarabu kisha tafsiri">
-                                <option value="single" selected>Lugha moja</option>
-                                <option value="ar-sw">Ar → Sw</option>
-                                <option value="ar-en" @disabled(!$hadith->english)>Ar → En</option>
-                            </select>
-                        </div>
-                    </label>
+                    <input type="hidden" id="audio-voice" value="hd-natural">
+                    <input type="hidden" id="audio-rate" value="1">
+                    <input type="hidden" id="audio-sequence" value="single">
                 </div>
 
                 <div class="audio-progress-container" id="audio-progress-container">

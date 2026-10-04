@@ -41,21 +41,11 @@
                 <div class="nav-links">
                     <a href="{{ route('library') }}" class="{{ request()->routeIs('library') ? 'active' : '' }}" data-i18n="nav_library">Maktaba</a>
                     <a href="{{ route('quran.index') }}" class="{{ request()->routeIs('quran.*') ? 'active' : '' }}" data-i18n="nav_quran">Qur'ani</a>
-                    <a href="{{ route('hadith.today') }}" class="{{ request()->routeIs('hadith.today') ? 'active' : '' }}" data-i18n="nav_today">Hadith ya leo</a>
                     <a href="{{ route('duaa.index') }}" class="{{ request()->routeIs('duaa.*') ? 'active' : '' }}" data-i18n="nav_duaa">Dua & Adhkar</a>
                     <a href="{{ route('tasbih') }}" class="{{ request()->routeIs('tasbih') ? 'active' : '' }}" data-i18n="nav_tasbih">Tasbih</a>
                     <a href="{{ route('bookmarks') }}" class="{{ request()->routeIs('bookmarks') ? 'active' : '' }}" data-i18n="nav_bookmarks">Vipendwa</a>
                 </div>
                 <div class="nav-controls">
-                    <label class="language" for="reading-language">
-                        <span class="language-label-text" data-i18n="lang_label">Lugha:</span>
-                        <select id="reading-language" aria-label="Lugha ya kusoma hadith">
-                            <option value="both">Kiswahili + العربية</option>
-                            <option value="sw">Kiswahili</option>
-                            <option value="en">English</option>
-                            <option value="ar">العربية</option>
-                        </select>
-                    </label>
                     <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Badili mwonekano wa giza au mwanga" title="Badili mwonekano (Giza / Nuru)">
                         <span class="theme-icon sun-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

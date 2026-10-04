@@ -97,6 +97,12 @@
             <div class="nav-drawer-setting-header">
                 <span class="nav-drawer-setting-title" data-i18n="lang_label">Lugha ya kusoma:</span>
             </div>
+            <select id="reading-language" class="sr-only" aria-hidden="true" style="display:none;" tabindex="-1">
+                <option value="both">Kiswahili + Kiarabu</option>
+                <option value="sw">Kiswahili pekee</option>
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+            </select>
             <div class="nav-drawer-lang-grid" role="group" aria-label="Lugha ya kusoma hadith">
                 <button type="button" class="drawer-lang-btn" data-lang-val="both">
                     <span class="drawer-lang-main">Kiswahili</span>
@@ -168,9 +174,9 @@
                     <button type="submit" class="nav-drawer-btn nav-drawer-btn--logout" data-i18n="auth_logout">Toka kwenye akaunti</button>
                 </form>
             @else
-                <button type="button" class="nav-drawer-btn nav-drawer-btn--login" data-auth-open data-close-nav-drawer aria-label="Ingia">
+                <button type="button" class="nav-drawer-btn nav-drawer-btn--login" data-auth-open data-close-nav-drawer aria-label="Ingia na Google">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    <span data-i18n="auth_login">Ingia / Fungua akaunti</span>
+                    <span data-i18n="auth_login">Ingia na Google</span>
                 </button>
             @endauth
         </div>
