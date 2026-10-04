@@ -3,9 +3,9 @@
     <section class="hero dua-hero">
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-copy">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> HISN AL-MUSLIM · NGOME YA MUISLAMU</span>
-            <h1>DUA & <br><em>ADHKAR .</em></h1>
-            <p>
+            <span class="eyebrow" data-i18n="dua_eyebrow"><span class="eyebrow-dot"></span> HISN AL-MUSLIM · NGOME YA MUISLAMU</span>
+            <h1 data-i18n="dua_title">DUA & <br><em>ADHKAR .</em></h1>
+            <p data-i18n="dua_desc">
                 Dua sahihi na adhkar zilizothibitishwa kutoka katika Qur'an na mafundisho ya Mtume Muhammad ﷺ. Hifadhi ya moyo, amani ya nafsi, na kinga ya muumini katika kila nyakati za maisha.
             </p>
             <div class="hero-actions">
@@ -20,14 +20,14 @@
                             <circle cx="7" cy="12" r="1.5" fill="currentColor"></circle>
                         </svg>
                     </span>
-                    <span>Fungua Digital Tasbih</span>
+                    <span data-i18n="dua_btn_tasbih">Fungua Digital Tasbih</span>
                     <span class="hero-button-arrow" aria-hidden="true">→</span>
                 </a>
                 <button type="button" wire:click="selectCategory('asubuhi')" class="hero-button hero-button-secondary">
-                    <span>Adhkar za Asubuhi</span>
+                    <span data-i18n="dua_btn_morning">Adhkar za Asubuhi</span>
                 </button>
             </div>
-            <div class="hero-caption">HISN AL-MUSLIM ✦ DUA NA ADHKAR ZA KILA SIKU</div>
+            <div class="hero-caption" data-i18n="dua_caption">HISN AL-MUSLIM ✦ DUA NA ADHKAR ZA KILA SIKU</div>
         </div>
     </section>
 
@@ -43,7 +43,7 @@
             </span>
             <div class="summary-text">
                 <strong>{{ $totalCount }}</strong>
-                <span>dua zilizopo</span>
+                <span data-i18n="dua_stat_total">dua zilizopo</span>
             </div>
         </div>
         <div class="summary-item">
@@ -55,7 +55,7 @@
             </span>
             <div class="summary-text">
                 <strong>{{ $categories->count() }}</strong>
-                <span>makundi makuu</span>
+                <span data-i18n="dua_stat_cats">makundi makuu</span>
             </div>
         </div>
         <div class="summary-item">
@@ -71,11 +71,11 @@
             </span>
             <div class="summary-text">
                 <strong>Tasbih</strong>
-                <span>kaunta ya kidigitali</span>
+                <span data-i18n="dua_stat_tasbih">kaunta ya kidigitali</span>
             </div>
         </div>
         <div class="summary-note-item">
-            <span class="summary-badge">Hisn al-Muslim · Kiarabu · Kiswahili · English</span>
+            <span class="summary-badge" data-i18n="dua_stat_note">Hisn al-Muslim · Kiarabu · Kiswahili · English</span>
         </div>
     </section>
 

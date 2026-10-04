@@ -3,9 +3,9 @@
     <section class="hero quran-hero">
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-copy">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> AL-QUR'AN AL-KAREEM · MANENO YA MWENYEZI MUNGU</span>
-            <h1>QUR'ANI <br><em>TUKUFU .</em></h1>
-            <p>
+            <span class="eyebrow" data-i18n="quran_eyebrow"><span class="eyebrow-dot"></span> AL-QUR'AN AL-KAREEM · MANENO YA MWENYEZI MUNGU</span>
+            <h1 data-i18n="quran_title">QUR'ANI <br><em>TUKUFU .</em></h1>
+            <p data-i18n="quran_desc">
                 "Hiki ni Kitabu tulichokuteremshia chenye baraka, ili wazizingatie Aya zake, na wawaidhike wenye akili." — Saad 38:29. Soma Sura zote 114 zikiwa na matini asilia ya Kiarabu, tafsiri fasaha ya Kiswahili ya Sheikh Ali Muhsin Al-Barwani, na sauti fasaha ya usomaji.
             </p>
             <div class="hero-actions">
@@ -16,14 +16,14 @@
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                         </svg>
                     </span>
-                    <span>Anza na Al-Faatiha</span>
+                    <span data-i18n="quran_btn_start">Anza na Al-Faatiha</span>
                     <span class="hero-button-arrow" aria-hidden="true">→</span>
                 </a>
                 <a href="{{ route('quran.show', 36) }}" class="hero-button hero-button-secondary">
-                    <span>Sura Yaasiin</span>
+                    <span data-i18n="quran_btn_yasin">Sura Yaasiin</span>
                 </a>
             </div>
-            <div class="hero-caption">SURA 114 ✦ AYA 6,236 ✦ TAFSIRI YA KISWAHILI ✦ USOMAJI WA SAUTI</div>
+            <div class="hero-caption" data-i18n="quran_caption">SURA 114 ✦ AYA 6,236 ✦ TAFSIRI YA KISWAHILI ✦ USOMAJI WA SAUTI</div>
         </div>
     </section>
 
@@ -38,7 +38,7 @@
             </span>
             <div class="summary-text">
                 <strong>114</strong>
-                <span>Sura kamili</span>
+                <span data-i18n="quran_stat_surahs">Sura kamili</span>
             </div>
         </div>
         <div class="summary-item">
@@ -54,7 +54,7 @@
             </span>
             <div class="summary-text">
                 <strong>6,236</strong>
-                <span>Jumla ya Aya</span>
+                <span data-i18n="quran_stat_ayahs">Jumla ya Aya</span>
             </div>
         </div>
         <div class="summary-item">
@@ -62,16 +62,16 @@
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="2" x2="12" y2="22"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>
                 </svg>
             </span>
             <div class="summary-text">
                 <strong>30</strong>
-                <span>Juz / Sehemu</span>
+                <span data-i18n="quran_stat_juz">Juz / Sehemu</span>
             </div>
         </div>
         <div class="summary-item summary-note-item">
-            <span class="summary-badge">Makki 86 · Madani 28</span>
+            <span class="summary-badge" data-i18n="quran_stat_note">Makki 86 · Madani 28</span>
         </div>
     </section>
 

@@ -1,5 +1,5 @@
 <x-layouts.app :title="$hadith->chapter->book->collection->name.' · '.$hadith->number">
-    <div class="reader-shell">
+    <div class="reader-shell hadith-reader-shell">
         <a class="back-link" href="{{ route('library', ['collection' => $hadith->chapter->book->collection->slug, 'book' => $hadith->chapter->book_id, 'chapter' => $hadith->chapter_id]) }}">
             <span class="back-arrow" aria-hidden="true">←</span>
             <span>Rudi kwenye mlango</span>
