@@ -152,11 +152,10 @@
             </div>
         </div>
 
-        <div class="nav-drawer-divider"></div>
-
-        <div class="nav-drawer-section-label">AKAUNTI</div>
-        <div class="nav-drawer-account">
-            @auth
+        @auth
+            <div class="nav-drawer-divider"></div>
+            <div class="nav-drawer-section-label">AKAUNTI</div>
+            <div class="nav-drawer-account">
                 @php($drawerUser = auth()->user())
                 <div class="nav-drawer-user-info">
                     @if ($drawerUser->avatar)
@@ -173,13 +172,8 @@
                     @csrf
                     <button type="submit" class="nav-drawer-btn nav-drawer-btn--logout" data-i18n="auth_logout">Toka kwenye akaunti</button>
                 </form>
-            @else
-                <button type="button" class="nav-drawer-btn nav-drawer-btn--login" data-auth-open data-close-nav-drawer aria-label="Ingia na Google">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    <span data-i18n="auth_login">Ingia na Google</span>
-                </button>
-            @endauth
-        </div>
+            </div>
+        @endauth
     </div>
 
     <div class="nav-drawer-footer">

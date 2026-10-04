@@ -2311,16 +2311,33 @@ a, button, select, input {
         display: flex !important;
         align-items: center !important;
         margin-left: auto !important;
-        gap: 0 !important;
+        gap: 10px !important;
     }
     .site-header .language,
-    .site-header .theme-toggle,
-    .site-header .auth-trigger {
+    .site-header .theme-toggle {
         display: none !important;
+    }
+    .site-header .auth-trigger {
+        display: inline-flex !important;
+        align-items: center !important;
+        height: 36px !important;
+        padding: 0 14px !important;
+        font-size: 13px !important;
+        border-radius: 999px !important;
+        border: 1.5px solid var(--gold) !important;
+        background: var(--gold-subtle) !important;
+        color: var(--gold) !important;
+        font-weight: 700 !important;
+    }
+    .site-header .auth-trigger--user {
+        width: 36px !important;
+        height: 36px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
     }
     .menu-toggle-btn {
         display: inline-flex !important;
-        margin-left: auto !important;
+        margin-left: 0 !important;
     }
 
     /* Library shell on tablet / mobile */
@@ -2854,12 +2871,30 @@ a, button, select, input {
         display: flex !important;
         align-items: center !important;
         margin-left: auto !important;
-        gap: 0 !important;
+        gap: 8px !important;
     }
     .site-header .language,
-    .site-header .theme-toggle,
-    .site-header .auth-trigger {
+    .site-header .theme-toggle {
         display: none !important;
+    }
+    .site-header .auth-trigger {
+        display: inline-flex !important;
+        align-items: center !important;
+        height: 34px !important;
+        padding: 0 12px !important;
+        font-size: 12px !important;
+        gap: 6px !important;
+        border-radius: 999px !important;
+        border: 1.5px solid var(--gold) !important;
+        background: var(--gold-subtle) !important;
+        color: var(--gold) !important;
+        font-weight: 700 !important;
+    }
+    .site-header .auth-trigger--user {
+        width: 34px !important;
+        height: 34px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
     }
 
     /* Kitufe cha Menyu ya Simu (Hamburger Button) */
