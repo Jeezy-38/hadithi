@@ -83,7 +83,7 @@ class HadithAudioTest extends TestCase
     public function test_audio_uses_male_voice_for_each_language(): void
     {
         $hadith = $this->createTestHadith();
-        foreach (['ar' => 'ar-SA-HamedNeural', 'en' => 'en-US-GuyNeural'] as $language => $voice) {
+        foreach (['ar' => 'ar-EG-ShakirNeural', 'en' => 'en-US-GuyNeural'] as $language => $voice) {
             $this->get('/audio/hadith/'.$hadith->id.'/'.$language)->assertOk();
             Process::assertRan(fn ($process) => json_decode($process->input, true)['voice'] === $voice);
         }

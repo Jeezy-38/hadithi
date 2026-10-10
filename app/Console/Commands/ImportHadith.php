@@ -56,6 +56,9 @@ class ImportHadith extends Command
             '*.reference_url' => ['nullable', 'url:http,https'],
             '*.attribution' => ['nullable', 'string'],
             '*.grade' => ['nullable', 'string', 'max:255'],
+            '*.explanation' => ['nullable', 'string'],
+            '*.hints' => ['nullable', 'array'],
+            '*.hints.*' => ['string'],
             '*.content_note' => ['nullable', 'string'],
             '*.license_url' => ['nullable', 'url:http,https'],
             '*.source_fetched_at' => ['nullable', 'date'],
@@ -85,7 +88,7 @@ class ImportHadith extends Command
                     ['title_sw' => $row['chapter']['title_sw'], 'title_ar' => $row['chapter']['title_ar']],
                 );
                 $attributes = collect($row)->only([
-                    'number', 'arabic', 'swahili', 'english', 'source_name', 'source_url', 'numbering_system',
+                    'number', 'arabic', 'swahili', 'english', 'explanation', 'hints', 'source_name', 'source_url', 'numbering_system',
                     'translator', 'translation_source_url', 'license', 'reviewed_by', 'reviewed_at', 'is_published',
                     'title', 'source_record_id', 'reference_url', 'attribution', 'grade', 'content_note',
                     'license_url', 'source_fetched_at', 'source_sha256',

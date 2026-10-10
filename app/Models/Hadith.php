@@ -12,7 +12,12 @@ class Hadith extends Model
 
     protected function casts(): array
     {
-        return ['is_published' => 'boolean', 'reviewed_at' => 'date', 'source_fetched_at' => 'datetime'];
+        return [
+            'is_published' => 'boolean',
+            'reviewed_at' => 'date',
+            'source_fetched_at' => 'datetime',
+            'hints' => 'array',
+        ];
     }
 
     protected static function booted(): void

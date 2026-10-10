@@ -13,18 +13,44 @@
             @endif
         </div>
 
+        @php
+            $shareArabic = trim((string) $dua->arabic);
+            $shareArabicShort = \Illuminate\Support\Str::limit($shareArabic, 120);
+            $shareSwahiliShort = \Illuminate\Support\Str::limit($dua->swahili, 220);
+            $shareFormatted = "🤲 Dua: " . $dua->title_sw . ($dua->title_ar ? " (" . $dua->title_ar . ")" : "") . "\n\n"
+                . ($shareArabicShort ? $shareArabicShort . "\n\n" : "")
+                . "“" . $shareSwahiliShort . "”\n\n"
+                . "📿 Lengo: Soma mara " . $dua->target_count . "\n"
+                . "📖 Chanzo: " . ($dua->reference ?? 'Hisn al-Muslim');
+        @endphp
+
         <div class="reader-actions no-print">
-            <button type="button" id="share-dua" class="text-button action-pill-btn" data-share-text="{{ $dua->title_sw.': '.$dua->swahili }}" data-share-url="{{ url()->current() }}">
-                <span class="btn-icon" aria-hidden="true">⧉</span>
-                <span class="btn-text">Nakili / Shiriki</span>
+            <button type="button" id="bookmark-dua-btn" class="text-button action-pill-btn" data-dua-id="{{ $dua->id }}" data-dua-title="{{ $dua->title_sw }}" data-dua-cat="{{ $dua->category->name_sw }}" data-dua-excerpt="{{ \Illuminate\Support\Str::limit($dua->swahili, 90) }}" aria-pressed="false">
+                <span class="btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                </span>
+                <span class="btn-text">Hifadhi</span>
             </button>
-            <a class="text-button action-pill-btn" href="{{ route('tasbih') }}">
-                <span>Fungua Digital Tasbih</span>
-            </a>
-            <a class="text-button action-pill-btn" href="{{ route('duaa.index') }}">
-                <span>Dua Zote</span>
-                <span aria-hidden="true">→</span>
-            </a>
+
+            <button type="button" id="share-dua" class="text-button action-pill-btn" data-share-text="{{ $shareFormatted }}" data-share-url="{{ url()->current() }}">
+                <span class="btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                        <polyline points="16 6 12 2 8 6"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="15"></line>
+                    </svg>
+                </span>
+                <span class="btn-text">Shiriki</span>
+            </button>
+
+            {{-- Kidhibiti cha Ukubwa wa Maandishi (Font Size Scaler) --}}
+            <div class="font-scaler-widget" aria-label="Rekebisha ukubwa wa maandishi">
+                <button type="button" id="font-decrease" class="scaler-btn" title="Punguza ukubwa wa maandishi" aria-label="Punguza ukubwa">A-</button>
+                <span id="font-scale-display" class="scaler-label" title="Ukubwa wa sasa">100%</span>
+                <button type="button" id="font-increase" class="scaler-btn" title="Ongeza ukubwa wa maandishi" aria-label="Ongeza ukubwa">A+</button>
+            </div>
         </div>
 
         <article class="reader-card dua-detail-card">
@@ -150,6 +176,57 @@
                 </div>
             </section>
         @endif
+        {{-- Urambazaji wa Chini (Next/Prev Navigation Cards) --}}
+        <nav class="reader-bottom-nav dua-bottom-nav" aria-label="Urambazaji wa Dua">
+            @if($prev)
+                <a href="{{ route('duaa.show', $prev) }}" class="reader-nav-card nav-prev">
+                    <span class="nav-card-icon" aria-hidden="true">←</span>
+                    <div class="nav-card-content">
+                        <span class="nav-card-hint nav-dir-label">DUA ILIYOTANGULIA</span>
+                        <strong class="nav-card-title nav-surah-name">{{ $prev->title_sw }}</strong>
+                        <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($prev->swahili, 60) }}</span>
+                    </div>
+                </a>
+            @else
+                <div class="reader-nav-card nav-disabled">
+                    <div class="nav-card-content">
+                        <span class="nav-card-hint nav-dir-label">MWANZO WA KUNDI</span>
+                        <strong class="nav-card-title nav-surah-name">Dua ya Kwanza</strong>
+                    </div>
+                </div>
+            @endif
+
+            <a href="{{ route('duaa.index', ['kundi' => $dua->category->slug]) }}" class="reader-nav-card nav-center" title="Rudi kwenye kundi hili">
+                <span class="nav-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a10 10 0 0 1 10 10c0 5.5-4.5 10-10 10S2 17.5 2 12A10 10 0 0 1 12 2z"></path>
+                        <path d="m9 12 2 2 4-4"></path>
+                    </svg>
+                </span>
+                <div class="nav-card-content">
+                    <span class="nav-card-hint nav-dir-label">KUNDI LA DUA</span>
+                    <strong class="nav-card-title nav-surah-name">{{ \Illuminate\Support\Str::limit($dua->category->name_sw, 24) }}</strong>
+                </div>
+            </a>
+
+            @if($next)
+                <a href="{{ route('duaa.show', $next) }}" class="reader-nav-card nav-next">
+                    <div class="nav-card-content">
+                        <span class="nav-card-hint nav-dir-label">DUA INAYOFUATA</span>
+                        <strong class="nav-card-title nav-surah-name">{{ $next->title_sw }}</strong>
+                        <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($next->swahili, 60) }}</span>
+                    </div>
+                    <span class="nav-card-icon" aria-hidden="true">→</span>
+                </a>
+            @else
+                <div class="reader-nav-card nav-disabled">
+                    <div class="nav-card-content">
+                        <span class="nav-card-hint nav-dir-label">MWISHO WA KUNDI</span>
+                        <strong class="nav-card-title nav-surah-name">Dua ya Mwisho</strong>
+                    </div>
+                </div>
+            @endif
+        </nav>
     </div>
 
     <script>
@@ -162,6 +239,7 @@
             const resetBtn = document.getElementById('dua-count-reset');
             const compMsg = document.getElementById('counter-completed-msg');
             const shareBtn = document.getElementById('share-dua');
+            const bookmarkBtn = document.getElementById('bookmark-dua-btn');
 
             let currentCount = 0;
 
@@ -187,7 +265,6 @@
                     }
                     updateUI();
                 } else {
-                    // Click again after completed allows resetting or continuing
                     currentCount = 0;
                     updateUI();
                 }
@@ -205,15 +282,62 @@
                     if (navigator.share) {
                         try {
                             await navigator.share({ title: document.title, text: text, url: url });
+                            return;
                         } catch (_) {}
-                    } else if (navigator.clipboard) {
-                        await navigator.clipboard.writeText(`${text}\n\n${url}`);
+                    }
+                    if (navigator.clipboard) {
+                        await navigator.clipboard.writeText(`${text}\n\n📲 Soma zaidi: ${url}`);
                         const btnText = shareBtn.querySelector('.btn-text');
                         if (btnText) {
                             const original = btnText.textContent;
                             btnText.textContent = 'Imenakiliwa!';
                             setTimeout(() => { btnText.textContent = original; }, 2000);
                         }
+                    }
+                });
+            }
+
+            if (bookmarkBtn) {
+                const duaId = String(bookmarkBtn.dataset.duaId);
+                const duaTitle = bookmarkBtn.dataset.duaTitle;
+                const duaCat = bookmarkBtn.dataset.duaCat;
+                const duaExcerpt = bookmarkBtn.dataset.duaExcerpt;
+                const url = window.location.href;
+
+                const getDuaBookmarks = () => {
+                    try { return JSON.parse(localStorage.getItem('dua-bookmarks')) || []; } catch (_) { return []; }
+                };
+
+                const setDuaBookmarks = items => {
+                    try { localStorage.setItem('dua-bookmarks', JSON.stringify(items)); } catch (_) {}
+                };
+
+                const isBookmarked = () => getDuaBookmarks().some(item => String(item.id) === duaId);
+
+                const updateBookmarkUI = saved => {
+                    bookmarkBtn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+                    const textSpan = bookmarkBtn.querySelector('.btn-text');
+                    const iconSpan = bookmarkBtn.querySelector('.btn-icon');
+                    if (textSpan) textSpan.textContent = saved ? 'Imehifadhiwa' : 'Hifadhi';
+                    if (iconSpan) {
+                        iconSpan.innerHTML = saved
+                            ? `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`
+                            : `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+                    }
+                };
+
+                updateBookmarkUI(isBookmarked());
+
+                bookmarkBtn.addEventListener('click', () => {
+                    let list = getDuaBookmarks();
+                    if (isBookmarked()) {
+                        list = list.filter(item => String(item.id) !== duaId);
+                        setDuaBookmarks(list);
+                        updateBookmarkUI(false);
+                    } else {
+                        list.unshift({ id: duaId, title: duaTitle, category: duaCat, excerpt: duaExcerpt, url: url, saved_at: new Date().toISOString() });
+                        setDuaBookmarks(list);
+                        updateBookmarkUI(true);
                     }
                 });
             }

@@ -71,27 +71,29 @@
     // -------------------------------------------------------------
     // 2. Reading Font Size Adjuster
     // -------------------------------------------------------------
+    let fontScale = 1.0;
+    try {
+        const saved = parseFloat(localStorage.getItem('hadith-font-scale'));
+        if (!isNaN(saved) && saved >= 0.8 && saved <= 1.5) fontScale = saved;
+    } catch (_) {}
+
+    const applyFontScale = val => {
+        fontScale = Math.min(1.5, Math.max(0.85, Math.round(val * 10) / 10));
+        document.documentElement.style.setProperty('--font-scale', fontScale);
+        try { localStorage.setItem('hadith-font-scale', fontScale); } catch (_) {}
+        const display = document.getElementById('font-scale-display');
+        if (display) {
+            display.textContent = `${Math.round(fontScale * 100)}%`;
+        }
+    };
+    applyFontScale(fontScale);
+
     const decBtn = document.getElementById('font-decrease');
     const resetBtn = document.getElementById('font-reset');
     const incBtn = document.getElementById('font-increase');
-    if (decBtn && incBtn) {
-        let scale = 1.0;
-        try {
-            const saved = parseFloat(localStorage.getItem('hadith-font-scale'));
-            if (!isNaN(saved) && saved >= 0.8 && saved <= 1.5) scale = saved;
-        } catch (_) {}
-
-        const applyFontScale = val => {
-            scale = Math.min(1.5, Math.max(0.85, Math.round(val * 10) / 10));
-            document.documentElement.style.setProperty('--font-scale', scale);
-            try { localStorage.setItem('hadith-font-scale', scale); } catch (_) {}
-        };
-        applyFontScale(scale);
-
-        decBtn.addEventListener('click', () => applyFontScale(scale - 0.1));
-        incBtn.addEventListener('click', () => applyFontScale(scale + 0.1));
-        if (resetBtn) resetBtn.addEventListener('click', () => applyFontScale(1.0));
-    }
+    if (decBtn) decBtn.addEventListener('click', () => applyFontScale(fontScale - 0.1));
+    if (incBtn) incBtn.addEventListener('click', () => applyFontScale(fontScale + 0.1));
+    if (resetBtn) resetBtn.addEventListener('click', () => applyFontScale(1.0));
 
     // -------------------------------------------------------------
     // 3. Global Multilingual UI Translation & Reading Language
@@ -1123,13 +1125,13 @@
     // -------------------------------------------------------------
     const shareBtn = document.getElementById('share-hadith');
     if (shareBtn) {
-        const defaultIcon = shareBtn.querySelector('.btn-icon')?.textContent || '⧉';
+        const defaultIconHTML = shareBtn.querySelector('.btn-icon')?.innerHTML || '⧉';
 
         shareBtn.addEventListener('click', async () => {
             const text = shareBtn.dataset.shareText || document.title;
             const url = shareBtn.dataset.shareUrl || location.href;
             if (navigator.share) {
-                try { await navigator.share({ text, url }); return; } catch (_) { /* cancelled or unsupported; fall back to copy */ }
+                try { await navigator.share({ text: `${text}\n\n📲 Soma zaidi: ${url}`, url: url }); return; } catch (_) { /* cancelled or unsupported; fall back to copy */ }
             }
             const currentLang = document.documentElement.dataset.readingLanguage || 'both';
             const dictKey = (currentLang === 'en' || currentLang === 'ar') ? currentLang : 'sw';
@@ -1139,16 +1141,16 @@
             const textEl = shareBtn.querySelector('.btn-text');
 
             try {
-                await navigator.clipboard.writeText(`${text}\n${url}`);
+                await navigator.clipboard.writeText(`${text}\n\n📲 Soma zaidi: ${url}`);
                 if (iconEl && textEl) {
-                    iconEl.textContent = '✓';
+                    iconEl.innerHTML = '<span style="color:var(--gold);font-weight:700;">✓</span>';
                     textEl.textContent = t.btn_copied || 'Imenakiliwa!';
                 } else {
                     shareBtn.textContent = (t.btn_copied || 'Imenakiliwa!') + ' ✓';
                 }
             } catch (_) {
                 if (iconEl && textEl) {
-                    iconEl.textContent = '×';
+                    iconEl.innerHTML = '<span style="color:#ef4444;font-weight:700;">×</span>';
                     textEl.textContent = t.btn_copy_failed || 'Imeshindwa kunakili';
                 } else {
                     shareBtn.textContent = t.btn_copy_failed || 'Imeshindwa kunakili';
@@ -1159,7 +1161,7 @@
                 const curDictKey = (curLang === 'en' || curLang === 'ar') ? curLang : 'sw';
                 const curT = UI_TRANSLATIONS[curDictKey] || UI_TRANSLATIONS.sw;
                 if (iconEl && textEl) {
-                    iconEl.textContent = defaultIcon;
+                    iconEl.innerHTML = defaultIconHTML;
                     textEl.textContent = curT.btn_share;
                 } else {
                     shareBtn.textContent = curT.btn_share;
@@ -1287,6 +1289,7 @@
         }
         if (playerContainer) {
             playerContainer.classList.toggle('is-playing', isPlaying && !isPaused);
+            playerContainer.classList.toggle('is-audio-active', isPlaying || isPaused);
         }
     };
 

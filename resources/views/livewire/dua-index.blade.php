@@ -188,9 +188,15 @@
 
         {{-- Pagination --}}
         @if($duas->hasPages())
-            <div class="dua-pagination-wrap">
-                {{ $duas->links() }}
-            </div>
+            <nav class="pagination" aria-label="Kurasa za dua">
+                <button wire:click="previousPage" @disabled($duas->onFirstPage()) class="page-nav-btn">
+                    <span>←</span> <span>Iliyotangulia</span>
+                </button>
+                <span class="page-indicator">Ukurasa {{ $duas->currentPage() }} / {{ $duas->lastPage() }}</span>
+                <button wire:click="nextPage" @disabled(!$duas->hasMorePages()) class="page-nav-btn">
+                    <span>Inayofuata</span> <span>→</span>
+                </button>
+            </nav>
         @endif
     </div>
 </div>

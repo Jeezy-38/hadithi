@@ -29,9 +29,11 @@ Route::get('/duaa/{dua}', function (Dua $dua) {
         ->orderBy('order')
         ->limit(4)
         ->get();
+    $prev = Dua::published()->where('category_id', $dua->category_id)->where('id', '<', $dua->id)->orderByDesc('id')->first()
+        ?? Dua::published()->where('id', '<', $dua->id)->orderByDesc('id')->first();
     $next = Dua::published()->where('category_id', $dua->category_id)->where('id', '>', $dua->id)->orderBy('id')->first()
         ?? Dua::published()->where('id', '>', $dua->id)->orderBy('id')->first();
-    return view('dua-show', compact('dua', 'related', 'next'));
+    return view('dua-show', compact('dua', 'related', 'prev', 'next'));
 })->name('duaa.show');
 
 Route::get('/tasbih', fn () => view('tasbih'))->name('tasbih');
@@ -45,10 +47,12 @@ Route::get('/hadith/{hadith}', function (Hadith $hadith) {
         ->orderBy('id')
         ->limit(4)
         ->get();
-    // Hadith inayofuata kwa "kusoma mfululizo": ndani ya mlango huu, vinginevyo inayofuata kwa ID.
+    // Hadith iliyotangulia na inayofuata kwa ajili ya usomaji mfululizo
+    $prev = Hadith::published()->where('chapter_id', $hadith->chapter_id)->where('id', '<', $hadith->id)->orderByDesc('id')->first()
+        ?? Hadith::published()->where('id', '<', $hadith->id)->orderByDesc('id')->first();
     $next = Hadith::published()->where('chapter_id', $hadith->chapter_id)->where('id', '>', $hadith->id)->orderBy('id')->first()
         ?? Hadith::published()->where('id', '>', $hadith->id)->orderBy('id')->first();
-    return view('hadith', compact('hadith', 'related', 'next'));
+    return view('hadith', compact('hadith', 'related', 'prev', 'next'));
 })->name('hadith.show');
 
 Route::get('/hadith-ya-leo', function () {

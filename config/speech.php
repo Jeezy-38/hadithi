@@ -2,11 +2,11 @@
 
 return [
     'python' => env('TTS_PYTHON', base_path('.venv-tts/bin/python')),
-    // Disk ya MP3: 'private' (Laravel Cloud huiwekea bucket; local ni storage/app/private).
-    'disk' => env('SPEECH_DISK', 'private'),
+    // Disk ya MP3: 'hadith-audio-3' (inayowekwa na Laravel Cloud) au 'private'
+    'disk' => env('SPEECH_DISK', 'hadith-audio-3'),
     'voices' => [
         'sw' => 'sw-TZ-DaudiNeural',
-        'ar' => 'ar-SA-HamedNeural',
+        'ar' => env('TTS_VOICE_AR', 'ar-EG-ShakirNeural'),
         'en' => 'en-US-GuyNeural',
     ],
 ];

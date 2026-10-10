@@ -50,8 +50,6 @@
 
         {{-- Upau wa Udhibiti wa Msomaji (Reader Toolbar) --}}
         <div class="quran-controls-bar">
-
-
             {{-- Mifumo ya Kusoma --}}
             <div class="control-group">
                 <span class="control-group-label">Muonekano:</span>
@@ -59,6 +57,16 @@
                     <button type="button" class="display-mode-btn active" data-mode="both">Yote</button>
                     <button type="button" class="display-mode-btn" data-mode="ar">Kiarabu</button>
                     <button type="button" class="display-mode-btn" data-mode="sw">Kiswahili</button>
+                </div>
+            </div>
+
+            {{-- Kidhibiti cha Ukubwa wa Maandishi (Font Size Scaler) --}}
+            <div class="control-group">
+                <span class="control-group-label">Maandishi:</span>
+                <div class="font-scaler-widget" aria-label="Rekebisha ukubwa wa maandishi">
+                    <button type="button" id="font-decrease" class="scaler-btn" title="Punguza ukubwa wa maandishi" aria-label="Punguza ukubwa">A-</button>
+                    <span id="font-scale-display" class="scaler-label" title="Ukubwa wa sasa">100%</span>
+                    <button type="button" id="font-increase" class="scaler-btn" title="Ongeza ukubwa wa maandishi" aria-label="Ongeza ukubwa">A+</button>
                 </div>
             </div>
 
@@ -77,6 +85,11 @@
         {{-- Orodha ya Aya --}}
         <div class="quran-ayahs-container" id="quran-ayahs-container">
             @forelse($ayahs as $ayah)
+                @php
+                    $ayahShareText = "📖 Qur'ani Tukufu: Surat " . $surah->name_sw . " (" . $surah->number . ":" . $ayah->verse_number . ")\n\n"
+                        . $ayah->arabic_text . "\n\n"
+                        . "“" . $ayah->translation_sw . "”";
+                @endphp
                 <article class="quran-ayah-card" id="ayah-{{ $ayah->verse_number }}" data-verse="{{ $ayah->verse_number }}" data-audio="{{ $ayah->audio_url }}">
                     <div class="ayah-card-top-bar">
                         <div class="ayah-number-badge">
@@ -92,6 +105,22 @@
                                     <span class="sr-only">Sikiliza</span>
                                 </button>
                             @endif
+
+                            <button type="button" class="ayah-action-btn bookmark-ayah-btn" data-surah="{{ $surah->number }}" data-surah-name="{{ $surah->name_sw }}" data-verse="{{ $ayah->verse_number }}" data-ar="{{ \Illuminate\Support\Str::limit($ayah->arabic_text, 120) }}" data-sw="{{ \Illuminate\Support\Str::limit($ayah->translation_sw, 120) }}" data-url="{{ route('quran.show', $surah->number) }}#ayah-{{ $ayah->verse_number }}" title="Hifadhi kwenye Vipendwa" aria-pressed="false">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <span class="sr-only">Hifadhi</span>
+                            </button>
+
+                            <button type="button" class="ayah-action-btn share-ayah-btn" data-share-text="{{ $ayahShareText }}" data-share-url="{{ route('quran.show', $surah->number) }}#ayah-{{ $ayah->verse_number }}" title="Shiriki aya hii">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                                    <polyline points="16 6 12 2 8 6"></polyline>
+                                    <line x1="12" y1="2" x2="12" y2="15"></line>
+                                </svg>
+                                <span class="sr-only">Shiriki</span>
+                            </button>
 
                             <button type="button" class="ayah-action-btn copy-ayah-btn" data-copy="{{ $ayah->arabic_text }}&#10;&#10;{{ $ayah->translation_sw }} (Qur'an {{ $surah->number }}:{{ $ayah->verse_number }})" title="Nakili aya hii">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -211,6 +240,73 @@
                         btn.innerHTML = '<span style="font-size:11px;font-weight:700;color:var(--gold)">✓</span>';
                         setTimeout(() => btn.innerHTML = originalHTML, 2000);
                     } catch (_) {}
+                });
+            });
+
+            // 3b. Share Ayah
+            document.querySelectorAll('.share-ayah-btn').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const text = btn.dataset.shareText;
+                    const url = btn.dataset.shareUrl;
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({ title: document.title, text: text, url: url });
+                            return;
+                        } catch (_) {}
+                    }
+                    if (navigator.clipboard) {
+                        await navigator.clipboard.writeText(`${text}\n\n📲 Soma zaidi: ${url}`);
+                        const originalHTML = btn.innerHTML;
+                        btn.innerHTML = '<span style="font-size:11px;font-weight:700;color:var(--gold)">✓</span>';
+                        setTimeout(() => btn.innerHTML = originalHTML, 2000);
+                    }
+                });
+            });
+
+            // 3c. Bookmark Ayah
+            const getAyahBookmarks = () => {
+                try { return JSON.parse(localStorage.getItem('quran-bookmarks')) || []; } catch (_) { return []; }
+            };
+            const setAyahBookmarks = items => {
+                try { localStorage.setItem('quran-bookmarks', JSON.stringify(items)); } catch (_) {}
+            };
+
+            const refreshAyahBookmarksUI = () => {
+                const list = getAyahBookmarks();
+                document.querySelectorAll('.bookmark-ayah-btn').forEach(btn => {
+                    const key = `${btn.dataset.surah}:${btn.dataset.verse}`;
+                    const isSaved = list.some(item => item.id === key);
+                    btn.setAttribute('aria-pressed', isSaved ? 'true' : 'false');
+                    btn.innerHTML = isSaved
+                        ? `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><span class="sr-only">Imehifadhiwa</span>`
+                        : `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><span class="sr-only">Hifadhi</span>`;
+                });
+            };
+
+            refreshAyahBookmarksUI();
+
+            document.querySelectorAll('.bookmark-ayah-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const key = `${btn.dataset.surah}:${btn.dataset.verse}`;
+                    let list = getAyahBookmarks();
+                    const exists = list.some(item => item.id === key);
+                    if (exists) {
+                        list = list.filter(item => item.id !== key);
+                    } else {
+                        list.unshift({
+                            id: key,
+                            surah: btn.dataset.surah,
+                            surah_name: btn.dataset.surahName,
+                            verse: btn.dataset.verse,
+                            ar: btn.dataset.ar,
+                            sw: btn.dataset.sw,
+                            url: btn.dataset.url,
+                            saved_at: new Date().toISOString()
+                        });
+                    }
+                    setAyahBookmarks(list);
+                    refreshAyahBookmarksUI();
                 });
             });
 

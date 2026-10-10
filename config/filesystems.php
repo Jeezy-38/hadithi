@@ -46,6 +46,14 @@ return [
             'report' => false,
         ],
 
+        // Laravel Cloud disk maalum ya hadith-audio-3
+        'hadith-audio-3' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private'),
+            'throw' => false,
+            'report' => false,
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
