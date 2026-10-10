@@ -54,13 +54,6 @@
                 </span>
                 <span class="btn-text">Shiriki</span>
             </button>
-
-            {{-- Kidhibiti cha Ukubwa wa Maandishi (Font Size Scaler) --}}
-            <div class="font-scaler-widget" aria-label="Rekebisha ukubwa wa maandishi">
-                <button type="button" id="font-decrease" class="scaler-btn" title="Punguza ukubwa wa maandishi" aria-label="Punguza ukubwa">A-</button>
-                <span id="font-scale-display" class="scaler-label" title="Ukubwa wa sasa">100%</span>
-                <button type="button" id="font-increase" class="scaler-btn" title="Ongeza ukubwa wa maandishi" aria-label="Ongeza ukubwa">A+</button>
-            </div>
         </div>
 
         <article class="reader-card">
