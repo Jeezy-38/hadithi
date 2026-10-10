@@ -76,9 +76,23 @@
                             </svg>
                         </span>
                         <h2>Sikiliza hadith</h2>
+                        <div class="audio-equalizer" aria-hidden="true" title="Hali ya sauti">
+                            <span class="eq-bar eq-1"></span>
+                            <span class="eq-bar eq-2"></span>
+                            <span class="eq-bar eq-3"></span>
+                            <span class="eq-bar eq-4"></span>
+                        </div>
                     </div>
 
-                    <div class="audio-header-lang">
+                    <div class="audio-controls-top-right">
+                        <div class="select-wrapper audio-speed-wrapper" title="Kasi ya usomaji">
+                            <select id="audio-rate" aria-label="Kasi ya sauti">
+                                <option value="0.75">0.75x</option>
+                                <option value="1" selected>1.0x</option>
+                                <option value="1.25">1.25x</option>
+                                <option value="1.5">1.5x</option>
+                            </select>
+                        </div>
                         <div class="select-wrapper">
                             <select id="audio-language" aria-label="Lugha ya sauti">
                                 <option value="sw">Kiswahili (Daudi)</option>
@@ -105,18 +119,33 @@
 
                 <div class="audio-actions">
                     <button type="button" id="audio-play" class="audio-btn play-btn">
-                        <span aria-hidden="true">▶</span><span class="btn-audio-label">Soma kwa sauti</span>
+                        <span aria-hidden="true" class="audio-btn-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </span>
+                        <span class="btn-audio-label">Soma kwa sauti</span>
                     </button>
                     @if(trim((string) $hadith->arabic) !== '' && trim((string) $hadith->swahili) !== '')
                         <button type="button" id="audio-play-both" class="audio-btn both-btn" title="Soma Kiarabu kisha Kiswahili">
-                            <span aria-hidden="true">▶▶</span><span class="btn-audio-label">Kiarabu + Kiswahili</span>
+                            <span aria-hidden="true" class="audio-btn-icon">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="4 4 13 12 4 20 4 4"></polygon>
+                                    <polygon points="12 4 21 12 12 20 12 4"></polygon>
+                                </svg>
+                            </span>
+                            <span class="btn-audio-label">Kiarabu + Kiswahili</span>
                         </button>
                     @endif
                     <button type="button" id="audio-pause" class="audio-btn pause-btn" disabled>
-                        <span aria-hidden="true">Ⅱ</span><span class="btn-audio-label">Sitisha</span>
+                        <span aria-hidden="true" class="audio-btn-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                        </span>
+                        <span class="btn-audio-label">Sitisha</span>
                     </button>
                     <button type="button" id="audio-stop" class="audio-btn stop-btn" disabled>
-                        <span aria-hidden="true">■</span><span class="btn-audio-label">Acha</span>
+                        <span aria-hidden="true" class="audio-btn-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"></rect></svg>
+                        </span>
+                        <span class="btn-audio-label">Acha</span>
                     </button>
                     @if($next)
                         <label class="audio-autonext" title="Hadith inayofuata: Na. {{ $next->number }}">
@@ -127,7 +156,6 @@
                 </div>
 
                 <input type="hidden" id="audio-voice" value="hd-natural">
-                <input type="hidden" id="audio-rate" value="1">
                 <input type="hidden" id="audio-sequence" value="single">
                 <audio id="hadith-native-audio" preload="metadata" style="display:none;"></audio>
                 <p id="audio-status" class="audio-status-text" role="status" aria-live="polite" hidden></p>

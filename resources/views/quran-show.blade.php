@@ -214,6 +214,73 @@
         </nav>
     </div>
 
+    {{-- Floating Quran Audio Player --}}
+    <div id="quran-floating-player" class="quran-floating-player" aria-label="Kicheza sauti cha Qur'ani" hidden>
+        <div class="quran-floating-inner">
+            {{-- Left: Mawimbi ya Sauti na Taarifa ya Aya --}}
+            <div class="quran-floating-info">
+                <div class="quran-floating-wave" aria-hidden="true" title="Inasoma">
+                    <span class="qf-bar qf-1"></span>
+                    <span class="qf-bar qf-2"></span>
+                    <span class="qf-bar qf-3"></span>
+                    <span class="qf-bar qf-4"></span>
+                </div>
+                <div class="quran-floating-details">
+                    <span class="quran-floating-surah">Surat {{ $surah->name_sw }}</span>
+                    <span id="quran-floating-ayah" class="quran-floating-ayah">Aya 1</span>
+                </div>
+            </div>
+
+            {{-- Center: Vidhibiti na Upau wa Muda --}}
+            <div class="quran-floating-center">
+                <div class="quran-floating-controls">
+                    <button type="button" id="qf-prev-btn" class="qf-control-btn" title="Aya iliyotangulia">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                            <line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2.5"></line>
+                        </svg>
+                    </button>
+                    <button type="button" id="qf-play-pause-btn" class="qf-play-pause-btn" title="Sitisha / Endelea">
+                        <svg id="qf-play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <svg id="qf-pause-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none;">
+                            <rect x="6" y="4" width="4" height="16"></rect>
+                            <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                    </button>
+                    <button type="button" id="qf-next-btn" class="qf-control-btn" title="Aya inayofuata">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                            <line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2.5"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="quran-floating-progress-row">
+                    <span id="qf-current-time" class="qf-time">0:00</span>
+                    <div class="qf-track-wrap">
+                        <div class="qf-track-bg">
+                            <div id="qf-progress-fill" class="qf-progress-fill"></div>
+                        </div>
+                        <input type="range" id="qf-scrubber" class="qf-scrubber" min="0" max="100" value="0" step="0.1" aria-label="Muda wa aya">
+                    </div>
+                    <span id="qf-total-time" class="qf-time">0:00</span>
+                </div>
+            </div>
+
+            {{-- Right: Kasi na Kufunga --}}
+            <div class="quran-floating-right">
+                <button type="button" id="qf-speed-btn" class="qf-speed-btn" title="Badili kasi ya usomaji">1.0x</button>
+                <button type="button" id="qf-close-btn" class="qf-close-btn" title="Acha na funga">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     {{-- Kicheza Sauti Kinachofanya Kazi Chini (Global Quran Audio Player Logic) --}}
     <audio id="quran-audio-player" preload="none"></audio>
 
@@ -320,13 +387,62 @@
                 });
             });
 
-            // 4. Audio Playback (Single Ayah & Play All)
+            // 4. Audio Playback (Single Ayah, Play All & Floating Player)
             const ayahCards = Array.from(document.querySelectorAll('.quran-ayah-card'));
             let currentPlayingIndex = -1;
             let isContinuous = false;
+            let isScrubbing = false;
+
+            const floatingPlayer = document.getElementById('quran-floating-player');
+            const floatingAyahLabel = document.getElementById('quran-floating-ayah');
+            const qfPlayPauseBtn = document.getElementById('qf-play-pause-btn');
+            const qfPlayIcon = document.getElementById('qf-play-icon');
+            const qfPauseIcon = document.getElementById('qf-pause-icon');
+            const qfPrevBtn = document.getElementById('qf-prev-btn');
+            const qfNextBtn = document.getElementById('qf-next-btn');
+            const qfSpeedBtn = document.getElementById('qf-speed-btn');
+            const qfCloseBtn = document.getElementById('qf-close-btn');
+            const qfCurrentTime = document.getElementById('qf-current-time');
+            const qfTotalTime = document.getElementById('qf-total-time');
+            const qfProgressFill = document.getElementById('qf-progress-fill');
+            const qfScrubber = document.getElementById('qf-scrubber');
+
+            const SPEED_RATES = [1.0, 1.25, 1.5, 0.75];
+            let currentSpeedIndex = 0;
+
+            function formatTime(sec) {
+                if (isNaN(sec) || !isFinite(sec) || sec < 0) return '0:00';
+                const m = Math.floor(sec / 60);
+                const s = Math.floor(sec % 60);
+                return `${m}:${s < 10 ? '0' : ''}${s}`;
+            }
 
             function clearHighlights() {
-                ayahCards.forEach(c => c.classList.remove('active-audio-ayah'));
+                ayahCards.forEach(c => {
+                    c.classList.remove('active-audio-ayah');
+                    const pBtn = c.querySelector('.play-ayah-btn');
+                    if (pBtn) {
+                        pBtn.classList.remove('is-active-track');
+                        pBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span class="sr-only">Sikiliza</span>';
+                    }
+                });
+            }
+
+            function updateFloatingState(isPlaying) {
+                if (floatingPlayer) {
+                    if (currentPlayingIndex >= 0) {
+                        floatingPlayer.hidden = false;
+                        requestAnimationFrame(() => floatingPlayer.classList.add('is-visible'));
+                    } else {
+                        floatingPlayer.classList.remove('is-visible');
+                        setTimeout(() => { if (currentPlayingIndex < 0) floatingPlayer.hidden = true; }, 350);
+                    }
+                    floatingPlayer.classList.toggle('is-audio-active', isPlaying);
+                }
+                if (qfPlayIcon && qfPauseIcon) {
+                    qfPlayIcon.style.display = isPlaying ? 'none' : 'block';
+                    qfPauseIcon.style.display = isPlaying ? 'block' : 'none';
+                }
             }
 
             function playAyahAtIndex(index) {
@@ -341,6 +457,16 @@
                 card.classList.add('active-audio-ayah');
                 card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+                const cardPlayBtn = card.querySelector('.play-ayah-btn');
+                if (cardPlayBtn) {
+                    cardPlayBtn.classList.add('is-active-track');
+                    cardPlayBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg><span class="sr-only">Sitisha</span>';
+                }
+
+                if (floatingAyahLabel) {
+                    floatingAyahLabel.textContent = `Aya ${card.dataset.verse}`;
+                }
+
                 const audioUrl = card.dataset.audio;
                 if (!audioUrl) {
                     if (isContinuous) playAyahAtIndex(index + 1);
@@ -348,7 +474,10 @@
                 }
 
                 audioPlayer.src = audioUrl;
-                audioPlayer.play().catch(e => {
+                audioPlayer.playbackRate = SPEED_RATES[currentSpeedIndex];
+                audioPlayer.play().then(() => {
+                    updateFloatingState(true);
+                }).catch(e => {
                     console.warn('Playback error', e);
                     if (isContinuous) playAyahAtIndex(index + 1);
                 });
@@ -364,6 +493,7 @@
                 isContinuous = false;
                 if (playAllLabel) playAllLabel.textContent = 'Sikiliza Sura Yote';
                 if (playAllBtn) playAllBtn.classList.remove('is-playing');
+                updateFloatingState(false);
             }
 
             // Play single ayah buttons
@@ -373,7 +503,11 @@
                     const card = btn.closest('.quran-ayah-card');
                     const idx = ayahCards.indexOf(card);
                     if (currentPlayingIndex === idx && !audioPlayer.paused) {
-                        stopPlayback();
+                        audioPlayer.pause();
+                        updateFloatingState(false);
+                    } else if (currentPlayingIndex === idx && audioPlayer.paused) {
+                        audioPlayer.play();
+                        updateFloatingState(true);
                     } else {
                         isContinuous = false;
                         playAyahAtIndex(idx);
@@ -391,7 +525,72 @@
                 }
             });
 
-            // On track end
+            // Floating Controls Listeners
+            qfPlayPauseBtn?.addEventListener('click', () => {
+                if (audioPlayer.paused) {
+                    audioPlayer.play();
+                    updateFloatingState(true);
+                } else {
+                    audioPlayer.pause();
+                    updateFloatingState(false);
+                }
+            });
+
+            qfPrevBtn?.addEventListener('click', () => {
+                if (currentPlayingIndex > 0) {
+                    playAyahAtIndex(currentPlayingIndex - 1);
+                }
+            });
+
+            qfNextBtn?.addEventListener('click', () => {
+                if (currentPlayingIndex + 1 < ayahCards.length) {
+                    playAyahAtIndex(currentPlayingIndex + 1);
+                }
+            });
+
+            qfSpeedBtn?.addEventListener('click', () => {
+                currentSpeedIndex = (currentSpeedIndex + 1) % SPEED_RATES.length;
+                const newRate = SPEED_RATES[currentSpeedIndex];
+                audioPlayer.playbackRate = newRate;
+                qfSpeedBtn.textContent = newRate.toFixed(2).replace(/\.00$/, '.0') + 'x';
+            });
+
+            qfCloseBtn?.addEventListener('click', () => {
+                stopPlayback();
+            });
+
+            // Audio Player Events
+            audioPlayer.addEventListener('timeupdate', () => {
+                const curr = audioPlayer.currentTime || 0;
+                const dur = audioPlayer.duration || 0;
+                if (qfCurrentTime) qfCurrentTime.textContent = formatTime(curr);
+                if (qfTotalTime && dur > 0) qfTotalTime.textContent = formatTime(dur);
+                const pct = (dur > 0) ? (curr / dur) * 100 : 0;
+                if (qfProgressFill) qfProgressFill.style.width = `${pct}%`;
+                if (qfScrubber && !isScrubbing) qfScrubber.value = pct;
+            });
+
+            qfScrubber?.addEventListener('input', () => {
+                isScrubbing = true;
+                const dur = audioPlayer.duration || 0;
+                if (dur > 0) {
+                    const targetTime = (qfScrubber.value / 100) * dur;
+                    if (qfCurrentTime) qfCurrentTime.textContent = formatTime(targetTime);
+                    if (qfProgressFill) qfProgressFill.style.width = `${qfScrubber.value}%`;
+                }
+            });
+
+            qfScrubber?.addEventListener('change', () => {
+                const dur = audioPlayer.duration || 0;
+                if (dur > 0) {
+                    audioPlayer.currentTime = (qfScrubber.value / 100) * dur;
+                }
+                isScrubbing = false;
+            });
+
+            audioPlayer.addEventListener('play', () => updateFloatingState(true));
+            audioPlayer.addEventListener('pause', () => updateFloatingState(false));
+
             audioPlayer.addEventListener('ended', () => {
                 if (isContinuous && currentPlayingIndex + 1 < ayahCards.length) {
                     playAyahAtIndex(currentPlayingIndex + 1);

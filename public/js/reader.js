@@ -1476,8 +1476,8 @@
             pause.disabled = !isPlaying;
             stop.disabled = !isPlaying && !isPaused;
             pause.innerHTML = isPaused
-                ? '<span aria-hidden="true">▶</span><span class="btn-audio-label">Endelea</span>'
-                : '<span aria-hidden="true">Ⅱ</span><span class="btn-audio-label">Sitisha kwa muda</span>';
+                ? '<span aria-hidden="true" class="audio-btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></span><span class="btn-audio-label">Endelea</span>'
+                : '<span aria-hidden="true" class="audio-btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg></span><span class="btn-audio-label">Sitisha</span>';
         }
         if (playerContainer) {
             playerContainer.classList.toggle('is-playing', isPlaying && !isPaused);
