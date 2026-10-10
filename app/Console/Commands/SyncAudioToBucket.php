@@ -36,21 +36,6 @@ class SyncAudioToBucket extends Command
             $region = 'auto';
         }
 
-        if (blank($key) || blank($secret) || blank($bucket)) {
-            $this->error('Taarifa za kuunganisha Bucket hazijakamilika.');
-            $this->newLine();
-            $this->line('Tafadhali jaza options kwenye amri hii au ziweke kwenye .env:');
-            $this->line('  AWS_ACCESS_KEY_ID=xxx');
-            $this->line('  AWS_SECRET_ACCESS_KEY=yyy');
-            $this->line('  AWS_BUCKET=fls-xxx');
-            $this->line('  AWS_ENDPOINT=https://xxx.r2.cloudflarestorage.com');
-            $this->newLine();
-            $this->line('Mfano wa kutumia amri:');
-            $this->line('  php artisan hadith:audio-sync-bucket');
-
-            return self::FAILURE;
-        }
-
         $localDisk = Storage::disk('private');
         $files = $localDisk->allFiles('audio_cache');
 
@@ -64,11 +49,26 @@ class SyncAudioToBucket extends Command
             $files = array_slice($files, 0, $limit);
         }
 
-        $this->info(sprintf('Jumla ya faili za kushughulikia: %d', count($files)));
+        $this->info(sprintf('Jumla ya faili za sauti za ndani (audio_cache): %d', count($files)));
 
         if ($this->option('dry-run')) {
-            $this->comment('Hali ya majaribio (Dry Run): Hakuna kilichopakiwa.');
+            $this->comment('Hali ya majaribio (Dry Run): Faili zote zipo tayari kusawazishwa pindi credentials za S3/R2 zitakapowekwa.');
             return self::SUCCESS;
+        }
+
+        if (blank($key) || blank($secret) || blank($bucket)) {
+            $this->error('Taarifa za kuunganisha Bucket hazijakamilika.');
+            $this->newLine();
+            $this->line('Tafadhali jaza options kwenye amri hii au ziweke kwenye .env:');
+            $this->line('  AWS_ACCESS_KEY_ID=xxx');
+            $this->line('  AWS_SECRET_ACCESS_KEY=yyy');
+            $this->line('  AWS_BUCKET=hadith-audio-3');
+            $this->line('  AWS_ENDPOINT=https://xxx.r2.cloudflarestorage.com');
+            $this->newLine();
+            $this->line('Mfano wa kutumia amri:');
+            $this->line('  php artisan hadith:audio-sync-bucket');
+
+            return self::FAILURE;
         }
 
         // Sanidi disk ya S3

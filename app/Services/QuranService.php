@@ -93,38 +93,42 @@ class QuranService
     }
 
     /**
-     * Load ayahs from local starter file if present.
+     * Load ayahs from local complete dataset or starter file if present.
      */
     public function loadStarterAyahsForSurah(int $number): bool
     {
-        $path = database_path('data/quran/starter_ayahs.json');
+        $completePath = database_path('data/quran/complete_ayahs.json');
+        $path = file_exists($completePath) ? $completePath : database_path('data/quran/starter_ayahs.json');
         if (! file_exists($path)) {
             return false;
         }
 
-        $allStarter = json_decode(file_get_contents($path), true) ?: [];
-        $ayahsForSurah = array_filter($allStarter, fn ($ay) => ($ay['surah_number'] ?? null) === $number);
+        $allAyahs = json_decode(file_get_contents($path), true) ?: [];
+        $ayahsForSurah = array_values(array_filter($allAyahs, fn ($ay) => ($ay['surah_number'] ?? null) === $number));
 
         if (empty($ayahsForSurah)) {
             return false;
         }
 
+        $records = [];
         foreach ($ayahsForSurah as $ayData) {
-            QuranAyah::updateOrCreate(
-                [
-                    'surah_number' => $ayData['surah_number'],
-                    'verse_number' => $ayData['verse_number'],
-                ],
-                [
-                    'juz_number' => $ayData['juz_number'] ?? 1,
-                    'page_number' => $ayData['page_number'] ?? 1,
-                    'arabic_text' => $ayData['arabic_text'],
-                    'translation_sw' => $ayData['translation_sw'],
-                    'translation_en' => $ayData['translation_en'] ?? null,
-                    'audio_url' => $ayData['audio_url'] ?? null,
-                ]
-            );
+            $records[] = [
+                'surah_number' => $ayData['surah_number'],
+                'verse_number' => $ayData['verse_number'],
+                'juz_number' => $ayData['juz_number'] ?? 1,
+                'page_number' => $ayData['page_number'] ?? 1,
+                'arabic_text' => $ayData['arabic_text'],
+                'translation_sw' => $ayData['translation_sw'],
+                'translation_en' => $ayData['translation_en'] ?? null,
+                'audio_url' => $ayData['audio_url'] ?? null,
+            ];
         }
+
+        QuranAyah::upsert(
+            $records,
+            ['surah_number', 'verse_number'],
+            ['juz_number', 'page_number', 'arabic_text', 'translation_sw', 'translation_en', 'audio_url']
+        );
 
         return true;
     }

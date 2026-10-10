@@ -86,9 +86,11 @@
         <div class="quran-ayahs-container" id="quran-ayahs-container">
             @forelse($ayahs as $ayah)
                 @php
-                    $ayahShareText = "📖 Qur'ani Tukufu: Surat " . $surah->name_sw . " (" . $surah->number . ":" . $ayah->verse_number . ")\n\n"
+                    $ayahRef = "Surat " . $surah->name_sw . " [" . $surah->number . ":" . $ayah->verse_number . "]";
+                    $ayahShareText = "Qur'ani Tukufu: " . $ayahRef . "\n\n"
                         . $ayah->arabic_text . "\n\n"
-                        . "“" . $ayah->translation_sw . "”";
+                        . "“" . $ayah->translation_sw . "”\n\n"
+                        . "Rejea: " . $ayahRef;
                 @endphp
                 <article class="quran-ayah-card" id="ayah-{{ $ayah->verse_number }}" data-verse="{{ $ayah->verse_number }}" data-audio="{{ $ayah->audio_url }}">
                     <div class="ayah-card-top-bar">
@@ -113,7 +115,15 @@
                                 <span class="sr-only">Hifadhi</span>
                             </button>
 
-                            <button type="button" class="ayah-action-btn share-ayah-btn" data-share-text="{{ $ayahShareText }}" data-share-url="{{ route('quran.show', $surah->number) }}#ayah-{{ $ayah->verse_number }}" title="Shiriki aya hii">
+                            <button type="button" class="ayah-action-btn share-ayah-btn share-trigger-btn"
+                                data-share-title="Surat {{ $surah->name_sw }} (Aya {{ $ayah->verse_number }})"
+                                data-share-badge="Qur'ani Tukufu"
+                                data-share-ar="{{ $ayah->arabic_text }}"
+                                data-share-sw="{{ $ayah->translation_sw }}"
+                                data-share-ref="{{ $ayahRef }}"
+                                data-share-text="{{ $ayahShareText }}"
+                                data-share-url="{{ route('quran.show', $surah->number) }}#ayah-{{ $ayah->verse_number }}"
+                                title="Shiriki aya hii">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
                                     <polyline points="16 6 12 2 8 6"></polyline>

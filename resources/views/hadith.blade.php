@@ -16,12 +16,15 @@
 
         @php
             $shareArabic = trim((string) $hadith->arabic);
-            $shareArabicShort = \Illuminate\Support\Str::limit($shareArabic, 120);
-            $shareSwahiliShort = \Illuminate\Support\Str::limit($hadith->swahili, 220);
-            $shareFormatted = "✨ Hadith: " . $hadith->chapter->book->collection->name . " Na. " . $hadith->number . "\n\n"
+            $shareArabicShort = \Illuminate\Support\Str::limit($shareArabic, 320);
+            $shareSwahiliShort = \Illuminate\Support\Str::limit($hadith->swahili, 420);
+            $shareTitle = "Hadith " . $hadith->number;
+            $shareBadge = $hadith->chapter->book->collection->name;
+            $shareRef = $hadith->chapter->book->collection->name . " Na. " . $hadith->number . " (" . $hadith->chapter->book->title_sw . " · " . $hadith->chapter->title_sw . ")";
+            $shareFormatted = "Hadithi: " . $shareBadge . " Na. " . $hadith->number . "\n\n"
                 . ($shareArabicShort ? $shareArabicShort . "\n\n" : "")
                 . "“" . $shareSwahiliShort . "”\n\n"
-                . "📖 " . $hadith->chapter->book->title_sw . " · " . $hadith->chapter->title_sw;
+                . "Rejea: " . $shareRef;
         @endphp
 
         <div class="reader-actions no-print">
@@ -34,7 +37,14 @@
                 <span class="btn-text">Hifadhi</span>
             </button>
 
-            <button type="button" id="share-hadith" class="text-button action-pill-btn" data-share-text="{{ $shareFormatted }}" data-share-url="{{ route('hadith.show', $hadith) }}">
+            <button type="button" id="share-hadith" class="text-button action-pill-btn share-trigger-btn"
+                data-share-title="{{ $shareTitle }}"
+                data-share-badge="{{ $shareBadge }}"
+                data-share-ar="{{ $shareArabicShort }}"
+                data-share-sw="{{ $shareSwahiliShort }}"
+                data-share-ref="{{ $shareRef }}"
+                data-share-text="{{ $shareFormatted }}"
+                data-share-url="{{ route('hadith.show', $hadith) }}">
                 <span class="btn-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>

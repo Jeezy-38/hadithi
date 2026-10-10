@@ -110,4 +110,12 @@ class QuranTest extends TestCase
         $exitCode = Artisan::call('quran:import', ['--surah' => 999]);
         $this->assertEquals(1, $exitCode);
     }
+
+    public function test_complete_quran_dataset_loads_all_verses_for_any_surah(): void
+    {
+        // Surah 36 (Ya-Sin) has 83 verses in total
+        $res36 = $this->get(route('quran.show', 36));
+        $res36->assertOk()->assertSee('Ya-Sin');
+        $this->assertEquals(83, \App\Models\QuranAyah::where('surah_number', 36)->count());
+    }
 }

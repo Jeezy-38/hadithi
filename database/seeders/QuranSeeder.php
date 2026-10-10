@@ -32,24 +32,30 @@ class QuranSeeder extends Seeder
             }
         }
 
-        // 2. Seed Starter Ayahs
-        $ayahsPath = database_path('data/quran/starter_ayahs.json');
+        // 2. Seed Ayahs (from complete dataset if present, or starter fallback)
+        $completePath = database_path('data/quran/complete_ayahs.json');
+        $ayahsPath = file_exists($completePath) ? $completePath : database_path('data/quran/starter_ayahs.json');
         if (file_exists($ayahsPath)) {
             $ayahs = json_decode(file_get_contents($ayahsPath), true) ?: [];
+            $records = [];
             foreach ($ayahs as $a) {
-                QuranAyah::updateOrCreate(
-                    [
-                        'surah_number' => $a['surah_number'],
-                        'verse_number' => $a['verse_number'],
-                    ],
-                    [
-                        'juz_number' => $a['juz_number'] ?? 1,
-                        'page_number' => $a['page_number'] ?? 1,
-                        'arabic_text' => $a['arabic_text'],
-                        'translation_sw' => $a['translation_sw'],
-                        'translation_en' => $a['translation_en'] ?? null,
-                        'audio_url' => $a['audio_url'] ?? null,
-                    ]
+                $records[] = [
+                    'surah_number' => $a['surah_number'],
+                    'verse_number' => $a['verse_number'],
+                    'juz_number' => $a['juz_number'] ?? 1,
+                    'page_number' => $a['page_number'] ?? 1,
+                    'arabic_text' => $a['arabic_text'],
+                    'translation_sw' => $a['translation_sw'],
+                    'translation_en' => $a['translation_en'] ?? null,
+                    'audio_url' => $a['audio_url'] ?? null,
+                ];
+            }
+
+            foreach (array_chunk($records, 500) as $chunk) {
+                QuranAyah::upsert(
+                    $chunk,
+                    ['surah_number', 'verse_number'],
+                    ['juz_number', 'page_number', 'arabic_text', 'translation_sw', 'translation_en', 'audio_url']
                 );
             }
         }

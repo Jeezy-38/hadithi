@@ -1123,52 +1123,244 @@
     // -------------------------------------------------------------
     // 5. Copy / Share Hadith
     // -------------------------------------------------------------
-    const shareBtn = document.getElementById('share-hadith');
-    if (shareBtn) {
-        const defaultIconHTML = shareBtn.querySelector('.btn-icon')?.innerHTML || '⧉';
+    // -------------------------------------------------------------
+    // 5. Modern Share Sheet & Canvas Quote Card Generator
+    // -------------------------------------------------------------
+    const shareModal = document.getElementById('share-modal');
+    const shareModalOverlay = document.getElementById('share-modal-overlay');
+    const shareModalClose = document.getElementById('share-modal-close');
+    const previewBadge = document.getElementById('share-preview-badge');
+    const previewAr = document.getElementById('share-preview-ar');
+    const previewSw = document.getElementById('share-preview-sw');
+    const previewRef = document.getElementById('share-preview-ref');
+    const whatsappBtn = document.getElementById('share-action-whatsapp');
+    const imageBtn = document.getElementById('share-action-image');
+    const copyBtn = document.getElementById('share-action-copy');
+    const copyIcon = document.getElementById('share-copy-icon');
+    const copyLabel = document.getElementById('share-copy-label');
+    const nativeBtn = document.getElementById('share-action-native');
 
-        shareBtn.addEventListener('click', async () => {
-            const text = shareBtn.dataset.shareText || document.title;
-            const url = shareBtn.dataset.shareUrl || location.href;
+    let currentShareData = null;
+
+    const closeShareModal = () => {
+        if (!shareModal) return;
+        shareModal.classList.remove('is-open');
+        setTimeout(() => { shareModal.hidden = true; }, 220);
+    };
+
+    const openShareModal = (data) => {
+        currentShareData = data;
+        if (!shareModal) {
+            // Fallback if modal is not in DOM
             if (navigator.share) {
-                try { await navigator.share({ text: `${text}\n\n📲 Soma zaidi: ${url}`, url: url }); return; } catch (_) { /* cancelled or unsupported; fall back to copy */ }
+                navigator.share({ title: data.title, text: `${data.rawText}\n\nSoma zaidi: ${data.url}`, url: data.url }).catch(() => {});
+            } else {
+                navigator.clipboard?.writeText(`${data.rawText}\n\nSoma zaidi: ${data.url}`);
             }
-            const currentLang = document.documentElement.dataset.readingLanguage || 'both';
-            const dictKey = (currentLang === 'en' || currentLang === 'ar') ? currentLang : 'sw';
-            const t = UI_TRANSLATIONS[dictKey] || UI_TRANSLATIONS.sw;
+            return;
+        }
 
-            const iconEl = shareBtn.querySelector('.btn-icon');
-            const textEl = shareBtn.querySelector('.btn-text');
+        if (previewBadge) previewBadge.textContent = data.badge || 'Mafundisho';
+        if (previewAr) {
+            previewAr.textContent = data.ar || '';
+            previewAr.style.display = data.ar ? 'block' : 'none';
+        }
+        if (previewSw) previewSw.textContent = data.sw ? `“${data.sw}”` : '';
+        if (previewRef) previewRef.textContent = data.ref || '';
 
+        // WhatsApp direct link
+        if (whatsappBtn) {
+            const whatsappText = `${data.rawText}\n\nSoma zaidi: ${data.url}`;
+            whatsappBtn.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappText)}`;
+        }
+
+        // Native share visibility
+        if (nativeBtn) {
+            nativeBtn.style.display = navigator.share ? 'inline-flex' : 'none';
+        }
+
+        shareModal.hidden = false;
+        requestAnimationFrame(() => {
+            shareModal.classList.add('is-open');
+        });
+    };
+
+    if (shareModalClose) shareModalClose.addEventListener('click', closeShareModal);
+    if (shareModalOverlay) shareModalOverlay.addEventListener('click', closeShareModal);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && shareModal && !shareModal.hidden) closeShareModal();
+    });
+
+    if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+            if (!currentShareData) return;
+            const fullText = `${currentShareData.rawText}\n\nSoma zaidi: ${currentShareData.url}`;
             try {
-                await navigator.clipboard.writeText(`${text}\n\n📲 Soma zaidi: ${url}`);
-                if (iconEl && textEl) {
-                    iconEl.innerHTML = '<span style="color:var(--gold);font-weight:700;">✓</span>';
-                    textEl.textContent = t.btn_copied || 'Imenakiliwa!';
-                } else {
-                    shareBtn.textContent = (t.btn_copied || 'Imenakiliwa!') + ' ✓';
-                }
-            } catch (_) {
-                if (iconEl && textEl) {
-                    iconEl.innerHTML = '<span style="color:#ef4444;font-weight:700;">×</span>';
-                    textEl.textContent = t.btn_copy_failed || 'Imeshindwa kunakili';
-                } else {
-                    shareBtn.textContent = t.btn_copy_failed || 'Imeshindwa kunakili';
-                }
-            }
-            setTimeout(() => {
-                const curLang = document.documentElement.dataset.readingLanguage || 'both';
-                const curDictKey = (curLang === 'en' || curLang === 'ar') ? curLang : 'sw';
-                const curT = UI_TRANSLATIONS[curDictKey] || UI_TRANSLATIONS.sw;
-                if (iconEl && textEl) {
-                    iconEl.innerHTML = defaultIconHTML;
-                    textEl.textContent = curT.btn_share;
-                } else {
-                    shareBtn.textContent = curT.btn_share;
-                }
-            }, 2500);
+                await navigator.clipboard.writeText(fullText);
+                if (copyLabel) copyLabel.textContent = 'Imenakiliwa!';
+                if (copyIcon) copyIcon.innerHTML = '<span style="color:var(--gold);font-weight:700;">✓</span>';
+                setTimeout(() => {
+                    if (copyLabel) copyLabel.textContent = 'Nakili Matini';
+                    if (copyIcon) copyIcon.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+                }, 2200);
+            } catch (_) {}
         });
     }
+
+    if (nativeBtn) {
+        nativeBtn.addEventListener('click', async () => {
+            if (!currentShareData || !navigator.share) return;
+            try {
+                await navigator.share({
+                    title: currentShareData.title,
+                    text: `${currentShareData.rawText}\n\nSoma zaidi: ${currentShareData.url}`,
+                    url: currentShareData.url
+                });
+            } catch (_) {}
+        });
+    }
+
+    function wrapCanvasText(ctx, text, maxWidth) {
+        const words = text.split(' ');
+        const lines = [];
+        let currentLine = words[0] || '';
+
+        for (let i = 1; i < words.length; i++) {
+            const word = words[i];
+            const width = ctx.measureText(currentLine + ' ' + word).width;
+            if (width < maxWidth) {
+                currentLine += ' ' + word;
+            } else {
+                lines.push(currentLine);
+                currentLine = word;
+            }
+        }
+        if (currentLine) lines.push(currentLine);
+        return lines;
+    }
+
+    if (imageBtn) {
+        imageBtn.addEventListener('click', () => {
+            if (!currentShareData) return;
+            const canvas = document.getElementById('share-card-canvas') || document.createElement('canvas');
+            canvas.width = 1080;
+            canvas.height = 1080;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            // Background gradient
+            const bgGrad = ctx.createLinearGradient(0, 0, 1080, 1080);
+            bgGrad.addColorStop(0, '#0a0e14');
+            bgGrad.addColorStop(1, '#151b23');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, 1080, 1080);
+
+            // Gold borders
+            ctx.strokeStyle = '#d4af37';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(40, 40, 1000, 1000);
+
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.35)';
+            ctx.lineWidth = 1.5;
+            ctx.strokeRect(52, 52, 976, 976);
+
+            // Corner flourishes
+            const corners = [[40, 40], [1040, 40], [40, 1040], [1040, 1040]];
+            corners.forEach(([cx, cy]) => {
+                ctx.fillStyle = '#d4af37';
+                ctx.beginPath();
+                ctx.arc(cx, cy, 6, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Branding
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#d4af37';
+            ctx.font = 'bold 22px system-ui, -apple-system, sans-serif';
+            ctx.fillText('HADITH APP  ·  MAKTABA YA KIISLAMU', 540, 110);
+
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(380, 132);
+            ctx.lineTo(700, 132);
+            ctx.stroke();
+
+            // Badge
+            const badgeText = (currentShareData.badge || 'MAFUNDISHO YA KIISLAMU').toUpperCase();
+            ctx.font = 'bold 19px system-ui, -apple-system, sans-serif';
+            const badgeWidth = ctx.measureText(badgeText).width + 36;
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.15)';
+            ctx.beginPath();
+            ctx.roundRect(540 - badgeWidth / 2, 165, badgeWidth, 38, 19);
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.6)';
+            ctx.stroke();
+
+            ctx.fillStyle = '#d4af37';
+            ctx.fillText(badgeText, 540, 190);
+
+            let currentY = 280;
+
+            // Arabic text
+            if (currentShareData.ar) {
+                ctx.font = '34px "Amiri", "Traditional Arabic", serif';
+                ctx.fillStyle = '#f0c05a';
+                const arLines = wrapCanvasText(ctx, currentShareData.ar, 860);
+                const maxArLines = Math.min(arLines.length, 4);
+                for (let i = 0; i < maxArLines; i++) {
+                    ctx.fillText(arLines[i], 540, currentY);
+                    currentY += 56;
+                }
+                currentY += 28;
+            }
+
+            // Swahili translation
+            if (currentShareData.sw) {
+                ctx.font = '600 28px "Plus Jakarta Sans", system-ui, sans-serif';
+                ctx.fillStyle = '#f5f5f7';
+                const swLines = wrapCanvasText(ctx, `“${currentShareData.sw}”`, 860);
+                const maxSwLines = Math.min(swLines.length, 6);
+                for (let i = 0; i < maxSwLines; i++) {
+                    ctx.fillText(swLines[i], 540, currentY);
+                    currentY += 44;
+                }
+            }
+
+            // Footer Reference
+            ctx.font = '600 20px system-ui, -apple-system, sans-serif';
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.9)';
+            ctx.fillText(currentShareData.ref || '', 540, 955);
+
+            ctx.font = '15px system-ui, -apple-system, sans-serif';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+            ctx.fillText('Soma na sikiliza hadith bure: hadithi.com', 540, 990);
+
+            // Trigger download
+            const link = document.createElement('a');
+            link.download = `hadithi-quote-${Date.now()}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    }
+
+    // Attach click listeners to all share triggers across the site
+    document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('.share-trigger-btn, #share-hadith, #share-dua, .share-ayah-btn');
+        if (!trigger) return;
+
+        e.preventDefault();
+        const data = {
+            title: trigger.dataset.shareTitle || trigger.dataset.title || document.title,
+            badge: trigger.dataset.shareBadge || trigger.dataset.badge || 'Mafundisho',
+            ar: trigger.dataset.shareAr || trigger.dataset.ar || '',
+            sw: trigger.dataset.shareSw || trigger.dataset.sw || '',
+            ref: trigger.dataset.shareRef || trigger.dataset.ref || '',
+            url: trigger.dataset.shareUrl || trigger.dataset.url || window.location.href,
+            rawText: trigger.dataset.shareText || trigger.dataset.text || document.title,
+        };
+        openShareModal(data);
+    });
 
     // -------------------------------------------------------------
     // 6. HD Natural Reader & Speech Synthesis (Audio Player)

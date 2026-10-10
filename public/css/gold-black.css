@@ -6051,3 +6051,241 @@ a, button, select, input {
         height: 42px;
     }
 }
+
+/* ==========================================================================
+   Modern Share Sheet & Card Generator Modal
+   ========================================================================== */
+.share-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.share-modal-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.share-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.share-modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(212, 175, 55, 0.15);
+    padding: 24px;
+    z-index: 1;
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.share-modal-backdrop.is-open .share-modal-dialog {
+    transform: scale(1) translateY(0);
+}
+
+.share-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.share-modal-eyebrow {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+.share-modal-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 4px 0 0 0;
+}
+
+.share-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.share-modal-close:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.05);
+}
+
+.share-preview-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.share-preview-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold);
+    background: var(--gold-subtle);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+}
+
+.share-preview-ar {
+    font-size: 20px;
+    line-height: 2;
+    color: var(--gold);
+    margin-bottom: 12px;
+    text-align: right;
+    font-family: 'Amiri', serif;
+}
+
+.share-preview-sw {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.share-preview-ref {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.share-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 480px) {
+    .share-actions-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.share-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1.5px solid transparent;
+}
+
+.btn-whatsapp {
+    background: #128c7e;
+    color: #ffffff;
+}
+
+.btn-whatsapp:hover {
+    background: #25d366;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+}
+
+.btn-image {
+    background: linear-gradient(135deg, #d4af37, #996515);
+    color: #0b0f14;
+    font-weight: 800;
+}
+
+.btn-image:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+}
+
+.btn-copy {
+    background: var(--bg-surface-elevated);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-copy:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.btn-native {
+    background: var(--bg-surface-elevated);
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.btn-native:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] .share-modal-dialog {
+    background: #ffffff !important;
+    border-color: #d1c7b5 !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="light"] .share-preview-card {
+    background: #faf8f2 !important;
+    border-color: #e2dbce !important;
+}
+
+[data-theme="light"] .share-preview-ar {
+    color: #92400e !important;
+}
+
+[data-theme="light"] .share-preview-sw {
+    color: #0a0f18 !important;
+}
+
+[data-theme="light"] .btn-copy,
+[data-theme="light"] .btn-native {
+    background: #f7f5ef !important;
+    border-color: #d1c7b5 !important;
+    color: #1a222f !important;
+}

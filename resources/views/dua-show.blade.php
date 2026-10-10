@@ -15,13 +15,15 @@
 
         @php
             $shareArabic = trim((string) $dua->arabic);
-            $shareArabicShort = \Illuminate\Support\Str::limit($shareArabic, 120);
-            $shareSwahiliShort = \Illuminate\Support\Str::limit($dua->swahili, 220);
-            $shareFormatted = "🤲 Dua: " . $dua->title_sw . ($dua->title_ar ? " (" . $dua->title_ar . ")" : "") . "\n\n"
+            $shareArabicShort = \Illuminate\Support\Str::limit($shareArabic, 320);
+            $shareSwahiliShort = \Illuminate\Support\Str::limit($dua->swahili, 420);
+            $shareTitle = $dua->title_sw;
+            $shareBadge = $dua->category->name_sw;
+            $shareRef = "Hisn al-Muslim (" . ($dua->reference ?? 'Rejea Rasmi') . ") · Lengo: Mara " . $dua->target_count;
+            $shareFormatted = "Dua: " . $dua->title_sw . ($dua->title_ar ? " (" . $dua->title_ar . ")" : "") . "\n\n"
                 . ($shareArabicShort ? $shareArabicShort . "\n\n" : "")
                 . "“" . $shareSwahiliShort . "”\n\n"
-                . "📿 Lengo: Soma mara " . $dua->target_count . "\n"
-                . "📖 Chanzo: " . ($dua->reference ?? 'Hisn al-Muslim');
+                . "Rejea: " . $shareRef;
         @endphp
 
         <div class="reader-actions no-print">
@@ -34,7 +36,14 @@
                 <span class="btn-text">Hifadhi</span>
             </button>
 
-            <button type="button" id="share-dua" class="text-button action-pill-btn" data-share-text="{{ $shareFormatted }}" data-share-url="{{ url()->current() }}">
+            <button type="button" id="share-dua" class="text-button action-pill-btn share-trigger-btn"
+                data-share-title="{{ $shareTitle }}"
+                data-share-badge="{{ $shareBadge }}"
+                data-share-ar="{{ $shareArabicShort }}"
+                data-share-sw="{{ $shareSwahiliShort }}"
+                data-share-ref="{{ $shareRef }}"
+                data-share-text="{{ $shareFormatted }}"
+                data-share-url="{{ url()->current() }}">
                 <span class="btn-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
