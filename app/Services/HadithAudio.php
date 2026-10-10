@@ -45,10 +45,29 @@ class HadithAudio
     /** Sauti iliyohifadhiwa (mpya kwanza, kisha ya zamani), au null. */
     public function cached(Hadith $hadith, string $lang): ?string
     {
-        $disk = $this->disk();
+        $primaryDisk = $this->disk();
+        $localDisk = Storage::disk('private');
+
+        // 1. Kagua storage ya ndani kwanza kwa majibu ya papo hapo (0ms)
         foreach ([$this->key($hadith, $lang), $this->legacyKey($hadith, $lang)] as $key) {
-            if ($disk->exists($key)) {
-                return (string) $disk->get($key);
+            if ($localDisk->exists($key)) {
+                return (string) $localDisk->get($key);
+            }
+        }
+
+        // 2. Ikiwa primary disk ni ya nje (k.m. Cloudflare R2 / S3) na haikupatikana ndani, kagua huko
+        if ($primaryDisk !== $localDisk) {
+            foreach ([$this->key($hadith, $lang), $this->legacyKey($hadith, $lang)] as $key) {
+                if ($primaryDisk->exists($key)) {
+                    $content = (string) $primaryDisk->get($key);
+                    try {
+                        $localDisk->put($key, $content);
+                    } catch (\Throwable) {
+                        // Kupuuza kushindwa kwa uandishi wa akiba ya ndani
+                    }
+
+                    return $content;
+                }
             }
         }
 
@@ -57,7 +76,12 @@ class HadithAudio
 
     public function hasFresh(Hadith $hadith, string $lang): bool
     {
-        return $this->disk()->exists($this->key($hadith, $lang));
+        $key = $this->key($hadith, $lang);
+        if (Storage::disk('private')->exists($key)) {
+            return true;
+        }
+
+        return $this->disk()->exists($key);
     }
 
     /**
@@ -68,9 +92,17 @@ class HadithAudio
     public function generate(Hadith $hadith, string $lang, bool $throwOnStoreFailure = false): string
     {
         $mp3 = $this->synthesize($this->cleanText($this->text($hadith, $lang), $lang), config('speech.voices.'.$lang));
+        $key = $this->key($hadith, $lang);
 
         try {
-            $this->disk()->put($this->key($hadith, $lang), $mp3, ['ContentType' => 'audio/mpeg']);
+            $this->disk()->put($key, $mp3, ['ContentType' => 'audio/mpeg']);
+            if ($this->disk() !== Storage::disk('private')) {
+                try {
+                    Storage::disk('private')->put($key, $mp3);
+                } catch (\Throwable) {
+                    // ignore secondary cache failure
+                }
+            }
         } catch (\Throwable $exception) {
             report($exception);
             if ($throwOnStoreFailure) {

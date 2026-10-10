@@ -47,7 +47,7 @@ return [
         ],
 
         // Laravel Cloud disk maalum ya hadith-audio-3 (inasaidia S3/R2 pindi credentials zinapokuwepo, na local fallback)
-        'hadith-audio-3' => (env('HADITH_AUDIO_DRIVER') === 's3' || (env('AWS_BUCKET') && env('AWS_ACCESS_KEY_ID'))) ? [
+        'hadith-audio-3' => (env('HADITH_AUDIO_DRIVER') !== 'local' && (env('HADITH_AUDIO_DRIVER') === 's3' || (env('AWS_BUCKET') && env('AWS_ACCESS_KEY_ID')))) ? [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
             'secret' => env('AWS_SECRET_ACCESS_KEY'),

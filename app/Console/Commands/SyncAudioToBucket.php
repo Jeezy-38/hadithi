@@ -21,11 +21,11 @@ class SyncAudioToBucket extends Command
 
     public function handle(): int
     {
-        $key = $this->option('key') ?: config('filesystems.disks.s3.key');
-        $secret = $this->option('secret') ?: config('filesystems.disks.s3.secret');
-        $endpoint = $this->option('endpoint') ?: config('filesystems.disks.s3.endpoint');
-        $bucket = $this->option('bucket') ?: config('filesystems.disks.s3.bucket');
-        $region = $this->option('region') ?: config('filesystems.disks.s3.region');
+        $key = $this->option('key') ?: (config('filesystems.disks.s3.key') ?: config('filesystems.disks.hadith-audio-3.key'));
+        $secret = $this->option('secret') ?: (config('filesystems.disks.s3.secret') ?: config('filesystems.disks.hadith-audio-3.secret'));
+        $endpoint = $this->option('endpoint') ?: (config('filesystems.disks.s3.endpoint') ?: config('filesystems.disks.hadith-audio-3.endpoint'));
+        $bucket = $this->option('bucket') ?: (config('filesystems.disks.s3.bucket') ?: config('filesystems.disks.hadith-audio-3.bucket'));
+        $region = $this->option('region') ?: (config('filesystems.disks.s3.region') ?: config('filesystems.disks.hadith-audio-3.region'));
 
         if (blank($endpoint) && ! blank(config('filesystems.disks.s3.endpoint'))) {
             $endpoint = config('filesystems.disks.s3.endpoint');
@@ -51,12 +51,53 @@ class SyncAudioToBucket extends Command
 
         $this->info(sprintf('Jumla ya faili za sauti za ndani (audio_cache): %d', count($files)));
 
+        $hasCredentials = ! (blank($key) || blank($secret) || blank($bucket));
+
         if ($this->option('dry-run')) {
-            $this->comment('Hali ya majaribio (Dry Run): Faili zote zipo tayari kusawazishwa pindi credentials za S3/R2 zitakapowekwa.');
-            return self::SUCCESS;
+            if (! $hasCredentials) {
+                $this->comment('Hali ya majaribio (Dry Run): Faili zote zipo tayari kusawazishwa pindi vitambulisho vya S3/R2 vitakapowekwa kwenye .env.');
+                return self::SUCCESS;
+            }
+
+            // Kagua muunganisho wa Cloud halisi
+            config([
+                'filesystems.disks.cloud_sync' => [
+                    'driver' => 's3',
+                    'key' => $key,
+                    'secret' => $secret,
+                    'region' => $region,
+                    'bucket' => $bucket,
+                    'endpoint' => $endpoint,
+                    'use_path_style_endpoint' => false,
+                    'throw' => false,
+                    'report' => false,
+                ],
+            ]);
+
+            try {
+                $cloudDisk = Storage::disk('cloud_sync');
+                $cloudFiles = $cloudDisk->allFiles('audio_cache');
+                $cloudCount = count($cloudFiles);
+                $missingFromCloud = count(array_diff($files, $cloudFiles));
+
+                $this->info('✓ Muunganisho wa Cloud: Imefanikiwa (Connected)');
+                $this->line("  Bucket: {$bucket} ({$endpoint})");
+                $this->line("  Faili za ndani (Local): ".count($files));
+                $this->line("  Faili zilizopo Cloud: {$cloudCount}");
+                if ($missingFromCloud === 0) {
+                    $this->info('  ✓ Hali ya Usawazishaji: Faili zote zipo Cloud tayari (100% In Sync). Hakuna faili inayokosekana!');
+                } else {
+                    $this->comment("  ↷ Faili zinazosubiri kupakiwa (Pending Upload): {$missingFromCloud}");
+                }
+
+                return self::SUCCESS;
+            } catch (\Throwable $e) {
+                $this->comment('Hali ya majaribio (Dry Run): Vitambulisho vimesanidiwa. Muunganisho wa moja kwa moja haukupatikana (mtandao haupatikani au umefungwa).');
+                return self::SUCCESS;
+            }
         }
 
-        if (blank($key) || blank($secret) || blank($bucket)) {
+        if (! $hasCredentials) {
             $this->error('Taarifa za kuunganisha Bucket hazijakamilika.');
             $this->newLine();
             $this->line('Tafadhali jaza options kwenye amri hii au ziweke kwenye .env:');
