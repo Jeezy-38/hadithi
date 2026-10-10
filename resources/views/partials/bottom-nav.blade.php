@@ -1,6 +1,6 @@
 {{-- Baa ya Urambazaji ya Chini kwa Simu (Mobile Bottom Navigation Bar) --}}
 <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Urambazaji wa Chini">
-    <a href="{{ route('library') }}" class="mobile-nav-item {{ request()->routeIs('library') ? 'active' : '' }}">
+    <a href="{{ route('library') }}" class="mobile-nav-item {{ request()->routeIs('library', 'hadith.*') ? 'active' : '' }}">
         <span class="mobile-nav-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>

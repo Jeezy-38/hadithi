@@ -19,11 +19,26 @@
                 <p class="pwa-banner-desc">Pata urahisi wa kusoma Hadith, Qur'ani na Dua moja kwa moja kwenye simu yako kama application halisi.</p>
                 <div class="pwa-perks-list">
                     <div class="pwa-perk-item">
-                        <span class="pwa-perk-icon">⚡</span>
+                        <span class="pwa-perk-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </span>
                         <span>Inafunguka papo hapo hata bila bando (Offline)</span>
                     </div>
                     <div class="pwa-perk-item">
-                        <span class="pwa-perk-icon">📿</span>
+                        <span class="pwa-perk-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <circle cx="12" cy="6" r="1.5"></circle>
+                                <circle cx="16.5" cy="8.5" r="1.5"></circle>
+                                <circle cx="17.5" cy="14" r="1.5"></circle>
+                                <circle cx="13.5" cy="17.5" r="1.5"></circle>
+                                <circle cx="8" cy="16.5" r="1.5"></circle>
+                                <circle cx="6.5" cy="11" r="1.5"></circle>
+                                <circle cx="8.5" cy="6.5" r="1.5"></circle>
+                            </svg>
+                        </span>
                         <span>Maktaba, Qur'ani, Dua na Tasbih kiganjani mwako</span>
                     </div>
                 </div>
@@ -54,7 +69,7 @@
                 </div>
                 <div class="pwa-ios-step">
                     <span class="ios-step-num">2</span>
-                    <span>Tembeza chini kisha uchague <strong>"Ongeza kwenye Skrini ya Mwanzo"</strong> (Add to Home Screen ➕).</span>
+                    <span>Tembeza chini kisha uchague <strong>"Ongeza kwenye Skrini ya Mwanzo"</strong> (Add to Home Screen).</span>
                 </div>
             </div>
             <button type="button" id="pwa-ios-dismiss-btn" class="pwa-btn-secondary pwa-btn-full">

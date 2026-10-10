@@ -115,52 +115,6 @@
         </div>
     </footer>
 
-    {{-- Upau wa Urambazaji wa Chini kwenye Simu (Mobile Bottom Navigation Bar) --}}
-    <nav class="mobile-bottom-nav" aria-label="Urambazaji wa chini kwenye simu">
-        <a href="{{ route('library') }}" class="mobile-nav-item {{ request()->routeIs('library', 'hadith.*') ? 'active' : '' }}">
-            <svg class="mobile-nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-            </svg>
-            <span class="mobile-nav-label">Hadithi</span>
-        </a>
-        <a href="{{ route('quran.index') }}" class="mobile-nav-item {{ request()->routeIs('quran.*') ? 'active' : '' }}">
-            <svg class="mobile-nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-            </svg>
-            <span class="mobile-nav-label">Qur'ani</span>
-        </a>
-        <a href="{{ route('duaa.index') }}" class="mobile-nav-item {{ request()->routeIs('duaa.*') ? 'active' : '' }}">
-            <svg class="mobile-nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M7 11V7a2 2 0 0 1 4 0v5"></path>
-                <path d="M17 11V7a2 2 0 0 0-4 0v5"></path>
-                <path d="M4 14c0 4 3.5 7 8 7s8-3 8-7c0-2-1-4-2.5-5.5L12 14 6.5 8.5C5 10 4 12 4 14z"></path>
-            </svg>
-            <span class="mobile-nav-label">Dua</span>
-        </a>
-        <a href="{{ route('tasbih') }}" class="mobile-nav-item {{ request()->routeIs('tasbih') ? 'active' : '' }}">
-            <svg class="mobile-nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="5" r="1.8"></circle>
-                <circle cx="16.5" cy="7" r="1.8"></circle>
-                <circle cx="18.5" cy="11.5" r="1.8"></circle>
-                <circle cx="16.5" cy="16" r="1.8"></circle>
-                <circle cx="12" cy="18" r="1.8"></circle>
-                <circle cx="7.5" cy="16" r="1.8"></circle>
-                <circle cx="5.5" cy="11.5" r="1.8"></circle>
-                <circle cx="7.5" cy="7" r="1.8"></circle>
-                <path d="M12 19.8v3.2"></path>
-                <circle cx="12" cy="23.2" r="0.8" fill="currentColor"></circle>
-            </svg>
-            <span class="mobile-nav-label">Tasbih</span>
-        </a>
-        <a href="{{ route('bookmarks') }}" class="mobile-nav-item {{ request()->routeIs('bookmarks') ? 'active' : '' }}">
-            <svg class="mobile-nav-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m19 21-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <span class="mobile-nav-label">Vipendwa</span>
-        </a>
-    </nav>
     <script src="{{ asset('js/reader.js') }}" defer></script>
     <script src="{{ url('js/pwa.js') }}" defer></script>
     <script src="{{ asset('js/auth-drawer.js') }}" defer></script>

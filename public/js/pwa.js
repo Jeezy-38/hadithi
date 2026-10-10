@@ -11,12 +11,18 @@
     const stdActions = document.getElementById('pwa-standard-actions');
     const iosInstructions = document.getElementById('pwa-ios-instructions');
     const legacyBtn = document.getElementById('pwa-install');
+    const legacyHelp = document.getElementById('pwa-install-help');
 
     const standalone = () => {
-        return window.matchMedia('(display-mode: standalone)').matches ||
-            navigator.standalone ||
-            document.referrer.includes('android-app://') ||
-            localStorage.getItem('hadith_pwa_installed') === '1';
+        const isStandaloneMedia = Boolean(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+        const isNavStandalone = Boolean(navigator.standalone);
+        const isAndroidReferrer = Boolean(typeof document.referrer === 'string' && document.referrer.includes('android-app://'));
+        let isLocalInstalled = false;
+        try {
+            isLocalInstalled = typeof localStorage !== 'undefined' && localStorage && localStorage.getItem('hadith_pwa_installed') === '1';
+        } catch (_) {}
+
+        return isStandaloneMedia || isNavStandalone || isAndroidReferrer || isLocalInstalled;
     };
 
     const isIos = () => {
@@ -28,7 +34,7 @@
 
     const isDismissed = () => {
         try {
-            return sessionStorage.getItem('hadith_pwa_dismissed') === '1';
+            return typeof sessionStorage !== 'undefined' && sessionStorage && sessionStorage.getItem('hadith_pwa_dismissed') === '1';
         } catch (_) {
             return false;
         }
@@ -36,8 +42,20 @@
 
     const markDismissed = () => {
         try {
-            sessionStorage.setItem('hadith_pwa_dismissed', '1');
+            if (typeof sessionStorage !== 'undefined' && sessionStorage) {
+                sessionStorage.setItem('hadith_pwa_dismissed', '1');
+            }
         } catch (_) {}
+    };
+
+    const hideLegacy = () => {
+        if (legacyBtn) {
+            legacyBtn.hidden = true;
+            legacyBtn.style.display = 'none';
+        }
+        if (legacyHelp) {
+            legacyHelp.hidden = true;
+        }
     };
 
     const showBanner = (force = false) => {
@@ -54,18 +72,49 @@
         }
 
         banner.hidden = false;
-        requestAnimationFrame(() => {
+        if (typeof requestAnimationFrame === 'function') {
+            requestAnimationFrame(() => {
+                banner.classList.add('is-visible');
+            });
+        } else {
             banner.classList.add('is-visible');
-        });
+        }
     };
 
     const hideBanner = () => {
-        if (!banner) return;
-        banner.classList.remove('is-visible');
-        setTimeout(() => {
-            banner.hidden = true;
-        }, 320);
+        hideLegacy();
+        if (banner) {
+            banner.classList.remove('is-visible');
+            if (typeof setTimeout === 'function') {
+                setTimeout(() => {
+                    banner.hidden = true;
+                }, 320);
+            } else {
+                banner.hidden = true;
+            }
+        }
         markDismissed();
+    };
+
+    const triggerPrompt = async () => {
+        if (!deferredPrompt) return;
+        const prompt = deferredPrompt;
+        deferredPrompt = null;
+        hideLegacy();
+        hideBanner();
+        try {
+            await prompt.prompt();
+            const choice = await prompt.userChoice;
+            if (choice && choice.outcome === 'accepted') {
+                try {
+                    if (typeof localStorage !== 'undefined' && localStorage) {
+                        localStorage.setItem('hadith_pwa_installed', '1');
+                    }
+                } catch (_) {}
+            }
+        } catch (error) {
+            console.warn('Hadith installation was unavailable.', error);
+        }
     };
 
     // 1. Android / Chrome / Edge Native Prompt Capture
@@ -79,42 +128,35 @@
             legacyBtn.style.removeProperty('display');
         }
 
-        // Pop up mara moja ikiwa bado haijaonekana
         if (!isDismissed()) {
             showBanner();
         }
     });
 
-    // 2. Install Button Action
+    // 2. Install Button Actions
     if (installBtn) {
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
-                const prompt = deferredPrompt;
-                deferredPrompt = null;
-                try {
-                    await prompt.prompt();
-                    const choice = await prompt.userChoice;
-                    if (choice && choice.outcome === 'accepted') {
-                        try {
-                            localStorage.setItem('hadith_pwa_installed', '1');
-                        } catch (_) {}
-                        hideBanner();
-                    }
-                } catch (error) {
-                    console.warn('PWA prompt error:', error);
-                    hideBanner();
-                }
+                await triggerPrompt();
                 return;
             }
 
-            // Ikiwa hakuna native prompt (mfano Safari ya iOS au browser nyingine)
             if (isIos() && iosInstructions) {
                 if (stdActions) stdActions.hidden = true;
                 iosInstructions.hidden = false;
             } else {
-                // Browser ya kawaida: elekeza mtumiaji kuongeza kwenye home screen
                 alert("Ili kuweka Hadith App kwenye simu yako:\n1. Gusa menyu ya kivinjari chako (vitone 3 ⋮ juu au chini)\n2. Chagua 'Install app' au 'Ongeza kwenye Skrini ya Mwanzo' (Add to Home Screen).");
                 hideBanner();
+            }
+        });
+    }
+
+    if (legacyBtn) {
+        legacyBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                await triggerPrompt();
+            } else {
+                showBanner(true);
             }
         });
     }
@@ -125,31 +167,32 @@
     if (overlay) overlay.addEventListener('click', hideBanner);
     if (iosDismissBtn) iosDismissBtn.addEventListener('click', hideBanner);
 
-    // 4. Legacy button support
-    if (legacyBtn) {
-        legacyBtn.addEventListener('click', () => {
-            showBanner(true);
-        });
-    }
-
-    // 5. App Installed Event
+    // 4. App Installed Event
     window.addEventListener('appinstalled', () => {
+        hideLegacy();
         hideBanner();
         try {
-            localStorage.setItem('hadith_pwa_installed', '1');
+            if (typeof localStorage !== 'undefined' && localStorage) {
+                localStorage.setItem('hadith_pwa_installed', '1');
+            }
         } catch (_) {}
     });
 
+    // 5. iOS Help initialization
+    if (!standalone() && isIos() && legacyHelp) {
+        legacyHelp.hidden = false;
+    }
+
     // 6. Pop up ya Kwanza na Floating Back-to-Top
     const initPageUi = () => {
-        // A) Floating Back to Top Button
         const backToTopBtn = document.getElementById('back-to-top');
         if (backToTopBtn) {
             let scrollTicking = false;
             window.addEventListener('scroll', () => {
                 if (!scrollTicking) {
-                    window.requestAnimationFrame(() => {
-                        if (window.scrollY > 280) {
+                    const raf = typeof requestAnimationFrame === 'function' ? requestAnimationFrame : (fn) => fn();
+                    raf(() => {
+                        if (typeof window.scrollY === 'number' && window.scrollY > 280) {
                             backToTopBtn.classList.add('is-visible');
                         } else {
                             backToTopBtn.classList.remove('is-visible');
@@ -161,19 +204,22 @@
             }, { passive: true });
 
             backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (typeof window.scrollTo === 'function') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
             });
         }
 
-        // B) PWA First-Visit Modern Pop-up
         if (!standalone() && !isDismissed()) {
-            setTimeout(() => {
-                showBanner();
-            }, 1100);
+            if (typeof setTimeout === 'function') {
+                setTimeout(() => {
+                    showBanner();
+                }, 1100);
+            }
         }
     };
 
-    if (document.readyState === 'loading') {
+    if (typeof document.readyState === 'string' && document.readyState === 'loading') {
         window.addEventListener('DOMContentLoaded', initPageUi);
     } else {
         initPageUi();
