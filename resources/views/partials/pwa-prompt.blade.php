@@ -16,7 +16,17 @@
                     <span class="pwa-feature-pill">Hakuna Matangazo</span>
                 </div>
                 <h3 id="pwa-title">Sakinisha Hadith App</h3>
-                <p class="pwa-banner-desc">Fungua Hadith, Qur'ani na Dua moja kwa moja kwenye simu yako kwa kasi zaidi na usome hata bila intaneti.</p>
+                <p class="pwa-banner-desc">Pata urahisi wa kusoma Hadith, Qur'ani na Dua moja kwa moja kwenye simu yako kama application halisi.</p>
+                <div class="pwa-perks-list">
+                    <div class="pwa-perk-item">
+                        <span class="pwa-perk-icon">⚡</span>
+                        <span>Inafunguka papo hapo hata bila bando (Offline)</span>
+                    </div>
+                    <div class="pwa-perk-item">
+                        <span class="pwa-perk-icon">📿</span>
+                        <span>Maktaba, Qur'ani, Dua na Tasbih kiganjani mwako</span>
+                    </div>
+                </div>
             </div>
         </div>
 

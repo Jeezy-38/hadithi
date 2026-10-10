@@ -15,7 +15,8 @@
     const standalone = () => {
         return window.matchMedia('(display-mode: standalone)').matches ||
             navigator.standalone ||
-            document.referrer.includes('android-app://');
+            document.referrer.includes('android-app://') ||
+            localStorage.getItem('hadith_pwa_installed') === '1';
     };
 
     const isIos = () => {
@@ -41,7 +42,7 @@
 
     const showBanner = (force = false) => {
         if (!banner) return;
-        if (standalone()) return;
+        if (standalone() && !force) return;
         if (!force && isDismissed()) return;
 
         if (isIos() && !deferredPrompt) {
@@ -63,7 +64,7 @@
         banner.classList.remove('is-visible');
         setTimeout(() => {
             banner.hidden = true;
-        }, 300);
+        }, 320);
         markDismissed();
     };
 
@@ -78,28 +79,41 @@
             legacyBtn.style.removeProperty('display');
         }
 
-        // Pop up mara tu unapoingia
-        showBanner();
+        // Pop up mara moja ikiwa bado haijaonekana
+        if (!isDismissed()) {
+            showBanner();
+        }
     });
 
     // 2. Install Button Action
     if (installBtn) {
         installBtn.addEventListener('click', async () => {
-            if (!deferredPrompt) {
-                // Ikiwa hakuna deferredPrompt (mfano desktop au browser isiyo na native prompt), elekeza au funga
-                hideBanner();
-                return;
-            }
-            const prompt = deferredPrompt;
-            deferredPrompt = null;
-            try {
-                await prompt.prompt();
-                const choice = await prompt.userChoice;
-                if (choice.outcome === 'accepted') {
+            if (deferredPrompt) {
+                const prompt = deferredPrompt;
+                deferredPrompt = null;
+                try {
+                    await prompt.prompt();
+                    const choice = await prompt.userChoice;
+                    if (choice && choice.outcome === 'accepted') {
+                        try {
+                            localStorage.setItem('hadith_pwa_installed', '1');
+                        } catch (_) {}
+                        hideBanner();
+                    }
+                } catch (error) {
+                    console.warn('PWA prompt error:', error);
                     hideBanner();
                 }
-            } catch (error) {
-                console.warn('PWA install error:', error);
+                return;
+            }
+
+            // Ikiwa hakuna native prompt (mfano Safari ya iOS au browser nyingine)
+            if (isIos() && iosInstructions) {
+                if (stdActions) stdActions.hidden = true;
+                iosInstructions.hidden = false;
+            } else {
+                // Browser ya kawaida: elekeza mtumiaji kuongeza kwenye home screen
+                alert("Ili kuweka Hadith App kwenye simu yako:\n1. Gusa menyu ya kivinjari chako (vitone 3 ⋮ juu au chini)\n2. Chagua 'Install app' au 'Ongeza kwenye Skrini ya Mwanzo' (Add to Home Screen).");
                 hideBanner();
             }
         });
@@ -126,14 +140,44 @@
         } catch (_) {}
     });
 
-    // 6. Kwenye iOS Safari (ambayo haina beforeinstallprompt), pop up mara tu baada ya kupakia
-    window.addEventListener('DOMContentLoaded', () => {
-        if (isIos() && !standalone() && !isDismissed()) {
+    // 6. Pop up ya Kwanza na Floating Back-to-Top
+    const initPageUi = () => {
+        // A) Floating Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+        if (backToTopBtn) {
+            let scrollTicking = false;
+            window.addEventListener('scroll', () => {
+                if (!scrollTicking) {
+                    window.requestAnimationFrame(() => {
+                        if (window.scrollY > 280) {
+                            backToTopBtn.classList.add('is-visible');
+                        } else {
+                            backToTopBtn.classList.remove('is-visible');
+                        }
+                        scrollTicking = false;
+                    });
+                    scrollTicking = true;
+                }
+            }, { passive: true });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // B) PWA First-Visit Modern Pop-up
+        if (!standalone() && !isDismissed()) {
             setTimeout(() => {
                 showBanner();
-            }, 1200);
+            }, 1100);
         }
-    });
+    };
+
+    if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', initPageUi);
+    } else {
+        initPageUi();
+    }
 
     // 7. Service Worker Registration
     if ('serviceWorker' in navigator && window.isSecureContext) {
