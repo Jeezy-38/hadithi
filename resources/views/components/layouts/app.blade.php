@@ -7,6 +7,10 @@
     <title>{{ $title ?? 'Maktaba ya Hadith' }} · Hadith</title>
     <link rel="icon" href="{{ asset('images/logo.png') }}">
     <meta name="theme-color" content="#0a0e13">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Hadith">
     <link rel="manifest" href="{{ url('manifest.webmanifest') }}">
     <link rel="apple-touch-icon" href="{{ url('icons/apple-touch-icon.png') }}">
     <script>

@@ -152,6 +152,26 @@
             </div>
         </div>
 
+        <div class="nav-drawer-divider"></div>
+
+        <div class="nav-drawer-section-label" data-i18n="drawer_pwa_label">PROGRAMU YA HADITH</div>
+        <div class="nav-drawer-pwa-box">
+            <button type="button" class="nav-drawer-pwa-btn" id="drawer-pwa-install-btn" aria-label="Sakinisha au fungua Hadith App">
+                <span class="nav-drawer-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </span>
+                <span class="nav-drawer-pwa-meta">
+                    <span class="nav-drawer-pwa-title" id="drawer-pwa-title">Sakinisha App</span>
+                    <span class="nav-drawer-pwa-sub" id="drawer-pwa-sub">Inafunguka bila mtandao</span>
+                </span>
+                <span class="nav-drawer-pwa-badge" id="drawer-pwa-badge">PWA</span>
+            </button>
+        </div>
+
         @auth
             <div class="nav-drawer-divider"></div>
             <div class="nav-drawer-section-label">AKAUNTI</div>

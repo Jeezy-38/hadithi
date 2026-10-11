@@ -12,6 +12,10 @@
     const iosInstructions = document.getElementById('pwa-ios-instructions');
     const legacyBtn = document.getElementById('pwa-install');
     const legacyHelp = document.getElementById('pwa-install-help');
+    const drawerPwaBtn = document.getElementById('drawer-pwa-install-btn');
+    const drawerPwaTitle = document.getElementById('drawer-pwa-title');
+    const drawerPwaSub = document.getElementById('drawer-pwa-sub');
+    const drawerPwaBadge = document.getElementById('drawer-pwa-badge');
 
     const standalone = () => {
         const isStandaloneMedia = Boolean(window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
@@ -55,6 +59,25 @@
         }
         if (legacyHelp) {
             legacyHelp.hidden = true;
+        }
+    };
+
+    const updateDrawerPwaUi = () => {
+        if (!drawerPwaBtn) return;
+        if (standalone()) {
+            if (drawerPwaTitle) drawerPwaTitle.textContent = 'App Imesakinishwa';
+            if (drawerPwaSub) drawerPwaSub.textContent = 'Tayari ipo kwenye kifaa chako';
+            if (drawerPwaBadge) {
+                drawerPwaBadge.textContent = 'Imewekwa';
+                drawerPwaBadge.classList.add('is-installed');
+            }
+        } else {
+            if (drawerPwaTitle) drawerPwaTitle.textContent = 'Sakinisha Hadith App';
+            if (drawerPwaSub) drawerPwaSub.textContent = 'Inafunguka bila mtandao';
+            if (drawerPwaBadge) {
+                drawerPwaBadge.textContent = 'PWA';
+                drawerPwaBadge.classList.remove('is-installed');
+            }
         }
     };
 
@@ -128,12 +151,34 @@
             legacyBtn.style.removeProperty('display');
         }
 
+        updateDrawerPwaUi();
+
         if (!isDismissed()) {
             showBanner();
         }
     });
 
     // 2. Install Button Actions
+    if (drawerPwaBtn) {
+        drawerPwaBtn.addEventListener('click', async () => {
+            if (standalone()) {
+                alert("Hadith App tayari imewekwa kwenye kifaa hiki!\n\nUnaweza kuifungua moja kwa moja kutoka kwenye Skrini ya Programu (Applications), au bofya alama ya 'Open in app' kwenye mwambaa wa anwani wa kivinjari chako.");
+                return;
+            }
+
+            if (deferredPrompt) {
+                await triggerPrompt();
+                return;
+            }
+
+            if (isIos() && iosInstructions) {
+                showBanner(true);
+            } else {
+                showBanner(true);
+            }
+        });
+    }
+
     if (installBtn) {
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
@@ -176,6 +221,7 @@
                 localStorage.setItem('hadith_pwa_installed', '1');
             }
         } catch (_) {}
+        updateDrawerPwaUi();
     });
 
     // 5. iOS Help initialization
@@ -185,6 +231,7 @@
 
     // 6. Pop up ya Kwanza na Floating Back-to-Top
     const initPageUi = () => {
+        updateDrawerPwaUi();
         const backToTopBtn = document.getElementById('back-to-top');
         if (backToTopBtn) {
             let scrollTicking = false;

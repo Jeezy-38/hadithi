@@ -3349,6 +3349,68 @@ a, button, select, input {
         flex-shrink: 0 !important;
     }
 
+    /* PWA Box kwenye Nav Drawer */
+    .nav-drawer-pwa-box {
+        padding: 4px 6px 8px !important;
+    }
+
+    .nav-drawer-pwa-btn {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        padding: 12px 14px !important;
+        border-radius: 12px !important;
+        background: rgba(218, 181, 106, 0.08) !important;
+        border: 1px solid rgba(218, 181, 106, 0.3) !important;
+        color: var(--text-primary) !important;
+        text-align: left !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .nav-drawer-pwa-btn:hover {
+        background: rgba(218, 181, 106, 0.16) !important;
+        border-color: var(--gold) !important;
+        transform: translateY(-1px) !important;
+    }
+
+    .nav-drawer-pwa-meta {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+    }
+
+    .nav-drawer-pwa-title {
+        font-size: 13.5px !important;
+        font-weight: 700 !important;
+        color: var(--gold) !important;
+    }
+
+    .nav-drawer-pwa-sub {
+        font-size: 11px !important;
+        color: var(--text-muted) !important;
+    }
+
+    .nav-drawer-pwa-badge {
+        font-size: 10px !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        padding: 3px 8px !important;
+        border-radius: 999px !important;
+        background: var(--gold-subtle) !important;
+        color: var(--gold) !important;
+        border: 1px solid rgba(218, 181, 106, 0.4) !important;
+    }
+
+    .nav-drawer-pwa-badge.is-installed {
+        background: rgba(46, 204, 113, 0.15) !important;
+        color: #2ecc71 !important;
+        border-color: rgba(46, 204, 113, 0.4) !important;
+    }
+
     .nav-drawer-account {
         padding: 2px 4px !important;
     }
