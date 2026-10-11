@@ -1503,20 +1503,28 @@
     };
 
     const loadVoices = () => {
-        if (!voices || !language) return;
+        if (!language) return;
         const currentLang = language.value;
-        const previousChoice = audioPrefs.narratorVersion === 'male-v1'
-            ? (voices.value || audioPrefs.voiceChoice || 'hd-natural') : 'hd-natural';
 
-        voices.replaceChildren();
-
-        // 1. HD Natural Voice option (First & Default)
-        const hdOpt = new Option('Kiume · HD', 'hd-natural');
-        voices.add(hdOpt);
-
-        // 2. Add device voices if supported by the browser
         if (synth) {
-            availableVoices = synth.getVoices().filter(v => v.lang.toLowerCase().split(/[-_]/)[0] === currentLang);
+            try {
+                availableVoices = synth.getVoices().filter(v => v.lang.toLowerCase().split(/[-_]/)[0] === currentLang);
+            } catch (_) {
+                availableVoices = [];
+            }
+        }
+
+        if (voices && voices.tagName === 'SELECT') {
+            const previousChoice = audioPrefs.narratorVersion === 'male-v1'
+                ? (voices.value || audioPrefs.voiceChoice || 'hd-natural') : 'hd-natural';
+
+            voices.replaceChildren();
+
+            // 1. HD Natural Voice option (First & Default)
+            const hdOpt = new Option('Kiume · HD', 'hd-natural');
+            voices.add(hdOpt);
+
+            // 2. Add device voices if supported by the browser
             if (availableVoices.length > 0) {
                 const group = document.createElement('optgroup');
                 group.label = 'Sauti za Kifaa (Device Voices)';
@@ -1526,19 +1534,17 @@
                 });
                 voices.appendChild(group);
             }
-        }
 
-        // Restore previous choice or default to hd-natural
-        if ([...voices.options].some(opt => opt.value === previousChoice)) {
-            voices.value = previousChoice;
-        } else {
-            voices.value = 'hd-natural';
+            // Restore previous choice or default to hd-natural
+            if ([...voices.options].some(opt => opt.value === previousChoice)) {
+                voices.value = previousChoice;
+            } else {
+                voices.value = 'hd-natural';
+            }
         }
 
         if (status) {
-            status.textContent = voices.value === 'hd-natural'
-                ? 'Tayari kusoma kwa sauti fasaha ya HD. Bonyeza “Soma kwa sauti”.'
-                : 'Tayari kusoma kwa sauti ya kifaa. Bonyeza “Soma kwa sauti”.';
+            status.textContent = 'Tayari kusoma kwa sauti. Bonyeza “Soma kwa sauti”.';
         }
     };
 
@@ -1577,10 +1583,19 @@
             isPlaying = false;
             isPaused = false;
             if (err?.name === 'AbortError') return; // stop/badiliko wakati inapakia
-            console.error('Audio playback failed:', err);
+            console.warn('Sauti ya HD haipatikani kwenye seva, inajaribu sauti ya kifaa...', err);
+
+            // Fallback ya kiotomatiki kwa sauti ya kifaa
+            const text = document.getElementById(`text-${lang}`)?.textContent.trim();
+            if (synth && text && availableVoices.length > 0) {
+                if (status) status.textContent = 'Sauti ya HD haipatikani mtandaoni, inasoma kwa sauti ya kifaa…';
+                playDeviceSynth(lang);
+                return;
+            }
+
             if (status) status.textContent = (auto || err?.name === 'NotAllowedError')
                 ? 'Bonyeza “Soma kwa sauti” kuendelea kusikiliza.'
-                : 'Imeshindwa kupakia sauti ya HD. Unaweza kujaribu tena au kuchagua sauti ya kifaa.';
+                : 'Sauti ya hadithi hii bado haijapakiwa kwenye seva.';
             updateControlsUI();
         });
     };
@@ -1595,13 +1610,14 @@
     };
 
     // Playback via Browser SpeechSynthesis (Fallback)
-    const playDeviceSynth = () => {
-        if (!synth || !voices || !language) return;
-        const voiceIdx = Number(voices.value.replace('device-', ''));
-        const voice = availableVoices[voiceIdx];
-        const text = document.getElementById(`text-${language.value}`)?.textContent.trim();
-        if (!voice || !text) {
-            if (status) status.textContent = 'Maandishi au sauti ya kifaa haipatikani.';
+    const playDeviceSynth = (targetLang = null) => {
+        if (!synth || !language) return;
+        const currentLang = targetLang || language.value;
+        const langVoices = availableVoices.length > 0 ? availableVoices : synth.getVoices().filter(v => v.lang.toLowerCase().split(/[-_]/)[0] === currentLang);
+        const voice = langVoices[0] || synth.getVoices().find(v => v.lang.toLowerCase().startsWith(currentLang));
+        const text = document.getElementById(`text-${currentLang}`)?.textContent.trim();
+        if (!text) {
+            if (status) status.textContent = 'Maandishi ya hadith hayapatikani.';
             return;
         }
 
@@ -1625,14 +1641,16 @@
                 return;
             }
             synthUtterance = new SpeechSynthesisUtterance(chunks[index++]);
-            synthUtterance.voice = voice;
-            synthUtterance.lang = voice.lang;
+            if (voice) {
+                synthUtterance.voice = voice;
+                synthUtterance.lang = voice.lang;
+            }
             if (rate) synthUtterance.rate = Number(rate.value);
             synthUtterance.onend = next;
             synthUtterance.onerror = () => {
                 if (token !== synthGeneration) return;
                 stopAll();
-                if (status) status.textContent = 'Sauti ya kifaa imeshindwa kusoma. Badilisha kuwa Msomaji Fasaha wa HD.';
+                if (status) status.textContent = 'Sauti ya kifaa imeshindwa kusoma.';
             };
             if (status) status.textContent = `Inasoma kupitia kifaa… sehemu ya ${index} kati ya ${chunks.length}`;
             synth.speak(synthUtterance);
@@ -1675,10 +1693,17 @@
 
     nativeAudio.addEventListener('error', () => {
         if (isLoading) setLoading(false);
+        const currentLang = language?.value || 'sw';
+        const text = document.getElementById(`text-${currentLang}`)?.textContent.trim();
+        if (synth && text && availableVoices.length > 0) {
+            if (status) status.textContent = 'Sauti ya HD haipo mtandaoni, inasoma kwa sauti ya kifaa…';
+            playDeviceSynth(currentLang);
+            return;
+        }
         if (isPlaying) {
             isPlaying = false;
             isPaused = false;
-            if (status) status.textContent = 'Imeshindwa kusoma sauti. Tafadhali jaribu tena.';
+            if (status) status.textContent = 'Sauti ya hadithi hii bado haijapakiwa kwenye seva.';
             updateControlsUI();
         }
     });
