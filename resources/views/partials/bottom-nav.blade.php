@@ -28,7 +28,7 @@
                 <path d="M18 18a6 6 0 0 1-12 0c0-3.5 3-7 6-11 3 4 6 7.5 6 11z"></path>
             </svg>
         </span>
-        <span class="mobile-nav-label" data-i18n="nav_duaa">Dua</span>
+        <span class="mobile-nav-label" data-i18n="nav_duaa_short">Dua</span>
     </a>
 
     <a href="{{ route('tasbih') }}" class="mobile-nav-item {{ request()->routeIs('tasbih') ? 'active' : '' }}">
