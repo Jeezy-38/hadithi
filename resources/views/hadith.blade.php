@@ -1,12 +1,12 @@
 <x-layouts.app :title="$hadith->chapter->book->collection->name.' · '.$hadith->number">
-    <div class="reader-shell hadith-reader-shell">
+    <div class="reader-shell hadith-reader-shell dua-detail-shell hadith-detail-shell">
         <a class="back-link" href="{{ route('library', ['collection' => $hadith->chapter->book->collection->slug, 'book' => $hadith->chapter->book_id, 'chapter' => $hadith->chapter_id]) }}">
             <span class="back-arrow" aria-hidden="true">←</span>
-            <span>Rudi kwenye mlango</span>
+            <span>Rudi kwenye {{ $hadith->chapter->title_sw }}</span>
         </a>
 
-        <div class="reader-heading">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> {{ $hadith->chapter->book->collection->name }}</span>
+        <div class="reader-heading dua-detail-heading">
+            <span class="eyebrow"><span class="eyebrow-dot"></span> {{ $hadith->chapter->book->collection->name }} · HADITHI NA. {{ $hadith->number }}</span>
             <h1>Hadith {{ $hadith->number }}</h1>
             @if($hadith->title)
                 <h2 class="reader-title">{{ $hadith->title }}</h2>
@@ -54,125 +54,79 @@
                 </span>
                 <span class="btn-text">Shiriki</span>
             </button>
+
+            <button type="button" id="audio-play" class="text-button action-pill-btn speech-client-btn" title="Sikiliza kwa sauti ya kifaa">
+                <span class="btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                    </svg>
+                </span>
+                <span class="btn-text">Soma kwa sauti</span>
+            </button>
+
+            <input type="hidden" id="reading-language" value="both">
         </div>
 
-        <article class="reader-card">
-            {{-- 1. Matini Asilia ya Kiarabu (Default) --}}
-            <section data-reading="ar" class="reading-section arabic-section">
-                <div class="section-label-bar">
-                    <span class="section-label">MAANDISHI YA KIARABU · {{ $hadith->source_name }}</span>
-                    <span class="arabic-lang-tag">العربية</span>
-                </div>
-                <div class="manuscript-box">
-                    <p id="text-ar" class="arabic full-text reading-arabic" lang="ar" dir="rtl">{{ $hadith->arabic }}</p>
-                </div>
-            </section>
+        <article class="reader-card dua-detail-card hadith-detail-card">
+            {{-- Sehemu ya Juu ya Kadi --}}
+            <div class="dua-detail-header">
+                <span class="dua-category-badge">{{ $hadith->chapter->book->collection->name }}</span>
+                <span class="dua-repeat-badge">{{ $hadith->grade ?? 'Sahihi' }}</span>
+            </div>
 
-            {{-- 2. Tafsiri Fasaha ya Kiswahili --}}
-            <section data-reading="sw" class="reading-section swahili-section">
-                <div class="section-label-bar">
-                    <span class="section-label">TAFSIRI YA KISWAHILI</span>
-                    <span class="lang-pill">Kiswahili</span>
+            {{-- 1. Matini ya Kiarabu --}}
+            <section class="reading-section" data-reading="ar" aria-labelledby="label-arabic">
+                <div class="section-label-row">
+                    <span id="label-arabic" class="section-label">MAANDISHI YA KIARABU · {{ $hadith->source_name }}</span>
+                    <span class="section-script-badge">العربية بالتشكيل</span>
                 </div>
-                <div class="swahili-translation-box">
-                    <p id="text-sw" class="full-text swahili reading-swahili" lang="sw">{{ $hadith->swahili }}</p>
+                <div class="arabic-box dua-arabic-box-detail">
+                    <p id="text-ar" class="arabic-text font-arabic" lang="ar" dir="rtl">{{ $hadith->arabic }}</p>
                 </div>
             </section>
 
-            {{-- 3. Kicheza Sauti Nadhifu Chini ya Tafsiri --}}
-            <section class="audio-player hadith-audio-console no-print" aria-label="Kusikiliza hadith" data-hadith-id="{{ $hadith->id }}" data-audio-base="{{ url('/audio/hadith/'.$hadith->id) }}"
-                @if($next) data-next-url="{{ route('hadith.show', $next) }}" data-next-audio-base="{{ url('/audio/hadith/'.$next->id) }}" @endif>
-                <div class="audio-header">
-                    <div class="audio-header-title">
-                        <span class="audio-icon" aria-hidden="true">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle;">
-                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                            </svg>
-                        </span>
-                        <h2>Sikiliza hadith</h2>
-                        <div class="audio-equalizer" aria-hidden="true" title="Hali ya sauti">
-                            <span class="eq-bar eq-1"></span>
-                            <span class="eq-bar eq-2"></span>
-                            <span class="eq-bar eq-3"></span>
-                            <span class="eq-bar eq-4"></span>
-                        </div>
-                    </div>
-
-                    <input type="hidden" id="audio-rate" value="1">
-                    <input type="hidden" id="audio-language" value="ar">
+            {{-- 2. Tafsiri ya Kiswahili --}}
+            <section class="reading-section" data-reading="sw" aria-labelledby="label-swahili">
+                <div class="section-label-row">
+                    <span id="label-swahili" class="section-label">TAFSIRI YA KISWAHILI</span>
                 </div>
-
-                <div class="audio-progress-container" id="audio-progress-container">
-                    <div class="audio-time-row">
-                        <span id="audio-current-time" class="audio-time">0:00</span>
-                        <div class="audio-track-wrap">
-                            <div class="audio-track-bg">
-                                <div class="audio-progress-fill" id="audio-progress-fill"></div>
-                            </div>
-                            <div class="audio-thumb-indicator" id="audio-thumb-indicator" style="left: 0%;"></div>
-                            <input type="range" id="audio-scrubber" class="audio-scrubber" min="0" max="100" value="0" step="0.1" aria-label="Muda wa sauti" disabled>
-                        </div>
-                        <span id="audio-total-time" class="audio-time">0:00</span>
-                    </div>
+                <div class="swahili-box">
+                    <p id="text-sw" class="swahili-text" lang="sw">{{ $hadith->swahili }}</p>
                 </div>
-
-                <div class="audio-actions">
-                    <button type="button" id="audio-play" class="audio-btn play-btn">
-                        <span aria-hidden="true" class="audio-btn-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                        </span>
-                        <span class="btn-audio-label">Soma kwa sauti</span>
-                    </button>
-                    <button type="button" id="audio-pause" class="audio-btn pause-btn" disabled>
-                        <span aria-hidden="true" class="audio-btn-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
-                        </span>
-                        <span class="btn-audio-label">Sitisha</span>
-                    </button>
-                    <button type="button" id="audio-stop" class="audio-btn stop-btn" disabled>
-                        <span aria-hidden="true" class="audio-btn-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"></rect></svg>
-                        </span>
-                        <span class="btn-audio-label">Acha</span>
-                    </button>
-                    @if($next)
-                        <label class="audio-autonext" title="Hadith inayofuata: Na. {{ $next->number }}">
-                            <input type="checkbox" id="audio-autonext">
-                            <span>Endelea inayofuata</span>
-                        </label>
-                    @endif
-                </div>
-
-                <input type="hidden" id="audio-voice" value="hd-natural">
-                <input type="hidden" id="audio-sequence" value="single">
-                <audio id="hadith-native-audio" preload="metadata" style="display:none;"></audio>
-                <p id="audio-status" class="audio-status-text" role="status" aria-live="polite" hidden></p>
-                <noscript>Washa JavaScript ili kutumia sauti na kubadilisha lugha.</noscript>
             </section>
 
-            {{-- 4. Sharh na Maelezo ya Hadithi (Ufafanuzi Ulio shiba) --}}
-            @if($hadith->explanation)
-                <section class="reading-section explanation-section" aria-labelledby="label-explanation">
-                    <div class="section-label-bar">
-                        <span id="label-explanation" class="section-label">SHARH NA UFAFANUZI WA HADITHI</span>
-                        <span class="lang-pill">Sharh</span>
+            {{-- 3. Tafsiri ya Kiingereza (kama ipo) --}}
+            @if($hadith->english)
+                <section class="reading-section" data-reading="en" aria-labelledby="label-english">
+                    <div class="section-label-row">
+                        <span id="label-english" class="section-label">ENGLISH TRANSLATION</span>
                     </div>
-                    <div class="explanation-box rich-explanation-box">
-                        <div class="explanation-text-content">
-                            {!! nl2br(e($hadith->explanation)) !!}
-                        </div>
+                    <div class="english-box">
+                        <p id="text-en" class="english-text" lang="en">{{ $hadith->english }}</p>
                     </div>
                 </section>
             @endif
 
-            {{-- 5. Mafundisho na Faida za Hadithi (Kadi za Namba Zilizoshiba) --}}
+            {{-- 4. Sharh na Ufafanuzi wa Hadithi (kama upo) --}}
+            @if($hadith->explanation)
+                <div class="dua-virtue-callout hadith-explanation-callout">
+                    <div class="virtue-header">
+                        <strong>Sharh na Ufafanuzi wa Hadithi:</strong>
+                    </div>
+                    <div class="virtue-text">
+                        {!! nl2br(e($hadith->explanation)) !!}
+                    </div>
+                </div>
+            @endif
+
+            {{-- 5. Mafundisho na Faida za Hadithi (kama zipo) --}}
             @if(!empty($hadith->hints) && count($hadith->hints) > 0)
                 <section class="reading-section lessons-section" aria-labelledby="label-lessons">
-                    <div class="section-label-bar">
+                    <div class="section-label-row">
                         <span id="label-lessons" class="section-label">MAFUNDISHO NA FAIDA ZA HADITHI</span>
-                        <span class="lang-pill">Faida {{ count($hadith->hints) }}</span>
+                        <span class="section-script-badge">Faida {{ count($hadith->hints) }}</span>
                     </div>
                     <div class="lessons-deck">
                         @foreach($hadith->hints as $index => $hint)
@@ -189,107 +143,69 @@
                 </section>
             @endif
 
-            {{-- 6. Tafsiri ya Kiingereza ya Hiari (Collapsible Optional Drawer) --}}
-            @if($hadith->english)
-                <details class="optional-translation-drawer no-print" id="english-drawer">
-                    <summary class="optional-drawer-toggle">
-                        <span class="drawer-toggle-left">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="12" y1="2" x2="12" y2="22"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                            <span>Onyesha Tafsiri ya Kiingereza (English Translation)</span>
-                        </span>
-                        <span class="drawer-toggle-arrow" aria-hidden="true">▾</span>
-                    </summary>
-                    <div class="optional-drawer-body">
-                        <section data-reading="en" class="reading-section english-section">
-                            <p id="text-en" class="full-text reading-english" lang="en">{{ $hadith->english }}</p>
-                            @if($hadith->source_record_id)
-                                <p class="source-note">Translation: <a href="https://hadeethenc.com/en/browse/hadith/{{ $hadith->source_record_id }}" target="_blank" rel="noopener noreferrer">HadeethEnc.com ↗</a></p>
+            {{-- 6. Rejea na Daraja la Hadithi --}}
+            <div class="source-box dua-ref-box hadith-source-box">
+                <div class="source-header">
+                    <h2 class="source-title">Rejea na Daraja ya Hadithi</h2>
+                </div>
+                <div class="source-item">
+                    <dt>Kitabu na Mlango:</dt>
+                    <dd>{{ $hadith->chapter->book->collection->name }} · Hadith Na. {{ $hadith->number }} ({{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }})</dd>
+                </div>
+                <div class="source-item">
+                    <dt>Daraja na Mpokezi:</dt>
+                    <dd><span class="brief-grade-badge">{{ $hadith->grade ?? 'Sahihi' }}</span> · {{ $hadith->attribution ?? ('Imepokelewa na ' . $hadith->chapter->book->collection->name) }}</dd>
+                </div>
+                @if($hadith->reference_url)
+                    <div class="source-item">
+                        <dt>Rejea Rasmi:</dt>
+                        <dd><a href="{{ $hadith->reference_url }}" target="_blank" rel="noopener noreferrer">Linganisha kwenye Sunnah.com ↗</a></dd>
+                    </div>
+                @endif
+                @if($hadith->translation_source_url || $hadith->translator)
+                    <div class="source-item">
+                        <dt>Mfasiri na Chanzo:</dt>
+                        <dd>
+                            {{ $hadith->translator ?? 'Mfasiri Rasmi' }}
+                            @if($hadith->translation_source_url)
+                                · <a href="{{ $hadith->translation_source_url }}" target="_blank" rel="noopener noreferrer">Chanzo cha Tafsiri ↗</a>
                             @endif
-                        </section>
+                        </dd>
                     </div>
-                </details>
-            @endif
-        </article>
-
-        {{-- 7. Kadi ya Rejea na Daraja (Vitu 2 Pekee: Rejea na Daraja) --}}
-        <section class="hadith-brief-source-card" aria-labelledby="brief-source-heading">
-            <div class="brief-source-header">
-                <span class="brief-source-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                    </svg>
-                </span>
-                <h2 id="brief-source-heading">Rejea na Daraja ya Hadithi</h2>
-            </div>
-
-            <div class="brief-source-grid">
-                <div class="brief-source-item">
-                    <span class="brief-source-label">REJEA YA HADITHI</span>
-                    <strong class="brief-source-value">
-                        {{ $hadith->chapter->book->collection->name }} · Hadith Na. {{ $hadith->number }}
-                    </strong>
-                    <span class="brief-source-sub">
-                        Kitabu: {{ $hadith->chapter->book->title_sw }} (Mlango: {{ $hadith->chapter->title_sw }})
-                    </span>
-                    @if($hadith->reference_url)
-                        <a href="{{ $hadith->reference_url }}" target="_blank" rel="noopener noreferrer" class="brief-source-link">
-                            Linganisha kwenye Sunnah.com ↗
-                        </a>
-                    @endif
-                </div>
-
-                <div class="brief-source-item">
-                    <span class="brief-source-label">DARAJA NA HUKUMU</span>
-                    <div class="brief-grade-badge-wrap">
-                        <span class="brief-grade-badge">{{ $hadith->grade ?? 'Sahihi' }}</span>
+                @endif
+                @if($hadith->license_url)
+                    <div class="source-item">
+                        <dt>Masharti ya Matumizi:</dt>
+                        <dd><a href="{{ $hadith->license_url }}" target="_blank" rel="noopener noreferrer">Leseni ya Maudhui ↗</a></dd>
                     </div>
-                    <span class="brief-source-sub">
-                        {{ $hadith->attribution ?? ('Imepokelewa na ' . $hadith->chapter->book->collection->name) }}
-                    </span>
-                </div>
-            </div>
-
-            <div class="brief-source-footer">
-                <span class="brief-footer-text">
-                    Chanzo: {{ $hadith->source_name }}
-                    @if($hadith->translation_source_url)
-                        · <a href="{{ $hadith->translation_source_url }}" target="_blank" rel="noopener noreferrer">Tafsiri: {{ $hadith->translator }} ↗</a>
-                    @endif
-                    @if($hadith->license_url)
-                        · <a href="{{ $hadith->license_url }}" target="_blank" rel="noopener noreferrer">Masharti ya Matumizi ↗</a>
-                    @endif
-                </span>
+                @endif
                 <span class="sr-only">{{ $hadith->reference }}</span>
             </div>
-        </section>
+        </article>
 
+        {{-- Hadithi Nyingine Katika Mlango Huu --}}
         @if($related->isNotEmpty())
-            <section class="related-hadith no-print" aria-label="Hadith nyingine za mlango huu">
+            <section class="related-section dua-related-section">
                 <div class="related-header">
-                    <h2>Hadith nyingine za mlango huu</h2>
-                    <span class="related-count">{{ $related->count() }} hadith</span>
+                    <h2>Hadithi Nyingine Katika Mlango Huu</h2>
                 </div>
-                <ul class="related-list">
-                    @foreach($related as $item)
-                        <li class="related-item">
-                            <a href="{{ route('hadith.show', $item) }}" class="related-link">
-                                <span class="related-num">Na. {{ $item->number }}</span>
-                                <span class="related-text">{{ \Illuminate\Support\Str::limit($item->swahili, 90) }}</span>
-                                <span class="related-arrow" aria-hidden="true">→</span>
-                            </a>
-                        </li>
+                <div class="related-grid">
+                    @foreach($related as $rel)
+                        <a href="{{ route('hadith.show', $rel) }}" class="related-card">
+                            <div class="related-card-meta">
+                                <span class="related-col">{{ $hadith->chapter->book->collection->name }}</span>
+                                <span class="related-no">Na. {{ $rel->number }}</span>
+                            </div>
+                            <h3 class="related-title">Hadith {{ $rel->number }}</h3>
+                            <p class="related-excerpt">{{ \Illuminate\Support\Str::limit($rel->swahili, 100) }}</p>
+                        </a>
                     @endforeach
-                </ul>
+                </div>
             </section>
         @endif
 
         {{-- Urambazaji wa Chini (Next/Prev Navigation Cards) --}}
-        <nav class="reader-bottom-nav hadith-bottom-nav" aria-label="Urambazaji wa Hadithi">
+        <nav class="reader-bottom-nav dua-bottom-nav" aria-label="Urambazaji wa Hadithi">
             @if($prev)
                 <a href="{{ route('hadith.show', $prev) }}" class="reader-nav-card nav-prev">
                     <span class="nav-card-icon" aria-hidden="true">←</span>
@@ -302,13 +218,13 @@
             @else
                 <div class="reader-nav-card nav-disabled">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">MWANZO WA KITABU</span>
+                        <span class="nav-card-hint nav-dir-label">MWANZO WA MLANGO</span>
                         <strong class="nav-card-title nav-surah-name">Hadith ya Kwanza</strong>
                     </div>
                 </div>
             @endif
 
-            <a href="{{ route('library', ['collection' => $hadith->chapter->book->collection->slug, 'book' => $hadith->chapter->book_id, 'chapter' => $hadith->chapter_id]) }}" class="reader-nav-card nav-center" title="Rudi kwenye mlango wa hadith">
+            <a href="{{ route('library', ['collection' => $hadith->chapter->book->collection->slug, 'book' => $hadith->chapter->book_id, 'chapter' => $hadith->chapter_id]) }}" class="reader-nav-card nav-center" title="Rudi kwenye mlango huu">
                 <span class="nav-card-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -333,11 +249,62 @@
             @else
                 <div class="reader-nav-card nav-disabled">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">MWISHO WA KITABU</span>
+                        <span class="nav-card-hint nav-dir-label">MWISHO WA MLANGO</span>
                         <strong class="nav-card-title nav-surah-name">Hadith ya Mwisho</strong>
                     </div>
                 </div>
             @endif
         </nav>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const playBtn = document.getElementById('audio-play');
+            if (!playBtn) return;
+
+            let isPlaying = false;
+            const arabicEl = document.getElementById('text-ar');
+            const swahiliEl = document.getElementById('text-sw');
+
+            playBtn.addEventListener('click', () => {
+                if (!('speechSynthesis' in window)) {
+                    alert('Kivinjari chako hakitumii usomaji wa sauti wa moja kwa moja.');
+                    return;
+                }
+
+                if (isPlaying) {
+                    window.speechSynthesis.cancel();
+                    isPlaying = false;
+                    playBtn.querySelector('.btn-text').textContent = 'Soma kwa sauti';
+                    playBtn.classList.remove('active');
+                    return;
+                }
+
+                window.speechSynthesis.cancel();
+                const textToRead = (arabicEl?.innerText || swahiliEl?.innerText || '').trim();
+                if (!textToRead) return;
+
+                const utterance = new SpeechSynthesisUtterance(textToRead);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.95;
+
+                utterance.onend = () => {
+                    isPlaying = false;
+                    playBtn.querySelector('.btn-text').textContent = 'Soma kwa sauti';
+                    playBtn.classList.remove('active');
+                };
+
+                utterance.onerror = () => {
+                    isPlaying = false;
+                    playBtn.querySelector('.btn-text').textContent = 'Soma kwa sauti';
+                    playBtn.classList.remove('active');
+                };
+
+                window.speechSynthesis.speak(utterance);
+                isPlaying = true;
+                playBtn.querySelector('.btn-text').textContent = 'Sitisha sauti';
+                playBtn.classList.add('active');
+            });
+        });
+    </script>
 </x-layouts.app>

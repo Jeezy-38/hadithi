@@ -4076,6 +4076,72 @@ a, button, select, input {
     margin: 0;
 }
 
+/* Source & Reference Card for Dua & Hadith */
+.source-box.dua-ref-box {
+    background: var(--bg-surface-elevated, #141a22);
+    border: 1px solid var(--border-color, rgba(218, 181, 106, 0.2));
+    border-radius: 16px;
+    padding: 18px 22px;
+    margin-top: 24px;
+}
+
+.source-box.dua-ref-box .source-header {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+}
+
+.source-box.dua-ref-box .source-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gold, #dab56a);
+    margin: 0;
+}
+
+.source-box.dua-ref-box .source-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+    font-size: 13.5px;
+}
+
+.source-box.dua-ref-box .source-item:last-child {
+    margin-bottom: 0;
+}
+
+.source-box.dua-ref-box .source-item dt {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted, #94a3b8);
+}
+
+.source-box.dua-ref-box .source-item dd {
+    margin: 0;
+    color: var(--text-primary, #f1f5f9);
+    line-height: 1.5;
+}
+
+.source-box.dua-ref-box .source-item a {
+    color: var(--gold, #dab56a);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.source-box.dua-ref-box .source-item a:hover {
+    color: #f3d790;
+}
+
+.speech-client-btn.active {
+    background: rgba(218, 181, 106, 0.2) !important;
+    border-color: var(--gold, #dab56a) !important;
+    color: var(--gold, #dab56a) !important;
+}
+
 /* --------------------------------------------------------------------------
    Digital Tasbih Tool Styles
    -------------------------------------------------------------------------- */

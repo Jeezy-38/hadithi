@@ -54,7 +54,7 @@ class DuaIndex extends Component
             ])->layout('components.layouts.app', ['title' => 'Dua & Adhkar · Hisn al-Muslim']);
         }
 
-        if (Dua::published()->count() < 100) {
+        if (Dua::published()->count() < 950) {
             (new \Database\Seeders\DuaSeeder())->run();
         }
 
