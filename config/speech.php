@@ -6,7 +6,7 @@ return [
     'disk' => env('SPEECH_DISK', 'hadith-audio-3'),
     'voices' => [
         'sw' => 'sw-TZ-DaudiNeural',
-        'ar' => env('TTS_VOICE_AR', 'ar-EG-ShakirNeural'),
+        'ar' => env('TTS_VOICE_AR', 'ar-SA-HamedNeural'),
         'en' => 'en-US-GuyNeural',
     ],
 ];

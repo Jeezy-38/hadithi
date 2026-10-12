@@ -142,7 +142,7 @@ class HadithAudio
     private function synthesize(string $text, string $voice): string
     {
         $result = Process::input(json_encode(['text' => $text, 'voice' => $voice], JSON_THROW_ON_ERROR))
-            ->timeout(90)
+            ->timeout(300)
             ->run([config('speech.python'), base_path('scripts/synthesize-speech.py')]);
 
         $mp3 = $result->output();
