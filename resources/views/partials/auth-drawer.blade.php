@@ -70,27 +70,35 @@
                     <span class="auth-google-arrow" aria-hidden="true">→</span>
                 </a>
 
-                <a class="auth-provider auth-provider--gmail auth-gmail-action-btn" href="{{ route('auth.redirect', 'google') }}" style="margin-top: 10px;">
-                    <span class="auth-google-icon-pill" style="background: #fef2f2;">
+                <a class="auth-provider auth-provider--instagram auth-instagram-action-btn" href="{{ route('auth.redirect', 'instagram') }}" style="margin-top: 10px;">
+                    <span class="auth-google-icon-pill" style="background: #fdf2f8;">
                         <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                            <path fill="#EA4335" d="M20 18h-2V9.5L12 14.5 6 9.5V18H4V6.5c0-.83.67-1.5 1.5-1.5h.34L12 9.75 18.16 5H18.5c.83 0 1.5.67 1.5 1.5V18z"/>
-                            <path fill="#FBBC05" d="M4 6.5C4 5.67 4.67 5 5.5 5H6l6 4.75L6 14.5 4 13V6.5z"/>
-                            <path fill="#4285F4" d="M20 6.5V13l-2 1.5-6-4.75L18 5h.5c.83 0 1.5.67 1.5 1.5z"/>
-                            <path fill="#34A853" d="M4 18h2v-3.5L4 13v5z"/>
+                            <defs>
+                                <linearGradient id="ig-gradient-icon" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#fdf497"/>
+                                    <stop offset="10%" stop-color="#fdf497"/>
+                                    <stop offset="50%" stop-color="#fd5949"/>
+                                    <stop offset="68%" stop-color="#d6249f"/>
+                                    <stop offset="100%" stop-color="#285AEB"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="2" y="2" width="20" height="20" rx="5.5" ry="5.5" fill="none" stroke="url(#ig-gradient-icon)" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="4.2" fill="none" stroke="url(#ig-gradient-icon)" stroke-width="2"/>
+                            <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-gradient-icon)"/>
                         </svg>
                     </span>
-                    <span class="auth-google-text" data-i18n="auth_gmail">Ingia kwa Gmail</span>
+                    <span class="auth-google-text" data-i18n="auth_instagram">Continue with Instagram</span>
                     <span class="auth-google-arrow" aria-hidden="true">→</span>
                 </a>
             </div>
 
-            <div class="auth-divider auth-when-login"><span data-i18n="auth_or_email">au ingia kwa barua pepe / Gmail</span></div>
+            <div class="auth-divider auth-when-login"><span data-i18n="auth_or_email">au ingia kwa barua pepe</span></div>
 
             <form id="auth-panel-login" class="auth-form auth-when-login" role="tabpanel" method="POST" action="{{ route('auth.login') }}" novalidate>
                 @csrf
                 <div class="auth-field">
-                    <label for="login-email" data-i18n="auth_email">Barua Pepe / Gmail</label>
-                    <input id="login-email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required placeholder="mfano@gmail.com" @if ($errors->login->first('email')) aria-invalid="true" aria-describedby="login-email-error" @endif>
+                    <label for="login-email" data-i18n="auth_email">Barua Pepe</label>
+                    <input id="login-email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required placeholder="jina@mfano.com" @if ($errors->login->first('email')) aria-invalid="true" aria-describedby="login-email-error" @endif>
                     @if ($errors->login->first('email'))<p class="auth-field-error" id="login-email-error">{{ $errors->login->first('email') }}</p>@endif
                 </div>
                 <div class="auth-field">
@@ -122,8 +130,8 @@
                     @if ($errors->register->first('name'))<p class="auth-field-error">{{ $errors->register->first('name') }}</p>@endif
                 </div>
                 <div class="auth-field">
-                    <label for="register-email" data-i18n="auth_email">Barua Pepe / Gmail</label>
-                    <input id="register-email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required placeholder="mfano@gmail.com" @if ($errors->register->first('email')) aria-invalid="true" @endif>
+                    <label for="register-email" data-i18n="auth_email">Barua Pepe</label>
+                    <input id="register-email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required placeholder="jina@mfano.com" @if ($errors->register->first('email')) aria-invalid="true" @endif>
                     @if ($errors->register->first('email'))<p class="auth-field-error">{{ $errors->register->first('email') }}</p>@endif
                 </div>
                 <div class="auth-field">
@@ -149,8 +157,8 @@
                     <form class="auth-form" method="POST" action="{{ route('password.email') }}" novalidate>
                         @csrf
                         <div class="auth-field">
-                            <label for="forgot-email" data-i18n="auth_email">Barua Pepe / Gmail</label>
-                            <input id="forgot-email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required placeholder="mfano@gmail.com" @if ($errors->forgot->first('email')) aria-invalid="true" @endif>
+                            <label for="forgot-email" data-i18n="auth_email">Barua Pepe</label>
+                            <input id="forgot-email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required placeholder="jina@mfano.com" @if ($errors->forgot->first('email')) aria-invalid="true" @endif>
                             @if ($errors->forgot->first('email'))<p class="auth-field-error">{{ $errors->forgot->first('email') }}</p>@endif
                         </div>
                         <button type="submit" class="auth-submit"><span data-i18n="auth_submit_forgot">Tuma kiungo</span></button>

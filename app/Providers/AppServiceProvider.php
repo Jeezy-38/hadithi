@@ -35,5 +35,15 @@ class AppServiceProvider extends ServiceProvider
                 ->line('Kama hukuomba hili, puuza ujumbe huu. Nenosiri lako halitabadilika.')
                 ->salutation('Wako, '.config('app.name'));
         });
+
+        // Usajili wa Instagram Socialite Driver
+        \Laravel\Socialite\Facades\Socialite::extend('instagram', function ($app) {
+            $config = config('services.instagram');
+
+            return \Laravel\Socialite\Facades\Socialite::buildProvider(
+                \App\Services\Auth\InstagramProvider::class,
+                $config
+            );
+        });
     }
 }

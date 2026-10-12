@@ -57,4 +57,10 @@ return [
         'redirect' => env('X_REDIRECT_URI') ?: rtrim((string) env('APP_URL'), '/').'/auth/x/callback',
     ],
 
+    'instagram' => [
+        'client_id' => env('INSTAGRAM_CLIENT_ID'),
+        'client_secret' => env('INSTAGRAM_CLIENT_SECRET'),
+        'redirect' => env('INSTAGRAM_REDIRECT_URI') ?: rtrim((string) env('APP_URL'), '/').'/auth/instagram/callback',
+    ],
+
 ];

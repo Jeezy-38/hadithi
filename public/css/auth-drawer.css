@@ -848,7 +848,7 @@ body.auth-drawer-open { overflow: hidden; }
     margin: 0;
 }
 
-.auth-gmail-action-btn {
+.auth-instagram-action-btn {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -869,13 +869,13 @@ body.auth-drawer-open { overflow: hidden; }
     overflow: hidden !important;
 }
 
-.auth-gmail-action-btn:hover {
-    border-color: #ea4335 !important;
+.auth-instagram-action-btn:hover {
+    border-color: #d6249f !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 24px rgba(234, 67, 53, 0.22), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 8px 24px rgba(214, 36, 159, 0.22), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
-.auth-gmail-action-btn:active {
+.auth-instagram-action-btn:active {
     transform: translateY(0) scale(0.99) !important;
 }
 

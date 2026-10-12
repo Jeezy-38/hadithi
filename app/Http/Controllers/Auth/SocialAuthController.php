@@ -15,9 +15,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse as SymfonyRedirect;
 
 class SocialAuthController extends Controller
 {
-    public const PROVIDERS = ['google', 'facebook', 'x'];
+    public const PROVIDERS = ['google', 'facebook', 'x', 'instagram'];
 
-    private const LABELS = ['google' => 'Google', 'facebook' => 'Facebook', 'x' => 'X'];
+    private const LABELS = ['google' => 'Google', 'facebook' => 'Facebook', 'x' => 'X', 'instagram' => 'Instagram'];
 
     public function redirect(Request $request, string $provider): SymfonyRedirect
     {

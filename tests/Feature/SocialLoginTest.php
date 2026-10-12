@@ -17,7 +17,7 @@ class SocialLoginTest extends TestCase
     {
         parent::setUp();
 
-        foreach (['google', 'facebook', 'x'] as $provider) {
+        foreach (['google', 'facebook', 'x', 'instagram'] as $provider) {
             config([
                 "services.$provider.client_id" => 'test-id',
                 "services.$provider.client_secret" => 'test-secret',
@@ -45,6 +45,7 @@ class SocialLoginTest extends TestCase
             ->assertOk()
             ->assertSee('id="auth-drawer"', false)
             ->assertSee(route('auth.redirect', 'google'), false)
+            ->assertSee(route('auth.redirect', 'instagram'), false)
             ->assertSee(route('auth.register'), false)
             ->assertSee(route('auth.login'), false)
             ->assertDontSee(route('auth.redirect', 'facebook'), false)
@@ -68,6 +69,14 @@ class SocialLoginTest extends TestCase
 
         $response->assertRedirect();
         $this->assertStringStartsWith('https://accounts.google.com/', $response->headers->get('Location'));
+    }
+
+    public function test_redirect_goes_to_instagram(): void
+    {
+        $response = $this->get('/auth/instagram/redirect');
+
+        $response->assertRedirect();
+        $this->assertStringStartsWith('https://api.instagram.com/oauth/authorize', $response->headers->get('Location'));
     }
 
     public function test_unconfigured_provider_returns_friendly_error(): void
@@ -147,6 +156,16 @@ class SocialLoginTest extends TestCase
 
         $this->assertAuthenticated();
         $this->assertNull(auth()->user()->email);
+    }
+
+    public function test_instagram_user_can_sign_in(): void
+    {
+        $this->fakeProviderUser(id: 'insta_456', email: null, raw: []);
+
+        $this->get('/auth/instagram/callback?code=abc')->assertRedirect(route('library'));
+
+        $this->assertAuthenticated();
+        $this->assertDatabaseHas('social_accounts', ['provider' => 'instagram', 'provider_id' => 'insta_456']);
     }
 
     public function test_cancelled_login_shows_error(): void
