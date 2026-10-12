@@ -848,37 +848,6 @@ body.auth-drawer-open { overflow: hidden; }
     margin: 0;
 }
 
-.auth-instagram-action-btn {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 12px 18px !important;
-    border-radius: 14px !important;
-    background: #ffffff !important;
-    color: #1f1f1f !important;
-    border: 1.5px solid #dadce0 !important;
-    text-decoration: none !important;
-    font-size: 15px !important;
-    font-weight: 700 !important;
-    cursor: pointer !important;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15) !important;
-    position: relative !important;
-    overflow: hidden !important;
-}
-
-.auth-instagram-action-btn:hover {
-    border-color: #d6249f !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 24px rgba(214, 36, 159, 0.22), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-}
-
-.auth-instagram-action-btn:active {
-    transform: translateY(0) scale(0.99) !important;
-}
-
 .auth-google-icon-pill {
     display: flex;
     align-items: center;

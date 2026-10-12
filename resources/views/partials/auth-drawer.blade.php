@@ -69,27 +69,6 @@
                     <span class="auth-google-text" data-i18n="auth_google">Continue with Google</span>
                     <span class="auth-google-arrow" aria-hidden="true">→</span>
                 </a>
-
-                <a class="auth-provider auth-provider--instagram auth-instagram-action-btn" href="{{ route('auth.redirect', 'instagram') }}" style="margin-top: 10px;">
-                    <span class="auth-google-icon-pill" style="background: #fdf2f8;">
-                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                            <defs>
-                                <linearGradient id="ig-gradient-icon" x1="0%" y1="100%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#fdf497"/>
-                                    <stop offset="10%" stop-color="#fdf497"/>
-                                    <stop offset="50%" stop-color="#fd5949"/>
-                                    <stop offset="68%" stop-color="#d6249f"/>
-                                    <stop offset="100%" stop-color="#285AEB"/>
-                                </linearGradient>
-                            </defs>
-                            <rect x="2" y="2" width="20" height="20" rx="5.5" ry="5.5" fill="none" stroke="url(#ig-gradient-icon)" stroke-width="2"/>
-                            <circle cx="12" cy="12" r="4.2" fill="none" stroke="url(#ig-gradient-icon)" stroke-width="2"/>
-                            <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-gradient-icon)"/>
-                        </svg>
-                    </span>
-                    <span class="auth-google-text" data-i18n="auth_instagram">Continue with Instagram</span>
-                    <span class="auth-google-arrow" aria-hidden="true">→</span>
-                </a>
             </div>
 
             <div class="auth-divider auth-when-login"><span data-i18n="auth_or_email">au ingia kwa barua pepe</span></div>
