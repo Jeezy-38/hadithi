@@ -52,66 +52,117 @@
                 <button type="submit" class="auth-logout" data-i18n="auth_logout">Toka</button>
             </form>
         @else
-            <div class="auth-intro text-center">
-                <h2 id="auth-drawer-title" class="auth-welcome-title">
-                    Karibu Bayt Al-Hadith
-                </h2>
-                <p class="auth-lead auth-welcome-lead">
-                    Ingia kwa kubofya kitufe cha Google hapa chini ili vipendwa vyako na aya unazosoma zikufuate kwenye kila kifaa chako.
-                </p>
+            <div class="auth-clean-head">
+                <h2 id="auth-drawer-title" class="auth-title-clean" data-i18n="auth_login">Ingia</h2>
             </div>
 
-            <div class="auth-google-box">
-                <div class="auth-google-badge">
-                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                    <span>KUINGIA KWA HARAKA & SALAMA</span>
-                </div>
+            <div class="auth-social-actions auth-when-login">
+                <a class="auth-provider auth-provider--google auth-google-action-btn" href="{{ route('auth.redirect', 'google') }}">
+                    <span class="auth-google-icon-pill">
+                        <svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true">
+                            <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/>
+                            <path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                            <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+                            <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/>
+                        </svg>
+                    </span>
+                    <span class="auth-google-text" data-i18n="auth_google">Continue with Google</span>
+                    <span class="auth-google-arrow" aria-hidden="true">→</span>
+                </a>
 
-                <div class="auth-providers auth-google-only">
-                    <a class="auth-provider auth-provider--google auth-google-action-btn" href="{{ route('auth.redirect', 'google') }}">
-                        <span class="auth-google-icon-pill">
-                            <svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true">
-                                <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/>
-                                <path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
-                                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
-                                <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/>
-                            </svg>
-                        </span>
-                        <span class="auth-google-text" data-i18n="auth_google">Endelea na Google</span>
-                        <span class="auth-google-arrow" aria-hidden="true">→</span>
-                    </a>
-                </div>
-
-                <div class="auth-benefits-list">
-                    <div class="auth-benefit-item">
-                        <span class="benefit-check" aria-hidden="true">✓</span>
-                        <span><strong>Bofyo Moja Tu:</strong> Hakuna nenosiri la kukariri au kupoteza</span>
-                    </div>
-                    <div class="auth-benefit-item">
-                        <span class="benefit-check" aria-hidden="true">✓</span>
-                        <span><strong>Sawazisha Kiotomatiki:</strong> Vipendwa na alama za kurasa ziko salama</span>
-                    </div>
-                    <div class="auth-benefit-item">
-                        <span class="benefit-check" aria-hidden="true">✓</span>
-                        <span><strong>Vifaa Vyote:</strong> Endelea kusoma kwenye simu, tableti au kompyuta</span>
-                    </div>
-                </div>
+                <a class="auth-provider auth-provider--gmail auth-gmail-action-btn" href="{{ route('auth.redirect', 'google') }}" style="margin-top: 10px;">
+                    <span class="auth-google-icon-pill" style="background: #fef2f2;">
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                            <path fill="#EA4335" d="M20 18h-2V9.5L12 14.5 6 9.5V18H4V6.5c0-.83.67-1.5 1.5-1.5h.34L12 9.75 18.16 5H18.5c.83 0 1.5.67 1.5 1.5V18z"/>
+                            <path fill="#FBBC05" d="M4 6.5C4 5.67 4.67 5 5.5 5H6l6 4.75L6 14.5 4 13V6.5z"/>
+                            <path fill="#4285F4" d="M20 6.5V13l-2 1.5-6-4.75L18 5h.5c.83 0 1.5.67 1.5 1.5z"/>
+                            <path fill="#34A853" d="M4 18h2v-3.5L4 13v5z"/>
+                        </svg>
+                    </span>
+                    <span class="auth-google-text" data-i18n="auth_gmail">Ingia kwa Gmail</span>
+                    <span class="auth-google-arrow" aria-hidden="true">→</span>
+                </a>
             </div>
 
-            @if (session('auth_forgot_sent'))
-                <div class="auth-sent" role="status" style="margin-bottom: 20px; padding: 14px; background: rgba(218, 181, 106, 0.1); border: 1px solid var(--gold); border-radius: 10px;">
-                    <h3 data-i18n="auth_sent_title" style="margin-top: 0; font-size: 15px; color: var(--gold);">Angalia email yako</h3>
-                    <p style="font-size: 13px;"><span data-i18n="auth_sent_body">Kama kuna akaunti yenye email hii, tumetuma kiungo cha kuweka nenosiri jipya:</span> <strong>{{ session('auth_forgot_sent') }}</strong></p>
-                    <p class="auth-sent-hint" data-i18n="auth_sent_hint" style="font-size: 12px; color: var(--text-muted); margin-bottom: 0;">Kiungo kinaisha baada ya saa moja. Usipokiona, angalia folda ya Spam.</p>
-                </div>
-            @endif
+            <div class="auth-divider auth-when-login"><span data-i18n="auth_or_email">au ingia kwa barua pepe / Gmail</span></div>
 
-            {{-- Fomu za nyuma zilizofichwa kwa usalama wa mifumo na tests --}}
-            <form id="auth-panel-login" action="{{ route('auth.login') }}" method="POST" style="display:none">@csrf</form>
-            <form id="auth-panel-register" action="{{ route('auth.register') }}" method="POST" style="display:none">@csrf</form>
-            <form id="auth-panel-forgot" action="{{ route('password.email') }}" method="POST" style="display:none">@csrf</form>
+            <form id="auth-panel-login" class="auth-form auth-when-login" role="tabpanel" method="POST" action="{{ route('auth.login') }}" novalidate>
+                @csrf
+                <div class="auth-field">
+                    <label for="login-email" data-i18n="auth_email">Barua Pepe / Gmail</label>
+                    <input id="login-email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required placeholder="mfano@gmail.com" @if ($errors->login->first('email')) aria-invalid="true" aria-describedby="login-email-error" @endif>
+                    @if ($errors->login->first('email'))<p class="auth-field-error" id="login-email-error">{{ $errors->login->first('email') }}</p>@endif
+                </div>
+                <div class="auth-field">
+                    <label for="login-password" data-i18n="auth_password">Nenosiri</label>
+                    <div class="auth-input-wrap">
+                        <input id="login-password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••" @if ($errors->login->first('password')) aria-invalid="true" aria-describedby="login-password-error" @endif>
+                        <button type="button" class="auth-eye" data-auth-eye aria-label="Onyesha nenosiri" aria-pressed="false">
+                            <svg class="i-show" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                            <svg class="i-hide" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-6.5 0-10-8-10-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c6.5 0 10 8 10 8a18.5 18.5 0 0 1-2.16 3.19M1 1l22 22"/></svg>
+                        </button>
+                    </div>
+                    @if ($errors->login->first('password'))<p class="auth-field-error" id="login-password-error">{{ $errors->login->first('password') }}</p>@endif
+                </div>
+                <div class="auth-row-between">
+                    <label class="auth-check">
+                        <input type="checkbox" name="remember" value="1" checked>
+                        <span data-i18n="auth_remember">Nikumbuke</span>
+                    </label>
+                    <button type="button" class="auth-forgot-link" data-auth-tab="forgot" data-i18n="auth_forgot_link">Umesahau nenosiri?</button>
+                </div>
+                <button type="submit" class="auth-submit"><span data-i18n="auth_submit_login">Ingia</span></button>
+            </form>
+
+            <form id="auth-panel-register" class="auth-form auth-when-register" role="tabpanel" method="POST" action="{{ route('auth.register') }}" novalidate>
+                @csrf
+                <div class="auth-field">
+                    <label for="register-name" data-i18n="auth_name">Jina lako</label>
+                    <input id="register-name" name="name" type="text" value="{{ old('name') }}" autocomplete="name" required placeholder="mf. Amina Juma" maxlength="80" @if ($errors->register->first('name')) aria-invalid="true" @endif>
+                    @if ($errors->register->first('name'))<p class="auth-field-error">{{ $errors->register->first('name') }}</p>@endif
+                </div>
+                <div class="auth-field">
+                    <label for="register-email" data-i18n="auth_email">Barua Pepe / Gmail</label>
+                    <input id="register-email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required placeholder="mfano@gmail.com" @if ($errors->register->first('email')) aria-invalid="true" @endif>
+                    @if ($errors->register->first('email'))<p class="auth-field-error">{{ $errors->register->first('email') }}</p>@endif
+                </div>
+                <div class="auth-field">
+                    <label for="register-password" data-i18n="auth_password">Nenosiri</label>
+                    <div class="auth-input-wrap">
+                        <input id="register-password" name="password" type="password" autocomplete="new-password" required placeholder="Angalau herufi 8, pamoja na namba" minlength="8" @if ($errors->register->first('password')) aria-invalid="true" @endif>
+                    </div>
+                    @if ($errors->register->first('password'))<p class="auth-field-error">{{ $errors->register->first('password') }}</p>@endif
+                </div>
+                <button type="submit" class="auth-submit"><span data-i18n="auth_submit_register">Fungua akaunti</span></button>
+                <p class="auth-switch"><span data-i18n="auth_have_account">Una akaunti tayari?</span> <button type="button" data-auth-tab="login" data-i18n="auth_tab_login">Ingia</button></p>
+            </form>
+
+            <div id="auth-panel-forgot" class="auth-when-forgot">
+                @if (session('auth_forgot_sent'))
+                    <div class="auth-sent" role="status">
+                        <span class="auth-sent-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+                        <h3 data-i18n="auth_sent_title">Angalia email yako</h3>
+                        <p><span data-i18n="auth_sent_body">Kama kuna akaunti yenye email hii, tumetuma kiungo cha kuweka nenosiri jipya:</span> <strong>{{ session('auth_forgot_sent') }}</strong></p>
+                        <p class="auth-sent-hint" data-i18n="auth_sent_hint">Kiungo kinaisha baada ya saa moja. Usipokiona, angalia folda ya Spam.</p>
+                    </div>
+                @else
+                    <form class="auth-form" method="POST" action="{{ route('password.email') }}" novalidate>
+                        @csrf
+                        <div class="auth-field">
+                            <label for="forgot-email" data-i18n="auth_email">Barua Pepe / Gmail</label>
+                            <input id="forgot-email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required placeholder="mfano@gmail.com" @if ($errors->forgot->first('email')) aria-invalid="true" @endif>
+                            @if ($errors->forgot->first('email'))<p class="auth-field-error">{{ $errors->forgot->first('email') }}</p>@endif
+                        </div>
+                        <button type="submit" class="auth-submit"><span data-i18n="auth_submit_forgot">Tuma kiungo</span></button>
+                    </form>
+                @endif
+                <p class="auth-switch"><button type="button" data-auth-tab="login" data-i18n="auth_back_login">← Rudi kuingia</button></p>
+            </div>
+
+            <p class="auth-switch auth-when-login">
+                <span data-i18n="auth_no_account">Huna akaunti?</span>
+                <button type="button" data-auth-tab="register" data-i18n="auth_create_account">Fungua akaunti</button>
+            </p>
         @endauth
     </div>
 </aside>
