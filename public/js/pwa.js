@@ -72,10 +72,10 @@
                 drawerPwaBadge.classList.add('is-installed');
             }
         } else {
-            if (drawerPwaTitle) drawerPwaTitle.textContent = 'Sakinisha Hadith App';
-            if (drawerPwaSub) drawerPwaSub.textContent = 'Inafunguka bila mtandao';
+            if (drawerPwaTitle) drawerPwaTitle.textContent = 'Install App Now';
+            if (drawerPwaSub) drawerPwaSub.textContent = 'Download App Now';
             if (drawerPwaBadge) {
-                drawerPwaBadge.textContent = 'PWA';
+                drawerPwaBadge.textContent = 'App';
                 drawerPwaBadge.classList.remove('is-installed');
             }
         }

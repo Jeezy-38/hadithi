@@ -98,7 +98,7 @@
     // -------------------------------------------------------------
     // 3. Global Multilingual UI Translation & Reading Language
     // -------------------------------------------------------------
-    const languages = ['both', 'sw', 'en', 'ar'];
+    const languages = ['both', 'en'];
     const selector = document.getElementById('reading-language');
     let preferred = 'both';
     try { preferred = localStorage.getItem('hadith-language') || 'both'; } catch (_) {}
@@ -908,18 +908,21 @@
     };
 
     const setLanguage = value => {
+        if (!languages.includes(value)) value = 'both';
         document.documentElement.dataset.readingLanguage = value;
         if (selector) selector.value = value;
         try { localStorage.setItem('hadith-language', value); } catch (_) {}
 
-        // Automatically sync the Audio Player language
+        // Sauti ya usomaji inabaki kuwa Kiarabu ('ar') daima
         const audioLangSelect = document.getElementById('audio-language');
-        if (audioLangSelect) {
-            const targetAudioLang = (value === 'both') ? 'sw' : value;
-            if (audioLangSelect.value !== targetAudioLang) {
-                audioLangSelect.value = targetAudioLang;
-                audioLangSelect.dispatchEvent(new Event('change'));
-            }
+        if (audioLangSelect && audioLangSelect.value !== 'ar') {
+            audioLangSelect.value = 'ar';
+        }
+
+        // Fungua au funga sehemu ya tafsiri ya Kiingereza kulingana na chaguo la msomaji
+        const englishDrawer = document.getElementById('english-drawer');
+        if (englishDrawer) {
+            englishDrawer.open = (value === 'en');
         }
 
         // Sync Nav Drawer language buttons
@@ -1411,20 +1414,11 @@
     try { audioPrefs = JSON.parse(localStorage.getItem('hadith-audio')) || {}; } catch (_) {}
     const saveAudioPrefs = () => { try { localStorage.setItem('hadith-audio', JSON.stringify(audioPrefs)); } catch (_) {} };
 
-    if (audioPrefs.language && document.getElementById(`text-${audioPrefs.language}`)) {
-        if (language) language.value = audioPrefs.language;
-    } else if (preferred !== 'both' && document.getElementById(`text-${preferred}`)) {
-        if (language) language.value = preferred;
-    }
-    if (audioPrefs.rate && rate && [...rate.options].some(opt => opt.value === audioPrefs.rate)) {
-        rate.value = audioPrefs.rate;
-    }
-    if (sequence && audioPrefs.sequence && [...sequence.options].some(opt => opt.value === audioPrefs.sequence && !opt.disabled)) {
-        sequence.value = audioPrefs.sequence;
-    }
+    if (language) language.value = 'ar';
+    if (rate) rate.value = '1';
     if (autoNext) autoNext.checked = !!audioPrefs.autoNext;
 
-    const audioUrl = (lang, base = playerContainer.dataset.audioBase) => `${base}/${lang}?narrator=male-v1`;
+    const audioUrl = (lang = 'ar', base = playerContainer.dataset.audioBase) => `${base}/ar?narrator=male-v1`;
 
     // Pasha moto sauti inayofuata (server huitengeneza na kuihifadhi) ili isisubiriwe.
     const prefetch = url => {
@@ -1434,8 +1428,7 @@
     };
 
     const buildQueue = () => {
-        if (!sequence || sequence.value === 'single') return [language.value];
-        return sequence.value.split('-').filter(lang => document.getElementById(`text-${lang}`)?.textContent.trim());
+        return ['ar'];
     };
 
     const queueLabel = () => queue.length > 1
@@ -1506,8 +1499,7 @@
     };
 
     const loadVoices = () => {
-        if (!language) return;
-        const currentLang = language.value;
+        const currentLang = 'ar';
 
         if (synth) {
             try {
@@ -1552,9 +1544,9 @@
     };
 
     // Playback via Server-Side HD Neural TTS
-    const playHdAudio = (lang = language?.value, { auto = false } = {}) => {
-        if (!hadithId || !lang) return;
-        const targetUrl = audioUrl(lang);
+    const playHdAudio = (lang = 'ar', { auto = false } = {}) => {
+        if (!hadithId) return;
+        const targetUrl = audioUrl('ar');
 
         if (!nativeAudio.src || !nativeAudio.src.endsWith(targetUrl)) {
             nativeAudio.src = targetUrl;
@@ -1562,12 +1554,10 @@
             updateProgressUI(0, 0);
         }
 
-        if (rate) {
-            nativeAudio.playbackRate = Number(rate.value);
-        }
+        nativeAudio.playbackRate = 1.0;
 
         setLoading(true);
-        if (status) status.textContent = `Inapakia sauti${queueLabel()}…`;
+        if (status) status.textContent = `Inapakia sauti ya Kiarabu…`;
 
         nativeAudio.play().then(() => {
             isPlaying = true;
@@ -1575,12 +1565,11 @@
             isSynthMode = false;
             setLoading(false);
             if (scrubber) scrubber.disabled = false;
-            if (status) status.textContent = `Inasoma kwa sauti fasaha ya HD${queueLabel()}…`;
+            if (status) status.textContent = `Inasoma kwa sauti fasaha ya HD (العربية)…`;
             updateControlsUI();
 
-            // Andaa inayofuata: lugha inayofuata, au hadith inayofuata ikiwa "endelea" imewashwa.
-            if (queue[queueIndex + 1]) prefetch(audioUrl(queue[queueIndex + 1]));
-            else if (autoNext?.checked && nextAudioBase) prefetch(audioUrl(queue[0] || lang, nextAudioBase));
+            // Andaa inayofuata ikiwa "endelea" imewashwa
+            if (autoNext?.checked && nextAudioBase) prefetch(audioUrl('ar', nextAudioBase));
         }).catch(err => {
             setLoading(false);
             isPlaying = false;
@@ -1589,10 +1578,10 @@
             console.warn('Sauti ya HD haipatikani kwenye seva, inajaribu sauti ya kifaa...', err);
 
             // Fallback ya kiotomatiki kwa sauti ya kifaa
-            const text = document.getElementById(`text-${lang}`)?.textContent.trim();
+            const text = document.getElementById('text-ar')?.textContent.trim();
             if (synth && text && availableVoices.length > 0) {
                 if (status) status.textContent = 'Sauti ya HD haipatikani mtandaoni, inasoma kwa sauti ya kifaa…';
-                playDeviceSynth(lang);
+                playDeviceSynth('ar');
                 return;
             }
 
@@ -1606,19 +1595,18 @@
     const markActive = btn => [play, playBoth].forEach(b => b?.classList.toggle('is-active', b === btn));
 
     const startHdQueue = (opts = {}, langs = null) => {
-        queue = langs || buildQueue();
+        queue = ['ar'];
         queueIndex = 0;
-        if (!queue.length) queue = [language.value];
-        playHdAudio(queue[0], opts);
+        playHdAudio('ar', opts);
     };
 
     // Playback via Browser SpeechSynthesis (Fallback)
-    const playDeviceSynth = (targetLang = null) => {
-        if (!synth || !language) return;
-        const currentLang = targetLang || language.value;
-        const langVoices = availableVoices.length > 0 ? availableVoices : synth.getVoices().filter(v => v.lang.toLowerCase().split(/[-_]/)[0] === currentLang);
-        const voice = langVoices[0] || synth.getVoices().find(v => v.lang.toLowerCase().startsWith(currentLang));
-        const text = document.getElementById(`text-${currentLang}`)?.textContent.trim();
+    const playDeviceSynth = (targetLang = 'ar') => {
+        if (!synth) return;
+        const currentLang = 'ar';
+        const langVoices = availableVoices.length > 0 ? availableVoices : synth.getVoices().filter(v => v.lang.toLowerCase().split(/[-_]/)[0] === 'ar');
+        const voice = langVoices[0] || synth.getVoices().find(v => v.lang.toLowerCase().startsWith('ar'));
+        const text = document.getElementById('text-ar')?.textContent.trim();
         if (!text) {
             if (status) status.textContent = 'Maandishi ya hadith hayapatikani.';
             return;
@@ -1648,7 +1636,7 @@
                 synthUtterance.voice = voice;
                 synthUtterance.lang = voice.lang;
             }
-            if (rate) synthUtterance.rate = Number(rate.value);
+            synthUtterance.rate = 1.0;
             synthUtterance.onend = next;
             synthUtterance.onerror = () => {
                 if (token !== synthGeneration) return;
@@ -1696,11 +1684,10 @@
 
     nativeAudio.addEventListener('error', () => {
         if (isLoading) setLoading(false);
-        const currentLang = language?.value || 'sw';
-        const text = document.getElementById(`text-${currentLang}`)?.textContent.trim();
+        const text = document.getElementById('text-ar')?.textContent.trim();
         if (synth && text && availableVoices.length > 0) {
             if (status) status.textContent = 'Sauti ya HD haipo mtandaoni, inasoma kwa sauti ya kifaa…';
-            playDeviceSynth(currentLang);
+            playDeviceSynth('ar');
             return;
         }
         if (isPlaying) {
@@ -1731,7 +1718,7 @@
 
     // Play button
     play.addEventListener('click', () => {
-        if (voices?.value === 'hd-natural') {
+        if (!voices || voices.value === 'hd-natural') {
             if (isPaused) {
                 nativeAudio.play();
                 isPlaying = true;
@@ -1750,7 +1737,7 @@
                 if (status) status.textContent = 'Inaendelea kusoma…';
                 updateControlsUI();
             } else {
-                playDeviceSynth();
+                playDeviceSynth('ar');
             }
         }
     });

@@ -100,23 +100,8 @@
                         </div>
                     </div>
 
-                    <div class="audio-controls-top-right">
-                        <div class="select-wrapper audio-speed-wrapper" title="Kasi ya usomaji">
-                            <select id="audio-rate" aria-label="Kasi ya sauti">
-                                <option value="0.75">0.75x</option>
-                                <option value="1" selected>1.0x</option>
-                                <option value="1.25">1.25x</option>
-                                <option value="1.5">1.5x</option>
-                            </select>
-                        </div>
-                        <div class="select-wrapper">
-                            <select id="audio-language" aria-label="Lugha ya sauti">
-                                <option value="sw">Kiswahili (Daudi)</option>
-                                <option value="ar">العربية (Sheikh Shakir)</option>
-                                <option value="en" @disabled(!$hadith->english)>English (Guy)</option>
-                            </select>
-                        </div>
-                    </div>
+                    <input type="hidden" id="audio-rate" value="1">
+                    <input type="hidden" id="audio-language" value="ar">
                 </div>
 
                 <div class="audio-progress-container" id="audio-progress-container">
@@ -140,17 +125,6 @@
                         </span>
                         <span class="btn-audio-label">Soma kwa sauti</span>
                     </button>
-                    @if(trim((string) $hadith->arabic) !== '' && trim((string) $hadith->swahili) !== '')
-                        <button type="button" id="audio-play-both" class="audio-btn both-btn" title="Soma Kiarabu kisha Kiswahili">
-                            <span aria-hidden="true" class="audio-btn-icon">
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                                    <polygon points="4 4 13 12 4 20 4 4"></polygon>
-                                    <polygon points="12 4 21 12 12 20 12 4"></polygon>
-                                </svg>
-                            </span>
-                            <span class="btn-audio-label">Kiarabu + Kiswahili</span>
-                        </button>
-                    @endif
                     <button type="button" id="audio-pause" class="audio-btn pause-btn" disabled>
                         <span aria-hidden="true" class="audio-btn-icon">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>

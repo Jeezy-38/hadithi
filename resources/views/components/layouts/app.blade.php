@@ -112,7 +112,7 @@
                 <p class="footer-desc" data-i18n="footer_desc">Urithi wa mafundisho sahihi ya Mtume Muhammad ﷺ kwa lugha ya Kiarabu, Kiswahili na Kiingereza.</p>
             </div>
             <div class="footer-meta">
-                <button type="button" id="pwa-install" class="theme-toggle" hidden style="display: none">Sakinisha Hadith</button>
+                <button type="button" id="pwa-install" class="theme-toggle" hidden style="display: none">Install App Now</button>
                 <span id="pwa-install-help" hidden>iPhone / iPad: fungua menyu ya kushiriki, kisha chagua “Add to Home Screen”.</span>
                 <span data-i18n="footer_meta_left">Kiarabu na Kiswahili · Rejea katika kila hadith</span>
                 <span class="footer-copy" data-i18n="footer_copy">© {{ date('Y') }} Bayt Al-Hadith. Haki zote zimehifadhiwa.</span>

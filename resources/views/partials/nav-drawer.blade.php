@@ -99,26 +99,16 @@
             </div>
             <select id="reading-language" class="sr-only" aria-hidden="true" style="display:none;" tabindex="-1">
                 <option value="both">Kiswahili + Kiarabu</option>
-                <option value="sw">Kiswahili pekee</option>
-                <option value="en">English</option>
-                <option value="ar">العربية</option>
+                <option value="en">Kiarabu + English</option>
             </select>
             <div class="nav-drawer-lang-grid" role="group" aria-label="Lugha ya kusoma hadith">
                 <button type="button" class="drawer-lang-btn" data-lang-val="both">
                     <span class="drawer-lang-main">Kiswahili</span>
                     <span class="drawer-lang-sub">+ العربية</span>
                 </button>
-                <button type="button" class="drawer-lang-btn" data-lang-val="sw">
-                    <span class="drawer-lang-main">Kiswahili</span>
-                    <span class="drawer-lang-sub">Pekee</span>
-                </button>
                 <button type="button" class="drawer-lang-btn" data-lang-val="en">
                     <span class="drawer-lang-main">English</span>
-                    <span class="drawer-lang-sub">Only</span>
-                </button>
-                <button type="button" class="drawer-lang-btn" data-lang-val="ar">
-                    <span class="drawer-lang-main font-arabic">العربية</span>
-                    <span class="drawer-lang-sub">فقط</span>
+                    <span class="drawer-lang-sub">+ العربية</span>
                 </button>
             </div>
         </div>
@@ -156,7 +146,7 @@
 
         <div class="nav-drawer-section-label" data-i18n="drawer_pwa_label">PROGRAMU YA HADITH</div>
         <div class="nav-drawer-pwa-box">
-            <button type="button" class="nav-drawer-pwa-btn" id="drawer-pwa-install-btn" aria-label="Sakinisha au fungua Hadith App">
+            <button type="button" class="nav-drawer-pwa-btn" id="drawer-pwa-install-btn" aria-label="Install App Now">
                 <span class="nav-drawer-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -165,10 +155,10 @@
                     </svg>
                 </span>
                 <span class="nav-drawer-pwa-meta">
-                    <span class="nav-drawer-pwa-title" id="drawer-pwa-title">Sakinisha App</span>
-                    <span class="nav-drawer-pwa-sub" id="drawer-pwa-sub">Inafunguka bila mtandao</span>
+                    <span class="nav-drawer-pwa-title" id="drawer-pwa-title">Install App Now</span>
+                    <span class="nav-drawer-pwa-sub" id="drawer-pwa-sub">Download App Now</span>
                 </span>
-                <span class="nav-drawer-pwa-badge" id="drawer-pwa-badge">PWA</span>
+                <span class="nav-drawer-pwa-badge" id="drawer-pwa-badge">App</span>
             </button>
         </div>
 

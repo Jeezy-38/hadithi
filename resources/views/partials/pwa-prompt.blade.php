@@ -19,7 +19,7 @@
         {{-- Vitufe vya Kawaida --}}
         <div class="pwa-banner-actions" id="pwa-standard-actions">
             <button type="button" id="pwa-install-action-btn" class="pwa-btn-primary">
-                <span>Sakinisha</span>
+                <span>Install App Now</span>
             </button>
             <button type="button" id="pwa-dismiss-btn" class="pwa-btn-secondary">
                 <span>Baadaye</span>

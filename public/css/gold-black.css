@@ -2258,11 +2258,14 @@ svg.h-5 {
 html[data-reading-language="both"] [data-reading="en"],
 html[data-reading-language="sw"] [data-reading="ar"],
 html[data-reading-language="sw"] [data-reading="en"],
-html[data-reading-language="en"] [data-reading="ar"],
 html[data-reading-language="en"] [data-reading="sw"],
 html[data-reading-language="ar"] [data-reading="sw"],
 html[data-reading-language="ar"] [data-reading="en"] {
     display: none;
+}
+
+html[data-reading-language="en"] #english-drawer {
+    border-color: rgba(212, 175, 55, 0.45);
 }
 
 /* Skip link */
