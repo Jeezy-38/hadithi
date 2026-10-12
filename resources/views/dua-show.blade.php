@@ -245,6 +245,63 @@
             const bookmarkBtn = document.getElementById('bookmark-dua-btn');
 
             let currentCount = 0;
+            let audioCtx = null;
+
+            function getDuaAudioContext() {
+                try {
+                    if (!audioCtx) {
+                        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    }
+                    if (audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+                    return audioCtx;
+                } catch (_) {
+                    return null;
+                }
+            }
+
+            function playDuaTapSound() {
+                const ctx = getDuaAudioContext();
+                if (!ctx) return;
+                try {
+                    const now = ctx.currentTime;
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(320, now);
+                    osc.frequency.exponentialRampToValueAtTime(140, now + 0.035);
+                    gain.gain.setValueAtTime(0.25, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.035);
+                } catch (_) {}
+            }
+
+            function playDuaCompletionChime() {
+                const ctx = getDuaAudioContext();
+                if (!ctx) return;
+                try {
+                    const now = ctx.currentTime;
+                    const notes = [698.46, 880.00, 1046.50];
+                    notes.forEach((freq, i) => {
+                        const noteStart = now + (i * 0.1);
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, noteStart);
+                        gain.gain.setValueAtTime(0, now);
+                        gain.gain.setValueAtTime(0.18, noteStart);
+                        gain.gain.exponentialRampToValueAtTime(0.001, noteStart + 0.85);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(noteStart);
+                        osc.stop(noteStart + 0.85);
+                    });
+                } catch (_) {}
+            }
 
             function updateUI() {
                 numEl.textContent = currentCount;
@@ -260,11 +317,15 @@
             countBtn.addEventListener('click', () => {
                 if (currentCount < target) {
                     currentCount++;
+                    playDuaTapSound();
                     if ('vibrate' in navigator) {
                         navigator.vibrate(15);
                     }
-                    if (currentCount === target && 'vibrate' in navigator) {
-                        navigator.vibrate([40, 60, 40]);
+                    if (currentCount === target) {
+                        playDuaCompletionChime();
+                        if ('vibrate' in navigator) {
+                            navigator.vibrate([40, 60, 40]);
+                        }
                     }
                     updateUI();
                 } else {

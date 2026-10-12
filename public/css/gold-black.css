@@ -4313,6 +4313,29 @@ a, button, select, input {
     gap: 8px;
 }
 
+.tasbih-sound-select {
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.tasbih-sound-select:focus,
+.tasbih-sound-select:hover {
+    border-color: rgba(218, 181, 106, 0.5);
+}
+
+.tasbih-sound-select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .control-toggle-btn {
     width: 34px;
     height: 34px;

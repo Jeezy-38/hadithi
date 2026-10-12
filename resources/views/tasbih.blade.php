@@ -75,6 +75,11 @@
                 </div>
 
                 <div class="tasbih-actions-group">
+                    <select id="tasbih-sound-style" class="tasbih-sound-select" aria-label="Mtindo wa Sauti" title="Chagua mtindo wa sauti ya mbofyo">
+                        <option value="bead">Shanga za Mbao</option>
+                        <option value="drop">Tone la Maji</option>
+                        <option value="chime">Kengele Mwanana</option>
+                    </select>
                     <button type="button" id="tasbih-sound-toggle" class="control-toggle-btn active" title="Sauti ya mbofyo">
                         <svg id="sound-icon-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -132,6 +137,7 @@
             const ringProgress = document.getElementById('ring-progress');
             const resetBtn = document.getElementById('tasbih-reset-btn');
             const soundToggle = document.getElementById('tasbih-sound-toggle');
+            const soundStyleSelect = document.getElementById('tasbih-sound-style');
             const vibrateToggle = document.getElementById('tasbih-vibrate-toggle');
             const presetButtons = document.querySelectorAll('.tasbih-preset-btn');
 
@@ -147,6 +153,7 @@
             let currentTarget = 33;
             let currentLaps = 0;
             let soundEnabled = true;
+            let soundStyle = 'bead';
             let vibrateEnabled = true;
 
             // Load saved settings
@@ -154,7 +161,11 @@
                 currentCount = parseInt(localStorage.getItem('tasbih_count') || '0', 10);
                 currentLaps = parseInt(localStorage.getItem('tasbih_laps') || '0', 10);
                 soundEnabled = localStorage.getItem('tasbih_sound') !== 'false';
+                soundStyle = localStorage.getItem('tasbih_sound_style') || 'bead';
                 vibrateEnabled = localStorage.getItem('tasbih_vibrate') !== 'false';
+                if (soundStyleSelect) {
+                    soundStyleSelect.value = soundStyle;
+                }
             } catch (_) {}
 
             function getLifetimeDhikr() {
@@ -190,10 +201,9 @@
                 }
             }
 
-            // Web Audio API Click Sound
+            // Web Audio API Synthesizer (Acoustic Prayer Beads, Water Drop & Peaceful Chime)
             let audioCtx = null;
-            function playClickSound() {
-                if (!soundEnabled) return;
+            function getAudioContext() {
                 try {
                     if (!audioCtx) {
                         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -201,17 +211,110 @@
                     if (audioCtx.state === 'suspended') {
                         audioCtx.resume();
                     }
-                    const osc = audioCtx.createOscillator();
-                    const gain = audioCtx.createGain();
-                    osc.type = 'sine';
-                    osc.frequency.setValueAtTime(580, audioCtx.currentTime);
-                    osc.frequency.exponentialRampToValueAtTime(320, audioCtx.currentTime + 0.05);
-                    gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.05);
+                    return audioCtx;
+                } catch (_) {
+                    return null;
+                }
+            }
+
+            function playBeadSound(ctx) {
+                const now = ctx.currentTime;
+                // Warm wooden body thump
+                const oscBody = ctx.createOscillator();
+                const gainBody = ctx.createGain();
+                oscBody.type = 'sine';
+                oscBody.frequency.setValueAtTime(320, now);
+                oscBody.frequency.exponentialRampToValueAtTime(140, now + 0.035);
+                gainBody.gain.setValueAtTime(0.28, now);
+                gainBody.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+                oscBody.connect(gainBody);
+                gainBody.connect(ctx.destination);
+                oscBody.start(now);
+                oscBody.stop(now + 0.035);
+
+                // Natural bead contact transient
+                const oscClack = ctx.createOscillator();
+                const gainClack = ctx.createGain();
+                oscClack.type = 'triangle';
+                oscClack.frequency.setValueAtTime(1450, now);
+                oscClack.frequency.exponentialRampToValueAtTime(550, now + 0.022);
+                gainClack.gain.setValueAtTime(0.16, now);
+                gainClack.gain.exponentialRampToValueAtTime(0.001, now + 0.022);
+                oscClack.connect(gainClack);
+                gainClack.connect(ctx.destination);
+                oscClack.start(now);
+                oscClack.stop(now + 0.022);
+            }
+
+            function playDropSound(ctx) {
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(620, now);
+                osc.frequency.exponentialRampToValueAtTime(1180, now + 0.07);
+                gain.gain.setValueAtTime(0.22, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.08);
+            }
+
+            function playChimeSound(ctx) {
+                const now = ctx.currentTime;
+                [880, 1320].forEach((freq, idx) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = idx === 0 ? 'sine' : 'triangle';
+                    osc.frequency.setValueAtTime(freq, now);
+                    const vol = idx === 0 ? 0.15 : 0.06;
+                    gain.gain.setValueAtTime(vol, now);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
                     osc.connect(gain);
-                    gain.connect(audioCtx.destination);
-                    osc.start();
-                    osc.stop(audioCtx.currentTime + 0.05);
+                    gain.connect(ctx.destination);
+                    osc.start(now);
+                    osc.stop(now + 0.28);
+                });
+            }
+
+            function playClickSound() {
+                if (!soundEnabled) return;
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                try {
+                    if (soundStyle === 'drop') {
+                        playDropSound(ctx);
+                    } else if (soundStyle === 'chime') {
+                        playChimeSound(ctx);
+                    } else {
+                        playBeadSound(ctx);
+                    }
+                } catch (_) {}
+            }
+
+            function playCompletionChime() {
+                if (!soundEnabled) return;
+                const ctx = getAudioContext();
+                if (!ctx) return;
+                try {
+                    const now = ctx.currentTime;
+                    // Serene ascending harmonic chord (F5, A5, C6) with smooth release
+                    const notes = [698.46, 880.00, 1046.50];
+                    notes.forEach((freq, i) => {
+                        const noteStart = now + (i * 0.1);
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, noteStart);
+                        gain.gain.setValueAtTime(0, now);
+                        gain.gain.setValueAtTime(0.20, noteStart);
+                        gain.gain.exponentialRampToValueAtTime(0.001, noteStart + 0.85);
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(noteStart);
+                        osc.stop(noteStart + 0.85);
+                    });
                 } catch (_) {}
             }
 
@@ -227,6 +330,7 @@
                 addLifetimeDhikr(1);
 
                 if (currentCount >= currentTarget) {
+                    playCompletionChime();
                     triggerVibration([40, 60, 40]);
                     currentLaps++;
                     updateProgressRing();
@@ -234,7 +338,7 @@
                     setTimeout(() => {
                         currentCount = 0;
                         updateProgressRing();
-                    }, 400);
+                    }, 450);
                 } else {
                     triggerVibration(15);
                     updateProgressRing();
@@ -276,12 +380,23 @@
 
             function updateSoundUi() {
                 soundToggle.classList.toggle('active', soundEnabled);
+                if (soundStyleSelect) {
+                    soundStyleSelect.disabled = !soundEnabled;
+                }
                 const onIcon = document.getElementById('sound-icon-on');
                 const offIcon = document.getElementById('sound-icon-off');
                 if (onIcon && offIcon) {
                     onIcon.style.display = soundEnabled ? 'block' : 'none';
                     offIcon.style.display = soundEnabled ? 'none' : 'block';
                 }
+            }
+
+            if (soundStyleSelect) {
+                soundStyleSelect.addEventListener('change', () => {
+                    soundStyle = soundStyleSelect.value;
+                    try { localStorage.setItem('tasbih_sound_style', soundStyle); } catch (_) {}
+                    playClickSound();
+                });
             }
 
             function updateVibrateUi() {
