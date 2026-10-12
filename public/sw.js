@@ -1,5 +1,5 @@
-/* Bump this version whenever the offline screen changes. */
-const CACHE = 'hadith-pwa-v1';
+/* Bump this version whenever the offline screen or assets change. */
+const CACHE = 'hadith-pwa-v2';
 const OFFLINE = new URL('offline.html', self.registration.scope).href;
 
 self.addEventListener('install', (event) => {

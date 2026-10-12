@@ -54,6 +54,10 @@ class DuaIndex extends Component
             ])->layout('components.layouts.app', ['title' => 'Dua & Adhkar · Hisn al-Muslim']);
         }
 
+        if (Dua::published()->count() < 100) {
+            (new \Database\Seeders\DuaSeeder())->run();
+        }
+
         $categories = DuaCategory::orderBy('order')->withCount('publishedDuas')->get();
 
         $query = Dua::published()->with('category')
