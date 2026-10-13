@@ -752,7 +752,9 @@ body.auth-drawer-open { overflow: hidden; }
 }
 
 /* Nafasi kati ya kitufe cha Google na "Huna akaunti?" */
-.auth-providers + .auth-switch { margin-top: 18px; }
+.auth-providers + .auth-switch,
+.auth-social-actions + .auth-switch { margin-top: 18px; }
+.auth-social-actions { margin: 0; }
 
 /* "Nikumbuke" (kushoto) + "Umesahau nenosiri?" (kulia) chini ya nenosiri */
 .auth-row-between {
