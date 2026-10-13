@@ -80,4 +80,12 @@ class DuaaTest extends TestCase
             ->assertSee('tasbih-tap-btn')
             ->assertSee('ring-progress');
     }
+
+    public function test_two_thousand_duas_seeded_successfully(): void
+    {
+        $this->assertDatabaseCount('dua_categories', 15);
+        $this->assertDatabaseCount('duas', 2000);
+        $this->assertSame(2000, Dua::published()->count());
+    }
 }
+
