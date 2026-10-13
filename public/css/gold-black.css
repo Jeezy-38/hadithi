@@ -4281,6 +4281,7 @@ a, button, select, input {
     justify-content: center;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
     user-select: none;
     -webkit-user-select: none;
     transition: transform 0.1s ease;
@@ -4445,6 +4446,167 @@ a, button, select, input {
 
 .tasbih-footer-stats strong {
     color: var(--text-primary);
+}
+
+@media (max-width: 640px) {
+    .tasbih-shell {
+        margin: 0 auto 36px;
+        padding: 0 12px;
+    }
+
+    .tasbih-heading {
+        margin-bottom: 16px;
+    }
+
+    .tasbih-heading h1 {
+        font-size: 26px;
+        letter-spacing: -0.5px;
+    }
+
+    .tasbih-heading .reader-subtitle {
+        font-size: 13px;
+        line-height: 1.5;
+        padding: 0 4px;
+    }
+
+    .tasbih-app-card {
+        padding: 16px 12px;
+        border-radius: 22px;
+        gap: 14px;
+    }
+
+    .tasbih-presets-wrap {
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 8px;
+        padding: 4px 2px 6px;
+        width: 100%;
+        scroll-snap-type: x proximity;
+    }
+
+    .tasbih-presets-wrap::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tasbih-preset-btn {
+        flex: 0 0 auto;
+        min-width: 122px;
+        padding: 8px 10px;
+        border-radius: 12px;
+        scroll-snap-align: start;
+        touch-action: manipulation;
+    }
+
+    .preset-ar {
+        font-size: 15px;
+    }
+
+    .preset-sw {
+        font-size: 11px;
+    }
+
+    .tasbih-active-display {
+        padding: 2px 6px;
+    }
+
+    .active-dhikr-ar {
+        font-size: 28px;
+        line-height: 1.3;
+        margin: 0 0 2px;
+    }
+
+    .active-dhikr-sw {
+        font-size: 15px;
+        margin-bottom: 2px;
+    }
+
+    .active-dhikr-meaning {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .tasbih-ring-container {
+        width: 220px;
+        height: 220px;
+        margin: 4px 0;
+    }
+
+    .tasbih-count-val {
+        font-size: 54px;
+    }
+
+    .tasbih-target-info {
+        font-size: 11.5px;
+    }
+
+    .tasbih-controls-bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 14px;
+        box-sizing: border-box;
+    }
+
+    .tasbih-stat-pill {
+        width: 100%;
+        justify-content: space-between;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .tasbih-actions-group {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 6px;
+    }
+
+    .tasbih-sound-select {
+        flex: 1;
+        min-width: 0;
+        font-size: 11.5px;
+        padding: 8px 6px;
+        border-radius: 10px;
+    }
+
+    .control-toggle-btn {
+        flex: 0 0 36px;
+        width: 36px;
+        height: 36px;
+        touch-action: manipulation;
+    }
+
+    .tasbih-reset-action-btn {
+        flex: 0 0 auto;
+        padding: 8px 10px;
+        font-size: 11px;
+        white-space: nowrap;
+        touch-action: manipulation;
+    }
+
+    .tasbih-footer-stats {
+        font-size: 11px;
+        text-align: center;
+        padding: 0 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .tasbih-ring-container {
+        width: 190px;
+        height: 190px;
+    }
+
+    .tasbih-count-val {
+        font-size: 46px;
+    }
+
+    .tasbih-reset-action-btn span {
+        display: none;
+    }
 }
 
 /* ==========================================================================

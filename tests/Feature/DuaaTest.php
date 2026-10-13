@@ -77,6 +77,8 @@ class DuaaTest extends TestCase
             ->assertOk()
             ->assertSee('DIGITAL')
             ->assertSee('Subhaanallaah')
+            ->assertSee('Mlio wa Tasbihi')
+            ->assertDontSee('Shanga')
             ->assertSee('tasbih-tap-btn')
             ->assertSee('ring-progress');
     }

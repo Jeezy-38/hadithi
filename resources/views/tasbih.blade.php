@@ -76,7 +76,7 @@
 
                 <div class="tasbih-actions-group">
                     <select id="tasbih-sound-style" class="tasbih-sound-select" aria-label="Mtindo wa Sauti" title="Chagua mtindo wa sauti ya mbofyo">
-                        <option value="bead">Shanga za Mbao</option>
+                        <option value="bead">Mlio wa Tasbihi</option>
                         <option value="drop">Tone la Maji</option>
                         <option value="chime">Kengele Mwanana</option>
                     </select>
