@@ -51,6 +51,10 @@ class Library extends Component
 
     public function render()
     {
+        if (! app()->environment('testing') && Hadith::published()->count() < 950) {
+            (new \Database\Seeders\HadithSeeder())->run();
+        }
+
         $query = Hadith::published()->with('chapter.book.collection')
             ->when($this->collection !== '', fn ($q) => $q->whereHas('chapter.book.collection', fn ($q) => $q->where('slug', $this->collection)))
             ->when($this->book !== '', fn ($q) => $q->whereHas('chapter', fn ($q) => $q->where('book_id', $this->book)))

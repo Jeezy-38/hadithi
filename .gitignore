@@ -40,3 +40,7 @@ git status
 .env.bak
 .env.*
 !.env.example
+
+# Discovery raw cache
+database/data/discovery/raw_cache.json
+
