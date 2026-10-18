@@ -653,3 +653,101 @@
     line-height: 1.55;
     margin: 0;
 }
+
+/* --------------------------------------------------------------------------
+   Light Mode Design System Refinements
+   -------------------------------------------------------------------------- */
+[data-theme="light"] .support-hero {
+    background: radial-gradient(circle at 80% 20%, rgba(180, 83, 9, 0.08), transparent 50%),
+                linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-body) 100%);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .purpose-tab-btn.active {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-color: var(--border-color);
+}
+
+[data-theme="light"] .curr-toggle-btn.active {
+    color: #ffffff;
+}
+
+[data-theme="light"] .support-submit-btn {
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(180, 83, 9, 0.25);
+}
+
+[data-theme="light"] .support-submit-btn:hover {
+    box-shadow: 0 6px 20px rgba(180, 83, 9, 0.35);
+}
+
+[data-theme="light"] .preset-chip-btn.active {
+    color: var(--gold-dark);
+}
+
+[data-theme="light"] .conf-amount-val {
+    color: var(--gold-dark);
+}
+
+[data-theme="light"] .conf-ref-row {
+    background: var(--bg-surface-elevated);
+    border-color: var(--border-color);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Screen Responsiveness
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+    .support-container {
+        padding: 1.25rem 0.85rem 3rem;
+    }
+
+    .support-hero {
+        padding: 2rem 1.25rem;
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+    }
+
+    .support-hadith-box {
+        padding: 1.15rem 1.25rem;
+    }
+
+    .support-hadith-arabic {
+        font-size: 1.2rem;
+        line-height: 1.85;
+    }
+
+    .support-card {
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+
+    .support-presets-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .preset-chip-btn {
+        padding: 0.75rem 0.35rem;
+        font-size: 0.9rem;
+    }
+
+    .payment-methods-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .support-benefits-card {
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+
+    .support-wall {
+        padding: 1.25rem;
+        border-radius: 16px;
+    }
+
+    .support-wall-grid {
+        grid-template-columns: 1fr;
+    }
+}

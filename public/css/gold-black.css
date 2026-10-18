@@ -355,11 +355,33 @@ button {
     box-shadow: 0 0 15px rgba(218, 181, 106, 0.35);
 }
 
+[data-theme="light"] .nav-support-pill {
+    background: rgba(180, 83, 9, 0.1);
+    border-color: rgba(180, 83, 9, 0.35);
+    color: var(--gold);
+}
+
+[data-theme="light"] .nav-support-pill:hover,
+[data-theme="light"] .nav-support-pill.active {
+    background: var(--gold);
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(180, 83, 9, 0.25);
+}
+
 @media (max-width: 640px) {
     .nav-support-pill {
         padding: 5px 9px;
         font-size: 11px;
         gap: 4px;
+    }
+}
+
+@media (max-width: 360px) {
+    .nav-support-pill {
+        padding: 5px 7px;
+    }
+    .nav-support-pill-text {
+        display: none;
     }
 }
 
@@ -7189,6 +7211,25 @@ a, button, select, input {
         border-radius: 999px;
         background: var(--gold);
         box-shadow: 0 0 8px var(--gold);
+    }
+
+    @media (max-width: 390px) {
+        .mobile-bottom-nav {
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        .mobile-nav-item {
+            max-width: 58px;
+            padding: 4px 1px;
+        }
+        .mobile-nav-label {
+            font-size: 9.5px;
+            letter-spacing: -0.1px;
+        }
+        .mobile-nav-icon svg {
+            width: 20px;
+            height: 20px;
+        }
     }
 
     .back-to-top-btn {
