@@ -761,7 +761,7 @@
             const metaSub = hadithCatalog.querySelector('.meta-sub');
             if (metaSub && metaSub.textContent !== t.meta_sub) metaSub.textContent = t.meta_sub;
             const covNote = hadithCatalog.querySelector('.coverage-note');
-            if (covNote && covNote.textContent !== t.coverage_note) covNote.textContent = t.coverage_note;
+            if (covNote) covNote.remove();
             const loadSpan = hadithCatalog.querySelector('.loading span:last-child');
             if (loadSpan && loadSpan.textContent !== t.searching) loadSpan.textContent = t.searching;
 
@@ -789,7 +789,7 @@
             if (cardSrc && (cardSrc.textContent.includes('Chanzo:') || cardSrc.textContent.includes('Source:') || cardSrc.textContent.includes('المصدر:'))) {
                 const parts = cardSrc.textContent.split('·');
                 const srcPart = parts[0]?.replace(/Chanzo:|Source:|المصدر:/g, '').trim() || '';
-                const expectedSrc = `${t.card_source_prefix}${srcPart} · ${t.card_preview}`;
+                const expectedSrc = `${t.card_source_prefix}${srcPart}`;
                 if (cardSrc.textContent !== expectedSrc) cardSrc.textContent = expectedSrc;
             }
 
@@ -1586,14 +1586,14 @@
             // Fallback ya kiotomatiki kwa sauti ya kifaa
             const text = document.getElementById('text-ar')?.textContent.trim();
             if (synth && text && availableVoices.length > 0) {
-                if (status) status.textContent = 'Sauti ya HD haipatikani mtandaoni, inasoma kwa sauti ya kifaa…';
+                if (status) status.textContent = 'Inasoma kwa sauti ya kifaa…';
                 playDeviceSynth('ar');
                 return;
             }
 
             if (status) status.textContent = (auto || err?.name === 'NotAllowedError')
                 ? 'Bonyeza “Soma kwa sauti” kuendelea kusikiliza.'
-                : 'Sauti ya hadithi hii bado haijapakiwa kwenye seva.';
+                : 'Tumia usomaji wa sauti ya kifaa.';
             updateControlsUI();
         });
     };
@@ -1692,14 +1692,14 @@
         if (isLoading) setLoading(false);
         const text = document.getElementById('text-ar')?.textContent.trim();
         if (synth && text && availableVoices.length > 0) {
-            if (status) status.textContent = 'Sauti ya HD haipo mtandaoni, inasoma kwa sauti ya kifaa…';
+            if (status) status.textContent = 'Inasoma kwa sauti ya kifaa…';
             playDeviceSynth('ar');
             return;
         }
         if (isPlaying) {
             isPlaying = false;
             isPaused = false;
-            if (status) status.textContent = 'Sauti ya hadithi hii bado haijapakiwa kwenye seva.';
+            if (status) status.textContent = 'Tumia usomaji wa sauti ya kifaa.';
             updateControlsUI();
         }
     });

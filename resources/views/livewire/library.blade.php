@@ -162,9 +162,6 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                 @endif
             </div>
 
-            @if($total > 0)
-                <p class="coverage-note" data-i18n="coverage_note">Hadith zilizochaguliwa kutoka makusanyo yaliyoorodheshwa hapo juu; makusanyo kamili bado yanaongezwa.</p>
-            @endif
 
             <div class="loading" wire:loading role="status">
                 <span class="spinner" aria-hidden="true"></span>
@@ -189,12 +186,14 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                             <p data-reading="sw" lang="sw" class="translation swahili-text excerpt">
                                 {!! $highlight($hadith->swahili, $search) !!}
                             </p>
-                            <p data-reading="en" lang="en" class="translation english-text excerpt">
-                                {!! $hadith->english ? $highlight($hadith->english, $search) : 'Tafsiri ya Kiingereza bado haipatikani.' !!}
-                            </p>
+                            @if($hadith->english)
+                                <p data-reading="en" lang="en" class="translation english-text excerpt">
+                                    {!! $highlight($hadith->english, $search) !!}
+                                </p>
+                            @endif
                         </div>
 
-                        <p class="card-source"><span data-i18n="card_source_prefix">Chanzo: </span>{{ $hadith->source_name }} · <span data-i18n="card_preview">Mwonekano wa awali</span></p>
+                        <p class="card-source"><span data-i18n="card_source_prefix">Chanzo: </span>{{ $hadith->source_name }}</p>
                         
                         <div class="card-bottom">
                             <span class="card-location"><span data-i18n="card_book_label">Kitabu</span> {{ $hadith->chapter->book->number }} · <span data-i18n="card_chapter_label">Mlango</span> {{ $hadith->chapter->number }}</span>
