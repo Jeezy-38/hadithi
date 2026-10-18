@@ -83,7 +83,7 @@
                     <span class="section-script-badge">العربية بالتشكيل</span>
                 </div>
                 <div class="arabic-box dua-arabic-box-detail">
-                    <p id="text-ar" class="arabic-text font-arabic" lang="ar" dir="rtl">{{ $hadith->arabic }}</p>
+                    <p id="text-ar" class="arabic arabic-text font-arabic" lang="ar" dir="rtl">{{ $hadith->arabic }}</p>
                 </div>
             </section>
 

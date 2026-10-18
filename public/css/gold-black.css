@@ -1203,15 +1203,21 @@ button {
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.arabic {
+.arabic,
+.arabic-text,
+.font-arabic,
+#text-ar,
+.reading-arabic {
     font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
     font-size: 28px;
     line-height: 2.25;
     color: var(--arabic-text);
     margin: 0;
     text-align: right;
+    direction: rtl;
     font-weight: 500;
     letter-spacing: 0.2px;
+    font-feature-settings: "cv01", "cv02", "calt", "liga";
 }
 
 .translation {
@@ -1990,11 +1996,24 @@ svg.h-5 {
     border-top: none;
 }
 
-.section-label-bar {
+.section-label-bar,
+.section-label-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    gap: 12px;
+}
+
+.section-script-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--gold-subtle);
+    color: var(--gold);
+    border: 1px solid var(--border-color);
+    font-family: 'Amiri', serif;
 }
 
 .manuscript-box {
@@ -2704,9 +2723,15 @@ a, button, select, input {
         padding: 14px 14px;
         border-radius: 10px;
     }
-    .arabic {
-        font-size: clamp(22px, 5.5vw, 25px);
-        line-height: 2.1;
+    .arabic,
+    .arabic-text,
+    .font-arabic,
+    #text-ar,
+    .dua-detail-card .arabic,
+    .dua-detail-card .arabic-text,
+    .dua-detail-card #text-ar {
+        font-size: calc(clamp(22px, 5.5vw, 25px) * var(--font-scale, 1)) !important;
+        line-height: 2.1 !important;
     }
     .translation {
         font-size: 13.5px;
@@ -5909,8 +5934,18 @@ a, button, select, input {
     }
 }
 
-.dua-detail-card .arabic-text {
+.dua-detail-card .arabic,
+.dua-detail-card .arabic-text,
+.dua-detail-card #text-ar {
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif !important;
     font-size: calc(28px * var(--font-scale, 1)) !important;
+    line-height: 2.25 !important;
+    color: var(--arabic-text) !important;
+    text-align: right !important;
+    direction: rtl !important;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+    font-feature-settings: "cv01", "cv02", "calt", "liga";
 }
 
 .dua-detail-card .swahili-text {

@@ -70,7 +70,7 @@
                     <span class="section-script-badge">العربية بالتشكيل</span>
                 </div>
                 <div class="arabic-box dua-arabic-box-detail">
-                    <p class="arabic-text font-arabic" dir="rtl">{{ $dua->arabic }}</p>
+                    <p id="text-ar" class="arabic arabic-text font-arabic" dir="rtl">{{ $dua->arabic }}</p>
                 </div>
             </section>
 
