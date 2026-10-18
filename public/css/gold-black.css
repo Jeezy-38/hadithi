@@ -330,6 +330,39 @@ button {
     letter-spacing: 0.3px;
 }
 
+/* Sadaka Pill in Navigation Bar */
+.nav-support-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(218, 181, 106, 0.16);
+    border: 1px solid rgba(218, 181, 106, 0.45);
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all .2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-support-pill:hover,
+.nav-support-pill.active {
+    background: var(--gold);
+    color: #0a0e13;
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(218, 181, 106, 0.35);
+}
+
+@media (max-width: 640px) {
+    .nav-support-pill {
+        padding: 5px 9px;
+        font-size: 11px;
+        gap: 4px;
+    }
+}
+
 /* Mobile Navigation Drawer & Hamburger (Hidden on desktop) */
 .menu-toggle-btn {
     display: none;
