@@ -7,6 +7,7 @@ use App\Http\Controllers\QuranController;
 use App\Livewire\DuaIndex;
 use App\Livewire\Library;
 use App\Livewire\QuranIndex;
+use App\Livewire\SupportIndex;
 use App\Models\Dua;
 use App\Models\Hadith;
 use Illuminate\Http\Request;
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 Route::get('/', Library::class)->name('library');
+Route::get('/changia', SupportIndex::class)->name('support');
+Route::get('/sadaka', fn () => redirect()->route('support'))->name('support.alias');
 
 Route::get('/quran', QuranIndex::class)->name('quran.index');
 Route::get('/quran/{number}', [QuranController::class, 'show'])->whereNumber('number')->name('quran.show');

@@ -1,0 +1,655 @@
+/* ==========================================================================
+   SUPPORT & SADAKA JARIYA DESIGN SYSTEM
+   ========================================================================== */
+
+.support-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+}
+
+/* Hero Section */
+.support-hero {
+    position: relative;
+    border-radius: 20px;
+    background: radial-gradient(circle at 80% 20%, rgba(218, 181, 106, 0.15), transparent 50%),
+                linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-body) 100%);
+    border: 1px solid var(--border-color);
+    padding: 3rem 2rem;
+    margin-bottom: 2.5rem;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.support-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold-subtle);
+    border: 1px solid var(--border-color);
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+}
+
+.support-hero-title {
+    font-size: clamp(2rem, 4vw, 2.85rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.support-hero-title em {
+    font-style: normal;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.support-hero-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 720px;
+    margin-bottom: 2rem;
+}
+
+/* Authentic Hadith Quote Card */
+.support-hadith-box {
+    background: var(--bg-surface-elevated);
+    border-left: 3px solid var(--gold);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    margin-top: 1.5rem;
+    position: relative;
+}
+
+.support-hadith-arabic {
+    font-family: 'Amiri', serif;
+    font-size: 1.35rem;
+    line-height: 2;
+    direction: rtl;
+    text-align: right;
+    color: var(--arabic-text);
+    margin-bottom: 0.75rem;
+}
+
+.support-hadith-swahili {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.support-hadith-ref {
+    color: var(--gold);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Pillars / Impact Grid */
+.support-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+.support-pillar-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.support-pillar-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-color);
+}
+
+.support-pillar-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--gold-subtle);
+    border: 1px solid var(--border-color);
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.support-pillar-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.support-pillar-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+/* Main Donation Workspace */
+.support-workspace {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+@media (max-width: 900px) {
+    .support-workspace {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Form Card */
+.support-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+}
+
+.support-card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Tabs: Purpose Switcher (Sadaka vs Supporter) */
+.support-purpose-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    background: var(--bg-surface-elevated);
+    padding: 0.35rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.purpose-tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 0.5rem;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.purpose-tab-btn strong {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.purpose-tab-btn.active {
+    background: var(--bg-surface);
+    border-color: var(--border-color);
+    color: var(--gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Currency Switcher */
+.support-currency-toggle {
+    display: inline-flex;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 0.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.curr-toggle-btn {
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.curr-toggle-btn.active {
+    background: var(--gold);
+    color: #0a0e13;
+}
+
+/* Presets Grid */
+.support-presets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.preset-chip-btn {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+    padding: 0.9rem 0.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.preset-chip-btn:hover {
+    border-color: var(--border-color);
+}
+
+.preset-chip-btn.active {
+    background: var(--gold-subtle);
+    border-color: var(--gold);
+    color: var(--gold-light);
+    box-shadow: 0 0 15px rgba(218, 181, 106, 0.15);
+}
+
+/* Custom Amount Input */
+.support-input-group {
+    margin-bottom: 1.25rem;
+}
+
+.support-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.support-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.support-input-prefix {
+    position: absolute;
+    left: 1rem;
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.95rem;
+    pointer-events: none;
+}
+
+.support-input {
+    width: 100%;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 0.85rem 1rem 0.85rem 3.5rem;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.support-input:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(218, 181, 106, 0.15);
+}
+
+.support-input-plain {
+    padding-left: 1rem;
+}
+
+.support-textarea {
+    width: 100%;
+    min-height: 85px;
+    resize: vertical;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.support-textarea:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(218, 181, 106, 0.15);
+}
+
+/* Checkbox */
+.support-checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+}
+
+.support-checkbox-row input[type="checkbox"] {
+    margin-top: 0.2rem;
+    accent-color: var(--gold);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.support-checkbox-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Payment Methods Selector */
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-method-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.payment-method-card:hover {
+    border-color: var(--border-color);
+}
+
+.payment-method-card.active {
+    background: var(--gold-subtle);
+    border-color: var(--gold);
+}
+
+.pm-radio {
+    accent-color: var(--gold);
+}
+
+.pm-meta strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.pm-meta span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Submit Button */
+.support-submit-btn {
+    width: 100%;
+    background: var(--gold-gradient);
+    color: #0a0e13;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.support-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(218, 181, 106, 0.35);
+}
+
+/* Confirmation / Checkout State Card */
+.support-confirmation-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--gold);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--glow-gold);
+}
+
+.conf-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--emerald);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.conf-amount-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 1rem;
+}
+
+.conf-amount-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.conf-amount-val {
+    color: var(--gold-light);
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.conf-ref-row {
+    font-family: monospace;
+    font-size: 0.95rem;
+    background: var(--bg-surface);
+    padding: 0.6rem 0.85rem;
+    border-radius: 8px;
+    border: 1px dashed var(--border-color);
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+}
+
+.conf-instructions {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+/* Sidebar / Benefits */
+.support-benefits-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 2rem;
+    height: fit-content;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+}
+
+.benefit-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--gold-subtle);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.benefit-content strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.benefit-content p {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin: 0;
+}
+
+/* Wall of Benefactors (Sadaka Jariya List) */
+.support-wall {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.support-wall-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.support-wall-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.support-wall-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.wall-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 1.25rem;
+}
+
+.wall-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.wall-donor-name {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.wall-amount {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.wall-prayer {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.wall-time {
+    display: block;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+/* FAQ */
+.support-faq {
+    margin-bottom: 3.5rem;
+}
+
+.faq-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.faq-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+}
+
+.faq-q {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    margin-bottom: 0.45rem;
+}
+
+.faq-a {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin: 0;
+}

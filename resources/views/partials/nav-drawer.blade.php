@@ -86,6 +86,15 @@
                 <span class="nav-drawer-text" data-i18n="nav_bookmarks">Vipendwa</span>
                 <span class="nav-drawer-arrow" aria-hidden="true">→</span>
             </a>
+            <a href="{{ route('support') }}" class="nav-drawer-link {{ request()->routeIs('support*') ? 'active' : '' }}">
+                <span class="nav-drawer-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </span>
+                <span class="nav-drawer-text">Sadaka &amp; Usaidizi</span>
+                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+            </a>
         </nav>
 
         <div class="nav-drawer-divider"></div>
@@ -175,6 +184,11 @@
                     @endif
                     <div class="nav-drawer-user-details">
                         <strong>{{ $drawerUser->name }}</strong>
+                        @if ($drawerUser->isSupporter())
+                            <span style="display: inline-block; background: var(--gold-subtle); color: var(--gold); border: 1px solid var(--border-color); border-radius: 999px; padding: 0.15rem 0.5rem; font-size: 0.72rem; font-weight: 700; margin-top: 0.2rem;">
+                                {{ $drawerUser->supporterBadge() }}
+                            </span>
+                        @endif
                         @if ($drawerUser->email)<span>{{ $drawerUser->email }}</span>@endif
                     </div>
                 </div>
