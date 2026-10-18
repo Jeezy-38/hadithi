@@ -100,10 +100,16 @@
                             <button type="button" wire:click="cancelCheckout" class="preset-chip-btn" style="flex: 1;">
                                 Rekebisha Fomu
                             </button>
-                            <button type="button" class="support-submit-btn" style="flex: 1.5;" onclick="alert('Lango la malipo litaunganishwa katika Hatua ya 3 (Pesapal / Flutterwave). Kumbukumbu yako ya muamala ni: {{ $activeReference }}')">
-                                Thibitisha na Lipa Sasa
+                            <button type="button" wire:click="processCheckout" wire:loading.attr="disabled" class="support-submit-btn" style="flex: 1.5;">
+                                <span wire:loading.remove wire:target="processCheckout">Thibitisha na Lipa Sasa</span>
+                                <span wire:loading wire:target="processCheckout">Inaunganisha na Lango...</span>
                             </button>
                         </div>
+                        @error('checkout')
+                            <div style="color: #ef4444; font-size: 0.85rem; margin-top: 0.75rem; text-align: center; background: rgba(239, 68, 68, 0.1); padding: 0.6rem; border-radius: 8px;">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 @else
                     {{-- 1. Chagua Kusudi (Sadaka Jariya au Msaidizi wa App) --}}

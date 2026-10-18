@@ -57,4 +57,14 @@ return [
         'redirect' => env('X_REDIRECT_URI') ?: rtrim((string) env('APP_URL'), '/').'/auth/x/callback',
     ],
 
+    /*
+    | Lango la Malipo la Pesapal v3 (Tanzania & Kimataifa: M-Pesa, Tigo, Airtel, Halo, Visa/Mastercard)
+    */
+    'pesapal' => [
+        'mode' => env('PESAPAL_MODE', 'simulation'), // 'live', 'sandbox', 'simulation'
+        'consumer_key' => env('PESAPAL_CONSUMER_KEY'),
+        'consumer_secret' => env('PESAPAL_CONSUMER_SECRET'),
+        'ipn_id' => env('PESAPAL_IPN_ID'),
+    ],
+
 ];

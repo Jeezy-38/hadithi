@@ -39,11 +39,17 @@
                 <div class="auth-profile-text">
                     <h2 id="auth-drawer-title">{{ $authUser->name }}</h2>
                     @if ($authUser->email)<p>{{ $authUser->email }}</p>@endif
+                    @if ($authUser->isSupporter())
+                        <div class="supporter-badge-pill supporter-badge-{{ $authUser->supporter_tier ?? 'supporter' }}">
+                            <span>★ {{ $authUser->supporterBadge() }}</span>
+                        </div>
+                    @endif
                 </div>
             </div>
 
             <nav class="auth-links" aria-label="Akaunti">
                 <a href="{{ route('bookmarks') }}" data-i18n="nav_bookmarks">Vipendwa</a>
+                <a href="{{ route('support') }}">Sadaka &amp; Changia</a>
                 <a href="{{ route('hadith.today') }}" data-i18n="nav_today">Hadith ya leo</a>
             </nav>
 

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Payment;
+use App\Services\Payments\PaymentManager;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -135,6 +136,32 @@ class SupportIndex extends Component
         $this->activeReference = $payment->reference;
         $this->activeAmount = $amount;
         $this->activeCurrency = $this->currency;
+    }
+
+    public function processCheckout(PaymentManager $manager)
+    {
+        $this->resetErrorBag();
+
+        if (! $this->activeReference) {
+            $this->addError('checkout', 'Hakuna muamala ulioandaliwa bado.');
+
+            return;
+        }
+
+        $payment = Payment::where('reference', $this->activeReference)->first();
+        if (! $payment) {
+            $this->addError('checkout', 'Taarifa za muamala huu hazikupatikana.');
+
+            return;
+        }
+
+        $result = $manager->initiateOrder($payment);
+
+        if (($result['status'] ?? '') === 'success' && ! empty($result['redirect_url'])) {
+            return redirect()->away($result['redirect_url']);
+        }
+
+        $this->addError('checkout', $result['message'] ?? 'Hitilafu ya kuanzisha lango la malipo. Tafadhali jaribu tena.');
     }
 
     public function cancelCheckout(): void
