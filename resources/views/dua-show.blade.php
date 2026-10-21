@@ -1,18 +1,5 @@
 <x-layouts.app :title="$dua->title_sw.' · Dua & Adhkar'">
     <div class="reader-shell dua-detail-shell">
-        <a class="back-link" href="{{ route('duaa.index', ['kundi' => $dua->category->slug]) }}">
-            <span class="back-arrow" aria-hidden="true">←</span>
-            <span>Rudi kwenye {{ $dua->category->name_sw }}</span>
-        </a>
-
-        <div class="reader-heading dua-detail-heading">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> {{ $dua->category->name_sw }} · HISN AL-MUSLIM</span>
-            <h1>{{ $dua->title_sw }}</h1>
-            @if($dua->title_ar)
-                <p class="reader-subtitle font-arabic" dir="rtl">{{ $dua->title_ar }}</p>
-            @endif
-        </div>
-
         @php
             $shareArabic = trim((string) $dua->arabic);
             $shareArabicShort = \Illuminate\Support\Str::limit($shareArabic, 320);
@@ -26,34 +13,48 @@
                 . "Rejea: " . $shareRef;
         @endphp
 
-        <div class="reader-actions no-print">
-            <button type="button" id="bookmark-dua-btn" class="text-button action-pill-btn" data-dua-id="{{ $dua->id }}" data-dua-title="{{ $dua->title_sw }}" data-dua-cat="{{ $dua->category->name_sw }}" data-dua-excerpt="{{ \Illuminate\Support\Str::limit($dua->swahili, 90) }}" aria-pressed="false">
-                <span class="btn-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                </span>
-                <span class="btn-text">Hifadhi</span>
-            </button>
+        <div class="reader-top-nav">
+            <a class="back-link" href="{{ route('duaa.index', ['kundi' => $dua->category->slug]) }}">
+                <span class="back-arrow" aria-hidden="true">←</span>
+                <span>Rudi kwenye {{ $dua->category->name_sw }}</span>
+            </a>
 
-            <button type="button" id="share-dua" class="text-button action-pill-btn share-trigger-btn"
-                data-share-title="{{ $shareTitle }}"
-                data-share-badge="{{ $shareBadge }}"
-                data-share-ar="{{ $shareArabicShort }}"
-                data-share-sw="{{ $shareSwahiliShort }}"
-                data-share-ref="{{ $shareRef }}"
-                data-share-text="{{ $shareFormatted }}"
-                data-share-url="{{ url()->current() }}">
-                <span class="btn-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                        <polyline points="16 6 12 2 8 6"></polyline>
-                        <line x1="12" y1="2" x2="12" y2="15"></line>
-                    </svg>
-                </span>
-                <span class="btn-text">Shiriki</span>
-            </button>
+            <div class="reader-actions no-print">
+                <button type="button" id="bookmark-dua-btn" class="text-button action-pill-btn" data-dua-id="{{ $dua->id }}" data-dua-title="{{ $dua->title_sw }}" data-dua-cat="{{ $dua->category->name_sw }}" data-dua-excerpt="{{ \Illuminate\Support\Str::limit($dua->swahili, 90) }}" aria-pressed="false">
+                    <span class="btn-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </span>
+                    <span class="btn-text">Hifadhi</span>
+                </button>
 
+                <button type="button" id="share-dua" class="text-button action-pill-btn share-trigger-btn"
+                    data-share-title="{{ $shareTitle }}"
+                    data-share-badge="{{ $shareBadge }}"
+                    data-share-ar="{{ $shareArabicShort }}"
+                    data-share-sw="{{ $shareSwahiliShort }}"
+                    data-share-ref="{{ $shareRef }}"
+                    data-share-text="{{ $shareFormatted }}"
+                    data-share-url="{{ url()->current() }}">
+                    <span class="btn-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                            <polyline points="16 6 12 2 8 6"></polyline>
+                            <line x1="12" y1="2" x2="12" y2="15"></line>
+                        </svg>
+                    </span>
+                    <span class="btn-text">Shiriki</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="reader-heading dua-detail-heading">
+            <span class="eyebrow"><span class="eyebrow-dot"></span> {{ $dua->category->name_sw }} · HISN AL-MUSLIM</span>
+            <h1>{{ $dua->title_sw }}</h1>
+            @if($dua->title_ar)
+                <p class="reader-subtitle font-arabic" dir="rtl">{{ $dua->title_ar }}</p>
+            @endif
         </div>
 
         <article class="reader-card dua-detail-card">

@@ -1491,7 +1491,7 @@ svg.h-5 {
    -------------------------------------------------------------------------- */
 .reader-shell {
     max-width: 900px;
-    margin: 32px auto 80px;
+    margin: 16px auto 60px;
     padding: 0 24px;
 }
 
@@ -1506,7 +1506,7 @@ svg.h-5 {
     border-radius: 8px;
     background: var(--bg-surface);
     border: 1.5px solid var(--border-color);
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     transition: all .2s ease;
 }
 
@@ -1516,7 +1516,7 @@ svg.h-5 {
 }
 
 .reader-heading {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .reader-heading h1 {
@@ -5976,9 +5976,24 @@ a, button, select, input {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 22px;
+    gap: 12px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
+}
+
+.reader-top-nav .back-link {
+    margin-bottom: 0 !important;
+}
+
+.reader-top-nav .reader-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .quran-nav-back,

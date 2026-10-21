@@ -77,14 +77,16 @@
     .reader-shell {
         width: calc(100% - var(--page-gutter) * 2);
         max-width: 960px;
-        margin: 24px auto 64px;
+        margin: 16px auto 48px;
         padding: 0;
     }
-    .back-link { margin: 0 0 24px; }
-    .reader-heading { margin: 0 0 24px; }
+    .back-link { margin: 0 0 12px; }
+    .reader-top-nav .back-link { margin: 0; }
+    .reader-heading { margin: 0 0 16px; }
     .reader-heading > :last-child { margin-bottom: 0; }
-    .reader-actions { margin: 0 0 24px; padding: 12px; gap: 12px; }
-    .reader-actions .action-pill-btn { padding: 10px 14px; min-height: 44px; }
+    .reader-actions { margin: 0 0 16px; padding: 0; gap: 8px; }
+    .reader-top-nav .reader-actions { margin: 0; }
+    .reader-actions .action-pill-btn { padding: 8px 14px; min-height: 40px; }
     .reader-card, .source-card, .related-hadith { padding: var(--panel-padding); }
     .source-card, .related-hadith { margin-top: 24px; }
     .audio-player { padding: 20px; margin-bottom: 24px; }

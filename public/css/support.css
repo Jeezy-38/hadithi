@@ -146,16 +146,14 @@
 
 /* Main Donation Workspace */
 .support-workspace {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 2rem;
+    display: flex;
+    justify-content: center;
     margin-bottom: 3.5rem;
 }
 
-@media (max-width: 900px) {
-    .support-workspace {
-        grid-template-columns: 1fr;
-    }
+.support-workspace .support-card {
+    width: 100%;
+    max-width: 680px;
 }
 
 /* Form Card */

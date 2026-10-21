@@ -29,46 +29,6 @@
             </div>
         </section>
 
-        {{-- Nguzo 3 za Matumizi ya Mchango --}}
-        <section class="support-pillars" aria-label="Madhumuni ya Mchango">
-            <div class="support-pillar-card">
-                <div class="support-pillar-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                    </svg>
-                </div>
-                <h3 class="support-pillar-title">Seva &amp; Upatikanaji wa Haraka</h3>
-                <p class="support-pillar-desc">Kuhakikisha app inafanya kazi masaa 24/7 kwa kasi ya juu popote duniani bila kukatika.</p>
-            </div>
-
-            <div class="support-pillar-card">
-                <div class="support-pillar-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                        <line x1="12" y1="19" x2="12" y2="23"></line>
-                        <line x1="8" y1="23" x2="16" y2="23"></line>
-                    </svg>
-                </div>
-                <h3 class="support-pillar-title">Sauti za Wasomaji Bora</h3>
-                <p class="support-pillar-desc">Kufadhili utayarishaji na uhifadhi wa sauti za usomaji wa Kiarabu na tafsiri ya Kiswahili.</p>
-            </div>
-
-            <div class="support-pillar-card">
-                <div class="support-pillar-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                    </svg>
-                </div>
-                <h3 class="support-pillar-title">Maudhui Huria Bila Matangazo</h3>
-                <p class="support-pillar-desc">Kuzuia matangazo ya kibiashara yanayochafua heshima ya aya na hadithi za Mtume ﷺ.</p>
-            </div>
-        </section>
-
         {{-- Eneo Kuu la Malipo na Fomu --}}
         <div class="support-workspace">
             {{-- Upande wa Fomu --}}
@@ -248,59 +208,6 @@
                     </button>
                 @endif
             </div>
-
-            {{-- Upande wa Manufaa ya Kuwa Supporter --}}
-            <aside class="support-benefits-card">
-                <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1.25rem;">
-                    Faida za Kuwa Msaidizi (Supporter)
-                </h3>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7"></circle>
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                        </svg>
-                    </div>
-                    <div class="benefit-content">
-                        <strong>Beji ya Heshima (Supporter Badge)</strong>
-                        <p>Wasifu wako unakuwa na alama maalum ya dhahabu inayoonyesha mchango wako kwa jamii.</p>
-                    </div>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </div>
-                    <div class="benefit-content">
-                        <strong>Kupakua Sauti Zote (Offline Audio)</strong>
-                        <p>Uwezo wa kuhifadhi sauti zote za hadithi na dua kwenye simu yako ili kusikiliza bila mtandao.</p>
-                    </div>
-                </div>
-
-                <div class="benefit-item">
-                    <div class="benefit-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </div>
-                    <div class="benefit-content">
-                        <strong>Ujira wa Kudumu (Thawab)</strong>
-                        <p>Kila mtu anayesoma hadithi, akajifunza dua, au akafanya dhikr kupitia app hii, unapata sehemu ya ujira wake insha'Allah.</p>
-                    </div>
-                </div>
-
-                <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.25rem; margin-top: 1rem;">
-                    <div style="font-size: 0.8rem; color: var(--text-dim); text-align: center;">
-                        Bayt Al-Hadith inafuata maadili ya Kiislamu ya uaminifu na uwazi katika matumizi ya michango yote.
-                    </div>
-                </div>
-            </aside>
         </div>
 
         {{-- Ukuta wa Sadaka Jariya (Recent Infaq & Dua Wall) --}}

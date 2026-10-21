@@ -26,64 +26,10 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                         <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
                     </svg>
                 </a>
-                <a class="hero-button hero-button-secondary" href="{{ route('hadith.today') }}">
-                    <span data-i18n="hero_btn_today">Hadith ya leo</span>
-                    <span class="sparkle-icon" aria-hidden="true">✦</span>
-                </a>
-                <a class="hero-button hero-button-secondary" href="{{ route('support') }}" style="border-color: rgba(218, 181, 106, 0.45); color: var(--gold);">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                    </svg>
-                    <span>Sadaka Jariya</span>
-                </a>
             </div>
         </div>
         <span class="hero-caption" data-i18n="hero_caption"><span aria-hidden="true">✦</span></span>
     </section>
-
-    <div class="library-summary library-hadith-summary" aria-label="Takwimu za maktaba">
-        <div class="summary-item">
-            <span class="summary-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                </svg>
-            </span>
-            <div class="summary-text">
-                <strong>{{ $total }}</strong>
-                <span data-i18n="stat_hadiths">hadith zilizowekwa</span>
-            </div>
-        </div>
-        <div class="summary-item">
-            <span class="summary-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                </svg>
-            </span>
-            <div class="summary-text">
-                <strong>{{ $collections->count() }}</strong>
-                <span data-i18n="stat_collections">makusanyo makuu</span>
-            </div>
-        </div>
-        <div class="summary-item">
-            <span class="summary-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                </svg>
-            </span>
-            <div class="summary-text">
-                <strong>{{ $bookCount }}</strong>
-                <span data-i18n="stat_books">vitabu vyenye hadith</span>
-            </div>
-        </div>
-        <div class="summary-item summary-note-item">
-            <span class="summary-badge" data-i18n="stat_languages">Kiarabu · Kiswahili · English</span>
-        </div>
-    </div>
 
     <section id="maktaba" class="library-shell" aria-label="Maktaba ya hadith">
         <aside class="sidebar">
@@ -116,14 +62,6 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
         </aside>
 
         <div class="results">
-            <div class="results-heading">
-                <div>
-                    <span class="section-label" data-i18n="results_section_label">GUNDUA MAKTABA</span>
-                    <h2>{{ $collections->firstWhere('slug', $collection)?->name ?? 'Makusanyo yote' }}</h2>
-                </div>
-                <span class="language-tag">العربية · Kiswahili · English</span>
-            </div>
-
             <form class="search-form" wire:submit.prevent="$refresh" role="search">
                 <label class="sr-only" for="search">Tafuta hadith kwa maneno au namba</label>
                 <span class="search-icon" aria-hidden="true">
@@ -153,14 +91,11 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                 </div>
             </div>
 
-            <div class="result-meta" aria-live="polite">
-                <span>{{ number_format($hadiths->total()) }} <span data-i18n="hadith_count_suffix">hadith</span>{{ trim($search) !== '' ? ' · “'.mb_substr($search, 0, 200).'”' : '' }}</span>
-                @if($search !== '' || $collection !== '' || $book !== '' || $chapter !== '')
+            @if($search !== '' || $collection !== '' || $book !== '' || $chapter !== '')
+                <div class="result-meta" aria-live="polite">
                     <button class="text-button clear-btn" wire:click="clearFilters" data-i18n="clear_filters">Ondoa vichujio ×</button>
-                @else
-                    <span class="meta-sub" data-i18n="meta_sub">Maandishi na tafsiri</span>
-                @endif
-            </div>
+                </div>
+            @endif
 
 
             <div class="loading" wire:loading role="status">

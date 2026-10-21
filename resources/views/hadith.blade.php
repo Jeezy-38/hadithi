@@ -1,19 +1,5 @@
 <x-layouts.app :title="$hadith->chapter->book->collection->name.' · '.$hadith->number">
     <div class="reader-shell hadith-reader-shell dua-detail-shell hadith-detail-shell">
-        <a class="back-link" href="{{ route('library', ['collection' => $hadith->chapter->book->collection->slug, 'book' => $hadith->chapter->book_id, 'chapter' => $hadith->chapter_id]) }}">
-            <span class="back-arrow" aria-hidden="true">←</span>
-            <span>Rudi kwenye {{ $hadith->chapter->title_sw }}</span>
-        </a>
-
-        <div class="reader-heading dua-detail-heading">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> {{ $hadith->chapter->book->collection->name }} · HADITHI NA. {{ $hadith->number }}</span>
-            <h1>Hadith {{ $hadith->number }}</h1>
-            @if($hadith->title)
-                <h2 class="reader-title">{{ $hadith->title }}</h2>
-            @endif
-            <p class="reader-subtitle">{{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }}</p>
-        </div>
-
         @php
             $shareArabic = trim((string) $hadith->arabic);
             $shareArabicShort = \Illuminate\Support\Str::limit($shareArabic, 320);
@@ -27,46 +13,62 @@
                 . "Rejea: " . $shareRef;
         @endphp
 
-        <div class="reader-actions no-print">
-            <button type="button" id="bookmark-toggle" class="text-button action-pill-btn" data-hadith-id="{{ $hadith->id }}" aria-pressed="false">
-                <span class="btn-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                </span>
-                <span class="btn-text">Hifadhi</span>
-            </button>
+        <div class="reader-top-nav">
+            <a class="back-link" href="{{ route('library', ['collection' => $hadith->chapter->book->collection->slug, 'book' => $hadith->chapter->book_id, 'chapter' => $hadith->chapter_id]) }}">
+                <span class="back-arrow" aria-hidden="true">←</span>
+                <span>Rudi kwenye {{ $hadith->chapter->title_sw }}</span>
+            </a>
 
-            <button type="button" id="share-hadith" class="text-button action-pill-btn share-trigger-btn"
-                data-share-title="{{ $shareTitle }}"
-                data-share-badge="{{ $shareBadge }}"
-                data-share-ar="{{ $shareArabicShort }}"
-                data-share-sw="{{ $shareSwahiliShort }}"
-                data-share-ref="{{ $shareRef }}"
-                data-share-text="{{ $shareFormatted }}"
-                data-share-url="{{ route('hadith.show', $hadith) }}">
-                <span class="btn-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                        <polyline points="16 6 12 2 8 6"></polyline>
-                        <line x1="12" y1="2" x2="12" y2="15"></line>
-                    </svg>
-                </span>
-                <span class="btn-text">Shiriki</span>
-            </button>
+            <div class="reader-actions no-print">
+                <button type="button" id="bookmark-toggle" class="text-button action-pill-btn" data-hadith-id="{{ $hadith->id }}" aria-pressed="false">
+                    <span class="btn-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </span>
+                    <span class="btn-text">Hifadhi</span>
+                </button>
 
-            <button type="button" id="audio-play" class="text-button action-pill-btn speech-client-btn" title="Sikiliza kwa sauti ya kifaa">
-                <span class="btn-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                    </svg>
-                </span>
-                <span class="btn-text">Soma kwa sauti</span>
-            </button>
+                <button type="button" id="share-hadith" class="text-button action-pill-btn share-trigger-btn"
+                    data-share-title="{{ $shareTitle }}"
+                    data-share-badge="{{ $shareBadge }}"
+                    data-share-ar="{{ $shareArabicShort }}"
+                    data-share-sw="{{ $shareSwahiliShort }}"
+                    data-share-ref="{{ $shareRef }}"
+                    data-share-text="{{ $shareFormatted }}"
+                    data-share-url="{{ route('hadith.show', $hadith) }}">
+                    <span class="btn-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                            <polyline points="16 6 12 2 8 6"></polyline>
+                            <line x1="12" y1="2" x2="12" y2="15"></line>
+                        </svg>
+                    </span>
+                    <span class="btn-text">Shiriki</span>
+                </button>
 
-            <input type="hidden" id="reading-language" value="both">
+                <button type="button" id="audio-play" class="text-button action-pill-btn speech-client-btn" title="Sikiliza kwa sauti ya kifaa">
+                    <span class="btn-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                        </svg>
+                    </span>
+                    <span class="btn-text">Soma kwa sauti</span>
+                </button>
+
+                <input type="hidden" id="reading-language" value="both">
+            </div>
+        </div>
+
+        <div class="reader-heading dua-detail-heading">
+            @if($hadith->title)
+                <h1 class="reader-title">{{ $hadith->title }}</h1>
+            @else
+                <h1 class="sr-only">Hadith {{ $hadith->number }}</h1>
+            @endif
+            <p class="reader-subtitle">{{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }}</p>
         </div>
 
         <article class="reader-card dua-detail-card hadith-detail-card">
