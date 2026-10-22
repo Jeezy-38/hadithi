@@ -201,14 +201,8 @@
                             <div class="card-bottom">
                                 <span class="card-location"><span data-i18n="card_book_label">Kitabu</span> {{ $hadith->chapter->book->number }} · <span data-i18n="card_chapter_label">Mlango</span> {{ $hadith->chapter->number }}</span>
                                 <div class="card-actions">
-                                    <button type="button" class="action-icon-btn quick-bookmark-btn" data-hadith-id="{{ $hadith->id }}" title="Hifadhi kwenye Vipendwa" aria-label="Hifadhi kwenye Vipendwa">
-                                        <span class="bookmark-star" aria-hidden="true">☆</span>
-                                    </button>
-                                    <button type="button" class="action-icon-btn quick-copy-btn" data-copy-text="{{ $hadith->chapter->book->collection->name.' '.$hadith->number.': '.\Illuminate\Support\Str::limit($hadith->swahili, 200).' '.route('hadith.show', $hadith) }}" title="Nakili hadith" aria-label="Nakili hadith">
-                                        <span class="copy-icon" aria-hidden="true">⧉</span>
-                                    </button>
                                     <a href="{{ route('hadith.show', $hadith) }}" class="read-btn">
-                                        <span data-i18n="card_read_btn">Soma / Sikiliza</span>
+                                        <span data-i18n="card_read_btn">Soma</span>
                                         <span class="read-arrow" aria-hidden="true">↗</span>
                                     </a>
                                 </div>

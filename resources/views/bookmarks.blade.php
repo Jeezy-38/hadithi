@@ -155,7 +155,7 @@
                     <div class="card-bottom">
                         <span class="card-location">${esc(item.book)}</span>
                         <a href="${item.url}" class="read-btn">
-                            <span>Soma / Sikiliza</span>
+                            <span>Soma</span>
                             <span class="read-arrow" aria-hidden="true">↗</span>
                         </a>
                     </div>
