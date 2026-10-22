@@ -1,9 +1,11 @@
 <x-layouts.app title="Digital Tasbih · Kaunta ya Dhikr">
     <div class="reader-shell tasbih-shell">
-        <div class="reader-heading text-center tasbih-heading">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> DHIKR & TASBIH YA KIDIGITALI</span>
-            <h1>DIGITAL <em>TASBIH .</em></h1>
-            <p class="reader-subtitle">"Wale walioamini na zikatulia nyoyo zao kwa kumdhukuru Mwenyezi Mungu. Hakika kwa kumdhukuru Mwenyezi Mungu nyoyo hutulia." — Ar-Ra'd 13:28</p>
+        <div class="reader-top-nav tasbih-top-nav">
+            <a class="back-link" href="{{ route('duaa.index') }}">
+                <span class="back-arrow" aria-hidden="true">←</span>
+                <span>Nyuma</span>
+            </a>
+            <h1 class="sr-only">DIGITAL TASBIH</h1>
         </div>
 
         {{-- Chombo cha Tasbih --}}
@@ -150,12 +152,6 @@
             <div class="tasbih-footer-stats">
                 <span>Jumla ya Dhikr Zote zilizohifadhiwa: <strong id="tasbih-lifetime-val">0</strong></span>
             </div>
-        </div>
-
-        <div class="text-center mt-6">
-            <a href="{{ route('duaa.index') }}" class="text-button action-pill-btn">
-                <span>← Nyuma</span>
-            </a>
         </div>
     </div>
 

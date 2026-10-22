@@ -4698,8 +4698,14 @@ a, button, select, input {
    -------------------------------------------------------------------------- */
 .tasbih-shell {
     max-width: 720px;
-    margin: 0 auto 60px;
+    margin: 16px auto 60px;
     padding: 0 16px;
+}
+
+.tasbih-top-nav {
+    margin-bottom: 20px;
+    justify-content: flex-start !important;
+    width: 100%;
 }
 
 .tasbih-heading {
