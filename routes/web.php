@@ -198,4 +198,15 @@ Route::get('/audio/hadith/{hadith}/{lang}', HadithAudioController::class)
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
     Route::get('/malipo/export', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'exportPayments'])->name('payments.export');
+    
+    // Usimamizi wa Watumiaji
+    Route::post('/users/{user}/toggle-admin', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleUserAdmin'])->name('users.toggle-admin');
+    Route::post('/users/{user}/toggle-supporter', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleUserSupporter'])->name('users.toggle-supporter');
+
+    // Usimamizi wa Maudhui
+    Route::post('/hadith/{hadith}/toggle-publish', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleHadithPublish'])->name('hadith.toggle-publish');
+    Route::post('/dua/{dua}/toggle-publish', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleDuaPublish'])->name('dua.toggle-publish');
+
+    // Mfumo & Cache
+    Route::post('/system/clear-cache', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'clearCache'])->name('system.clear-cache');
 });
