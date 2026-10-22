@@ -1,4 +1,11 @@
 <x-layouts.app :title="$surah->name_sw . ' (' . $surah->name_ar . ') · Qur\'ani Tukufu'">
+@php
+    $toArabic = function ($number) {
+        $western = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        $eastern = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+        return str_replace($western, $eastern, (string)$number);
+    };
+@endphp
     <div class="reader-shell quran-reader-shell">
         {{-- Upau wa Urambazaji wa Juu --}}
         <div class="quran-reader-top-bar reader-top-nav">
@@ -85,10 +92,6 @@
                 @endphp
                 <article class="quran-ayah-card" id="ayah-{{ $ayah->verse_number }}" data-verse="{{ $ayah->verse_number }}" data-audio="{{ $ayah->audio_url }}">
                     <div class="ayah-card-top-bar">
-                        <div class="ayah-number-badge">
-                            <span class="ayah-num-val">{{ $ayah->verse_number }}</span>
-                        </div>
-
                         <div class="ayah-actions-bar">
                             @if($ayah->audio_url)
                                 <button type="button" class="ayah-action-btn play-ayah-btn" data-audio="{{ $ayah->audio_url }}" data-verse="{{ $ayah->verse_number }}" title="Sikiliza aya hii">
@@ -134,7 +137,20 @@
                     </div>
 
                     <div class="ayah-arabic-wrap font-arabic" dir="rtl">
-                        <p class="ayah-arabic-text">{{ $ayah->arabic_text }}</p>
+                        <p class="ayah-arabic-text">
+                            {{ $ayah->arabic_text }}
+                            <span class="ayah-end-ornament" title="Aya {{ $ayah->verse_number }} ({{ $toArabic($ayah->verse_number) }})" aria-label="Aya {{ $ayah->verse_number }}">
+                                <svg class="ayah-rosette-svg" viewBox="0 0 44 48" aria-hidden="true" focusable="false">
+                                    <path d="M22 2 C24.5 5.5 28 8 32 9 C35 11 38 13.5 40 17.5 C38 20.5 39.5 23.5 41 26 C38.5 28.5 37.5 32 35 35 C31.5 37 28 40 25.5 43 C23.5 45 22.5 46 22 46 C21.5 46 20.5 45 18.5 43 C16 40 12.5 37 9 35 C6.5 32 5.5 28.5 3 26 C4.5 23.5 6 20.5 4 17.5 C6 13.5 9 11 12 9 C16 8 19.5 5.5 22 2 Z" fill="var(--gold-subtle, rgba(218, 181, 106, 0.12))" stroke="var(--gold, #d4af37)" stroke-width="1.3" stroke-linejoin="round"/>
+                                    <ellipse cx="22" cy="24" rx="11.5" ry="12.5" fill="none" stroke="var(--gold, #d4af37)" stroke-width="0.9" stroke-dasharray="2 1.5"/>
+                                    <circle cx="22" cy="4" r="1.3" fill="var(--gold, #d4af37)"/>
+                                    <circle cx="22" cy="44" r="1.3" fill="var(--gold, #d4af37)"/>
+                                    <circle cx="4" cy="24" r="1.3" fill="var(--gold, #d4af37)"/>
+                                    <circle cx="40" cy="24" r="1.3" fill="var(--gold, #d4af37)"/>
+                                </svg>
+                                <span class="ayah-end-num font-arabic" dir="rtl">{{ $toArabic($ayah->verse_number) }}</span>
+                            </span>
+                        </p>
                     </div>
 
                     <div class="ayah-translation-wrap">

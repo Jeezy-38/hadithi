@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/gold-black.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/gold-black.css') }}?v={{ filemtime(public_path('css/gold-black.css')) }}">
     <link rel="stylesheet" href="{{ asset('css/auth-drawer.css') }}">
     @livewireStyles
 </head>
@@ -127,7 +127,7 @@
         </div>
     </footer>
 
-    <script src="{{ asset('js/reader.js') }}" defer></script>
+    <script src="{{ asset('js/reader.js') }}?v={{ filemtime(public_path('js/reader.js')) }}" defer></script>
     <script src="{{ url('js/pwa.js') }}" defer></script>
     <script src="{{ asset('js/auth-drawer.js') }}" defer></script>
     @livewireScripts

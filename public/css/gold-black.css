@@ -678,14 +678,13 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   6. Main Catalog Shell & Sidebar
+   6. Main Catalog Shell
    -------------------------------------------------------------------------- */
 .library-shell {
     max-width: 1240px;
     margin: 36px auto 72px;
-    display: grid;
-    grid-template-columns: 290px minmax(0, 1fr);
-    gap: 36px;
+    display: block;
+    width: 100%;
 }
 
 .sidebar {
@@ -920,6 +919,7 @@ button {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 14px;
+    margin-bottom: 24px;
     padding-top: 2px;
 }
 
@@ -1029,6 +1029,341 @@ button {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   7b. Narrator Book Blocks & Inside Book View (Chaguo B)
+   -------------------------------------------------------------------------- */
+.narrator-catalog-section {
+    margin-bottom: 32px;
+}
+
+.narrator-catalog-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.narrator-kicker {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.narrator-heading {
+    font-family: var(--font-display, inherit);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+}
+
+.narrator-lead {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 680px;
+}
+
+.catalog-empty-status {
+    margin-top: 4px;
+}
+
+.narrator-blocks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.narrator-book-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow .25s ease, border-color .25s ease;
+}
+
+.narrator-book-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px -12px rgba(218, 181, 106, 0.18), var(--card-hover-shadow);
+    border-color: var(--border-focus);
+}
+
+.narrator-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.narrator-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.narrator-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.narrator-count strong {
+    color: var(--gold);
+    font-weight: 800;
+}
+
+.narrator-card-titles {
+    margin-bottom: 10px;
+}
+
+.narrator-book-title {
+    font-family: var(--font-display, inherit);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+    line-height: 1.35;
+}
+
+.narrator-book-ar {
+    font-family: var(--font-arabic, 'Amiri', serif);
+    font-size: 22px;
+    color: var(--gold);
+    margin: 0;
+    line-height: 1.4;
+    direction: rtl;
+}
+
+.narrator-author-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.narrator-author-icon {
+    font-size: 13px;
+    color: var(--gold);
+}
+
+.narrator-author-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.narrator-era {
+    font-size: 12px;
+    opacity: 0.75;
+}
+
+.narrator-card-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+}
+
+.narrator-sample-block {
+    background: var(--bg-surface-elevated, rgba(255, 255, 255, 0.03));
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+}
+
+.sample-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+}
+
+.sample-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: inline-block;
+}
+
+.sample-excerpt {
+    font-size: 12.5px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--text-primary);
+    margin: 0;
+    opacity: 0.9;
+}
+
+.narrator-card-footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+}
+
+.narrator-enter-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 11px 18px;
+    background: var(--gold-subtle, rgba(218, 181, 106, 0.12));
+    color: var(--gold);
+    border: 1.5px solid var(--border-focus);
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.narrator-enter-btn:hover {
+    background: var(--gold);
+    color: #111111;
+    border-color: var(--gold);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(218, 181, 106, 0.3);
+}
+
+.narrator-enter-btn .arrow-icon {
+    transition: transform .2s ease;
+}
+
+.narrator-enter-btn:hover .arrow-icon {
+    transform: translateX(4px);
+}
+
+/* Inside Book View Banner */
+.inside-book-banner {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--card-shadow);
+}
+
+.back-to-catalog-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-surface-elevated, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--border-color);
+    color: var(--gold);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 18px;
+    transition: all .2s ease;
+}
+
+.back-to-catalog-btn:hover {
+    background: var(--gold-subtle);
+    border-color: var(--border-focus);
+    color: var(--text-primary);
+    transform: translateX(-2px);
+}
+
+.back-to-catalog-btn .back-arrow {
+    transition: transform .2s ease;
+}
+
+.back-to-catalog-btn:hover .back-arrow {
+    transform: translateX(-3px);
+}
+
+.inside-book-tagline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.inside-book-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.inside-book-heading {
+    font-family: var(--font-display, inherit);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+}
+
+.inside-book-ar {
+    font-family: var(--font-arabic, 'Amiri', serif);
+    font-size: 26px;
+    color: var(--gold);
+    margin: 0 0 10px 0;
+    direction: rtl;
+}
+
+.inside-book-author {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin: 0 0 6px 0;
+}
+
+.inside-book-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.search-active-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 18px;
+    margin-bottom: 18px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+}
+
+.search-active-banner strong {
+    color: var(--gold);
 }
 
 /* --------------------------------------------------------------------------
@@ -1179,18 +1514,18 @@ button {
 
 .hadith-card h3 {
     font-family: Georgia, serif;
-    font-size: 20px;
+    font-size: 21px;
     color: var(--text-primary);
-    margin: 0 0 16px;
-    line-height: 1.4;
+    margin: 0 0 18px;
+    line-height: 1.55;
     font-weight: 700;
 }
 
 .hadith-texts {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 18px;
+    gap: 16px;
+    margin-bottom: 20px;
 }
 
 .arabic-box {
@@ -1198,7 +1533,7 @@ button {
     border: 1.5px solid var(--arabic-border);
     border-right: 3.5px solid var(--gold);
     border-radius: 14px;
-    padding: 20px 24px;
+    padding: 22px 24px;
     position: relative;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 }
@@ -1210,7 +1545,7 @@ button {
 .reading-arabic {
     font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif;
     font-size: 28px;
-    line-height: 2.25;
+    line-height: 2.45;
     color: var(--arabic-text);
     margin: 0;
     text-align: right;
@@ -2396,8 +2731,8 @@ a, button, select, input {
         padding-right: 24px;
     }
     .library-shell {
-        grid-template-columns: 260px minmax(0, 1fr);
-        gap: 28px;
+        display: block;
+        width: 100%;
     }
 }
 
@@ -2702,26 +3037,70 @@ a, button, select, input {
     /* Quick Topics Mobile */
     .quick-topics {
         margin-top: 10px;
-        gap: 6px;
+        margin-bottom: 20px;
+        gap: 8px;
     }
     .topic-chip {
         font-size: 11px;
         padding: 5px 11px;
     }
 
+    /* Narrator Catalog Mobile (Chaguo B) */
+    .narrator-catalog-header {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+    .narrator-heading {
+        font-size: 21px;
+    }
+    .narrator-lead {
+        font-size: 13px;
+    }
+    .narrator-blocks-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .narrator-book-card {
+        padding: 20px 18px;
+        border-radius: 16px;
+    }
+    .narrator-book-title {
+        font-size: 18px;
+    }
+    .narrator-book-ar {
+        font-size: 20px;
+    }
+    .inside-book-banner {
+        padding: 20px 18px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+    }
+    .inside-book-heading {
+        font-size: 22px;
+    }
+    .inside-book-ar {
+        font-size: 22px;
+    }
+
     /* Hadith Cards */
     .hadith-card {
-        padding: 18px 16px;
-        border-radius: 14px;
-        margin-bottom: 14px;
+        padding: 22px 18px;
+        border-radius: 16px;
+        margin-bottom: 20px;
+    }
+    .card-top {
+        margin-bottom: 16px;
     }
     .hadith-card h3 {
-        font-size: 18px;
-        margin-bottom: 12px;
+        font-size: 19px;
+        line-height: 1.55;
+        margin-bottom: 16px;
     }
     .arabic-box {
-        padding: 14px 14px;
-        border-radius: 10px;
+        padding: 16px 16px;
+        border-radius: 12px;
+        margin-bottom: 16px;
     }
     .arabic,
     .arabic-text,
@@ -2731,11 +3110,11 @@ a, button, select, input {
     .dua-detail-card .arabic-text,
     .dua-detail-card #text-ar {
         font-size: calc(clamp(22px, 5.5vw, 25px) * var(--font-scale, 1)) !important;
-        line-height: 2.1 !important;
+        line-height: 2.45 !important;
     }
     .translation {
-        font-size: 13.5px;
-        line-height: 1.7;
+        font-size: 14.5px;
+        line-height: 1.85;
     }
     .card-bottom {
         flex-wrap: wrap;
@@ -5871,6 +6250,7 @@ a, button, select, input {
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-left: auto;
 }
 
 .ayah-action-btn {
@@ -5911,6 +6291,58 @@ a, button, select, input {
     .ayah-arabic-text {
         font-size: calc(24.5px * var(--font-scale, 1));
         line-height: 2.2;
+    }
+}
+
+/* Ayah End Rosette (Medallion ya Kiarabu ya Mwisho wa Aya) */
+.ayah-end-ornament {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    vertical-align: middle;
+    margin: 0 6px 0 10px;
+    width: 38px;
+    height: 42px;
+    flex-shrink: 0;
+    user-select: none;
+    line-height: 1;
+}
+
+.ayah-rosette-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.ayah-end-num {
+    position: relative;
+    z-index: 1;
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    text-align: center;
+    margin-top: 2px;
+    display: block;
+}
+
+.quran-ayah-card.is-playing .ayah-rosette-svg path {
+    filter: drop-shadow(0 0 6px var(--gold));
+}
+
+@media (max-width: 640px) {
+    .ayah-end-ornament {
+        width: 34px;
+        height: 38px;
+        margin: 0 4px 0 8px;
+    }
+    .ayah-end-num {
+        font-size: 14.5px;
     }
 }
 
@@ -6318,90 +6750,7 @@ a, button, select, input {
 /* ==========================================================================
    MOBILE BOTTOM NAVIGATION BAR
    ========================================================================== */
-.mobile-bottom-nav {
-    display: none;
-}
-
 @media (max-width: 768px) {
-    body {
-        padding-bottom: calc(64px + env(safe-area-inset-bottom, 12px)) !important;
-    }
-
-    .mobile-bottom-nav {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-        padding-bottom: env(safe-area-inset-bottom, 0px);
-        background: var(--header-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-top: 1.5px solid var(--border-color);
-        z-index: 999;
-        justify-content: space-around;
-        align-items: center;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
-    }
-
-    .mobile-nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 3px;
-        flex: 1;
-        height: 100%;
-        color: var(--text-muted);
-        text-decoration: none;
-        transition: all .2s ease;
-        position: relative;
-    }
-
-    .mobile-nav-item:hover {
-        color: var(--text-primary);
-    }
-
-    .mobile-nav-item.active {
-        color: var(--gold);
-    }
-
-    .mobile-nav-item.active .mobile-nav-icon {
-        color: var(--gold);
-        transform: translateY(-1px);
-    }
-
-    .mobile-nav-item.active::before {
-        content: '';
-        position: absolute;
-        top: -1.5px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 24px;
-        height: 3px;
-        background: var(--gold);
-        border-radius: 999px;
-        box-shadow: 0 1px 8px var(--gold);
-    }
-
-    .mobile-nav-icon {
-        width: 19px;
-        height: 19px;
-        transition: transform .2s ease;
-    }
-
-    .mobile-nav-label {
-        font-size: 10.5px;
-        font-weight: 700;
-        letter-spacing: -0.2px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        max-width: 100%;
-        text-align: center;
-    }
-
     /* Kurekebisha footer na mchezaji sauti kwenye simu */
     .site-footer {
         padding-bottom: calc(75px + env(safe-area-inset-bottom, 12px)) !important;
@@ -7248,19 +7597,21 @@ a, button, select, input {
     }
 
     .mobile-nav-item.active .mobile-nav-icon {
-        transform: translateY(-2px);
-        filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.45));
+        transform: translateY(-2px) scale(1.06);
+        filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.5));
     }
 
-    .mobile-nav-item.active::after {
+    .mobile-nav-item.active::before {
         content: '';
         position: absolute;
-        bottom: 1px;
-        width: 14px;
-        height: 2.5px;
-        border-radius: 999px;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 24px;
+        height: 3px;
+        border-radius: 0 0 3px 3px;
         background: var(--gold);
-        box-shadow: 0 0 8px var(--gold);
+        box-shadow: 0 2px 8px rgba(212, 175, 55, 0.55);
     }
 
     @media (max-width: 390px) {
