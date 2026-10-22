@@ -51,6 +51,12 @@
                 <p id="active-dhikr-meaning" class="active-dhikr-meaning">Kutakasika ni kwa Mwenyezi Mungu</p>
             </div>
 
+            <div class="islamic-divider" role="separator" aria-hidden="true">
+                <span class="divider-line"></span>
+                <span class="divider-emblem">۞</span>
+                <span class="divider-line"></span>
+            </div>
+
             {{-- Kifaa cha Kaunta ya Kidigitali (Handheld Electronic Tally Counter Device) --}}
             <div class="tasbih-device-wrapper">
                 <div class="tasbih-device-case" role="region" aria-label="Kaunta ya Kielektroniki">

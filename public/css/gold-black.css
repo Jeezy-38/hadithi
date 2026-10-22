@@ -121,13 +121,27 @@ html {
 
 body {
     background-color: var(--bg-body);
-    background-image: radial-gradient(ellipse at 90% 0%, var(--gold-subtle), transparent 35%);
+    background-image: 
+        radial-gradient(ellipse at 90% 0%, var(--gold-subtle), transparent 35%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23dab56a' stroke-width='0.75' opacity='0.035'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.025'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat, repeat;
+    background-size: auto, 60px 60px;
+    background-attachment: scroll, fixed;
     color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.65;
     margin: 0;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
+}
+
+[data-theme="light"] body {
+    background-image: 
+        radial-gradient(ellipse at 90% 0%, rgba(218, 181, 106, 0.15), transparent 35%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23b89144' stroke-width='0.75' opacity='0.05'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.035'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat, repeat;
+    background-size: auto, 60px 60px;
+    background-attachment: scroll, fixed;
 }
 
 a {
@@ -2028,6 +2042,44 @@ svg.h-5 {
 .bookmarks-link {
     margin-left: auto;
     color: var(--gold);
+}
+
+/* ==========================================================================
+   Islamic Flourish Divider (Rub el Hizb ۞)
+   ========================================================================== */
+.islamic-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 28px auto;
+    width: 100%;
+    max-width: 440px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.islamic-divider .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(218, 181, 106, 0.35), rgba(218, 181, 106, 0.75));
+}
+
+.islamic-divider .divider-line:last-child {
+    background: linear-gradient(90deg, rgba(218, 181, 106, 0.75), rgba(218, 181, 106, 0.35), transparent);
+}
+
+.islamic-divider .divider-emblem {
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 10px rgba(218, 181, 106, 0.45);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transform: translateY(-1px);
+    flex-shrink: 0;
 }
 
 /* Reader Card */

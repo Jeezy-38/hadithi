@@ -53,6 +53,12 @@
                 <div class="bismillah-ar font-arabic" dir="rtl">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
                 <div class="bismillah-sw">Kwa jina la Mwenyezi Mungu, Mwingi wa Rehema, Mwenye Kurehemu</div>
             </div>
+
+            <div class="islamic-divider" role="separator" aria-hidden="true">
+                <span class="divider-line"></span>
+                <span class="divider-emblem">۞</span>
+                <span class="divider-line"></span>
+            </div>
         @endif
 
         {{-- Upau wa Udhibiti wa Msomaji (Reader Toolbar) --}}

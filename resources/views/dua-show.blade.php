@@ -148,6 +148,12 @@
 
             {{-- 7. Rejea na Chanzo --}}
             @if($dua->reference)
+                <div class="islamic-divider" role="separator" aria-hidden="true">
+                    <span class="divider-line"></span>
+                    <span class="divider-emblem">۞</span>
+                    <span class="divider-line"></span>
+                </div>
+
                 <div class="source-box dua-ref-box">
                     <div class="source-header">
                         <h2 class="source-title">Rejea na Chanzo</h2>

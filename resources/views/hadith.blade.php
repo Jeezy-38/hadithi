@@ -145,6 +145,12 @@
 
             {{-- 4. Mafundisho na Faida za Hadithi (kama zipo) --}}
             @if(!empty($hadith->hints) && count($hadith->hints) > 0)
+                <div class="islamic-divider" role="separator" aria-hidden="true">
+                    <span class="divider-line"></span>
+                    <span class="divider-emblem">۞</span>
+                    <span class="divider-line"></span>
+                </div>
+
                 <section class="reading-section lessons-section" aria-labelledby="label-lessons">
                     <div class="section-label-row">
                         <span id="label-lessons" class="section-label">MAFUNDISHO NA FAIDA ZA HADITHI</span>
@@ -164,6 +170,12 @@
                     </div>
                 </section>
             @endif
+
+            <div class="islamic-divider" role="separator" aria-hidden="true">
+                <span class="divider-line"></span>
+                <span class="divider-emblem">۞</span>
+                <span class="divider-line"></span>
+            </div>
 
             {{-- 6. Rejea na Daraja la Hadithi --}}
             <div class="source-box dua-ref-box hadith-source-box">
