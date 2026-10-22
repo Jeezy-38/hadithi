@@ -1032,237 +1032,192 @@ button {
 }
 
 /* --------------------------------------------------------------------------
-   7b. Narrator Book Blocks & Inside Book View (Chaguo B)
+   7b. Hadith Books Catalog (Compact Row Cards with Emblem & Image)
    -------------------------------------------------------------------------- */
-.narrator-catalog-section {
+.hadith-books-catalog {
     margin-bottom: 32px;
 }
 
-.narrator-catalog-header {
+.hadith-books-header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--border-color);
-    flex-wrap: wrap;
-}
-
-.narrator-kicker {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-}
-
-.narrator-heading {
-    font-family: var(--font-display, inherit);
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin: 0 0 8px 0;
-    letter-spacing: -0.3px;
-}
-
-.narrator-lead {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-muted);
-    margin: 0;
-    max-width: 680px;
-}
-
-.catalog-empty-status {
-    margin-top: 4px;
-}
-
-.narrator-blocks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-}
-
-.narrator-book-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background: var(--bg-surface);
-    border: 1.5px solid var(--border-color);
-    border-radius: 18px;
-    padding: 24px;
-    box-shadow: var(--card-shadow);
-    transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow .25s ease, border-color .25s ease;
-}
-
-.narrator-book-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 36px -12px rgba(218, 181, 106, 0.18), var(--card-hover-shadow);
-    border-color: var(--border-focus);
-}
-
-.narrator-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 14px;
-}
-
-.narrator-badge {
-    display: inline-flex;
-    align-items: center;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    text-transform: uppercase;
-}
-
-.narrator-count {
-    font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 600;
-}
-
-.narrator-count strong {
-    color: var(--gold);
-    font-weight: 800;
-}
-
-.narrator-card-titles {
-    margin-bottom: 10px;
-}
-
-.narrator-book-title {
-    font-family: var(--font-display, inherit);
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0 0 4px 0;
-    line-height: 1.35;
-}
-
-.narrator-book-ar {
-    font-family: var(--font-arabic, 'Amiri', serif);
-    font-size: 22px;
-    color: var(--gold);
-    margin: 0;
-    line-height: 1.4;
-    direction: rtl;
-}
-
-.narrator-author-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-}
-
-.narrator-author-icon {
-    font-size: 13px;
-    color: var(--gold);
-}
-
-.narrator-author-name {
-    font-weight: 600;
-    color: var(--text-primary);
-}
-
-.narrator-era {
-    font-size: 12px;
-    opacity: 0.75;
-}
-
-.narrator-card-desc {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text-muted);
-    margin: 0 0 16px 0;
-    flex-grow: 1;
-}
-
-.narrator-sample-block {
-    background: var(--bg-surface-elevated, rgba(255, 255, 255, 0.03));
-    border-left: 3px solid var(--gold);
-    border-radius: 0 10px 10px 0;
-    padding: 10px 14px;
     margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.sample-label {
+.hadith-books-title-group {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--gold);
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    margin-bottom: 4px;
+    gap: 12px;
 }
 
-.sample-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--gold);
-    display: inline-block;
-}
-
-.sample-excerpt {
-    font-size: 12.5px;
-    font-style: italic;
-    line-height: 1.55;
-    color: var(--text-primary);
-    margin: 0;
-    opacity: 0.9;
-}
-
-.narrator-card-footer {
-    margin-top: auto;
-    padding-top: 14px;
-    border-top: 1px solid var(--border-color);
-}
-
-.narrator-enter-btn {
-    width: 100%;
+.hadith-header-art {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 11px 18px;
-    background: var(--gold-subtle, rgba(218, 181, 106, 0.12));
-    color: var(--gold);
-    border: 1.5px solid var(--border-focus);
-    border-radius: 12px;
-    font-size: 13.5px;
-    font-weight: 700;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+}
+
+.hadith-books-title {
+    font-family: var(--font-display, inherit);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+.hadith-books-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.hadith-book-row-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    padding: 16px 20px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
     cursor: pointer;
-    transition: all .2s ease;
+    text-align: left;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    font-family: inherit;
 }
 
-.narrator-enter-btn:hover {
-    background: var(--gold);
-    color: #111111;
+.hadith-book-row-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-focus);
+    background: var(--bg-surface-elevated, var(--bg-surface));
+    box-shadow: 0 10px 24px -8px rgba(218, 181, 106, 0.2), var(--card-hover-shadow);
+}
+
+.book-emblem-wrap {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.book-emblem-diamond {
+    width: 40px;
+    height: 40px;
+    background: rgba(218, 181, 106, 0.12);
+    border: 1.5px solid rgba(218, 181, 106, 0.35);
+    border-radius: 10px;
+    transform: rotate(45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .book-emblem-diamond {
+    background: #fbf5e6;
+    border-color: #eed9a8;
+}
+
+.hadith-book-row-card:hover .book-emblem-diamond {
+    transform: rotate(45deg) scale(1.08);
     border-color: var(--gold);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(218, 181, 106, 0.3);
+    background: rgba(218, 181, 106, 0.22);
 }
 
-.narrator-enter-btn .arrow-icon {
-    transition: transform .2s ease;
+.book-emblem-letter {
+    transform: rotate(-45deg);
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-.narrator-enter-btn:hover .arrow-icon {
-    transform: translateX(4px);
+[data-theme="light"] .book-emblem-letter {
+    color: #8c5b16;
+}
+
+.book-info-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.book-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.book-name {
+    font-family: var(--font-display, inherit);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.2px;
+}
+
+.book-name-ar {
+    font-family: var(--font-arabic, 'Amiri', serif);
+    font-size: 15px;
+    color: var(--gold);
+    direction: rtl;
+    opacity: 0.85;
+}
+
+.book-meta-sub {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.book-hadith-count {
+    color: var(--text-muted);
+}
+
+.book-author-dot {
+    opacity: 0.5;
+}
+
+.book-author-text {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.book-action-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 26px;
+    font-weight: 300;
+    opacity: 0.5;
+    transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+    padding-left: 8px;
+}
+
+.hadith-book-row-card:hover .book-action-col {
+    color: var(--gold);
+    transform: translateX(3px);
+    opacity: 1;
 }
 
 /* Inside Book View Banner */
@@ -1273,6 +1228,19 @@ button {
     padding: 24px 28px;
     margin-bottom: 24px;
     box-shadow: var(--card-shadow);
+}
+
+.standalone-back-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.standalone-back-bar .back-to-catalog-btn {
+    margin-bottom: 0;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 13.5px;
 }
 
 .back-to-catalog-btn {
@@ -1877,6 +1845,122 @@ svg.h-5 {
     color: var(--text-muted);
     margin: 0;
     font-weight: 600;
+}
+
+.reader-more-menu-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.reader-more-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    min-height: 38px;
+    border-radius: 9999px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all .2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.reader-more-toggle:hover,
+.reader-more-toggle[aria-expanded="true"] {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--bg-surface-elevated, var(--bg-surface));
+    transform: scale(1.05);
+}
+
+.reader-more-toggle .more-dots {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-2px);
+}
+
+.reader-more-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 100;
+    min-width: 215px;
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 14px;
+    padding: 6px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35), var(--card-hover-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    animation: fadeInDropdown 0.15s ease-out;
+}
+
+.reader-more-dropdown[hidden] {
+    display: none !important;
+}
+
+@keyframes fadeInDropdown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.more-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all .15s ease;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.more-dropdown-item:hover {
+    background: var(--gold-subtle, rgba(218, 181, 106, 0.12));
+    color: var(--gold);
+}
+
+.more-dropdown-item .dropdown-item-icon {
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--gold);
+    flex-shrink: 0;
+}
+
+.more-dropdown-item .whatsapp-icon {
+    color: #25d366 !important;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: var(--border-color, rgba(218, 181, 106, 0.18));
+    margin: 4px 6px;
+}
 }
 
 .reader-actions {
@@ -3045,31 +3129,39 @@ a, button, select, input {
         padding: 5px 11px;
     }
 
-    /* Narrator Catalog Mobile (Chaguo B) */
-    .narrator-catalog-header {
-        flex-direction: column;
-        gap: 12px;
-        margin-bottom: 18px;
+    /* Hadith Books Catalog Mobile */
+    .hadith-books-header {
+        margin-bottom: 14px;
+        padding-bottom: 12px;
     }
-    .narrator-heading {
-        font-size: 21px;
+    .hadith-books-title {
+        font-size: 20px;
     }
-    .narrator-lead {
-        font-size: 13px;
-    }
-    .narrator-blocks-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    .narrator-book-card {
-        padding: 20px 18px;
+    .hadith-book-row-card {
+        padding: 14px 16px;
+        gap: 14px;
         border-radius: 16px;
     }
-    .narrator-book-title {
-        font-size: 18px;
+    .book-emblem-wrap {
+        width: 42px;
+        height: 42px;
     }
-    .narrator-book-ar {
-        font-size: 20px;
+    .book-emblem-diamond {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+    }
+    .book-emblem-letter {
+        font-size: 15px;
+    }
+    .book-name {
+        font-size: 16px;
+    }
+    .book-name-ar {
+        font-size: 14px;
+    }
+    .book-meta-sub {
+        font-size: 12px;
     }
     .inside-book-banner {
         padding: 20px 18px;
@@ -4719,21 +4811,239 @@ a, button, select, input {
     margin: 0;
 }
 
-/* Radial Progress Ring */
-.tasbih-ring-container {
-    position: relative;
-    width: 250px;
-    height: 250px;
-    margin: 10px 0;
+/* ==========================================================================
+   Handheld Electronic Tally Counter (Digital Tasbih Device)
+   ========================================================================== */
+.tasbih-device-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 12px 0 16px;
 }
 
-.tasbih-tap-btn {
+.tasbih-device-case {
     position: relative;
+    width: 320px;
+    max-width: 92vw;
+    background: linear-gradient(170deg, #1e2837 0%, #111722 45%, #0a0e15 100%);
+    border: 3px solid rgba(218, 181, 106, 0.45);
+    border-radius: 95px 95px 140px 140px;
+    padding: 30px 24px 38px;
+    box-shadow: 
+        0 24px 50px -10px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        inset 0 3px 6px rgba(255, 255, 255, 0.12),
+        inset 0 -8px 18px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(218, 181, 106, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+[data-theme="light"] .tasbih-device-case {
+    background: linear-gradient(170deg, #f5f0e4 0%, #e8dfcc 50%, #d8ccb4 100%);
+    border-color: rgba(184, 145, 68, 0.6);
+    box-shadow: 
+        0 20px 40px -8px rgba(0, 0, 0, 0.18),
+        inset 0 2px 4px rgba(255, 255, 255, 0.8),
+        inset 0 -6px 14px rgba(0, 0, 0, 0.15),
+        0 0 24px rgba(218, 181, 106, 0.2);
+}
+
+/* Ergonomic side grips */
+.tasbih-device-case::before,
+.tasbih-device-case::after {
+    content: '';
+    position: absolute;
+    top: 38%;
+    width: 5px;
+    height: 80px;
+    border-radius: 4px;
+    background: rgba(218, 181, 106, 0.2);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.tasbih-device-case::before { left: 4px; }
+.tasbih-device-case::after { right: 4px; }
+
+/* 1. Top LCD Screen */
+.tasbih-device-lcd-wrap {
     width: 100%;
+    padding: 0 4px;
+    box-sizing: border-box;
+}
+
+.tasbih-device-lcd {
+    position: relative;
+    background: #06090d;
+    border: 2.5px solid #283446;
+    border-radius: 18px;
+    padding: 12px 16px 10px;
+    box-shadow: 
+        inset 0 4px 12px rgba(0, 0, 0, 0.9),
+        0 2px 6px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(218, 181, 106, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Glass shine on screen */
+.tasbih-device-lcd::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, transparent 100%);
+    pointer-events: none;
+    border-radius: 16px 16px 0 0;
+}
+
+.lcd-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: rgba(218, 181, 106, 0.7);
+    margin-bottom: 2px;
+}
+
+.lcd-header-row strong {
+    color: #dab56a;
+}
+
+.lcd-digits-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 58px;
+}
+
+.tasbih-device-lcd .tasbih-count-val {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1;
+    color: #e5be6b;
+    letter-spacing: 4px;
+    text-shadow: 
+        0 0 16px rgba(229, 190, 107, 0.6),
+        0 0 32px rgba(229, 190, 107, 0.25);
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+}
+
+[data-theme="light"] .tasbih-device-lcd {
+    background: #18202c;
+}
+[data-theme="light"] .tasbih-device-lcd .tasbih-count-val {
+    color: #f7d78e;
+    text-shadow: 0 0 14px rgba(247, 215, 142, 0.6);
+}
+
+.lcd-progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+.lcd-progress-bar {
     height: 100%;
+    background: linear-gradient(90deg, #d4af37, #f3d790);
+    border-radius: 4px;
+    transition: width 0.15s ease-out;
+    box-shadow: 0 0 8px rgba(218, 181, 106, 0.6);
+}
+
+/* 2. Middle Control Buttons (- and ↻) */
+.tasbih-device-mid-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 82%;
+    padding: 0 8px;
+    box-sizing: border-box;
+}
+
+.device-mini-btn {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: transparent;
-    border: none;
+    background: linear-gradient(145deg, #1c2635, #0c1118);
+    border: 2px solid rgba(218, 181, 106, 0.45);
+    color: #dab56a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.15s ease;
+    box-shadow: 
+        0 4px 10px rgba(0, 0, 0, 0.5),
+        inset 0 1.5px 3px rgba(255, 255, 255, 0.15),
+        inset 0 -2px 5px rgba(0, 0, 0, 0.6);
+    -webkit-tap-highlight-color: transparent;
+}
+
+[data-theme="light"] .device-mini-btn {
+    background: linear-gradient(145deg, #f4edd9, #dfd2b8);
+    border-color: rgba(184, 145, 68, 0.6);
+    color: #8b6826;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.12),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.device-mini-btn:hover {
+    border-color: #dab56a;
+    transform: translateY(-1px);
+    box-shadow: 
+        0 6px 14px rgba(0, 0, 0, 0.6),
+        0 0 10px rgba(218, 181, 106, 0.25);
+}
+
+.device-mini-btn:active {
+    transform: translateY(2px) scale(0.94);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.6),
+        inset 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* 3. Bottom Big TAP Button */
+.tasbih-device-tap-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tasbih-big-tap-btn {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 32%, #222e3f 0%, #131b26 65%, #090e14 100%);
+    border: 3.5px solid #dab56a;
+    color: #dab56a;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -4743,56 +5053,86 @@ a, button, select, input {
     touch-action: manipulation;
     user-select: none;
     -webkit-user-select: none;
-    transition: transform 0.1s ease;
+    transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.08s ease;
+    box-shadow: 
+        0 10px 24px rgba(0, 0, 0, 0.6),
+        0 0 0 6px rgba(17, 24, 34, 0.8),
+        0 0 20px rgba(218, 181, 106, 0.2),
+        inset 0 3px 6px rgba(255, 255, 255, 0.2),
+        inset 0 -5px 12px rgba(0, 0, 0, 0.8);
 }
 
-.tasbih-tap-btn:active {
-    transform: scale(0.96);
+[data-theme="light"] .tasbih-big-tap-btn {
+    background: radial-gradient(circle at 35% 32%, #fffaf0 0%, #ecd9b3 70%, #d4bf96 100%);
+    border-color: #b89144;
+    color: #8b6826;
+    box-shadow: 
+        0 10px 20px rgba(0, 0, 0, 0.15),
+        0 0 0 6px rgba(230, 218, 195, 0.8),
+        0 0 16px rgba(218, 181, 106, 0.3),
+        inset 0 3px 6px rgba(255, 255, 255, 0.9),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.tasbih-ring-svg {
+.tasbih-big-tap-btn:hover {
+    border-color: #f3d790;
+    box-shadow: 
+        0 12px 28px rgba(0, 0, 0, 0.7),
+        0 0 0 6px rgba(17, 24, 34, 0.8),
+        0 0 26px rgba(218, 181, 106, 0.35);
+}
+
+.tasbih-big-tap-btn:active,
+.tasbih-big-tap-btn.btn-pressed {
+    transform: scale(0.93) translateY(3px);
+    box-shadow: 
+        0 3px 8px rgba(0, 0, 0, 0.8),
+        0 0 0 4px rgba(17, 24, 34, 0.9),
+        inset 0 3px 10px rgba(0, 0, 0, 0.85);
+    filter: brightness(0.92);
+}
+
+.tap-btn-label {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-family: var(--font-display, inherit);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+/* SVG ring progress circling around the TAP button */
+.device-ring-svg {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    inset: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
     transform: rotate(-90deg);
+    pointer-events: none;
 }
 
-.ring-bg {
+.device-ring-svg .ring-bg {
     fill: none;
-    stroke: var(--bg-surface-elevated);
-    stroke-width: 14;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 4;
 }
 
-.ring-progress {
+.device-ring-svg .ring-progress {
     fill: none;
-    stroke: url(#goldGradient) var(--gold);
-    stroke-width: 14;
+    stroke: var(--gold);
+    stroke-width: 4.5;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.15s ease-out;
+    filter: drop-shadow(0 0 4px rgba(218, 181, 106, 0.7));
 }
 
-.tasbih-center-content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* Backwards compatibility */
+.tasbih-ring-container {
+    display: contents;
 }
-
-.tasbih-count-val {
-    font-size: 64px;
-    font-weight: 900;
-    color: var(--text-primary);
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-}
-
-.tasbih-target-info {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 4px;
+.tasbih-tap-btn {
+    display: contents;
 }
 
 .tasbih-target-info strong {
@@ -4986,18 +5326,34 @@ a, button, select, input {
         line-height: 1.4;
     }
 
-    .tasbih-ring-container {
-        width: 220px;
-        height: 220px;
-        margin: 4px 0;
+    .tasbih-device-case {
+        width: 290px;
+        padding: 24px 18px 30px;
+        border-radius: 85px 85px 125px 125px;
+        gap: 16px;
     }
 
-    .tasbih-count-val {
-        font-size: 54px;
+    .tasbih-device-lcd .tasbih-count-val {
+        font-size: 46px;
     }
 
-    .tasbih-target-info {
-        font-size: 11.5px;
+    .tasbih-device-tap-wrap {
+        width: 125px;
+        height: 125px;
+    }
+
+    .tasbih-big-tap-btn {
+        width: 115px;
+        height: 115px;
+    }
+
+    .tap-btn-label {
+        font-size: 20px;
+    }
+
+    .device-mini-btn {
+        width: 44px;
+        height: 44px;
     }
 
     .tasbih-controls-bar {
@@ -5054,13 +5410,34 @@ a, button, select, input {
 }
 
 @media (max-width: 360px) {
-    .tasbih-ring-container {
-        width: 190px;
-        height: 190px;
+    .tasbih-device-case {
+        width: 260px;
+        padding: 20px 14px 26px;
+        border-radius: 75px 75px 110px 110px;
+        gap: 14px;
     }
 
-    .tasbih-count-val {
-        font-size: 46px;
+    .tasbih-device-lcd .tasbih-count-val {
+        font-size: 38px;
+    }
+
+    .tasbih-device-tap-wrap {
+        width: 110px;
+        height: 110px;
+    }
+
+    .tasbih-big-tap-btn {
+        width: 100px;
+        height: 100px;
+    }
+
+    .tap-btn-label {
+        font-size: 18px;
+    }
+
+    .device-mini-btn {
+        width: 40px;
+        height: 40px;
     }
 
     .tasbih-reset-action-btn span {
@@ -6401,10 +6778,9 @@ a, button, select, input {
 }
 
 /* ==========================================================================
-   Quran Reader Top Navigation Bar
+   Quran & Hadith Reader Top Navigation Bar
    ========================================================================== */
-.quran-reader-top-bar,
-.reader-top-nav {
+.quran-reader-top-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -6413,19 +6789,36 @@ a, button, select, input {
     flex-wrap: wrap;
 }
 
+.reader-top-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    gap: 12px;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
 .reader-top-nav .back-link {
-    margin-bottom: 0 !important;
+    margin: 0 !important;
+    flex-shrink: 0;
 }
 
 .reader-top-nav .reader-actions {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
     margin: 0 !important;
     padding: 0 !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
+    max-width: none !important;
+    width: auto !important;
+    flex-shrink: 0;
 }
 
 .quran-nav-back,
@@ -6443,6 +6836,8 @@ a, button, select, input {
     text-decoration: none;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    height: 38px;
+    box-sizing: border-box;
 }
 
 .quran-nav-back:hover,
@@ -6466,17 +6861,41 @@ a, button, select, input {
 }
 
 @media (max-width: 640px) {
-    .quran-reader-top-bar,
-    .reader-top-nav {
+    .quran-reader-top-bar {
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
     }
+    .reader-top-nav {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
+        gap: 8px;
+        width: 100% !important;
+    }
+    .reader-top-nav .reader-actions {
+        display: inline-flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: auto !important;
+    }
     .quran-nav-back,
     .back-link {
-        align-self: flex-start;
+        align-self: auto;
         padding: 6px 14px;
         font-size: 12px;
+        height: 36px;
+    }
+    .reader-more-toggle {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
     }
     .quran-surah-pager,
     .reader-surah-jumper {

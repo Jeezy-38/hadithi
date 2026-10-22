@@ -12,24 +12,26 @@
     };
 @endphp
 <div>
-    <section class="hero library-hero">
-        <div class="hero-glow" aria-hidden="true"></div>
-        <div class="hero-copy">
-            <span class="eyebrow" data-i18n="hero_eyebrow"><span class="eyebrow-dot"></span> BUKHARI · MUSLIM · TIRMIDHI · ABU DAWUD · AHMAD</span>
-            <h1 data-i18n="hero_h1">BAYT AL<br><em>HADITH.</em></h1>
-            <p data-i18n="hero_desc">
-Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.</p>
-            <div class="hero-actions">
-                <a class="hero-button" href="#maktaba">
-                    <span data-i18n="hero_btn_start">Anza kusoma</span>
-                    <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
-                    </svg>
-                </a>
+    @if($collection === '' && $search === '')
+        <section class="hero library-hero">
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="hero-copy">
+                <span class="eyebrow" data-i18n="hero_eyebrow"><span class="eyebrow-dot"></span> BUKHARI · MUSLIM · TIRMIDHI · ABU DAWUD · AHMAD</span>
+                <h1 data-i18n="hero_h1">BAYT AL<br><em>HADITH.</em></h1>
+                <p data-i18n="hero_desc">
+    Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.</p>
+                <div class="hero-actions">
+                    <a class="hero-button" href="#maktaba">
+                        <span data-i18n="hero_btn_start">Anza kusoma</span>
+                        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
             </div>
-        </div>
-        <span class="hero-caption" data-i18n="hero_caption"><span aria-hidden="true">✦</span></span>
-    </section>
+            <span class="hero-caption" data-i18n="hero_caption"><span aria-hidden="true">✦</span></span>
+        </section>
+    @endif
 
     <section id="maktaba" class="library-shell" aria-label="Maktaba ya hadith">
         <div class="results">
@@ -40,14 +42,26 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
 
             <div wire:loading.class="is-loading">
                 @if($collection === '' && $search === '' && $hadiths->currentPage() === 1)
-                    {{-- CHAGUO B: Default Landing View - Narrator Book Blocks --}}
-                    <section class="narrator-catalog-section" aria-label="Vitabu vya Wapokezi wa Hadithi">
-                        <div class="narrator-catalog-header">
-                            <div class="narrator-catalog-intro">
-                                <h2 class="narrator-heading" data-i18n="narrators_heading">Vitabu vya Wapokezi wa Hadithi</h2>
-                                <p class="narrator-lead" data-i18n="narrators_lead">
-                                    Chagua kitabu cha mpokezi kuingia na kusoma hadithi zake zilizohakikiwa kwa ufasaha wa Kiarabu na tafsiri ya Kiswahili.
-                                </p>
+                    {{-- Hadith Books Catalog View --}}
+                    <section class="hadith-books-catalog" aria-label="Vitabu vya Hadithi">
+                        <div class="hadith-books-header">
+                            <div class="hadith-books-title-group">
+                                <div class="hadith-header-art" aria-hidden="true">
+                                    <svg viewBox="0 0 36 36" width="34" height="34" fill="none">
+                                        <!-- Leather spine and book cover -->
+                                        <rect x="7" y="4" width="23" height="28" rx="3.5" fill="#5c3818" stroke="#D4AF37" stroke-width="1.4"/>
+                                        <path d="M11 4V32" stroke="#854d1f" stroke-width="2"/>
+                                        <path d="M12 4V32" stroke="#D4AF37" stroke-width="0.8"/>
+                                        <!-- Bookmark ribbon -->
+                                        <path d="M17 4V16L20 13.5L23 16V4" fill="#D4AF37"/>
+                                        <!-- Golden Medallion ornament -->
+                                        <circle cx="21" cy="22" r="4.5" fill="#3d220a" stroke="#E5C158" stroke-width="1"/>
+                                        <polygon points="21,18.5 22.2,21 24.8,21.4 22.8,23 23.5,25.6 21,24 18.5,25.6 19.2,23 17.2,21.4 19.8,21" fill="#E5C158"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 class="hadith-books-title">Hadith Books</h2>
+                                </div>
                             </div>
                             @if($total === 0)
                                 <div class="catalog-empty-status">
@@ -56,61 +70,46 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                             @endif
                         </div>
 
-                        <div class="narrator-blocks-grid">
+                        <div class="hadith-books-list">
                             @foreach($collections as $item)
                                 @php
                                     $meta = $narratorMeta[$item->slug] ?? null;
                                     $count = $collectionCounts[$item->id] ?? 0;
+                                    $totalHadiths = $meta['total_hadiths'] ?? number_format($count);
+                                    $letter = $meta['letter'] ?? mb_substr($item->name, 0, 1);
                                     $sample = isset($collectionPreviews[$item->slug]) ? $collectionPreviews[$item->slug]->first() : null;
                                 @endphp
-                                <article class="narrator-book-card" wire:key="narrator-card-{{ $item->id }}">
-                                    <div class="narrator-card-header">
-                                        <span class="narrator-badge badge-{{ $item->slug }}">
-                                            {{ $meta['badge'] ?? 'Hadith' }}
-                                        </span>
-                                        <span class="narrator-count">
-                                            <strong>{{ number_format($count) }}</strong> <span data-i18n="count_hadiths">Hadithi</span>
-                                        </span>
+                                <button type="button" class="hadith-book-row-card" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
+                                    <div class="book-emblem-wrap">
+                                        <div class="book-emblem-diamond">
+                                            <span class="book-emblem-letter">{{ $letter }}</span>
+                                        </div>
                                     </div>
 
-                                    <div class="narrator-card-titles">
-                                        <h3 class="narrator-book-title">{{ $item->name }}</h3>
-                                        @if($item->name_ar)
-                                            <p class="narrator-book-ar" lang="ar" dir="rtl">{{ $item->name_ar }}</p>
-                                        @endif
+                                    <div class="book-info-col">
+                                        <div class="book-title-row">
+                                            <h3 class="book-name">{{ $item->name }}</h3>
+                                            @if($item->name_ar)
+                                                <span class="book-name-ar" lang="ar" dir="rtl">{{ $item->name_ar }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="book-meta-sub">
+                                            <span class="book-hadith-count">Total Hadiths {{ $totalHadiths }}</span>
+                                            @if(!empty($meta['author']))
+                                                <span class="book-author-dot">·</span>
+                                                <span class="book-author-text">{{ $meta['author'] }}</span>
+                                            @endif
+                                        </div>
                                     </div>
 
-                                    <div class="narrator-author-row">
-                                        <span class="narrator-author-icon" aria-hidden="true">✍</span>
-                                        <span class="narrator-author-name">{{ $meta['author'] ?? $item->name }}</span>
-                                        @if(!empty($meta['years']))
-                                            <span class="narrator-era">({{ $meta['years'] }})</span>
-                                        @endif
+                                    <div class="book-action-col" aria-hidden="true">
+                                        <span class="book-chevron">›</span>
                                     </div>
-
-                                    @if(!empty($meta['desc']))
-                                        <p class="narrator-card-desc">{{ $meta['desc'] }}</p>
-                                    @endif
 
                                     @if($sample)
-                                        <div class="narrator-sample-block">
-                                            <div class="sample-label">
-                                                <span class="sample-dot" aria-hidden="true"></span>
-                                                <span data-i18n="sample_preview_label">Sampuli ya Hadithi Na. {{ $sample->number }}:</span>
-                                            </div>
-                                            <blockquote class="sample-excerpt" lang="sw">
-                                                “{{ \Illuminate\Support\Str::limit($sample->swahili, 140) }}”
-                                            </blockquote>
-                                        </div>
+                                        <span class="sr-only">{{ $sample->swahili }}</span>
                                     @endif
-
-                                    <div class="narrator-card-footer">
-                                        <button type="button" class="narrator-enter-btn" wire:click="chooseCollection('{{ $item->slug }}')">
-                                            <span data-i18n="open_book_btn">Anza kusoma</span>
-                                            <span class="arrow-icon" aria-hidden="true">→</span>
-                                        </button>
-                                    </div>
-                                </article>
+                                </button>
                             @endforeach
                         </div>
                     </section>
@@ -121,12 +120,16 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                             $activeCol = $collections->firstWhere('slug', $collection);
                             $activeMeta = $narratorMeta[$collection] ?? null;
                         @endphp
-                        <div class="inside-book-banner">
+
+                        <div class="standalone-back-bar">
                             <button type="button" class="back-to-catalog-btn" wire:click="chooseCollection('')" title="Rudi kwenye vitabu vyote">
                                 <span class="back-arrow" aria-hidden="true">←</span>
                                 <span data-i18n="back_to_all_books">Nyuma</span>
                             </button>
-                            @if($activeCol)
+                        </div>
+
+                        @if($activeCol)
+                            <div class="inside-book-banner">
                                 <div class="inside-book-info">
                                     <div class="inside-book-tagline">
                                         <span class="badge badge-{{ $activeCol->slug }}">{{ $activeMeta['badge'] ?? 'Hadith' }}</span>
@@ -141,8 +144,8 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                                         <p class="inside-book-desc">{{ $activeMeta['desc'] }}</p>
                                     @endif
                                 </div>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
 
                         <form class="search-form book-search-form" wire:submit.prevent="$refresh" role="search" style="margin-bottom: 20px;">
                             <label class="sr-only" for="search">Tafuta hadith kwa maneno au namba</label>
@@ -166,12 +169,6 @@ Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtu
                                 Matokeo ya utafutaji wa: <strong>“{{ $search }}”</strong> ({{ $hadiths->total() }} zilipatikana)
                             </span>
                             <button type="button" class="text-button" wire:click="$set('search', '')">Ondoa utafutaji ×</button>
-                        </div>
-                    @endif
-
-                    @if($search !== '' || $collection !== '' || $book !== '' || $chapter !== '')
-                        <div class="result-meta" aria-live="polite">
-                            <button class="text-button clear-btn" wire:click="clearFilters" data-i18n="clear_filters">Ondoa vichujio vyote ×</button>
                         </div>
                     @endif
 

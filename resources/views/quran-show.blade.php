@@ -9,9 +9,9 @@
     <div class="reader-shell quran-reader-shell">
         {{-- Upau wa Urambazaji wa Juu --}}
         <div class="quran-reader-top-bar reader-top-nav">
-            <a href="{{ route('quran.index') }}" class="quran-nav-back back-link" title="Rudi kwenye Orodha ya Sura">
+            <a href="{{ route('quran.index') }}" class="quran-nav-back back-link" title="Nyuma">
                 <span aria-hidden="true">←</span>
-                <span>Orodha ya Sura</span>
+                <span>Nyuma</span>
             </a>
             <div class="quran-surah-pager reader-surah-jumper">
                 @if($prev)

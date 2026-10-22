@@ -2,7 +2,7 @@
     <div class="reader-shell bookmarks-shell">
         <a class="back-link" href="{{ route('library') }}">
             <span class="back-arrow" aria-hidden="true">←</span>
-            <span>Rudi kwenye maktaba</span>
+            <span>Nyuma</span>
         </a>
 
         <div class="reader-heading">

@@ -16,7 +16,7 @@
         <div class="reader-top-nav">
             <a class="back-link" href="{{ route('duaa.index', ['kundi' => $dua->category->slug]) }}">
                 <span class="back-arrow" aria-hidden="true">←</span>
-                <span>Rudi kwenye {{ $dua->category->name_sw }}</span>
+                <span>Nyuma</span>
             </a>
 
             <div class="reader-actions no-print">
@@ -200,7 +200,7 @@
                 </div>
             @endif
 
-            <a href="{{ route('duaa.index', ['kundi' => $dua->category->slug]) }}" class="reader-nav-card nav-center" title="Rudi kwenye kundi hili">
+            <a href="{{ route('duaa.index', ['kundi' => $dua->category->slug]) }}" class="reader-nav-card nav-center" title="Nyuma">
                 <span class="nav-card-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 2a10 10 0 0 1 10 10c0 5.5-4.5 10-10 10S2 17.5 2 12A10 10 0 0 1 12 2z"></path>

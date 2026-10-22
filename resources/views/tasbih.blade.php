@@ -49,22 +49,54 @@
                 <p id="active-dhikr-meaning" class="active-dhikr-meaning">Kutakasika ni kwa Mwenyezi Mungu</p>
             </div>
 
-            {{-- Kaunta Kuu Yenye Mzunguko wa SVG (Radial Progress Ring) --}}
-            <div class="tasbih-ring-container">
-                <button type="button" id="tasbih-tap-btn" class="tasbih-tap-btn" aria-label="Gusa popote kuhesabu dhikr">
-                    <svg class="tasbih-ring-svg" viewBox="0 0 240 240">
-                        <circle class="ring-bg" cx="120" cy="120" r="102" />
-                        <circle id="ring-progress" class="ring-progress" cx="120" cy="120" r="102" />
-                    </svg>
-                    
-                    <div class="tasbih-center-content">
-                        <span class="tasbih-count-val" id="tasbih-count-val">0</span>
-                        <div class="tasbih-target-info">
-                            <span>Lengo: </span><strong id="tasbih-target-display">33</strong>
+            {{-- Kifaa cha Kaunta ya Kidigitali (Handheld Electronic Tally Counter Device) --}}
+            <div class="tasbih-device-wrapper">
+                <div class="tasbih-device-case" role="region" aria-label="Kaunta ya Kielektroniki">
+                    {{-- 1. Top LCD Screen --}}
+                    <div class="tasbih-device-lcd-wrap">
+                        <div class="tasbih-device-lcd">
+                            <div class="lcd-header-row">
+                                <span class="lcd-target-tag">LENGO: <strong id="tasbih-target-display">33</strong></span>
+                                <span class="lcd-lap-tag">MIZUNGUKO: <strong id="tasbih-laps-val">0</strong></span>
+                            </div>
+                            <div class="lcd-digits-row">
+                                <span class="tasbih-count-val" id="tasbih-count-val">0</span>
+                            </div>
+                            <div class="lcd-progress-track">
+                                <div class="lcd-progress-bar" id="lcd-progress-bar" style="width: 0%;"></div>
+                            </div>
                         </div>
-                        <span class="tasbih-tap-hint">GUSA HAPA</span>
                     </div>
-                </button>
+
+                    {{-- 2. Middle Control Buttons: Minus (-) & Reset (↻) --}}
+                    <div class="tasbih-device-mid-row">
+                        <button type="button" id="tasbih-minus-btn" class="device-mini-btn" title="Punguza moja (-)" aria-label="Punguza">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+
+                        <button type="button" id="tasbih-reset-btn" class="device-mini-btn" title="Weka upya kaunta (Reset)" aria-label="Anza upya">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                                <path d="M3 3v5h5"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    {{-- 3. Bottom Big TAP Button --}}
+                    <div class="tasbih-device-tap-wrap">
+                        <button type="button" id="tasbih-tap-btn" class="tasbih-big-tap-btn" aria-label="Gusa kuhesabu dhikr">
+                            <span class="tap-btn-label">TAP</span>
+                            
+                            {{-- SVG Ring Progress circling around TAP button --}}
+                            <svg class="device-ring-svg" viewBox="0 0 100 100" aria-hidden="true">
+                                <circle class="ring-bg" cx="50" cy="50" r="46" />
+                                <circle id="ring-progress" class="ring-progress" cx="50" cy="50" r="46" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             {{-- Vitufe vya Chaguzi na Udhibiti --}}
@@ -105,7 +137,7 @@
                             <line x1="1" y1="1" x2="23" y2="23"></line>
                         </svg>
                     </button>
-                    <button type="button" id="tasbih-reset-btn" class="tasbih-reset-action-btn" title="Anza upya">
+                    <button type="button" id="tasbih-reset-bar-btn" class="tasbih-reset-action-btn" title="Anza upya">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:3px;">
                             <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
                             <path d="M3 3v5h5"></path>
@@ -122,7 +154,7 @@
 
         <div class="text-center mt-6">
             <a href="{{ route('duaa.index') }}" class="text-button action-pill-btn">
-                <span>← Rudi kwenye Maktaba ya Dua</span>
+                <span>← Nyuma</span>
             </a>
         </div>
     </div>
@@ -135,7 +167,7 @@
             const lapsVal = document.getElementById('tasbih-laps-val');
             const lifetimeVal = document.getElementById('tasbih-lifetime-val');
             const ringProgress = document.getElementById('ring-progress');
-            const resetBtn = document.getElementById('tasbih-reset-btn');
+            const minusBtn = document.getElementById('tasbih-minus-btn');
             const soundToggle = document.getElementById('tasbih-sound-toggle');
             const soundStyleSelect = document.getElementById('tasbih-sound-style');
             const vibrateToggle = document.getElementById('tasbih-vibrate-toggle');
@@ -145,7 +177,7 @@
             const activeSw = document.getElementById('active-dhikr-sw');
             const activeMeaning = document.getElementById('active-dhikr-meaning');
 
-            const RADIUS = 102;
+            const RADIUS = 46;
             const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
             ringProgress.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
 
@@ -188,6 +220,11 @@
                 targetDisplay.textContent = currentTarget;
                 lapsVal.textContent = currentLaps;
                 lifetimeVal.textContent = getLifetimeDhikr().toLocaleString();
+
+                const lcdBar = document.getElementById('lcd-progress-bar');
+                if (lcdBar) {
+                    lcdBar.style.width = (fraction * 100) + '%';
+                }
 
                 try {
                     localStorage.setItem('tasbih_count', currentCount);
@@ -347,6 +384,24 @@
 
             tapBtn.addEventListener('click', increment);
 
+            // Tactile Button Press Visual Feedback
+            tapBtn.addEventListener('mousedown', () => tapBtn.classList.add('btn-pressed'));
+            window.addEventListener('mouseup', () => tapBtn.classList.remove('btn-pressed'));
+            tapBtn.addEventListener('touchstart', () => tapBtn.classList.add('btn-pressed'), { passive: true });
+            window.addEventListener('touchend', () => tapBtn.classList.remove('btn-pressed'));
+
+            // Minus (-) Button to decrement count
+            if (minusBtn) {
+                minusBtn.addEventListener('click', () => {
+                    if (currentCount > 0) {
+                        currentCount--;
+                        playClickSound();
+                        triggerVibration(12);
+                        updateProgressRing();
+                    }
+                });
+            }
+
             // Spacebar on desktop can also count
             document.addEventListener('keydown', (e) => {
                 if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
@@ -355,12 +410,18 @@
                 }
             });
 
-            resetBtn.addEventListener('click', () => {
+            // Reset action
+            function resetCounter() {
                 if (confirm('Je, una uhakika unataka kuanza upya kaunta ya sasa?')) {
                     currentCount = 0;
                     currentLaps = 0;
                     updateProgressRing();
+                    playClickSound();
                 }
+            }
+
+            document.querySelectorAll('#tasbih-reset-btn, #tasbih-reset-bar-btn').forEach(btn => {
+                btn.addEventListener('click', resetCounter);
             });
 
             // Preset Switching
