@@ -8,42 +8,43 @@
 :root,
 [data-theme="dark"] {
     color-scheme: dark;
-    /* "Madinah Sanctuary" Dark Theme: Midnight Mosque Emerald & Royal Gold */
-    --bg-body: #07261b;
-    --bg-surface: #0d3a2a;
-    --bg-surface-elevated: #134d38;
-    --bg-surface-hover: #195e45;
-    --border-color: rgba(52, 211, 153, 0.28);
-    --border-subtle: rgba(52, 211, 153, 0.15);
-    --border-focus: #34d399;
+    /* Quran.com Style Dark Theme: Modern Deep Obsidian & Radiant Quran Green */
+    --bg-body: #0b1320;
+    --bg-surface: #131f33;
+    --bg-surface-elevated: #1a2b45;
+    --bg-surface-hover: #223756;
+    --border-color: rgba(255, 255, 255, 0.09);
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --border-focus: #10b981;
     
-    --text-primary: #ffffff;
-    --text-secondary: #e2f1ea;
-    --text-muted: #a3cfbb;
-    --text-dim: #70a98f;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
 
-    --gold: #f6c866;
-    --gold-light: #fde68a;
-    --gold-dark: #d97706;
-    --gold-gradient: linear-gradient(135deg, #fde68a 0%, #d97706 100%);
-    --gold-subtle: rgba(246, 200, 102, 0.16);
+    /* Signature Quran Green (replaces old gold across entire app) */
+    --gold: #10b981;
+    --gold-light: #34d399;
+    --gold-dark: #059669;
+    --gold-gradient: linear-gradient(135deg, #34d399 0%, #059669 100%);
+    --gold-subtle: rgba(16, 185, 129, 0.14);
 
-    --emerald: #34d399;
-    --emerald-subtle: rgba(52, 211, 153, 0.18);
+    --emerald: #10b981;
+    --emerald-subtle: rgba(16, 185, 129, 0.16);
 
-    --arabic-bg: rgba(13, 58, 42, 0.85);
-    --arabic-border: rgba(246, 200, 102, 0.35);
-    --arabic-text: #ffffff;
+    --arabic-bg: rgba(19, 31, 51, 0.7);
+    --arabic-border: rgba(16, 185, 129, 0.28);
+    --arabic-text: #f8fafc;
 
-    --header-bg: rgba(7, 38, 27, 0.92);
-    --header-border: rgba(52, 211, 153, 0.22);
+    --header-bg: rgba(11, 19, 32, 0.9);
+    --header-border: rgba(255, 255, 255, 0.08);
 
-    --hero-overlay: linear-gradient(90deg, rgba(7, 38, 27, 0.97) 0%, rgba(13, 58, 42, 0.88) 50%, rgba(13, 58, 42, 0.35) 100%);
-    --hero-border: rgba(246, 200, 102, 0.4);
+    --hero-overlay: linear-gradient(90deg, rgba(11, 19, 32, 0.96) 0%, rgba(19, 31, 51, 0.85) 50%, rgba(19, 31, 51, 0.35) 100%);
+    --hero-border: rgba(16, 185, 129, 0.35);
 
-    --card-shadow: 0 8px 24px -4px rgba(2, 20, 14, 0.45), 0 0 0 1px rgba(52, 211, 153, 0.18);
-    --card-hover-shadow: 0 16px 36px -6px rgba(2, 20, 14, 0.65), 0 0 0 1.5px #f6c866;
-    --glow-gold: 0 0 25px rgba(246, 200, 102, 0.28);
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.65), 0 0 0 1.5px #10b981;
+    --glow-gold: 0 0 25px rgba(16, 185, 129, 0.25);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -56,48 +57,47 @@
 
 [data-theme="light"] {
     color-scheme: light;
-    /* "Madinah Sanctuary" Light Theme: Pristine Ivory Parchment + Comfortable Deep Charcoal Ink */
-    --bg-body: #faf8f4;
+    /* Quran.com Style Light Theme: Pure Pristine White + Modern Quran Green (No Gold) */
+    --bg-body: #f8fafc;
     --bg-surface: #ffffff;
-    --bg-surface-elevated: #f3efe6;
-    --bg-surface-hover: #eae5d8;
+    --bg-surface-elevated: #f1f5f9;
+    --bg-surface-hover: #e2e8f0;
     
-    /* Elegant, gentle manuscript borders */
-    --border-color: #e0d8c8;
-    --border-subtle: #eee8dc;
-    --border-focus: #0b6b47;
+    /* Clean, razor-sharp modern slate borders */
+    --border-color: #e2e8f0;
+    --border-subtle: #f1f5f9;
+    --border-focus: #10b981;
 
-    /* Crisp, comfortable, non-fatiguing deep charcoal ink for effortless long reading */
-    --text-primary: #172026;
+    /* Deep, sharp, comfortable charcoal typography (100% strain-free) */
+    --text-primary: #0f172a;
     --text-secondary: #334155;
     --text-muted: #64748b;
     --text-dim: #94a3b8;
 
-    /* Noble Islamic Amber Gold */
-    --gold: #c59024;
-    --gold-light: #e2aa3c;
-    --gold-dark: #9a6e13;
-    --gold-gradient: linear-gradient(135deg, #e2aa3c 0%, #b88318 100%);
-    --gold-subtle: rgba(197, 144, 36, 0.12);
+    /* Vibrant Quran Green */
+    --gold: #059669;
+    --gold-light: #10b981;
+    --gold-dark: #047857;
+    --gold-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --gold-subtle: rgba(5, 150, 105, 0.1);
 
-    /* Authentic Mosque Dome Emerald */
-    --emerald: #0b6b47;
-    --emerald-subtle: rgba(11, 107, 71, 0.1);
+    --emerald: #059669;
+    --emerald-subtle: rgba(5, 150, 105, 0.1);
 
     /* Dedicated clean manuscript plaque */
-    --arabic-bg: #fdfcf9;
-    --arabic-border: #e4ddcd;
+    --arabic-bg: #f8fafc;
+    --arabic-border: #e2e8f0;
     --arabic-text: #000000;
 
-    --header-bg: rgba(250, 248, 244, 0.94);
-    --header-border: #e0d8c8;
+    --header-bg: rgba(248, 250, 252, 0.94);
+    --header-border: #e2e8f0;
 
-    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(250, 248, 244, 0.92) 60%, rgba(242, 238, 228, 0.88) 100%);
-    --hero-border: #e0d8c8;
+    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 60%, rgba(241, 245, 249, 0.9) 100%);
+    --hero-border: #e2e8f0;
 
-    --card-shadow: 0 4px 18px -2px rgba(11, 107, 71, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
-    --card-hover-shadow: 0 14px 32px -4px rgba(11, 107, 71, 0.12), 0 0 0 1.5px #0b6b47;
-    --glow-gold: 0 0 18px rgba(197, 144, 36, 0.2);
+    --card-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
+    --card-hover-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.09), 0 0 0 1.5px #10b981;
+    --glow-gold: 0 0 18px rgba(16, 185, 129, 0.2);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -124,12 +124,11 @@ html {
 body {
     background-color: var(--bg-body);
     background-image: 
-        radial-gradient(ellipse at 85% 0%, rgba(52, 211, 153, 0.2), transparent 50%),
-        radial-gradient(ellipse at 15% 100%, rgba(246, 200, 102, 0.12), transparent 45%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%2334d399' stroke-width='0.8' opacity='0.11'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.6' opacity='0.08'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: no-repeat, no-repeat, repeat;
-    background-size: auto, auto, 60px 60px;
-    background-attachment: scroll, scroll, fixed;
+        radial-gradient(ellipse at 85% 0%, rgba(16, 185, 129, 0.12), transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%2310b981' stroke-width='0.75' opacity='0.06'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat, repeat;
+    background-size: auto, 60px 60px;
+    background-attachment: scroll, fixed;
     color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.65;
@@ -140,12 +139,11 @@ body {
 
 [data-theme="light"] body {
     background-image: 
-        radial-gradient(ellipse at 85% 0%, rgba(11, 107, 71, 0.06), transparent 45%),
-        radial-gradient(ellipse at 15% 100%, rgba(197, 144, 36, 0.05), transparent 40%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%230b6b47' stroke-width='0.75' opacity='0.055'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: no-repeat, no-repeat, repeat;
-    background-size: auto, auto, 60px 60px;
-    background-attachment: scroll, scroll, fixed;
+        radial-gradient(ellipse at 85% 0%, rgba(16, 185, 129, 0.05), transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%2310b981' stroke-width='0.75' opacity='0.045'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.03'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat, repeat;
+    background-size: auto, 60px 60px;
+    background-attachment: scroll, fixed;
 }
 
 a {
@@ -1626,32 +1624,33 @@ button {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: var(--gold);
+    color: var(--emerald, #10b981);
     font-weight: 800;
     font-size: 13px;
     padding: 8px 18px;
     border-radius: 20px;
-    background: var(--gold-subtle);
-    border: 1.5px solid rgba(246, 200, 102, 0.35);
+    background: var(--emerald-subtle, rgba(16, 185, 129, 0.12));
+    border: 1.5px solid rgba(16, 185, 129, 0.35);
     transition: all .2s ease;
 }
 
 .read-btn:hover {
-    background: var(--gold);
-    color: #07261b;
-    box-shadow: 0 4px 14px rgba(246, 200, 102, 0.4);
+    background: #10b981;
+    color: #ffffff;
+    border-color: #10b981;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
 }
 
 [data-theme="light"] .read-btn {
-    color: #0b6b47;
-    background: rgba(11, 107, 71, 0.08);
-    border-color: rgba(11, 107, 71, 0.28);
+    color: #059669;
+    background: rgba(5, 150, 105, 0.08);
+    border-color: rgba(5, 150, 105, 0.25);
 }
 
 [data-theme="light"] .read-btn:hover {
-    background: #0b6b47;
+    background: #059669;
     color: #ffffff;
-    box-shadow: 0 4px 14px rgba(11, 107, 71, 0.25);
+    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.28);
 }
 
 .read-btn:hover .read-arrow {
@@ -2074,24 +2073,37 @@ svg.h-5 {
 .islamic-divider .divider-line {
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(218, 181, 106, 0.35), rgba(218, 181, 106, 0.75));
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.25), rgba(16, 185, 129, 0.7));
 }
 
 .islamic-divider .divider-line:last-child {
-    background: linear-gradient(90deg, rgba(218, 181, 106, 0.75), rgba(218, 181, 106, 0.35), transparent);
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.7), rgba(16, 185, 129, 0.25), transparent);
 }
 
 .islamic-divider .divider-emblem {
-    color: var(--gold);
+    color: var(--emerald, #10b981);
     font-size: 20px;
     line-height: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    text-shadow: 0 0 10px rgba(218, 181, 106, 0.45);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.45);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     transform: translateY(-1px);
     flex-shrink: 0;
+}
+
+[data-theme="light"] .islamic-divider .divider-line {
+    background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.2), rgba(5, 150, 105, 0.5));
+}
+
+[data-theme="light"] .islamic-divider .divider-line:last-child {
+    background: linear-gradient(90deg, rgba(5, 150, 105, 0.5), rgba(5, 150, 105, 0.2), transparent);
+}
+
+[data-theme="light"] .islamic-divider .divider-emblem {
+    color: #059669;
+    text-shadow: 0 0 8px rgba(5, 150, 105, 0.25);
 }
 
 /* Reader Card */
@@ -4924,16 +4936,16 @@ a, button, select, input {
     position: relative;
     width: 320px;
     max-width: 92vw;
-    background: linear-gradient(170deg, #186045 0%, #0f4b34 45%, #083827 100%);
-    border: 3px solid rgba(246, 200, 102, 0.55);
+    background: linear-gradient(170deg, #18283f 0%, #101c2d 50%, #09121d 100%);
+    border: 3px solid rgba(16, 185, 129, 0.55);
     border-radius: 95px 95px 140px 140px;
     padding: 30px 24px 38px;
     box-shadow: 
-        0 24px 50px -10px rgba(3, 30, 20, 0.8),
-        0 0 0 1px rgba(3, 30, 20, 0.8),
-        inset 0 3px 6px rgba(255, 255, 255, 0.15),
-        inset 0 -8px 18px rgba(3, 30, 20, 0.7),
-        0 0 30px rgba(52, 211, 153, 0.2);
+        0 24px 50px -10px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(0, 0, 0, 0.8),
+        inset 0 3px 6px rgba(255, 255, 255, 0.12),
+        inset 0 -8px 18px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(16, 185, 129, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -4945,13 +4957,13 @@ a, button, select, input {
 }
 
 [data-theme="light"] .tasbih-device-case {
-    background: linear-gradient(170deg, #ffffff 0%, #f7f4ec 50%, #eae4d5 100%);
-    border-color: rgba(11, 107, 71, 0.4);
+    background: linear-gradient(170deg, #ffffff 0%, #f8fafc 50%, #edf2f7 100%);
+    border-color: rgba(5, 150, 105, 0.4);
     box-shadow: 
-        0 20px 40px -8px rgba(11, 107, 71, 0.12),
+        0 20px 40px -8px rgba(15, 23, 42, 0.1),
         inset 0 2px 4px rgba(255, 255, 255, 0.9),
-        inset 0 -6px 14px rgba(0, 0, 0, 0.08),
-        0 0 24px rgba(197, 144, 36, 0.15);
+        inset 0 -6px 14px rgba(0, 0, 0, 0.05),
+        0 0 24px rgba(16, 185, 129, 0.15);
 }
 
 /* Ergonomic side grips */
@@ -4963,7 +4975,7 @@ a, button, select, input {
     width: 5px;
     height: 80px;
     border-radius: 4px;
-    background: rgba(246, 200, 102, 0.3);
+    background: rgba(16, 185, 129, 0.3);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 .tasbih-device-case::before { left: 4px; }
@@ -4978,24 +4990,14 @@ a, button, select, input {
 
 .tasbih-device-lcd {
     position: relative;
-    background: #062b1d;
-    border: 2.5px solid #22805c;
+    background: #060d16;
+    border: 2.5px solid #162a42;
     border-radius: 18px;
     padding: 12px 16px 10px;
     box-shadow: 
-        inset 0 4px 12px rgba(0, 0, 0, 0.8),
+        inset 0 4px 12px rgba(0, 0, 0, 0.85),
         0 2px 6px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(246, 200, 102, 0.25);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-    box-shadow: 
-        inset 0 4px 12px rgba(0, 0, 0, 0.95),
-        0 2px 6px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(218, 181, 106, 0.18);
+        0 0 0 1px rgba(16, 185, 129, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -5024,12 +5026,12 @@ a, button, select, input {
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: rgba(218, 181, 106, 0.7);
+    color: rgba(16, 185, 129, 0.85);
     margin-bottom: 2px;
 }
 
 .lcd-header-row strong {
-    color: #dab56a;
+    color: #10b981;
 }
 
 .lcd-digits-row {
@@ -5045,21 +5047,22 @@ a, button, select, input {
     font-size: 54px;
     font-weight: 900;
     line-height: 1;
-    color: #e5be6b;
+    color: #10b981;
     letter-spacing: 4px;
     text-shadow: 
-        0 0 16px rgba(229, 190, 107, 0.6),
-        0 0 32px rgba(229, 190, 107, 0.25);
+        0 0 16px rgba(16, 185, 129, 0.6),
+        0 0 32px rgba(16, 185, 129, 0.25);
     font-variant-numeric: tabular-nums;
     margin: 0;
 }
 
 [data-theme="light"] .tasbih-device-lcd {
-    background: #064e3b;
+    background: #0f172a;
+    border-color: #1e293b;
 }
 [data-theme="light"] .tasbih-device-lcd .tasbih-count-val {
-    color: #fde68a;
-    text-shadow: 0 0 14px rgba(253, 230, 138, 0.6);
+    color: #34d399;
+    text-shadow: 0 0 14px rgba(52, 211, 153, 0.6);
 }
 
 .lcd-progress-track {
@@ -5073,10 +5076,10 @@ a, button, select, input {
 
 .lcd-progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, #d97706, #fde68a);
+    background: linear-gradient(90deg, #059669, #34d399);
     border-radius: 4px;
     transition: width 0.15s ease-out;
-    box-shadow: 0 0 8px rgba(246, 200, 102, 0.6);
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
 }
 
 /* 2. Middle Control Buttons (- and ↻) */
@@ -5093,9 +5096,9 @@ a, button, select, input {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: linear-gradient(145deg, #1d6e4f, #0c3e2b);
-    border: 2px solid rgba(246, 200, 102, 0.5);
-    color: #f6c866;
+    background: linear-gradient(145deg, #18283f, #0a1320);
+    border: 2px solid rgba(16, 185, 129, 0.45);
+    color: #10b981;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -5103,34 +5106,34 @@ a, button, select, input {
     outline: none;
     transition: all 0.15s ease;
     box-shadow: 
-        0 4px 10px rgba(3, 30, 20, 0.5),
-        inset 0 1.5px 3px rgba(255, 255, 255, 0.2),
+        0 4px 10px rgba(0, 0, 0, 0.5),
+        inset 0 1.5px 3px rgba(255, 255, 255, 0.15),
         inset 0 -2px 5px rgba(0, 0, 0, 0.5);
     -webkit-tap-highlight-color: transparent;
 }
 
 [data-theme="light"] .device-mini-btn {
-    background: linear-gradient(145deg, #ffffff, #f2ece0);
-    border-color: rgba(11, 107, 71, 0.35);
-    color: #0b6b47;
+    background: linear-gradient(145deg, #ffffff, #f1f5f9);
+    border-color: rgba(5, 150, 105, 0.3);
+    color: #059669;
     box-shadow: 
-        0 4px 8px rgba(11, 107, 71, 0.1),
+        0 4px 8px rgba(15, 23, 42, 0.08),
         inset 0 1px 2px rgba(255, 255, 255, 0.8),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.08);
+        inset 0 -2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .device-mini-btn:hover {
-    border-color: #f6c866;
+    border-color: #34d399;
     transform: translateY(-1px);
     box-shadow: 
-        0 6px 14px rgba(3, 30, 20, 0.6),
-        0 0 10px rgba(246, 200, 102, 0.3);
+        0 6px 14px rgba(0, 0, 0, 0.6),
+        0 0 10px rgba(16, 185, 129, 0.3);
 }
 
 .device-mini-btn:active {
     transform: translateY(2px) scale(0.94);
     box-shadow: 
-        0 2px 4px rgba(3, 30, 20, 0.6),
+        0 2px 4px rgba(0, 0, 0, 0.6),
         inset 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
@@ -5149,9 +5152,9 @@ a, button, select, input {
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 32%, #268965 0%, #165b42 65%, #083827 100%);
-    border: 3.5px solid #f6c866;
-    color: #f6c866;
+    background: radial-gradient(circle at 35% 32%, #1e334f 0%, #112033 65%, #08101a 100%);
+    border: 3.5px solid #10b981;
+    color: #10b981;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -5163,31 +5166,31 @@ a, button, select, input {
     -webkit-user-select: none;
     transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.08s ease;
     box-shadow: 
-        0 10px 24px rgba(3, 30, 20, 0.6),
-        0 0 0 6px rgba(14, 76, 53, 0.8),
-        0 0 20px rgba(246, 200, 102, 0.25),
-        inset 0 3px 6px rgba(255, 255, 255, 0.25),
-        inset 0 -5px 12px rgba(3, 30, 20, 0.7);
+        0 10px 24px rgba(0, 0, 0, 0.6),
+        0 0 0 6px rgba(19, 31, 51, 0.8),
+        0 0 20px rgba(16, 185, 129, 0.25),
+        inset 0 3px 6px rgba(255, 255, 255, 0.2),
+        inset 0 -5px 12px rgba(0, 0, 0, 0.7);
 }
 
 [data-theme="light"] .tasbih-big-tap-btn {
-    background: radial-gradient(circle at 35% 32%, #ffffff 0%, #f6f3eb 70%, #eae3d3 100%);
-    border-color: #0b6b47;
-    color: #0b6b47;
+    background: radial-gradient(circle at 35% 32%, #ffffff 0%, #f8fafc 70%, #e2e8f0 100%);
+    border-color: #059669;
+    color: #059669;
     box-shadow: 
-        0 10px 20px rgba(11, 107, 71, 0.12),
-        0 0 0 6px rgba(224, 216, 200, 0.8),
-        0 0 16px rgba(11, 107, 71, 0.2),
+        0 10px 20px rgba(5, 150, 105, 0.12),
+        0 0 0 6px rgba(226, 232, 240, 0.8),
+        0 0 16px rgba(5, 150, 105, 0.2),
         inset 0 3px 6px rgba(255, 255, 255, 0.9),
-        inset 0 -4px 8px rgba(11, 107, 71, 0.1);
+        inset 0 -4px 8px rgba(0, 0, 0, 0.06);
 }
 
 .tasbih-big-tap-btn:hover {
-    border-color: #fde68a;
+    border-color: #34d399;
     box-shadow: 
-        0 12px 28px rgba(3, 30, 20, 0.7),
-        0 0 0 6px rgba(14, 76, 53, 0.8),
-        0 0 26px rgba(246, 200, 102, 0.4);
+        0 12px 28px rgba(0, 0, 0, 0.7),
+        0 0 0 6px rgba(19, 31, 51, 0.8),
+        0 0 26px rgba(16, 185, 129, 0.4);
 }
 
 .tasbih-big-tap-btn:active,
@@ -5195,7 +5198,7 @@ a, button, select, input {
     transform: scale(0.93) translateY(3px);
     box-shadow: 
         0 3px 8px rgba(0, 0, 0, 0.8),
-        0 0 0 4px rgba(11, 33, 26, 0.9),
+        0 0 0 4px rgba(19, 31, 51, 0.9),
         inset 0 3px 10px rgba(0, 0, 0, 0.85);
     filter: brightness(0.92);
 }
