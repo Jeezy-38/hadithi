@@ -16,6 +16,10 @@ return Application::configure(basePath: dirname(__DIR__))
             'malipo/ipn',
             'api/*',
         ]);
+        $middleware->alias([
+            'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        ]);
+        $middleware->appendToGroup('web', \App\Http\Middleware\TrackPageView::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

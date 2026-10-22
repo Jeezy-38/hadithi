@@ -190,3 +190,11 @@ Route::post('/logout', [SocialAuthController::class, 'logout'])->middleware('aut
 Route::get('/audio/hadith/{hadith}/{lang}', HadithAudioController::class)
     ->middleware('throttle:30,1')
     ->name('hadith.audio');
+
+// =========================================================================
+// Jopo Kuu la Utawala (Admin Panel) - Inalindwa na 'auth' na 'admin'
+// =========================================================================
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/malipo/export', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'exportPayments'])->name('payments.export');
+});

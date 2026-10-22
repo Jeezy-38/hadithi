@@ -48,6 +48,12 @@
             </div>
 
             <nav class="auth-links" aria-label="Akaunti">
+                @if(auth()->user()->isAdmin())
+                    <a href="{{ route('admin.dashboard') }}" style="color: var(--emerald); font-weight: 800; display: flex; align-items: center; justify-content: space-between;">
+                        <span>⚙️ Jopo la Utawala (Admin)</span>
+                        <span style="font-size: 11px; padding: 2px 7px; border-radius: 10px; background: var(--emerald); color: #fff;">Admin</span>
+                    </a>
+                @endif
                 <a href="{{ route('bookmarks') }}" data-i18n="nav_bookmarks">Vipendwa</a>
                 <a href="{{ route('support') }}">Sadaka &amp; Changia</a>
                 <a href="{{ route('hadith.today') }}" data-i18n="nav_today">Hadith ya leo</a>

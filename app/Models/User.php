@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin',
         'avatar',
         'is_supporter',
         'supporter_tier',
@@ -49,10 +50,33 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
             'is_supporter' => 'boolean',
             'supporter_since' => 'datetime',
             'supporter_expires_at' => 'datetime',
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        if ($this->is_admin) {
+            return true;
+        }
+
+        $envAdmin = env('ADMIN_EMAIL');
+        if ($envAdmin && strtolower(trim($this->email)) === strtolower(trim($envAdmin))) {
+            return true;
+        }
+
+        $adminList = config('app.admin_emails', '');
+        if ($adminList) {
+            $emails = array_map('strtolower', array_map('trim', explode(',', $adminList)));
+            if (in_array(strtolower(trim($this->email)), $emails, true)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function socialAccounts(): \Illuminate\Database\Eloquent\Relations\HasMany
