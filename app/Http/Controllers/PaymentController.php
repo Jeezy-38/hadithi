@@ -18,16 +18,18 @@ class PaymentController extends Controller
     ) {}
 
     /**
-     * Callback kutoka Pesapal au Simulation mtumiaji anaporudi kwenye tovuti.
+     * Callback kutoka Pesapal, ClickPesa au Simulation mtumiaji anaporudi kwenye tovuti.
      */
     public function callback(Request $request): RedirectResponse
     {
         $reference = $request->query('OrderMerchantReference')
             ?: $request->query('reference')
-            ?: $request->query('merchant_reference');
+            ?: $request->query('merchant_reference')
+            ?: $request->query('orderReference');
 
         $trackingId = $request->query('OrderTrackingId')
-            ?: $request->query('tracking_id');
+            ?: $request->query('tracking_id')
+            ?: $request->query('paymentReference');
 
         if (! $reference && ! $trackingId) {
             return redirect()->route('support')->with('error', 'Haikuweza kupata kumbukumbu ya muamala.');
@@ -59,10 +61,10 @@ class PaymentController extends Controller
                 ->with('error', 'Umeghairi muamala wa mchango.');
         }
 
-        // Ulizia hadhi rasmi ya Pesapal kupitia API
-        $effectiveTrackingId = $trackingId ?: $payment->gateway_reference;
+        // Ulizia hadhi rasmi kupitia API ya lango lililotumika (ClickPesa au Pesapal)
+        $effectiveTrackingId = $trackingId ?: $payment->gateway_reference ?: $payment->reference;
         if ($effectiveTrackingId) {
-            $statusResult = $this->paymentManager->getTransactionStatus($effectiveTrackingId);
+            $statusResult = $this->paymentManager->getTransactionStatus($effectiveTrackingId, $payment->gateway);
 
             if (($statusResult['status'] ?? '') === 'completed') {
                 $this->fulfillment->fulfill($payment, $statusResult);
@@ -83,13 +85,41 @@ class PaymentController extends Controller
     }
 
     /**
-     * Webhook IPN (Instant Payment Notification) kutoka Pesapal.
+     * Webhook / IPN inayosaidia Pesapal na ClickPesa kwa pamoja.
      */
     public function ipn(Request $request): JsonResponse
     {
-        $notificationType = $request->query('OrderNotificationType');
-        $trackingId = $request->query('OrderTrackingId');
-        $reference = $request->query('OrderMerchantReference');
+        // 1. Ukaguzi wa muundo wa Webhook ya ClickPesa (JSON)
+        $event = $request->input('event');
+        $cpData = $request->input('data', []);
+        $cpReference = $cpData['orderReference'] ?? $request->input('orderReference');
+
+        if ($cpReference) {
+            $payment = Payment::where('reference', $cpReference)->first();
+
+            if ($payment) {
+                $status = strtoupper((string) ($cpData['status'] ?? $request->input('status', '')));
+
+                if ($event === 'PAYMENT RECEIVED' || in_array($status, ['SUCCESS', 'SETTLED', 'COMPLETED'], true)) {
+                    $this->fulfillment->fulfill($payment, [
+                        'payment_method' => $cpData['channel'] ?? 'clickpesa',
+                        'confirmation_code' => $cpData['paymentReference'] ?? null,
+                    ]);
+                } elseif ($event === 'PAYMENT FAILED' || in_array($status, ['FAILED', 'CANCELLED'], true)) {
+                    $payment->update(['status' => 'failed']);
+                }
+            }
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'ClickPesa webhook imepokelewa kikamilifu.',
+            ]);
+        }
+
+        // 2. Ukaguzi wa muundo wa IPN ya Pesapal v3
+        $notificationType = $request->query('OrderNotificationType') ?? $request->input('OrderNotificationType');
+        $trackingId = $request->query('OrderTrackingId') ?? $request->input('OrderTrackingId');
+        $reference = $request->query('OrderMerchantReference') ?? $request->input('OrderMerchantReference');
 
         if (! $trackingId || ! $reference) {
             return response()->json(['status' => '400', 'message' => 'Invalid parameters'], 400);
@@ -100,7 +130,7 @@ class PaymentController extends Controller
             ->first();
 
         if ($payment) {
-            $statusResult = $this->paymentManager->getTransactionStatus($trackingId);
+            $statusResult = $this->paymentManager->getTransactionStatus($trackingId, 'pesapal');
 
             if (($statusResult['status'] ?? '') === 'completed') {
                 $this->fulfillment->fulfill($payment, $statusResult);
@@ -116,6 +146,14 @@ class PaymentController extends Controller
             'orderMerchantReference' => $reference,
             'status' => '200',
         ]);
+    }
+
+    /**
+     * Webhook mahususi kwa ajili ya ClickPesa (kwa urahisi wa usanidi kwenye ClickPesa Portal).
+     */
+    public function clickPesaWebhook(Request $request): JsonResponse
+    {
+        return $this->ipn($request);
     }
 
     /**

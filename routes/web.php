@@ -22,6 +22,7 @@ Route::get('/sadaka', fn () => redirect()->route('support'))->name('support.alia
 // Njia za Malipo (Pesapal Callback, IPN Webhook, Risiti ya Kidigitali, Majaribio)
 Route::get('/malipo/callback', [PaymentController::class, 'callback'])->name('payments.callback');
 Route::match(['get', 'post'], '/malipo/ipn', [PaymentController::class, 'ipn'])->name('payments.ipn');
+Route::post('/malipo/webhook/clickpesa', [PaymentController::class, 'clickPesaWebhook'])->name('payments.webhook.clickpesa');
 Route::get('/malipo/risiti/{reference}', [PaymentController::class, 'receipt'])->name('payments.receipt');
 Route::get('/malipo/simulation/{reference}', [PaymentController::class, 'simulate'])->name('payments.simulate');
 

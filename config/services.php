@@ -58,6 +58,11 @@ return [
     ],
 
     /*
+    | Lango Lililochaguliwa la Malipo ('auto', 'clickpesa', 'pesapal', 'simulation')
+    */
+    'payment_gateway' => env('PAYMENT_GATEWAY', 'auto'),
+
+    /*
     | Lango la Malipo la Pesapal v3 (Tanzania & Kimataifa: M-Pesa, Tigo, Airtel, Halo, Visa/Mastercard)
     */
     'pesapal' => [
@@ -65,6 +70,16 @@ return [
         'consumer_key' => env('PESAPAL_CONSUMER_KEY'),
         'consumer_secret' => env('PESAPAL_CONSUMER_SECRET'),
         'ipn_id' => env('PESAPAL_IPN_ID'),
+    ],
+
+    /*
+    | Lango la Malipo la ClickPesa (Tanzania: M-Pesa, Tigo Pesa, Airtel Money, HaloPesa, Visa/Mastercard)
+    */
+    'clickpesa' => [
+        'client_id' => env('CLICKPESA_CLIENT_ID'),
+        'api_key' => env('CLICKPESA_API_KEY'),
+        'checksum_key' => env('CLICKPESA_CHECKSUM_KEY'),
+        'mode' => env('CLICKPESA_MODE', 'live'), // 'live' au 'sandbox'
     ],
 
 ];

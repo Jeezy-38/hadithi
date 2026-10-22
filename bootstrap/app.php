@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->trustProxies(at: '*');
         $middleware->validateCsrfTokens(except: [
             'malipo/ipn',
+            'malipo/webhook*',
             'api/*',
         ]);
         $middleware->alias([

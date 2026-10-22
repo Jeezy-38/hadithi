@@ -14,26 +14,85 @@ class PaymentManager
     }
 
     /**
-     * Pata lango linalofanya kazi sasa hivi.
+     * Weka lango kwa mkono (kwa majaribio au mahitaji maalum).
      */
-    public function gateway(): PaymentGatewayInterface
+    public function setGateway(PaymentGatewayInterface $gateway): self
+    {
+        $this->gateway = $gateway;
+
+        return $this;
+    }
+
+    /**
+     * Pata lango linalofanya kazi sasa hivi kulingana na usanidi wa .env.
+     */
+    public function gateway(?string $driver = null): PaymentGatewayInterface
+    {
+        if ($this->gateway && ! $driver) {
+            return $this->gateway;
+        }
+
+        $chosen = strtolower((string) ($driver ?: config('services.payment_gateway', 'auto')));
+
+        if ($chosen === 'clickpesa') {
+            $clientId = config('services.clickpesa.client_id');
+            $apiKey = config('services.clickpesa.api_key');
+
+            if (! empty($clientId) && ! empty($apiKey)) {
+                return new ClickPesaService();
+            }
+
+            return new SimulationPaymentService();
+        }
+
+        if ($chosen === 'pesapal') {
+            $consumerKey = config('services.pesapal.consumer_key');
+            $consumerSecret = config('services.pesapal.consumer_secret');
+            $mode = config('services.pesapal.mode', 'simulation');
+
+            if ($mode !== 'simulation' && ! empty($consumerKey) && ! empty($consumerSecret)) {
+                return new PesapalService();
+            }
+
+            return new SimulationPaymentService();
+        }
+
+        if ($chosen === 'simulation') {
+            return new SimulationPaymentService();
+        }
+
+        // Auto-detect: Ikiwa ClickPesa funguo zipo, itumie kwanza
+        $cpClientId = config('services.clickpesa.client_id');
+        $cpApiKey = config('services.clickpesa.api_key');
+        if (! empty($cpClientId) && ! empty($cpApiKey)) {
+            return new ClickPesaService();
+        }
+
+        // Vinginevyo ikiwa Pesapal ipo
+        $ppKey = config('services.pesapal.consumer_key');
+        $ppSecret = config('services.pesapal.consumer_secret');
+        $ppMode = config('services.pesapal.mode', 'simulation');
+        if ($ppMode !== 'simulation' && ! empty($ppKey) && ! empty($ppSecret)) {
+            return new PesapalService();
+        }
+
+        return new SimulationPaymentService();
+    }
+
+    /**
+     * Pata lango linalolingana na muamala uliopo (k.m. clickpesa au pesapal).
+     */
+    public function gatewayForPayment(Payment $payment): PaymentGatewayInterface
     {
         if ($this->gateway) {
             return $this->gateway;
         }
 
-        $mode = (string) config('services.pesapal.mode', 'simulation');
-        $consumerKey = config('services.pesapal.consumer_key');
-        $consumerSecret = config('services.pesapal.consumer_secret');
-
-        // Ikiwa mode ni simulation au funguo za Pesapal hazijawekwa bado, tumia Simulation gateway
-        if ($mode === 'simulation' || empty($consumerKey) || empty($consumerSecret)) {
-            $this->gateway = new SimulationPaymentService();
-        } else {
-            $this->gateway = new PesapalService();
+        if ($payment->gateway) {
+            return $this->gateway($payment->gateway);
         }
 
-        return $this->gateway;
+        return $this->gateway();
     }
 
     /**
@@ -41,14 +100,25 @@ class PaymentManager
      */
     public function initiateOrder(Payment $payment, array $options = []): array
     {
-        return $this->gateway()->initiateOrder($payment, $options);
+        $gateway = $this->gateway();
+
+        // Rekodi lango lililotumika kwenye malipo
+        if ($gateway instanceof ClickPesaService) {
+            $payment->update(['gateway' => 'clickpesa']);
+        } elseif ($gateway instanceof PesapalService) {
+            $payment->update(['gateway' => 'pesapal']);
+        } elseif ($gateway instanceof SimulationPaymentService) {
+            $payment->update(['gateway' => 'simulation']);
+        }
+
+        return $gateway->initiateOrder($payment, $options);
     }
 
     /**
      * Ulizia hadhi ya muamala.
      */
-    public function getTransactionStatus(string $orderTrackingId): array
+    public function getTransactionStatus(string $orderTrackingId, ?string $driver = null): array
     {
-        return $this->gateway()->getTransactionStatus($orderTrackingId);
+        return $this->gateway($driver)->getTransactionStatus($orderTrackingId);
     }
 }
