@@ -120,8 +120,8 @@ html {
 body {
     background-color: var(--bg-body);
     background-image: 
-        radial-gradient(ellipse at 85% 0%, rgba(16, 185, 129, 0.12), transparent 45%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%2310b981' stroke-width='0.75' opacity='0.06'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.04'/%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(ellipse at 85% 0%, rgba(13, 148, 136, 0.10), transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23f0be31' stroke-width='0.75' opacity='0.05'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.03'/%3E%3C/g%3E%3C/svg%3E");
     background-repeat: no-repeat, repeat;
     background-size: auto, 60px 60px;
     background-attachment: scroll, fixed;
@@ -134,9 +134,10 @@ body {
 }
 
 [data-theme="light"] body {
+    background-color: var(--bg-body);
     background-image: 
-        radial-gradient(ellipse at 85% 0%, rgba(16, 185, 129, 0.05), transparent 45%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%2310b981' stroke-width='0.75' opacity='0.045'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.03'/%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(ellipse at 85% 0%, rgba(200, 150, 24, 0.08), transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23c89617' stroke-width='0.75' opacity='0.04'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.03'/%3E%3C/g%3E%3C/svg%3E");
     background-repeat: no-repeat, repeat;
     background-size: auto, 60px 60px;
     background-attachment: scroll, fixed;
@@ -205,6 +206,16 @@ button {
     transform: scale(1.06);
     border-color: #f0be31;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(240, 190, 49, 0.4);
+}
+
+[data-theme="light"] .brand-logo {
+    border-color: rgba(200, 150, 24, 0.35);
+    box-shadow: 0 4px 14px rgba(3, 33, 44, 0.08);
+}
+
+[data-theme="light"] .brand:hover .brand-logo {
+    border-color: #c89617;
+    box-shadow: 0 6px 20px rgba(200, 150, 24, 0.25);
 }
 
 .brand small {
@@ -372,16 +383,18 @@ button {
 }
 
 [data-theme="light"] .nav-support-pill {
-    background: rgba(180, 83, 9, 0.1);
-    border-color: rgba(180, 83, 9, 0.35);
-    color: var(--gold);
+    background: rgba(200, 150, 24, 0.12);
+    border-color: rgba(200, 150, 24, 0.38);
+    color: #9a6e10;
+    font-weight: 700;
 }
 
 [data-theme="light"] .nav-support-pill:hover,
 [data-theme="light"] .nav-support-pill.active {
-    background: var(--gold);
-    color: #ffffff;
-    box-shadow: 0 2px 10px rgba(180, 83, 9, 0.25);
+    background: linear-gradient(135deg, #f0be31 0%, #d49e1a 100%);
+    color: #03212c;
+    border-color: #c89617;
+    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.3);
 }
 
 @media (max-width: 640px) {
@@ -449,60 +462,69 @@ button {
 }
 
 [data-theme="light"] .hero-glow {
-    background: radial-gradient(circle, rgba(200, 150, 24, 0.15) 0%, rgba(200, 150, 24, 0.04) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(200, 150, 24, 0.16) 0%, rgba(200, 150, 24, 0.04) 50%, transparent 70%);
 }
 
-/* Keep the library photograph visible in both themes. */
+/* Light Mode Hero: Royal Manuscript Silk & Polished Gold */
 [data-theme="light"] .hero {
-    background: radial-gradient(circle at 82% 35%, rgba(200, 150, 24, 0.16) 0%, rgba(251, 249, 244, 0.95) 60%),
-                linear-gradient(90deg, rgba(251, 249, 244, 0.98) 0%, rgba(245, 239, 227, 0.92) 50%, rgba(251, 249, 244, 0.7) 100%),
+    background: radial-gradient(circle at 82% 35%, rgba(240, 190, 49, 0.18) 0%, rgba(251, 249, 244, 0.96) 65%),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(251, 249, 244, 0.95) 55%, rgba(245, 239, 227, 0.92) 100%),
                 url('../images/bayt-al-hadith-logo.png') right 5% center / 340px no-repeat,
                 url('../images/library-gold-black.jpg') center 55% / cover;
-    border: 1.5px solid rgba(200, 150, 24, 0.28);
+    border: 1.5px solid rgba(200, 150, 24, 0.35);
     box-shadow: 0 8px 24px -4px rgba(3, 33, 44, 0.08);
 }
 
 [data-theme="light"] .hero h1 {
-    color: #f8fafc;
+    color: #03212c;
+    font-weight: 800;
 }
 
 [data-theme="light"] .hero h1 em {
-    background: linear-gradient(135deg, #f3d790 0%, #dab56a 100%);
+    background: linear-gradient(135deg, #d49e1a 0%, #9a6808 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 [data-theme="light"] .hero p {
-    color: #e2e8f0;
+    color: #1b3b47;
     font-weight: 500;
 }
 
 [data-theme="light"] .eyebrow {
-    color: #92400e;
+    color: #9a6e10;
     font-weight: 800;
 }
 
 [data-theme="light"] .hero-button {
-    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
-    color: #ffffff;
-    box-shadow: 0 4px 14px rgba(180, 83, 9, 0.35);
+    background: linear-gradient(135deg, #f0be31 0%, #d49e1a 50%, #b8860b 100%);
+    color: #03212c;
+    font-weight: 800;
+    box-shadow: 0 4px 16px rgba(200, 150, 24, 0.35);
+    border: none;
+}
+
+[data-theme="light"] .hero-button:hover {
+    box-shadow: 0 8px 24px rgba(200, 150, 24, 0.5);
+    transform: translateY(-2px);
+    color: #02161e;
 }
 
 [data-theme="light"] .hero-button-secondary {
     background: #ffffff;
-    border: 1.5px solid #cbd5e1;
-    color: #0a0f18;
+    border: 1.5px solid rgba(200, 150, 24, 0.35);
+    color: #03212c;
     font-weight: 700;
 }
 
 [data-theme="light"] .hero-caption {
-    color: #cbd5e1;
+    color: #c89617;
     font-weight: 700;
 }
 
 [data-theme="light"] .hero .eyebrow {
-    color: #f3d790;
+    color: #9a6e10;
 }
 
 .hero-copy {
@@ -672,7 +694,7 @@ button {
 }
 
 [data-theme="light"] .summary-text strong {
-    background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+    background: linear-gradient(135deg, #d49e1a 0%, #9a6808 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -757,13 +779,17 @@ button {
 
 .collection-button.active {
     background: var(--gold-gradient);
-    color: #ffffff;
+    color: #03212c;
     font-weight: 800;
-    box-shadow: 0 4px 16px rgba(184, 134, 11, 0.35);
+    box-shadow: 0 4px 16px rgba(200, 150, 24, 0.35);
 }
 
 [data-theme="dark"] .collection-button.active {
-    color: #0f1418;
+    color: #03212c;
+}
+
+[data-theme="light"] .collection-button.active {
+    color: #03212c;
 }
 
 .collection-button.active .arrow {
@@ -917,21 +943,28 @@ button {
     align-items: center;
     gap: 8px;
     background: var(--gold-gradient);
-    color: #ffffff;
+    color: #03212c;
     font-weight: 800;
     font-size: 13px;
     padding: 10px 22px;
     border-radius: 10px;
+    border: none;
     transition: all .2s ease;
 }
 
 [data-theme="dark"] .search-form button {
-    color: #0f1418;
+    color: #03212c;
+}
+
+[data-theme="light"] .search-form button {
+    color: #03212c;
+    box-shadow: 0 2px 10px rgba(200, 150, 24, 0.28);
 }
 
 .search-form button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(184, 134, 11, 0.35);
+    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.4);
+    color: #02161e;
 }
 
 /* Quick Topics */
@@ -988,13 +1021,13 @@ button {
 .topic-chip.active {
     background: var(--gold-gradient);
     border-color: transparent;
-    color: #0f1418;
+    color: #03212c;
     font-weight: 800;
-    box-shadow: 0 4px 14px rgba(184, 134, 11, 0.35);
+    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.35);
 }
 
 [data-theme="light"] .topic-chip.active {
-    color: #ffffff;
+    color: #03212c;
 }
 
 .result-meta {
@@ -1117,8 +1150,8 @@ button {
 }
 
 [data-theme="light"] .hadith-book-row-card {
-    background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 60%, #f7f2e7 100%);
-    border-color: rgba(200, 150, 24, 0.25);
+    background: #ffffff;
+    border-color: rgba(200, 150, 24, 0.32);
     box-shadow: 0 4px 14px -2px rgba(3, 33, 44, 0.06);
 }
 
@@ -1130,9 +1163,9 @@ button {
 }
 
 [data-theme="light"] .hadith-book-row-card:hover {
-    border-color: var(--gold);
+    border-color: #c89617;
     background: #ffffff;
-    box-shadow: 0 12px 24px -4px rgba(200, 150, 24, 0.18);
+    box-shadow: 0 12px 24px -4px rgba(200, 150, 24, 0.2);
 }
 
 .book-emblem-wrap {
@@ -1160,13 +1193,18 @@ button {
 
 [data-theme="light"] .book-emblem-diamond {
     background: linear-gradient(135deg, #fffdf7 0%, #f7f1e4 100%);
-    border-color: rgba(200, 150, 24, 0.4);
+    border-color: rgba(200, 150, 24, 0.45);
 }
 
 .hadith-book-row-card:hover .book-emblem-diamond {
     transform: rotate(45deg) scale(1.08);
     border-color: var(--gold);
     background: linear-gradient(135deg, rgba(240, 190, 49, 0.28) 0%, rgba(13, 148, 136, 0.22) 100%);
+}
+
+[data-theme="light"] .hadith-book-row-card:hover .book-emblem-diamond {
+    background: linear-gradient(135deg, #fffdf7 0%, #f7efe1 100%);
+    border-color: #c89617;
 }
 
 .book-emblem-letter {
@@ -1180,7 +1218,7 @@ button {
 }
 
 [data-theme="light"] .book-emblem-letter {
-    color: #8c5b16;
+    color: #9a6e10;
     text-shadow: none;
 }
 
@@ -1417,9 +1455,9 @@ button {
     border-color: rgba(218, 181, 106, 0.35);
 }
 [data-theme="light"] .badge-bukhari {
-    background: #fef3c7;
-    color: #92400e;
-    border-color: #fcd34d;
+    background: #fffdf5;
+    color: #9a6e10;
+    border-color: rgba(200, 150, 24, 0.4);
 }
 
 .badge-muslim {
@@ -1428,9 +1466,9 @@ button {
     border-color: rgba(16, 185, 129, 0.35);
 }
 [data-theme="light"] .badge-muslim {
-    background: #d1fae5;
-    color: #065f46;
-    border-color: #6ee7b7;
+    background: #f0faf7;
+    color: #0d6b5c;
+    border-color: rgba(13, 107, 92, 0.35);
 }
 
 .badge-tirmidhi {
@@ -1439,9 +1477,9 @@ button {
     border-color: rgba(245, 158, 11, 0.35);
 }
 [data-theme="light"] .badge-tirmidhi {
-    background: #fef3c7;
-    color: #b45309;
-    border-color: #fde68a;
+    background: #fffbf0;
+    color: #a16207;
+    border-color: rgba(245, 158, 11, 0.35);
 }
 
 .badge-abudawud {
@@ -1662,15 +1700,17 @@ button {
 }
 
 [data-theme="light"] .read-btn {
-    color: #059669;
-    background: rgba(5, 150, 105, 0.08);
-    border-color: rgba(5, 150, 105, 0.25);
+    color: #03212c;
+    background: rgba(200, 150, 24, 0.12);
+    border-color: rgba(200, 150, 24, 0.35);
+    font-weight: 700;
 }
 
 [data-theme="light"] .read-btn:hover {
-    background: #059669;
-    color: #ffffff;
-    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.28);
+    background: linear-gradient(135deg, #f0be31 0%, #d49e1a 100%);
+    color: #03212c;
+    border-color: #c89617;
+    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.3);
 }
 
 .read-btn:hover .read-arrow {
@@ -1723,8 +1763,9 @@ mark {
 
 .page-nav-btn:not(:disabled):hover {
     background: var(--gold);
-    color: #ffffff;
+    color: #03212c;
     border-color: var(--gold);
+    font-weight: 800;
 }
 
 .page-nav-btn:disabled {
@@ -1799,19 +1840,20 @@ svg.h-5 {
 
 .primary-button {
     background: var(--gold-gradient);
-    color: #ffffff;
+    color: #03212c;
     font-weight: 800;
     font-size: 13px;
     padding: 12px 26px;
     border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(184, 134, 11, 0.35);
+    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.35);
     transition: all .2s ease;
     display: inline-block;
 }
 
 .primary-button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(184, 134, 11, 0.45);
+    box-shadow: 0 8px 20px rgba(200, 150, 24, 0.45);
+    color: #02161e;
 }
 
 .status-pill {
@@ -4131,13 +4173,14 @@ a, button, select, input {
 
     .nav-drawer-btn--login {
         background: var(--gold-gradient) !important;
-        color: #0f1418 !important;
+        color: #03212c !important;
+        font-weight: 800 !important;
         border: none !important;
-        box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3) !important;
+        box-shadow: 0 4px 12px rgba(200, 150, 24, 0.3) !important;
     }
 
     [data-theme="light"] .nav-drawer-btn--login {
-        color: #ffffff !important;
+        color: #03212c !important;
     }
 
     .nav-drawer-btn--logout {
@@ -4579,7 +4622,8 @@ a, button, select, input {
 }
 
 [data-theme="light"] .transliteration-text {
-    color: #b45309;
+    color: #9a6e10;
+    font-weight: 600;
 }
 
 /* Dua Counter Widget */
@@ -6071,65 +6115,65 @@ a, button, select, input {
 }
 
 [data-theme="light"] .quran-header-card {
-    background: linear-gradient(180deg, #ffffff 0%, #faf8f2 100%) !important;
-    border-color: rgba(180, 83, 9, 0.3) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+    background: #ffffff !important;
+    border-color: rgba(200, 150, 24, 0.32) !important;
+    box-shadow: 0 4px 16px rgba(3, 33, 44, 0.06) !important;
 }
 
 [data-theme="light"] .quran-header-pill {
     background: #ffffff !important;
-    border-color: #d1c7b5 !important;
-    color: #3a4555 !important;
+    border-color: rgba(200, 150, 24, 0.3) !important;
+    color: #56707a !important;
 }
 
 [data-theme="light"] .quran-header-title-ar {
-    color: #92400e !important;
+    color: #9a6e10 !important;
 }
 
 [data-theme="light"] .quran-header-title-sw {
-    color: #0a0f18 !important;
+    color: #03212c !important;
 }
 
 [data-theme="light"] .quran-header-meaning {
-    color: #3a4555 !important;
+    color: #56707a !important;
 }
 
 [data-theme="light"] .quran-bismillah-box {
-    background: linear-gradient(180deg, #fdfbf7 0%, #f7f3e8 100%) !important;
-    border-color: rgba(180, 83, 9, 0.3) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+    background: linear-gradient(180deg, #ffffff 0%, #fbf9f4 100%) !important;
+    border-color: rgba(200, 150, 24, 0.3) !important;
+    box-shadow: 0 4px 16px rgba(3, 33, 44, 0.05) !important;
 }
 
 [data-theme="light"] .bismillah-badge {
-    background: rgba(180, 83, 9, 0.1) !important;
-    border-color: rgba(180, 83, 9, 0.25) !important;
-    color: #92400e !important;
+    background: rgba(200, 150, 24, 0.12) !important;
+    border-color: rgba(200, 150, 24, 0.35) !important;
+    color: #9a6e10 !important;
 }
 
 [data-theme="light"] .bismillah-ar {
-    color: #92400e !important;
+    color: #9a6e10 !important;
 }
 
 [data-theme="light"] .bismillah-sw {
-    color: #3a4555 !important;
+    color: #56707a !important;
 }
 
 [data-theme="light"] .quran-ayah-card {
     background: #ffffff !important;
-    border-color: #e2dbce !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+    border-color: rgba(200, 150, 24, 0.25) !important;
+    box-shadow: 0 2px 10px rgba(3, 33, 44, 0.04) !important;
 }
 
 [data-theme="light"] .ayah-arabic-text {
-    color: #000000 !important;
+    color: #03212c !important;
 }
 
 [data-theme="light"] .ayah-translation-sw {
-    color: #1a222f !important;
+    color: #1e3a45 !important;
 }
 
 [data-theme="light"] .ayah-translation-en {
-    color: #4b5563 !important;
+    color: #56707a !important;
 }
 
 .quran-header-badge-row {
@@ -7241,61 +7285,62 @@ a, button, select, input {
 [data-theme="light"] .quran-surah-pager,
 [data-theme="light"] .reader-surah-jumper {
     background: #ffffff !important;
-    border-color: #d1c7b5 !important;
+    border-color: rgba(200, 150, 24, 0.3) !important;
 }
 
 [data-theme="light"] .surah-pager-btn,
 [data-theme="light"] .surah-jump-btn {
-    background: #f7f5ef !important;
-    border-color: #e2dbce !important;
-    color: #1a222f !important;
+    background: #fbf9f4 !important;
+    border-color: rgba(200, 150, 24, 0.25) !important;
+    color: #03212c !important;
 }
 
 [data-theme="light"] .surah-pager-btn:hover,
 [data-theme="light"] .surah-jump-btn:hover {
-    background: rgba(180, 83, 9, 0.1) !important;
-    color: #b45309 !important;
-    border-color: #b45309 !important;
+    background: rgba(200, 150, 24, 0.14) !important;
+    color: #9a6e10 !important;
+    border-color: #c89617 !important;
 }
 
 [data-theme="light"] .surah-pager-current,
 [data-theme="light"] .surah-jump-current {
-    color: #b45309 !important;
+    color: #9a6e10 !important;
 }
 
 [data-theme="light"] .quran-nav-card,
 [data-theme="light"] .reader-nav-card {
     background: #ffffff !important;
-    border-color: #d1c7b5 !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+    border-color: rgba(200, 150, 24, 0.28) !important;
+    box-shadow: 0 4px 14px -2px rgba(3, 33, 44, 0.05) !important;
 }
 
 [data-theme="light"] .quran-nav-card:hover,
 [data-theme="light"] .reader-nav-card:hover {
-    border-color: #b45309 !important;
-    box-shadow: 0 6px 18px rgba(180, 83, 9, 0.12) !important;
+    border-color: #c89617 !important;
+    box-shadow: 0 8px 20px rgba(200, 150, 24, 0.2) !important;
 }
 
 [data-theme="light"] .nav-card-icon {
-    background: rgba(180, 83, 9, 0.1) !important;
-    border-color: rgba(180, 83, 9, 0.25) !important;
-    color: #b45309 !important;
+    background: rgba(200, 150, 24, 0.12) !important;
+    border-color: rgba(200, 150, 24, 0.3) !important;
+    color: #9a6e10 !important;
 }
 
 [data-theme="light"] .quran-nav-card:hover .nav-card-icon,
 [data-theme="light"] .reader-nav-card:hover .nav-card-icon {
-    background: #b45309 !important;
-    color: #ffffff !important;
+    background: linear-gradient(135deg, #f0be31 0%, #c89617 100%) !important;
+    color: #03212c !important;
+    border-color: #c89617 !important;
 }
 
 [data-theme="light"] .nav-card-title,
 [data-theme="light"] .nav-surah-name {
-    color: #0a0f18 !important;
+    color: #03212c !important;
 }
 
 [data-theme="light"] .nav-card-arabic,
 [data-theme="light"] .nav-surah-ar {
-    color: #92400e !important;
+    color: #9a6e10 !important;
 }
 
 .nav-card-excerpt {
@@ -7364,17 +7409,17 @@ a, button, select, input {
 
 [data-theme="light"] .font-scaler-widget {
     background: #ffffff;
-    border-color: #d1c7b5;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    border-color: rgba(200, 150, 24, 0.3);
+    box-shadow: 0 1px 4px rgba(3, 33, 44, 0.05);
 }
 
 [data-theme="light"] .scaler-btn {
-    color: #1a222f;
+    color: #03212c;
 }
 
 [data-theme="light"] .scaler-btn:hover {
-    background: rgba(180, 83, 9, 0.1);
-    color: #b45309;
+    background: rgba(200, 150, 24, 0.12);
+    color: #9a6e10;
 }
 
 /* ==========================================================================
@@ -7463,31 +7508,31 @@ a, button, select, input {
 
 [data-theme="light"] .bookmark-tab {
     background: #ffffff;
-    border-color: #d1c7b5;
-    color: #3a4555;
+    border-color: rgba(200, 150, 24, 0.28);
+    color: #56707a;
 }
 
 [data-theme="light"] .bookmark-tab:hover {
-    border-color: #b45309;
-    color: #0a0f18;
+    border-color: #c89617;
+    color: #03212c;
 }
 
 [data-theme="light"] .bookmark-tab.active {
-    background: rgba(180, 83, 9, 0.1);
-    border-color: #b45309;
-    color: #b45309;
+    background: rgba(200, 150, 24, 0.14);
+    border-color: #c89617;
+    color: #9a6e10;
 }
 
 [data-theme="light"] .bookmark-tab.active .bookmark-tab-badge {
-    background: #b45309;
-    color: #ffffff;
+    background: linear-gradient(135deg, #f0be31 0%, #c89617 100%);
+    color: #03212c;
 }
 
 [data-theme="light"] .bookmark-card-quran,
 [data-theme="light"] .bookmark-card-duaa {
     background: #ffffff;
-    border-color: #d1c7b5;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    border-color: rgba(200, 150, 24, 0.28);
+    box-shadow: 0 4px 14px -2px rgba(3, 33, 44, 0.05);
 }
 
 /* ==========================================================================
@@ -7682,30 +7727,30 @@ a, button, select, input {
 /* Light Mode Overrides for PWA Popup */
 [data-theme="light"] .pwa-banner-card {
     background: #ffffff;
-    border-color: #d1c7b5;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 0 15px rgba(180, 83, 9, 0.1);
+    border-color: rgba(200, 150, 24, 0.32);
+    box-shadow: 0 16px 36px rgba(3, 33, 44, 0.12), 0 0 15px rgba(200, 150, 24, 0.1);
 }
 
 [data-theme="light"] .pwa-banner-close {
-    background: #f7f5ef;
-    border-color: #e2dbce;
-    color: #3a4555;
+    background: #fbf9f4;
+    border-color: rgba(200, 150, 24, 0.25);
+    color: #56707a;
 }
 
 [data-theme="light"] .pwa-btn-secondary {
-    background: #f7f5ef;
-    border-color: #d1c7b5;
-    color: #3a4555;
+    background: #fbf9f4;
+    border-color: rgba(200, 150, 24, 0.28);
+    color: #1e3a45;
 }
 
 [data-theme="light"] .pwa-btn-secondary:hover {
-    color: #0a0f18;
-    border-color: #b45309;
+    color: #03212c;
+    border-color: #c89617;
 }
 
 [data-theme="light"] .pwa-ios-instructions {
-    background: rgba(180, 83, 9, 0.06);
-    border-color: rgba(180, 83, 9, 0.25);
+    background: rgba(200, 150, 24, 0.08);
+    border-color: rgba(200, 150, 24, 0.28);
 }
 
 /* ==========================================================================
@@ -7721,8 +7766,8 @@ a, button, select, input {
 }
 
 [data-theme="light"] .hadith-audio-console {
-    background: #faf8f2;
-    border-color: rgba(180, 83, 9, 0.22);
+    background: #ffffff;
+    border-color: rgba(200, 150, 24, 0.28);
 }
 
 .explanation-box,
@@ -8004,34 +8049,34 @@ a, button, select, input {
 
 /* Light Theme Overrides */
 [data-theme="light"] .rich-explanation-box {
-    background: #fdfbf7;
-    border-color: rgba(180, 83, 9, 0.25);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    background: #ffffff;
+    border-color: rgba(200, 150, 24, 0.28);
+    box-shadow: 0 4px 14px -2px rgba(3, 33, 44, 0.05);
 }
 
 [data-theme="light"] .explanation-text-content {
-    color: #1a222f;
+    color: #1e3a45;
 }
 
 [data-theme="light"] .lesson-card-item {
     background: #ffffff;
-    border-color: #e5dec9;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    border-color: rgba(200, 150, 24, 0.25);
+    box-shadow: 0 2px 8px rgba(3, 33, 44, 0.04);
 }
 
 [data-theme="light"] .lesson-content .lesson-text {
-    color: #1a222f;
+    color: #1e3a45;
 }
 
 [data-theme="light"] .optional-translation-drawer {
-    background: #faf8f2;
-    border-color: #e2dbce;
+    background: #fbf9f4;
+    border-color: rgba(200, 150, 24, 0.25);
 }
 
 [data-theme="light"] .hadith-brief-source-card {
     background: #ffffff;
-    border-color: #e2dbce;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    border-color: rgba(200, 150, 24, 0.28);
+    box-shadow: 0 4px 16px rgba(3, 33, 44, 0.05);
 }
 
 /* ==========================================================================
@@ -8428,26 +8473,33 @@ a, button, select, input {
 /* Light Theme Overrides */
 [data-theme="light"] .share-modal-dialog {
     background: #ffffff !important;
-    border-color: #d1c7b5 !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15) !important;
+    border-color: rgba(200, 150, 24, 0.35) !important;
+    box-shadow: 0 20px 50px rgba(3, 33, 44, 0.16) !important;
 }
 
 [data-theme="light"] .share-preview-card {
-    background: #faf8f2 !important;
-    border-color: #e2dbce !important;
+    background: #fbf9f4 !important;
+    border-color: rgba(200, 150, 24, 0.25) !important;
 }
 
 [data-theme="light"] .share-preview-ar {
-    color: #92400e !important;
+    color: #9a6e10 !important;
 }
 
 [data-theme="light"] .share-preview-sw {
-    color: #0a0f18 !important;
+    color: #03212c !important;
 }
 
 [data-theme="light"] .btn-copy,
 [data-theme="light"] .btn-native {
-    background: #f7f5ef !important;
-    border-color: #d1c7b5 !important;
-    color: #1a222f !important;
+    background: #ffffff !important;
+    border-color: rgba(200, 150, 24, 0.3) !important;
+    color: #03212c !important;
+}
+
+[data-theme="light"] .btn-copy:hover,
+[data-theme="light"] .btn-native:hover {
+    border-color: #c89617 !important;
+    color: #9a6e10 !important;
+    background: rgba(200, 150, 24, 0.08) !important;
 }

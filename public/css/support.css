@@ -656,35 +656,41 @@
    Light Mode Design System Refinements
    -------------------------------------------------------------------------- */
 [data-theme="light"] .support-hero {
-    background: radial-gradient(circle at 80% 20%, rgba(180, 83, 9, 0.08), transparent 50%),
+    background: radial-gradient(circle at 80% 20%, rgba(200, 150, 24, 0.12), transparent 50%),
                 linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-body) 100%);
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px -2px rgba(3, 33, 44, 0.05);
+    border: 1.5px solid rgba(200, 150, 24, 0.28);
 }
 
 [data-theme="light"] .purpose-tab-btn.active {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    border-color: var(--border-color);
+    box-shadow: 0 2px 8px rgba(3, 33, 44, 0.06);
+    border-color: #c89617;
+    color: #9a6e10;
 }
 
 [data-theme="light"] .curr-toggle-btn.active {
-    color: #ffffff;
+    color: #03212c !important;
+    font-weight: 800;
 }
 
 [data-theme="light"] .support-submit-btn {
-    color: #ffffff;
-    box-shadow: 0 4px 14px rgba(180, 83, 9, 0.25);
+    color: #03212c !important;
+    font-weight: 800;
+    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.35);
 }
 
 [data-theme="light"] .support-submit-btn:hover {
-    box-shadow: 0 6px 20px rgba(180, 83, 9, 0.35);
+    color: #02161e !important;
+    box-shadow: 0 6px 20px rgba(200, 150, 24, 0.45);
 }
 
 [data-theme="light"] .preset-chip-btn.active {
-    color: var(--gold-dark);
+    color: #03212c !important;
+    font-weight: 800;
 }
 
 [data-theme="light"] .conf-amount-val {
-    color: var(--gold-dark);
+    color: #9a6e10;
 }
 
 [data-theme="light"] .conf-ref-row {
