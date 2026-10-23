@@ -284,4 +284,109 @@
                 .catch((error) => console.warn('Hadith offline setup failed.', error));
         });
     }
+
+    // 8. Arifa za Kila Siku (Daily Push Notifications Handler)
+    const notifBtn = document.getElementById('drawer-notif-btn');
+    const notifTitle = document.getElementById('drawer-notif-title');
+    const notifSub = document.getElementById('drawer-notif-sub');
+    const notifBadge = document.getElementById('drawer-notif-badge');
+
+    const updateNotificationUi = () => {
+        if (!notifBtn || !('Notification' in window)) return;
+        const permission = Notification.permission;
+        let isSaved = false;
+        try {
+            isSaved = localStorage.getItem('hadith_daily_notif_enabled') === '1';
+        } catch (_) {}
+
+        if (permission === 'granted' && isSaved) {
+            if (notifBadge) {
+                notifBadge.textContent = 'Imewashwa';
+                notifBadge.classList.add('is-installed');
+            }
+            if (notifSub) {
+                notifSub.textContent = 'Unapokea Hadithi kila asubuhi';
+            }
+        } else {
+            if (notifBadge) {
+                notifBadge.textContent = 'Washa';
+                notifBadge.classList.remove('is-installed');
+            }
+            if (notifSub) {
+                notifSub.textContent = 'Hadithi ya siku kila asubuhi';
+            }
+        }
+    };
+
+    if (notifBtn) {
+        updateNotificationUi();
+
+        notifBtn.addEventListener('click', async () => {
+            if (!('Notification' in window)) {
+                alert('Kifaa hiki au kivinjari hakiruhusu arifa za PWA.');
+                return;
+            }
+
+            if (Notification.permission === 'granted') {
+                let isSaved = false;
+                try {
+                    isSaved = localStorage.getItem('hadith_daily_notif_enabled') === '1';
+                } catch (_) {}
+
+                if (isSaved) {
+                    // Zima arifa
+                    try {
+                        localStorage.setItem('hadith_daily_notif_enabled', '0');
+                    } catch (_) {}
+                    updateNotificationUi();
+                    return;
+                }
+            }
+
+            try {
+                const permission = await Notification.requestPermission();
+                if (permission === 'granted') {
+                    try {
+                        localStorage.setItem('hadith_daily_notif_enabled', '1');
+                    } catch (_) {}
+                    updateNotificationUi();
+
+                    // Tuma data kwenye seva
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+                    if ('serviceWorker' in navigator) {
+                        const reg = await navigator.serviceWorker.ready;
+                        let sub = null;
+                        try {
+                            if (reg.pushManager) {
+                                sub = await reg.pushManager.getSubscription();
+                            }
+                        } catch (_) {}
+
+                        const endpoint = sub ? sub.endpoint : ('local-sub-' + Math.random().toString(36).substring(2));
+                        fetch('/api/push-subscriptions', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': csrfToken || ''
+                            },
+                            body: JSON.stringify({ endpoint: endpoint })
+                        }).catch(() => {});
+
+                        // Onyesha arifa ya kwanza ya uthibitisho papo hapo
+                        reg.showNotification('Hadithi ya Siku · Bayt Al-Hadith', {
+                            body: 'Arifa zimewashwa kikamilifu! Utapokea Hadithi ya Siku kila asubuhi.',
+                            icon: '/icons/icon-192.png',
+                            badge: '/icons/icon-192.png',
+                            data: { url: '/hadith-ya-leo' },
+                            tag: 'welcome-daily-hadith'
+                        });
+                    }
+                } else {
+                    updateNotificationUi();
+                }
+            } catch (err) {
+                console.warn('Hitilafu ya arifa:', err);
+            }
+        });
+    }
 })();

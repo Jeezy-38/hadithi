@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\HadithAudioController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\QuranController;
 use App\Livewire\DuaIndex;
 use App\Livewire\Library;
@@ -191,6 +192,13 @@ Route::post('/logout', [SocialAuthController::class, 'logout'])->middleware('aut
 Route::get('/audio/hadith/{hadith}/{lang}', HadithAudioController::class)
     ->middleware('throttle:30,1')
     ->name('hadith.audio');
+
+// =========================================================================
+// Arifa za Kila Siku (PWA Push Notifications) & Hadithi ya Siku API
+// =========================================================================
+Route::post('/api/push-subscriptions', [PushNotificationController::class, 'subscribe'])->name('api.push.subscribe');
+Route::delete('/api/push-subscriptions', [PushNotificationController::class, 'unsubscribe'])->name('api.push.unsubscribe');
+Route::get('/api/hadith-ya-leo', [PushNotificationController::class, 'todayHadith'])->name('api.hadith.today');
 
 // =========================================================================
 // Jopo Kuu la Utawala (Admin Panel) - Inalindwa na 'auth' na 'admin'
