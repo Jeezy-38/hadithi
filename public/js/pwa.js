@@ -86,13 +86,8 @@
         if (standalone() && !force) return;
         if (!force && isDismissed()) return;
 
-        if (isIos() && !deferredPrompt) {
-            if (stdActions) stdActions.hidden = true;
-            if (iosInstructions) iosInstructions.hidden = false;
-        } else {
-            if (stdActions) stdActions.hidden = false;
-            if (iosInstructions) iosInstructions.hidden = true;
-        }
+        if (stdActions) stdActions.hidden = false;
+        if (iosInstructions) iosInstructions.hidden = true;
 
         banner.hidden = false;
         if (typeof requestAnimationFrame === 'function') {
@@ -186,9 +181,19 @@
                 return;
             }
 
-            if (isIos() && iosInstructions) {
-                if (stdActions) stdActions.hidden = true;
-                iosInstructions.hidden = false;
+            if (isIos()) {
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: 'Hadith App',
+                            url: window.location.href,
+                        });
+                        hideBanner();
+                        return;
+                    } catch (_) {}
+                }
+                alert("Ili kuweka Hadith App kwenye iPhone/iPad:\n1. Gusa kitufe cha Kushiriki (Share icon chini ya Safari)\n2. Chagua 'Add to Home Screen'.");
+                hideBanner();
             } else {
                 alert("Ili kuweka Hadith App kwenye simu yako:\n1. Gusa menyu ya kivinjari chako (vitone 3 ⋮ juu au chini)\n2. Chagua 'Install app' au 'Ongeza kwenye Skrini ya Mwanzo' (Add to Home Screen).");
                 hideBanner();
