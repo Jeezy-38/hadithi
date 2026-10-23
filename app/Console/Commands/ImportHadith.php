@@ -29,9 +29,27 @@ class ImportHadith extends Command
             $this->error('Dataset lazima iwe orodha ya hadith isiyo tupu.');
             return self::FAILURE;
         }
-        $validator = Validator::make($rows, [
+
+        @ini_set('memory_limit', '1024M');
+
+        // Hakikisha kila reference ni ya kipekee (distinct) kwenye mkusanyiko wote
+        $seenRefs = [];
+        foreach ($rows as $index => $row) {
+            $ref = $row['reference'] ?? null;
+            if (! is_string($ref) || $ref === '') {
+                $this->error("Hadithi namba " . ($index + 1) . " haina reference sahihi.");
+                return self::FAILURE;
+            }
+            if (isset($seenRefs[$ref])) {
+                $this->error("Reference '{$ref}' imerudiwa (namba " . ($seenRefs[$ref] + 1) . " na " . ($index + 1) . ").");
+                return self::FAILURE;
+            }
+            $seenRefs[$ref] = $index;
+        }
+
+        $rules = [
             '*.collection' => ['required', Rule::in(['bukhari', 'muslim', 'tirmidhi', 'abudawud', 'ahmad', 'nasai', 'ibnmajah', 'nawawi40', 'riyadhadussalihin'])],
-            '*.reference' => ['required', 'string', 'max:255', 'distinct:strict'],
+            '*.reference' => ['required', 'string', 'max:255'],
             '*.number' => ['required', 'string', 'max:255'],
             '*.book.number' => ['required', 'integer', 'min:1'],
             '*.book.title_sw' => ['required', 'string', 'max:255'],
@@ -63,12 +81,16 @@ class ImportHadith extends Command
             '*.license_url' => ['nullable', 'url:http,https'],
             '*.source_fetched_at' => ['nullable', 'date'],
             '*.source_sha256' => ['nullable', 'regex:/^[a-f0-9]{64}$/'],
-        ]);
-        if ($validator->fails()) {
-            foreach ($validator->errors()->all() as $error) {
-                $this->error($error);
+        ];
+
+        foreach (array_chunk($rows, 1000) as $chunk) {
+            $validator = Validator::make($chunk, $rules);
+            if ($validator->fails()) {
+                foreach ($validator->errors()->all() as $error) {
+                    $this->error($error);
+                }
+                return self::FAILURE;
             }
-            return self::FAILURE;
         }
         $collections = Collection::pluck('id', 'slug');
         foreach ($rows as $row) {
