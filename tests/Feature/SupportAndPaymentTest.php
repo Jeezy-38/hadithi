@@ -13,6 +13,18 @@ class SupportAndPaymentTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        config([
+            'services.payment_gateway' => 'simulation',
+            'services.clickpesa.client_id' => null,
+            'services.clickpesa.api_key' => null,
+            'services.pesapal.mode' => 'simulation',
+        ]);
+    }
+
     public function test_support_page_renders_successfully(): void
     {
         $response = $this->get(route('support'));

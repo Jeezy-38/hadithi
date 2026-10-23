@@ -7471,7 +7471,7 @@ a, button, select, input {
 }
 
 /* ==========================================================================
-   PWA INSTALL FLOATING POPUP (CHINI UPANDE WA KUSHOTO)
+   PWA INSTALL FLOATING POPUP (KAMILI NA YA KISASA)
    ========================================================================== */
 .pwa-install-banner {
     position: fixed;
@@ -7480,7 +7480,7 @@ a, button, select, input {
     top: auto;
     right: auto;
     inset: auto auto 24px 24px;
-    z-index: 9999;
+    z-index: 10005;
     display: block;
     padding: 0;
     opacity: 0;
@@ -7503,26 +7503,27 @@ a, button, select, input {
 
 .pwa-banner-card {
     position: relative;
-    width: 290px;
+    width: 350px;
     max-width: calc(100vw - 32px);
     background: var(--bg-surface-elevated, #131920);
     border: 1.5px solid rgba(218, 181, 106, 0.35);
-    border-radius: 16px;
-    padding: 12px 14px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(218, 181, 106, 0.15);
+    border-radius: 18px;
+    padding: 14px 16px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(218, 181, 106, 0.15);
+    box-sizing: border-box;
 }
 
 .pwa-banner-close {
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--border-subtle);
     color: var(--text-muted);
     cursor: pointer;
@@ -7532,21 +7533,22 @@ a, button, select, input {
 .pwa-banner-close:hover {
     color: var(--text-primary);
     border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .pwa-banner-body {
     display: flex;
     gap: 12px;
     align-items: center;
-    margin-bottom: 10px;
-    padding-right: 28px;
+    margin-bottom: 12px;
+    padding-right: 32px;
 }
 
 .pwa-banner-logo {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
     flex-shrink: 0;
 }
 
@@ -7557,7 +7559,7 @@ a, button, select, input {
 
 .pwa-banner-content h3 {
     margin: 0 0 2px 0;
-    font-size: 14px;
+    font-size: 14.5px;
     font-weight: 800;
     color: var(--text-primary);
     white-space: nowrap;
@@ -7567,12 +7569,10 @@ a, button, select, input {
 
 .pwa-banner-desc {
     margin: 0;
-    font-size: 11.5px;
-    line-height: 1.3;
+    font-size: 12px;
+    line-height: 1.35;
     color: var(--text-muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
 }
 
 .pwa-banner-actions {
@@ -7585,30 +7585,31 @@ a, button, select, input {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 14px;
+    padding: 9px 14px;
     background: var(--gold-gradient);
     color: #0a0e13;
     font-size: 12.5px;
     font-weight: 800;
-    border-radius: 9px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
     box-shadow: 0 3px 10px rgba(218, 181, 106, 0.25);
-    transition: transform .15s ease;
+    transition: transform .15s ease, filter .15s ease;
 }
 
 .pwa-btn-primary:hover {
     transform: translateY(-1px);
+    filter: brightness(1.05);
 }
 
 .pwa-btn-secondary {
-    padding: 8px 12px;
+    padding: 9px 14px;
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
     color: var(--text-muted);
     font-size: 12px;
     font-weight: 700;
-    border-radius: 9px;
+    border-radius: 10px;
     cursor: pointer;
     transition: all .15s ease;
 }
@@ -7623,27 +7624,38 @@ a, button, select, input {
 }
 
 .pwa-ios-instructions {
-    margin-top: 6px;
+    margin-top: 8px;
+    padding: 10px 12px;
+    background: rgba(218, 181, 106, 0.08);
+    border: 1px dashed rgba(218, 181, 106, 0.35);
+    border-radius: 12px;
 }
 
 .pwa-ios-hint {
-    font-size: 11px;
-    line-height: 1.4;
+    font-size: 12px;
+    line-height: 1.45;
     color: var(--text-secondary);
-    margin: 0 0 8px 0;
+    margin: 0;
 }
 
 @media (max-width: 768px) {
     .pwa-install-banner {
-        bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+        bottom: calc(76px + env(safe-area-inset-bottom, 0px));
         left: 14px;
-        right: auto;
-        inset: auto auto calc(72px + env(safe-area-inset-bottom, 0px)) 14px;
+        right: 14px;
+        inset: auto 14px calc(76px + env(safe-area-inset-bottom, 0px)) 14px;
+        display: flex;
+        justify-content: center;
+        width: calc(100vw - 28px);
+        max-width: 100vw;
     }
 
     .pwa-banner-card {
-        width: 290px;
-        max-width: calc(100vw - 28px);
+        width: 100%;
+        max-width: 390px;
+        margin: 0 auto;
+        padding: 12px 14px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 16px rgba(218, 181, 106, 0.2);
     }
 }
 
@@ -7671,9 +7683,9 @@ a, button, select, input {
     border-color: #b45309;
 }
 
-[data-theme="light"] .pwa-ios-guide {
-    background: #f7f5ef;
-    border-color: #e2dbce;
+[data-theme="light"] .pwa-ios-instructions {
+    background: rgba(180, 83, 9, 0.06);
+    border-color: rgba(180, 83, 9, 0.25);
 }
 
 /* ==========================================================================
