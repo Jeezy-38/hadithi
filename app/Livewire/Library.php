@@ -171,19 +171,11 @@ class Library extends Component
             ->groupBy(fn ($h) => $h->chapter->book->collection->slug ?? '')
             ->map(fn ($group) => $group->take(1));
 
-        $totalPublished = Hadith::published()->count();
-        $dayIndex = (int) now()->format('z');
-        $todayHadith = $totalPublished > 0
-            ? Hadith::published()->with('chapter.book.collection')->orderBy('id')->skip($dayIndex % $totalPublished)->first()
-            : null;
-
         return view('livewire.library', [
             'collections' => Collection::orderBy('id')->get(),
             'collectionCounts' => $collectionCounts,
             'collectionPreviews' => $collectionPreviews,
             'narratorMeta' => $this->getNarratorMeta(),
-            'todayHadith' => $todayHadith,
-            'topics' => \App\Livewire\TopicIndex::getIslamicTopics(),
             'books' => Book::whereHas('chapters.hadiths', fn ($q) => $q->published())
                 ->when($this->collection !== '', fn ($q) => $q->whereHas('collection', fn ($q) => $q->where('slug', $this->collection)))
                 ->with('collection')->orderBy('collection_id')->orderBy('number')->get(),
@@ -192,7 +184,7 @@ class Library extends Component
                 ->when($this->collection !== '', fn ($q) => $q->whereHas('book.collection', fn ($q) => $q->where('slug', $this->collection)))
                 ->orderBy('number')->get(),
             'hadiths' => $query->orderBy('id')->paginate(10),
-            'total' => $totalPublished,
+            'total' => Hadith::published()->count(),
             'bookCount' => Book::whereHas('chapters.hadiths', fn ($q) => $q->published())->count(),
         ])->layout('components.layouts.app', ['title' => 'Maktaba ya Hadith']);
     }
