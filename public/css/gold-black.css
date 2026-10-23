@@ -1090,7 +1090,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-width: 900px;
+    max-width: 920px;
     margin: 0 auto;
     width: 100%;
 }
@@ -1099,10 +1099,9 @@ button {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
-    min-height: 110px;
-    padding: 18px 24px 18px 18px;
+    min-height: 112px;
+    padding: 16px 20px 16px 16px;
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
@@ -1110,34 +1109,35 @@ button {
     box-sizing: border-box;
     font-family: inherit;
     gap: 16px;
-    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
     border: 1.5px solid transparent;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Light Mode Card Styling */
+/* Light Mode Base */
 [data-theme="light"] .hadith-book-row-card {
-    background: linear-gradient(135deg, #ffffff 0%, #fdfcf9 55%, #fbf7ee 100%);
-    border-color: rgba(200, 158, 58, 0.45);
-    box-shadow: 0 4px 20px -2px rgba(184, 134, 11, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+    background: linear-gradient(135deg, #ffffff 0%, #fdfcf9 55%, #fbf6ec 100%);
+    border-color: rgba(200, 158, 58, 0.5);
+    box-shadow: 0 4px 20px -2px rgba(184, 134, 11, 0.1), 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 [data-theme="light"] .hadith-book-row-card:hover {
     transform: translateY(-2px);
     border-color: #d4af37;
-    box-shadow: 0 12px 30px -4px rgba(184, 134, 11, 0.18), 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 12px 30px -4px rgba(184, 134, 11, 0.2), 0 4px 10px rgba(0, 0, 0, 0.06);
 }
 
-/* Dark Mode Card Styling */
+/* Dark Mode Base */
 [data-theme="dark"] .hadith-book-row-card {
     background: linear-gradient(135deg, #041920 0%, #06262f 48%, #03151b 100%);
-    border-color: rgba(212, 175, 55, 0.6);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    border-color: rgba(212, 175, 55, 0.65);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 [data-theme="dark"] .hadith-book-row-card:hover {
     transform: translateY(-2px);
     border-color: #fbbf24;
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.6), 0 0 24px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65), 0 0 26px rgba(212, 175, 55, 0.3);
 }
 
 /* Left Decorative Art (Filigree & Hanging Lantern) */
@@ -1146,7 +1146,7 @@ button {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 90px;
+    width: 65px;
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
@@ -1163,10 +1163,13 @@ button {
     right: 0;
     top: 0;
     bottom: 0;
-    width: 440px;
+    width: 380px;
+    max-width: 55%;
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, black 45%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, black 45%);
 }
 
 .deco-svg-right {
@@ -1174,18 +1177,13 @@ button {
     height: 100%;
 }
 
-/* Light Mode SVG Artwork Colors */
-[data-theme="light"] .filigree-stroke {
-    fill: #1d5843;
-    opacity: 0.15;
-}
+/* Light Mode SVG Artwork */
 [data-theme="light"] .filigree-line {
     stroke: #c89e3a;
 }
-[data-theme="light"] .lantern-chain {
-    stroke: #b58b2f;
-}
-[data-theme="light"] .lantern-ring {
+[data-theme="light"] .lantern-chain,
+[data-theme="light"] .lantern-ring,
+[data-theme="light"] .mosque-metal {
     stroke: #b58b2f;
 }
 [data-theme="light"] .lantern-metal {
@@ -1198,41 +1196,34 @@ button {
 }
 [data-theme="light"] .lantern-flame {
     fill: #f59e0b;
-    opacity: 0.9;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.8));
 }
 [data-theme="light"] .mosque-silhouette {
     fill: #ede0c6;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 [data-theme="light"] .mosque-silhouette-bg {
     fill: #f5ecd9;
-    opacity: 0.55;
+    opacity: 0.6;
 }
-[data-theme="light"] .mosque-metal {
-    stroke: #b58b2f;
-}
-[data-theme="light"] .finial-crescent {
-    fill: #c89e3a;
+[data-theme="light"] .finial-crescent,
+[data-theme="light"] .sky-crescent {
+    fill: #d4af37;
+    filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.4));
 }
 [data-theme="light"] .mosque-window {
     fill: #ffffff;
     opacity: 0.95;
 }
-[data-theme="light"] .sky-crescent {
-    fill: #deb859;
-}
 
-/* Dark Mode SVG Artwork Colors */
-[data-theme="dark"] .filigree-stroke {
-    fill: none;
-}
+/* Dark Mode SVG Artwork */
 [data-theme="dark"] .filigree-line {
     stroke: #d4af37;
 }
-[data-theme="dark"] .lantern-chain {
-    stroke: #d4af37;
-}
-[data-theme="dark"] .lantern-ring {
+[data-theme="dark"] .lantern-chain,
+[data-theme="dark"] .lantern-ring,
+[data-theme="dark"] .mosque-metal {
     stroke: #d4af37;
 }
 [data-theme="dark"] .lantern-metal {
@@ -1240,52 +1231,47 @@ button {
 }
 [data-theme="dark"] .lantern-glass {
     fill: #fbbf24;
-    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.75));
     stroke: #fef08a;
     stroke-width: 0.8;
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.85));
 }
 [data-theme="dark"] .lantern-flame {
     fill: #ffffff;
-    filter: drop-shadow(0 0 5px #ffffff);
+    filter: drop-shadow(0 0 6px #ffffff);
 }
 [data-theme="dark"] .mosque-silhouette {
     fill: #08343f;
 }
 [data-theme="dark"] .mosque-silhouette-bg {
     fill: #052129;
-    opacity: 0.75;
+    opacity: 0.8;
 }
-[data-theme="dark"] .mosque-metal {
-    stroke: #d4af37;
-}
-[data-theme="dark"] .finial-crescent {
+[data-theme="dark"] .finial-crescent,
+[data-theme="dark"] .sky-crescent {
     fill: #fbbf24;
+    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.85));
 }
 [data-theme="dark"] .mosque-window {
     fill: #fbbf24;
-    filter: drop-shadow(0 0 3px rgba(251, 191, 36, 0.9));
-}
-[data-theme="dark"] .sky-crescent {
-    fill: #fbbf24;
-    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.8));
+    filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.95));
 }
 
 /* Emblem Medallion Badge */
 .book-emblem-wrap {
     position: relative;
     z-index: 2;
-    width: 54px;
-    height: 54px;
+    width: 52px;
+    height: 52px;
     flex-shrink: 0;
-    margin-left: 24px;
+    margin-left: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .medallion-svg {
-    width: 54px;
-    height: 54px;
+    width: 52px;
+    height: 52px;
     overflow: visible;
     transition: transform 0.25s ease;
 }
@@ -1338,7 +1324,7 @@ button {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
     justify-content: center;
 }
 
@@ -1397,10 +1383,18 @@ button {
     text-shadow: 0 0 14px rgba(45, 212, 191, 0.35);
 }
 
+.book-star-mobile {
+    display: none;
+}
+
+.book-star-desktop {
+    display: inline;
+}
+
 .book-meta-sub {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     font-size: 13.5px;
     font-weight: 500;
     flex-wrap: wrap;
@@ -1413,8 +1407,8 @@ button {
 }
 
 .book-meta-icon {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     flex-shrink: 0;
 }
 
@@ -1429,6 +1423,7 @@ button {
 
 .book-hadith-count {
     font-weight: 500;
+    white-space: nowrap;
 }
 
 [data-theme="light"] .book-hadith-count {
@@ -1471,16 +1466,24 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
     flex-shrink: 0;
     margin-left: auto;
     transition: transform 0.2s ease;
 }
 
+.book-action-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
 .book-chevron-svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     stroke-width: 2.5;
     transition: transform 0.2s ease, stroke 0.2s ease, filter 0.2s ease;
 }
@@ -3481,44 +3484,115 @@ a, button, select, input {
     .hadith-books-title {
         font-size: 20px;
     }
+    .hadith-books-list {
+        gap: 14px;
+    }
+
     .hadith-book-row-card {
-        padding: 14px 14px;
+        padding: 14px 14px 14px 12px;
+        min-height: 124px;
         gap: 12px;
-        border-radius: 16px;
-        min-height: 88px;
+        border-radius: 18px;
     }
+
+    /* Keep Left Hanging Lantern Visible & Elegant on Phone! */
     .card-deco-left {
-        display: none;
+        display: block;
+        width: 48px;
+        opacity: 0.95;
     }
-    .card-deco-right {
-        width: 220px;
-        opacity: 0.14;
-    }
+
+    /* Shift Badge slightly to make space for lantern */
     .book-emblem-wrap {
         width: 44px;
         height: 44px;
-        margin-left: 0;
+        margin-left: 14px;
     }
+
     .medallion-svg {
         width: 44px;
         height: 44px;
     }
+
     .medallion-letter {
         font-size: 19px;
     }
+
+    /* Right Mosque is Vibrant, Glowing, and Beautifully Masked */
+    .card-deco-right {
+        display: block;
+        width: 280px;
+        max-width: 62%;
+        opacity: 0.9;
+        mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 15%, black 45%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 15%, black 45%);
+    }
+
+    /* Title Column */
+    .book-info-col {
+        gap: 5px;
+    }
+
+    .book-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
     .book-name {
         font-size: 16.5px;
+        line-height: 1.2;
     }
+
     .book-name-ar {
-        font-size: 18px;
+        font-size: 17px;
+        line-height: 1.25;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
     }
+
+    /* On mobile, stars wrap neatly around Arabic title */
+    .book-star-desktop {
+        display: none;
+    }
+
+    .book-star-mobile {
+        display: inline;
+        font-size: 11px;
+    }
+
+    /* Meta Info Row */
     .book-meta-sub {
-        font-size: 12px;
-        gap: 8px;
+        font-size: 11.5px;
+        gap: 6px;
+        margin-top: 3px;
     }
+
+    .book-meta-icon {
+        width: 13.5px;
+        height: 13.5px;
+    }
+
+    .book-author-item {
+        max-width: 140px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .book-action-col {
-        width: 24px;
-        height: 24px;
+        margin-left: 2px;
+    }
+
+    .book-action-circle {
+        width: 26px;
+        height: 26px;
+    }
+
+    .book-chevron-svg {
+        width: 16px;
+        height: 16px;
     }
     .inside-book-banner {
         padding: 20px 18px;
