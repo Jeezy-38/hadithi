@@ -8503,3 +8503,193 @@ a, button, select, input {
     color: #9a6e10 !important;
     background: rgba(200, 150, 24, 0.08) !important;
 }
+
+
+/* ==========================================================================
+   ISLAMIC TOPICS & THEMATIC HADITHS (MADA ZA KIISLAMU)
+   ========================================================================== */
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.topic-box-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 22px;
+    background: linear-gradient(135deg, #052936 0%, #083443 60%, #02202b 100%);
+    border: 1.5px solid var(--border-color);
+    border-radius: 18px;
+    cursor: pointer;
+    text-align: left;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="light"] .topic-box-card {
+    background: #ffffff;
+    border-color: rgba(2, 32, 43, 0.12);
+    box-shadow: 0 4px 16px -2px rgba(2, 32, 43, 0.06);
+}
+
+.topic-box-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-focus);
+    background: linear-gradient(135deg, #093747 0%, #0c4356 60%, #052936 100%);
+    box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(235, 176, 54, 0.25);
+}
+
+[data-theme="light"] .topic-box-card:hover {
+    border-color: var(--gold);
+    background: #ffffff;
+    box-shadow: 0 12px 28px -4px rgba(2, 32, 43, 0.12), 0 0 0 1.5px var(--gold);
+}
+
+.topic-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 8px;
+}
+
+.topic-emblem {
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid;
+    display: inline-flex;
+    align-items: center;
+}
+
+.topic-badge-pill {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.topic-arabic-tag {
+    font-family: var(--font-arabic, 'Amiri', serif);
+    font-size: 15px;
+    color: var(--gold);
+    opacity: 0.9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.topic-card-body {
+    flex: 1;
+    margin-bottom: 16px;
+}
+
+.topic-card-title {
+    font-family: var(--font-display, inherit);
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+    letter-spacing: -0.2px;
+}
+
+.topic-card-sub {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.topic-card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0;
+}
+
+.topic-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 12.5px;
+    font-weight: 700;
+}
+
+.topic-chevron {
+    color: var(--gold);
+    font-size: 15px;
+    transition: transform 0.2s ease;
+}
+
+.topic-box-card:hover .topic-chevron {
+    transform: translateX(4px);
+}
+
+/* Topic Active Banner */
+.topic-active-banner {
+    padding: 28px 24px;
+    background: linear-gradient(135deg, #052936 0%, #083443 60%, #02202b 100%);
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+[data-theme="light"] .topic-active-banner {
+    background: #ffffff;
+    border-color: rgba(2, 32, 43, 0.12);
+    box-shadow: 0 8px 24px -4px rgba(2, 32, 43, 0.08);
+}
+
+.topic-banner-top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.topic-banner-ar {
+    font-family: var(--font-arabic, 'Amiri', serif);
+    font-size: 24px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.topic-banner-title {
+    font-family: var(--font-display, inherit);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+}
+
+.topic-banner-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0;
+}
+
+@media (max-width: 640px) {
+    .topics-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .topic-active-banner {
+        padding: 20px 16px;
+    }
+    .topic-banner-title {
+        font-size: 21px;
+    }
+    .topic-banner-ar {
+        font-size: 20px;
+    }
+}

@@ -42,6 +42,23 @@
 
             <div wire:loading.class="is-loading">
                 @if($collection === '' && $search === '' && $hadiths->currentPage() === 1)
+                    {{-- Thematic Topics Banner --}}
+                    <div class="topics-quick-banner" style="margin-bottom: 24px; padding: 18px 22px; border-radius: 18px; background: linear-gradient(135deg, rgba(235, 176, 54, 0.12) 0%, rgba(13, 148, 136, 0.12) 100%); border: 1.5px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
+                        <div style="display: flex; align-items: center; gap: 14px;">
+                            <div style="width: 42px; height: 42px; border-radius: 12px; background: var(--gold-subtle); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 20px;">
+                                ✦
+                            </div>
+                            <div>
+                                <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: var(--text-primary); letter-spacing: -0.2px;">Soma Hadithi kwa Mada Maalum</h3>
+                                <p style="font-size: 13px; color: var(--text-muted); margin: 3px 0 0;">Subira, Tabia Njema, Swala, Tawba, Riziki Halali, Familia, na nyinginezo.</p>
+                            </div>
+                        </div>
+                        <a href="{{ route('topics.index') }}" class="hero-button" style="padding: 10px 20px; font-size: 13px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px;">
+                            <span>Gundua Mada</span>
+                            <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+
                     {{-- Collections Catalog View --}}
                     <section class="hadith-books-catalog" aria-label="Collections">
                         <div class="hadith-books-header">

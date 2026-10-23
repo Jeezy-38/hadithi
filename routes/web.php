@@ -10,6 +10,7 @@ use App\Livewire\DuaIndex;
 use App\Livewire\Library;
 use App\Livewire\QuranIndex;
 use App\Livewire\SupportIndex;
+use App\Livewire\TopicIndex;
 use App\Models\Dua;
 use App\Models\Hadith;
 use Illuminate\Http\Request;
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 Route::get('/', Library::class)->name('library');
+Route::get('/mada', TopicIndex::class)->name('topics.index');
+Route::get('/mada/{slug}', TopicIndex::class)->name('topics.show');
 Route::get('/changia', SupportIndex::class)->name('support');
 Route::get('/sadaka', fn () => redirect()->route('support'))->name('support.alias');
 

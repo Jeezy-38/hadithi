@@ -30,6 +30,17 @@
                 <span class="nav-drawer-text" data-i18n="nav_library">Maktaba</span>
                 <span class="nav-drawer-arrow" aria-hidden="true">→</span>
             </a>
+            <a href="{{ route('topics.index') }}" class="nav-drawer-link {{ request()->routeIs('topics.*') ? 'active' : '' }}">
+                <span class="nav-drawer-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                        <path d="M2 12h20"></path>
+                    </svg>
+                </span>
+                <span class="nav-drawer-text">Mada za Kiislamu</span>
+                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+            </a>
             <a href="{{ route('quran.index') }}" class="nav-drawer-link {{ request()->routeIs('quran.*') ? 'active' : '' }}">
                 <span class="nav-drawer-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
