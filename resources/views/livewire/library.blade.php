@@ -42,8 +42,8 @@
 
             <div wire:loading.class="is-loading">
                 @if($collection === '' && $search === '' && $hadiths->currentPage() === 1)
-                    {{-- Hadith Books Catalog View --}}
-                    <section class="hadith-books-catalog" aria-label="Vitabu vya Hadithi">
+                    {{-- Collections Catalog View --}}
+                    <section class="hadith-books-catalog" aria-label="Collections">
                         <div class="hadith-books-header">
                             <div class="hadith-books-title-group">
                                 <div class="hadith-header-art" aria-hidden="true">
@@ -60,7 +60,7 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h2 class="hadith-books-title">Hadith Books</h2>
+                                    <h2 class="hadith-books-title">Collections</h2>
                                 </div>
                             </div>
                             @if($total === 0)
