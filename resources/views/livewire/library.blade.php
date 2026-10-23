@@ -80,138 +80,30 @@
                                     $sample = isset($collectionPreviews[$item->slug]) ? $collectionPreviews[$item->slug]->first() : null;
                                 @endphp
                                 <button type="button" class="hadith-book-row-card" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
-                                    {{-- Left Islamic Filigree & Hanging Lantern --}}
-                                    <div class="card-deco-left" aria-hidden="true">
-                                        <svg class="deco-svg-left" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <!-- Top-Left Corner Arabesque Filigree -->
-                                            <path class="filigree-line" d="M0,2 C12,2 24,8 28,18 C30,23 27,29 20,32 C15,34 8,32 5,27 C2,22 5,17 10,16 C15,15 21,19 22,24" stroke-width="1.2" stroke-linecap="round" />
-                                            <path class="filigree-line" d="M2,0 C2,12 8,24 18,28 C23,30 29,27 32,20 C34,15 32,8 27,5 C22,2 17,5 16,10 C15,15 19,21 24,22" stroke-width="0.9" opacity="0.6" />
-                                            
-                                            <!-- Hanging Golden Lantern (Fanoos) Left -->
-                                            <line x1="38" y1="0" x2="38" y2="24" class="lantern-chain" stroke-width="1.2" />
-                                            <circle cx="38" cy="25" r="2" class="lantern-ring" stroke-width="1" fill="none" />
-                                            <path d="M33 28 L43 28 L41 31 L35 31 Z" class="lantern-metal" />
-                                            <polygon points="34,31 42,31 45,43 38,51 31,43" class="lantern-glass" />
-                                            <circle cx="38" cy="40" r="3.5" class="lantern-flame" />
-                                            <line x1="38" y1="51" x2="38" y2="56" class="lantern-chain" stroke-width="1" />
-                                            <circle cx="38" cy="57" r="1.2" class="lantern-metal" />
-
-                                            <!-- Bottom-Left Filigree -->
-                                            <path class="filigree-line" d="M0,118 C12,118 22,112 25,102 C27,96 24,90 18,87" stroke-width="1" opacity="0.4" />
-                                        </svg>
+                                    <div class="book-emblem-wrap">
+                                        <div class="book-emblem-diamond">
+                                            <span class="book-emblem-letter">{{ $letter }}</span>
+                                        </div>
                                     </div>
 
-                                    {{-- Medallion Badge with Initial Letter --}}
-                                    <div class="book-emblem-wrap" aria-hidden="true">
-                                        <svg class="medallion-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path class="medallion-bg" d="M 52.33 23.58 A 10.5 10.5 0 0 1 52.33 40.42 A 10.5 10.5 0 0 1 40.42 52.33 A 10.5 10.5 0 0 1 23.58 52.33 A 10.5 10.5 0 0 1 11.67 40.42 A 10.5 10.5 0 0 1 11.67 23.58 A 10.5 10.5 0 0 1 23.58 11.67 A 10.5 10.5 0 0 1 40.42 11.67 A 10.5 10.5 0 0 1 52.33 23.58 Z" />
-                                            <path class="medallion-border" d="M 52.33 23.58 A 10.5 10.5 0 0 1 52.33 40.42 A 10.5 10.5 0 0 1 40.42 52.33 A 10.5 10.5 0 0 1 23.58 52.33 A 10.5 10.5 0 0 1 11.67 40.42 A 10.5 10.5 0 0 1 11.67 23.58 A 10.5 10.5 0 0 1 23.58 11.67 A 10.5 10.5 0 0 1 40.42 11.67 A 10.5 10.5 0 0 1 52.33 23.58 Z" />
-                                            <text class="medallion-letter" x="32" y="38" text-anchor="middle" dominant-baseline="middle">{{ $letter }}</text>
-                                        </svg>
-                                    </div>
-
-                                    {{-- Book Information --}}
                                     <div class="book-info-col">
                                         <div class="book-title-row">
                                             <h3 class="book-name">{{ $item->name }}</h3>
                                             @if($item->name_ar)
-                                                <span class="book-star-sep book-star-desktop" aria-hidden="true">❖</span>
-                                                <span class="book-name-ar" lang="ar" dir="rtl"><span class="book-star-sep book-star-mobile" aria-hidden="true">❖</span> {{ $item->name_ar }} <span class="book-star-sep book-star-mobile" aria-hidden="true">❖</span></span>
-                                                <span class="book-star-sep book-star-desktop" aria-hidden="true">❖</span>
+                                                <span class="book-name-ar" lang="ar" dir="rtl">{{ $item->name_ar }}</span>
                                             @endif
                                         </div>
                                         <div class="book-meta-sub">
-                                            <div class="book-meta-item">
-                                                <svg class="book-meta-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
-                                                </svg>
-                                                <span class="book-hadith-count">Total Hadiths {{ $totalHadiths }}</span>
-                                            </div>
+                                            <span class="book-hadith-count">Total Hadiths {{ $totalHadiths }}</span>
                                             @if(!empty($meta['author']))
-                                                <span class="book-meta-divider" aria-hidden="true">|</span>
-                                                <div class="book-meta-item book-author-item">
-                                                    <svg class="book-meta-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                                                    </svg>
-                                                    <span class="book-author-text">{{ $meta['author'] }}</span>
-                                                </div>
+                                                <span class="book-author-dot">·</span>
+                                                <span class="book-author-text">{{ $meta['author'] }}</span>
                                             @endif
                                         </div>
                                     </div>
 
-                                    {{-- Right Mosque Silhouette, Crescent Moon, Lanterns & Filigree --}}
-                                    <div class="card-deco-right" aria-hidden="true">
-                                        <svg class="deco-svg-right" viewBox="0 0 380 125" preserveAspectRatio="xMaxYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <!-- Background Arch/Dome Elements -->
-                                            <path class="mosque-silhouette-bg" d="M80 125 C105 125 115 110 130 96 C145 82 165 76 180 76 C195 76 215 82 230 96 C245 110 255 125 280 125 Z" />
-
-                                            <!-- Left Minaret -->
-                                            <rect x="186" y="48" width="10" height="77" class="mosque-silhouette" />
-                                            <path d="M182 48 L200 48 L198 44 L184 44 Z" class="mosque-silhouette" />
-                                            <rect x="187" y="28" width="8" height="16" class="mosque-silhouette" />
-                                            <polygon points="191,14 186,28 196,28" class="mosque-silhouette" />
-                                            <line x1="191" y1="14" x2="191" y2="8" class="mosque-metal" stroke-width="1" />
-                                            <circle cx="191" cy="7" r="1.3" class="finial-crescent" />
-                                            <path d="M189 35 Q191 32 193 35 L193 40 L189 40 Z" class="mosque-window" />
-                                            <path d="M189 62 Q191 59 193 62 L193 68 L189 68 Z" class="mosque-window" />
-
-                                            <!-- Main Grand Dome -->
-                                            <rect x="210" y="80" width="76" height="45" class="mosque-silhouette" />
-                                            <path class="mosque-silhouette" d="M210 80 C206 64 218 45 236 36 C244 32 247 27 248 22 C249 27 252 32 260 36 C278 45 290 64 286 80 Z" />
-                                            <line x1="248" y1="22" x2="248" y2="12" class="mosque-metal" stroke-width="1.2" />
-                                            <path d="M247 12 C249.5 12 251.5 10 251.5 7.5 C251.5 5 249.5 3 247 3 C248.5 4 249.5 5.5 249.5 7.5 C249.5 9.5 248.5 11 247 12 Z" class="finial-crescent" />
-                                            <!-- Windows in Dome Base -->
-                                            <path d="M222 92 Q225 87 228 92 L228 104 L222 104 Z" class="mosque-window" />
-                                            <path d="M234 89 Q238 84 242 89 L242 104 L234 104 Z" class="mosque-window" />
-                                            <path d="M248 89 Q252 84 256 89 L256 104 L248 104 Z" class="mosque-window" />
-                                            <path d="M262 92 Q265 87 268 92 L268 104 L262 104 Z" class="mosque-window" />
-
-                                            <!-- Right Minaret -->
-                                            <rect x="296" y="52" width="10" height="73" class="mosque-silhouette" />
-                                            <path d="M292 52 L310 52 L308 48 L294 48 Z" class="mosque-silhouette" />
-                                            <rect x="297" y="32" width="8" height="16" class="mosque-silhouette" />
-                                            <polygon points="301,18 296,32 306,32" class="mosque-silhouette" />
-                                            <line x1="301" y1="18" x2="301" y2="12" class="mosque-metal" stroke-width="1" />
-                                            <circle cx="301" cy="11" r="1.3" class="finial-crescent" />
-                                            <path d="M299 38 Q301 35 303 38 L303 43 L299 43 Z" class="mosque-window" />
-                                            <path d="M299 66 Q301 63 303 66 L303 72 L299 72 Z" class="mosque-window" />
-
-                                            <!-- Crescent Moon in Sky -->
-                                            <path class="sky-crescent" d="M228 24 C234 24 239 19 239 12 C239 10 238.4 8 237.3 6.3 C242 8 245 12.5 245 18 C245 25 239.5 30.5 232.5 30.5 C229.5 30.5 226.8 29.5 224.6 27.8 C225.5 27.9 226.4 28 227.4 28 C230.8 28 233.7 26.3 228 24 Z" />
-
-                                            <!-- Hanging Lanterns (Fanoos) Right -->
-                                            <!-- Lantern 1 (Mid-right) -->
-                                            <line x1="168" y1="0" x2="168" y2="30" class="lantern-chain" stroke-width="1.2" />
-                                            <circle cx="168" cy="31" r="1.8" class="lantern-ring" stroke-width="1" fill="none" />
-                                            <path d="M164 34 L172 34 L170 37 L166 37 Z" class="lantern-metal" />
-                                            <polygon points="165,37 171,37 173,46 168,52 163,46" class="lantern-glass" />
-                                            <circle cx="168" cy="44" r="3" class="lantern-flame" />
-                                            <line x1="168" y1="52" x2="168" y2="56" class="lantern-chain" stroke-width="1" />
-                                            <circle cx="168" cy="57" r="1" class="lantern-metal" />
-
-                                            <!-- Lantern 2 (Near outer edge) -->
-                                            <line x1="334" y1="0" x2="334" y2="20" class="lantern-chain" stroke-width="1.2" />
-                                            <circle cx="334" cy="21" r="2" class="lantern-ring" stroke-width="1" fill="none" />
-                                            <path d="M330 24 L338 24 L336 27 L332 27 Z" class="lantern-metal" />
-                                            <polygon points="331,27 337,27 340,38 334,44 328,38" class="lantern-glass" />
-                                            <circle cx="334" cy="35" r="3.2" class="lantern-flame" />
-                                            <line x1="334" y1="44" x2="334" y2="49" class="lantern-chain" stroke-width="1" />
-                                            <circle cx="334" cy="50" r="1.2" class="lantern-metal" />
-
-                                            <!-- Top-Right & Bottom-Right Corner Arabesque Filigree -->
-                                            <path class="filigree-line" d="M380,2 C368,2 356,8 352,18 C350,23 353,29 360,32" stroke-width="1.2" stroke-linecap="round" />
-                                            <path class="filigree-line" d="M378,0 C378,12 372,24 362,28" stroke-width="0.9" opacity="0.6" />
-                                            <path class="filigree-line" d="M380,118 C368,118 358,112 355,102" stroke-width="1" opacity="0.4" />
-                                        </svg>
-                                    </div>
-
-                                    {{-- Right Navigation Arrow --}}
                                     <div class="book-action-col" aria-hidden="true">
-                                        <div class="book-action-circle">
-                                            <svg class="book-chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                                <polyline points="9 18 15 12 9 6"></polyline>
-                                            </svg>
-                                        </div>
+                                        <span class="book-chevron">›</span>
                                     </div>
 
                                     @if($sample)
