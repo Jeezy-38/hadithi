@@ -6,7 +6,7 @@
     <meta name="description" content="Soma na tafuta hadith za Sahih al-Bukhari na Sahih Muslim kwa Kiarabu na Kiswahili.">
     <title>{{ $title ?? 'Maktaba ya Hadith' }} · Hadith</title>
     <link rel="icon" href="{{ asset('images/logo.png') }}">
-    <meta name="theme-color" content="#0a0e13">
+    <meta name="theme-color" content="#03212c">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">

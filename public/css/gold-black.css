@@ -8,43 +8,43 @@
 :root,
 [data-theme="dark"] {
     color-scheme: dark;
-    /* Quran.com Style Dark Theme: Modern Deep Obsidian & Radiant Quran Green */
-    --bg-body: #0b1320;
-    --bg-surface: #131f33;
-    --bg-surface-elevated: #1a2b45;
-    --bg-surface-hover: #223756;
-    --border-color: rgba(255, 255, 255, 0.09);
-    --border-subtle: rgba(255, 255, 255, 0.05);
-    --border-focus: #10b981;
+    /* Royal Islamic Midnight Teal & Luminous Gold (Exact Match to Logo) */
+    --bg-body: #03212c;
+    --bg-surface: #062a36;
+    --bg-surface-elevated: #093747;
+    --bg-surface-hover: #0d4559;
+    --border-color: rgba(240, 190, 49, 0.22);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-focus: #f0be31;
     
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
+    --text-muted: #8ca3ad;
     --text-dim: #64748b;
 
-    /* Signature Quran Green (replaces old gold across entire app) */
-    --gold: #10b981;
-    --gold-light: #34d399;
-    --gold-dark: #059669;
-    --gold-gradient: linear-gradient(135deg, #34d399 0%, #059669 100%);
-    --gold-subtle: rgba(16, 185, 129, 0.14);
+    /* Signature Islamic Gold (Sampled directly from Logo) */
+    --gold: #f0be31;
+    --gold-light: #fee28a;
+    --gold-dark: #b8860b;
+    --gold-gradient: linear-gradient(135deg, #fee28a 0%, #f0be31 50%, #b8860b 100%);
+    --gold-subtle: rgba(240, 190, 49, 0.15);
 
-    --emerald: #10b981;
-    --emerald-subtle: rgba(16, 185, 129, 0.16);
+    --emerald: #0d9488;
+    --emerald-subtle: rgba(13, 148, 136, 0.16);
 
-    --arabic-bg: rgba(19, 31, 51, 0.7);
-    --arabic-border: rgba(16, 185, 129, 0.28);
-    --arabic-text: #f8fafc;
+    --arabic-bg: rgba(6, 42, 54, 0.85);
+    --arabic-border: rgba(240, 190, 49, 0.3);
+    --arabic-text: #ffffff;
 
-    --header-bg: rgba(11, 19, 32, 0.9);
-    --header-border: rgba(255, 255, 255, 0.08);
+    --header-bg: rgba(3, 33, 44, 0.94);
+    --header-border: rgba(240, 190, 49, 0.2);
 
-    --hero-overlay: linear-gradient(90deg, rgba(11, 19, 32, 0.96) 0%, rgba(19, 31, 51, 0.85) 50%, rgba(19, 31, 51, 0.35) 100%);
-    --hero-border: rgba(16, 185, 129, 0.35);
+    --hero-overlay: linear-gradient(90deg, rgba(3, 33, 44, 0.98) 0%, rgba(6, 42, 54, 0.88) 50%, rgba(6, 42, 54, 0.4) 100%);
+    --hero-border: rgba(240, 190, 49, 0.3);
 
-    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
-    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.65), 0 0 0 1.5px #10b981;
-    --glow-gold: 0 0 25px rgba(16, 185, 129, 0.25);
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(240, 190, 49, 0.16);
+    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), 0 0 0 1.5px #f0be31;
+    --glow-gold: 0 0 25px rgba(240, 190, 49, 0.3);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -57,47 +57,43 @@
 
 [data-theme="light"] {
     color-scheme: light;
-    /* Quran.com Style Light Theme: Pure Pristine White + Modern Quran Green (No Gold) */
-    --bg-body: #f8fafc;
+    /* Royal Silk Parchment & Polished Gilded Gold */
+    --bg-body: #fbf9f4;
     --bg-surface: #ffffff;
-    --bg-surface-elevated: #f1f5f9;
-    --bg-surface-hover: #e2e8f0;
+    --bg-surface-elevated: #f5efe3;
+    --bg-surface-hover: #ebe3d3;
     
-    /* Clean, razor-sharp modern slate borders */
-    --border-color: #e2e8f0;
-    --border-subtle: #f1f5f9;
-    --border-focus: #10b981;
+    --border-color: rgba(200, 150, 24, 0.28);
+    --border-subtle: #f0e9dc;
+    --border-focus: #c89617;
 
-    /* Deep, sharp, comfortable charcoal typography (100% strain-free) */
-    --text-primary: #0f172a;
-    --text-secondary: #334155;
-    --text-muted: #64748b;
-    --text-dim: #94a3b8;
+    --text-primary: #03212c;
+    --text-secondary: #1e3a45;
+    --text-muted: #56707a;
+    --text-dim: #7f959e;
 
-    /* Vibrant Quran Green */
-    --gold: #059669;
-    --gold-light: #10b981;
-    --gold-dark: #047857;
-    --gold-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    --gold-subtle: rgba(5, 150, 105, 0.1);
+    --gold: #c89617;
+    --gold-light: #e5b324;
+    --gold-dark: #9e740b;
+    --gold-gradient: linear-gradient(135deg, #e5b324 0%, #c89617 100%);
+    --gold-subtle: rgba(200, 150, 24, 0.12);
 
-    --emerald: #059669;
-    --emerald-subtle: rgba(5, 150, 105, 0.1);
+    --emerald: #0d6b5c;
+    --emerald-subtle: rgba(13, 107, 92, 0.12);
 
-    /* Dedicated clean manuscript plaque */
-    --arabic-bg: #f8fafc;
-    --arabic-border: #e2e8f0;
-    --arabic-text: #000000;
+    --arabic-bg: #fbf9f4;
+    --arabic-border: rgba(200, 150, 24, 0.25);
+    --arabic-text: #03212c;
 
-    --header-bg: rgba(248, 250, 252, 0.94);
-    --header-border: #e2e8f0;
+    --header-bg: rgba(251, 249, 244, 0.95);
+    --header-border: rgba(200, 150, 24, 0.2);
 
-    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 60%, rgba(241, 245, 249, 0.9) 100%);
-    --hero-border: #e2e8f0;
+    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(251, 249, 244, 0.94) 60%, rgba(245, 239, 227, 0.9) 100%);
+    --hero-border: rgba(200, 150, 24, 0.25);
 
-    --card-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
-    --card-hover-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.09), 0 0 0 1.5px #10b981;
-    --glow-gold: 0 0 18px rgba(16, 185, 129, 0.2);
+    --card-shadow: 0 4px 14px -2px rgba(3, 33, 44, 0.08), 0 1px 3px rgba(3, 33, 44, 0.04);
+    --card-hover-shadow: 0 14px 30px -4px rgba(200, 150, 24, 0.22), 0 0 0 1.5px #c89617;
+    --glow-gold: 0 0 20px rgba(200, 150, 24, 0.25);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -197,14 +193,18 @@ button {
 
 .brand-logo {
     height: 48px;
-    width: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-    transition: transform .2s ease;
+    width: 48px;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1.5px solid rgba(240, 190, 49, 0.4);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(240, 190, 49, 0.2);
+    transition: transform .25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .2s ease, box-shadow .2s ease;
 }
 
 .brand:hover .brand-logo {
-    transform: scale(1.05);
+    transform: scale(1.06);
+    border-color: #f0be31;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(240, 190, 49, 0.4);
 }
 
 .brand small {
@@ -422,7 +422,10 @@ button {
     max-width: 1240px;
     min-height: 420px;
     margin: 24px auto 0;
-    background: var(--hero-overlay), url('../images/library-gold-black.jpg') center 55% / cover;
+    background: radial-gradient(circle at 82% 35%, rgba(13, 148, 136, 0.25) 0%, rgba(3, 33, 44, 0.95) 60%),
+                linear-gradient(90deg, rgba(3, 33, 44, 0.98) 0%, rgba(6, 42, 54, 0.92) 50%, rgba(3, 33, 44, 0.7) 100%),
+                url('../images/bayt-al-hadith-logo.png') right 5% center / 340px no-repeat,
+                url('../images/library-gold-black.jpg') center 55% / cover;
     border: 1.5px solid var(--hero-border);
     border-radius: 20px;
     box-shadow: var(--card-shadow);
@@ -438,7 +441,7 @@ button {
     right: 5%;
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, rgba(218, 181, 106, 0.18) 0%, rgba(218, 181, 106, 0.05) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(240, 190, 49, 0.2) 0%, rgba(13, 148, 136, 0.08) 50%, transparent 70%);
     pointer-events: none;
     z-index: 1;
     border-radius: 50%;
@@ -446,14 +449,17 @@ button {
 }
 
 [data-theme="light"] .hero-glow {
-    background: radial-gradient(circle, rgba(217, 119, 6, 0.14) 0%, rgba(217, 119, 6, 0.03) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(200, 150, 24, 0.15) 0%, rgba(200, 150, 24, 0.04) 50%, transparent 70%);
 }
 
 /* Keep the library photograph visible in both themes. */
 [data-theme="light"] .hero {
-    background: linear-gradient(90deg, rgba(9, 13, 17, 0.95) 0%, rgba(9, 13, 17, 0.82) 48%, rgba(9, 13, 17, 0.2) 100%), url('../images/library-gold-black.jpg') center 55% / cover;
-    border: 1.5px solid #d4c8b5;
-    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+    background: radial-gradient(circle at 82% 35%, rgba(200, 150, 24, 0.16) 0%, rgba(251, 249, 244, 0.95) 60%),
+                linear-gradient(90deg, rgba(251, 249, 244, 0.98) 0%, rgba(245, 239, 227, 0.92) 50%, rgba(251, 249, 244, 0.7) 100%),
+                url('../images/bayt-al-hadith-logo.png') right 5% center / 340px no-repeat,
+                url('../images/library-gold-black.jpg') center 55% / cover;
+    border: 1.5px solid rgba(200, 150, 24, 0.28);
+    box-shadow: 0 8px 24px -4px rgba(3, 33, 44, 0.08);
 }
 
 [data-theme="light"] .hero h1 {
@@ -1099,22 +1105,34 @@ button {
     align-items: center;
     gap: 18px;
     width: 100%;
-    padding: 16px 20px;
-    background: var(--bg-surface);
+    padding: 16px 22px;
+    background: linear-gradient(135deg, #062a36 0%, #083443 60%, #05232d 100%);
     border: 1.5px solid var(--border-color);
     border-radius: 18px;
     cursor: pointer;
     text-align: left;
-    box-shadow: var(--card-shadow);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(254, 226, 138, 0.1);
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     font-family: inherit;
+}
+
+[data-theme="light"] .hadith-book-row-card {
+    background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 60%, #f7f2e7 100%);
+    border-color: rgba(200, 150, 24, 0.25);
+    box-shadow: 0 4px 14px -2px rgba(3, 33, 44, 0.06);
 }
 
 .hadith-book-row-card:hover {
     transform: translateY(-2px);
     border-color: var(--border-focus);
-    background: var(--bg-surface-elevated, var(--bg-surface));
-    box-shadow: 0 10px 24px -8px rgba(218, 181, 106, 0.2), var(--card-hover-shadow);
+    background: linear-gradient(135deg, #093747 0%, #0c4356 60%, #072e3c 100%);
+    box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(240, 190, 49, 0.25);
+}
+
+[data-theme="light"] .hadith-book-row-card:hover {
+    border-color: var(--gold);
+    background: #ffffff;
+    box-shadow: 0 12px 24px -4px rgba(200, 150, 24, 0.18);
 }
 
 .book-emblem-wrap {
@@ -1129,26 +1147,26 @@ button {
 .book-emblem-diamond {
     width: 40px;
     height: 40px;
-    background: rgba(218, 181, 106, 0.12);
-    border: 1.5px solid rgba(218, 181, 106, 0.35);
-    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(240, 190, 49, 0.16) 0%, rgba(13, 148, 136, 0.16) 100%);
+    border: 1.5px solid rgba(240, 190, 49, 0.45);
+    border-radius: 11px;
     transform: rotate(45deg);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="light"] .book-emblem-diamond {
-    background: #fbf5e6;
-    border-color: #eed9a8;
+    background: linear-gradient(135deg, #fffdf7 0%, #f7f1e4 100%);
+    border-color: rgba(200, 150, 24, 0.4);
 }
 
 .hadith-book-row-card:hover .book-emblem-diamond {
     transform: rotate(45deg) scale(1.08);
     border-color: var(--gold);
-    background: rgba(218, 181, 106, 0.22);
+    background: linear-gradient(135deg, rgba(240, 190, 49, 0.28) 0%, rgba(13, 148, 136, 0.22) 100%);
 }
 
 .book-emblem-letter {
@@ -1158,10 +1176,12 @@ button {
     color: var(--gold);
     line-height: 1;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-shadow: 0 0 10px rgba(240, 190, 49, 0.4);
 }
 
 [data-theme="light"] .book-emblem-letter {
     color: #8c5b16;
+    text-shadow: none;
 }
 
 .book-info-col {
@@ -8076,10 +8096,10 @@ a, button, select, input {
         right: 0;
         height: calc(62px + env(safe-area-inset-bottom, 0px));
         padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px)) 8px;
-        background: rgba(13, 17, 23, 0.94);
+        background: rgba(3, 33, 44, 0.95);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        border-top: 1px solid rgba(240, 190, 49, 0.25);
         z-index: 990;
         justify-content: space-around;
         align-items: center;
