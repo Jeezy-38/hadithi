@@ -37,6 +37,22 @@ class LibraryTest extends TestCase
         $this->get('/')->assertOk()->assertSee('Sahih al-Bukhari')->assertSee('Sahih Muslim')->assertSee('Inasubiri maudhui yaliyohakikiwa');
     }
 
+    public function test_catalog_displays_real_hadith_count_for_each_book(): void
+    {
+        $this->record('bukhari', '1');
+        $this->record('bukhari', '2');
+        $this->record('muslim', '1');
+
+        $response = $this->get('/');
+        $response->assertOk();
+        $response->assertSee('Sahih al-Bukhari');
+        $response->assertSee('Total Hadiths 2');
+        $response->assertSee('Sahih Muslim');
+        $response->assertSee('Total Hadiths 1');
+        $response->assertSee('Imam Muhammad al-Bukhari');
+        $response->assertSee('Imam Muslim ibn al-Hajjaj');
+    }
+
     public function test_search_matches_swahili_arabic_without_vowels_and_numbers(): void
     {
         $record = $this->record('bukhari', '42a');
