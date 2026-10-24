@@ -107,6 +107,12 @@ class ClickPesaService implements PaymentGatewayInterface
             ],
         ];
 
+        // Ambatanisha Checksum ikiwa Checksum Key au API Key ipo
+        $checksumSecret = $this->checksumKey ?: $this->apiKey;
+        if (! empty($checksumSecret)) {
+            $payload['checksum'] = $this->computeChecksum($payload, $checksumSecret);
+        }
+
         try {
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
@@ -229,5 +235,34 @@ class ClickPesaService implements PaymentGatewayInterface
     public function registerIpn(string $ipnUrl): ?string
     {
         return $ipnUrl;
+    }
+
+    /**
+     * Tengeneza Checksum kwa mujibu wa kanuni rasmi ya ClickPesa (HMAC-SHA256 na Canonicalization).
+     */
+    public function computeChecksum(array $payload, string $secretKey): string
+    {
+        unset($payload['checksum'], $payload['checksumMethod']);
+        $canonical = $this->canonicalize($payload);
+        $json = json_encode($canonical, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+        return hash_hmac('sha256', $json, $secretKey);
+    }
+
+    /**
+     * Panga safu (array) kwa herufi ili kuhakikisha muundo wa JSON unalingana.
+     */
+    protected function canonicalize(mixed $data): mixed
+    {
+        if (is_array($data)) {
+            if (array_keys($data) !== range(0, count($data) - 1)) {
+                ksort($data);
+            }
+            foreach ($data as $key => $value) {
+                $data[$key] = $this->canonicalize($value);
+            }
+        }
+
+        return $data;
     }
 }
