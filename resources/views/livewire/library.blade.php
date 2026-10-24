@@ -360,13 +360,4 @@
             document.addEventListener('livewire:navigated', initRawdahHero);
         })();
     </script>
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initRawdahHero);
-            } else {
-                initRawdahHero();
-            }
-            document.addEventListener('livewire:navigated', initRawdahHero);
-        })();
-    </script>
 </div>
