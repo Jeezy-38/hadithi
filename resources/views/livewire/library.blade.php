@@ -189,51 +189,29 @@
                                         $sample = isset($collectionPreviews[$item->slug]) ? $collectionPreviews[$item->slug]->first() : null;
                                         $badge = $meta['badge'] ?? 'SAHIH';
                                     @endphp
-                                    <button type="button" class="gilded-book-card" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
-                                        <div class="royal-spine-hinge" aria-hidden="true">
-                                            <div class="spine-rib-1"></div>
-                                            <div class="spine-rib-2"></div>
-                                            <div class="spine-rib-3"></div>
-                                            <div class="spine-rib-4"></div>
-                                        </div>
-                                        <div class="french-groove" aria-hidden="true"></div>
-                                        <div class="outer-foil-frame" aria-hidden="true"></div>
-                                        <div class="ribbon-bookmark" aria-hidden="true"></div>
-
-                                        <div class="gilded-book-top">
-                                            <span class="book-category-tag">✦ {{ $badge }}</span>
-                                            <span class="book-letter-emblem" aria-hidden="true">{{ mb_substr($item->name, 0, 1) }}</span>
+                                    <button type="button" class="rawdah-book-card" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
+                                        <div class="rawdah-book-top">
+                                            <span class="rawdah-book-badge">✦ {{ $badge }}</span>
+                                            <span class="rawdah-book-emblem" aria-hidden="true">{{ mb_substr($item->name, 0, 1) }}</span>
                                         </div>
 
-                                        {{-- Islamic Shamsa Medallion --}}
-                                        <div class="book-shamsa-medallion" aria-hidden="true">
-                                            <svg viewBox="0 0 100 100" class="shamsa-svg">
-                                                <circle cx="50" cy="50" r="44" stroke="#34d399" stroke-width="1.2" stroke-dasharray="2 2"/>
-                                                <circle cx="50" cy="50" r="39" stroke="#10b981" stroke-width="1.5"/>
-                                                <rect x="23" y="23" width="54" height="54" stroke="#6ee7b7" stroke-width="1.2" fill="none"/>
-                                                <rect x="23" y="23" width="54" height="54" transform="rotate(45 50 50)" stroke="#6ee7b7" stroke-width="1.2" fill="none"/>
-                                                <circle cx="50" cy="50" r="24" stroke="#34d399" stroke-width="1.4" fill="#011913"/>
-                                                <polygon points="50,33 54,46 67,50 54,54 50,67 46,54 33,50 46,46" fill="#a7f3d0"/>
-                                            </svg>
-                                        </div>
-
-                                        <div class="gilded-book-middle">
-                                            <h3 class="gilded-book-title">{{ $item->name }}</h3>
+                                        <div class="rawdah-book-body">
+                                            <h3 class="rawdah-book-title">{{ $item->name }}</h3>
                                             @if($item->name_ar)
-                                                <span class="gilded-book-ar" lang="ar" dir="rtl">{{ $item->name_ar }}</span>
+                                                <span class="rawdah-book-ar" lang="ar" dir="rtl">{{ $item->name_ar }}</span>
                                             @endif
                                             @if(!empty($meta['author']))
-                                                <p class="gilded-book-author">
+                                                <p class="rawdah-book-author">
                                                     {{ $meta['author'] }}@if(!empty($meta['desc'])) · {{ $meta['desc'] }}@endif
                                                 </p>
                                             @endif
                                         </div>
 
-                                        <div class="gilded-book-bottom" aria-hidden="true">
+                                        <div class="rawdah-book-footer" aria-hidden="true">
                                             <span class="book-total-hadiths">Total Hadiths {{ $totalHadiths }}</span>
-                                            <span class="book-action-read">
+                                            <span class="rawdah-book-action">
                                                 <span>Anza Kusoma</span>
-                                                <span class="book-action-arrow">→</span>
+                                                <span class="rawdah-arrow">→</span>
                                             </span>
                                         </div>
 
