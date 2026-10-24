@@ -71,7 +71,8 @@ class Library extends Component
                 'badge' => 'Sahih',
                 'letter' => 'M',
                 'total_hadiths' => '7,559',
-                'color' => '#10b981',
+                'color' => '#cbd5e1',
+                'cover_image' => 'images/covers/sahih-muslim.jpg',
             ],
             'nasai' => [
                 'author' => 'Imam Ahmad an-Nasa\'i',
@@ -81,7 +82,7 @@ class Library extends Component
                 'badge' => 'Sunan',
                 'letter' => 'N',
                 'total_hadiths' => '5,758',
-                'color' => '#14b8a6',
+                'color' => '#94a3b8',
             ],
             'abudawud' => [
                 'author' => 'Imam Abu Dawud as-Sijistani',
@@ -91,7 +92,8 @@ class Library extends Component
                 'badge' => 'Sunan',
                 'letter' => 'A',
                 'total_hadiths' => '5,274',
-                'color' => '#3b82f6',
+                'color' => '#cbd5e1',
+                'cover_image' => 'images/covers/sunan-abu-dawud.jpg',
             ],
             'tirmidhi' => [
                 'author' => 'Imam Abu Isa at-Tirmidhi',
@@ -101,7 +103,8 @@ class Library extends Component
                 'badge' => 'Sunan',
                 'letter' => 'T',
                 'total_hadiths' => '3,956',
-                'color' => '#f59e0b',
+                'color' => '#e2e8f0',
+                'cover_image' => 'images/covers/jami-at-tirmidhi.jpg',
             ],
             'ibnmajah' => [
                 'author' => 'Imam Ibn Majah al-Qazwini',
@@ -111,7 +114,7 @@ class Library extends Component
                 'badge' => 'Sunan',
                 'letter' => 'I',
                 'total_hadiths' => '4,341',
-                'color' => '#f97316',
+                'color' => '#94a3b8',
             ],
             'ahmad' => [
                 'author' => 'Imam Ahmad ibn Hanbal',
@@ -121,7 +124,8 @@ class Library extends Component
                 'badge' => 'Musnad',
                 'letter' => 'A',
                 'total_hadiths' => '27,000+',
-                'color' => '#ec4899',
+                'color' => '#cbd5e1',
+                'cover_image' => 'images/covers/musnad-ahmad.jpg',
             ],
             'nawawi40' => [
                 'author' => 'Imam Yahya an-Nawawi',
@@ -131,7 +135,7 @@ class Library extends Component
                 'badge' => 'Misingi',
                 'letter' => '40',
                 'total_hadiths' => '42',
-                'color' => '#8b5cf6',
+                'color' => '#e2e8f0',
             ],
             'riyadhadussalihin' => [
                 'author' => 'Imam Yahya an-Nawawi',
@@ -141,7 +145,7 @@ class Library extends Component
                 'badge' => 'Maadili',
                 'letter' => 'R',
                 'total_hadiths' => '1,896',
-                'color' => '#06b6d4',
+                'color' => '#cbd5e1',
             ],
         ];
     }
