@@ -106,6 +106,7 @@
         </div>
     </header>
     <main id="main">{{ $slot }}</main>
+    @include('partials.footer')
     @include('partials.auth-drawer')
     @include('partials.nav-drawer')
     @include('partials.pwa-prompt')
