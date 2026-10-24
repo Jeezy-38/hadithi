@@ -31,8 +31,8 @@
                     <div class="hadith-books-title-group">
                         <div class="hadith-header-art" aria-hidden="true">
                             <svg viewBox="0 0 36 36" width="34" height="34" fill="none">
-                                <circle cx="18" cy="18" r="16" fill="rgba(235, 176, 54, 0.12)" stroke="#EBB036" stroke-width="1.5"/>
-                                <polygon points="18,7 21,14 29,15 23,20 25,28 18,24 11,28 13,20 7,15 15,14" fill="#EBB036"/>
+                                <circle cx="18" cy="18" r="16" fill="rgba(241, 245, 249, 0.12)" stroke="var(--gold)" stroke-width="1.5"/>
+                                <polygon points="18,7 21,14 29,15 23,20 25,28 18,24 11,28 13,20 7,15 15,14" fill="var(--gold)"/>
                             </svg>
                         </div>
                         <div>

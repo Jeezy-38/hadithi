@@ -73,12 +73,12 @@
 }
 [data-theme="light"] .auth-drawer {
     --auth-hero-bg:
-        radial-gradient(90% 70% at 85% 0%, rgba(217, 119, 6, 0.18), transparent 60%),
-        radial-gradient(70% 60% at 0% 100%, rgba(6, 95, 70, 0.08), transparent 65%),
-        linear-gradient(160deg, #fbf7ef 0%, #efe6d4 100%);
-    --auth-hero-text: #1a1206;
-    --auth-hero-muted: rgba(26, 18, 6, 0.6);
-    box-shadow: -30px 0 80px -20px rgba(60, 40, 10, 0.25);
+        radial-gradient(90% 70% at 85% 0%, rgba(15, 23, 42, 0.06), transparent 60%),
+        radial-gradient(70% 60% at 0% 100%, rgba(15, 23, 42, 0.04), transparent 65%),
+        linear-gradient(160deg, #ffffff 0%, #f1f5f9 100%);
+    --auth-hero-text: #0f172a;
+    --auth-hero-muted: rgba(15, 23, 42, 0.6);
+    box-shadow: -30px 0 80px -20px rgba(15, 23, 42, 0.15);
 }
 [dir="rtl"] .auth-drawer { transform: translateX(-100%); }
 .auth-drawer.is-open,
@@ -127,7 +127,7 @@
     top: -120px;
     inset-inline-end: -80px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(243, 215, 144, 0.35), transparent 70%);
+    background: radial-gradient(circle, rgba(241, 245, 249, 0.2), transparent 70%);
     filter: blur(10px);
     animation: auth-breathe 7s ease-in-out infinite;
 }
@@ -150,14 +150,17 @@
 .auth-brand-badge {
     display: inline-grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
-    border: 1px solid rgba(226, 232, 240, 0.45);
-    box-shadow: 0 0 0 4px rgba(226, 232, 240, 0.08), var(--glow-gold, 0 0 20px rgba(226, 232, 240, .2));
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
-.auth-brand-badge img { border-radius: 8px; }
+.auth-brand-badge img {
+    border-radius: 0;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
 .auth-close {
     display: inline-flex;
     align-items: center;
@@ -182,7 +185,7 @@
     font-size: 34px;
     line-height: 1.5;
     font-weight: 700;
-    background: linear-gradient(120deg, var(--gold-light) 0%, var(--gold) 40%, #fff3d1 55%, var(--gold) 70%, var(--gold-dark) 100%);
+    background: linear-gradient(120deg, var(--gold-light) 0%, var(--gold) 40%, #ffffff 55%, var(--gold) 70%, var(--gold-dark) 100%);
     background-size: 220% 100%;
     -webkit-background-clip: text;
             background-clip: text;
@@ -531,7 +534,7 @@
     box-shadow: 0 10px 24px -10px rgba(226, 232, 240, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.35);
     transition: transform .25s var(--auth-ease, ease), box-shadow .25s, filter .2s;
 }
-[data-theme="light"] .auth-submit { color: #ffffff; box-shadow: 0 10px 24px -10px rgba(180, 83, 9, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25); }
+[data-theme="light"] .auth-submit { color: #ffffff; box-shadow: 0 10px 24px -10px rgba(15, 23, 42, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25); }
 .auth-submit:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 16px 30px -12px rgba(226, 232, 240, 0.8); }
 .auth-submit:active { transform: none; }
 .auth-submit:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 3px; }
@@ -621,8 +624,8 @@
 }
 [data-theme="light"] .auth-page {
     --auth-hero-bg:
-        radial-gradient(90% 70% at 85% 0%, rgba(217, 119, 6, 0.18), transparent 60%),
-        linear-gradient(160deg, #fbf7ef 0%, #efe6d4 100%);
+        radial-gradient(90% 70% at 85% 0%, rgba(15, 23, 42, 0.06), transparent 60%),
+        linear-gradient(160deg, #ffffff 0%, #f1f5f9 100%);
 }
 .auth-card {
     width: min(440px, 100%);
@@ -704,14 +707,14 @@
     border-radius: 999px;
     margin-top: 6px;
     background: rgba(226, 232, 240, 0.15);
-    color: var(--gold, #d7b570);
+    color: var(--gold, #f1f5f9);
     border: 1px solid rgba(226, 232, 240, 0.4);
     letter-spacing: 0.3px;
 }
 .supporter-badge-gold {
-    background: linear-gradient(135deg, rgba(226, 232, 240, 0.28), rgba(245, 158, 11, 0.18));
-    color: #f59e0b;
-    border-color: rgba(245, 158, 11, 0.55);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(226, 232, 240, 0.18));
+    color: #f1f5f9;
+    border-color: rgba(226, 232, 240, 0.55);
 }
 .supporter-badge-silver {
     background: rgba(148, 163, 184, 0.15);

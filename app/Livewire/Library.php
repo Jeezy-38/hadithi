@@ -60,7 +60,7 @@ class Library extends Component
                 'badge' => 'Sahih',
                 'letter' => 'B',
                 'total_hadiths' => '7,563',
-                'color' => '#d4af37',
+                'color' => '#e2e8f0',
                 'cover_image' => 'images/covers/sahih-bukhari.jpg',
             ],
             'muslim' => [

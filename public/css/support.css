@@ -656,7 +656,7 @@
    Light Mode Design System Refinements
    -------------------------------------------------------------------------- */
 [data-theme="light"] .support-hero {
-    background: radial-gradient(circle at 80% 20%, rgba(200, 150, 24, 0.12), transparent 50%),
+    background: radial-gradient(circle at 80% 20%, rgba(15, 23, 42, 0.05), transparent 50%),
                 linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-body) 100%);
     box-shadow: 0 4px 20px -2px rgba(3, 33, 44, 0.05);
     border: 1.5px solid var(--border-color);
@@ -674,14 +674,14 @@
 }
 
 [data-theme="light"] .support-submit-btn {
-    color: #03212c !important;
+    color: #ffffff !important;
     font-weight: 800;
-    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.35);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
 }
 
 [data-theme="light"] .support-submit-btn:hover {
-    color: #02161e !important;
-    box-shadow: 0 6px 20px rgba(200, 150, 24, 0.45);
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.35);
 }
 
 [data-theme="light"] .preset-chip-btn.active {
@@ -690,7 +690,7 @@
 }
 
 [data-theme="light"] .conf-amount-val {
-    color: #9a6e10;
+    color: var(--text-primary);
 }
 
 [data-theme="light"] .conf-ref-row {
