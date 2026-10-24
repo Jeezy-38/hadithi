@@ -116,6 +116,7 @@ class Library extends Component
                 'letter' => 'I',
                 'total_hadiths' => '4,341',
                 'color' => '#94a3b8',
+                'cover_image' => 'images/covers/sunan-ibn-majah.jpg',
             ],
             'ahmad' => [
                 'author' => 'Imam Ahmad ibn Hanbal',
