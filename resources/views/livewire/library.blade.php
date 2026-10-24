@@ -190,9 +190,31 @@
                                         $badge = $meta['badge'] ?? 'SAHIH';
                                     @endphp
                                     <button type="button" class="gilded-book-card" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
+                                        <div class="royal-spine-hinge" aria-hidden="true">
+                                            <div class="spine-rib-1"></div>
+                                            <div class="spine-rib-2"></div>
+                                            <div class="spine-rib-3"></div>
+                                            <div class="spine-rib-4"></div>
+                                        </div>
+                                        <div class="french-groove" aria-hidden="true"></div>
+                                        <div class="outer-foil-frame" aria-hidden="true"></div>
+                                        <div class="ribbon-bookmark" aria-hidden="true"></div>
+
                                         <div class="gilded-book-top">
-                                            <span class="book-category-tag">{{ $badge }}</span>
-                                            <span class="book-total-hadiths">Total Hadiths {{ $totalHadiths }}</span>
+                                            <span class="book-category-tag">✦ {{ $badge }}</span>
+                                            <span class="book-letter-emblem" aria-hidden="true">{{ mb_substr($item->name, 0, 1) }}</span>
+                                        </div>
+
+                                        {{-- Islamic Shamsa Medallion --}}
+                                        <div class="book-shamsa-medallion" aria-hidden="true">
+                                            <svg viewBox="0 0 100 100" class="shamsa-svg">
+                                                <circle cx="50" cy="50" r="44" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="2 2"/>
+                                                <circle cx="50" cy="50" r="39" stroke="#cbd5e1" stroke-width="1.5"/>
+                                                <rect x="23" y="23" width="54" height="54" stroke="#ffffff" stroke-width="1.2" fill="none"/>
+                                                <rect x="23" y="23" width="54" height="54" transform="rotate(45 50 50)" stroke="#ffffff" stroke-width="1.2" fill="none"/>
+                                                <circle cx="50" cy="50" r="24" stroke="#cbd5e1" stroke-width="1.4" fill="#031219"/>
+                                                <polygon points="50,33 54,46 67,50 54,54 50,67 46,54 33,50 46,46" fill="#f8fafc"/>
+                                            </svg>
                                         </div>
 
                                         <div class="gilded-book-middle">
@@ -208,8 +230,11 @@
                                         </div>
 
                                         <div class="gilded-book-bottom" aria-hidden="true">
-                                            <span>Anza Kusoma</span>
-                                            <span class="book-action-arrow">→</span>
+                                            <span class="book-total-hadiths">Total Hadiths {{ $totalHadiths }}</span>
+                                            <span class="book-action-read">
+                                                <span>Anza Kusoma</span>
+                                                <span class="book-action-arrow">→</span>
+                                            </span>
                                         </div>
 
                                         @if($sample)

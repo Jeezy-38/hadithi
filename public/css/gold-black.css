@@ -9063,88 +9063,226 @@ a, button, select, input {
 .gilded-bookshelf-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    gap: 24px;
+    perspective: 1200px;
 }
 
 .gilded-book-card {
-    background: var(--bg-surface);
-    border: 1.5px solid var(--border-color);
-    border-radius: 20px;
-    padding: 22px 20px;
     position: relative;
-    overflow: hidden;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: var(--card-shadow);
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
+    background: 
+        radial-gradient(circle at 65% 35%, rgba(255, 255, 255, 0.08) 0%, transparent 65%),
+        linear-gradient(145deg, #0d1e26 0%, #05141c 50%, #01080d 100%);
+    border-radius: 6px 18px 18px 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 24px 20px 22px 28px;
+    min-height: 290px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 200px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 
+        inset 8px 0 16px rgba(0, 0, 0, 0.9),
+        inset -1px 0 3px rgba(255, 255, 255, 0.15),
+        3px 1.5px 0 #ffffff,
+        5px 2.5px 0 #cbd5e1,
+        7px 3.5px 0 #f8fafc,
+        9px 4.5px 0 #94a3b8,
+        12px 6px 0 #e2e8f0,
+        14px 7px 0 #64748b,
+        18px 14px 32px rgba(0, 0, 0, 0.75);
+}
+
+[data-theme="light"] .gilded-book-card {
+    background: 
+        radial-gradient(circle at 65% 35%, rgba(255, 255, 255, 0.12) 0%, transparent 65%),
+        linear-gradient(145deg, #1e293b 0%, #0f172a 55%, #020617 100%);
+    box-shadow: 
+        inset 8px 0 16px rgba(0, 0, 0, 0.8),
+        3px 1.5px 0 #e2e8f0,
+        5px 2.5px 0 #cbd5e1,
+        7px 3.5px 0 #94a3b8,
+        9px 4.5px 0 #64748b,
+        12px 6px 0 #cbd5e1,
+        14px 7px 0 #94a3b8,
+        18px 14px 28px rgba(15, 23, 42, 0.35);
 }
 
 .gilded-book-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-4px);
-    box-shadow: var(--card-hover-shadow);
+    transform: translateY(-8px) rotateY(-5deg) rotateX(2deg);
+    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow: 
+        inset 8px 0 16px rgba(0, 0, 0, 0.9),
+        4px 2px 0 #ffffff,
+        7px 3.5px 0 #e2e8f0,
+        10px 5px 0 #cbd5e1,
+        13px 6.5px 0 #f8fafc,
+        16px 8px 0 #94a3b8,
+        24px 18px 40px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(226, 232, 240, 0.2);
 }
 
-.book-gilded-spine {
-    display: none !important;
+/* Spine & Raised Leather Ribs */
+.royal-spine-hinge {
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 18px;
+    border-radius: 6px 0 0 6px;
+    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0.12) 40%, rgba(0,0,0,0.85) 100%);
+    pointer-events: none;
+    border-right: 1px solid rgba(0,0,0,0.8);
+    box-shadow: 2px 0 3px rgba(255,255,255,0.05);
+}
+
+.spine-rib-1, .spine-rib-2, .spine-rib-3, .spine-rib-4 {
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 4px;
+    background: linear-gradient(to right, #000, #cbd5e1, #000);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+.spine-rib-1 { top: 35px; }
+.spine-rib-2 { top: 95px; }
+.spine-rib-3 { bottom: 95px; }
+.spine-rib-4 { bottom: 35px; }
+
+.french-groove {
+    position: absolute;
+    top: 0; bottom: 0; left: 22px;
+    width: 2px;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+
+.outer-foil-frame {
+    position: absolute;
+    inset: 10px 10px 10px 24px;
+    border-radius: 4px 12px 12px 4px;
+    border: 1.5px solid rgba(226, 232, 240, 0.45);
+    box-shadow: 
+        inset 0 0 0 3px rgba(3, 15, 22, 0.9),
+        inset 0 0 0 4.5px rgba(226, 232, 240, 0.25);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.gilded-book-card:hover .outer-foil-frame {
+    border-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 
+        inset 0 0 0 3px rgba(3, 15, 22, 0.95),
+        inset 0 0 0 4.5px rgba(255, 255, 255, 0.5),
+        0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+.ribbon-bookmark {
+    position: absolute;
+    bottom: -14px;
+    right: 32px;
+    width: 15px;
+    height: 30px;
+    background: linear-gradient(to right, #94a3b8 0%, #ffffff 50%, #cbd5e1 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 75%, 0% 100%);
+    z-index: 30;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.gilded-book-card:hover .ribbon-bookmark {
+    transform: translateY(3px);
+}
+
+.book-shamsa-medallion {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px 0 8px;
+}
+
+.shamsa-svg {
+    width: 54px;
+    height: 54px;
+    filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.25));
+    transition: transform 0.3s ease;
+}
+
+.gilded-book-card:hover .shamsa-svg {
+    transform: scale(1.06);
 }
 
 .gilded-book-top {
+    position: relative;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 11.5px;
+    margin-bottom: 2px;
+    padding-left: 2px;
 }
 
 .book-category-tag {
-    font-weight: 800;
-    letter-spacing: 0.6px;
-    color: var(--gold);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.8px;
+    color: #e2e8f0;
     text-transform: uppercase;
 }
 
-.book-total-hadiths {
-    font-size: 11.5px;
-    color: var(--text-muted);
-    font-weight: 600;
+.book-letter-emblem {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gilded-book-middle {
-    margin-bottom: 14px;
+    position: relative;
+    z-index: 10;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .gilded-book-title {
-    font-size: 16.5px;
+    font-size: 17.5px;
     font-weight: 900;
-    color: var(--text-primary);
-    margin: 0 0 4px;
+    color: #ffffff;
+    margin: 0 0 3px;
+    letter-spacing: -0.2px;
     transition: color 0.2s ease;
 }
 
 .gilded-book-card:hover .gilded-book-title {
-    color: var(--gold);
+    color: #f1f5f9;
 }
 
 .gilded-book-ar {
     font-family: var(--font-arabic, 'Amiri', serif);
-    font-size: 14px;
-    color: var(--gold);
-    opacity: 0.9;
-    text-align: right;
+    font-size: 18px;
+    font-weight: 700;
+    color: #cbd5e1;
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+    line-height: 1.4;
 }
 
 .gilded-book-author {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.45;
+    font-size: 11.5px;
+    color: #94a3b8;
+    line-height: 1.4;
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -9153,14 +9291,35 @@ a, button, select, input {
 }
 
 .gilded-book-bottom {
+    position: relative;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-top: 10px;
-    border-top: 1px solid var(--border-subtle);
-    font-size: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 11.5px;
+}
+
+.book-total-hadiths {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #f8fafc;
     font-weight: 800;
-    color: var(--gold);
+    font-size: 11px;
+}
+
+.book-action-read {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 800;
+    color: #f1f5f9;
+    font-size: 12px;
 }
 
 .book-action-arrow {
