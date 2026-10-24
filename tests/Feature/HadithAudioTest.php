@@ -185,4 +185,37 @@ class HadithAudioTest extends TestCase
             ->assertFailed();
         $this->assertSame([], Storage::disk('private')->allFiles());
     }
+
+    public function test_hybrid_audio_uses_studio_when_available_and_falls_back_to_neural(): void
+    {
+        $hadith = $this->createTestHadith();
+        $hadith->update(['audio_url' => 'https://example.com/studio-sample.mp3']);
+
+        \Illuminate\Support\Facades\Http::fake([
+            'https://example.com/studio-sample.mp3' => \Illuminate\Support\Facades\Http::response('ID3'.str_repeat('s', 300), 200, ['Content-Type' => 'audio/mpeg']),
+        ]);
+
+        // Arabic should use studio audio
+        $response = $this->get('/audio/hadith/'.$hadith->id.'/ar');
+        $response->assertOk();
+        $response->assertHeader('X-Audio-Source', 'studio');
+
+        // Swahili should use neural TTS (Njia ya 1)
+        $responseSw = $this->get('/audio/hadith/'.$hadith->id.'/sw');
+        $responseSw->assertOk();
+        $responseSw->assertHeader('X-Audio-Source', 'neural');
+    }
+
+    public function test_audio_info_endpoint_returns_metadata(): void
+    {
+        $hadith = $this->createTestHadith();
+        $response = $this->get('/audio/hadith/'.$hadith->id.'/info');
+        $response->assertOk();
+        $response->assertJsonStructure([
+            'id',
+            'reference',
+            'has_studio',
+            'sources' => ['ar', 'sw'],
+        ]);
+    }
 }

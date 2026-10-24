@@ -109,6 +109,45 @@
             @endif
         </div>
 
+        {{-- Hybrid Audio Player Bar (Njia ya 3 ndani ya Njia ya 1) --}}
+        @php
+            $hasStudio = !empty($hadith->getStudioAudioUrl());
+            $arAudioUrl = route('hadith.audio', ['hadith' => $hadith, 'lang' => 'ar']);
+            $swAudioUrl = route('hadith.audio', ['hadith' => $hadith, 'lang' => 'sw']);
+        @endphp
+        <div class="hadith-reader-audio-bar" id="reader-audio-bar"
+             data-ar-audio="{{ $arAudioUrl }}"
+             data-sw-audio="{{ $swAudioUrl }}"
+             data-has-studio="{{ $hasStudio ? '1' : '0' }}">
+            <div class="reader-audio-left">
+                <button type="button" class="rawdah-play-btn" id="reader-audio-btn" aria-label="Sikiliza Kisomo" title="Sikiliza Kisomo cha Sauti">
+                    <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display: none;">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                </button>
+                <div class="reader-audio-text">
+                    <div class="rawdah-audio-meta-row">
+                        <span class="reader-audio-title" id="reader-audio-title">Kisomo cha Kiarabu</span>
+                        <span class="rawdah-audio-source-badge" id="reader-audio-badge">
+                            {{ $hasStudio ? '🎙️ Studio Reciter' : '🎙️ Neural Audio' }}
+                        </span>
+                    </div>
+                    <span class="reader-audio-sub" id="reader-audio-sub">
+                        {{ $hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Hamed Neural · Kiarabu' }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="rawdah-audio-lang-switch" role="group" aria-label="Lugha ya Kisomo">
+                <button type="button" class="lang-switch-btn active" id="reader-btn-ar" data-lang="ar">Kiarabu</button>
+                <button type="button" class="lang-switch-btn" id="reader-btn-sw" data-lang="sw">Kiswahili</button>
+            </div>
+            <audio id="hadith-reader-audio-element" preload="none"></audio>
+        </div>
+
         <article class="reader-card dua-detail-card hadith-detail-card">
             {{-- 1. Matini ya Kiarabu --}}
             <section class="reading-section" data-reading="ar" aria-labelledby="label-arabic">
@@ -293,52 +332,151 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const playBtn = document.getElementById('audio-play');
-            if (!playBtn) return;
-
-            let isPlaying = false;
+            // Hadith Reader Hybrid Audio Console (Njia ya 3 ndani ya Njia ya 1)
+            const readerBar = document.getElementById('reader-audio-bar');
+            const readerPlayBtn = document.getElementById('reader-audio-btn');
+            const readerAudioEl = document.getElementById('hadith-reader-audio-element');
+            const readerBtnAr = document.getElementById('reader-btn-ar');
+            const readerBtnSw = document.getElementById('reader-btn-sw');
+            const readerTitle = document.getElementById('reader-audio-title');
+            const readerSub = document.getElementById('reader-audio-sub');
+            const readerBadge = document.getElementById('reader-audio-badge');
             const arabicEl = document.getElementById('text-ar');
             const swahiliEl = document.getElementById('text-sw');
 
-            playBtn.addEventListener('click', () => {
-                if (!('speechSynthesis' in window)) {
-                    alert('Kivinjari chako hakitumii usomaji wa sauti wa moja kwa moja.');
-                    return;
+            if (readerBar && readerPlayBtn && readerAudioEl) {
+                let currentLang = 'ar';
+                let isPlaying = false;
+                const hasStudio = readerBar.dataset.hasStudio === '1';
+
+                function updateReaderLabels() {
+                    if (currentLang === 'ar') {
+                        readerTitle.textContent = 'Kisomo cha Kiarabu';
+                        readerBadge.textContent = hasStudio ? '🎙️ Studio' : '🎙️ Neural Voice';
+                        readerSub.textContent = hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Hamed Neural · Kiarabu';
+                        readerBtnAr.classList.add('active');
+                        readerBtnSw.classList.remove('active');
+                    } else {
+                        readerTitle.textContent = 'Kisomo cha Kiswahili';
+                        readerBadge.textContent = '🎙️ Daudi Neural';
+                        readerSub.textContent = 'Tafsiri ya Kiswahili Sanifu (MP3)';
+                        readerBtnSw.classList.add('active');
+                        readerBtnAr.classList.remove('active');
+                    }
                 }
 
-                if (isPlaying) {
+                function setReaderPlayState(playing) {
+                    isPlaying = playing;
+                    const p = readerPlayBtn.querySelector('.icon-play');
+                    const pa = readerPlayBtn.querySelector('.icon-pause');
+                    if (p) p.style.display = playing ? 'none' : 'block';
+                    if (pa) pa.style.display = playing ? 'block' : 'none';
+                    readerBar.classList.toggle('is-playing', playing);
+                }
+
+                function playReaderAudio() {
+                    const targetUrl = (currentLang === 'ar') ? readerBar.dataset.arAudio : readerBar.dataset.swAudio;
+                    if (!readerAudioEl.src || !readerAudioEl.src.includes(targetUrl)) {
+                        readerAudioEl.src = targetUrl;
+                    }
+                    const promise = readerAudioEl.play();
+                    if (promise !== undefined) {
+                        promise.then(() => setReaderPlayState(true)).catch(() => {
+                            if ('speechSynthesis' in window) {
+                                window.speechSynthesis.cancel();
+                                const text = (currentLang === 'ar') ? (arabicEl?.innerText || '') : (swahiliEl?.innerText || '');
+                                const utterance = new SpeechSynthesisUtterance(text);
+                                utterance.lang = (currentLang === 'ar') ? 'ar-SA' : 'sw-TZ';
+                                utterance.onstart = () => setReaderPlayState(true);
+                                utterance.onend = utterance.onerror = () => setReaderPlayState(false);
+                                window.speechSynthesis.speak(utterance);
+                            } else {
+                                setReaderPlayState(false);
+                            }
+                        });
+                    }
+                }
+
+                function pauseReaderAudio() {
+                    readerAudioEl.pause();
+                    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+                    setReaderPlayState(false);
+                }
+
+                readerAudioEl.addEventListener('ended', () => setReaderPlayState(false));
+                readerAudioEl.addEventListener('pause', () => setReaderPlayState(false));
+
+                readerPlayBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (isPlaying) {
+                        pauseReaderAudio();
+                    } else {
+                        playReaderAudio();
+                    }
+                });
+
+                if (readerBtnAr && readerBtnSw) {
+                    readerBtnAr.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (currentLang === 'ar') return;
+                        currentLang = 'ar';
+                        updateReaderLabels();
+                        if (isPlaying) {
+                            pauseReaderAudio();
+                            playReaderAudio();
+                        }
+                    });
+
+                    readerBtnSw.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (currentLang === 'sw') return;
+                        currentLang = 'sw';
+                        updateReaderLabels();
+                        if (isPlaying) {
+                            pauseReaderAudio();
+                            playReaderAudio();
+                        }
+                    });
+                }
+            }
+
+            const playBtn = document.getElementById('audio-play');
+            if (playBtn) {
+                let isSpeechPlaying = false;
+                playBtn.addEventListener('click', () => {
+                    if (!('speechSynthesis' in window)) {
+                        alert('Kivinjari chako hakitumii usomaji wa sauti wa moja kwa moja.');
+                        return;
+                    }
+
+                    if (isSpeechPlaying) {
+                        window.speechSynthesis.cancel();
+                        isSpeechPlaying = false;
+                        playBtn.querySelector('.btn-text').textContent = 'Soma kwa sauti';
+                        playBtn.classList.remove('active');
+                        return;
+                    }
+
                     window.speechSynthesis.cancel();
-                    isPlaying = false;
-                    playBtn.querySelector('.btn-text').textContent = 'Soma kwa sauti';
-                    playBtn.classList.remove('active');
-                    return;
-                }
+                    const textToRead = (arabicEl?.innerText || swahiliEl?.innerText || '').trim();
+                    if (!textToRead) return;
 
-                window.speechSynthesis.cancel();
-                const textToRead = (arabicEl?.innerText || swahiliEl?.innerText || '').trim();
-                if (!textToRead) return;
+                    const utterance = new SpeechSynthesisUtterance(textToRead);
+                    utterance.lang = 'ar-SA';
+                    utterance.rate = 0.95;
 
-                const utterance = new SpeechSynthesisUtterance(textToRead);
-                utterance.lang = 'ar-SA';
-                utterance.rate = 0.95;
+                    utterance.onend = utterance.onerror = () => {
+                        isSpeechPlaying = false;
+                        playBtn.querySelector('.btn-text').textContent = 'Soma kwa sauti';
+                        playBtn.classList.remove('active');
+                    };
 
-                utterance.onend = () => {
-                    isPlaying = false;
-                    playBtn.querySelector('.btn-text').textContent = 'Soma kwa sauti';
-                    playBtn.classList.remove('active');
-                };
-
-                utterance.onerror = () => {
-                    isPlaying = false;
-                    playBtn.querySelector('.btn-text').textContent = 'Soma kwa sauti';
-                    playBtn.classList.remove('active');
-                };
-
-                window.speechSynthesis.speak(utterance);
-                isPlaying = true;
-                playBtn.querySelector('.btn-text').textContent = 'Sitisha sauti';
-                playBtn.classList.add('active');
-            });
+                    window.speechSynthesis.speak(utterance);
+                    isSpeechPlaying = true;
+                    playBtn.querySelector('.btn-text').textContent = 'Sitisha sauti';
+                    playBtn.classList.add('active');
+                });
+            }
 
             // Reader More Actions Menu Dropdown
             const moreBtn = document.getElementById('reader-more-btn');

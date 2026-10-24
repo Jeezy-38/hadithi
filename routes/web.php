@@ -191,7 +191,9 @@ Route::middleware(['guest', 'throttle:20,1'])->group(function () {
 
 Route::post('/logout', [SocialAuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-// Sauti ya hadith (TTS) — throttle kwa sababu kutengeneza sauti mpya ni gharama.
+// Sauti ya hadith (Mfumo mseto: Studio + Neural)
+Route::get('/audio/hadith/{hadith}/info', [HadithAudioController::class, 'info'])
+    ->name('hadith.audio.info');
 Route::get('/audio/hadith/{hadith}/{lang}', HadithAudioController::class)
     ->middleware('throttle:30,1')
     ->name('hadith.audio');

@@ -40,6 +40,24 @@ class Hadith extends Model
         return $this->belongsTo(Chapter::class);
     }
 
+    public function getStudioAudioUrl(): ?string
+    {
+        if (! empty($this->audio_url)) {
+            return $this->audio_url;
+        }
+
+        // Studio audio mapping for collections with authentic audio recordings
+        $colSlug = $this->chapter?->book?->collection?->slug ?? '';
+        if ($colSlug === 'nawawi40') {
+            $num = (int) preg_replace('/\D/', '', (string) $this->number);
+            if ($num >= 1 && $num <= 42) {
+                return sprintf('https://www.kalamullah.com/An-Nawawis%%20Forty%%20Hadith/nawawi%02d.mp3', $num);
+            }
+        }
+
+        return null;
+    }
+
     public function bookmarkedBy(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(User::class, 'bookmarks')->withTimestamps();

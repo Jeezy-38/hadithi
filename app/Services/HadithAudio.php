@@ -37,6 +37,99 @@ class HadithAudio
         return 'audio_cache/hadith_'.$hadith->id.'_'.$lang.'.mp3';
     }
 
+    public function studioKey(Hadith $hadith): string
+    {
+        return 'audio_cache/studio/hadith_'.$hadith->id.'.mp3';
+    }
+
+    /**
+     * Njia ya 3: Pata sauti halisi ya studio (Sheikh) ikipatikana.
+     */
+    public function resolveStudioAudio(Hadith $hadith): ?string
+    {
+        $studioUrl = $hadith->getStudioAudioUrl();
+        if (! $studioUrl) {
+            return null;
+        }
+
+        $key = $this->studioKey($hadith);
+        if (Storage::disk('private')->exists($key)) {
+            return (string) Storage::disk('private')->get($key);
+        }
+
+        if ($this->disk() !== Storage::disk('private') && $this->disk()->exists($key)) {
+            $content = (string) $this->disk()->get($key);
+            try {
+                Storage::disk('private')->put($key, $content);
+            } catch (\Throwable) {
+                // ignore local cache write failure
+            }
+
+            return $content;
+        }
+
+        // Ikiwa haipo kwenye akiba, jaribu kuipakua kutoka chanzo rasmi cha studio
+        try {
+            $response = \Illuminate\Support\Facades\Http::timeout(5)->get($studioUrl);
+            if ($response->successful()) {
+                $body = $response->body();
+                $isMp3 = str_starts_with($body, 'ID3')
+                    || (strlen($body) >= 2 && ord($body[0]) === 0xFF && (ord($body[1]) & 0xE0) === 0xE0);
+
+                if ($isMp3 && strlen($body) > 200) {
+                    try {
+                        $this->disk()->put($key, $body, ['ContentType' => 'audio/mpeg']);
+                        Storage::disk('private')->put($key, $body);
+                    } catch (\Throwable) {
+                        // ignore secondary write failure
+                    }
+
+                    return $body;
+                }
+            }
+        } catch (\Throwable $e) {
+            report($e);
+        }
+
+        return null;
+    }
+
+    /**
+     * Mfumo Mchanganyiko: Njia ya 3 (Studio) ndani ya Njia ya 1 (Neural TTS).
+     */
+    public function getAudio(Hadith $hadith, string $lang): array
+    {
+        // 1. Kwa Kiarabu, kagua kwanza sauti halisi ya studio (Njia ya 3)
+        if ($lang === 'ar') {
+            $studioMp3 = $this->resolveStudioAudio($hadith);
+            if ($studioMp3 !== null) {
+                return [
+                    'mp3' => $studioMp3,
+                    'source' => 'studio',
+                    'reciter' => 'Studio Recitation (Sheikh)',
+                ];
+            }
+        }
+
+        // 2. Njia ya 1 (Neural TTS & Akiba) kama msingi na mbadala salama
+        $mp3 = $this->cached($hadith, $lang);
+        if ($mp3 === null) {
+            $mp3 = $this->generate($hadith, $lang);
+        }
+
+        $reciterName = match ($lang) {
+            'sw' => 'Daudi (Kiswahili Neural)',
+            'ar' => 'Hamed (Kiarabu Neural)',
+            default => 'Guy (Kiingereza Neural)',
+        };
+
+        return [
+            'mp3' => $mp3,
+            'source' => 'neural',
+            'reciter' => $reciterName,
+        ];
+    }
+
     public function disk(): Filesystem
     {
         return Storage::disk(config('speech.disk'));
