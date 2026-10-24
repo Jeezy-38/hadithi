@@ -1,17 +1,17 @@
 <div class="support-page-wrapper">
-    <link rel="stylesheet" href="{{ asset('css/support.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/support.css') }}?v={{ filemtime(public_path('css/support.css')) }}">
 
     <div class="support-container" style="max-width: 660px; padding: 2rem 1rem 4rem;">
         {{-- Eneo la Fomu ya Malipo Pekee --}}
-        <div class="support-card" style="margin: 0 auto; border: 1px solid rgba(226, 232, 240, 0.16); background: #021e28; border-radius: 18px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);">
-            <div class="support-card-header" style="text-align: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(226, 232, 240, 0.1);">
-                <span class="support-mini-badge" style="display: inline-block; background: rgba(226, 232, 240, 0.08); border: 1px solid rgba(226, 232, 240, 0.2); color: #e2e8f0; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.28rem 0.85rem; border-radius: 999px; margin-bottom: 0.6rem;">
+        <div class="support-card" style="margin: 0 auto; border-radius: 18px;">
+            <div class="support-card-header" style="text-align: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-subtle);">
+                <span class="support-mini-badge" style="display: inline-block; margin-bottom: 0.6rem;">
                     SADAKA JARIYA
                 </span>
-                <h1 class="support-card-title" style="justify-content: center; margin-bottom: 0.4rem; font-size: 1.5rem; font-weight: 800; color: #ffffff;">
+                <h1 class="support-card-title" style="justify-content: center; margin-bottom: 0.4rem; font-size: 1.5rem; font-weight: 800;">
                     Fomu ya Mchango &amp; Malipo
                 </h1>
-                <p style="color: #94a3b8; font-size: 0.88rem; margin: 0; line-height: 1.5;">
+                <p class="support-card-subtitle" style="font-size: 0.88rem; margin: 0; line-height: 1.5;">
                     Kamilisha mchango wako wa Sadaka Jariya kwa urahisi na usalama kupitia ClickPesa.
                 </p>
             </div>
@@ -62,7 +62,7 @@
 
                 {{-- 2. Chagua Sarafu (TZS vs USD) --}}
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                    <span class="support-label" style="margin: 0; font-weight: 600; color: #e2e8f0;">Chagua Sarafu:</span>
+                    <span class="support-label" style="margin: 0;">Chagua Sarafu:</span>
                     <div class="support-currency-toggle">
                         <button type="button" wire:click="switchCurrency('TZS')" class="curr-toggle-btn {{ $currency === 'TZS' ? 'active' : '' }}">
                             TZS (Shilingi)
@@ -75,7 +75,7 @@
 
                 {{-- 3. Viwango Vilivyopendekezwa (Preset Chips) --}}
                 <div class="support-input-group">
-                    <label class="support-label" style="font-weight: 600; color: #e2e8f0;">Chagua Kiasi cha Mchango:</label>
+                    <label class="support-label">Chagua Kiasi cha Mchango:</label>
                     <div class="support-presets-grid">
                         @if ($currency === 'TZS')
                             <button type="button" wire:click="selectPreset(3000)" class="preset-chip-btn {{ $selectedPreset === 3000 && empty($customAmount) ? 'active' : '' }}">
@@ -109,10 +109,10 @@
 
                 {{-- 4. Kiasi Maalum (Custom Amount) --}}
                 <div class="support-input-group">
-                    <label for="customAmount" class="support-label" style="font-weight: 600; color: #e2e8f0;">Au ingiza kiasi unachopenda mwenyewe:</label>
+                    <label for="customAmount" class="support-label">Au ingiza kiasi unachopenda mwenyewe:</label>
                     <div class="support-input-wrap">
                         <span class="support-input-prefix">{{ $currency }}</span>
-                        <input type="number" id="customAmount" wire:model.live="customAmount" class="support-input" placeholder="{{ $currency === 'TZS' ? 'Mfano: 20000' : 'Mfano: 25' }}" min="{{ $currency === 'TZS' ? 1000 : 1 }}" step="{{ $currency === 'TZS' ? 500 : 1 }}">
+                        <input type="number" id="customAmount" wire:model.live.debounce.350ms="customAmount" class="support-input" placeholder="{{ $currency === 'TZS' ? 'Mfano: 20000' : 'Mfano: 25' }}" min="{{ $currency === 'TZS' ? 1000 : 1 }}" step="{{ $currency === 'TZS' ? 500 : 1 }}">
                     </div>
                     @error('amount')
                         <span style="color: #ef4444; font-size: 0.8rem; display: block; margin-top: 0.35rem;">{{ $message }}</span>
@@ -121,17 +121,17 @@
 
                 {{-- 5. Njia ya Malipo (Payment Method) --}}
                 <div class="support-input-group">
-                    <label class="support-label" style="font-weight: 600; color: #e2e8f0;">Njia Unayopendelea Kulipa:</label>
+                    <label class="support-label">Njia Unayopendelea Kulipa:</label>
                     <div class="payment-methods-grid">
                         <label class="payment-method-card {{ $paymentMethod === 'mobile_money' ? 'active' : '' }}">
-                            <input type="radio" wire:model.live="paymentMethod" value="mobile_money" class="pm-radio">
+                            <input type="radio" wire:model="paymentMethod" value="mobile_money" class="pm-radio">
                             <div class="pm-meta">
                                 <strong>Mitandao ya Simu</strong>
                                 <span>M-Pesa, Tigo, Airtel, Halo</span>
                             </div>
                         </label>
                         <label class="payment-method-card {{ $paymentMethod === 'card' ? 'active' : '' }}">
-                            <input type="radio" wire:model.live="paymentMethod" value="card" class="pm-radio">
+                            <input type="radio" wire:model="paymentMethod" value="card" class="pm-radio">
                             <div class="pm-meta">
                                 <strong>Kadi ya Benki</strong>
                                 <span>Visa, Mastercard (Ndani/Nje)</span>
@@ -142,12 +142,12 @@
 
                 {{-- 6. Taarifa za Mchangiaji --}}
                 <div class="support-input-group">
-                    <label for="donorName" class="support-label" style="font-weight: 600; color: #e2e8f0;">Jina Lako:</label>
-                    <input type="text" id="donorName" wire:model.defer="donorName" class="support-input support-input-plain" placeholder="Jina au herufi za mwanzo">
+                    <label for="donorName" class="support-label">Jina Lako:</label>
+                    <input type="text" id="donorName" wire:model="donorName" class="support-input support-input-plain" placeholder="Jina au herufi za mwanzo">
                 </div>
 
                 <div class="support-checkbox-row" style="margin-bottom: 1rem;">
-                    <input type="checkbox" id="isAnonymous" wire:model.live="isAnonymous">
+                    <input type="checkbox" id="isAnonymous" wire:model="isAnonymous">
                     <label for="isAnonymous" class="support-checkbox-label">
                         <strong>Changia bila kutaja jina (Anonymous)</strong><br>
                         Jina lako halitaonekana hadharani.
@@ -156,31 +156,31 @@
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
                     <div class="support-input-group">
-                        <label for="donorEmail" class="support-label" style="font-weight: 600; color: #e2e8f0;">Barua Pepe (Email):</label>
-                        <input type="email" id="donorEmail" wire:model.defer="donorEmail" class="support-input support-input-plain" placeholder="Kwa ajili ya risiti">
+                        <label for="donorEmail" class="support-label">Barua Pepe (Email):</label>
+                        <input type="email" id="donorEmail" wire:model="donorEmail" class="support-input support-input-plain" placeholder="Kwa ajili ya risiti">
                         @error('donorEmail')
                             <span style="color: #ef4444; font-size: 0.8rem;">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="support-input-group">
-                        <label for="donorPhone" class="support-label" style="font-weight: 600; color: #e2e8f0;">Namba ya Simu:</label>
-                        <input type="tel" id="donorPhone" wire:model.defer="donorPhone" class="support-input support-input-plain" placeholder="07XXXXXXXX au +255...">
+                        <label for="donorPhone" class="support-label">Namba ya Simu:</label>
+                        <input type="tel" id="donorPhone" wire:model="donorPhone" class="support-input support-input-plain" placeholder="07XXXXXXXX au +255...">
                     </div>
                 </div>
 
                 {{-- 7. Dua au Ujumbe wa Hiari --}}
                 <div class="support-input-group">
-                    <label for="message" class="support-label" style="font-weight: 600; color: #e2e8f0;">Dua au Ujumbe wa Hiari:</label>
-                    <textarea id="message" wire:model.defer="message" class="support-textarea" placeholder="Mfano: Allah awabariki katika kazi hii njema..."></textarea>
+                    <label for="message" class="support-label">Dua au Ujumbe wa Hiari:</label>
+                    <textarea id="message" wire:model="message" class="support-textarea" placeholder="Mfano: Allah awabariki katika kazi hii njema..."></textarea>
                     @error('message')
                         <span style="color: #ef4444; font-size: 0.8rem;">{{ $message }}</span>
                     @enderror
                 </div>
 
                 {{-- Kitufe cha Kuanzisha Malipo --}}
-                <button type="button" wire:click="initiatePayment" class="support-submit-btn" style="margin-top: 0.5rem;">
-                    <span>Endelea na Malipo</span>
-                    <span aria-hidden="true">→</span>
+                <button type="button" wire:click="initiatePayment" wire:loading.attr="disabled" class="support-submit-btn" style="margin-top: 0.5rem;">
+                    <span wire:loading.remove wire:target="initiatePayment">Endelea na Malipo &rarr;</span>
+                    <span wire:loading wire:target="initiatePayment">Inaandaa muamala...</span>
                 </button>
             @endif
         </div>
