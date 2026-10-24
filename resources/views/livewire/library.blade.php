@@ -16,7 +16,6 @@
         <section class="hero library-hero">
             <div class="hero-glow" aria-hidden="true"></div>
             <div class="hero-copy">
-                <span class="eyebrow" data-i18n="hero_eyebrow"><span class="eyebrow-dot"></span> BUKHARI · MUSLIM · TIRMIDHI · ABU DAWUD · AHMAD</span>
                 <h1 data-i18n="hero_h1">BAYT AL<br><em>HADITH.</em></h1>
                 <p data-i18n="hero_desc">
     Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.</p>
@@ -29,7 +28,6 @@
                     </a>
                 </div>
             </div>
-            <span class="hero-caption" data-i18n="hero_caption"><span aria-hidden="true">✦</span></span>
         </section>
     @endif
 
