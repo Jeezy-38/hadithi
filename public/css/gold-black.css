@@ -8,43 +8,43 @@
 :root,
 [data-theme="dark"] {
     color-scheme: dark;
-    /* The Platinum & Silver Minimalist Edition (Monochrome Modern Luxury) */
-    --bg-body: #02151e;
-    --bg-surface: #06202c;
-    --bg-surface-elevated: #092c3d;
-    --bg-surface-hover: #0d384d;
-    --border-color: rgba(255, 255, 255, 0.12);
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-focus: #f1f5f9;
+    /* The Medina Emerald & Sage Edition (Serene Spiritual Minimalism) */
+    --bg-body: #021a1f;
+    --bg-surface: #04242b;
+    --bg-surface-elevated: #07313a;
+    --bg-surface-hover: #0b3f4b;
+    --border-color: rgba(16, 185, 129, 0.22);
+    --border-subtle: rgba(16, 185, 129, 0.10);
+    --border-focus: #10b981;
     
-    --text-primary: #ffffff;
-    --text-secondary: #cbd5e1;
-    --text-muted: #8295a0;
-    --text-dim: #64748b;
+    --text-primary: #f0fdf4;
+    --text-secondary: #93c5b5;
+    --text-muted: #5d8c7c;
+    --text-dim: #446d60;
 
-    /* Signature Platinum & Silver Titanium (Zero gold / zero yellow) */
-    --gold: #f1f5f9;
-    --gold-light: #ffffff;
-    --gold-dark: #cbd5e1;
-    --gold-gradient: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
-    --gold-subtle: rgba(241, 245, 249, 0.10);
+    /* Signature Medina Emerald & Sage Accents */
+    --gold: #10b981;
+    --gold-light: #34d399;
+    --gold-dark: #059669;
+    --gold-gradient: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+    --gold-subtle: rgba(16, 185, 129, 0.14);
 
-    --emerald: #38bdf8;
-    --emerald-subtle: rgba(56, 189, 248, 0.14);
+    --emerald: #10b981;
+    --emerald-subtle: rgba(16, 185, 129, 0.16);
 
-    --arabic-bg: rgba(6, 32, 44, 0.85);
-    --arabic-border: rgba(255, 255, 255, 0.14);
-    --arabic-text: #ffffff;
+    --arabic-bg: rgba(4, 36, 43, 0.85);
+    --arabic-border: rgba(16, 185, 129, 0.25);
+    --arabic-text: #f0fdf4;
 
-    --header-bg: rgba(2, 21, 30, 0.94);
-    --header-border: rgba(255, 255, 255, 0.10);
+    --header-bg: rgba(2, 26, 31, 0.94);
+    --header-border: rgba(16, 185, 129, 0.16);
 
-    --hero-overlay: linear-gradient(90deg, rgba(2, 21, 30, 0.98) 0%, rgba(6, 32, 44, 0.88) 50%, rgba(6, 32, 44, 0.4) 100%);
-    --hero-border: rgba(255, 255, 255, 0.16);
+    --hero-overlay: linear-gradient(90deg, rgba(2, 26, 31, 0.98) 0%, rgba(4, 36, 43, 0.90) 50%, rgba(4, 36, 43, 0.45) 100%);
+    --hero-border: rgba(16, 185, 129, 0.28);
 
-    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.10);
-    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 0 1.5px rgba(241, 245, 249, 0.6);
-    --glow-gold: 0 0 25px rgba(241, 245, 249, 0.20);
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(16, 185, 129, 0.18);
+    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 0 1.5px #10b981;
+    --glow-gold: 0 0 25px rgba(16, 185, 129, 0.28);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -57,43 +57,43 @@
 
 [data-theme="light"] {
     color-scheme: light;
-    /* Clean Porcelain White & Polished Titanium Slate */
-    --bg-body: #f8fafc;
+    /* Clean Serene Sage Porcelain & Radiant Medina Emerald */
+    --bg-body: #f6fbf9;
     --bg-surface: #ffffff;
-    --bg-surface-elevated: #f1f5f9;
-    --bg-surface-hover: #e2e8f0;
+    --bg-surface-elevated: #eaf5f0;
+    --bg-surface-hover: #dff0e7;
     
-    --border-color: rgba(15, 23, 42, 0.10);
-    --border-subtle: rgba(15, 23, 42, 0.05);
-    --border-focus: #0f172a;
+    --border-color: rgba(5, 150, 105, 0.18);
+    --border-subtle: rgba(5, 150, 105, 0.08);
+    --border-focus: #059669;
 
-    --text-primary: #0f172a;
-    --text-secondary: #334155;
-    --text-muted: #64748b;
-    --text-dim: #94a3b8;
+    --text-primary: #062f22;
+    --text-secondary: #2d5a4a;
+    --text-muted: #5d8c7c;
+    --text-dim: #7da598;
 
-    --gold: #0f172a;
-    --gold-light: #334155;
-    --gold-dark: #020617;
-    --gold-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    --gold-subtle: rgba(15, 23, 42, 0.08);
+    --gold: #059669;
+    --gold-light: #10b981;
+    --gold-dark: #047857;
+    --gold-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --gold-subtle: rgba(5, 150, 105, 0.10);
 
-    --emerald: #0284c7;
-    --emerald-subtle: rgba(2, 132, 199, 0.10);
+    --emerald: #059669;
+    --emerald-subtle: rgba(5, 150, 105, 0.12);
 
-    --arabic-bg: #f8fafc;
-    --arabic-border: rgba(15, 23, 42, 0.10);
-    --arabic-text: #0f172a;
+    --arabic-bg: #f6fbf9;
+    --arabic-border: rgba(5, 150, 105, 0.18);
+    --arabic-text: #062f22;
 
-    --header-bg: rgba(255, 255, 255, 0.95);
-    --header-border: rgba(15, 23, 42, 0.08);
+    --header-bg: rgba(255, 255, 255, 0.96);
+    --header-border: rgba(5, 150, 105, 0.12);
 
-    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.94) 60%, rgba(241, 245, 249, 0.9) 100%);
-    --hero-border: rgba(15, 23, 42, 0.15);
+    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 251, 249, 0.94) 60%, rgba(234, 245, 240, 0.9) 100%);
+    --hero-border: rgba(5, 150, 105, 0.22);
 
-    --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
-    --card-hover-shadow: 0 14px 30px -4px rgba(15, 23, 42, 0.12), 0 0 0 1.5px rgba(15, 23, 42, 0.35);
-    --glow-gold: 0 0 20px rgba(15, 23, 42, 0.10);
+    --card-shadow: 0 4px 20px -2px rgba(6, 47, 34, 0.06), 0 1px 3px rgba(6, 47, 34, 0.04);
+    --card-hover-shadow: 0 14px 30px -4px rgba(6, 47, 34, 0.14), 0 0 0 1.5px #059669;
+    --glow-gold: 0 0 20px rgba(16, 185, 129, 0.20);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -120,8 +120,8 @@ html {
 body {
     background-color: var(--bg-body);
     background-image: 
-        radial-gradient(ellipse at 85% 0%, rgba(56, 189, 248, 0.08), transparent 45%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.75' opacity='0.035'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.025'%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(ellipse at 85% 0%, rgba(16, 185, 129, 0.12), transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%2310b981' stroke-width='0.75' opacity='0.045'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.03'%3E%3C/g%3E%3C/svg%3E");
     background-repeat: no-repeat, repeat;
     background-size: auto, 60px 60px;
     background-attachment: scroll, fixed;
@@ -136,8 +136,8 @@ body {
 [data-theme="light"] body {
     background-color: var(--bg-body);
     background-image: 
-        radial-gradient(ellipse at 85% 0%, rgba(15, 23, 42, 0.04), transparent 45%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%230f172a' stroke-width='0.75' opacity='0.03'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.02'%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(ellipse at 85% 0%, rgba(5, 150, 105, 0.08), transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23059669' stroke-width='0.75' opacity='0.035'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.02'%3E%3C/g%3E%3C/svg%3E");
     background-repeat: no-repeat, repeat;
     background-size: auto, 60px 60px;
     background-attachment: scroll, fixed;
@@ -197,25 +197,25 @@ button {
     width: 48px;
     object-fit: contain;
     border-radius: 12px;
-    border: 1.5px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(241, 245, 249, 0.15);
+    border: 1.5px solid rgba(16, 185, 129, 0.35);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(16, 185, 129, 0.2);
     transition: transform .25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .2s ease, box-shadow .2s ease;
 }
 
 .brand:hover .brand-logo {
     transform: scale(1.06);
-    border-color: #ffffff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(241, 245, 249, 0.35);
+    border-color: #10b981;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.4);
 }
 
 [data-theme="light"] .brand-logo {
-    border-color: rgba(15, 23, 42, 0.2);
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    border-color: rgba(5, 150, 105, 0.3);
+    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.08);
 }
 
 [data-theme="light"] .brand:hover .brand-logo {
-    border-color: #0f172a;
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.18);
+    border-color: #059669;
+    box-shadow: 0 6px 20px rgba(5, 150, 105, 0.25);
 }
 
 .brand small {
@@ -364,8 +364,8 @@ button {
     gap: 6px;
     padding: 6px 14px;
     border-radius: 20px;
-    background: rgba(241, 245, 249, 0.12);
-    border: 1px solid rgba(241, 245, 249, 0.3);
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.35);
     color: var(--gold);
     font-size: 13px;
     font-weight: 700;
@@ -377,24 +377,24 @@ button {
 .nav-support-pill:hover,
 .nav-support-pill.active {
     background: var(--gold);
-    color: #02151e;
+    color: #021a1f;
     border-color: var(--gold);
-    box-shadow: 0 0 15px rgba(241, 245, 249, 0.3);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.35);
 }
 
 [data-theme="light"] .nav-support-pill {
-    background: rgba(15, 23, 42, 0.08);
-    border-color: rgba(15, 23, 42, 0.2);
-    color: #0f172a;
+    background: rgba(5, 150, 105, 0.1);
+    border-color: rgba(5, 150, 105, 0.25);
+    color: #047857;
     font-weight: 700;
 }
 
 [data-theme="light"] .nav-support-pill:hover,
 [data-theme="light"] .nav-support-pill.active {
-    background: #0f172a;
+    background: #059669;
     color: #ffffff;
-    border-color: #0f172a;
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+    border-color: #059669;
+    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
 }
 
 @media (max-width: 640px) {
@@ -454,7 +454,7 @@ button {
     right: 5%;
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, rgba(241, 245, 249, 0.12) 0%, rgba(56, 189, 248, 0.06) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(5, 150, 105, 0.08) 50%, transparent 70%);
     pointer-events: none;
     z-index: 1;
     border-radius: 50%;
@@ -462,69 +462,69 @@ button {
 }
 
 [data-theme="light"] .hero-glow {
-    background: radial-gradient(circle, rgba(15, 23, 42, 0.06) 0%, rgba(15, 23, 42, 0.02) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(5, 150, 105, 0.12) 0%, rgba(5, 150, 105, 0.03) 50%, transparent 70%);
 }
 
-/* Light Mode Hero: Clean Porcelain & Polished Silver */
+/* Light Mode Hero: Clean Serene Sage & Medina Emerald */
 [data-theme="light"] .hero {
-    background: radial-gradient(circle at 82% 35%, rgba(15, 23, 42, 0.04) 0%, rgba(245, 249, 250, 0.96) 65%),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 249, 250, 0.95) 55%, rgba(237, 244, 246, 0.92) 100%),
+    background: radial-gradient(circle at 82% 35%, rgba(5, 150, 105, 0.12) 0%, rgba(246, 251, 249, 0.96) 65%),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 251, 249, 0.95) 55%, rgba(234, 245, 240, 0.92) 100%),
                 url('../images/bayt-al-hadith-logo.png') right 5% center / 340px no-repeat,
                 url('../images/library-gold-black.jpg') center 55% / cover;
-    border: 1.5px solid rgba(15, 23, 42, 0.12);
-    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.06);
+    border: 1.5px solid rgba(5, 150, 105, 0.18);
+    box-shadow: 0 8px 24px -4px rgba(6, 47, 34, 0.06);
 }
 
 [data-theme="light"] .hero h1 {
-    color: #02202b;
+    color: #062f22;
     font-weight: 800;
 }
 
 [data-theme="light"] .hero h1 em {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
 }
 
 [data-theme="light"] .hero p {
-    color: #334155;
+    color: #2d5a4a;
     font-weight: 500;
 }
 
 [data-theme="light"] .eyebrow {
-    color: #0f172a;
+    color: #059669;
     font-weight: 800;
 }
 
 [data-theme="light"] .hero-button {
-    background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: #ffffff;
     font-weight: 800;
-    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 4px 16px rgba(5, 150, 105, 0.3);
     border: none;
 }
 
 [data-theme="light"] .hero-button:hover {
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
+    box-shadow: 0 8px 24px rgba(5, 150, 105, 0.45);
     transform: translateY(-2px);
     color: #ffffff;
 }
 
 [data-theme="light"] .hero-button-secondary {
     background: #ffffff;
-    border: 1.5px solid rgba(15, 23, 42, 0.12);
-    color: #0f172a;
+    border: 1.5px solid rgba(5, 150, 105, 0.18);
+    color: #062f22;
     font-weight: 700;
 }
 
 [data-theme="light"] .hero-caption {
-    color: #0f172a;
+    color: #059669;
     font-weight: 700;
 }
 
 [data-theme="light"] .hero .eyebrow {
-    color: #0f172a;
+    color: #059669;
 }
 
 .hero-copy {
@@ -9070,10 +9070,10 @@ a, button, select, input {
 .gilded-book-card {
     position: relative;
     background: 
-        radial-gradient(circle at 65% 35%, rgba(255, 255, 255, 0.08) 0%, transparent 65%),
-        linear-gradient(145deg, #0d1e26 0%, #05141c 50%, #01080d 100%);
+        radial-gradient(circle at 65% 35%, rgba(52, 211, 153, 0.12) 0%, transparent 65%),
+        linear-gradient(145deg, #092621 0%, #041a16 50%, #010d0b 100%);
     border-radius: 6px 18px 18px 6px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(52, 211, 153, 0.28);
     padding: 24px 20px 22px 28px;
     min-height: 290px;
     display: flex;
@@ -9086,43 +9086,43 @@ a, button, select, input {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 
         inset 8px 0 16px rgba(0, 0, 0, 0.9),
-        inset -1px 0 3px rgba(255, 255, 255, 0.15),
-        3px 1.5px 0 #ffffff,
-        5px 2.5px 0 #cbd5e1,
-        7px 3.5px 0 #f8fafc,
-        9px 4.5px 0 #94a3b8,
-        12px 6px 0 #e2e8f0,
-        14px 7px 0 #64748b,
+        inset -1px 0 3px rgba(52, 211, 153, 0.2),
+        3px 1.5px 0 #f0fdf4,
+        5px 2.5px 0 #a7f3d0,
+        7px 3.5px 0 #ffffff,
+        9px 4.5px 0 #6ee7b7,
+        12px 6px 0 #34d399,
+        14px 7px 0 #059669,
         18px 14px 32px rgba(0, 0, 0, 0.75);
 }
 
 [data-theme="light"] .gilded-book-card {
     background: 
-        radial-gradient(circle at 65% 35%, rgba(255, 255, 255, 0.12) 0%, transparent 65%),
-        linear-gradient(145deg, #1e293b 0%, #0f172a 55%, #020617 100%);
+        radial-gradient(circle at 65% 35%, rgba(5, 150, 105, 0.15) 0%, transparent 65%),
+        linear-gradient(145deg, #063c2f 0%, #032b21 55%, #011913 100%);
     box-shadow: 
         inset 8px 0 16px rgba(0, 0, 0, 0.8),
-        3px 1.5px 0 #e2e8f0,
-        5px 2.5px 0 #cbd5e1,
-        7px 3.5px 0 #94a3b8,
-        9px 4.5px 0 #64748b,
-        12px 6px 0 #cbd5e1,
-        14px 7px 0 #94a3b8,
-        18px 14px 28px rgba(15, 23, 42, 0.35);
+        3px 1.5px 0 #eaf5f0,
+        5px 2.5px 0 #a7f3d0,
+        7px 3.5px 0 #6ee7b7,
+        9px 4.5px 0 #059669,
+        12px 6px 0 #34d399,
+        14px 7px 0 #047857,
+        18px 14px 28px rgba(6, 47, 34, 0.35);
 }
 
 .gilded-book-card:hover {
     transform: translateY(-8px) rotateY(-5deg) rotateX(2deg);
-    border-color: rgba(255, 255, 255, 0.55);
+    border-color: rgba(52, 211, 153, 0.7);
     box-shadow: 
         inset 8px 0 16px rgba(0, 0, 0, 0.9),
         4px 2px 0 #ffffff,
-        7px 3.5px 0 #e2e8f0,
-        10px 5px 0 #cbd5e1,
-        13px 6.5px 0 #f8fafc,
-        16px 8px 0 #94a3b8,
+        7px 3.5px 0 #a7f3d0,
+        10px 5px 0 #6ee7b7,
+        13px 6.5px 0 #34d399,
+        16px 8px 0 #059669,
         24px 18px 40px rgba(0, 0, 0, 0.8),
-        0 0 30px rgba(226, 232, 240, 0.2);
+        0 0 32px rgba(16, 185, 129, 0.35);
 }
 
 /* Spine & Raised Leather Ribs */
@@ -9131,10 +9131,10 @@ a, button, select, input {
     top: 0; bottom: 0; left: 0;
     width: 18px;
     border-radius: 6px 0 0 6px;
-    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(255,255,255,0.12) 40%, rgba(0,0,0,0.85) 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(52,211,153,0.15) 40%, rgba(0,0,0,0.85) 100%);
     pointer-events: none;
     border-right: 1px solid rgba(0,0,0,0.8);
-    box-shadow: 2px 0 3px rgba(255,255,255,0.05);
+    box-shadow: 2px 0 3px rgba(52,211,153,0.08);
 }
 
 .spine-rib-1, .spine-rib-2, .spine-rib-3, .spine-rib-4 {
@@ -9142,7 +9142,7 @@ a, button, select, input {
     left: 0;
     width: 18px;
     height: 4px;
-    background: linear-gradient(to right, #000, #cbd5e1, #000);
+    background: linear-gradient(to right, #000, #34d399, #000);
     box-shadow: 0 1px 2px rgba(0,0,0,0.8);
 }
 .spine-rib-1 { top: 35px; }
@@ -9155,7 +9155,7 @@ a, button, select, input {
     top: 0; bottom: 0; left: 22px;
     width: 2px;
     background: rgba(0, 0, 0, 0.6);
-    box-shadow: 1px 0 0 rgba(255, 255, 255, 0.08);
+    box-shadow: 1px 0 0 rgba(52, 211, 153, 0.12);
     pointer-events: none;
 }
 
@@ -9163,20 +9163,20 @@ a, button, select, input {
     position: absolute;
     inset: 10px 10px 10px 24px;
     border-radius: 4px 12px 12px 4px;
-    border: 1.5px solid rgba(226, 232, 240, 0.45);
+    border: 1.5px solid rgba(52, 211, 153, 0.45);
     box-shadow: 
-        inset 0 0 0 3px rgba(3, 15, 22, 0.9),
-        inset 0 0 0 4.5px rgba(226, 232, 240, 0.25);
+        inset 0 0 0 3px rgba(3, 20, 16, 0.9),
+        inset 0 0 0 4.5px rgba(52, 211, 153, 0.25);
     pointer-events: none;
     transition: all 0.3s ease;
 }
 
 .gilded-book-card:hover .outer-foil-frame {
-    border-color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(52, 211, 153, 0.9);
     box-shadow: 
-        inset 0 0 0 3px rgba(3, 15, 22, 0.95),
-        inset 0 0 0 4.5px rgba(255, 255, 255, 0.5),
-        0 0 12px rgba(255, 255, 255, 0.25);
+        inset 0 0 0 3px rgba(3, 20, 16, 0.95),
+        inset 0 0 0 4.5px rgba(52, 211, 153, 0.55),
+        0 0 14px rgba(16, 185, 129, 0.35);
 }
 
 .ribbon-bookmark {
@@ -9185,7 +9185,7 @@ a, button, select, input {
     right: 32px;
     width: 15px;
     height: 30px;
-    background: linear-gradient(to right, #94a3b8 0%, #ffffff 50%, #cbd5e1 100%);
+    background: linear-gradient(to right, #047857 0%, #34d399 50%, #10b981 100%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 75%, 0% 100%);
     z-index: 30;
@@ -9209,7 +9209,7 @@ a, button, select, input {
 .shamsa-svg {
     width: 54px;
     height: 54px;
-    filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.25));
+    filter: drop-shadow(0 2px 6px rgba(16, 185, 129, 0.35));
     transition: transform 0.3s ease;
 }
 
@@ -9231,7 +9231,7 @@ a, button, select, input {
     font-size: 10px;
     font-weight: 900;
     letter-spacing: 0.8px;
-    color: #e2e8f0;
+    color: #34d399;
     text-transform: uppercase;
 }
 
@@ -9239,9 +9239,9 @@ a, button, select, input {
     width: 24px;
     height: 24px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #ffffff;
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    color: #34d399;
     font-size: 11px;
     font-weight: 800;
     display: flex;
@@ -9259,21 +9259,21 @@ a, button, select, input {
 .gilded-book-title {
     font-size: 17.5px;
     font-weight: 900;
-    color: #ffffff;
+    color: #f0fdf4;
     margin: 0 0 3px;
     letter-spacing: -0.2px;
     transition: color 0.2s ease;
 }
 
 .gilded-book-card:hover .gilded-book-title {
-    color: #f1f5f9;
+    color: #34d399;
 }
 
 .gilded-book-ar {
     font-family: var(--font-arabic, 'Amiri', serif);
     font-size: 18px;
     font-weight: 700;
-    color: #cbd5e1;
+    color: #6ee7b7;
     display: block;
     margin-bottom: 4px;
     line-height: 1.4;
@@ -9281,7 +9281,7 @@ a, button, select, input {
 
 .gilded-book-author {
     font-size: 11.5px;
-    color: #94a3b8;
+    color: #93c5b5;
     line-height: 1.4;
     margin: 0;
     display: -webkit-box;
@@ -9297,7 +9297,7 @@ a, button, select, input {
     align-items: center;
     justify-content: space-between;
     padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(16, 185, 129, 0.18);
     font-size: 11.5px;
 }
 
@@ -9306,9 +9306,9 @@ a, button, select, input {
     align-items: center;
     padding: 3px 10px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    color: #f8fafc;
+    background: rgba(16, 185, 129, 0.16);
+    border: 1px solid rgba(16, 185, 129, 0.32);
+    color: #34d399;
     font-weight: 800;
     font-size: 11px;
 }
@@ -9318,7 +9318,7 @@ a, button, select, input {
     align-items: center;
     gap: 4px;
     font-weight: 800;
-    color: #f1f5f9;
+    color: #34d399;
     font-size: 12px;
 }
 

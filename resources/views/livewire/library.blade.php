@@ -160,12 +160,12 @@
                                 <div class="bookshelf-title-wrap">
                                     <div class="hadith-header-art" aria-hidden="true">
                                         <svg viewBox="0 0 36 36" width="32" height="32" fill="none">
-                                            <rect x="7" y="4" width="23" height="28" rx="3.5" fill="#0e222c" stroke="#e2e8f0" stroke-width="1.4"/>
-                                            <path d="M11 4V32" stroke="#06161f" stroke-width="2"/>
-                                            <path d="M12 4V32" stroke="#ffffff" stroke-width="0.8"/>
-                                            <path d="M17 4V16L20 13.5L23 16V4" fill="#cbd5e1"/>
-                                            <circle cx="21" cy="22" r="4.5" fill="#030d13" stroke="#f1f5f9" stroke-width="1"/>
-                                            <polygon points="21,18.5 22.2,21 24.8,21.4 22.8,23 23.5,25.6 21,24 18.5,25.6 19.2,23 17.2,21.4 19.8,21" fill="#ffffff"/>
+                                            <rect x="7" y="4" width="23" height="28" rx="3.5" fill="#092621" stroke="#34d399" stroke-width="1.4"/>
+                                            <path d="M11 4V32" stroke="#041a16" stroke-width="2"/>
+                                            <path d="M12 4V32" stroke="#6ee7b7" stroke-width="0.8"/>
+                                            <path d="M17 4V16L20 13.5L23 16V4" fill="#10b981"/>
+                                            <circle cx="21" cy="22" r="4.5" fill="#010d0b" stroke="#34d399" stroke-width="1"/>
+                                            <polygon points="21,18.5 22.2,21 24.8,21.4 22.8,23 23.5,25.6 21,24 18.5,25.6 19.2,23 17.2,21.4 19.8,21" fill="#6ee7b7"/>
                                         </svg>
                                     </div>
                                     <h2 class="bookshelf-title">Collections</h2>
@@ -208,12 +208,12 @@
                                         {{-- Islamic Shamsa Medallion --}}
                                         <div class="book-shamsa-medallion" aria-hidden="true">
                                             <svg viewBox="0 0 100 100" class="shamsa-svg">
-                                                <circle cx="50" cy="50" r="44" stroke="#e2e8f0" stroke-width="1.2" stroke-dasharray="2 2"/>
-                                                <circle cx="50" cy="50" r="39" stroke="#cbd5e1" stroke-width="1.5"/>
-                                                <rect x="23" y="23" width="54" height="54" stroke="#ffffff" stroke-width="1.2" fill="none"/>
-                                                <rect x="23" y="23" width="54" height="54" transform="rotate(45 50 50)" stroke="#ffffff" stroke-width="1.2" fill="none"/>
-                                                <circle cx="50" cy="50" r="24" stroke="#cbd5e1" stroke-width="1.4" fill="#031219"/>
-                                                <polygon points="50,33 54,46 67,50 54,54 50,67 46,54 33,50 46,46" fill="#f8fafc"/>
+                                                <circle cx="50" cy="50" r="44" stroke="#34d399" stroke-width="1.2" stroke-dasharray="2 2"/>
+                                                <circle cx="50" cy="50" r="39" stroke="#10b981" stroke-width="1.5"/>
+                                                <rect x="23" y="23" width="54" height="54" stroke="#6ee7b7" stroke-width="1.2" fill="none"/>
+                                                <rect x="23" y="23" width="54" height="54" transform="rotate(45 50 50)" stroke="#6ee7b7" stroke-width="1.2" fill="none"/>
+                                                <circle cx="50" cy="50" r="24" stroke="#34d399" stroke-width="1.4" fill="#011913"/>
+                                                <polygon points="50,33 54,46 67,50 54,54 50,67 46,54 33,50 46,46" fill="#a7f3d0"/>
                                             </svg>
                                         </div>
 
