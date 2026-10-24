@@ -28,6 +28,7 @@
     --gold-dark: #cbd5e1;
     --gold-gradient: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
     --gold-subtle: rgba(241, 245, 249, 0.10);
+    --btn-gold-text: #02151e;
 
     --emerald: #38bdf8;
     --emerald-subtle: rgba(56, 189, 248, 0.14);
@@ -77,6 +78,7 @@
     --gold-dark: #020617;
     --gold-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     --gold-subtle: rgba(15, 23, 42, 0.06);
+    --btn-gold-text: #ffffff;
 
     --emerald: #0284c7;
     --emerald-subtle: rgba(2, 132, 199, 0.10);
@@ -785,11 +787,11 @@ button {
 }
 
 [data-theme="dark"] .collection-button.active {
-    color: #03212c;
+    color: #02151e;
 }
 
 [data-theme="light"] .collection-button.active {
-    color: #03212c;
+    color: #ffffff !important;
 }
 
 .collection-button.active .arrow {
@@ -952,11 +954,11 @@ button {
 }
 
 [data-theme="dark"] .search-form button {
-    color: #03212c;
+    color: #02151e;
 }
 
 [data-theme="light"] .search-form button {
-    color: #03212c;
+    color: #ffffff !important;
     box-shadow: 0 2px 10px rgba(15, 23, 42, 0.28);
 }
 
@@ -1026,7 +1028,7 @@ button {
 }
 
 [data-theme="light"] .topic-chip.active {
-    color: #03212c;
+    color: #ffffff !important;
 }
 
 .result-meta {
@@ -4178,7 +4180,7 @@ a, button, select, input {
     }
 
     [data-theme="light"] .nav-drawer-btn--login {
-        color: #03212c !important;
+        color: #ffffff !important;
     }
 
     .nav-drawer-btn--logout {
@@ -4582,7 +4584,7 @@ a, button, select, input {
 
 .dua-read-btn:hover {
     background: var(--gold);
-    color: #0a0e13;
+    color: var(--btn-gold-text);
     transform: translateX(2px);
 }
 
@@ -7476,7 +7478,7 @@ a, button, select, input {
 
 .bookmark-tab.active .bookmark-tab-badge {
     background: var(--gold);
-    color: #0a0e13;
+    color: var(--btn-gold-text);
 }
 
 .bookmarks-grid {
@@ -7647,7 +7649,7 @@ a, button, select, input {
     justify-content: center;
     padding: 9px 14px;
     background: var(--gold-gradient);
-    color: #0a0e13;
+    color: var(--btn-gold-text);
     font-size: 12.5px;
     font-weight: 800;
     border-radius: 10px;
@@ -8813,7 +8815,7 @@ a, button, select, input {
     border-radius: 50%;
     background: var(--gold-gradient);
     border: none;
-    color: #02202b;
+    color: var(--btn-gold-text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8821,6 +8823,11 @@ a, button, select, input {
     box-shadow: 0 4px 12px rgba(241, 245, 249, 0.3);
     transition: transform 0.15s ease;
     flex-shrink: 0;
+}
+
+[data-theme="light"] .rawdah-play-btn {
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
 }
 
 .rawdah-play-btn:hover {
@@ -8868,8 +8875,13 @@ a, button, select, input {
 
 .lang-switch-btn.active {
     background: var(--gold-gradient);
-    color: #02202b;
+    color: var(--btn-gold-text);
     box-shadow: 0 2px 6px rgba(241, 245, 249, 0.3);
+}
+
+[data-theme="light"] .lang-switch-btn.active {
+    color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
 }
 
 .lang-switch-btn:hover:not(.active) {
@@ -8921,7 +8933,7 @@ a, button, select, input {
     padding: 10px 18px;
     border-radius: 12px;
     background: var(--gold-gradient);
-    color: #02202b;
+    color: var(--btn-gold-text);
     font-size: 13px;
     font-weight: 800;
     text-decoration: none;
@@ -8931,7 +8943,16 @@ a, button, select, input {
 
 .rawdah-btn-primary:hover {
     transform: translateY(-2px);
-    color: #02202b;
+    color: var(--btn-gold-text);
+}
+
+[data-theme="light"] .rawdah-btn-primary {
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+}
+
+[data-theme="light"] .rawdah-btn-primary:hover {
+    color: #ffffff !important;
 }
 
 .rawdah-btn-icon {
@@ -9017,7 +9038,11 @@ a, button, select, input {
 
 .rawdah-topic-all-link:hover {
     background: var(--gold);
-    color: #02202b;
+    color: var(--btn-gold-text);
+}
+
+[data-theme="light"] .rawdah-topic-all-link:hover {
+    color: #ffffff !important;
 }
 
 /* 3. The Gilded Bookshelf: Collections */
