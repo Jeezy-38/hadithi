@@ -17,9 +17,6 @@
         <div class="bayt-splash-title">
             Bayt Al-<span>Hadith</span>
         </div>
-        <div class="bayt-splash-sub">
-            Maktaba ya Hadithi za Mtume ﷺ
-        </div>
         <div class="bayt-splash-spinner-wrap">
             <div class="bayt-splash-spinner"></div>
             <span class="bayt-splash-caption">Inapakia hazina ya mafundisho...</span>
