@@ -9,7 +9,7 @@
 
         <div class="auth-drawer-head">
             <a href="{{ route('library') }}" class="auth-drawer-brand">
-                <span class="auth-brand-badge"><img src="{{ asset('images/logo.png') }}" alt="" width="30" height="30"></span>
+                <span class="auth-brand-badge"><img src="{{ asset('images/logo.png') }}" alt="" width="42" height="42"></span>
                 <span>Bayt al-Hadith</span>
             </a>
             <button type="button" class="auth-close" data-auth-close aria-label="Funga">

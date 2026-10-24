@@ -45,7 +45,7 @@
                     <div class="rawdah-layout-container">
                         {{-- 1. Hero Mehrab Spotlight Card --}}
                         @if($todayHadith)
-                            <section class="rawdah-mehrab-hero" aria-label="Hadithi Teule ya Leo">
+                            <section class="rawdah-mehrab-hero" aria-label="Hadithi ya Leo">
                                 <div class="rawdah-arch-watermark" aria-hidden="true">
                                     <svg viewBox="0 0 120 120" width="180" height="180" fill="none">
                                         <path d="M10 110 V50 Q10 10 60 10 Q110 10 110 50 V110" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3"/>
@@ -57,7 +57,7 @@
                                 <div class="rawdah-hero-top">
                                     <span class="rawdah-hero-tag">
                                         <span>✦</span>
-                                        <span>Hadithi Teule ya Leo</span>
+                                        <span>Hadithi ya Leo</span>
                                     </span>
                                     <span class="rawdah-hero-ref">
                                         {{ $todayHadith->chapter->book->collection->name ?? 'Hadithi' }} · Na. {{ $todayHadith->hadith_number ?? $todayHadith->number ?? $todayHadith->reference }}
@@ -78,10 +78,6 @@
 
                                 {{-- Action Bar with Quick Links --}}
                                 <div class="rawdah-hero-footer">
-                                    <div class="rawdah-hero-ref-pill">
-                                        <span>✦ Hadithi Teule</span>
-                                    </div>
-
                                     <div class="rawdah-hero-buttons">
                                         <a href="{{ route('hadith.show', $todayHadith) }}" class="rawdah-btn-primary">
                                             <span>Soma Hadithi Kamili</span>

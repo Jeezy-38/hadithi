@@ -4,7 +4,7 @@
             <div class="auth-hero auth-hero--compact">
                 <div class="auth-hero-pattern" aria-hidden="true"></div>
                 <div class="auth-hero-glow" aria-hidden="true"></div>
-                <span class="auth-brand-badge"><img src="{{ asset('images/logo.png') }}" alt="" width="30" height="30"></span>
+                <span class="auth-brand-badge"><img src="{{ asset('images/logo.png') }}" alt="" width="42" height="42"></span>
             </div>
 
             <div class="auth-card-body">

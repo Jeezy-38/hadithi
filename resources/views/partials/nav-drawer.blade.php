@@ -3,7 +3,7 @@
 <aside id="nav-drawer" class="nav-drawer" role="dialog" aria-modal="true" aria-label="Menyu Kuu" aria-hidden="true" tabindex="-1">
     <div class="nav-drawer-header">
         <a href="{{ route('library') }}" class="nav-drawer-brand">
-            <img src="{{ asset('images/logo.png') }}" alt="" class="nav-drawer-logo" width="34" height="34">
+            <img src="{{ asset('images/logo.png') }}" alt="" class="nav-drawer-logo" width="44" height="44">
             <div class="nav-drawer-brand-text">
                 <span class="nav-drawer-title">Bayt Al-Hadith</span>
                 <span class="nav-drawer-sub" data-i18n="brand_sub">MAKTABA YA ELIMU</span>
