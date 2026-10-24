@@ -10,10 +10,6 @@
 
         <div class="date-container">
             <header class="date-header">
-                <div class="date-pill">
-                    <span class="date-dot"></span>
-                    <span>Kalenda ya Kiislamu (Hijri)</span>
-                </div>
                 <h1 class="date-title">Tarehe ya Kiislamu ya Leo</h1>
                 <p class="date-subtitle">
                     Mfumo wa kalenda ya mwandamo wa mwezi kuanzia Hijrah ya Mtume Muhammad ﷺ
@@ -22,7 +18,6 @@
 
             {{-- Kadi Kuu ya Tarehe ya Leo --}}
             <div class="today-hijri-card">
-                <div class="hijri-badge-year" id="hijri-day-name">Leo</div>
                 <div class="hijri-date-arabic font-arabic" id="hijri-date-ar" dir="rtl">...</div>
                 <div class="hijri-date-swahili" id="hijri-date-sw">Inapakia tarehe ya Hijri...</div>
                 <div class="gregorian-comparison" id="gregorian-date-display">...</div>
@@ -33,96 +28,131 @@
                 <h2 class="section-heading">Miezi 12 ya Kalenda ya Kiislamu</h2>
                 <div class="months-grid">
                     <div class="month-card sacred">
-                        <span class="month-num">1</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">1</span>
+                            <span class="month-tag">Mwezi Haramu</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Muharram</strong>
-                            <span class="month-ar font-arabic">مُحَرَّم</span>
+                            <span class="month-ar font-arabic" dir="rtl">مُحَرَّم</span>
                         </div>
-                        <span class="month-tag">Mwezi Haramu</span>
                     </div>
+
                     <div class="month-card">
-                        <span class="month-num">2</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">2</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Safar</strong>
-                            <span class="month-ar font-arabic">صَفَر</span>
+                            <span class="month-ar font-arabic" dir="rtl">صَفَر</span>
                         </div>
                     </div>
+
                     <div class="month-card">
-                        <span class="month-num">3</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">3</span>
+                            <span class="month-tag">Kuzaliwa Mtume ﷺ</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Rabi' al-Awwal</strong>
-                            <span class="month-ar font-arabic">رَبِيع الأَوَّل</span>
+                            <span class="month-ar font-arabic" dir="rtl">رَبِيع الأَوَّل</span>
                         </div>
-                        <span class="month-tag">Kuzaliwa Mtume ﷺ</span>
                     </div>
+
                     <div class="month-card">
-                        <span class="month-num">4</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">4</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Rabi' al-Thani</strong>
-                            <span class="month-ar font-arabic">رَبِيع الآخِر</span>
+                            <span class="month-ar font-arabic" dir="rtl">رَبِيع الآخِر</span>
                         </div>
                     </div>
+
                     <div class="month-card">
-                        <span class="month-num">5</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">5</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Jumada al-Ula</strong>
-                            <span class="month-ar font-arabic">جُمَادَى الأُولَى</span>
+                            <span class="month-ar font-arabic" dir="rtl">جُمَادَى الأُولَى</span>
                         </div>
                     </div>
+
                     <div class="month-card">
-                        <span class="month-num">6</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">6</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Jumada al-Akhirah</strong>
-                            <span class="month-ar font-arabic">جُمَادَى الآخِرَة</span>
+                            <span class="month-ar font-arabic" dir="rtl">جُمَادَى الآخِرَة</span>
                         </div>
                     </div>
+
                     <div class="month-card sacred">
-                        <span class="month-num">7</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">7</span>
+                            <span class="month-tag">Mwezi Haramu</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Rajab</strong>
-                            <span class="month-ar font-arabic">رَجَب</span>
+                            <span class="month-ar font-arabic" dir="rtl">رَجَب</span>
                         </div>
-                        <span class="month-tag">Mwezi Haramu · Isra &amp; Mi'raj</span>
                     </div>
+
                     <div class="month-card">
-                        <span class="month-num">8</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">8</span>
+                            <span class="month-tag">Maandalizi ya Ramadhani</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Sha'ban</strong>
-                            <span class="month-ar font-arabic">شَعْبَان</span>
+                            <span class="month-ar font-arabic" dir="rtl">شَعْبَان</span>
                         </div>
-                        <span class="month-tag">Maandalizi ya Ramadhani</span>
                     </div>
+
                     <div class="month-card highlight">
-                        <span class="month-num">9</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">9</span>
+                            <span class="month-tag highlight-tag">Mwezi wa Saumu</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Ramadhan</strong>
-                            <span class="month-ar font-arabic">رَمَضَان</span>
+                            <span class="month-ar font-arabic" dir="rtl">رَمَضَان</span>
                         </div>
-                        <span class="month-tag">Mwezi Mtukufu wa Saumu</span>
                     </div>
+
                     <div class="month-card">
-                        <span class="month-num">10</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">10</span>
+                            <span class="month-tag">Eid al-Fitr</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Shawwal</strong>
-                            <span class="month-ar font-arabic">شَوَّال</span>
+                            <span class="month-ar font-arabic" dir="rtl">شَوَّال</span>
                         </div>
-                        <span class="month-tag">Eid al-Fitr</span>
                     </div>
+
                     <div class="month-card sacred">
-                        <span class="month-num">11</span>
-                        <div class="month-names">
+                        <div class="month-card-top">
+                            <span class="month-num">11</span>
+                            <span class="month-tag">Mwezi Haramu</span>
+                        </div>
+                        <div class="month-card-content">
                             <strong class="month-sw">Dhu al-Qi'dah</strong>
-                            <span class="month-ar font-arabic">ذُو القَعْدَة</span>
+                            <span class="month-ar font-arabic" dir="rtl">ذُو القَعْدَة</span>
                         </div>
-                        <span class="month-tag">Mwezi Haramu</span>
                     </div>
+
                     <div class="month-card sacred highlight">
-                        <span class="month-num">12</span>
-                        <div class="month-names">
-                            <strong class="month-sw">Dhu al-Hijjah</strong>
-                            <span class="month-ar font-arabic">ذُو الحِجَّة</span>
+                        <div class="month-card-top">
+                            <span class="month-num">12</span>
+                            <span class="month-tag">Mwezi Haramu · Hijja</span>
                         </div>
-                        <span class="month-tag">Hijja &amp; Eid al-Adha</span>
+                        <div class="month-card-content">
+                            <strong class="month-sw">Dhu al-Hijjah</strong>
+                            <span class="month-ar font-arabic" dir="rtl">ذُو الحِجَّة</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,7 +161,6 @@
 
     <script>
         (function() {
-            // Tumia Intl.DateTimeFormat kwa ajili ya tarehe rasmi ya Kiislamu ya leo
             try {
                 const today = new Date();
                 
@@ -144,12 +173,6 @@
                 const dateAr = hijriArFormatter.format(today);
                 const elAr = document.getElementById('hijri-date-ar');
                 if (elAr) elAr.textContent = dateAr;
-
-                // Siku ya juma kwa Kiswahili
-                const daysSw = ['Jumapili', 'Jumatatu', 'Jumanne', 'Jumatano', 'Alhamisi', 'Ijumaa', 'Jumamosi'];
-                const dayName = daysSw[today.getDay()];
-                const elDay = document.getElementById('hijri-day-name');
-                if (elDay) elDay.textContent = dayName;
 
                 // Tafsiri ya miezi ya Kiislamu kwa Kiswahili
                 const parts = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {

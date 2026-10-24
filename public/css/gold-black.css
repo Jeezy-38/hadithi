@@ -9882,67 +9882,153 @@ a, button, select, input {
 .today-hijri-card {
     text-align: center;
     padding: 44px 24px;
-    background: radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.08) 0%, var(--bg-surface) 70%);
+    background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.04) 0%, var(--bg-surface) 75%);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 }
-.hijri-badge-year { font-size: 13px; font-weight: 700; color: #38bdf8; letter-spacing: 1.5px; text-transform: uppercase; }
-.hijri-date-arabic { font-size: 34px; color: var(--text-primary); margin: 10px 0; }
-.hijri-date-swahili { font-size: 20px; font-weight: 700; color: #e2e8f0; margin-bottom: 8px; }
-.gregorian-comparison { font-size: 13px; color: var(--text-muted); }
+
+.hijri-date-arabic {
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    font-size: 38px;
+    line-height: 1.5;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 0 2px 14px rgba(255, 255, 255, 0.2);
+}
+
+.hijri-date-swahili {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f1f5f9;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.gregorian-comparison {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
 
 .islamic-months-section,
 .ramadhan-duas-section,
 .ramadhan-hadiths-section {
-    margin-top: 40px;
+    margin-top: 48px;
 }
+
 .section-heading,
 .section-title {
-    font-size: 18px;
-    font-weight: 700;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
     color: var(--text-primary);
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
+
 .months-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
 }
+
 .month-card {
     background: var(--bg-surface);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 14px 16px;
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.month-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.month-card-top {
     display: flex;
     align-items: center;
-    gap: 12px;
-    position: relative;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 24px;
 }
-.month-card.sacred { border-color: rgba(56, 189, 248, 0.35); }
-.month-card.highlight { background: rgba(56, 189, 248, 0.08); border-color: #38bdf8; }
+
 .month-num {
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    background: var(--bg-surface-elevated);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 11px;
     font-weight: 700;
-    color: var(--text-primary);
+    color: #cbd5e1;
 }
-.month-names { display: flex; flex-direction: column; gap: 2px; }
-.month-sw { font-size: 13px; color: var(--text-primary); }
-.month-ar { font-size: 12px; color: var(--text-muted); }
+
 .month-tag {
-    position: absolute;
-    top: 6px;
-    right: 8px;
-    font-size: 9px;
-    padding: 2px 6px;
-    border-radius: 4px;
-    background: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
+    font-size: 10px;
     font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #cbd5e1;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.month-card.sacred {
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.month-card.sacred .month-tag {
+    background: rgba(241, 245, 249, 0.12);
+    color: #ffffff;
+    border-color: rgba(241, 245, 249, 0.24);
+}
+
+.month-card.highlight {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.month-card.highlight .highlight-tag {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+    font-weight: 700;
+}
+
+.month-card-content {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.month-sw {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.2px;
+}
+
+.month-ar {
+    font-family: 'Amiri', 'Traditional Arabic', serif;
+    font-size: 18px;
+    color: #94a3b8;
+    line-height: 1;
 }
 
 /* Ramadhan Duas & Hadiths */
