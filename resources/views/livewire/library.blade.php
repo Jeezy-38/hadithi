@@ -76,38 +76,10 @@
                                     </p>
                                 </div>
 
-                                {{-- Action Bar with Audio & Quick Links --}}
+                                {{-- Action Bar with Quick Links --}}
                                 <div class="rawdah-hero-footer">
-                                    @php
-                                        $hasStudio = !empty($todayHadith->getStudioAudioUrl());
-                                        $arAudioUrl = route('hadith.audio', ['hadith' => $todayHadith, 'lang' => 'ar']);
-                                        $swAudioUrl = route('hadith.audio', ['hadith' => $todayHadith, 'lang' => 'sw']);
-                                    @endphp
-                                    <div class="rawdah-audio-pill" id="rawdah-audio-pill"
-                                         data-ar-audio="{{ $arAudioUrl }}"
-                                         data-sw-audio="{{ $swAudioUrl }}"
-                                         data-arabic="{{ e($todayHadith->arabic) }}"
-                                         data-swahili="{{ e($todayHadith->swahili) }}"
-                                         data-has-studio="{{ $hasStudio ? '1' : '0' }}">
-                                        <button type="button" class="rawdah-play-btn" id="rawdah-audio-toggle" aria-label="Sikiliza Kisomo cha Hadithi" title="Sikiliza Kisomo cha Sauti">
-                                            <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                                <path d="M8 5v14l11-7z"/>
-                                            </svg>
-                                            <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display: none;">
-                                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-                                            </svg>
-                                        </button>
-                                        <div class="rawdah-audio-meta">
-                                            <span class="rawdah-audio-title" id="rawdah-audio-title">Kisomo cha Kiarabu</span>
-                                            <span class="rawdah-audio-sub" id="rawdah-audio-sub">
-                                                {{ $hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Kiarabu Fasaha (MP3)' }}
-                                            </span>
-                                        </div>
-                                        <div class="rawdah-audio-lang-switch" role="group" aria-label="Chagua Lugha ya Sauti">
-                                            <button type="button" class="lang-switch-btn active" id="btn-lang-ar" data-lang="ar" title="Sikiliza Kiarabu">AR</button>
-                                            <button type="button" class="lang-switch-btn" id="btn-lang-sw" data-lang="sw" title="Sikiliza Kiswahili">SW</button>
-                                        </div>
-                                        <audio id="rawdah-html5-audio" preload="none"></audio>
+                                    <div class="rawdah-hero-ref-pill">
+                                        <span>✦ Hadithi Teule</span>
                                     </div>
 
                                     <div class="rawdah-hero-buttons">
@@ -144,7 +116,7 @@
                             @endphp
                             @foreach($topicsSlice as $t)
                                 <a href="{{ route('topics.show', $t['slug']) }}" class="rawdah-topic-pill">
-                                    <span style="color: {{ $t['color'] ?? 'var(--gold)' }};">✦</span>
+                                    <span class="rawdah-topic-star" aria-hidden="true">✦</span>
                                     <span>{{ $t['title_sw'] }}</span>
                                 </a>
                             @endforeach
@@ -351,120 +323,7 @@
     <script>
         (function() {
             function initRawdahHero() {
-                const playBtn = document.getElementById('rawdah-audio-toggle');
-                const audioPill = document.getElementById('rawdah-audio-pill');
                 const copyBtn = document.getElementById('rawdah-copy-btn');
-                const htmlAudio = document.getElementById('rawdah-html5-audio');
-                const btnAr = document.getElementById('btn-lang-ar');
-                const btnSw = document.getElementById('btn-lang-sw');
-                const titleEl = document.getElementById('rawdah-audio-title');
-                const subEl = document.getElementById('rawdah-audio-sub');
-                const badgeEl = document.getElementById('rawdah-source-badge');
-
-                if (playBtn && audioPill && !playBtn.dataset.bound) {
-                    playBtn.dataset.bound = '1';
-                    let currentLang = 'ar';
-                    let isPlaying = false;
-                    const hasStudio = audioPill.dataset.hasStudio === '1';
-
-                    function updateLabels() {
-                        if (currentLang === 'ar') {
-                            titleEl.textContent = 'Kisomo cha Kiarabu';
-                            subEl.textContent = hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Kiarabu Fasaha (MP3)';
-                            btnAr.classList.add('active');
-                            btnSw.classList.remove('active');
-                        } else {
-                            titleEl.textContent = 'Kisomo cha Kiswahili';
-                            subEl.textContent = 'Tafsiri ya Kiswahili Sanifu (MP3)';
-                            btnSw.classList.add('active');
-                            btnAr.classList.remove('active');
-                        }
-                    }
-
-                    function setPlayState(playing) {
-                        isPlaying = playing;
-                        const p = playBtn.querySelector('.icon-play');
-                        const pa = playBtn.querySelector('.icon-pause');
-                        if (p) p.style.display = playing ? 'none' : 'block';
-                        if (pa) pa.style.display = playing ? 'block' : 'none';
-                        audioPill.classList.toggle('is-playing', playing);
-                    }
-
-                    function playCurrentAudio() {
-                        const targetUrl = (currentLang === 'ar') ? audioPill.dataset.arAudio : audioPill.dataset.swAudio;
-                        if (!htmlAudio.src || !htmlAudio.src.includes(targetUrl)) {
-                            htmlAudio.src = targetUrl;
-                        }
-                        const playPromise = htmlAudio.play();
-                        if (playPromise !== undefined) {
-                            playPromise.then(function() {
-                                setPlayState(true);
-                            }).catch(function() {
-                                // Fallback to Web Speech API if HTML5 audio fails
-                                fallbackSpeech();
-                            });
-                        }
-                    }
-
-                    function pauseAudio() {
-                        htmlAudio.pause();
-                        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-                        setPlayState(false);
-                    }
-
-                    function fallbackSpeech() {
-                        if (!('speechSynthesis' in window)) {
-                            alert('Sauti ya mtandaoni haijapatikana na kifaa hakiauni usomaji wa ndani.');
-                            setPlayState(false);
-                            return;
-                        }
-                        window.speechSynthesis.cancel();
-                        const text = (currentLang === 'ar') ? audioPill.dataset.arabic : audioPill.dataset.swahili;
-                        const utterance = new SpeechSynthesisUtterance(text);
-                        utterance.lang = (currentLang === 'ar') ? 'ar-SA' : 'sw-TZ';
-                        utterance.rate = 0.85;
-
-                        utterance.onstart = function() { setPlayState(true); };
-                        utterance.onend = utterance.onerror = function() { setPlayState(false); };
-                        window.speechSynthesis.speak(utterance);
-                    }
-
-                    htmlAudio.addEventListener('ended', function() { setPlayState(false); });
-                    htmlAudio.addEventListener('pause', function() { setPlayState(false); });
-
-                    playBtn.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        if (isPlaying) {
-                            pauseAudio();
-                        } else {
-                            playCurrentAudio();
-                        }
-                    });
-
-                    if (btnAr && btnSw) {
-                        btnAr.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            if (currentLang === 'ar') return;
-                            currentLang = 'ar';
-                            updateLabels();
-                            if (isPlaying) {
-                                pauseAudio();
-                                playCurrentAudio();
-                            }
-                        });
-
-                        btnSw.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            if (currentLang === 'sw') return;
-                            currentLang = 'sw';
-                            updateLabels();
-                            if (isPlaying) {
-                                pauseAudio();
-                                playCurrentAudio();
-                            }
-                        });
-                    }
-                }
 
                 if (copyBtn && !copyBtn.dataset.bound) {
                     copyBtn.dataset.bound = '1';
@@ -483,6 +342,15 @@
                     });
                 }
             }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initRawdahHero);
+            } else {
+                initRawdahHero();
+            }
+            document.addEventListener('livewire:navigated', initRawdahHero);
+        })();
+    </script>
 
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', initRawdahHero);

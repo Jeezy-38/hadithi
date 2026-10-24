@@ -46,8 +46,8 @@
                     @foreach($topics as $slug => $t)
                         <button type="button" wire:click="selectTopic('{{ $slug }}')" class="topic-box-card" wire:key="topic-{{ $slug }}">
                             <div class="topic-card-top">
-                                <div class="topic-emblem" style="border-color: {{ $t['color'] }}44; background: {{ $t['color'] }}18;">
-                                    <span class="topic-badge-pill" style="color: {{ $t['color'] }};">{{ $t['badge'] }}</span>
+                                <div class="topic-emblem" style="border-color: var(--border-color); background: var(--gold-subtle);">
+                                    <span class="topic-badge-pill" style="color: var(--gold);">{{ $t['badge'] }}</span>
                                 </div>
                                 <span class="topic-arabic-tag" dir="rtl" lang="ar">{{ $t['title_ar'] }}</span>
                             </div>
@@ -132,7 +132,7 @@
                                                 {{ $hadith->chapter?->book?->collection?->name ?? 'Hadithi' }} #{{ $hadith->number }}
                                             </span>
                                             @if($hadith->grade)
-                                                <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3);">
+                                                <span class="badge" style="background: var(--gold-subtle); color: var(--gold); border: 1px solid var(--border-color);">
                                                     {{ $hadith->grade }}
                                                 </span>
                                             @endif

@@ -57,7 +57,7 @@ class TopicIndex extends Component
                 'desc' => 'Mafundisho ya Mtume ﷺ kuhusu kuwa na subira, utulivu wa moyo na matumaini wakati wa magumu na mitihani ya maisha.',
                 'badge' => 'Subira',
                 'icon' => 'sun',
-                'color' => '#EBB036',
+                'color' => '#cbd5e1',
                 'terms' => ['subira', 'mitihani', 'subiri', 'bala', 'الصبر', 'patience'],
             ],
             'tabia-njema' => [
@@ -68,7 +68,7 @@ class TopicIndex extends Component
                 'desc' => 'Mwongozo wa ustaarabu, upole, ukarimu, unyenyekevu na tabia njema anazopaswa kuwa nazo muumini.',
                 'badge' => 'Maadili',
                 'icon' => 'heart',
-                'color' => '#10B981',
+                'color' => '#cbd5e1',
                 'terms' => ['tabia', 'maadili', 'adabu', 'wema', 'upole', 'الأدب', 'الأخلاق', 'manners'],
             ],
             'imani' => [
@@ -79,7 +79,7 @@ class TopicIndex extends Component
                 'desc' => 'Kumpwekesha Mwenyezi Mungu, kumtegemea Yeye pekee (Tawakkul) na kushikamana na nguzo kuu za Imani.',
                 'badge' => 'Tawhid',
                 'icon' => 'star',
-                'color' => '#3B82F6',
+                'color' => '#cbd5e1',
                 'terms' => ['imani', 'tawhid', 'mwenyezi mungu', 'allah', 'pekee', 'التوحيد', 'الإيمان', 'faith'],
             ],
             'swala' => [
@@ -90,7 +90,7 @@ class TopicIndex extends Component
                 'desc' => 'Nguzo ya pili ya Uislamu, nyakati za swala, tohara na udhu, na umuhimu wa swala za jamaa na sunnah.',
                 'badge' => 'Swala',
                 'icon' => 'compass',
-                'color' => '#0D9488',
+                'color' => '#cbd5e1',
                 'terms' => ['swala', 'kuswali', 'adhana', 'tohara', 'udhu', 'الصلاة', 'الوضوء', 'prayer'],
             ],
             'tawba' => [
@@ -101,7 +101,7 @@ class TopicIndex extends Component
                 'desc' => 'Kurejea kwa Mola Mlezi, toba ya kweli, kuomba maghfirah na rehema zisizo na kikomo za Allah kwa waja Wake.',
                 'badge' => 'Maghfirah',
                 'icon' => 'refresh',
-                'color' => '#8B5CF6',
+                'color' => '#cbd5e1',
                 'terms' => ['tawba', 'toba', 'msamaha', 'kusamehe', 'istighfar', 'dhambi', 'التوبة', 'الاستغفار', 'forgiveness'],
             ],
             'familia' => [
@@ -112,7 +112,7 @@ class TopicIndex extends Component
                 'desc' => 'Kuwatendea wema wazazi wawili, mapenzi na heshima katika ndoa, na malezi bora ya watoto katika jamii.',
                 'badge' => 'Familia',
                 'icon' => 'users',
-                'color' => '#EC4899',
+                'color' => '#cbd5e1',
                 'terms' => ['wazazi', 'mama', 'baba', 'ndoa', 'mke', 'mume', 'watoto', 'familia', 'الوالدين', 'النكاح', 'family'],
             ],
             'riziki' => [
@@ -123,7 +123,7 @@ class TopicIndex extends Component
                 'desc' => 'Kutafuta chumo halali kwa jasho lako, uaminifu katika biashara, na kujiepusha na riba, rushwa au haramu.',
                 'badge' => 'Riziki',
                 'icon' => 'briefcase',
-                'color' => '#F59E0B',
+                'color' => '#cbd5e1',
                 'terms' => ['riziki', 'biashara', 'kazi', 'halali', 'chuma', 'dhuluma', 'الرزق', 'البيوع', 'halal'],
             ],
             'dua-dhikri' => [
@@ -134,7 +134,7 @@ class TopicIndex extends Component
                 'desc' => 'Fadhila za kumkumbuka Allah asubuhi na jioni, nyakati teule za kujibiwa dua na nguvu ya dhikri katika roho.',
                 'badge' => 'Dhikri',
                 'icon' => 'sparkles',
-                'color' => '#06B6D4',
+                'color' => '#cbd5e1',
                 'terms' => ['dua', 'dhikri', 'kumkumbuka', 'kuomba', 'subhanallah', 'alhamdulillah', 'الدعاء', 'الذكر', 'supplication'],
             ],
             'udugu' => [
@@ -145,7 +145,7 @@ class TopicIndex extends Component
                 'desc' => 'Kushikamana kwa waumini kama mwili mmoja, kuamkiana kwa amani, na kupendana kwa dhati kwa ajili ya Mwenyezi Mungu.',
                 'badge' => 'Udugu',
                 'icon' => 'shield',
-                'color' => '#6366F1',
+                'color' => '#cbd5e1',
                 'terms' => ['udugu', 'kupendana', 'ndugu', 'amani', 'salamu', 'muumini', 'الأخوة', 'المحبة', 'brotherhood'],
             ],
             'rehema' => [
@@ -156,7 +156,7 @@ class TopicIndex extends Component
                 'desc' => 'Kutoa mali kwa siri na dhahiri, kusaidia mayatima na masikini, na fadhila kubwa za sadaka inayodumu.',
                 'badge' => 'Sadaka',
                 'icon' => 'gift',
-                'color' => '#14B8A6',
+                'color' => '#cbd5e1',
                 'terms' => ['sadaka', 'rehema', 'huruma', 'kusaidia', 'yatima', 'masikini', 'zaka', 'الصدقة', 'الرحمة', 'charity'],
             ],
             'ulimi' => [
@@ -167,7 +167,7 @@ class TopicIndex extends Component
                 'desc' => 'Tahadhari dhidi ya usengenyaji, uongo, kashfa, matusi na jinsi ya kudhibiti hisia za hasira wakati wa ghadhabu.',
                 'badge' => 'Ulimi',
                 'icon' => 'message',
-                'color' => '#EF4444',
+                'color' => '#cbd5e1',
                 'terms' => ['ulimi', 'hasira', 'kusengenya', 'uongo', 'kashfa', 'matusi', 'ghadhabu', 'اللسان', 'الغضب', 'tongue'],
             ],
             'pepo-akhera' => [
@@ -178,7 +178,7 @@ class TopicIndex extends Component
                 'desc' => 'Sifa za Pepo (Jannah), neema zake za milele, kujiandaa na safari ya Akhera, na kuepuka adhabu ya Moto.',
                 'badge' => 'Jannah',
                 'icon' => 'crown',
-                'color' => '#EBB036',
+                'color' => '#cbd5e1',
                 'terms' => ['pepo', 'jannah', 'akhera', 'kiyama', 'moyo', 'kaburi', 'kifo', 'الجنة', 'الآخرة', 'paradise'],
             ],
         ];
