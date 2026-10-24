@@ -190,8 +190,6 @@
                                         $badge = $meta['badge'] ?? 'SAHIH';
                                     @endphp
                                     <button type="button" class="gilded-book-card" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
-                                        <div class="book-gilded-spine" aria-hidden="true"></div>
-
                                         <div class="gilded-book-top">
                                             <span class="book-category-tag">{{ $badge }}</span>
                                             <span class="book-total-hadiths">Total Hadiths {{ $totalHadiths }}</span>

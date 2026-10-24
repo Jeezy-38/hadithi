@@ -840,7 +840,6 @@ button {
 .sidebar-note {
     background: var(--bg-surface);
     border: 1.5px solid var(--border-color);
-    border-left: 4px solid var(--gold);
     border-radius: 14px;
     padding: 20px;
     box-shadow: var(--card-shadow);
@@ -9075,7 +9074,7 @@ a, button, select, input {
     background: var(--bg-surface);
     border: 1.5px solid var(--border-color);
     border-radius: 20px;
-    padding: 22px 20px 20px 26px;
+    padding: 22px 20px;
     position: relative;
     overflow: hidden;
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
@@ -9096,13 +9095,7 @@ a, button, select, input {
 }
 
 .book-gilded-spine {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 6px;
-    background: linear-gradient(180deg, #fef2aa 0%, #ebb036 50%, #c98a1e 100%);
-    box-shadow: 2px 0 8px rgba(235, 176, 54, 0.4);
+    display: none !important;
 }
 
 .gilded-book-top {
