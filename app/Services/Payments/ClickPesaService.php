@@ -18,14 +18,21 @@ class ClickPesaService implements PaymentGatewayInterface
 
     protected string $mode;
 
+    protected ?string $lastAuthError = null;
+
     protected string $baseUrl = 'https://api.clickpesa.com/third-parties';
 
     public function __construct()
     {
-        $this->clientId = config('services.clickpesa.client_id');
-        $this->apiKey = config('services.clickpesa.api_key');
-        $this->checksumKey = config('services.clickpesa.checksum_key');
-        $this->mode = (string) config('services.clickpesa.mode', 'live');
+        $this->clientId = trim((string) config('services.clickpesa.client_id'));
+        $this->apiKey = trim((string) config('services.clickpesa.api_key'));
+        $this->checksumKey = trim((string) config('services.clickpesa.checksum_key'));
+        $this->mode = trim((string) config('services.clickpesa.mode', 'live'));
+    }
+
+    public function getLastAuthError(): ?string
+    {
+        return $this->lastAuthError;
     }
 
     /**
@@ -34,6 +41,7 @@ class ClickPesaService implements PaymentGatewayInterface
     public function getAccessToken(): ?string
     {
         if (empty($this->clientId) || empty($this->apiKey)) {
+            $this->lastAuthError = 'Funguo za CLICKPESA_CLIENT_ID na CLICKPESA_API_KEY hazijawekwa kwenye Environment Variables.';
             Log::warning('ClickPesa: Client ID au API Key haijawekwa kwenye usanidi.');
 
             return null;
@@ -41,31 +49,42 @@ class ClickPesaService implements PaymentGatewayInterface
 
         $cacheKey = 'clickpesa_access_token_' . md5($this->clientId);
 
-        return Cache::remember($cacheKey, now()->addMinutes(50), function () {
-            try {
-                $response = Http::withHeaders([
-                    'client-id' => $this->clientId,
-                    'api-key' => $this->apiKey,
-                    'Accept' => 'application/json',
-                ])->post($this->baseUrl . '/generate-token');
+        $cachedToken = Cache::get($cacheKey);
+        if ($cachedToken) {
+            return $cachedToken;
+        }
 
-                if ($response->successful()) {
-                    $token = $response->json('token') ?? $response->json('data.token');
-                    if ($token) {
-                        // Hakikisha hakuna marudio ya "Bearer "
-                        return preg_replace('/^Bearer\s+/i', '', trim((string) $token));
-                    }
+        try {
+            $response = Http::withHeaders([
+                'client-id' => $this->clientId,
+                'api-key' => $this->apiKey,
+                'Accept' => 'application/json',
+            ])->post($this->baseUrl . '/generate-token');
+
+            if ($response->successful()) {
+                $token = $response->json('token') ?? $response->json('data.token');
+                if ($token) {
+                    $cleanToken = preg_replace('/^Bearer\s+/i', '', trim((string) $token));
+                    Cache::put($cacheKey, $cleanToken, now()->addMinutes(50));
+
+                    return $cleanToken;
                 }
-
-                Log::error('ClickPesa Auth Failed: ' . $response->body());
-
-                return null;
-            } catch (Throwable $e) {
-                Log::error('ClickPesa Auth Exception: ' . $e->getMessage());
-
-                return null;
             }
-        });
+
+            $rawMsg = $response->json('message') ?? $response->body();
+            if (is_array($rawMsg)) {
+                $rawMsg = implode(', ', $rawMsg);
+            }
+            $this->lastAuthError = (string) $rawMsg;
+            Log::error('ClickPesa Auth Failed: ' . $response->body());
+
+            return null;
+        } catch (Throwable $e) {
+            $this->lastAuthError = $e->getMessage();
+            Log::error('ClickPesa Auth Exception: ' . $e->getMessage());
+
+            return null;
+        }
     }
 
     /**
@@ -75,13 +94,18 @@ class ClickPesaService implements PaymentGatewayInterface
     {
         $token = $this->getAccessToken();
         if (! $token) {
-            $msg = (empty($this->clientId) || empty($this->apiKey))
-                ? 'Funguo za ClickPesa (CLICKPESA_CLIENT_ID na CLICKPESA_API_KEY) hazijawekwa kwenye Environment Variables za seva ya Laravel Cloud.'
-                : 'Hitilafu ya mawasiliano na lango la ClickPesa: Funguo za API hazijathibitishwa na seva ya ClickPesa.';
+            $authErr = $this->getLastAuthError();
+            if ($authErr && str_contains($authErr, 'Too many token requests')) {
+                $friendly = 'Seva ya ClickPesa imeweka zuio la muda ("Too many token requests"). Tafadhali subiri dakika 2-3 kisha ujaribu tena.';
+            } elseif ($authErr) {
+                $friendly = 'ClickPesa: ' . $authErr;
+            } else {
+                $friendly = 'Hitilafu ya mawasiliano na lango la ClickPesa: Funguo za API hazijathibitishwa na seva ya ClickPesa.';
+            }
 
             return [
                 'status' => 'error',
-                'message' => $msg,
+                'message' => $friendly,
             ];
         }
 
