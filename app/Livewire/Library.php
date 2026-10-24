@@ -61,6 +61,7 @@ class Library extends Component
                 'letter' => 'B',
                 'total_hadiths' => '7,563',
                 'color' => '#d4af37',
+                'cover_image' => 'images/covers/sahih-bukhari.jpg',
             ],
             'muslim' => [
                 'author' => 'Imam Muslim ibn al-Hajjaj',

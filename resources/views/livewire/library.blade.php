@@ -161,30 +161,38 @@
                                         $sample = isset($collectionPreviews[$item->slug]) ? $collectionPreviews[$item->slug]->first() : null;
                                         $badge = $meta['badge'] ?? 'SAHIH';
                                     @endphp
-                                    <button type="button" class="rawdah-book-card" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
-                                        <div class="rawdah-book-top">
-                                            <span class="rawdah-book-badge">✦ {{ $badge }}</span>
-                                            <span class="rawdah-book-emblem" aria-hidden="true">{{ mb_substr($item->name, 0, 1) }}</span>
-                                        </div>
+                                    <button type="button" class="rawdah-book-card {{ !empty($meta['cover_image']) ? 'has-custom-cover' : '' }}" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
+                                        @if(!empty($meta['cover_image']))
+                                            <div class="rawdah-book-cover-wrap" aria-hidden="true">
+                                                <img src="{{ asset($meta['cover_image']) }}" alt="{{ $item->name }}" class="rawdah-book-cover-img" loading="lazy" width="95" height="148">
+                                            </div>
+                                        @endif
 
-                                        <div class="rawdah-book-body">
-                                            <h3 class="rawdah-book-title">{{ $item->name }}</h3>
-                                            @if($item->name_ar)
-                                                <span class="rawdah-book-ar" lang="ar" dir="rtl">{{ $item->name_ar }}</span>
-                                            @endif
-                                            @if(!empty($meta['author']))
-                                                <p class="rawdah-book-author">
-                                                    {{ $meta['author'] }}@if(!empty($meta['desc'])) · {{ $meta['desc'] }}@endif
-                                                </p>
-                                            @endif
-                                        </div>
+                                        <div class="rawdah-book-main">
+                                            <div class="rawdah-book-top">
+                                                <span class="rawdah-book-badge">✦ {{ $badge }}</span>
+                                                <span class="rawdah-book-emblem" aria-hidden="true">{{ mb_substr($item->name, 0, 1) }}</span>
+                                            </div>
 
-                                        <div class="rawdah-book-footer" aria-hidden="true">
-                                            <span class="book-total-hadiths">Total Hadiths {{ $totalHadiths }}</span>
-                                            <span class="rawdah-book-action">
-                                                <span>Anza Kusoma</span>
-                                                <span class="rawdah-arrow">→</span>
-                                            </span>
+                                            <div class="rawdah-book-body">
+                                                <h3 class="rawdah-book-title">{{ $item->name }}</h3>
+                                                @if($item->name_ar)
+                                                    <span class="rawdah-book-ar" lang="ar" dir="rtl">{{ $item->name_ar }}</span>
+                                                @endif
+                                                @if(!empty($meta['author']))
+                                                    <p class="rawdah-book-author">
+                                                        {{ $meta['author'] }}@if(!empty($meta['desc'])) · {{ $meta['desc'] }}@endif
+                                                    </p>
+                                                @endif
+                                            </div>
+
+                                            <div class="rawdah-book-footer" aria-hidden="true">
+                                                <span class="book-total-hadiths">Total Hadiths {{ $totalHadiths }}</span>
+                                                <span class="rawdah-book-action">
+                                                    <span>Anza Kusoma</span>
+                                                    <span class="rawdah-arrow">→</span>
+                                                </span>
+                                            </div>
                                         </div>
 
                                         @if($sample)
@@ -211,7 +219,12 @@
                         </div>
 
                         @if($activeCol)
-                            <div class="inside-book-banner">
+                            <div class="inside-book-banner {{ !empty($activeMeta['cover_image']) ? 'has-book-cover' : '' }}">
+                                @if(!empty($activeMeta['cover_image']))
+                                    <div class="inside-book-cover-thumb" aria-hidden="true">
+                                        <img src="{{ asset($activeMeta['cover_image']) }}" alt="{{ $activeCol->name }}" class="inside-book-thumb-img" loading="eager" width="90" height="140">
+                                    </div>
+                                @endif
                                 <div class="inside-book-info">
                                     <div class="inside-book-tagline">
                                         <span class="badge badge-{{ $activeCol->slug }}">{{ $activeMeta['badge'] ?? 'Hadith' }}</span>
