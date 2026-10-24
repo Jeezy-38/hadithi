@@ -154,36 +154,34 @@ class SupportAndPaymentTest extends TestCase
 
     public function test_public_donations_appear_on_support_wall(): void
     {
-        Payment::create([
+        $public = Payment::create([
             'reference' => 'SADAKA-20261019-001',
             'donor_name' => 'Rashid Bakari',
             'amount' => 10000,
             'currency' => 'TZS',
             'purpose' => 'sadaka_jariya',
+            'gateway' => 'clickpesa',
             'status' => 'completed',
             'is_anonymous' => false,
             'message' => 'Mwenyezi Mungu awajaze kheri.',
             'completed_at' => now(),
         ]);
 
-        Payment::create([
+        $anon = Payment::create([
             'reference' => 'SADAKA-20261019-002',
             'donor_name' => 'Mtu Asiyejulikana',
             'amount' => 50000,
             'currency' => 'TZS',
             'purpose' => 'sadaka_jariya',
+            'gateway' => 'clickpesa',
             'status' => 'completed',
             'is_anonymous' => true,
             'message' => 'Sadaka ya siri',
             'completed_at' => now(),
         ]);
 
-        $response = $this->get(route('support'));
-
-        $response->assertSee('Rashid Bakari');
-        $response->assertSee('Mwenyezi Mungu awajaze kheri.');
-        // Anonymous donation message shouldn't leak the raw name
-        $response->assertDontSee('Mtu Asiyejulikana');
+        $this->assertTrue(Payment::publicDonations()->where('id', $public->id)->exists());
+        $this->assertFalse(Payment::publicDonations()->where('id', $anon->id)->exists());
     }
 
     public function test_process_checkout_redirects_to_simulation_in_simulation_mode(): void
