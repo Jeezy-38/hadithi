@@ -42,94 +42,169 @@
 
             <div wire:loading.class="is-loading">
                 @if($collection === '' && $search === '' && $hadiths->currentPage() === 1)
-                    {{-- Thematic Topics Banner --}}
-                    <div class="topics-quick-banner" style="margin-bottom: 24px; padding: 18px 22px; border-radius: 18px; background: linear-gradient(135deg, rgba(235, 176, 54, 0.12) 0%, rgba(13, 148, 136, 0.12) 100%); border: 1.5px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-                        <div style="display: flex; align-items: center; gap: 14px;">
-                            <div style="width: 42px; height: 42px; border-radius: 12px; background: var(--gold-subtle); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 20px;">
-                                ✦
-                            </div>
-                            <div>
-                                <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: var(--text-primary); letter-spacing: -0.2px;">Soma Hadithi kwa Mada Maalum</h3>
-                                <p style="font-size: 13px; color: var(--text-muted); margin: 3px 0 0;">Subira, Tabia Njema, Swala, Tawba, Riziki Halali, Familia, na nyinginezo.</p>
-                            </div>
-                        </div>
-                        <a href="{{ route('topics.index') }}" class="hero-button" style="padding: 10px 20px; font-size: 13px; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px;">
-                            <span>Gundua Mada</span>
-                            <span aria-hidden="true">→</span>
-                        </a>
-                    </div>
-
-                    {{-- Collections Catalog View --}}
-                    <section class="hadith-books-catalog" aria-label="Collections">
-                        <div class="hadith-books-header">
-                            <div class="hadith-books-title-group">
-                                <div class="hadith-header-art" aria-hidden="true">
-                                    <svg viewBox="0 0 36 36" width="34" height="34" fill="none">
-                                        <!-- Leather spine and book cover -->
-                                        <rect x="7" y="4" width="23" height="28" rx="3.5" fill="#5c3818" stroke="#D4AF37" stroke-width="1.4"/>
-                                        <path d="M11 4V32" stroke="#854d1f" stroke-width="2"/>
-                                        <path d="M12 4V32" stroke="#D4AF37" stroke-width="0.8"/>
-                                        <!-- Bookmark ribbon -->
-                                        <path d="M17 4V16L20 13.5L23 16V4" fill="#D4AF37"/>
-                                        <!-- Golden Medallion ornament -->
-                                        <circle cx="21" cy="22" r="4.5" fill="#3d220a" stroke="#E5C158" stroke-width="1"/>
-                                        <polygon points="21,18.5 22.2,21 24.8,21.4 22.8,23 23.5,25.6 21,24 18.5,25.6 19.2,23 17.2,21.4 19.8,21" fill="#E5C158"/>
+                    <div class="rawdah-layout-container">
+                        {{-- 1. Hero Mehrab Spotlight Card --}}
+                        @if($todayHadith)
+                            <section class="rawdah-mehrab-hero" aria-label="Hadithi Teule ya Leo">
+                                <div class="rawdah-arch-watermark" aria-hidden="true">
+                                    <svg viewBox="0 0 120 120" width="180" height="180" fill="none">
+                                        <path d="M10 110 V50 Q10 10 60 10 Q110 10 110 50 V110" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3"/>
+                                        <circle cx="60" cy="50" r="28" stroke="currentColor" stroke-width="1"/>
+                                        <polygon points="60,28 67,43 82,45 71,56 74,71 60,63 46,71 49,56 38,45 53,43" fill="none" stroke="currentColor" stroke-width="1"/>
                                     </svg>
                                 </div>
-                                <div>
-                                    <h2 class="hadith-books-title">Collections</h2>
+
+                                <div class="rawdah-hero-top">
+                                    <span class="rawdah-hero-tag">
+                                        <span>✦</span>
+                                        <span>Hadithi Teule ya Leo</span>
+                                    </span>
+                                    <span class="rawdah-hero-ref">
+                                        {{ $todayHadith->chapter->book->collection->name ?? 'Hadithi' }} · Na. {{ $todayHadith->hadith_number ?? $todayHadith->number ?? $todayHadith->reference }}
+                                    </span>
                                 </div>
-                            </div>
-                            @if($total === 0)
-                                <div class="catalog-empty-status">
-                                    <span class="status-pill"><span></span> Inasubiri maudhui yaliyohakikiwa</span>
+
+                                {{-- Arabic Calligraphy --}}
+                                <div class="rawdah-arabic-box" dir="rtl" lang="ar">
+                                    <span class="rawdah-arabic-text">{{ $todayHadith->arabic }}</span>
                                 </div>
-                            @endif
-                        </div>
 
-                        <div class="hadith-books-list">
-                            @foreach($collections as $item)
-                                @php
-                                    $meta = $narratorMeta[$item->slug] ?? null;
-                                    $count = $collectionCounts[$item->id] ?? 0;
-                                    $totalHadiths = number_format($count);
-                                    $letter = $meta['letter'] ?? mb_substr($item->name, 0, 1);
-                                    $sample = isset($collectionPreviews[$item->slug]) ? $collectionPreviews[$item->slug]->first() : null;
-                                @endphp
-                                <button type="button" class="hadith-book-row-card" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
-                                    <div class="book-emblem-wrap">
-                                        <div class="book-emblem-diamond">
-                                            <span class="book-emblem-letter">{{ $letter }}</span>
+                                {{-- Swahili Translation --}}
+                                <div class="rawdah-swahili-box">
+                                    <p class="rawdah-swahili-text">
+                                        "{{ Str::limit($todayHadith->swahili, 280) }}"
+                                    </p>
+                                </div>
+
+                                {{-- Action Bar with Audio & Quick Links --}}
+                                <div class="rawdah-hero-footer">
+                                    <div class="rawdah-audio-pill" id="rawdah-audio-pill" data-arabic="{{ e($todayHadith->arabic) }}" data-swahili="{{ e($todayHadith->swahili) }}">
+                                        <button type="button" class="rawdah-play-btn" id="rawdah-audio-toggle" aria-label="Sikiliza Kisomo cha Hadithi" title="Sikiliza Kisomo cha Sauti">
+                                            <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M8 5v14l11-7z"/>
+                                            </svg>
+                                            <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display: none;">
+                                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                            </svg>
+                                        </button>
+                                        <div class="rawdah-audio-meta">
+                                            <span class="rawdah-audio-title">Sikiliza Kisomo cha Hadithi</span>
+                                            <span class="rawdah-audio-sub">Kisomo rasmi · Web Audio</span>
                                         </div>
                                     </div>
 
-                                    <div class="book-info-col">
-                                        <div class="book-title-row">
-                                            <h3 class="book-name">{{ $item->name }}</h3>
-                                            @if($item->name_ar)
-                                                <span class="book-name-ar" lang="ar" dir="rtl">{{ $item->name_ar }}</span>
-                                            @endif
-                                        </div>
-                                        <div class="book-meta-sub">
-                                            <span class="book-hadith-count">Total Hadiths {{ $totalHadiths }}</span>
-                                            @if(!empty($meta['author']))
-                                                <span class="book-author-dot">·</span>
-                                                <span class="book-author-text">{{ $meta['author'] }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
+                                    <div class="rawdah-hero-buttons">
+                                        <a href="{{ route('hadith.show', $todayHadith) }}" class="rawdah-btn-primary">
+                                            <span>Soma Hadithi Kamili</span>
+                                            <span aria-hidden="true">→</span>
+                                        </a>
 
-                                    <div class="book-action-col" aria-hidden="true">
-                                        <span class="book-chevron">›</span>
-                                    </div>
+                                        <button type="button" class="rawdah-btn-icon" id="rawdah-copy-btn" title="Nakili hadithi" data-copy="{{ $todayHadith->swahili }} — {{ $todayHadith->arabic }} ({{ $todayHadith->reference }})">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                            </svg>
+                                        </button>
 
-                                    @if($sample)
-                                        <span class="sr-only">{{ $sample->swahili }}</span>
-                                    @endif
-                                </button>
+                                        @php
+                                            $shareText = urlencode("Hadithi ya Leo kutoka Bayt Al-Hadith:\n\n\"" . Str::limit($todayHadith->swahili, 220) . "\"\n\nSoma zaidi: " . route('hadith.show', $todayHadith));
+                                        @endphp
+                                        <a href="https://wa.me/?text={{ $shareText }}" target="_blank" rel="noopener noreferrer" class="rawdah-btn-icon" title="Shiriki WhatsApp">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm5.78 14.28c-.24.68-1.39 1.3-1.92 1.38-.49.08-.94.12-2.73-.61-2.28-.93-3.76-3.23-3.87-3.38-.11-.15-.93-1.24-.93-2.37s.59-1.68.8-1.91c.21-.23.46-.29.61-.29.15 0 .31 0 .44.01.14.01.33-.05.51.39.19.46.65 1.58.71 1.7.06.12.09.26.02.41-.08.15-.12.24-.23.38-.12.14-.25.31-.35.42-.12.12-.24.25-.1.49.14.24.63 1.04 1.35 1.68.93.83 1.71 1.08 1.95 1.2.24.12.38.1.52-.06.14-.17.61-.71.77-.95.16-.24.33-.2.55-.12.22.08 1.41.67 1.65.79.24.12.4.18.46.28.06.11.06.63-.18 1.31z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                        @endif
+
+                        {{-- 2. Thematic Topics Quick Row --}}
+                        <div class="rawdah-topics-row" role="region" aria-label="Gundua kwa Mada">
+                            <span class="rawdah-topics-label">Gundua kwa Mada:</span>
+                            @php
+                                $topicsSlice = array_slice($topics, 0, 6, true);
+                            @endphp
+                            @foreach($topicsSlice as $t)
+                                <a href="{{ route('topics.show', $t['slug']) }}" class="rawdah-topic-pill">
+                                    <span style="color: {{ $t['color'] ?? 'var(--gold)' }};">✦</span>
+                                    <span>{{ $t['title_sw'] }}</span>
+                                </a>
                             @endforeach
+                            <a href="{{ route('topics.index') }}" class="rawdah-topic-all-link">
+                                <span>Tazama Mada Zote 12</span>
+                                <span aria-hidden="true">→</span>
+                            </a>
                         </div>
-                    </section>
+
+                        {{-- 3. The Gilded Bookshelf: Collections --}}
+                        <section class="gilded-bookshelf-section" aria-label="Collections za Vitabu">
+                            <div class="bookshelf-header">
+                                <div class="bookshelf-title-wrap">
+                                    <div class="hadith-header-art" aria-hidden="true">
+                                        <svg viewBox="0 0 36 36" width="32" height="32" fill="none">
+                                            <rect x="7" y="4" width="23" height="28" rx="3.5" fill="#5c3818" stroke="#D4AF37" stroke-width="1.4"/>
+                                            <path d="M11 4V32" stroke="#854d1f" stroke-width="2"/>
+                                            <path d="M12 4V32" stroke="#D4AF37" stroke-width="0.8"/>
+                                            <path d="M17 4V16L20 13.5L23 16V4" fill="#D4AF37"/>
+                                            <circle cx="21" cy="22" r="4.5" fill="#3d220a" stroke="#E5C158" stroke-width="1"/>
+                                            <polygon points="21,18.5 22.2,21 24.8,21.4 22.8,23 23.5,25.6 21,24 18.5,25.6 19.2,23 17.2,21.4 19.8,21" fill="#E5C158"/>
+                                        </svg>
+                                    </div>
+                                    <h2 class="bookshelf-title">Collections</h2>
+                                </div>
+                                <div class="bookshelf-badge-pill">
+                                    <span>Hadithi {{ number_format($total) }} Zilizohakikiwa</span>
+                                </div>
+                                @if($total === 0)
+                                    <div class="catalog-empty-status">
+                                        <span class="status-pill"><span></span> Inasubiri maudhui yaliyohakikiwa</span>
+                                    </div>
+                                @endif
+                            </div>
+
+                            <div class="gilded-bookshelf-grid">
+                                @foreach($collections as $item)
+                                    @php
+                                        $meta = $narratorMeta[$item->slug] ?? null;
+                                        $count = $collectionCounts[$item->id] ?? 0;
+                                        $totalHadiths = number_format($count);
+                                        $sample = isset($collectionPreviews[$item->slug]) ? $collectionPreviews[$item->slug]->first() : null;
+                                        $badge = $meta['badge'] ?? 'SAHIH';
+                                    @endphp
+                                    <button type="button" class="gilded-book-card" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
+                                        <div class="book-gilded-spine" aria-hidden="true"></div>
+
+                                        <div class="gilded-book-top">
+                                            <span class="book-category-tag">{{ $badge }}</span>
+                                            <span class="book-total-hadiths">Total Hadiths {{ $totalHadiths }}</span>
+                                        </div>
+
+                                        <div class="gilded-book-middle">
+                                            <h3 class="gilded-book-title">{{ $item->name }}</h3>
+                                            @if($item->name_ar)
+                                                <span class="gilded-book-ar" lang="ar" dir="rtl">{{ $item->name_ar }}</span>
+                                            @endif
+                                            @if(!empty($meta['author']))
+                                                <p class="gilded-book-author">
+                                                    {{ $meta['author'] }}@if(!empty($meta['desc'])) · {{ $meta['desc'] }}@endif
+                                                </p>
+                                            @endif
+                                        </div>
+
+                                        <div class="gilded-book-bottom" aria-hidden="true">
+                                            <span>Anza Kusoma</span>
+                                            <span class="book-action-arrow">→</span>
+                                        </div>
+
+                                        @if($sample)
+                                            <span class="sr-only">{{ $sample->swahili }}</span>
+                                        @endif
+                                    </button>
+                                @endforeach
+                            </div>
+                        </section>
+                    </div>
                 @else
                     {{-- Inside Book / Search Results View --}}
                     @if($collection !== '')
@@ -254,4 +329,82 @@
             </div>
         </div>
     </section>
+
+    <script>
+        (function() {
+            function initRawdahHero() {
+                const playBtn = document.getElementById('rawdah-audio-toggle');
+                const audioPill = document.getElementById('rawdah-audio-pill');
+                const copyBtn = document.getElementById('rawdah-copy-btn');
+
+                if (playBtn && audioPill && !playBtn.dataset.bound) {
+                    playBtn.dataset.bound = '1';
+                    let isSpeaking = false;
+                    playBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (!('speechSynthesis' in window)) {
+                            alert('Kifaa chako hakiauni usomaji wa sauti (Speech Synthesis).');
+                            return;
+                        }
+                        if (isSpeaking) {
+                            window.speechSynthesis.cancel();
+                            isSpeaking = false;
+                            const p = playBtn.querySelector('.icon-play');
+                            const pa = playBtn.querySelector('.icon-pause');
+                            if (p) p.style.display = 'block';
+                            if (pa) pa.style.display = 'none';
+                        } else {
+                            window.speechSynthesis.cancel();
+                            const arabic = audioPill.getAttribute('data-arabic') || '';
+                            const swahili = audioPill.getAttribute('data-swahili') || '';
+                            const text = arabic || swahili;
+                            const utterance = new SpeechSynthesisUtterance(text);
+                            utterance.lang = arabic ? 'ar-SA' : 'sw-TZ';
+                            utterance.rate = 0.85;
+
+                            utterance.onstart = function() {
+                                isSpeaking = true;
+                                const p = playBtn.querySelector('.icon-play');
+                                const pa = playBtn.querySelector('.icon-pause');
+                                if (p) p.style.display = 'none';
+                                if (pa) pa.style.display = 'block';
+                            };
+                            utterance.onend = utterance.onerror = function() {
+                                isSpeaking = false;
+                                const p = playBtn.querySelector('.icon-play');
+                                const pa = playBtn.querySelector('.icon-pause');
+                                if (p) p.style.display = 'block';
+                                if (pa) pa.style.display = 'none';
+                            };
+                            window.speechSynthesis.speak(utterance);
+                        }
+                    });
+                }
+
+                if (copyBtn && !copyBtn.dataset.bound) {
+                    copyBtn.dataset.bound = '1';
+                    copyBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const text = copyBtn.getAttribute('data-copy');
+                        if (navigator.clipboard) {
+                            navigator.clipboard.writeText(text).then(function() {
+                                const originalHTML = copyBtn.innerHTML;
+                                copyBtn.innerHTML = '<span style="color:var(--gold);font-weight:900;">✓</span>';
+                                setTimeout(function() {
+                                    copyBtn.innerHTML = originalHTML;
+                                }, 2000);
+                            });
+                        }
+                    });
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initRawdahHero);
+            } else {
+                initRawdahHero();
+            }
+            document.addEventListener('livewire:navigated', initRawdahHero);
+        })();
+    </script>
 </div>
