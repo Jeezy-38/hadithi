@@ -83,6 +83,7 @@ class Library extends Component
                 'letter' => 'N',
                 'total_hadiths' => '5,758',
                 'color' => '#94a3b8',
+                'cover_image' => 'images/covers/sunan-an-nasai.jpg',
             ],
             'abudawud' => [
                 'author' => 'Imam Abu Dawud as-Sijistani',
@@ -136,6 +137,7 @@ class Library extends Component
                 'letter' => '40',
                 'total_hadiths' => '42',
                 'color' => '#e2e8f0',
+                'cover_image' => 'images/covers/nawawi40.jpg',
             ],
             'riyadhadussalihin' => [
                 'author' => 'Imam Yahya an-Nawawi',
@@ -146,6 +148,7 @@ class Library extends Component
                 'letter' => 'R',
                 'total_hadiths' => '1,896',
                 'color' => '#cbd5e1',
+                'cover_image' => 'images/covers/riyadhas-salihin.jpg',
             ],
         ];
     }
