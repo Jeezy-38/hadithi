@@ -2971,6 +2971,72 @@ svg.h-5 {
     transform: scale(1.3);
 }
 
+/* Social Share Column */
+.footer-social-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.footer-social-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin: 0;
+    max-width: 240px;
+    line-height: 1.5;
+}
+
+.footer-social-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.social-share-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.social-share-btn:hover {
+    transform: translateY(-3px) scale(1.06);
+}
+
+.social-share-btn.share-whatsapp:hover {
+    border-color: #25D366;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+}
+
+.social-share-btn.share-instagram:hover {
+    border-color: #e73752;
+    box-shadow: 0 8px 20px rgba(231, 55, 82, 0.35);
+}
+
+.social-share-btn.share-x:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
+}
+
+.social-share-btn.share-facebook:hover {
+    border-color: #1877F2;
+    box-shadow: 0 8px 20px rgba(24, 119, 242, 0.35);
+}
+
+[data-theme="light"] .social-share-btn {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 .footer-bottom-bar {
     padding-top: 22px;
     border-top: 1px solid var(--border-subtle);
