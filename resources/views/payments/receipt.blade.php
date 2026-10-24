@@ -96,7 +96,7 @@
                 @endif
 
                 @if ($payment->message)
-                    <div style="background: rgba(218, 181, 106, 0.05); border-left: 3.5px solid var(--gold); padding: 0.85rem 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <div style="background: rgba(218, 181, 106, 0.05); border: 1px solid rgba(218, 181, 106, 0.2); padding: 0.85rem 1rem; border-radius: 8px; margin-top: 1rem;">
                         <span style="font-size: 0.75rem; font-weight: 700; color: var(--gold); letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">
                             DUA / UJUMBE WA MOYONI:
                         </span>

@@ -1572,7 +1572,6 @@ button {
 .arabic-box {
     background: var(--arabic-bg);
     border: 1.5px solid var(--arabic-border);
-    border-right: 3.5px solid var(--gold);
     border-radius: 14px;
     padding: 22px 24px;
     position: relative;
@@ -4519,7 +4518,6 @@ a, button, select, input {
 .dua-arabic-box {
     background: rgba(218, 181, 106, 0.04);
     border: 1px solid rgba(218, 181, 106, 0.2);
-    border-right: 3.5px solid var(--gold);
     border-radius: 14px;
     padding: 14px 16px;
     margin-bottom: 14px;
@@ -4527,8 +4525,6 @@ a, button, select, input {
 }
 
 [dir="rtl"] .dua-arabic-box {
-    border-right: 1px solid rgba(218, 181, 106, 0.2);
-    border-left: 3.5px solid var(--gold);
     text-align: right;
 }
 
