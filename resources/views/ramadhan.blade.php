@@ -20,6 +20,43 @@
                 </p>
             </header>
 
+            {{-- LIVE COUNTDOWN YA RAMADHANI --}}
+            <div class="ramadhan-countdown-card">
+                <div class="countdown-header-row">
+                    <span class="countdown-badge">
+                        <span class="countdown-pulse-dot"></span>
+                        <span id="countdown-status-text">Kuelekea Ramadhan 1448 AH</span>
+                    </span>
+                    <span class="countdown-target-date">Takriban 8 Februari 2027</span>
+                </div>
+
+                <div class="countdown-grid" id="ramadhan-countdown-grid">
+                    <div class="countdown-box">
+                        <span class="countdown-num" id="cd-days">--</span>
+                        <span class="countdown-label">Siku</span>
+                    </div>
+                    <div class="countdown-colon">:</div>
+                    <div class="countdown-box">
+                        <span class="countdown-num" id="cd-hours">--</span>
+                        <span class="countdown-label">Masaa</span>
+                    </div>
+                    <div class="countdown-colon">:</div>
+                    <div class="countdown-box">
+                        <span class="countdown-num" id="cd-minutes">--</span>
+                        <span class="countdown-label">Dakika</span>
+                    </div>
+                    <div class="countdown-colon">:</div>
+                    <div class="countdown-box">
+                        <span class="countdown-num" id="cd-seconds">--</span>
+                        <span class="countdown-label">Sekunde</span>
+                    </div>
+                </div>
+
+                <p class="countdown-caption">
+                    Mwandamo rasmi wa mwezi hutangazwa kulingana na kuonekana kwa hilali ya mwezi mtukufu.
+                </p>
+            </div>
+
             {{-- Dua Muhimu za Ramadhani --}}
             <section class="ramadhan-duas-section">
                 <h2 class="section-title">Dua za Kila Siku za Mfungo</h2>
@@ -95,4 +132,52 @@
             </section>
         </div>
     </div>
+
+    <script>
+        (function() {
+            // Tarehe inayotarajiwa ya Ramadhani 1448 AH (takriban 8 Februari 2027)
+            let targetDate = new Date('2027-02-08T00:00:00+03:00').getTime();
+            const now = new Date().getTime();
+            if (now > targetDate) {
+                targetDate = new Date('2028-01-28T00:00:00+03:00').getTime();
+            }
+
+            const daysEl = document.getElementById('cd-days');
+            const hoursEl = document.getElementById('cd-hours');
+            const minutesEl = document.getElementById('cd-minutes');
+            const secondsEl = document.getElementById('cd-seconds');
+            const statusTextEl = document.getElementById('countdown-status-text');
+
+            function pad(n) {
+                return n < 10 ? '0' + n : n;
+            }
+
+            function updateCountdown() {
+                const currentTime = new Date().getTime();
+                const diff = targetDate - currentTime;
+
+                if (diff <= 0) {
+                    if (statusTextEl) statusTextEl.textContent = 'Ramadhan Mubarak! Mwezi Mtukufu Umewadia 🌙';
+                    if (daysEl) daysEl.textContent = '00';
+                    if (hoursEl) hoursEl.textContent = '00';
+                    if (minutesEl) minutesEl.textContent = '00';
+                    if (secondsEl) secondsEl.textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                if (daysEl) daysEl.textContent = pad(days);
+                if (hoursEl) hoursEl.textContent = pad(hours);
+                if (minutesEl) minutesEl.textContent = pad(minutes);
+                if (secondsEl) secondsEl.textContent = pad(seconds);
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        })();
+    </script>
 </x-layouts.app>
