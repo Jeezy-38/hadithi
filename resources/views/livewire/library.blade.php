@@ -136,9 +136,7 @@
                                     </div>
                                     <h2 class="bookshelf-title">Collections</h2>
                                 </div>
-                                <div class="bookshelf-badge-pill">
-                                    <span>Hadithi {{ number_format($total) }} Zilizohakikiwa</span>
-                                </div>
+
                                 @if($total === 0)
                                     <div class="catalog-empty-status">
                                         <span class="status-pill"><span></span> Inasubiri maudhui yaliyohakikiwa</span>
@@ -163,10 +161,7 @@
                                         @endif
 
                                         <div class="rawdah-book-main">
-                                            <div class="rawdah-book-top">
-                                                <span class="rawdah-book-badge">✦ {{ $badge }}</span>
-                                                <span class="rawdah-book-emblem" aria-hidden="true">{{ mb_substr($item->name, 0, 1) }}</span>
-                                            </div>
+
 
                                             <div class="rawdah-book-body">
                                                 <h3 class="rawdah-book-title">{{ $item->name }}</h3>

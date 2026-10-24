@@ -9114,12 +9114,11 @@ a, button, select, input {
     }
 }
 
+.bookshelf-badge-pill,
 .rawdah-book-top,
-.gilded-book-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
+.rawdah-book-badge,
+.rawdah-book-emblem {
+    display: none !important;
 }
 
 .rawdah-book-badge,
