@@ -9273,3 +9273,182 @@ a, button, select, input {
         grid-template-columns: 1fr;
     }
 }
+
+/* --------------------------------------------------------------------------
+   Bayt Al-Hadith Splash Screen & Preloader
+   -------------------------------------------------------------------------- */
+.bayt-splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 9999999;
+    background: radial-gradient(circle at 50% 45%, #062b3a 0%, #02151e 55%, #010c12 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.65s ease;
+    pointer-events: all;
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
+}
+
+[data-theme="light"] .bayt-splash-screen {
+    background: radial-gradient(circle at 50% 45%, #ffffff 0%, #f1f5f9 60%, #e2e8f0 100%);
+}
+
+.bayt-splash-screen.bayt-splash-hide {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.04);
+    filter: blur(10px);
+}
+
+.bayt-splash-glow {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(241, 245, 249, 0.14) 0%, rgba(56, 189, 248, 0.05) 50%, transparent 70%);
+    filter: blur(35px);
+    pointer-events: none;
+    animation: splashGlowPulse 3s infinite alternate ease-in-out;
+}
+
+[data-theme="light"] .bayt-splash-glow {
+    background: radial-gradient(circle, rgba(15, 23, 42, 0.08) 0%, rgba(2, 132, 199, 0.04) 50%, transparent 70%);
+}
+
+@keyframes splashGlowPulse {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    100% { transform: scale(1.15); opacity: 1; }
+}
+
+.bayt-splash-body {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+}
+
+.bayt-splash-logo-wrap {
+    position: relative;
+    width: 96px;
+    height: 110px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: splashLogoFloat 3s infinite ease-in-out;
+}
+
+@keyframes splashLogoFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.02); }
+}
+
+.bayt-splash-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 26px rgba(241, 245, 249, 0.32));
+    display: block;
+}
+
+[data-theme="light"] .bayt-splash-logo {
+    filter: brightness(0.12) drop-shadow(0 6px 18px rgba(15, 23, 42, 0.2));
+}
+
+.bayt-splash-title {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 3.5px;
+    color: #ffffff;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 14px rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .bayt-splash-title {
+    color: #0f172a;
+    text-shadow: none;
+}
+
+.bayt-splash-title span {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .bayt-splash-title span {
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bayt-splash-sub {
+    font-size: 12.5px;
+    color: #8295a0;
+    margin-bottom: 28px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+[data-theme="light"] .bayt-splash-sub {
+    color: #64748b;
+}
+
+.bayt-splash-spinner-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.bayt-splash-spinner {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(255, 255, 255, 0.12);
+    border-top-color: #ffffff;
+    border-right-color: #cbd5e1;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+    animation: splashSpin 0.85s linear infinite;
+}
+
+[data-theme="light"] .bayt-splash-spinner {
+    border-color: rgba(15, 23, 42, 0.12);
+    border-top-color: #0f172a;
+    border-right-color: #334155;
+    filter: drop-shadow(0 0 4px rgba(15, 23, 42, 0.3));
+}
+
+@keyframes splashSpin {
+    to { transform: rotate(360deg); }
+}
+
+.bayt-splash-caption {
+    font-size: 11.5px;
+    color: #94a3b8;
+    letter-spacing: 0.4px;
+    font-weight: 500;
+}
+
+[data-theme="light"] .bayt-splash-caption {
+    color: #64748b;
+}

@@ -35,6 +35,7 @@
     @livewireStyles
 </head>
 <body data-auth="{{ auth()->check() ? '1' : '0' }}">
+    @include('partials.splash-preloader')
     <a class="skip-link" href="#main" data-i18n="nav_skip">Ruka kwenda maudhui</a>
     <header class="site-header">
         <div class="header-container">
