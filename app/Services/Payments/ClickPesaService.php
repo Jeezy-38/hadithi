@@ -97,6 +97,8 @@ class ClickPesaService implements PaymentGatewayInterface
             $authErr = $this->getLastAuthError();
             if ($authErr && str_contains($authErr, 'Too many token requests')) {
                 $friendly = 'Seva ya ClickPesa imeweka zuio la muda ("Too many token requests"). Tafadhali subiri dakika 2-3 kisha ujaribu tena.';
+            } elseif ($authErr && str_contains($authErr, 'Invalid client details')) {
+                $friendly = 'ClickPesa imekataa Client ID au API Key ("Invalid client details"). Kagua faili lako la .env (au .env kwenye seva/hosting) uhakikishe CLICKPESA_CLIENT_ID na CLICKPESA_API_KEY zimeandikwa kwa usahihi bila kukosa herufi.';
             } elseif ($authErr) {
                 $friendly = 'ClickPesa: ' . $authErr;
             } else {

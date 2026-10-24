@@ -56,6 +56,9 @@ class TestClickPesaCommand extends Command
 
         $this->newLine();
         $this->error('✕ Imeshindwa kuthibitisha funguo za ClickPesa.');
+        if ($err = $clickPesa->getLastAuthError()) {
+            $this->warn("Sababu kutoka ClickPesa: {$err}");
+        }
         $this->line('Tafadhali kagua kama Client ID au API Key uliyoweka kwenye .env ni sahihi.');
 
         return self::FAILURE;
