@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Hadith · Maktaba ya Elimu",
-  "short_name": "Hadith",
-  "description": "Maktaba ya hadith kwa Kiarabu, Kiswahili na Kiingereza.",
+  "name": "Bayt Al-Hadith · Maktaba ya Elimu",
+  "short_name": "Bayt Al-Hadith",
+  "description": "Maktaba ya hadithi za Mtume ﷺ kwa Kiarabu, Kiswahili na Kiingereza.",
   "lang": "sw",
   "start_url": "./",
   "scope": "./",
