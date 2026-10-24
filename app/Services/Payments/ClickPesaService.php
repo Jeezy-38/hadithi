@@ -107,10 +107,9 @@ class ClickPesaService implements PaymentGatewayInterface
             ],
         ];
 
-        // Ambatanisha Checksum ikiwa Checksum Key au API Key ipo
-        $checksumSecret = $this->checksumKey ?: $this->apiKey;
-        if (! empty($checksumSecret)) {
-            $payload['checksum'] = $this->computeChecksum($payload, $checksumSecret);
+        // Ambatanisha Checksum ikiwa Checksum Key imesanidiwa
+        if (! empty($this->checksumKey)) {
+            $payload['checksum'] = $this->computeChecksum($payload, $this->checksumKey);
         }
 
         try {
