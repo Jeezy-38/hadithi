@@ -52,6 +52,9 @@ Route::get('/duaa/{dua}', function (Dua $dua) {
 })->name('duaa.show');
 
 Route::get('/tasbih', fn () => view('tasbih'))->name('tasbih');
+Route::get('/qibla', fn () => view('qibla'))->name('qibla');
+Route::get('/tarehe-ya-kiislamu', fn () => view('islamic-date'))->name('islamic.date');
+Route::get('/ramadhani', fn () => view('ramadhan'))->name('ramadhan');
 
 Route::get('/hadith/{hadith}', function (Hadith $hadith) {
     abort_unless($hadith->is_published, 404);

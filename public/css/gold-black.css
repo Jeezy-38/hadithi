@@ -2784,13 +2784,13 @@ svg.h-5 {
 }
 
 /* --------------------------------------------------------------------------
-   13. Footer (Clean Minimalist Foundation)
+   13. Footer (With Important Links Section)
    -------------------------------------------------------------------------- */
 .site-footer {
     position: relative;
     background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-body) 100%);
     border-top: 1px solid var(--border-color);
-    padding: 44px 0 36px;
+    padding: 50px 0 36px;
     margin-top: 60px;
     overflow: hidden;
 }
@@ -2801,28 +2801,34 @@ svg.h-5 {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 320px;
+    width: 360px;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
 }
 
 .footer-container {
-    max-width: 900px;
+    max-width: 1040px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 28px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
+    gap: 32px;
     position: relative;
     z-index: 1;
+}
+
+.footer-top-grid {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .footer-brand-wrap {
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .footer-brand-card {
@@ -2839,9 +2845,9 @@ svg.h-5 {
 }
 
 .footer-logo-badge {
-    width: 48px;
-    height: 48px;
-    border-radius: 13px;
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
     background: rgba(2, 21, 30, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.16);
     padding: 4px;
@@ -2878,7 +2884,7 @@ svg.h-5 {
 
 .footer-brand-name {
     font-family: 'Cinzel', Georgia, serif;
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 800;
     letter-spacing: 1.2px;
     color: var(--text-primary);
@@ -2901,13 +2907,78 @@ svg.h-5 {
     letter-spacing: 0.3px;
 }
 
+/* Important Links Column */
+.footer-important-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.footer-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    position: relative;
+    padding-bottom: 8px;
+    margin: 0;
+}
+
+.footer-section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 26px;
+    height: 1.5px;
+    background: #cbd5e1;
+    border-radius: 2px;
+}
+
+.footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-link-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.footer-link-bullet {
+    font-size: 10px;
+    color: #38bdf8;
+    transition: transform 0.2s ease;
+}
+
+.footer-link-item:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+.footer-link-item:hover .footer-link-bullet {
+    transform: scale(1.3);
+}
+
 .footer-bottom-bar {
-    padding-top: 18px;
+    padding-top: 22px;
     border-top: 1px solid var(--border-subtle);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 .footer-copy-text {
@@ -2918,8 +2989,19 @@ svg.h-5 {
 
 @media (max-width: 768px) {
     .site-footer {
-        padding: 36px 0 calc(90px + env(safe-area-inset-bottom, 16px)) !important;
+        padding: 40px 0 calc(90px + env(safe-area-inset-bottom, 16px)) !important;
         margin-top: 40px;
+    }
+    .footer-top-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+    }
+    .footer-important-links {
+        width: 100%;
+    }
+    .footer-link-item {
+        font-size: 13px;
     }
 }
 
@@ -9596,4 +9678,311 @@ a, button, select, input {
     0%, 20% { opacity: 0.2; }
     50% { opacity: 1; }
     100% { opacity: 0.2; }
+}
+
+/* ==========================================================================
+   IMPORTANT LINKS PAGES: QIBLA, ISLAMIC DATE, RAMADHAN
+   ========================================================================== */
+.qibla-shell,
+.islamic-date-shell,
+.ramadhan-shell {
+    max-width: 900px;
+    margin: 32px auto 80px;
+    padding: 0 20px;
+}
+
+/* Qibla Styles */
+.qibla-header,
+.date-header,
+.ramadhan-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.qibla-badge,
+.date-pill,
+.ramadhan-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+}
+
+.qibla-dot,
+.date-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 8px #38bdf8;
+}
+
+.qibla-title,
+.date-title,
+.ramadhan-title {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.qibla-subtitle,
+.date-subtitle,
+.ramadhan-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.qibla-compass-card,
+.today-hijri-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 36px 24px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 36px;
+}
+
+.qibla-compass-wrap {
+    width: 260px;
+    height: 260px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qibla-dial {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background: radial-gradient(circle, rgba(2, 21, 30, 0.7) 0%, rgba(6, 32, 44, 0.95) 100%);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6), 0 10px 30px rgba(0, 0, 0, 0.4);
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.dial-marker {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+.dial-marker.marker-n { top: 10px; left: 50%; transform: translateX(-50%); color: #ef4444; }
+.dial-marker.marker-e { right: 12px; top: 50%; transform: translateY(-50%); }
+.dial-marker.marker-s { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.dial-marker.marker-w { left: 12px; top: 50%; transform: translateY(-50%); }
+
+.kaaba-pointer {
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.kaaba-icon { font-size: 20px; }
+.kaaba-label { font-size: 10px; font-weight: 700; color: #38bdf8; letter-spacing: 1px; text-transform: uppercase; }
+
+.compass-needle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 140px;
+    margin-left: -4px;
+    margin-top: -70px;
+}
+.needle-north {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 60px solid #ef4444;
+}
+.needle-south {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 60px solid #94a3b8;
+    margin-top: 10px;
+}
+.needle-pivot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    transform: translate(-50%, -50%);
+}
+
+.qibla-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+.qibla-stat-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-value { font-size: 18px; color: var(--text-primary); font-weight: 700; }
+.stat-desc { font-size: 11px; color: var(--text-dim); }
+
+.qibla-guide-box {
+    background: rgba(56, 189, 248, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 14px;
+    padding: 20px 24px;
+    width: 100%;
+}
+.guide-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.guide-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
+.guide-steps { list-style: disc; padding-left: 20px; font-size: 12.5px; color: var(--text-secondary); line-height: 1.8; }
+
+/* Islamic Date Styles */
+.today-hijri-card {
+    text-align: center;
+    padding: 44px 24px;
+    background: radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.08) 0%, var(--bg-surface) 70%);
+}
+.hijri-badge-year { font-size: 13px; font-weight: 700; color: #38bdf8; letter-spacing: 1.5px; text-transform: uppercase; }
+.hijri-date-arabic { font-size: 34px; color: var(--text-primary); margin: 10px 0; }
+.hijri-date-swahili { font-size: 20px; font-weight: 700; color: #e2e8f0; margin-bottom: 8px; }
+.gregorian-comparison { font-size: 13px; color: var(--text-muted); }
+
+.islamic-months-section,
+.ramadhan-duas-section,
+.ramadhan-hadiths-section {
+    margin-top: 40px;
+}
+.section-heading,
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+.months-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+}
+.month-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+.month-card.sacred { border-color: rgba(56, 189, 248, 0.35); }
+.month-card.highlight { background: rgba(56, 189, 248, 0.08); border-color: #38bdf8; }
+.month-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--bg-surface-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+.month-names { display: flex; flex-direction: column; gap: 2px; }
+.month-sw { font-size: 13px; color: var(--text-primary); }
+.month-ar { font-size: 12px; color: var(--text-muted); }
+.month-tag {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+/* Ramadhan Duas & Hadiths */
+.duas-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+.dua-ramadhan-card,
+.hadith-feature-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.dua-type,
+.hadith-tag {
+    font-size: 11px;
+    font-weight: 700;
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.dua-ar,
+.hadith-quote-ar {
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+.dua-translit { font-size: 12px; font-style: italic; color: var(--text-muted); }
+.dua-sw,
+.hadith-quote-sw { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.dua-ref,
+.hadith-meta { font-size: 11px; color: var(--text-dim); }
+
+@media (max-width: 640px) {
+    .qibla-stats-grid { grid-template-columns: 1fr; }
+    .qibla-title, .date-title, .ramadhan-title { font-size: 24px; }
+    .months-grid { grid-template-columns: 1fr; }
 }
