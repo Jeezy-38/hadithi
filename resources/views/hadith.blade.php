@@ -129,14 +129,9 @@
                     </svg>
                 </button>
                 <div class="reader-audio-text">
-                    <div class="rawdah-audio-meta-row">
-                        <span class="reader-audio-title" id="reader-audio-title">Kisomo cha Kiarabu</span>
-                        <span class="rawdah-audio-source-badge" id="reader-audio-badge">
-                            {{ $hasStudio ? '🎙️ Studio Reciter' : '🎙️ Neural Audio' }}
-                        </span>
-                    </div>
+                    <span class="reader-audio-title" id="reader-audio-title">Kisomo cha Kiarabu</span>
                     <span class="reader-audio-sub" id="reader-audio-sub">
-                        {{ $hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Hamed Neural · Kiarabu' }}
+                        {{ $hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Kiarabu Fasaha (MP3)' }}
                     </span>
                 </div>
             </div>
@@ -352,13 +347,11 @@
                 function updateReaderLabels() {
                     if (currentLang === 'ar') {
                         readerTitle.textContent = 'Kisomo cha Kiarabu';
-                        readerBadge.textContent = hasStudio ? '🎙️ Studio' : '🎙️ Neural Voice';
-                        readerSub.textContent = hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Hamed Neural · Kiarabu';
+                        readerSub.textContent = hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Kiarabu Fasaha (MP3)';
                         readerBtnAr.classList.add('active');
                         readerBtnSw.classList.remove('active');
                     } else {
                         readerTitle.textContent = 'Kisomo cha Kiswahili';
-                        readerBadge.textContent = '🎙️ Daudi Neural';
                         readerSub.textContent = 'Tafsiri ya Kiswahili Sanifu (MP3)';
                         readerBtnSw.classList.add('active');
                         readerBtnAr.classList.remove('active');

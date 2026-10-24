@@ -98,14 +98,9 @@
                                             </svg>
                                         </button>
                                         <div class="rawdah-audio-meta">
-                                            <div class="rawdah-audio-meta-row">
-                                                <span class="rawdah-audio-title" id="rawdah-audio-title">Kisomo cha Kiarabu</span>
-                                                <span class="rawdah-audio-source-badge" id="rawdah-source-badge">
-                                                    {{ $hasStudio ? '🎙️ Studio' : '🎙️ Neural Voice' }}
-                                                </span>
-                                            </div>
+                                            <span class="rawdah-audio-title" id="rawdah-audio-title">Kisomo cha Kiarabu</span>
                                             <span class="rawdah-audio-sub" id="rawdah-audio-sub">
-                                                {{ $hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Hamed Neural · Kiarabu' }}
+                                                {{ $hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Kiarabu Fasaha (MP3)' }}
                                             </span>
                                         </div>
                                         <div class="rawdah-audio-lang-switch" role="group" aria-label="Chagua Lugha ya Sauti">
@@ -374,13 +369,11 @@
                     function updateLabels() {
                         if (currentLang === 'ar') {
                             titleEl.textContent = 'Kisomo cha Kiarabu';
-                            badgeEl.textContent = hasStudio ? '🎙️ Studio' : '🎙️ Neural Voice';
-                            subEl.textContent = hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Hamed Neural · Kiarabu';
+                            subEl.textContent = hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Kiarabu Fasaha (MP3)';
                             btnAr.classList.add('active');
                             btnSw.classList.remove('active');
                         } else {
                             titleEl.textContent = 'Kisomo cha Kiswahili';
-                            badgeEl.textContent = '🎙️ Daudi Neural';
                             subEl.textContent = 'Tafsiri ya Kiswahili Sanifu (MP3)';
                             btnSw.classList.add('active');
                             btnAr.classList.remove('active');

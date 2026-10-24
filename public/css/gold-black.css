@@ -8848,23 +8848,6 @@ a, button, select, input {
     color: var(--text-muted);
 }
 
-.rawdah-audio-meta-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.rawdah-audio-source-badge {
-    font-size: 10px;
-    font-weight: 800;
-    padding: 2px 7px;
-    border-radius: 6px;
-    background: var(--gold-subtle);
-    color: var(--gold);
-    border: 1px solid var(--border-color);
-    letter-spacing: 0.3px;
-}
-
 .rawdah-audio-lang-switch {
     display: flex;
     align-items: center;
