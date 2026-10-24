@@ -75,9 +75,13 @@ class ClickPesaService implements PaymentGatewayInterface
     {
         $token = $this->getAccessToken();
         if (! $token) {
+            $msg = (empty($this->clientId) || empty($this->apiKey))
+                ? 'Funguo za ClickPesa (CLICKPESA_CLIENT_ID na CLICKPESA_API_KEY) hazijawekwa kwenye Environment Variables za seva ya Laravel Cloud.'
+                : 'Hitilafu ya mawasiliano na lango la ClickPesa: Funguo za API hazijathibitishwa na seva ya ClickPesa.';
+
             return [
                 'status' => 'error',
-                'message' => 'Hitilafu ya mawasiliano na lango la ClickPesa: Funguo za API (Client ID / API Key) hazijathibitishwa.',
+                'message' => $msg,
             ];
         }
 

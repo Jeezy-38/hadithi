@@ -58,9 +58,9 @@ return [
     ],
 
     /*
-    | Lango Lililochaguliwa la Malipo ('auto', 'clickpesa', 'pesapal', 'simulation')
+    | Lango Lililochaguliwa la Malipo ('clickpesa', 'pesapal', 'simulation', 'auto')
     */
-    'payment_gateway' => env('PAYMENT_GATEWAY', 'auto'),
+    'payment_gateway' => env('PAYMENT_GATEWAY', 'clickpesa'),
 
     /*
     | Lango la Malipo la Pesapal v3 (Tanzania & Kimataifa: M-Pesa, Tigo, Airtel, Halo, Visa/Mastercard)

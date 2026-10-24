@@ -71,14 +71,7 @@ class PaymentManager
         $chosen = strtolower((string) ($driver ?: config('services.payment_gateway', 'auto')));
 
         if ($chosen === 'clickpesa') {
-            $clientId = config('services.clickpesa.client_id');
-            $apiKey = config('services.clickpesa.api_key');
-
-            if (! empty($clientId) && ! empty($apiKey)) {
-                return new ClickPesaService();
-            }
-
-            return new SimulationPaymentService();
+            return new ClickPesaService();
         }
 
         if ($chosen === 'pesapal') {
