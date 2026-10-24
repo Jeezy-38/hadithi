@@ -36,6 +36,12 @@
                             <span>Ramadhan</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('prayer.times') }}" class="footer-link-item">
+                            <span class="footer-link-bullet">✦</span>
+                            <span>Live prayer time counter</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
