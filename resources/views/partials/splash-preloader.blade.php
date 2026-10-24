@@ -18,8 +18,14 @@
             Bayt Al-<span>Hadith</span>
         </div>
         <div class="bayt-splash-spinner-wrap">
-            <div class="bayt-splash-spinner"></div>
-            <span class="bayt-splash-caption">Inapakia hazina ya mafundisho...</span>
+            <div class="bayt-splash-spinner">
+                <svg class="bayt-spinner-svg" viewBox="0 0 44 44" aria-hidden="true">
+                    <circle class="bayt-spinner-track" cx="22" cy="22" r="18" fill="none" stroke-width="2.5"></circle>
+                    <circle class="bayt-spinner-head" cx="22" cy="22" r="18" fill="none" stroke-width="2.8" stroke-linecap="round"></circle>
+                </svg>
+                <div class="bayt-spinner-core"></div>
+            </div>
+            <span class="bayt-splash-caption">Loading <span class="bayt-splash-dots">...</span></span>
         </div>
     </div>
 </div>
