@@ -82,16 +82,21 @@ class ClickPesaService implements PaymentGatewayInterface
         }
 
         $description = $payment->purpose === 'supporter_membership'
-            ? 'Uanachama wa Supporter · Hadith App'
-            : 'Sadaka Jariya · Hadith App';
+            ? 'Uanachama wa Supporter · Bayt Al-Hadith'
+            : 'Sadaka Jariya · Bayt Al-Hadith';
 
         $amount = (string) (int) round((float) $payment->amount);
         $callbackUrl = route('payments.callback', ['reference' => $payment->reference]);
 
         $payload = [
             'totalPrice' => $amount,
+            'orderCurrency' => $payment->currency ?: 'TZS',
             'currency' => $payment->currency ?: 'TZS',
             'orderReference' => $payment->reference,
+            'customerName' => $payment->donor_name ?: 'Mtoaji Sadaka',
+            'customerEmail' => $payment->donor_email ?: 'sadaka@baytalhadith.com',
+            'customerPhone' => $payment->donor_phone ?: '',
+            'description' => $description,
             'callbackUrl' => $callbackUrl,
             'orderItems' => [
                 [
@@ -112,6 +117,8 @@ class ClickPesaService implements PaymentGatewayInterface
             if ($response->successful()) {
                 $checkoutLink = $response->json('checkoutLink')
                     ?? $response->json('data.checkoutLink')
+                    ?? $response->json('checkoutUrl')
+                    ?? $response->json('data.checkoutUrl')
                     ?? $response->json('url');
 
                 if ($checkoutLink) {
@@ -131,11 +138,23 @@ class ClickPesaService implements PaymentGatewayInterface
                 }
             }
 
+            $rawMsg = $response->json('message');
+            if (is_array($rawMsg)) {
+                $rawMsg = implode(', ', $rawMsg);
+            }
+            $rawMsg = (string) ($rawMsg ?: $response->body());
+
+            if (str_contains($rawMsg, 'CHECKOUT_LINK')) {
+                $friendlyMsg = 'Akaunti yako ya ClickPesa inahitaji kuwezeshwa huduma ya "Checkout Link" kwenye ClickPesa Portal (Developers -> Applications -> Permissions -> Checkout Link).';
+            } else {
+                $friendlyMsg = $rawMsg ?: 'Tafadhali jaribu tena.';
+            }
+
             Log::error('ClickPesa Generate Checkout Link Failed: ' . $response->body());
 
             return [
                 'status' => 'error',
-                'message' => 'Lango la ClickPesa halijaweza kuandaa ankara ya malipo: ' . ($response->json('message') ?? 'Tafadhali jaribu tena.'),
+                'message' => 'Lango la ClickPesa: ' . $friendlyMsg,
             ];
         } catch (Throwable $e) {
             Log::error('ClickPesa Generate Checkout Exception: ' . $e->getMessage());

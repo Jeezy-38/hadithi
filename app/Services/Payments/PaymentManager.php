@@ -24,6 +24,42 @@ class PaymentManager
     }
 
     /**
+     * Pata jina la lango chaguo-msingi ('clickpesa', 'pesapal', au 'simulation').
+     */
+    public function defaultGatewayName(): string
+    {
+        $chosen = strtolower((string) config('services.payment_gateway', 'auto'));
+
+        if ($chosen === 'clickpesa') {
+            return 'clickpesa';
+        }
+
+        if ($chosen === 'pesapal') {
+            return 'pesapal';
+        }
+
+        if ($chosen === 'simulation') {
+            return 'simulation';
+        }
+
+        // Auto-detect
+        $cpClientId = config('services.clickpesa.client_id');
+        $cpApiKey = config('services.clickpesa.api_key');
+        if (! empty($cpClientId) && ! empty($cpApiKey)) {
+            return 'clickpesa';
+        }
+
+        $ppKey = config('services.pesapal.consumer_key');
+        $ppSecret = config('services.pesapal.consumer_secret');
+        $ppMode = config('services.pesapal.mode', 'simulation');
+        if ($ppMode !== 'simulation' && ! empty($ppKey) && ! empty($ppSecret)) {
+            return 'pesapal';
+        }
+
+        return 'simulation';
+    }
+
+    /**
      * Pata lango linalofanya kazi sasa hivi kulingana na usanidi wa .env.
      */
     public function gateway(?string $driver = null): PaymentGatewayInterface

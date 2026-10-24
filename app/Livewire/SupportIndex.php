@@ -122,7 +122,7 @@ class SupportIndex extends Component
             'tier' => $tier,
             'billing_cycle' => $this->billingCycle,
             'payment_method' => $this->paymentMethod,
-            'gateway' => 'pesapal',
+            'gateway' => app(PaymentManager::class)->defaultGatewayName(),
             'status' => 'pending',
             'is_anonymous' => $this->isAnonymous,
             'message' => $this->isAnonymous ? null : ($this->message ?: null),
