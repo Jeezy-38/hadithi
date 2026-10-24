@@ -160,12 +160,12 @@
                                 <div class="bookshelf-title-wrap">
                                     <div class="hadith-header-art" aria-hidden="true">
                                         <svg viewBox="0 0 36 36" width="32" height="32" fill="none">
-                                            <rect x="7" y="4" width="23" height="28" rx="3.5" fill="#092621" stroke="#34d399" stroke-width="1.4"/>
-                                            <path d="M11 4V32" stroke="#041a16" stroke-width="2"/>
-                                            <path d="M12 4V32" stroke="#6ee7b7" stroke-width="0.8"/>
-                                            <path d="M17 4V16L20 13.5L23 16V4" fill="#10b981"/>
-                                            <circle cx="21" cy="22" r="4.5" fill="#010d0b" stroke="#34d399" stroke-width="1"/>
-                                            <polygon points="21,18.5 22.2,21 24.8,21.4 22.8,23 23.5,25.6 21,24 18.5,25.6 19.2,23 17.2,21.4 19.8,21" fill="#6ee7b7"/>
+                                            <rect x="7" y="4" width="23" height="28" rx="3.5" fill="#092c3d" stroke="#cbd5e1" stroke-width="1.4"/>
+                                            <path d="M11 4V32" stroke="#04141d" stroke-width="2"/>
+                                            <path d="M12 4V32" stroke="#e2e8f0" stroke-width="0.8"/>
+                                            <path d="M17 4V16L20 13.5L23 16V4" fill="#94a3b8"/>
+                                            <circle cx="21" cy="22" r="4.5" fill="#02151e" stroke="#ffffff" stroke-width="1"/>
+                                            <polygon points="21,18.5 22.2,21 24.8,21.4 22.8,23 23.5,25.6 21,24 18.5,25.6 19.2,23 17.2,21.4 19.8,21" fill="#f8fafc"/>
                                         </svg>
                                     </div>
                                     <h2 class="bookshelf-title">Collections</h2>

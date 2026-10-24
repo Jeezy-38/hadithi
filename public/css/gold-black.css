@@ -8,43 +8,43 @@
 :root,
 [data-theme="dark"] {
     color-scheme: dark;
-    /* The Medina Emerald & Sage Edition (Serene Spiritual Minimalism) */
-    --bg-body: #021a1f;
-    --bg-surface: #04242b;
-    --bg-surface-elevated: #07313a;
-    --bg-surface-hover: #0b3f4b;
-    --border-color: rgba(16, 185, 129, 0.22);
-    --border-subtle: rgba(16, 185, 129, 0.10);
-    --border-focus: #10b981;
+    /* The Platinum & Silver Minimalist Edition (Monochrome Modern Luxury) */
+    --bg-body: #02151e;
+    --bg-surface: #06202c;
+    --bg-surface-elevated: #092c3d;
+    --bg-surface-hover: #0d384d;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-focus: #f1f5f9;
     
-    --text-primary: #f0fdf4;
-    --text-secondary: #93c5b5;
-    --text-muted: #5d8c7c;
-    --text-dim: #446d60;
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #8295a0;
+    --text-dim: #64748b;
 
-    /* Signature Medina Emerald & Sage Accents */
-    --gold: #10b981;
-    --gold-light: #34d399;
-    --gold-dark: #059669;
-    --gold-gradient: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
-    --gold-subtle: rgba(16, 185, 129, 0.14);
+    /* Signature Platinum & Silver Titanium (Zero gold / zero yellow) */
+    --gold: #f1f5f9;
+    --gold-light: #ffffff;
+    --gold-dark: #cbd5e1;
+    --gold-gradient: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
+    --gold-subtle: rgba(241, 245, 249, 0.10);
 
-    --emerald: #10b981;
-    --emerald-subtle: rgba(16, 185, 129, 0.16);
+    --emerald: #38bdf8;
+    --emerald-subtle: rgba(56, 189, 248, 0.14);
 
-    --arabic-bg: rgba(4, 36, 43, 0.85);
-    --arabic-border: rgba(16, 185, 129, 0.25);
-    --arabic-text: #f0fdf4;
+    --arabic-bg: rgba(6, 32, 44, 0.85);
+    --arabic-border: rgba(255, 255, 255, 0.14);
+    --arabic-text: #ffffff;
 
-    --header-bg: rgba(2, 26, 31, 0.94);
-    --header-border: rgba(16, 185, 129, 0.16);
+    --header-bg: rgba(2, 21, 30, 0.94);
+    --header-border: rgba(255, 255, 255, 0.10);
 
-    --hero-overlay: linear-gradient(90deg, rgba(2, 26, 31, 0.98) 0%, rgba(4, 36, 43, 0.90) 50%, rgba(4, 36, 43, 0.45) 100%);
-    --hero-border: rgba(16, 185, 129, 0.28);
+    --hero-overlay: linear-gradient(90deg, rgba(2, 21, 30, 0.98) 0%, rgba(6, 32, 44, 0.88) 50%, rgba(6, 32, 44, 0.4) 100%);
+    --hero-border: rgba(255, 255, 255, 0.16);
 
-    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(16, 185, 129, 0.18);
-    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 0 1.5px #10b981;
-    --glow-gold: 0 0 25px rgba(16, 185, 129, 0.28);
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.10);
+    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 0 1.5px rgba(241, 245, 249, 0.6);
+    --glow-gold: 0 0 25px rgba(241, 245, 249, 0.20);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -57,43 +57,43 @@
 
 [data-theme="light"] {
     color-scheme: light;
-    /* Clean Serene Sage Porcelain & Radiant Medina Emerald */
-    --bg-body: #f6fbf9;
+    /* Clean Porcelain White & Polished Titanium Slate */
+    --bg-body: #f8fafc;
     --bg-surface: #ffffff;
-    --bg-surface-elevated: #eaf5f0;
-    --bg-surface-hover: #dff0e7;
+    --bg-surface-elevated: #f1f5f9;
+    --bg-surface-hover: #e2e8f0;
     
-    --border-color: rgba(5, 150, 105, 0.18);
-    --border-subtle: rgba(5, 150, 105, 0.08);
-    --border-focus: #059669;
+    --border-color: rgba(15, 23, 42, 0.10);
+    --border-subtle: rgba(15, 23, 42, 0.05);
+    --border-focus: #0f172a;
 
-    --text-primary: #062f22;
-    --text-secondary: #2d5a4a;
-    --text-muted: #5d8c7c;
-    --text-dim: #7da598;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
 
-    --gold: #059669;
-    --gold-light: #10b981;
-    --gold-dark: #047857;
-    --gold-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    --gold-subtle: rgba(5, 150, 105, 0.10);
+    --gold: #0f172a;
+    --gold-light: #334155;
+    --gold-dark: #020617;
+    --gold-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --gold-subtle: rgba(15, 23, 42, 0.06);
 
-    --emerald: #059669;
-    --emerald-subtle: rgba(5, 150, 105, 0.12);
+    --emerald: #0284c7;
+    --emerald-subtle: rgba(2, 132, 199, 0.10);
 
-    --arabic-bg: #f6fbf9;
-    --arabic-border: rgba(5, 150, 105, 0.18);
-    --arabic-text: #062f22;
+    --arabic-bg: #f8fafc;
+    --arabic-border: rgba(15, 23, 42, 0.12);
+    --arabic-text: #0f172a;
 
-    --header-bg: rgba(255, 255, 255, 0.96);
-    --header-border: rgba(5, 150, 105, 0.12);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-border: rgba(15, 23, 42, 0.08);
 
-    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 251, 249, 0.94) 60%, rgba(234, 245, 240, 0.9) 100%);
-    --hero-border: rgba(5, 150, 105, 0.22);
+    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 60%, rgba(241, 245, 249, 0.9) 100%);
+    --hero-border: rgba(15, 23, 42, 0.14);
 
-    --card-shadow: 0 4px 20px -2px rgba(6, 47, 34, 0.06), 0 1px 3px rgba(6, 47, 34, 0.04);
-    --card-hover-shadow: 0 14px 30px -4px rgba(6, 47, 34, 0.14), 0 0 0 1.5px #059669;
-    --glow-gold: 0 0 20px rgba(16, 185, 129, 0.20);
+    --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+    --card-hover-shadow: 0 14px 30px -4px rgba(15, 23, 42, 0.14), 0 0 0 1.5px #0f172a;
+    --glow-gold: 0 0 20px rgba(15, 23, 42, 0.12);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -197,25 +197,25 @@ button {
     width: 48px;
     object-fit: contain;
     border-radius: 12px;
-    border: 1.5px solid rgba(16, 185, 129, 0.35);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(16, 185, 129, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(241, 245, 249, 0.15);
     transition: transform .25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .2s ease, box-shadow .2s ease;
 }
 
 .brand:hover .brand-logo {
     transform: scale(1.06);
-    border-color: #10b981;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.4);
+    border-color: #f1f5f9;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(241, 245, 249, 0.3);
 }
 
 [data-theme="light"] .brand-logo {
-    border-color: rgba(5, 150, 105, 0.3);
-    box-shadow: 0 4px 14px rgba(5, 150, 105, 0.08);
+    border-color: rgba(15, 23, 42, 0.15);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
 }
 
 [data-theme="light"] .brand:hover .brand-logo {
-    border-color: #059669;
-    box-shadow: 0 6px 20px rgba(5, 150, 105, 0.25);
+    border-color: #0f172a;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15);
 }
 
 .brand small {
@@ -435,8 +435,8 @@ button {
     max-width: 1240px;
     min-height: 420px;
     margin: 24px auto 0;
-    background: radial-gradient(circle at 82% 35%, rgba(13, 148, 136, 0.25) 0%, rgba(3, 33, 44, 0.95) 60%),
-                linear-gradient(90deg, rgba(3, 33, 44, 0.98) 0%, rgba(6, 42, 54, 0.92) 50%, rgba(3, 33, 44, 0.7) 100%),
+    background: radial-gradient(circle at 82% 35%, rgba(56, 189, 248, 0.15) 0%, rgba(2, 21, 30, 0.95) 60%),
+                linear-gradient(90deg, rgba(2, 21, 30, 0.98) 0%, rgba(6, 32, 44, 0.92) 50%, rgba(2, 21, 30, 0.7) 100%),
                 url('../images/bayt-al-hadith-logo.png') right 5% center / 340px no-repeat,
                 url('../images/library-gold-black.jpg') center 55% / cover;
     border: 1.5px solid var(--hero-border);
@@ -454,7 +454,7 @@ button {
     right: 5%;
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(5, 150, 105, 0.08) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(241, 245, 249, 0.15) 0%, rgba(56, 189, 248, 0.06) 50%, transparent 70%);
     pointer-events: none;
     z-index: 1;
     border-radius: 50%;
@@ -462,26 +462,26 @@ button {
 }
 
 [data-theme="light"] .hero-glow {
-    background: radial-gradient(circle, rgba(5, 150, 105, 0.12) 0%, rgba(5, 150, 105, 0.03) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.02) 50%, transparent 70%);
 }
 
-/* Light Mode Hero: Clean Serene Sage & Medina Emerald */
+/* Light Mode Hero: Clean Porcelain & Polished Slate */
 [data-theme="light"] .hero {
-    background: radial-gradient(circle at 82% 35%, rgba(5, 150, 105, 0.12) 0%, rgba(246, 251, 249, 0.96) 65%),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(246, 251, 249, 0.95) 55%, rgba(234, 245, 240, 0.92) 100%),
+    background: radial-gradient(circle at 82% 35%, rgba(15, 23, 42, 0.06) 0%, rgba(255, 255, 255, 0.96) 65%),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 55%, rgba(241, 245, 249, 0.92) 100%),
                 url('../images/bayt-al-hadith-logo.png') right 5% center / 340px no-repeat,
                 url('../images/library-gold-black.jpg') center 55% / cover;
-    border: 1.5px solid rgba(5, 150, 105, 0.18);
-    box-shadow: 0 8px 24px -4px rgba(6, 47, 34, 0.06);
+    border: 1.5px solid rgba(15, 23, 42, 0.10);
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.06);
 }
 
 [data-theme="light"] .hero h1 {
-    color: #062f22;
+    color: #0f172a;
     font-weight: 800;
 }
 
 [data-theme="light"] .hero h1 em {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
