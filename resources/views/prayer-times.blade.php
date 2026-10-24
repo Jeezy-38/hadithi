@@ -192,11 +192,7 @@
                 </div>
             </div>
 
-            {{-- MAELEKEZO MAFUPI --}}
-            <div class="prayer-info-note">
-                <span class="info-icon" aria-hidden="true">✦</span>
-                <span>Nyakati zote zimehesabiwa kiastronomia kwa majira rasmi ya Dar es Salaam (EAT · UTC+3). Kaunta ya juu husasishwa moja kwa moja kila sekunde.</span>
-            </div>
+
         </div>
     </div>
 
