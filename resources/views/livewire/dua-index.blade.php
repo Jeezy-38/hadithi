@@ -8,74 +8,7 @@
             <p data-i18n="dua_desc">
                 Dua sahihi na adhkar zilizothibitishwa kutoka katika Qur'an na mafundisho ya Mtume Muhammad ﷺ. Hifadhi ya moyo, amani ya nafsi, na kinga ya muumini katika kila nyakati za maisha.
             </p>
-            <div class="hero-actions">
-                <a href="{{ route('tasbih') }}" class="hero-button">
-                    <span class="btn-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="9"></circle>
-                            <circle cx="12" cy="7" r="1.5" fill="currentColor"></circle>
-                            <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"></circle>
-                            <circle cx="17" cy="12" r="1.5" fill="currentColor"></circle>
-                            <circle cx="12" cy="17" r="1.5" fill="currentColor"></circle>
-                            <circle cx="7" cy="12" r="1.5" fill="currentColor"></circle>
-                        </svg>
-                    </span>
-                    <span data-i18n="dua_btn_tasbih">Fungua Digital Tasbih</span>
-                    <span class="hero-button-arrow" aria-hidden="true">→</span>
-                </a>
-                <button type="button" wire:click="selectCategory('asubuhi')" class="hero-button hero-button-secondary">
-                    <span data-i18n="dua_btn_morning">Adhkar za Asubuhi</span>
-                </button>
-            </div>
             <div class="hero-caption" data-i18n="dua_caption">HISN AL-MUSLIM ✦ DUA NA ADHKAR ZA KILA SIKU</div>
-        </div>
-    </section>
-
-    {{-- Takwimu za Haraka --}}
-    <section class="library-summary dua-summary" aria-label="Takwimu za Dua">
-        <div class="summary-item">
-            <span class="summary-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M7 11v-1a5 5 0 0 1 10 0v1"></path>
-                    <path d="M12 4v2"></path>
-                    <path d="M18 18a6 6 0 0 1-12 0c0-3.5 3-7 6-11 3 4 6 7.5 6 11z"></path>
-                </svg>
-            </span>
-            <div class="summary-text">
-                <strong>{{ $totalCount }}</strong>
-                <span data-i18n="dua_stat_total">dua zilizopo</span>
-            </div>
-        </div>
-        <div class="summary-item">
-            <span class="summary-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                </svg>
-            </span>
-            <div class="summary-text">
-                <strong>{{ $categories->count() }}</strong>
-                <span data-i18n="dua_stat_cats">makundi makuu</span>
-            </div>
-        </div>
-        <div class="summary-item">
-            <span class="summary-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="9"></circle>
-                    <circle cx="12" cy="7" r="1.5" fill="currentColor"></circle>
-                    <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"></circle>
-                    <circle cx="17" cy="12" r="1.5" fill="currentColor"></circle>
-                    <circle cx="12" cy="17" r="1.5" fill="currentColor"></circle>
-                    <circle cx="7" cy="12" r="1.5" fill="currentColor"></circle>
-                </svg>
-            </span>
-            <div class="summary-text">
-                <strong>Tasbih</strong>
-                <span data-i18n="dua_stat_tasbih">kaunta ya kidigitali</span>
-            </div>
-        </div>
-        <div class="summary-note-item">
-            <span class="summary-badge" data-i18n="dua_stat_note">Hisn al-Muslim · Kiarabu · Kiswahili · English</span>
         </div>
     </section>
 
