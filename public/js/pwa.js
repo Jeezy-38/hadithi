@@ -285,21 +285,26 @@
         });
     }
 
-    // 8. Arifa za Kila Siku (Daily Push Notifications Handler)
+    // 8. Arifa za Kila Siku (Daily Push Notifications Handler - Default: ON)
     const notifBtn = document.getElementById('drawer-notif-btn');
     const notifTitle = document.getElementById('drawer-notif-title');
     const notifSub = document.getElementById('drawer-notif-sub');
     const notifBadge = document.getElementById('drawer-notif-badge');
 
+    const isNotificationOptedOut = () => {
+        try {
+            return localStorage.getItem('hadith_daily_notif_enabled') === '0';
+        } catch (_) {
+            return false;
+        }
+    };
+
     const updateNotificationUi = () => {
         if (!notifBtn || !('Notification' in window)) return;
         const permission = Notification.permission;
-        let isSaved = false;
-        try {
-            isSaved = localStorage.getItem('hadith_daily_notif_enabled') === '1';
-        } catch (_) {}
+        const optedOut = isNotificationOptedOut();
 
-        if (permission === 'granted' && isSaved) {
+        if (permission === 'granted' && !optedOut) {
             if (notifBadge) {
                 notifBadge.textContent = 'Imewashwa';
                 notifBadge.classList.add('is-installed');
@@ -313,66 +318,184 @@
                 notifBadge.classList.remove('is-installed');
             }
             if (notifSub) {
-                notifSub.textContent = 'Hadithi ya siku kila asubuhi';
+                notifSub.textContent = optedOut ? 'Arifa zimezimwa kwa hiari' : 'Hadithi ya siku kila asubuhi';
             }
         }
     };
 
-    if (notifBtn) {
-        updateNotificationUi();
+    const getStoredEndpoint = () => {
+        try {
+            let ep = localStorage.getItem('bayt_push_endpoint');
+            if (!ep) {
+                ep = 'local-client-' + Math.random().toString(36).substring(2) + '-' + Date.now();
+                localStorage.setItem('bayt_push_endpoint', ep);
+            }
+            return ep;
+        } catch (_) {
+            return 'local-client-' + Date.now();
+        }
+    };
 
-        notifBtn.addEventListener('click', async () => {
+    const syncPushSubscription = async () => {
+        if (isNotificationOptedOut()) return null;
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        let endpoint = getStoredEndpoint();
+
+        if ('serviceWorker' in navigator) {
+            try {
+                const reg = await navigator.serviceWorker.ready;
+                if (reg.pushManager) {
+                    const sub = await reg.pushManager.getSubscription();
+                    if (sub && sub.endpoint) {
+                        endpoint = sub.endpoint;
+                        try {
+                            localStorage.setItem('bayt_push_endpoint', endpoint);
+                        } catch (_) {}
+                    }
+                }
+            } catch (_) {}
+        }
+
+        try {
+            await fetch('/api/push-subscriptions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken || ''
+                },
+                body: JSON.stringify({ endpoint: endpoint })
+            });
+        } catch (_) {}
+
+        return endpoint;
+    };
+
+    const checkAndDeliverDailyHadith = async () => {
+        if (isNotificationOptedOut() || !('Notification' in window) || Notification.permission !== 'granted') {
+            return;
+        }
+
+        const todayDate = new Date().toISOString().slice(0, 10);
+        const dailyShownKey = 'bayt_daily_notified_' + todayDate;
+        try {
+            if (localStorage.getItem(dailyShownKey) === '1') {
+                return; // Tayari imeonyeshwa leo
+            }
+        } catch (_) {}
+
+        try {
+            const res = await fetch('/api/hadith-ya-leo');
+            if (!res.ok) return;
+            const data = await res.json();
+
+            if ('serviceWorker' in navigator) {
+                const reg = await navigator.serviceWorker.ready;
+                reg.showNotification(data.title || 'Hadithi ya Siku · Bayt Al-Hadith', {
+                    body: data.body || 'Karibu Bayt Al-Hadith kusoma Sunnah za Mtume ﷺ.',
+                    icon: data.icon || '/icons/icon-192.png',
+                    badge: data.badge || '/icons/icon-192.png',
+                    data: { url: data.url || '/hadith-ya-leo' },
+                    tag: 'daily-hadith-' + todayDate
+                });
+            } else {
+                new Notification(data.title || 'Hadithi ya Siku · Bayt Al-Hadith', {
+                    body: data.body || 'Karibu Bayt Al-Hadith kusoma Sunnah za Mtume ﷺ.',
+                    icon: '/icons/icon-192.png'
+                });
+            }
+
+            try {
+                localStorage.setItem(dailyShownKey, '1');
+            } catch (_) {}
+        } catch (e) {
+            console.warn('Hitilafu ya kupokea Hadithi ya Siku:', e);
+        }
+    };
+
+    const initDefaultDailyNotifications = async () => {
+        if (!('Notification' in window)) return;
+        if (isNotificationOptedOut()) {
+            updateNotificationUi();
+            return;
+        }
+
+        if (Notification.permission === 'granted') {
+            updateNotificationUi();
+            await syncPushSubscription();
+            await checkAndDeliverDailyHadith();
+        } else if (Notification.permission === 'default') {
+            try {
+                const perm = await Notification.requestPermission();
+                if (perm === 'granted') {
+                    updateNotificationUi();
+                    await syncPushSubscription();
+                    await checkAndDeliverDailyHadith();
+                } else {
+                    updateNotificationUi();
+                }
+            } catch (_) {
+                updateNotificationUi();
+            }
+        } else {
+            updateNotificationUi();
+        }
+    };
+
+    // Anzisha mara moja baada ya ukurasa kupakia
+    if ('Notification' in window) {
+        updateNotificationUi();
+        setTimeout(initDefaultDailyNotifications, 1800);
+        // Backup: Ukigusa popote (user gesture) iwapo browser inahitaji click
+        window.addEventListener('click', initDefaultDailyNotifications, { once: true });
+    }
+
+    // Toggle ya mtumiaji kwenye menyu ya pembeni (Drawer)
+    if (notifBtn) {
+        notifBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
             if (!('Notification' in window)) {
                 alert('Kifaa hiki au kivinjari hakiruhusu arifa za PWA.');
                 return;
             }
 
-            if (Notification.permission === 'granted') {
-                let isSaved = false;
-                try {
-                    isSaved = localStorage.getItem('hadith_daily_notif_enabled') === '1';
-                } catch (_) {}
+            const currentlyActive = Notification.permission === 'granted' && !isNotificationOptedOut();
 
-                if (isSaved) {
-                    // Zima arifa
-                    try {
-                        localStorage.setItem('hadith_daily_notif_enabled', '0');
-                    } catch (_) {}
-                    updateNotificationUi();
-                    return;
-                }
+            if (currentlyActive) {
+                // Mtumiaji ameamua kuzima kwa hiari
+                try {
+                    localStorage.setItem('hadith_daily_notif_enabled', '0');
+                } catch (_) {}
+                updateNotificationUi();
+
+                // Notifisha seva kuzima subscription
+                const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+                const endpoint = getStoredEndpoint();
+                fetch('/api/push-subscriptions', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken || ''
+                    },
+                    body: JSON.stringify({ endpoint: endpoint })
+                }).catch(() => {});
+                return;
             }
+
+            // Mtumiaji anawasha arifa
+            try {
+                localStorage.removeItem('hadith_daily_notif_enabled');
+                localStorage.setItem('hadith_daily_notif_enabled', '1');
+            } catch (_) {}
 
             try {
                 const permission = await Notification.requestPermission();
                 if (permission === 'granted') {
-                    try {
-                        localStorage.setItem('hadith_daily_notif_enabled', '1');
-                    } catch (_) {}
                     updateNotificationUi();
+                    await syncPushSubscription();
 
-                    // Tuma data kwenye seva
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+                    // Onyesha arifa ya kwanza ya uthibitisho papo hapo
                     if ('serviceWorker' in navigator) {
                         const reg = await navigator.serviceWorker.ready;
-                        let sub = null;
-                        try {
-                            if (reg.pushManager) {
-                                sub = await reg.pushManager.getSubscription();
-                            }
-                        } catch (_) {}
-
-                        const endpoint = sub ? sub.endpoint : ('local-sub-' + Math.random().toString(36).substring(2));
-                        fetch('/api/push-subscriptions', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': csrfToken || ''
-                            },
-                            body: JSON.stringify({ endpoint: endpoint })
-                        }).catch(() => {});
-
-                        // Onyesha arifa ya kwanza ya uthibitisho papo hapo
                         reg.showNotification('Hadithi ya Siku · Bayt Al-Hadith', {
                             body: 'Arifa zimewashwa kikamilifu! Utapokea Hadithi ya Siku kila asubuhi.',
                             icon: '/icons/icon-192.png',
@@ -386,6 +509,7 @@
                 }
             } catch (err) {
                 console.warn('Hitilafu ya arifa:', err);
+                updateNotificationUi();
             }
         });
     }

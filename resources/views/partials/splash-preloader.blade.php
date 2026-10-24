@@ -1,3 +1,13 @@
+<script>
+    (function () {
+        try {
+            if (sessionStorage.getItem('bayt_splash_seen') === '1') {
+                document.write('<style>#bayt-splash-loader{display:none !important;visibility:hidden !important;opacity:0 !important;pointer-events:none !important;}</style>');
+            }
+        } catch (_) {}
+    })();
+</script>
+
 <div id="bayt-splash-loader" class="bayt-splash-screen" aria-hidden="true">
     <div class="bayt-splash-glow"></div>
     <div class="bayt-splash-body">
@@ -21,6 +31,24 @@
     (function () {
         const splash = document.getElementById('bayt-splash-loader');
         if (!splash) return;
+
+        let hasSeen = false;
+        try {
+            hasSeen = sessionStorage.getItem('bayt_splash_seen') === '1';
+        } catch (_) {}
+
+        if (hasSeen) {
+            // Ilishaonekana kwenye session hii — iondoe papo hapo bila kuchelewa
+            if (splash.parentNode) {
+                splash.parentNode.removeChild(splash);
+            }
+            return;
+        }
+
+        // Mara ya kwanza mtumiaji anafungua app — weka alama kwenye session
+        try {
+            sessionStorage.setItem('bayt_splash_seen', '1');
+        } catch (_) {}
 
         const startTime = Date.now();
         const minDisplayMs = 1200;
