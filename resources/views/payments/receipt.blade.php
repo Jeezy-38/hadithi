@@ -30,7 +30,7 @@
                         Malipo Yameshindikana au Yameghairiwa
                     </h1>
                 @else
-                    <div style="width: 58px; height: 58px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(218, 181, 106, 0.15); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.6rem; font-weight: 800;">
+                    <div style="width: 58px; height: 58px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(226, 232, 240, 0.15); border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.6rem; font-weight: 800;">
                         ⏳
                     </div>
                     <span style="display: inline-block; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; color: var(--gold); padding: 4px 14px; background: var(--gold-subtle); border-radius: 999px; margin-bottom: 0.5rem;">
@@ -96,7 +96,7 @@
                 @endif
 
                 @if ($payment->message)
-                    <div style="background: rgba(218, 181, 106, 0.05); border: 1px solid rgba(218, 181, 106, 0.2); padding: 0.85rem 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <div style="background: rgba(226, 232, 240, 0.05); border: 1px solid rgba(226, 232, 240, 0.2); padding: 0.85rem 1rem; border-radius: 8px; margin-top: 1rem;">
                         <span style="font-size: 0.75rem; font-weight: 700; color: var(--gold); letter-spacing: 1px; display: block; margin-bottom: 0.25rem;">
                             DUA / UJUMBE WA MOYONI:
                         </span>

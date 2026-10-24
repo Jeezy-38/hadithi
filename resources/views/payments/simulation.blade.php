@@ -2,7 +2,7 @@
     <div class="support-page-shell" style="max-width: 680px; margin: 2rem auto; padding: 0 1rem;">
         
         {{-- Kadi ya Mwongozo wa Sandbox / Majaribio --}}
-        <div style="background: rgba(218, 181, 106, 0.08); border: 1.5px solid var(--border-color); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: center;">
+        <div style="background: rgba(226, 232, 240, 0.08); border: 1.5px solid var(--border-color); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: center;">
             <span style="display: inline-block; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; color: var(--gold); padding: 4px 12px; background: var(--gold-subtle); border-radius: 999px; margin-bottom: 0.75rem;">
                 MAJARIBIO YA MALIPO (PESAPAL SANDBOX SIMULATOR)
             </span>

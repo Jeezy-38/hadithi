@@ -8,43 +8,43 @@
 :root,
 [data-theme="dark"] {
     color-scheme: dark;
-    /* Royal Islamic Midnight Teal & Luminous Gold (Exact Match to Logo) */
-    --bg-body: #02202b;
-    --bg-surface: #052936;
-    --bg-surface-elevated: #093747;
-    --bg-surface-hover: #0d4559;
-    --border-color: rgba(235, 176, 54, 0.22);
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-focus: #ebb036;
+    /* The Platinum & Silver Minimalist Edition (Monochrome Modern Luxury) */
+    --bg-body: #02151e;
+    --bg-surface: #06202c;
+    --bg-surface-elevated: #092c3d;
+    --bg-surface-hover: #0d384d;
+    --border-color: rgba(255, 255, 255, 0.12);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-focus: #f1f5f9;
     
-    --text-primary: #f8fafc;
+    --text-primary: #ffffff;
     --text-secondary: #cbd5e1;
-    --text-muted: #8ca3ad;
+    --text-muted: #8295a0;
     --text-dim: #64748b;
 
-    /* Signature Islamic Gold (Sampled directly from Logo) */
-    --gold: #ebb036;
-    --gold-light: #fef2aa;
-    --gold-dark: #c98a1e;
-    --gold-gradient: linear-gradient(135deg, #fef2aa 0%, #ebb036 50%, #c98a1e 100%);
-    --gold-subtle: rgba(235, 176, 54, 0.15);
+    /* Signature Platinum & Silver Titanium (Zero gold / zero yellow) */
+    --gold: #f1f5f9;
+    --gold-light: #ffffff;
+    --gold-dark: #cbd5e1;
+    --gold-gradient: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
+    --gold-subtle: rgba(241, 245, 249, 0.10);
 
-    --emerald: #0d9488;
-    --emerald-subtle: rgba(13, 148, 136, 0.16);
+    --emerald: #38bdf8;
+    --emerald-subtle: rgba(56, 189, 248, 0.14);
 
-    --arabic-bg: rgba(5, 41, 54, 0.85);
-    --arabic-border: rgba(235, 176, 54, 0.3);
+    --arabic-bg: rgba(6, 32, 44, 0.85);
+    --arabic-border: rgba(255, 255, 255, 0.14);
     --arabic-text: #ffffff;
 
-    --header-bg: rgba(2, 32, 43, 0.94);
-    --header-border: rgba(235, 176, 54, 0.2);
+    --header-bg: rgba(2, 21, 30, 0.94);
+    --header-border: rgba(255, 255, 255, 0.10);
 
-    --hero-overlay: linear-gradient(90deg, rgba(2, 32, 43, 0.98) 0%, rgba(5, 41, 54, 0.88) 50%, rgba(5, 41, 54, 0.4) 100%);
-    --hero-border: rgba(235, 176, 54, 0.3);
+    --hero-overlay: linear-gradient(90deg, rgba(2, 21, 30, 0.98) 0%, rgba(6, 32, 44, 0.88) 50%, rgba(6, 32, 44, 0.4) 100%);
+    --hero-border: rgba(255, 255, 255, 0.16);
 
-    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(235, 176, 54, 0.16);
-    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.7), 0 0 0 1.5px #ebb036;
-    --glow-gold: 0 0 25px rgba(235, 176, 54, 0.3);
+    --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.10);
+    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 0 1.5px rgba(241, 245, 249, 0.6);
+    --glow-gold: 0 0 25px rgba(241, 245, 249, 0.20);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -57,43 +57,43 @@
 
 [data-theme="light"] {
     color-scheme: light;
-    /* Clean Porcelain White & Polished Royal Gold */
-    --bg-body: #f5f9fa;
+    /* Clean Porcelain White & Polished Titanium Slate */
+    --bg-body: #f8fafc;
     --bg-surface: #ffffff;
-    --bg-surface-elevated: #edf4f6;
-    --bg-surface-hover: #e3eff2;
+    --bg-surface-elevated: #f1f5f9;
+    --bg-surface-hover: #e2e8f0;
     
-    --border-color: rgba(2, 32, 43, 0.12);
-    --border-subtle: rgba(2, 32, 43, 0.06);
-    --border-focus: #ebb036;
+    --border-color: rgba(15, 23, 42, 0.10);
+    --border-subtle: rgba(15, 23, 42, 0.05);
+    --border-focus: #0f172a;
 
-    --text-primary: #02202b;
-    --text-secondary: #1e3d47;
-    --text-muted: #526e77;
-    --text-dim: #768f98;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --text-dim: #94a3b8;
 
-    --gold: #c98a1e;
-    --gold-light: #ebb036;
-    --gold-dark: #9e6b12;
-    --gold-gradient: linear-gradient(135deg, #ebb036 0%, #c98a1e 100%);
-    --gold-subtle: rgba(201, 138, 30, 0.12);
+    --gold: #0f172a;
+    --gold-light: #334155;
+    --gold-dark: #020617;
+    --gold-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --gold-subtle: rgba(15, 23, 42, 0.08);
 
-    --emerald: #0d6b5c;
-    --emerald-subtle: rgba(13, 107, 92, 0.12);
+    --emerald: #0284c7;
+    --emerald-subtle: rgba(2, 132, 199, 0.10);
 
-    --arabic-bg: #f5f9fa;
-    --arabic-border: rgba(2, 32, 43, 0.12);
-    --arabic-text: #02202b;
+    --arabic-bg: #f8fafc;
+    --arabic-border: rgba(15, 23, 42, 0.10);
+    --arabic-text: #0f172a;
 
-    --header-bg: rgba(245, 249, 250, 0.95);
-    --header-border: rgba(2, 32, 43, 0.1);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-border: rgba(15, 23, 42, 0.08);
 
-    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 249, 250, 0.94) 60%, rgba(237, 244, 246, 0.9) 100%);
-    --hero-border: rgba(201, 138, 30, 0.25);
+    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.94) 60%, rgba(241, 245, 249, 0.9) 100%);
+    --hero-border: rgba(15, 23, 42, 0.15);
 
-    --card-shadow: 0 4px 20px -2px rgba(2, 32, 43, 0.06), 0 1px 3px rgba(2, 32, 43, 0.04);
-    --card-hover-shadow: 0 14px 30px -4px rgba(2, 32, 43, 0.14), 0 0 0 1.5px #ebb036;
-    --glow-gold: 0 0 20px rgba(235, 176, 54, 0.25);
+    --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+    --card-hover-shadow: 0 14px 30px -4px rgba(15, 23, 42, 0.12), 0 0 0 1.5px rgba(15, 23, 42, 0.35);
+    --glow-gold: 0 0 20px rgba(15, 23, 42, 0.10);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -120,8 +120,8 @@ html {
 body {
     background-color: var(--bg-body);
     background-image: 
-        radial-gradient(ellipse at 85% 0%, rgba(13, 148, 136, 0.10), transparent 45%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23f0be31' stroke-width='0.75' opacity='0.05'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.03'/%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(ellipse at 85% 0%, rgba(56, 189, 248, 0.08), transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.75' opacity='0.035'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.025'%3E%3C/g%3E%3C/svg%3E");
     background-repeat: no-repeat, repeat;
     background-size: auto, 60px 60px;
     background-attachment: scroll, fixed;
@@ -136,8 +136,8 @@ body {
 [data-theme="light"] body {
     background-color: var(--bg-body);
     background-image: 
-        radial-gradient(ellipse at 85% 0%, rgba(200, 150, 24, 0.08), transparent 45%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23c89617' stroke-width='0.75' opacity='0.04'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.03'/%3E%3C/g%3E%3C/svg%3E");
+        radial-gradient(ellipse at 85% 0%, rgba(15, 23, 42, 0.04), transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%230f172a' stroke-width='0.75' opacity='0.03'%3E%3Crect x='17' y='17' width='26' height='26'/%3E%3Crect x='17' y='17' width='26' height='26' transform='rotate(45 30 30)'/%3E%3Crect x='-13' y='-13' width='26' height='26'/%3E%3Crect x='-13' y='-13' width='26' height='26' transform='rotate(45 0 0)'/%3E%3Crect x='47' y='-13' width='26' height='26'/%3E%3Crect x='47' y='-13' width='26' height='26' transform='rotate(45 60 0)'/%3E%3Crect x='-13' y='47' width='26' height='26'/%3E%3Crect x='-13' y='47' width='26' height='26' transform='rotate(45 0 60)'/%3E%3Crect x='47' y='47' width='26' height='26'/%3E%3Crect x='47' y='47' width='26' height='26' transform='rotate(45 60 60)'/%3E%3Ccircle cx='30' cy='30' r='13' stroke-width='0.5' opacity='0.02'%3E%3C/g%3E%3C/svg%3E");
     background-repeat: no-repeat, repeat;
     background-size: auto, 60px 60px;
     background-attachment: scroll, fixed;
@@ -197,25 +197,25 @@ button {
     width: 48px;
     object-fit: contain;
     border-radius: 12px;
-    border: 1.5px solid rgba(240, 190, 49, 0.4);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(240, 190, 49, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px rgba(241, 245, 249, 0.15);
     transition: transform .25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color .2s ease, box-shadow .2s ease;
 }
 
 .brand:hover .brand-logo {
     transform: scale(1.06);
-    border-color: #f0be31;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(240, 190, 49, 0.4);
+    border-color: #ffffff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(241, 245, 249, 0.35);
 }
 
 [data-theme="light"] .brand-logo {
-    border-color: rgba(200, 150, 24, 0.35);
-    box-shadow: 0 4px 14px rgba(3, 33, 44, 0.08);
+    border-color: rgba(15, 23, 42, 0.2);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
 }
 
 [data-theme="light"] .brand:hover .brand-logo {
-    border-color: #c89617;
-    box-shadow: 0 6px 20px rgba(200, 150, 24, 0.25);
+    border-color: #0f172a;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.18);
 }
 
 .brand small {
@@ -259,7 +259,7 @@ button {
 .nav-links > a.active {
     color: var(--gold);
     background: var(--gold-subtle);
-    border-color: rgba(218, 181, 106, 0.3);
+    border-color: rgba(226, 232, 240, 0.3);
 }
 
 .nav-links > a.active::after {
@@ -364,8 +364,8 @@ button {
     gap: 6px;
     padding: 6px 14px;
     border-radius: 20px;
-    background: rgba(218, 181, 106, 0.16);
-    border: 1px solid rgba(218, 181, 106, 0.45);
+    background: rgba(241, 245, 249, 0.12);
+    border: 1px solid rgba(241, 245, 249, 0.3);
     color: var(--gold);
     font-size: 13px;
     font-weight: 700;
@@ -377,24 +377,24 @@ button {
 .nav-support-pill:hover,
 .nav-support-pill.active {
     background: var(--gold);
-    color: #0a0e13;
+    color: #02151e;
     border-color: var(--gold);
-    box-shadow: 0 0 15px rgba(218, 181, 106, 0.35);
+    box-shadow: 0 0 15px rgba(241, 245, 249, 0.3);
 }
 
 [data-theme="light"] .nav-support-pill {
-    background: rgba(200, 150, 24, 0.12);
-    border-color: rgba(200, 150, 24, 0.38);
-    color: #9a6e10;
+    background: rgba(15, 23, 42, 0.08);
+    border-color: rgba(15, 23, 42, 0.2);
+    color: #0f172a;
     font-weight: 700;
 }
 
 [data-theme="light"] .nav-support-pill:hover,
 [data-theme="light"] .nav-support-pill.active {
-    background: linear-gradient(135deg, #f0be31 0%, #d49e1a 100%);
-    color: #03212c;
-    border-color: #c89617;
-    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.3);
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
 }
 
 @media (max-width: 640px) {
@@ -454,7 +454,7 @@ button {
     right: 5%;
     width: 480px;
     height: 480px;
-    background: radial-gradient(circle, rgba(240, 190, 49, 0.2) 0%, rgba(13, 148, 136, 0.08) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(241, 245, 249, 0.12) 0%, rgba(56, 189, 248, 0.06) 50%, transparent 70%);
     pointer-events: none;
     z-index: 1;
     border-radius: 50%;
@@ -462,17 +462,17 @@ button {
 }
 
 [data-theme="light"] .hero-glow {
-    background: radial-gradient(circle, rgba(235, 176, 54, 0.16) 0%, rgba(235, 176, 54, 0.04) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(15, 23, 42, 0.06) 0%, rgba(15, 23, 42, 0.02) 50%, transparent 70%);
 }
 
-/* Light Mode Hero: Clean Porcelain & Polished Gold */
+/* Light Mode Hero: Clean Porcelain & Polished Silver */
 [data-theme="light"] .hero {
-    background: radial-gradient(circle at 82% 35%, rgba(235, 176, 54, 0.16) 0%, rgba(245, 249, 250, 0.96) 65%),
+    background: radial-gradient(circle at 82% 35%, rgba(15, 23, 42, 0.04) 0%, rgba(245, 249, 250, 0.96) 65%),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 249, 250, 0.95) 55%, rgba(237, 244, 246, 0.92) 100%),
                 url('../images/bayt-al-hadith-logo.png') right 5% center / 340px no-repeat,
                 url('../images/library-gold-black.jpg') center 55% / cover;
-    border: 1.5px solid rgba(2, 32, 43, 0.12);
-    box-shadow: 0 8px 24px -4px rgba(2, 32, 43, 0.06);
+    border: 1.5px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.06);
 }
 
 [data-theme="light"] .hero h1 {
@@ -481,50 +481,50 @@ button {
 }
 
 [data-theme="light"] .hero h1 em {
-    background: linear-gradient(135deg, #ebb036 0%, #c98a1e 100%);
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
 }
 
 [data-theme="light"] .hero p {
-    color: #1e3d47;
+    color: #334155;
     font-weight: 500;
 }
 
 [data-theme="light"] .eyebrow {
-    color: #c98a1e;
+    color: #0f172a;
     font-weight: 800;
 }
 
 [data-theme="light"] .hero-button {
-    background: linear-gradient(135deg, #fef2aa 0%, #ebb036 50%, #c98a1e 100%);
-    color: #02202b;
+    background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+    color: #ffffff;
     font-weight: 800;
-    box-shadow: 0 4px 16px rgba(235, 176, 54, 0.35);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.25);
     border: none;
 }
 
 [data-theme="light"] .hero-button:hover {
-    box-shadow: 0 8px 24px rgba(235, 176, 54, 0.5);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
     transform: translateY(-2px);
-    color: #01151d;
+    color: #ffffff;
 }
 
 [data-theme="light"] .hero-button-secondary {
     background: #ffffff;
-    border: 1.5px solid rgba(2, 32, 43, 0.12);
-    color: #02202b;
+    border: 1.5px solid rgba(15, 23, 42, 0.12);
+    color: #0f172a;
     font-weight: 700;
 }
 
 [data-theme="light"] .hero-caption {
-    color: #c98a1e;
+    color: #0f172a;
     font-weight: 700;
 }
 
 [data-theme="light"] .hero .eyebrow {
-    color: #c98a1e;
+    color: #0f172a;
 }
 
 .hero-copy {
@@ -781,7 +781,7 @@ button {
     background: var(--gold-gradient);
     color: #03212c;
     font-weight: 800;
-    box-shadow: 0 4px 16px rgba(200, 150, 24, 0.35);
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.35);
 }
 
 [data-theme="dark"] .collection-button.active {
@@ -957,12 +957,12 @@ button {
 
 [data-theme="light"] .search-form button {
     color: #03212c;
-    box-shadow: 0 2px 10px rgba(200, 150, 24, 0.28);
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.28);
 }
 
 .search-form button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.4);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.4);
     color: #02161e;
 }
 
@@ -1022,7 +1022,7 @@ button {
     border-color: transparent;
     color: #03212c;
     font-weight: 800;
-    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.35);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.35);
 }
 
 [data-theme="light"] .topic-chip.active {
@@ -1158,7 +1158,7 @@ button {
     transform: translateY(-2px);
     border-color: var(--border-focus);
     background: linear-gradient(135deg, #093747 0%, #0c4356 60%, #052936 100%);
-    box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(235, 176, 54, 0.25);
+    box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(241, 245, 249, 0.25);
 }
 
 [data-theme="light"] .hadith-book-row-card:hover {
@@ -1179,8 +1179,8 @@ button {
 .book-emblem-diamond {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, rgba(235, 176, 54, 0.16) 0%, rgba(13, 148, 136, 0.16) 100%);
-    border: 1.5px solid rgba(235, 176, 54, 0.45);
+    background: linear-gradient(135deg, rgba(241, 245, 249, 0.16) 0%, rgba(13, 148, 136, 0.16) 100%);
+    border: 1.5px solid rgba(241, 245, 249, 0.45);
     border-radius: 11px;
     transform: rotate(45deg);
     display: flex;
@@ -1192,17 +1192,17 @@ button {
 
 [data-theme="light"] .book-emblem-diamond {
     background: linear-gradient(135deg, #f5f9fa 0%, #edf4f6 100%);
-    border-color: rgba(201, 138, 30, 0.35);
+    border-color: rgba(15, 23, 42, 0.35);
 }
 
 .hadith-book-row-card:hover .book-emblem-diamond {
     transform: rotate(45deg) scale(1.08);
     border-color: var(--gold);
-    background: linear-gradient(135deg, rgba(235, 176, 54, 0.28) 0%, rgba(13, 148, 136, 0.22) 100%);
+    background: linear-gradient(135deg, rgba(241, 245, 249, 0.28) 0%, rgba(13, 148, 136, 0.22) 100%);
 }
 
 [data-theme="light"] .hadith-book-row-card:hover .book-emblem-diamond {
-    background: linear-gradient(135deg, #fef2aa 0%, #fde68a 100%);
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
     border-color: var(--gold);
 }
 
@@ -1213,7 +1213,7 @@ button {
     color: var(--gold);
     line-height: 1;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    text-shadow: 0 0 10px rgba(235, 176, 54, 0.4);
+    text-shadow: 0 0 10px rgba(241, 245, 249, 0.4);
 }
 
 [data-theme="light"] .book-emblem-letter {
@@ -1449,14 +1449,14 @@ button {
 
 /* Individual Collection Badges */
 .badge-bukhari {
-    background: rgba(218, 181, 106, 0.15);
+    background: rgba(226, 232, 240, 0.15);
     color: #e4c480;
-    border-color: rgba(218, 181, 106, 0.35);
+    border-color: rgba(226, 232, 240, 0.35);
 }
 [data-theme="light"] .badge-bukhari {
     background: #fffdf5;
     color: #9a6e10;
-    border-color: rgba(200, 150, 24, 0.4);
+    border-color: rgba(15, 23, 42, 0.4);
 }
 
 .badge-muslim {
@@ -1699,16 +1699,16 @@ button {
 
 [data-theme="light"] .read-btn {
     color: #03212c;
-    background: rgba(200, 150, 24, 0.12);
-    border-color: rgba(200, 150, 24, 0.35);
+    background: rgba(15, 23, 42, 0.12);
+    border-color: rgba(15, 23, 42, 0.35);
     font-weight: 700;
 }
 
 [data-theme="light"] .read-btn:hover {
-    background: linear-gradient(135deg, #f0be31 0%, #d49e1a 100%);
-    color: #03212c;
-    border-color: #c89617;
-    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.3);
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.3);
 }
 
 .read-btn:hover .read-arrow {
@@ -1843,14 +1843,14 @@ svg.h-5 {
     font-size: 13px;
     padding: 12px 26px;
     border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(200, 150, 24, 0.35);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.35);
     transition: all .2s ease;
     display: inline-block;
 }
 
 .primary-button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(200, 150, 24, 0.45);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.45);
     color: #02161e;
 }
 
@@ -2021,7 +2021,7 @@ svg.h-5 {
 }
 
 .more-dropdown-item:hover {
-    background: var(--gold-subtle, rgba(218, 181, 106, 0.12));
+    background: var(--gold-subtle, rgba(226, 232, 240, 0.12));
     color: var(--gold);
 }
 
@@ -2043,7 +2043,7 @@ svg.h-5 {
 
 .dropdown-divider {
     height: 1px;
-    background: var(--border-color, rgba(218, 181, 106, 0.18));
+    background: var(--border-color, rgba(226, 232, 240, 0.18));
     margin: 4px 6px;
 }
 }
@@ -3896,7 +3896,7 @@ a, button, select, input {
     .nav-drawer-link.active {
         background: var(--gold-subtle) !important;
         color: var(--gold) !important;
-        border-color: rgba(218, 181, 106, 0.35) !important;
+        border-color: rgba(226, 232, 240, 0.35) !important;
     }
 
     .nav-drawer-icon {
@@ -3977,9 +3977,9 @@ a, button, select, input {
 
     .drawer-lang-btn.active {
         background: var(--gold-subtle) !important;
-        border-color: rgba(218, 181, 106, 0.5) !important;
+        border-color: rgba(226, 232, 240, 0.5) !important;
         color: var(--gold) !important;
-        box-shadow: 0 0 12px rgba(218, 181, 106, 0.15) !important;
+        box-shadow: 0 0 12px rgba(226, 232, 240, 0.15) !important;
     }
 
     .drawer-lang-main {
@@ -4030,9 +4030,9 @@ a, button, select, input {
 
     .drawer-theme-btn.active {
         background: var(--gold-subtle) !important;
-        border-color: rgba(218, 181, 106, 0.5) !important;
+        border-color: rgba(226, 232, 240, 0.5) !important;
         color: var(--gold) !important;
-        box-shadow: 0 0 12px rgba(218, 181, 106, 0.15) !important;
+        box-shadow: 0 0 12px rgba(226, 232, 240, 0.15) !important;
     }
 
     .drawer-theme-btn svg {
@@ -4051,8 +4051,8 @@ a, button, select, input {
         gap: 12px !important;
         padding: 12px 14px !important;
         border-radius: 12px !important;
-        background: rgba(218, 181, 106, 0.08) !important;
-        border: 1px solid rgba(218, 181, 106, 0.3) !important;
+        background: rgba(226, 232, 240, 0.08) !important;
+        border: 1px solid rgba(226, 232, 240, 0.3) !important;
         color: var(--text-primary) !important;
         text-align: left !important;
         cursor: pointer !important;
@@ -4060,7 +4060,7 @@ a, button, select, input {
     }
 
     .nav-drawer-pwa-btn:hover {
-        background: rgba(218, 181, 106, 0.16) !important;
+        background: rgba(226, 232, 240, 0.16) !important;
         border-color: var(--gold) !important;
         transform: translateY(-1px) !important;
     }
@@ -4092,7 +4092,7 @@ a, button, select, input {
         border-radius: 999px !important;
         background: var(--gold-subtle) !important;
         color: var(--gold) !important;
-        border: 1px solid rgba(218, 181, 106, 0.4) !important;
+        border: 1px solid rgba(226, 232, 240, 0.4) !important;
     }
 
     .nav-drawer-pwa-badge.is-installed {
@@ -4174,7 +4174,7 @@ a, button, select, input {
         color: #03212c !important;
         font-weight: 800 !important;
         border: none !important;
-        box-shadow: 0 4px 12px rgba(200, 150, 24, 0.3) !important;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3) !important;
     }
 
     [data-theme="light"] .nav-drawer-btn--login {
@@ -4330,7 +4330,7 @@ a, button, select, input {
 
 .search-input-wrap input:focus {
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(218, 181, 106, 0.2);
+    box-shadow: 0 0 0 3px rgba(226, 232, 240, 0.2);
 }
 
 .clear-search-btn {
@@ -4390,9 +4390,9 @@ a, button, select, input {
 
 .category-pill.active {
     background: var(--gold-subtle);
-    border-color: rgba(218, 181, 106, 0.45);
+    border-color: rgba(226, 232, 240, 0.45);
     color: var(--gold);
-    box-shadow: 0 2px 8px rgba(218, 181, 106, 0.15);
+    box-shadow: 0 2px 8px rgba(226, 232, 240, 0.15);
 }
 
 .pill-count {
@@ -4409,7 +4409,7 @@ a, button, select, input {
 }
 
 .category-pill.active .pill-count {
-    background: rgba(218, 181, 106, 0.25);
+    background: rgba(226, 232, 240, 0.25);
     color: var(--gold);
 }
 
@@ -4452,9 +4452,9 @@ a, button, select, input {
 }
 
 .dua-card:hover {
-    border-color: rgba(218, 181, 106, 0.5);
+    border-color: rgba(226, 232, 240, 0.5);
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 16px rgba(218, 181, 106, 0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 16px rgba(226, 232, 240, 0.12);
 }
 
 .dua-card-header {
@@ -4486,7 +4486,7 @@ a, button, select, input {
     border-radius: 12px;
     background: var(--gold-subtle);
     color: var(--gold);
-    border: 1px solid rgba(218, 181, 106, 0.35);
+    border: 1px solid rgba(226, 232, 240, 0.35);
     font-size: 11px;
     font-weight: 800;
 }
@@ -4516,8 +4516,8 @@ a, button, select, input {
 }
 
 .dua-arabic-box {
-    background: rgba(218, 181, 106, 0.04);
-    border: 1px solid rgba(218, 181, 106, 0.2);
+    background: rgba(226, 232, 240, 0.04);
+    border: 1px solid rgba(226, 232, 240, 0.2);
     border-radius: 14px;
     padding: 14px 16px;
     margin-bottom: 14px;
@@ -4572,7 +4572,7 @@ a, button, select, input {
     padding: 7px 15px;
     border-radius: 14px;
     background: var(--gold-subtle);
-    border: 1px solid rgba(218, 181, 106, 0.35);
+    border: 1px solid rgba(226, 232, 240, 0.35);
     color: var(--gold);
     font-size: 12px;
     font-weight: 800;
@@ -4674,14 +4674,14 @@ a, button, select, input {
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 24px rgba(218, 181, 106, 0.15);
+    box-shadow: 0 0 24px rgba(226, 232, 240, 0.15);
     user-select: none;
     -webkit-user-select: none;
 }
 
 .dua-count-btn:active {
     transform: scale(0.94);
-    box-shadow: 0 0 30px rgba(218, 181, 106, 0.35);
+    box-shadow: 0 0 30px rgba(226, 232, 240, 0.35);
 }
 
 .dua-count-btn.is-completed {
@@ -4739,8 +4739,8 @@ a, button, select, input {
 }
 
 .dua-virtue-callout {
-    background: rgba(218, 181, 106, 0.06);
-    border: 1px solid rgba(218, 181, 106, 0.25);
+    background: rgba(226, 232, 240, 0.06);
+    border: 1px solid rgba(226, 232, 240, 0.25);
     border-radius: 16px;
     padding: 16px 20px;
     margin: 22px 0;
@@ -4765,7 +4765,7 @@ a, button, select, input {
 /* Source & Reference Card for Dua & Hadith */
 .source-box.dua-ref-box {
     background: var(--bg-surface-elevated, #141a22);
-    border: 1px solid var(--border-color, rgba(218, 181, 106, 0.2));
+    border: 1px solid var(--border-color, rgba(226, 232, 240, 0.2));
     border-radius: 16px;
     padding: 18px 22px;
     margin-top: 24px;
@@ -4823,7 +4823,7 @@ a, button, select, input {
 }
 
 .speech-client-btn.active {
-    background: rgba(218, 181, 106, 0.2) !important;
+    background: rgba(226, 232, 240, 0.2) !important;
     border-color: var(--gold, #dab56a) !important;
     color: var(--gold, #dab56a) !important;
 }
@@ -4922,9 +4922,9 @@ a, button, select, input {
 
 .tasbih-preset-btn.active {
     background: var(--gold-subtle);
-    border-color: rgba(218, 181, 106, 0.5);
+    border-color: rgba(226, 232, 240, 0.5);
     color: var(--gold);
-    box-shadow: 0 0 12px rgba(218, 181, 106, 0.15);
+    box-shadow: 0 0 12px rgba(226, 232, 240, 0.15);
 }
 
 .preset-ar {
@@ -5294,7 +5294,7 @@ a, button, select, input {
     stroke-width: 4.5;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.15s ease-out;
-    filter: drop-shadow(0 0 4px rgba(218, 181, 106, 0.7));
+    filter: drop-shadow(0 0 4px rgba(226, 232, 240, 0.7));
 }
 
 /* Backwards compatibility */
@@ -5364,7 +5364,7 @@ a, button, select, input {
 
 .tasbih-sound-select:focus,
 .tasbih-sound-select:hover {
-    border-color: rgba(218, 181, 106, 0.5);
+    border-color: rgba(226, 232, 240, 0.5);
 }
 
 .tasbih-sound-select:disabled {
@@ -5387,7 +5387,7 @@ a, button, select, input {
 }
 
 .control-toggle-btn.active {
-    border-color: rgba(218, 181, 106, 0.4);
+    border-color: rgba(226, 232, 240, 0.4);
     background: var(--gold-subtle);
 }
 
@@ -5717,7 +5717,7 @@ a, button, select, input {
     color: var(--gold);
     background: var(--gold-subtle);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(218, 181, 106, 0.15);
+    box-shadow: 0 4px 12px rgba(226, 232, 240, 0.15);
 }
 
 /* Upau wa Utafutaji na Vichujio vya Qur'ani (Search & Toolbar) */
@@ -5794,7 +5794,7 @@ a, button, select, input {
 .library-search-input:focus {
     border-color: var(--gold);
     background: var(--bg-surface-hover);
-    box-shadow: 0 0 0 3px rgba(218, 181, 106, 0.25), 0 4px 14px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 3px rgba(226, 232, 240, 0.25), 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 .quran-search-input::placeholder,
@@ -5902,7 +5902,7 @@ a, button, select, input {
     background: var(--gold);
     color: #111;
     font-weight: 800;
-    box-shadow: 0 2px 8px rgba(218, 181, 106, 0.35);
+    box-shadow: 0 2px 8px rgba(226, 232, 240, 0.35);
 }
 
 .quran-surah-grid {
@@ -5936,10 +5936,10 @@ a, button, select, input {
 }
 
 .quran-surah-card:hover {
-    border-color: rgba(218, 181, 106, 0.5);
+    border-color: rgba(226, 232, 240, 0.5);
     background: var(--bg-surface-hover);
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 0 15px rgba(218, 181, 106, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 0 15px rgba(226, 232, 240, 0.08);
 }
 
 .surah-card-num-box {
@@ -5947,7 +5947,7 @@ a, button, select, input {
     height: 44px;
     border-radius: 12px;
     background: var(--gold-subtle);
-    border: 1.5px solid rgba(218, 181, 106, 0.4);
+    border: 1.5px solid rgba(226, 232, 240, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6022,9 +6022,9 @@ a, button, select, input {
 }
 
 .badge-makki, .pill-makki {
-    background: rgba(218, 181, 106, 0.15);
+    background: rgba(226, 232, 240, 0.15);
     color: var(--gold);
-    border: 1px solid rgba(218, 181, 106, 0.3);
+    border: 1px solid rgba(226, 232, 240, 0.3);
 }
 
 .badge-madani, .pill-madani {
@@ -6105,19 +6105,19 @@ a, button, select, input {
 
 [data-theme="dark"] .quran-header-card {
     background: linear-gradient(180deg, var(--bg-surface) 0%, rgba(20, 20, 20, 0.95) 100%);
-    border-color: rgba(218, 181, 106, 0.3);
+    border-color: rgba(226, 232, 240, 0.3);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 [data-theme="light"] .quran-header-card {
     background: #ffffff !important;
-    border-color: rgba(200, 150, 24, 0.32) !important;
+    border-color: rgba(15, 23, 42, 0.32) !important;
     box-shadow: 0 4px 16px rgba(3, 33, 44, 0.06) !important;
 }
 
 [data-theme="light"] .quran-header-pill {
     background: #ffffff !important;
-    border-color: rgba(200, 150, 24, 0.3) !important;
+    border-color: rgba(15, 23, 42, 0.3) !important;
     color: #56707a !important;
 }
 
@@ -6135,13 +6135,13 @@ a, button, select, input {
 
 [data-theme="light"] .quran-bismillah-box {
     background: linear-gradient(180deg, #ffffff 0%, #fbf9f4 100%) !important;
-    border-color: rgba(200, 150, 24, 0.3) !important;
+    border-color: rgba(15, 23, 42, 0.3) !important;
     box-shadow: 0 4px 16px rgba(3, 33, 44, 0.05) !important;
 }
 
 [data-theme="light"] .bismillah-badge {
-    background: rgba(200, 150, 24, 0.12) !important;
-    border-color: rgba(200, 150, 24, 0.35) !important;
+    background: rgba(15, 23, 42, 0.12) !important;
+    border-color: rgba(15, 23, 42, 0.35) !important;
     color: #9a6e10 !important;
 }
 
@@ -6155,7 +6155,7 @@ a, button, select, input {
 
 [data-theme="light"] .quran-ayah-card {
     background: #ffffff !important;
-    border-color: rgba(200, 150, 24, 0.25) !important;
+    border-color: rgba(15, 23, 42, 0.25) !important;
     box-shadow: 0 2px 10px rgba(3, 33, 44, 0.04) !important;
 }
 
@@ -6241,8 +6241,8 @@ a, button, select, input {
 .quran-bismillah-box {
     padding: 24px 20px;
     border-radius: 18px;
-    background: linear-gradient(180deg, rgba(218, 181, 106, 0.12) 0%, rgba(218, 181, 106, 0.03) 100%);
-    border: 1.5px solid rgba(218, 181, 106, 0.35);
+    background: linear-gradient(180deg, rgba(226, 232, 240, 0.12) 0%, rgba(226, 232, 240, 0.03) 100%);
+    border: 1.5px solid rgba(226, 232, 240, 0.35);
     text-align: center;
     margin-bottom: 24px;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
@@ -6252,8 +6252,8 @@ a, button, select, input {
     display: inline-block;
     padding: 3px 14px;
     border-radius: 9999px;
-    background: rgba(218, 181, 106, 0.16);
-    border: 1px solid rgba(218, 181, 106, 0.35);
+    background: rgba(226, 232, 240, 0.16);
+    border: 1px solid rgba(226, 232, 240, 0.35);
     font-size: 10.5px;
     font-weight: 800;
     letter-spacing: 1.2px;
@@ -6348,7 +6348,7 @@ a, button, select, input {
     padding: 8px 16px;
     border-radius: 10px;
     background: var(--gold-subtle);
-    border: 1.5px solid rgba(218, 181, 106, 0.4);
+    border: 1.5px solid rgba(226, 232, 240, 0.4);
     color: var(--gold);
     font-size: 12.5px;
     font-weight: 800;
@@ -6427,13 +6427,13 @@ a, button, select, input {
 }
 
 .quran-ayah-card:hover {
-    border-color: rgba(218, 181, 106, 0.4);
+    border-color: rgba(226, 232, 240, 0.4);
 }
 
 .quran-ayah-card.active-audio-ayah {
     border-color: var(--gold) !important;
-    background: rgba(218, 181, 106, 0.08) !important;
-    box-shadow: 0 0 24px rgba(218, 181, 106, 0.25) !important;
+    background: rgba(226, 232, 240, 0.08) !important;
+    box-shadow: 0 0 24px rgba(226, 232, 240, 0.25) !important;
 }
 
 [data-theme="light"] .quran-ayah-card.active-audio-ayah {
@@ -6463,7 +6463,7 @@ a, button, select, input {
     -webkit-backdrop-filter: blur(16px);
     border: 1.5px solid var(--gold);
     border-radius: 20px;
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 24px rgba(218, 181, 106, 0.2);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 24px rgba(226, 232, 240, 0.2);
     padding: 12px 18px;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
     opacity: 0;
@@ -6792,7 +6792,7 @@ a, button, select, input {
     height: 32px;
     border-radius: 50%;
     background: var(--gold-subtle);
-    border: 1.5px solid rgba(218, 181, 106, 0.4);
+    border: 1.5px solid rgba(226, 232, 240, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6827,7 +6827,7 @@ a, button, select, input {
 
 .ayah-action-btn:hover {
     color: var(--gold);
-    border-color: rgba(218, 181, 106, 0.4);
+    border-color: rgba(226, 232, 240, 0.4);
 }
 
 .ayah-arabic-wrap {
@@ -7195,7 +7195,7 @@ a, button, select, input {
 .reader-nav-card:hover {
     border-color: var(--gold);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 15px rgba(218, 181, 106, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 15px rgba(226, 232, 240, 0.1);
 }
 
 .nav-prev {
@@ -7226,7 +7226,7 @@ a, button, select, input {
     height: 38px;
     border-radius: 12px;
     background: var(--gold-subtle);
-    border: 1px solid rgba(218, 181, 106, 0.3);
+    border: 1px solid rgba(226, 232, 240, 0.3);
     color: var(--gold);
     font-size: 16px;
     font-weight: 800;
@@ -7280,19 +7280,19 @@ a, button, select, input {
 [data-theme="light"] .quran-surah-pager,
 [data-theme="light"] .reader-surah-jumper {
     background: #ffffff !important;
-    border-color: rgba(200, 150, 24, 0.3) !important;
+    border-color: rgba(15, 23, 42, 0.3) !important;
 }
 
 [data-theme="light"] .surah-pager-btn,
 [data-theme="light"] .surah-jump-btn {
     background: #fbf9f4 !important;
-    border-color: rgba(200, 150, 24, 0.25) !important;
+    border-color: rgba(15, 23, 42, 0.25) !important;
     color: #03212c !important;
 }
 
 [data-theme="light"] .surah-pager-btn:hover,
 [data-theme="light"] .surah-jump-btn:hover {
-    background: rgba(200, 150, 24, 0.14) !important;
+    background: rgba(15, 23, 42, 0.14) !important;
     color: #9a6e10 !important;
     border-color: #c89617 !important;
 }
@@ -7305,27 +7305,27 @@ a, button, select, input {
 [data-theme="light"] .quran-nav-card,
 [data-theme="light"] .reader-nav-card {
     background: #ffffff !important;
-    border-color: rgba(200, 150, 24, 0.28) !important;
+    border-color: rgba(15, 23, 42, 0.28) !important;
     box-shadow: 0 4px 14px -2px rgba(3, 33, 44, 0.05) !important;
 }
 
 [data-theme="light"] .quran-nav-card:hover,
 [data-theme="light"] .reader-nav-card:hover {
     border-color: #c89617 !important;
-    box-shadow: 0 8px 20px rgba(200, 150, 24, 0.2) !important;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2) !important;
 }
 
 [data-theme="light"] .nav-card-icon {
-    background: rgba(200, 150, 24, 0.12) !important;
-    border-color: rgba(200, 150, 24, 0.3) !important;
+    background: rgba(15, 23, 42, 0.12) !important;
+    border-color: rgba(15, 23, 42, 0.3) !important;
     color: #9a6e10 !important;
 }
 
 [data-theme="light"] .quran-nav-card:hover .nav-card-icon,
 [data-theme="light"] .reader-nav-card:hover .nav-card-icon {
-    background: linear-gradient(135deg, #f0be31 0%, #c89617 100%) !important;
-    color: #03212c !important;
-    border-color: #c89617 !important;
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border-color: #0f172a !important;
 }
 
 [data-theme="light"] .nav-card-title,
@@ -7404,7 +7404,7 @@ a, button, select, input {
 
 [data-theme="light"] .font-scaler-widget {
     background: #ffffff;
-    border-color: rgba(200, 150, 24, 0.3);
+    border-color: rgba(15, 23, 42, 0.3);
     box-shadow: 0 1px 4px rgba(3, 33, 44, 0.05);
 }
 
@@ -7413,7 +7413,7 @@ a, button, select, input {
 }
 
 [data-theme="light"] .scaler-btn:hover {
-    background: rgba(200, 150, 24, 0.12);
+    background: rgba(15, 23, 42, 0.12);
     color: #9a6e10;
 }
 
@@ -7460,12 +7460,12 @@ a, button, select, input {
     background: var(--gold-subtle);
     border-color: var(--gold);
     color: var(--gold);
-    box-shadow: 0 2px 10px rgba(218, 181, 106, 0.15);
+    box-shadow: 0 2px 10px rgba(226, 232, 240, 0.15);
 }
 
 .bookmark-tab-badge {
     display: inline-block;
-    background: rgba(218, 181, 106, 0.2);
+    background: rgba(226, 232, 240, 0.2);
     color: var(--gold);
     font-size: 11px;
     font-weight: 800;
@@ -7503,7 +7503,7 @@ a, button, select, input {
 
 [data-theme="light"] .bookmark-tab {
     background: #ffffff;
-    border-color: rgba(200, 150, 24, 0.28);
+    border-color: rgba(15, 23, 42, 0.28);
     color: #56707a;
 }
 
@@ -7513,20 +7513,20 @@ a, button, select, input {
 }
 
 [data-theme="light"] .bookmark-tab.active {
-    background: rgba(200, 150, 24, 0.14);
+    background: rgba(15, 23, 42, 0.14);
     border-color: #c89617;
     color: #9a6e10;
 }
 
 [data-theme="light"] .bookmark-tab.active .bookmark-tab-badge {
-    background: linear-gradient(135deg, #f0be31 0%, #c89617 100%);
-    color: #03212c;
+    background: #0f172a;
+    color: #ffffff;
 }
 
 [data-theme="light"] .bookmark-card-quran,
 [data-theme="light"] .bookmark-card-duaa {
     background: #ffffff;
-    border-color: rgba(200, 150, 24, 0.28);
+    border-color: rgba(15, 23, 42, 0.28);
     box-shadow: 0 4px 14px -2px rgba(3, 33, 44, 0.05);
 }
 
@@ -7566,10 +7566,10 @@ a, button, select, input {
     width: 350px;
     max-width: calc(100vw - 32px);
     background: var(--bg-surface-elevated, #131920);
-    border: 1.5px solid rgba(218, 181, 106, 0.35);
+    border: 1.5px solid rgba(226, 232, 240, 0.35);
     border-radius: 18px;
     padding: 14px 16px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(218, 181, 106, 0.15);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(226, 232, 240, 0.15);
     box-sizing: border-box;
 }
 
@@ -7653,7 +7653,7 @@ a, button, select, input {
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(218, 181, 106, 0.25);
+    box-shadow: 0 3px 10px rgba(226, 232, 240, 0.25);
     transition: transform .15s ease, filter .15s ease;
 }
 
@@ -7686,8 +7686,8 @@ a, button, select, input {
 .pwa-ios-instructions {
     margin-top: 8px;
     padding: 10px 12px;
-    background: rgba(218, 181, 106, 0.08);
-    border: 1px dashed rgba(218, 181, 106, 0.35);
+    background: rgba(226, 232, 240, 0.08);
+    border: 1px dashed rgba(226, 232, 240, 0.35);
     border-radius: 12px;
 }
 
@@ -7715,26 +7715,26 @@ a, button, select, input {
         max-width: 390px;
         margin: 0 auto;
         padding: 12px 14px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 16px rgba(218, 181, 106, 0.2);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 16px rgba(226, 232, 240, 0.2);
     }
 }
 
 /* Light Mode Overrides for PWA Popup */
 [data-theme="light"] .pwa-banner-card {
     background: #ffffff;
-    border-color: rgba(200, 150, 24, 0.32);
-    box-shadow: 0 16px 36px rgba(3, 33, 44, 0.12), 0 0 15px rgba(200, 150, 24, 0.1);
+    border-color: rgba(15, 23, 42, 0.32);
+    box-shadow: 0 16px 36px rgba(3, 33, 44, 0.12), 0 0 15px rgba(15, 23, 42, 0.1);
 }
 
 [data-theme="light"] .pwa-banner-close {
     background: #fbf9f4;
-    border-color: rgba(200, 150, 24, 0.25);
+    border-color: rgba(15, 23, 42, 0.25);
     color: #56707a;
 }
 
 [data-theme="light"] .pwa-btn-secondary {
     background: #fbf9f4;
-    border-color: rgba(200, 150, 24, 0.28);
+    border-color: rgba(15, 23, 42, 0.28);
     color: #1e3a45;
 }
 
@@ -7744,8 +7744,8 @@ a, button, select, input {
 }
 
 [data-theme="light"] .pwa-ios-instructions {
-    background: rgba(200, 150, 24, 0.08);
-    border-color: rgba(200, 150, 24, 0.28);
+    background: rgba(15, 23, 42, 0.08);
+    border-color: rgba(15, 23, 42, 0.28);
 }
 
 /* ==========================================================================
@@ -7753,7 +7753,7 @@ a, button, select, input {
    ========================================================================== */
 .hadith-audio-console {
     margin: 24px 0 28px;
-    background: rgba(218, 181, 106, 0.04);
+    background: rgba(226, 232, 240, 0.04);
     border: 1.5px solid var(--border-color);
     border-radius: 16px;
     padding: 20px;
@@ -7762,7 +7762,7 @@ a, button, select, input {
 
 [data-theme="light"] .hadith-audio-console {
     background: #ffffff;
-    border-color: rgba(200, 150, 24, 0.28);
+    border-color: rgba(15, 23, 42, 0.28);
 }
 
 .explanation-box,
@@ -7776,8 +7776,8 @@ a, button, select, input {
 }
 
 .rich-explanation-box {
-    background: rgba(218, 181, 106, 0.035);
-    border: 1.5px solid rgba(218, 181, 106, 0.25);
+    background: rgba(226, 232, 240, 0.035);
+    border: 1.5px solid rgba(226, 232, 240, 0.25);
     border-radius: 16px;
     padding: 22px 24px;
     margin-top: 10px;
@@ -7811,7 +7811,7 @@ a, button, select, input {
 }
 
 .lesson-card-item:hover {
-    border-color: rgba(218, 181, 106, 0.4);
+    border-color: rgba(226, 232, 240, 0.4);
     transform: translateX(2px);
 }
 
@@ -7820,7 +7820,7 @@ a, button, select, input {
     height: 28px;
     border-radius: 8px;
     background: var(--gold-subtle);
-    border: 1.5px solid rgba(218, 181, 106, 0.45);
+    border: 1.5px solid rgba(226, 232, 240, 0.45);
     color: var(--gold);
     font-size: 13px;
     font-weight: 800;
@@ -7948,7 +7948,7 @@ a, button, select, input {
     height: 32px;
     border-radius: 8px;
     background: var(--gold-subtle);
-    border: 1px solid rgba(218, 181, 106, 0.35);
+    border: 1px solid rgba(226, 232, 240, 0.35);
     color: var(--gold);
 }
 
@@ -8045,7 +8045,7 @@ a, button, select, input {
 /* Light Theme Overrides */
 [data-theme="light"] .rich-explanation-box {
     background: #ffffff;
-    border-color: rgba(200, 150, 24, 0.28);
+    border-color: rgba(15, 23, 42, 0.28);
     box-shadow: 0 4px 14px -2px rgba(3, 33, 44, 0.05);
 }
 
@@ -8055,7 +8055,7 @@ a, button, select, input {
 
 [data-theme="light"] .lesson-card-item {
     background: #ffffff;
-    border-color: rgba(200, 150, 24, 0.25);
+    border-color: rgba(15, 23, 42, 0.25);
     box-shadow: 0 2px 8px rgba(3, 33, 44, 0.04);
 }
 
@@ -8065,12 +8065,12 @@ a, button, select, input {
 
 [data-theme="light"] .optional-translation-drawer {
     background: #fbf9f4;
-    border-color: rgba(200, 150, 24, 0.25);
+    border-color: rgba(15, 23, 42, 0.25);
 }
 
 [data-theme="light"] .hadith-brief-source-card {
     background: #ffffff;
-    border-color: rgba(200, 150, 24, 0.28);
+    border-color: rgba(15, 23, 42, 0.28);
     box-shadow: 0 4px 16px rgba(3, 33, 44, 0.05);
 }
 
@@ -8139,7 +8139,7 @@ a, button, select, input {
         background: rgba(3, 33, 44, 0.95);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        border-top: 1px solid rgba(240, 190, 49, 0.25);
+        border-top: 1px solid rgba(241, 245, 249, 0.25);
         z-index: 990;
         justify-content: space-around;
         align-items: center;
@@ -8431,14 +8431,14 @@ a, button, select, input {
 }
 
 .btn-image {
-    background: linear-gradient(135deg, #d4af37, #996515);
-    color: #0b0f14;
+    background: linear-gradient(135deg, #ffffff, #cbd5e1);
+    color: #02151e;
     font-weight: 800;
 }
 
 .btn-image:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+    box-shadow: 0 6px 18px rgba(241, 245, 249, 0.25);
 }
 
 .btn-copy {
@@ -8468,13 +8468,13 @@ a, button, select, input {
 /* Light Theme Overrides */
 [data-theme="light"] .share-modal-dialog {
     background: #ffffff !important;
-    border-color: rgba(200, 150, 24, 0.35) !important;
+    border-color: rgba(15, 23, 42, 0.35) !important;
     box-shadow: 0 20px 50px rgba(3, 33, 44, 0.16) !important;
 }
 
 [data-theme="light"] .share-preview-card {
     background: #fbf9f4 !important;
-    border-color: rgba(200, 150, 24, 0.25) !important;
+    border-color: rgba(15, 23, 42, 0.25) !important;
 }
 
 [data-theme="light"] .share-preview-ar {
@@ -8488,7 +8488,7 @@ a, button, select, input {
 [data-theme="light"] .btn-copy,
 [data-theme="light"] .btn-native {
     background: #ffffff !important;
-    border-color: rgba(200, 150, 24, 0.3) !important;
+    border-color: rgba(15, 23, 42, 0.3) !important;
     color: #03212c !important;
 }
 
@@ -8496,7 +8496,7 @@ a, button, select, input {
 [data-theme="light"] .btn-native:hover {
     border-color: #c89617 !important;
     color: #9a6e10 !important;
-    background: rgba(200, 150, 24, 0.08) !important;
+    background: rgba(15, 23, 42, 0.08) !important;
 }
 
 
@@ -8537,7 +8537,7 @@ a, button, select, input {
     transform: translateY(-3px);
     border-color: var(--border-focus);
     background: linear-gradient(135deg, #093747 0%, #0c4356 60%, #052936 100%);
-    box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(235, 176, 54, 0.25);
+    box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(241, 245, 249, 0.25);
 }
 
 [data-theme="light"] .topic-box-card:hover {
@@ -8818,7 +8818,7 @@ a, button, select, input {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(235, 176, 54, 0.3);
+    box-shadow: 0 4px 12px rgba(241, 245, 249, 0.3);
     transition: transform 0.15s ease;
     flex-shrink: 0;
 }
@@ -8869,7 +8869,7 @@ a, button, select, input {
 .lang-switch-btn.active {
     background: var(--gold-gradient);
     color: #02202b;
-    box-shadow: 0 2px 6px rgba(235, 176, 54, 0.3);
+    box-shadow: 0 2px 6px rgba(241, 245, 249, 0.3);
 }
 
 .lang-switch-btn:hover:not(.active) {
@@ -8925,7 +8925,7 @@ a, button, select, input {
     font-size: 13px;
     font-weight: 800;
     text-decoration: none;
-    box-shadow: 0 4px 14px rgba(235, 176, 54, 0.28);
+    box-shadow: 0 4px 14px rgba(241, 245, 249, 0.28);
     transition: transform 0.2s ease;
 }
 

@@ -147,12 +147,12 @@
                             {{ $ayah->arabic_text }}
                             <span class="ayah-end-ornament" title="Aya {{ $ayah->verse_number }} ({{ $toArabic($ayah->verse_number) }})" aria-label="Aya {{ $ayah->verse_number }}">
                                 <svg class="ayah-rosette-svg" viewBox="0 0 44 48" aria-hidden="true" focusable="false">
-                                    <path d="M22 2 C24.5 5.5 28 8 32 9 C35 11 38 13.5 40 17.5 C38 20.5 39.5 23.5 41 26 C38.5 28.5 37.5 32 35 35 C31.5 37 28 40 25.5 43 C23.5 45 22.5 46 22 46 C21.5 46 20.5 45 18.5 43 C16 40 12.5 37 9 35 C6.5 32 5.5 28.5 3 26 C4.5 23.5 6 20.5 4 17.5 C6 13.5 9 11 12 9 C16 8 19.5 5.5 22 2 Z" fill="var(--gold-subtle, rgba(218, 181, 106, 0.12))" stroke="var(--gold, #d4af37)" stroke-width="1.3" stroke-linejoin="round"/>
-                                    <ellipse cx="22" cy="24" rx="11.5" ry="12.5" fill="none" stroke="var(--gold, #d4af37)" stroke-width="0.9" stroke-dasharray="2 1.5"/>
-                                    <circle cx="22" cy="4" r="1.3" fill="var(--gold, #d4af37)"/>
-                                    <circle cx="22" cy="44" r="1.3" fill="var(--gold, #d4af37)"/>
-                                    <circle cx="4" cy="24" r="1.3" fill="var(--gold, #d4af37)"/>
-                                    <circle cx="40" cy="24" r="1.3" fill="var(--gold, #d4af37)"/>
+                                    <path d="M22 2 C24.5 5.5 28 8 32 9 C35 11 38 13.5 40 17.5 C38 20.5 39.5 23.5 41 26 C38.5 28.5 37.5 32 35 35 C31.5 37 28 40 25.5 43 C23.5 45 22.5 46 22 46 C21.5 46 20.5 45 18.5 43 C16 40 12.5 37 9 35 C6.5 32 5.5 28.5 3 26 C4.5 23.5 6 20.5 4 17.5 C6 13.5 9 11 12 9 C16 8 19.5 5.5 22 2 Z" fill="var(--gold-subtle, rgba(226, 232, 240, 0.12))" stroke="var(--gold, #e2e8f0)" stroke-width="1.3" stroke-linejoin="round"/>
+                                    <ellipse cx="22" cy="24" rx="11.5" ry="12.5" fill="none" stroke="var(--gold, #e2e8f0)" stroke-width="0.9" stroke-dasharray="2 1.5"/>
+                                    <circle cx="22" cy="4" r="1.3" fill="var(--gold, #e2e8f0)"/>
+                                    <circle cx="22" cy="44" r="1.3" fill="var(--gold, #e2e8f0)"/>
+                                    <circle cx="4" cy="24" r="1.3" fill="var(--gold, #e2e8f0)"/>
+                                    <circle cx="40" cy="24" r="1.3" fill="var(--gold, #e2e8f0)"/>
                                 </svg>
                                 <span class="ayah-end-num font-arabic" dir="rtl">{{ $toArabic($ayah->verse_number) }}</span>
                             </span>

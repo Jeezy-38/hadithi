@@ -12,7 +12,7 @@
 .support-hero {
     position: relative;
     border-radius: 20px;
-    background: radial-gradient(circle at 80% 20%, rgba(218, 181, 106, 0.15), transparent 50%),
+    background: radial-gradient(circle at 80% 20%, rgba(226, 232, 240, 0.15), transparent 50%),
                 linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-body) 100%);
     border: 1px solid var(--border-color);
     padding: 3rem 2rem;
@@ -270,7 +270,7 @@
     background: var(--gold-subtle);
     border-color: var(--gold);
     color: var(--gold-light);
-    box-shadow: 0 0 15px rgba(218, 181, 106, 0.15);
+    box-shadow: 0 0 15px rgba(226, 232, 240, 0.15);
 }
 
 /* Custom Amount Input */
@@ -316,7 +316,7 @@
 
 .support-input:focus {
     border-color: var(--border-focus);
-    box-shadow: 0 0 0 3px rgba(218, 181, 106, 0.15);
+    box-shadow: 0 0 0 3px rgba(226, 232, 240, 0.15);
 }
 
 .support-input-plain {
@@ -339,7 +339,7 @@
 
 .support-textarea:focus {
     border-color: var(--border-focus);
-    box-shadow: 0 0 0 3px rgba(218, 181, 106, 0.15);
+    box-shadow: 0 0 0 3px rgba(226, 232, 240, 0.15);
 }
 
 /* Checkbox */
@@ -429,7 +429,7 @@
 
 .support-submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(218, 181, 106, 0.35);
+    box-shadow: 0 8px 20px rgba(226, 232, 240, 0.35);
 }
 
 /* Confirmation / Checkout State Card */
