@@ -535,11 +535,71 @@ button {
     color: #0f172a;
 }
 
+.hero-layout-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
 .hero-copy {
     position: relative;
     z-index: 2;
     padding: 48px 56px;
-    max-width: 680px;
+    max-width: 660px;
+    flex: 1.1;
+}
+
+.hero-visual {
+    flex: 0.9;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 16px 36px 16px 0;
+    pointer-events: none;
+}
+
+.hero-visual-img {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 20px;
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.6));
+    mask-image: radial-gradient(ellipse 70% 70% at 58% 50%, black 45%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 58% 50%, black 45%, transparent 80%);
+    animation: heroFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(0.6deg);
+    }
+}
+
+@media (max-width: 860px) {
+    .hero-layout-grid {
+        flex-direction: column;
+    }
+    .hero-copy {
+        padding: 32px 24px 12px;
+        max-width: 100%;
+    }
+    .hero-visual {
+        max-width: 320px;
+        padding: 0 16px 24px;
+        margin: 0 auto;
+    }
+    .hero-visual-img {
+        max-width: 260px;
+    }
 }
 
 .eyebrow {
