@@ -65,6 +65,10 @@ return [
     |
     */
 
+    'admin_email' => env('ADMIN_EMAIL'),
+
+    'admin_emails' => env('ADMIN_EMAILS', ''),
+
     'timezone' => 'UTC',
 
     /*

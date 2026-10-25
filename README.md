@@ -1,6 +1,6 @@
 # Hadith — Maktaba ya elimu
 
-Mfumo wa kusoma, kusikiliza na kutafuta hadith za Mtume Muhammad ﷺ (Sahih al-Bukhari, Sahih Muslim, Jami' at-Tirmidhi, Sunan Abu Dawud, na Musnad Ahmad) kwa Kiarabu, Kiswahili na Kiingereza. Laravel 12, Livewire 4, MySQL/MariaDB na CSS ya moja kwa moja; hakuna Node/Vite build inayohitajika kwa kurasa hizi.
+Mfumo wa kusoma, kusikiliza na kutafuta hadith za Mtume Muhammad ﷺ kwa Kiarabu, Kiswahili na Kiingereza, pamoja na Quran, duaa, zana za ibada (tasbih, qibla, nyakati za swala, tarehe ya Kiislamu, Ramadhani), akaunti za watumiaji, changia/sadaka kupitia ClickPesa/Pesapal, na paneli ya admin. Laravel 12, Livewire 4, MySQL/MariaDB na CSS ya moja kwa moja; hakuna Node/Vite build inayohitajika kwa kurasa hizi.
 
 ## Kuendesha
 
@@ -22,7 +22,7 @@ Mwonekano wa **gold na black** uko `public/css/gold-black.css`; picha ya hero im
 
 ## Vipengele
 
-- Makusanyo 5 makuu (Bukhari, Muslim, Tirmidhi, Abu Dawud, Ahmad), vitabu na milango yenye vichujio vinavyounganishwa.
+- Makusanyo 9 (Bukhari, Muslim, Tirmidhi, Abu Dawud, Ahmad, Ibn Majah, Nasa'i, Riyadh as-Salihin, Arbaini an-Nawawi), vitabu na milango yenye vichujio vinavyounganishwa.
 - Livewire search kwa maandishi ya Kiswahili, Kiarabu, Kiingereza, namba na rejea.
 - Utafutaji wa Kiarabu hupuuza irabu/tatweel na tofauti za alif. Maandishi asilia hayabadilishwi.
 - Mfumo wa kisasa wa **Vipendwa (Bookmarks)** unaosawazisha moja kwa moja na akaunti ya mtumiaji (Database sync) au `localStorage` kwa wageni.
@@ -34,16 +34,24 @@ Mwonekano wa **gold na black** uko `public/css/gold-black.css`; picha ya hero im
 
 ## Hali ya data
 
-Dataset ya `hadith-starter.json` ina jumla ya hadith **547** zilizochapishwa rasmi na zinazoonekana zote maktabani katika makusanyo 5 makuu:
+Dataset ya `hadith-starter.json` ina jumla ya hadith **7,500** zilizochapishwa, zote na Kiarabu, Kiswahili na Kiingereza:
 
-| Mkusanyo | Hadith zilizopo maktabani |
+| Mkusanyo | Hadith |
 |---|---|
-| Sahih al-Bukhari | **261** |
-| Sahih Muslim | **207** |
-| Jami' at-Tirmidhi | **43** |
-| Sunan Abu Dawud | **24** |
-| Musnad Ahmad | **12** |
-| **Jumla** | **547** |
+| Riyadh as-Salihin | 1,896 |
+| Sahih Muslim | 1,852 |
+| Sahih al-Bukhari | 1,791 |
+| Jami' at-Tirmidhi | 835 |
+| Sunan Abu Dawud | 824 |
+| Musnad Ahmad | 137 |
+| Sunan Ibn Majah | 64 |
+| Sunan an-Nasa'i | 59 |
+| Arbaini an-Nawawi | 42 |
+| **Jumla** | **7,500** |
+
+Zaidi ya hadith hizi, project ina **duaa 2,000** katika makundi 15 (`database/data/duas-starter.json`) na Quran kamili ya sura 114 (`database/data/quran/`; ingiza kwa `php artisan quran:import --all`).
+
+Hadith nyingi zimehakikiwa kwa kulinganisha Kiarabu na nakala kamili za fawazahmed0/hadith-api (uhakiki huo umeandikwa kwenye sehemu ya `reviewed_by` ya kila rekodi). Angalia `docs/SOURCES.md` kwa vyanzo.
 
 Maandishi ya Kiarabu na tafsiri za Kiswahili yamenakiliwa bila mabadiliko kutoka API rasmi ya HadeethEnc. Maandishi hayo yana mtindo wa HadeethEnc na si isnadi zote za nakala ya kitabu. Taarifa ya `grade` ni ya HadeethEnc, si hukumu mpya ya app. Majina ya urambazaji ya vitabu/milango kwa Kiswahili yametafsiriwa kwa ajili ya app; namba na majina ya Kiarabu zimelinganishwa na Sunnah.com. Hadeeth ya Muslim 1907 katika HadeethEnc ina pia lafudhi mbadala ya Bukhari, ambayo imehifadhiwa kama ilivyo.
 
@@ -96,7 +104,17 @@ Unda faili la JSON lenye array ya objects zenye fields hizi:
 php artisan hadith:import /absolute/path/to/reviewed-hadith.json
 ```
 
-Import ni ya local CLI pekee. Hakuna upload ya umma au paneli ya admin katika toleo hili. Weka nakala ya database kabla ya kusasisha dataset kubwa. Reference inayorudiwa kwenye faili moja hukataliwa; kwenye import inayofuata husasishwa. Schema ina foreign keys na unique constraints kwa vitabu/milango.
+Import ni ya local CLI pekee; paneli ya admin haiingizi hadith mpya (inaficha/kuonyesha tu). Weka nakala ya database kabla ya kusasisha dataset kubwa. Reference inayorudiwa kwenye faili moja hukataliwa; kwenye import inayofuata husasishwa. Schema ina foreign keys na unique constraints kwa vitabu/milango.
+
+## Akaunti, malipo na admin
+
+- **Akaunti**: email + nenosiri, na kuingia kwa Google/Facebook/X (Socialite). Kuweka upya nenosiri kunapitia email.
+- **Changia / Sadaka (`/changia`)**: lango huchaguliwa na `PAYMENT_GATEWAY` kwenye `.env`: `clickpesa`, `pesapal`, `simulation` (majaribio ya ndani) au `auto`. Kwa ClickPesa weka `CLICKPESA_CLIENT_ID`, `CLICKPESA_API_KEY` na (hiari) `CLICKPESA_CHECKSUM_KEY`; namba ya muamala hutumwa bila vistari na namba ya simu hubadilishwa kuwa muundo wa `255…`. Hali ya malipo huthibitishwa kwa kuuliza lango lenyewe, si kwa kuamini webhook. Ukurasa wa simulation unafanya kazi kwa malipo ya `simulation` tu.
+- **Admin (`/admin`)**: ruhusa kwa `users.is_admin`, `ADMIN_EMAIL` au `ADMIN_EMAILS` (orodha ya barua pepe kwa koma). Tengeneza admin kwa `php artisan app:make-admin barua@mfano.com` (`--revoke` kuondoa).
+- **Arifa za kila siku (PWA)**: `php artisan hadith:notify-daily` (imepangwa saa 06:00 kupitia scheduler; `--test` kutuma majaribio).
+- **Majaribio ya ClickPesa**: `php artisan clickpesa:test`.
+
+Baada ya kubadilisha `.env`, endesha `php artisan config:clear`.
 
 ## Majaribio
 
@@ -113,7 +131,11 @@ Tests hutumia SQLite ya memory na hazibadilishi database ya XAMPP. Tests za tabi
 - `resources/views/hadith.blade.php`: msomaji wa hadith.
 - `app/Models/Hadith.php`: search normalization na relationships.
 - `app/Console/Commands/ImportHadith.php`: import ya dataset.
-- `public/css/app.css`: mwonekano wa desktop na simu.
+- `public/css/app.css` na `public/css/gold-black.css`: mwonekano wa desktop na simu.
+- `app/Services/Payments/`: `PaymentManager` na lango la ClickPesa, Pesapal na Simulation.
+- `app/Http/Controllers/Admin/AdminDashboardController.php`: paneli ya admin.
+- `app/Livewire/`: `Library`, `QuranIndex`, `DuaIndex`, `TopicIndex`, `SupportIndex`.
+- `routes/web.php`: njia zote za app.
 
 ## Marejeo ya framework
 

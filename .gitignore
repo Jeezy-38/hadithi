@@ -1,12 +1,11 @@
 *.log
 .DS_Store
-.env.production
 .phpactor.json
+.phpunit.cache
 .phpunit.result.cache
 /.fleet
 /.idea
 /.nova
-/.phpunit.cache
 /.vscode
 /.zed
 /auth.json
@@ -17,30 +16,19 @@
 /storage/*.key
 /storage/pail
 /vendor
-/.venv-tts
-__pycache__/
 Homestead.json
 Homestead.yaml
 Thumbs.db
-exit
 
-
-
-
-
-rm -rf .git
-git init
-git branch -M hadith-app2
-git add .
-git status
-
-
-# Environment files
+# Environment files (weka siri hapa, kamwe kwenye git)
 .env
 .env.bak
 .env.*
 !.env.example
 
+# Python
+/.venv-tts
+__pycache__/
+
 # Discovery raw cache
 database/data/discovery/raw_cache.json
-

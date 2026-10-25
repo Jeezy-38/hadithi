@@ -132,6 +132,13 @@ class ClickPesaTest extends TestCase
             ],
         ];
 
+        Http::fake([
+            'https://api.clickpesa.com/third-parties/generate-token' => Http::response(['token' => 'mock_token'], 200),
+            'https://api.clickpesa.com/third-parties/payments/*' => Http::response([
+                'data' => ['status' => 'SUCCESS'],
+            ], 200),
+        ]);
+
         $response = $this->postJson(route('payments.webhook.clickpesa'), $payload);
 
         $response->assertOk();
@@ -143,6 +150,67 @@ class ClickPesaTest extends TestCase
 
         $user->refresh();
         $this->assertTrue($user->is_supporter);
+    }
+
+    public function test_forged_clickpesa_webhook_does_not_fulfill_unpaid_payment(): void
+    {
+        $user = User::factory()->create();
+
+        $payment = Payment::create([
+            'user_id' => $user->id,
+            'reference' => 'SADAKA-FORGED-01',
+            'gateway' => 'clickpesa',
+            'amount' => 10000,
+            'currency' => 'TZS',
+            'purpose' => 'supporter_membership',
+            'tier' => 'ansar',
+            'billing_cycle' => 'monthly',
+            'status' => 'pending',
+        ]);
+
+        // ClickPesa inasema muamala bado haujalipwa, ingawa payload inadai SUCCESS.
+        Http::fake([
+            'https://api.clickpesa.com/third-parties/generate-token' => Http::response(['token' => 'mock_token'], 200),
+            'https://api.clickpesa.com/third-parties/payments/*' => Http::response([
+                'data' => ['status' => 'PROCESSING'],
+            ], 200),
+        ]);
+
+        $this->postJson(route('payments.webhook.clickpesa'), [
+            'event' => 'PAYMENT RECEIVED',
+            'data' => ['status' => 'SUCCESS', 'orderReference' => 'SADAKA-FORGED-01'],
+        ])->assertOk();
+
+        $this->assertEquals('pending', $payment->fresh()->status);
+        $this->assertFalse($user->fresh()->is_supporter);
+    }
+
+    public function test_simulation_callback_is_ignored_for_live_gateway_payments(): void
+    {
+        $payment = Payment::create([
+            'reference' => 'SADAKA-LIVE-01',
+            'gateway' => 'clickpesa',
+            'amount' => 10000,
+            'currency' => 'TZS',
+            'purpose' => 'sadaka_jariya',
+            'status' => 'pending',
+        ]);
+
+        Http::fake([
+            'https://api.clickpesa.com/third-parties/generate-token' => Http::response(['token' => 'mock_token'], 200),
+            'https://api.clickpesa.com/third-parties/payments/*' => Http::response([
+                'data' => ['status' => 'PROCESSING'],
+            ], 200),
+        ]);
+
+        $this->get(route('payments.callback', [
+            'reference' => $payment->reference,
+            'simulation_action' => 'complete',
+        ]));
+
+        $this->assertEquals('pending', $payment->fresh()->status);
+
+        $this->get(route('payments.simulate', ['reference' => $payment->reference]))->assertNotFound();
     }
 
     public function test_clickpesa_test_artisan_command_success(): void

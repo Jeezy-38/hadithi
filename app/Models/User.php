@@ -63,7 +63,7 @@ class User extends Authenticatable
             return true;
         }
 
-        $envAdmin = env('ADMIN_EMAIL');
+        $envAdmin = config('app.admin_email');
         if ($envAdmin && strtolower(trim($this->email)) === strtolower(trim($envAdmin))) {
             return true;
         }

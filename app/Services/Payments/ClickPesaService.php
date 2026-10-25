@@ -118,14 +118,27 @@ class ClickPesaService implements PaymentGatewayInterface
         $amount = (string) (int) round((float) $payment->amount);
         $callbackUrl = route('payments.callback', ['reference' => $payment->reference]);
 
+        // ClickPesa inakubali herufi na namba pekee kwenye orderReference (hakuna vistari).
+        $orderReference = preg_replace('/[^A-Za-z0-9]/', '', (string) $payment->reference);
+
+        // Namba ya simu: 0668416084 / +255668416084 -> 255668416084 (code ya nchi, bila +).
+        $phone = preg_replace('/\D+/', '', (string) $payment->donor_phone);
+        if ($phone !== '') {
+            if (str_starts_with($phone, '0')) {
+                $phone = '255' . substr($phone, 1);
+            } elseif (strlen($phone) === 9) {
+                $phone = '255' . $phone;
+            }
+        }
+
         $payload = [
             'totalPrice' => $amount,
             'orderCurrency' => $payment->currency ?: 'TZS',
             'currency' => $payment->currency ?: 'TZS',
-            'orderReference' => $payment->reference,
+            'orderReference' => $orderReference,
             'customerName' => $payment->donor_name ?: 'Mtoaji Sadaka',
             'customerEmail' => $payment->donor_email ?: 'sadaka@baytalhadith.com',
-            'customerPhone' => $payment->donor_phone ?: '',
+            'customerPhone' => $phone,
             'description' => $description,
             'callbackUrl' => $callbackUrl,
             'orderItems' => [
@@ -159,7 +172,7 @@ class ClickPesaService implements PaymentGatewayInterface
                 if ($checkoutLink) {
                     $payment->update([
                         'gateway' => 'clickpesa',
-                        'gateway_reference' => $payment->reference,
+                        'gateway_reference' => $orderReference,
                         'metadata' => array_merge($payment->metadata ?? [], [
                             'clickpesa_response' => $response->json(),
                         ]),
@@ -167,7 +180,7 @@ class ClickPesaService implements PaymentGatewayInterface
 
                     return [
                         'status' => 'success',
-                        'tracking_id' => $payment->reference,
+                        'tracking_id' => $orderReference,
                         'redirect_url' => $checkoutLink,
                     ];
                 }

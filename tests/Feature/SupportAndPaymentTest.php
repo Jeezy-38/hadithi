@@ -199,6 +199,7 @@ class SupportAndPaymentTest extends TestCase
     {
         $payment = Payment::create([
             'reference' => 'SADAKA-20261019-SIM01',
+            'gateway' => 'simulation',
             'amount' => 15000,
             'currency' => 'TZS',
             'purpose' => 'sadaka_jariya',
@@ -225,6 +226,7 @@ class SupportAndPaymentTest extends TestCase
         $payment = Payment::create([
             'user_id' => $user->id,
             'reference' => 'SADAKA-20261019-CB01',
+            'gateway' => 'simulation',
             'gateway_reference' => 'SIM-TRACKING-123',
             'amount' => 20000,
             'currency' => 'TZS',
@@ -255,6 +257,7 @@ class SupportAndPaymentTest extends TestCase
     {
         $payment = Payment::create([
             'reference' => 'SADAKA-20261019-CN01',
+            'gateway' => 'simulation',
             'amount' => 10000,
             'currency' => 'TZS',
             'purpose' => 'sadaka_jariya',

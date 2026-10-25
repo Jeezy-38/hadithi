@@ -44,7 +44,9 @@ class PaymentController extends Controller
         }
 
         // Ikiwa ni simulation na paramita imethibitishwa moja kwa moja
-        if ($request->query('simulation_action') === 'complete') {
+        $isSimulation = $payment->gateway === 'simulation';
+
+        if ($isSimulation && $request->query('simulation_action') === 'complete') {
             $this->fulfillment->fulfill($payment, [
                 'payment_method' => $request->query('method', 'mobile_money'),
                 'confirmation_code' => 'TEST-' . strtoupper(substr(md5($payment->reference), 0, 8)),
@@ -54,7 +56,7 @@ class PaymentController extends Controller
                 ->with('success', 'Mchango wako umethibitishwa kikamilifu! Jazakallahu Khayran.');
         }
 
-        if ($request->query('simulation_action') === 'cancel') {
+        if ($isSimulation && $request->query('simulation_action') === 'cancel') {
             $payment->update(['status' => 'failed']);
 
             return redirect()->route('payments.receipt', ['reference' => $payment->reference])
@@ -95,17 +97,23 @@ class PaymentController extends Controller
         $cpReference = $cpData['orderReference'] ?? $request->input('orderReference');
 
         if ($cpReference) {
-            $payment = Payment::where('reference', $cpReference)->first();
+            $payment = Payment::where('reference', $cpReference)
+                ->orWhere('gateway_reference', $cpReference)
+                ->first();
 
             if ($payment) {
-                $status = strtoupper((string) ($cpData['status'] ?? $request->input('status', '')));
+                // Usiamini payload ya webhook: uliza hadhi halisi kutoka ClickPesa.
+                $statusResult = $this->paymentManager->getTransactionStatus(
+                    $payment->gateway_reference ?: $payment->reference,
+                    'clickpesa'
+                );
 
-                if ($event === 'PAYMENT RECEIVED' || in_array($status, ['SUCCESS', 'SETTLED', 'COMPLETED'], true)) {
+                if (($statusResult['status'] ?? '') === 'completed') {
                     $this->fulfillment->fulfill($payment, [
                         'payment_method' => $cpData['channel'] ?? 'clickpesa',
                         'confirmation_code' => $cpData['paymentReference'] ?? null,
                     ]);
-                } elseif ($event === 'PAYMENT FAILED' || in_array($status, ['FAILED', 'CANCELLED'], true)) {
+                } elseif (($statusResult['status'] ?? '') === 'failed') {
                     $payment->update(['status' => 'failed']);
                 }
             }
@@ -174,6 +182,7 @@ class PaymentController extends Controller
     public function simulate(string $reference): View
     {
         $payment = Payment::where('reference', $reference)->firstOrFail();
+        abort_unless($payment->gateway === 'simulation', 404);
 
         return view('payments.simulation', [
             'payment' => $payment,
