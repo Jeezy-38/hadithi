@@ -15,24 +15,17 @@
     @if($collection === '' && $search === '')
         <section class="hero library-hero">
             <div class="hero-glow" aria-hidden="true"></div>
-            <div class="hero-layout-grid">
-                <div class="hero-copy">
-                    <h1 data-i18n="hero_h1">BAYT AL<br><em>HADITH.</em></h1>
-                    <p data-i18n="hero_desc">
+            <div class="hero-copy">
+                <h1 data-i18n="hero_h1">BAYT AL<br><em>HADITH.</em></h1>
+                <p data-i18n="hero_desc">
     Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.</p>
-                    <div class="hero-actions">
-                        <a class="hero-button" href="#maktaba">
-                            <span data-i18n="hero_btn_start">Anza kusoma</span>
-                            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-visual" aria-hidden="true">
-                    <div class="hero-artwork-frame">
-                        <img src="{{ asset('images/hero-hadith-artwork.jpg') }}" alt="Bayt Al-Hadith" class="hero-artwork-img" loading="eager">
-                    </div>
+                <div class="hero-actions">
+                    <a class="hero-button" href="#maktaba">
+                        <span data-i18n="hero_btn_start">Anza kusoma</span>
+                        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
