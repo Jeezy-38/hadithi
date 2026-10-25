@@ -3,7 +3,7 @@
         <div class="reader-top-nav">
             <a class="back-link" href="{{ route('library') }}">
                 <span class="back-arrow" aria-hidden="true">←</span>
-                <span>Maktaba</span>
+                <span data-i18n="nav_library">Maktaba</span>
             </a>
             <h1 class="sr-only">LIVE PRAYER TIME COUNTER DAR ES SALAAM</h1>
         </div>
@@ -12,10 +12,10 @@
             <header class="prayer-header">
                 <div class="prayer-location-pill">
                     <span class="location-dot"></span>
-                    <span>Dar es Salaam, Tanzania · EAT (UTC+3)</span>
+                    <span data-i18n="pg_pt_location">Dar es Salaam, Tanzania · EAT (UTC+3)</span>
                 </div>
-                <h1 class="prayer-title">Live Prayer Time Counter</h1>
-                <p class="prayer-subtitle">
+                <h1 class="prayer-title" data-i18n="pg_pt_title">Nyakati za Swala</h1>
+                <p class="prayer-subtitle" data-i18n="pg_pt_subtitle">
                     Nyakati sahihi za swala tano za kila siku zilizokokotolewa kiastronomia kwa majira ya Dar es Salaam.
                 </p>
             </header>
@@ -25,7 +25,7 @@
                 <div class="prayer-hero-top">
                     <div class="prayer-status-pill">
                         <span class="pulse-indicator-live"></span>
-                        <span id="prayer-status-label">SWALA INAYOFUATA</span>
+                        <span id="prayer-status-label" data-i18n="pg_pt_next_label">SWALA INAYOFUATA</span>
                     </div>
                     <div class="prayer-live-clock">
                         <span class="clock-icon" aria-hidden="true">⏱</span>
@@ -42,21 +42,21 @@
                 </div>
 
                 <div class="prayer-countdown-wrap">
-                    <span class="countdown-heading-label">Inasubiriwa baada ya:</span>
+                    <span class="countdown-heading-label" data-i18n="pg_pt_remaining">Inasubiriwa baada ya:</span>
                     <div class="prayer-countdown-grid">
                         <div class="p-box">
                             <span class="p-num" id="cd-hours">00</span>
-                            <span class="p-lbl">Masaa</span>
+                            <span class="p-lbl" data-i18n="pg_hours">Masaa</span>
                         </div>
                         <div class="p-sep">:</div>
                         <div class="p-box">
                             <span class="p-num" id="cd-minutes">00</span>
-                            <span class="p-lbl">Dakika</span>
+                            <span class="p-lbl" data-i18n="pg_minutes">Dakika</span>
                         </div>
                         <div class="p-sep">:</div>
                         <div class="p-box">
                             <span class="p-num" id="cd-seconds">00</span>
-                            <span class="p-lbl">Sekunde</span>
+                            <span class="p-lbl" data-i18n="pg_seconds">Sekunde</span>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
             {{-- JEDWALI LA SWALA 5 + MCHOMOZO WA JUA --}}
             <div class="prayer-schedule-wrap">
                 <div class="prayer-schedule-header">
-                    <h3 class="schedule-title">Ratiba ya Leo</h3>
+                    <h3 class="schedule-title" data-i18n="pg_pt_today">Ratiba ya Leo</h3>
                     <span class="schedule-date" id="schedule-today-date">--</span>
                 </div>
 
@@ -77,8 +77,8 @@
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M4.93 4.93l2.83 2.83M2 12h4M20 12h2M16.24 7.76l2.83-2.83M4 18h16M7 18a5 5 0 0 1 10 0"/></svg>
                             </div>
                             <div class="p-names">
-                                <strong class="p-main-name">Alfajiri</strong>
-                                <span class="p-sub-name">Fajr</span>
+                                <strong class="p-main-name" data-i18n="pg_pt_fajr">Alfajiri</strong>
+                                <span class="p-sub-name" data-i18n="pg_pt_fajr_sub">Fajr</span>
                             </div>
                         </div>
                         <div class="p-col-center">
@@ -97,8 +97,8 @@
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 18a5 5 0 0 0-10 0M12 2v6M4.22 10.22l4.24 4.24M19.78 10.22l-4.24 4.24M1 18h22"/></svg>
                             </div>
                             <div class="p-names">
-                                <strong class="p-main-name">Mchomozo</strong>
-                                <span class="p-sub-name">Sunrise</span>
+                                <strong class="p-main-name" data-i18n="pg_pt_sunrise">Mchomozo</strong>
+                                <span class="p-sub-name" data-i18n="pg_pt_sunrise_sub">Sunrise</span>
                             </div>
                         </div>
                         <div class="p-col-center">
@@ -117,8 +117,8 @@
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
                             </div>
                             <div class="p-names">
-                                <strong class="p-main-name">Adhuhuri</strong>
-                                <span class="p-sub-name">Dhuhr</span>
+                                <strong class="p-main-name" data-i18n="pg_pt_dhuhr">Adhuhuri</strong>
+                                <span class="p-sub-name" data-i18n="pg_pt_dhuhr_sub">Dhuhr</span>
                             </div>
                         </div>
                         <div class="p-col-center">
@@ -137,8 +137,8 @@
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2"/></svg>
                             </div>
                             <div class="p-names">
-                                <strong class="p-main-name">Alasiri</strong>
-                                <span class="p-sub-name">Asr</span>
+                                <strong class="p-main-name" data-i18n="pg_pt_asr">Alasiri</strong>
+                                <span class="p-sub-name" data-i18n="pg_pt_asr_sub">Asr</span>
                             </div>
                         </div>
                         <div class="p-col-center">
@@ -157,8 +157,8 @@
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 18a5 5 0 0 0-10 0M12 9V2M4.22 10.22l1.42-1.42M19.78 10.22l-1.42-1.42M1 18h22M1 22h22"/></svg>
                             </div>
                             <div class="p-names">
-                                <strong class="p-main-name">Maghribi</strong>
-                                <span class="p-sub-name">Maghrib</span>
+                                <strong class="p-main-name" data-i18n="pg_pt_maghrib">Maghribi</strong>
+                                <span class="p-sub-name" data-i18n="pg_pt_maghrib_sub">Maghrib</span>
                             </div>
                         </div>
                         <div class="p-col-center">
@@ -177,8 +177,8 @@
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                             </div>
                             <div class="p-names">
-                                <strong class="p-main-name">Ishaa</strong>
-                                <span class="p-sub-name">Isha</span>
+                                <strong class="p-main-name" data-i18n="pg_pt_isha">Ishaa</strong>
+                                <span class="p-sub-name" data-i18n="pg_pt_isha_sub">Isha</span>
                             </div>
                         </div>
                         <div class="p-col-center">
@@ -199,6 +199,7 @@
     <script>
         (function() {
             // Data ya Swala na Majina
+            const T = function (k, fb) { return window.BaytI18n ? window.BaytI18n.t(k) : fb; };
             const prayersMeta = [
                 { key: 'fajr', name: 'Alfajiri', sub: 'Fajr', ar: 'الفجر' },
                 { key: 'sunrise', name: 'Mchomozo', sub: 'Sunrise', ar: 'الشروق' },
@@ -282,7 +283,7 @@
                 // Tarehe ya Leo
                 const dateEl = document.getElementById('schedule-today-date');
                 if (dateEl) {
-                    dateEl.textContent = now.toLocaleDateString('sw-TZ', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+                    dateEl.textContent = now.toLocaleDateString(window.BaytI18n ? window.BaytI18n.locale() : 'sw-TZ', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
                 }
 
                 const timesToday = getPrayerTimes(now);
@@ -323,7 +324,7 @@
                 const targetArabicEl = document.getElementById('target-arabic');
                 const targetTimeEl = document.getElementById('target-time');
 
-                if (targetNameEl) targetNameEl.textContent = nextPrayer.name;
+                if (targetNameEl) targetNameEl.textContent = T('pg_pt_' + nextPrayer.key, nextPrayer.name);
                 if (targetArabicEl) targetArabicEl.textContent = nextPrayer.ar;
                 if (targetTimeEl) targetTimeEl.textContent = formatClock(nextPrayerTime);
 
@@ -355,14 +356,14 @@
 
                     if (item.key === nextPrayer.key) {
                         rowEl.classList.add('is-next');
-                        badgeEl.textContent = 'Inayofuata';
+                        badgeEl.textContent = T('pg_pt_badge_next', 'Inayofuata');
                         badgeEl.className = 'p-pill p-pill-next';
                     } else if (pTime < now) {
                         rowEl.classList.add('is-passed');
-                        badgeEl.textContent = 'Imepita';
+                        badgeEl.textContent = T('pg_pt_badge_passed', 'Imepita');
                         badgeEl.className = 'p-pill p-pill-passed';
                     } else {
-                        badgeEl.textContent = 'Inasubiri';
+                        badgeEl.textContent = T('pg_pt_badge_wait', 'Inasubiri');
                         badgeEl.className = 'p-pill';
                     }
                 });

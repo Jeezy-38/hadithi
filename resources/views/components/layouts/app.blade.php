@@ -118,6 +118,7 @@
 
 
     <script src="{{ asset('js/reader.js') }}?v={{ filemtime(public_path('js/reader.js')) }}" defer></script>
+    <script src="{{ asset('js/i18n-pages.js') }}?v={{ filemtime(public_path('js/i18n-pages.js')) }}" defer></script>
     <script src="{{ url('js/pwa.js') }}" defer></script>
     <script src="{{ asset('js/auth-drawer.js') }}" defer></script>
     @livewireScripts

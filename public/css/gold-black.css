@@ -10954,3 +10954,74 @@ a, button, select, input {
 .inside-book-more summary::before { content: "+"; margin-right: 6px; font-weight: 800; }
 .inside-book-more[open] summary::before { content: "−"; }
 .inside-book-more summary:focus-visible { outline: 2px solid #f5c75d; outline-offset: 2px; border-radius: 6px; }
+
+/* Bottom nav: duotone icon tint */
+.mobile-nav-icon .nav-tint{fill:currentColor;fill-opacity:.14}
+.mobile-nav-item.active .mobile-nav-icon .nav-tint{fill-opacity:.3}
+
+/* ==========================================================================
+   Palette: Zumaridi & Dhahabu (Emerald + Gold) — overrides theme variables.
+   To revert, delete this block.
+   ========================================================================== */
+:root,
+[data-theme="dark"] {
+    --bg-body: #07130f;
+    --bg-surface: #0d2019;
+    --bg-surface-elevated: #12302a;
+    --bg-surface-hover: #174036;
+    --border-color: rgba(230, 242, 236, 0.13);
+    --border-subtle: rgba(230, 242, 236, 0.06);
+    --border-focus: #34d399;
+    --text-primary: #e6f2ec;
+    --text-secondary: #c3d6cc;
+    --text-muted: #7f968b;
+    --text-dim: #5f766b;
+    --gold: #34d399;
+    --gold-light: #6ee7b7;
+    --gold-dark: #059669;
+    --gold-gradient: linear-gradient(135deg, #6ee7b7 0%, #34d399 55%, #e5b94a 100%);
+    --gold-subtle: rgba(52, 211, 153, 0.12);
+    --btn-gold-text: #05140e;
+    --emerald: #e5b94a;
+    --emerald-subtle: rgba(229, 185, 74, 0.14);
+    --arabic-bg: rgba(13, 32, 25, 0.85);
+    --arabic-border: rgba(52, 211, 153, 0.22);
+    --arabic-text: #f3faf6;
+    --header-bg: rgba(7, 19, 15, 0.94);
+    --header-border: rgba(230, 242, 236, 0.10);
+    --hero-overlay: linear-gradient(90deg, rgba(7, 19, 15, 0.98) 0%, rgba(13, 32, 25, 0.88) 50%, rgba(13, 32, 25, 0.4) 100%);
+    --hero-border: rgba(52, 211, 153, 0.22);
+    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 0 1.5px rgba(52, 211, 153, 0.6);
+    --glow-gold: 0 0 25px rgba(52, 211, 153, 0.20);
+}
+
+[data-theme="light"] {
+    --bg-body: #f4f8f5;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #e9f1ec;
+    --bg-surface-hover: #dbe8e1;
+    --border-color: rgba(15, 42, 32, 0.12);
+    --border-subtle: rgba(15, 42, 32, 0.06);
+    --border-focus: #0b6b4f;
+    --text-primary: #0f2a20;
+    --text-secondary: #2f4a3f;
+    --text-muted: #6b7f75;
+    --text-dim: #93a69c;
+    --gold: #0b6b4f;
+    --gold-light: #168a68;
+    --gold-dark: #064e3b;
+    --gold-gradient: linear-gradient(135deg, #0b6b4f 0%, #0f8561 60%, #c9a227 100%);
+    --gold-subtle: rgba(11, 107, 79, 0.08);
+    --btn-gold-text: #ffffff;
+    --emerald: #b8891a;
+    --emerald-subtle: rgba(201, 162, 39, 0.14);
+    --arabic-bg: #f4f8f5;
+    --arabic-border: rgba(11, 107, 79, 0.2);
+    --arabic-text: #0f2a20;
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-border: rgba(15, 42, 32, 0.08);
+    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 248, 245, 0.95) 60%, rgba(233, 241, 236, 0.9) 100%);
+    --hero-border: rgba(11, 107, 79, 0.2);
+    --card-hover-shadow: 0 14px 30px -4px rgba(15, 42, 32, 0.14), 0 0 0 1.5px #0b6b4f;
+    --glow-gold: 0 0 20px rgba(11, 107, 79, 0.14);
+}

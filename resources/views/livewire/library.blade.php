@@ -34,14 +34,14 @@
     <section id="maktaba" class="library-shell" aria-label="Maktaba ya hadith">
         <div class="results">
                         <form class="search-form book-search-form library-search" wire:submit.prevent="$refresh" role="search">
-                            <label class="sr-only" for="search">Tafuta hadith kwa maneno au namba</label>
+                            <label class="sr-only" for="search" data-i18n="pg_lib_search_label">Tafuta hadith kwa maneno au namba</label>
                             <span class="search-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="11" cy="11" r="8"></circle>
                                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                 </svg>
                             </span>
-                            <input id="search" type="search" wire:model.live.debounce.350ms="search" maxlength="200" placeholder="Tafuta ndani ya {{ $collections->firstWhere('slug', $collection)?->name ?? 'makusanyo yote' }}…" autocomplete="off">
+                            <input id="search" type="search" wire:model.live.debounce.350ms="search" maxlength="200" placeholder="Tafuta ndani ya {{ $collections->firstWhere('slug', $collection)?->name ?? 'makusanyo yote' }}…" data-i18n-placeholder="{{ $collection === '' ? 'pg_lib_search_all' : 'pg_lib_search_in' }}" data-i18n-vars="{{ json_encode(['name' => $collections->firstWhere('slug', $collection)?->name ?? ''], JSON_UNESCAPED_UNICODE) }}" autocomplete="off">
                             <button type="submit">
                                 <span data-i18n="search_btn">Tafuta</span>
                                 <span aria-hidden="true">→</span>
@@ -70,7 +70,7 @@
                                 <div class="rawdah-hero-top">
                                     <span class="rawdah-hero-tag">
                                         <span>✦</span>
-                                        <span>Hadithi ya Leo</span>
+                                        <span data-i18n="pg_lib_today">Hadithi ya Leo</span>
                                     </span>
                                     <span class="rawdah-hero-ref">
                                         {{ $todayHadith->chapter->book->collection->name ?? 'Hadithi' }} · Na. {{ $todayHadith->hadith_number ?? $todayHadith->number ?? $todayHadith->reference }}
@@ -93,7 +93,7 @@
                                 <div class="rawdah-hero-footer">
                                     <div class="rawdah-hero-buttons">
                                         <a href="{{ route('hadith.show', $todayHadith) }}" class="rawdah-btn-primary">
-                                            <span>Soma Hadithi Kamili</span>
+                                            <span data-i18n="pg_lib_read_full">Soma Hadithi Kamili</span>
                                             <span aria-hidden="true">→</span>
                                         </a>
 
@@ -119,7 +119,7 @@
 
                         {{-- 2. Thematic Topics Quick Row --}}
                         <div class="rawdah-topics-row" role="region" aria-label="Gundua kwa Mada">
-                            <span class="rawdah-topics-label">Gundua kwa Mada:</span>
+                            <span class="rawdah-topics-label" data-i18n="pg_lib_topics">Gundua kwa Mada:</span>
                             @php
                                 $topicsSlice = array_slice($topics, 0, 6, true);
                             @endphp
@@ -149,7 +149,7 @@
                                             <polygon points="21,18.5 22.2,21 24.8,21.4 22.8,23 23.5,25.6 21,24 18.5,25.6 19.2,23 17.2,21.4 19.8,21" fill="#f8fafc"/>
                                         </svg>
                                     </div>
-                                    <h2 class="bookshelf-title">Collections</h2>
+                                    <h2 class="bookshelf-title" data-i18n="pg_lib_collections">Makusanyo</h2>
                                 </div>
 
                                 @if($total === 0)
@@ -191,9 +191,9 @@
                                             </div>
 
                                             <div class="rawdah-book-footer" aria-hidden="true">
-                                                <span class="book-total-hadiths">Total Hadiths {{ $totalHadiths }}</span>
+                                                <span class="book-total-hadiths"><span data-i18n="pg_lib_total">Jumla ya Hadithi</span> {{ $totalHadiths }}</span>
                                                 <span class="rawdah-book-action">
-                                                    <span>Anza Kusoma</span>
+                                                    <span data-i18n="pg_lib_start">Anza Kusoma</span>
                                                     <span class="rawdah-arrow">→</span>
                                                 </span>
                                             </div>
@@ -232,7 +232,7 @@
                                 <div class="inside-book-info">
                                     <div class="inside-book-tagline">
                                         <span class="badge badge-{{ $activeCol->slug }}">{{ $activeMeta['badge'] ?? 'Hadith' }}</span>
-                                        <span class="inside-book-count">{{ number_format($collectionCounts[$activeCol->id] ?? 0) }} Hadithi zilizomo</span>
+                                        <span class="inside-book-count">{{ number_format($collectionCounts[$activeCol->id] ?? 0) }} <span data-i18n="pg_lib_inside">Hadithi zilizomo</span></span>
                                     </div>
                                     <h2 class="inside-book-heading">{{ $activeCol->name }}</h2>
                                     @if($activeCol->name_ar)
@@ -240,8 +240,8 @@
                                     @endif
                                     @if($activeMeta)
                                         <details class="inside-book-more">
-                                            <summary>Soma zaidi kuhusu kitabu hiki</summary>
-                                            <p class="inside-book-author"><strong>Mkusanyaji:</strong> {{ $activeMeta['author'] }} @if(!empty($activeMeta['years']))({{ $activeMeta['years'] }})@endif</p>
+                                            <summary data-i18n="pg_lib_more_book">Soma zaidi kuhusu kitabu hiki</summary>
+                                            <p class="inside-book-author"><strong data-i18n="pg_lib_author">Mkusanyaji:</strong> {{ $activeMeta['author'] }} @if(!empty($activeMeta['years']))({{ $activeMeta['years'] }})@endif</p>
                                             <p class="inside-book-desc">{{ $activeMeta['desc'] }}</p>
                                         </details>
                                     @endif
@@ -254,9 +254,9 @@
                     @if($search !== '')
                         <div class="search-active-banner">
                             <span class="search-active-text">
-                                Matokeo ya utafutaji wa: <strong>“{{ $search }}”</strong> ({{ $hadiths->total() }} zilipatikana)
+                                <span data-i18n="pg_lib_results_for">Matokeo ya utafutaji wa:</span> <strong>“{{ $search }}”</strong> ({{ $hadiths->total() }} <span data-i18n="pg_lib_found">zilipatikana</span>)
                             </span>
-                            <button type="button" class="text-button" wire:click="$set('search', '')">Ondoa utafutaji ×</button>
+                            <button type="button" class="text-button" wire:click="$set('search', '')" data-i18n="pg_lib_clear_search">Ondoa utafutaji ×</button>
                         </div>
                     @endif
 
@@ -266,7 +266,7 @@
                                 <span class="badge badge-{{ $hadith->chapter->book->collection->slug }}">
                                     {{ $hadith->chapter->book->collection->name }}
                                 </span>
-                                <span class="hadith-num">Na. {{ $hadith->number }}</span>
+                                <span class="hadith-num"><span data-i18n="pg_lib_no">Na.</span> {{ $hadith->number }}</span>
                             </div>
                             <h3>{{ $hadith->chapter->title_sw }}</h3>
                             
@@ -316,7 +316,7 @@
                                 <span>←</span> <span data-i18n="page_prev">Iliyotangulia</span>
                             </button>
                             <span class="page-indicator page-jump" x-data>
-                                <label for="page-jump-input">Ukurasa</label>
+                                <label for="page-jump-input" data-i18n="pg_lib_page">Ukurasa</label>
                                 <input id="page-jump-input" type="number" inputmode="numeric" min="1" max="{{ $hadiths->lastPage() }}" value="{{ $hadiths->currentPage() }}"
                                        x-on:change="$wire.gotoPage(Math.min(Math.max(parseInt($event.target.value) || 1, 1), {{ $hadiths->lastPage() }}))"
                                        x-on:keydown.enter.prevent="$event.target.blur()">

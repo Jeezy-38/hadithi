@@ -46,9 +46,9 @@ class LibraryTest extends TestCase
         $response = $this->get('/');
         $response->assertOk();
         $response->assertSee('Sahih al-Bukhari');
-        $response->assertSee('Total Hadiths 2');
+        $response->assertSeeText('Jumla ya Hadithi 2');
         $response->assertSee('Sahih Muslim');
-        $response->assertSee('Total Hadiths 1');
+        $response->assertSeeText('Jumla ya Hadithi 1');
         $response->assertSee('Imam Muhammad al-Bukhari');
         $response->assertSee('Imam Muslim ibn al-Hajjaj');
     }
@@ -60,7 +60,7 @@ class LibraryTest extends TestCase
         // occurs inside $record->swahili (e.g. "42a", "MAJARIBIO") breaks a literal full-text
         // match; "Na. 42a" (the card's number line) is never highlighted and stays intact.
         foreach (['MAJARIBIO', 'نص للاختبار', '42a', 'Synthetic English'] as $term) {
-            Livewire::test(Library::class)->set('search', $term)->assertSee('Na. 42a');
+            Livewire::test(Library::class)->set('search', $term)->assertSeeText('Na. 42a');
         }
         Livewire::test(Library::class)->set('search', '%')->assertDontSee($record->swahili)->assertSee('Hakuna hadith iliyopatikana.');
     }
@@ -99,7 +99,7 @@ class LibraryTest extends TestCase
         // "Na. 11" (unhighlighted) rather than the full swahili text, which now has the
         // matched "bukhari 11" wrapped in <mark> by the search-highlighting feature.
         Livewire::test(Library::class)->call('nextPage')->assertSeeHtml('id="page-jump-input"')->assertSeeHtml('value="2"')->assertSee('/ 2')
-            ->set('search', 'bukhari 11')->assertSet('paginators.page', 1)->assertSee('Na. 11');
+            ->set('search', 'bukhari 11')->assertSet('paginators.page', 1)->assertSeeText('Na. 11');
     }
 
     public function test_shared_url_restores_search_and_collection(): void
@@ -108,7 +108,7 @@ class LibraryTest extends TestCase
         $muslim = $this->record('muslim', '99');
         // "Na. 42" rather than the full swahili text: the search term "42" is now wrapped in
         // <mark> inside the rendered excerpt, so a literal full-text match would break.
-        $this->get('/?collection=bukhari&q=42')->assertOk()->assertSee('Na. 42')->assertDontSee($muslim->swahili);
+        $this->get('/?collection=bukhari&q=42')->assertOk()->assertSeeText('Na. 42')->assertDontSee($muslim->swahili);
     }
 
     private function dataset(): array
