@@ -60,7 +60,7 @@ class SupportAndPaymentTest extends TestCase
         $this->assertDatabaseHas('payments', [
             'donor_name' => 'Hassan Ali',
             'donor_email' => 'hassan@example.com',
-            'donor_phone' => '0712345678',
+            'donor_phone' => '255712345678',
             'amount' => 10000.00,
             'currency' => 'TZS',
             'purpose' => 'sadaka_jariya',

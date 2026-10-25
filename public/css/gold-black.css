@@ -10819,3 +10819,94 @@ a, button, select, input {
         padding: 12px 14px;
     }
 }
+
+/* =========================================================================
+   UI refresh: Nyakati za Swala, Tarehe ya Kiislamu, Ramadhani
+   Mpangilio mnene zaidi, safu mbili kwenye desktop, vitufe vya kuguswa 44px
+   ========================================================================= */
+
+/* ---- Nyakati za swala ---- */
+.prayer-container { max-width: 1040px; padding-bottom: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.prayer-container .prayer-header { grid-column: 1 / -1; margin-bottom: 0; }
+.prayer-container .prayer-hero-card { margin-bottom: 0; padding: 22px 22px; gap: 16px; }
+.prayer-container .prayer-schedule-wrap { margin-bottom: 0; padding: 16px 18px; }
+.prayer-container .prayer-title { font-size: 26px; margin-bottom: 6px; }
+.prayer-container .prayer-subtitle { font-size: 13px; }
+.prayer-container .prayer-location-pill { margin-bottom: 10px; }
+.prayer-container .prayer-countdown-wrap { padding: 14px 16px; }
+.prayer-container .prayer-hero-top { padding-bottom: 12px; }
+.prayer-container .prayer-schedule-header { padding-bottom: 10px; margin-bottom: 10px; }
+.prayer-container .prayer-schedule-list { gap: 6px; }
+.prayer-container .prayer-row { padding: 9px 14px; min-height: 48px; }
+.prayer-container .prayer-info-note { grid-column: 1 / -1; }
+
+@media (max-width: 860px) {
+    .prayer-container { grid-template-columns: 1fr; gap: 12px; }
+}
+@media (max-width: 480px) {
+    .prayer-container .prayer-subtitle { display: none; }
+    .prayer-container .prayer-header { margin-bottom: -2px; }
+    .prayer-container .prayer-title { font-size: 20px; margin-bottom: 0; }
+    .prayer-container .prayer-hero-card { padding: 14px 14px; gap: 10px; border-radius: 18px; }
+    .prayer-container .prayer-hero-top { padding-bottom: 8px; }
+    .prayer-container .prayer-target-name { font-size: 22px; }
+    .prayer-container .prayer-target-arabic { font-size: 18px; }
+    .prayer-container .prayer-target-time { font-size: 30px; }
+    .prayer-container .prayer-countdown-wrap { padding: 10px 10px; gap: 8px; }
+    .prayer-container .p-box { padding: 6px 4px; min-width: 56px; }
+    .prayer-container .p-num { font-size: 22px; }
+    .prayer-container .prayer-schedule-wrap { padding: 12px 12px; border-radius: 16px; }
+    .prayer-container .prayer-schedule-list { gap: 4px; }
+    .prayer-container .prayer-row { padding: 6px 12px; min-height: 44px; border-radius: 12px; }
+    .prayer-container .p-icon-wrap { transform: scale(0.85); }
+}
+
+/* ---- Tarehe ya Kiislamu ---- */
+.date-container .date-header { margin-bottom: 16px; }
+.date-container .date-title { font-size: 26px; margin-bottom: 6px; }
+.date-container .date-subtitle { font-size: 13px; }
+.date-container .islamic-months-section { margin-top: 22px; }
+.date-container .section-heading { font-size: 17px; margin-bottom: 12px; }
+.date-container .months-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.date-container .month-card { padding: 10px 12px; gap: 6px; border-radius: 12px; }
+.date-container .month-card-top { min-height: 20px; }
+.date-container .month-num { width: 20px; height: 20px; font-size: 10px; }
+.date-container .month-tag { font-size: 9px; padding: 2px 6px; }
+.date-container .month-card-content { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
+.date-container .month-sw { font-size: 13px; line-height: 1.25; }
+.date-container .month-ar { font-size: 16px; }
+.date-container .month-card.sacred { border-color: rgba(245, 199, 93, 0.45); }
+
+@media (max-width: 860px) {
+    .date-container .months-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 520px) {
+    .date-container .date-title { font-size: 20px; }
+    .date-container .date-subtitle { display: none; }
+    .date-container .months-grid { gap: 6px; }
+    .date-container .month-card { padding: 8px 8px; min-height: 44px; }
+    .date-container .month-tag { display: none; }
+    .date-container .month-card-content { flex-direction: column; align-items: flex-start; gap: 0; }
+    .date-container .month-sw { font-size: 11.5px; }
+    .date-container .month-ar { font-size: 14px; }
+}
+
+/* ---- Ramadhani: tabu ---- */
+.ramadhan-container .ramadhan-header { margin-bottom: 16px; }
+.ramadhan-container .ramadhan-title { font-size: 26px; margin-bottom: 6px; }
+.ramadhan-container .ramadhan-subtitle { font-size: 13px; }
+.rm-tabs { display: flex; gap: 8px; margin: 18px 0 14px; padding: 4px; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 14px; }
+.rm-tab { flex: 1; min-height: 44px; padding: 8px 14px; border-radius: 10px; border: 1px solid transparent; background: transparent; color: var(--text-secondary); font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; }
+.rm-tab:hover { color: var(--text-primary); }
+.rm-tab[aria-selected="true"] { background: rgba(245, 199, 93, 0.12); border-color: rgba(245, 199, 93, 0.5); color: var(--text-primary); }
+.rm-tab:focus-visible { outline: 2px solid #f5c75d; outline-offset: 2px; }
+.rm-panel[hidden] { display: none; }
+.ramadhan-container .ramadhan-duas-section,
+.ramadhan-container .ramadhan-hadiths-section { margin-top: 0; }
+.ramadhan-container .section-title { display: none; }
+
+@media (max-width: 520px) {
+    .ramadhan-container .ramadhan-subtitle { display: none; }
+    .ramadhan-container .ramadhan-title { font-size: 20px; }
+    .rm-tabs { margin: 12px 0 10px; }
+}

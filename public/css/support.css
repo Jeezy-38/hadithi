@@ -892,3 +892,64 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================================================
+   Fomu ya changia: safu mbili kwenye desktop, mpangilio mnene kwenye simu
+   ========================================================================= */
+[x-cloak] { display: none !important; }
+
+.support-container--form { max-width: 980px; padding: 1.25rem 1rem 3rem; }
+.support-card--form { margin: 0 auto; border-radius: 18px; }
+.support-card-header--form { text-align: center; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle); }
+.support-mini-badge--form { display: inline-block; margin-bottom: 0.4rem; }
+.support-card-title--form { justify-content: center; margin-bottom: 0.3rem; font-size: 1.35rem; font-weight: 800; }
+.support-card-subtitle--form { font-size: 0.85rem; margin: 0; line-height: 1.45; }
+
+.support-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+.support-col .support-input-group { margin-bottom: 0.9rem; }
+.support-col .support-purpose-tabs { margin-bottom: 0.9rem; }
+.support-col .support-presets-grid { margin-bottom: 0.75rem; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+.support-currency-row { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+.support-currency-row .support-label { margin: 0; }
+
+.support-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.support-error { color: #ef4444; font-size: 0.8rem; }
+.support-error--block { display: block; margin-top: 0.35rem; }
+.support-error-box { color: #ef4444; font-size: 0.85rem; margin-top: 0.75rem; text-align: center; background: rgba(239, 68, 68, 0.1); padding: 0.6rem; border-radius: 8px; }
+.support-actions-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.support-checkbox-row--compact { margin-bottom: 0.75rem; }
+.support-checkbox-hint { display: block; font-size: 0.78rem; opacity: 0.75; font-weight: 400; }
+.support-link-btn { background: none; border: 0; padding: 0.6rem 0; min-height: 44px; color: #f5c75d; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-align: left; }
+.support-link-btn:hover { text-decoration: underline; }
+.support-submit-bar { margin-top: 0.25rem; }
+
+@media (max-width: 860px) {
+    .support-form-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+@media (max-width: 560px) {
+    .support-container--form { padding: 0.75rem 0.6rem 5.5rem; }
+    .support-card-header--form { margin-bottom: 0.75rem; padding-bottom: 0.5rem; }
+    .support-card-title--form { font-size: 1.15rem; }
+    .support-card-subtitle--form { display: none; }
+    .support-col .support-presets-grid { gap: 0.35rem; }
+    .support-col .preset-chip-btn { padding: 0.6rem 0.2rem; font-size: 0.85rem; min-height: 44px; }
+    .chip-cur { display: none; }
+    .support-col .purpose-tab-btn span { display: none; }
+    .support-col .purpose-tab-btn { min-height: 44px; padding: 0.5rem; }
+    .support-col .curr-toggle-btn { min-height: 40px; }
+    .support-col .payment-methods-grid { gap: 0.5rem; }
+    .support-col .pm-meta span { display: none; }
+    .support-pair { gap: 0.4rem; }
+    .support-submit-bar {
+        position: sticky;
+        bottom: 0;
+        z-index: 20;
+        margin: 0 -0.6rem -0.5rem;
+        padding: 0.6rem 0.6rem calc(0.6rem + env(safe-area-inset-bottom));
+        background: var(--bg-surface);
+        border-top: 1px solid var(--border-subtle);
+    }
+    .support-submit-bar .support-submit-btn { padding: 0.8rem; min-height: 48px; }
+}

@@ -57,8 +57,14 @@
                 </p>
             </div>
 
+            {{-- Tabu: Duaa / Hadithi --}}
+            <div class="rm-tabs" role="tablist" aria-label="Maudhui ya Ramadhani">
+                <button type="button" class="rm-tab" role="tab" id="rm-tab-duas" aria-controls="rm-panel-duas" aria-selected="true">Duaa</button>
+                <button type="button" class="rm-tab" role="tab" id="rm-tab-hadiths" aria-controls="rm-panel-hadiths" aria-selected="false">Hadithi</button>
+            </div>
+
             {{-- Dua Muhimu za Ramadhani --}}
-            <section class="ramadhan-duas-section">
+            <section class="ramadhan-duas-section rm-panel" id="rm-panel-duas" role="tabpanel" aria-labelledby="rm-tab-duas">
                 <h2 class="section-title">Dua za Kila Siku za Mfungo</h2>
                 <div class="duas-cards-grid">
                     <div class="dua-ramadhan-card">
@@ -106,7 +112,7 @@
             </section>
 
             {{-- Hadithi Sahihi za Fadhila za Ramadhani --}}
-            <section class="ramadhan-hadiths-section">
+            <section class="ramadhan-hadiths-section rm-panel" id="rm-panel-hadiths" role="tabpanel" aria-labelledby="rm-tab-hadiths">
                 <h2 class="section-title">Hadithi Sahihi za Ramadhani</h2>
                 <div class="hadith-feature-card">
                     <span class="hadith-tag">Milango ya Pepo Kufunguliwa</span>
@@ -178,6 +184,24 @@
 
             updateCountdown();
             setInterval(updateCountdown, 1000);
+        })();
+    </script>
+    <script>
+        (function () {
+            var tabs = document.querySelectorAll('.rm-tab');
+            if (!tabs.length) return;
+            function show(id) {
+                tabs.forEach(function (t) {
+                    var on = t.getAttribute('aria-controls') === id;
+                    t.setAttribute('aria-selected', on ? 'true' : 'false');
+                    var panel = document.getElementById(t.getAttribute('aria-controls'));
+                    if (panel) panel.hidden = !on;
+                });
+            }
+            tabs.forEach(function (t) {
+                t.addEventListener('click', function () { show(t.getAttribute('aria-controls')); });
+            });
+            show('rm-panel-duas');
         })();
     </script>
 </x-layouts.app>

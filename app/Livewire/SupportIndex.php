@@ -78,6 +78,40 @@ class SupportIndex extends Component
         }
     }
 
+    /**
+     * Namba ya simu hubadilishwa kuwa 255XXXXXXXXX mara tu mtumiaji anapomaliza kuandika.
+     */
+    public function updatedDonorPhone(): void
+    {
+        $this->donorPhone = $this->normalizePhone($this->donorPhone);
+    }
+
+    /**
+     * 0712345678, 712345678, +255 712 345 678 -> 255712345678
+     */
+    protected function normalizePhone(?string $phone): string
+    {
+        $digits = preg_replace('/\D+/', '', (string) $phone);
+
+        if ($digits === '') {
+            return '';
+        }
+
+        if (str_starts_with($digits, '255')) {
+            return $digits;
+        }
+
+        if (str_starts_with($digits, '0')) {
+            return '255' . substr($digits, 1);
+        }
+
+        if (strlen($digits) === 9) {
+            return '255' . $digits;
+        }
+
+        return $digits;
+    }
+
     public function initiatePayment(): void
     {
         $this->resetErrorBag();
@@ -93,15 +127,18 @@ class SupportIndex extends Component
             return;
         }
 
+        $this->donorPhone = $this->normalizePhone($this->donorPhone);
+
         $this->validate([
             'donorEmail' => 'nullable|email|max:190',
-            'donorPhone' => 'nullable|string|max:30',
+            'donorPhone' => ['nullable', 'regex:/^255[0-9]{9}$/'],
             'message' => 'nullable|string|max:280',
             'paymentMethod' => 'required|in:mobile_money,card',
             'purpose' => 'required|in:sadaka_jariya,supporter_membership',
             'billingCycle' => 'required|in:one_time,monthly',
         ], [
             'donorEmail.email' => 'Tafadhali ingiza anwani halali ya barua pepe.',
+            'donorPhone.regex' => 'Namba ya simu iwe katika muundo wa 255XXXXXXXXX (mfano 255712345678).',
             'message.max' => 'Dua au ujumbe hauwezi kuzidi herufi 280.',
         ]);
 
