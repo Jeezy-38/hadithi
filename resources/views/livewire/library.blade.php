@@ -30,7 +30,9 @@
                     </div>
                 </div>
                 <div class="hero-visual" aria-hidden="true">
-                    <img src="{{ asset('images/hero-seal-3d.jpg') }}" alt="Bayt Al-Hadith 3D Seal" class="hero-visual-img" loading="eager">
+                    <div class="hero-artwork-frame">
+                        <img src="{{ asset('images/hero-hadith-artwork.jpg') }}" alt="Bayt Al-Hadith" class="hero-artwork-img" loading="eager">
+                    </div>
                 </div>
             </div>
         </section>
