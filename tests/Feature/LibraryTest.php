@@ -98,7 +98,7 @@ class LibraryTest extends TestCase
         }
         // "Na. 11" (unhighlighted) rather than the full swahili text, which now has the
         // matched "bukhari 11" wrapped in <mark> by the search-highlighting feature.
-        Livewire::test(Library::class)->call('nextPage')->assertSee('Ukurasa 2 / 2')
+        Livewire::test(Library::class)->call('nextPage')->assertSeeHtml('id="page-jump-input"')->assertSeeHtml('value="2"')->assertSee('/ 2')
             ->set('search', 'bukhari 11')->assertSet('paginators.page', 1)->assertSee('Na. 11');
     }
 

@@ -33,6 +33,21 @@
 
     <section id="maktaba" class="library-shell" aria-label="Maktaba ya hadith">
         <div class="results">
+                        <form class="search-form book-search-form library-search" wire:submit.prevent="$refresh" role="search">
+                            <label class="sr-only" for="search">Tafuta hadith kwa maneno au namba</label>
+                            <span class="search-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </span>
+                            <input id="search" type="search" wire:model.live.debounce.350ms="search" maxlength="200" placeholder="Tafuta ndani ya {{ $collections->firstWhere('slug', $collection)?->name ?? 'makusanyo yote' }}…" autocomplete="off">
+                            <button type="submit">
+                                <span data-i18n="search_btn">Tafuta</span>
+                                <span aria-hidden="true">→</span>
+                            </button>
+                        </form>
+
             <div class="loading" wire:loading role="status">
                 <span class="spinner" aria-hidden="true"></span>
                 <span data-i18n="searching_status">Inatafuta…</span>
@@ -224,27 +239,16 @@
                                         <p class="inside-book-ar" lang="ar" dir="rtl">{{ $activeCol->name_ar }}</p>
                                     @endif
                                     @if($activeMeta)
-                                        <p class="inside-book-author"><strong>Mkusanyaji:</strong> {{ $activeMeta['author'] }} @if(!empty($activeMeta['years']))({{ $activeMeta['years'] }})@endif</p>
-                                        <p class="inside-book-desc">{{ $activeMeta['desc'] }}</p>
+                                        <details class="inside-book-more">
+                                            <summary>Soma zaidi kuhusu kitabu hiki</summary>
+                                            <p class="inside-book-author"><strong>Mkusanyaji:</strong> {{ $activeMeta['author'] }} @if(!empty($activeMeta['years']))({{ $activeMeta['years'] }})@endif</p>
+                                            <p class="inside-book-desc">{{ $activeMeta['desc'] }}</p>
+                                        </details>
                                     @endif
                                 </div>
                             </div>
                         @endif
 
-                        <form class="search-form book-search-form" wire:submit.prevent="$refresh" role="search" style="margin-bottom: 20px;">
-                            <label class="sr-only" for="search">Tafuta hadith kwa maneno au namba</label>
-                            <span class="search-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                </svg>
-                            </span>
-                            <input id="search" type="search" wire:model.live.debounce.350ms="search" maxlength="200" placeholder="Tafuta ndani ya {{ $activeCol ? $activeCol->name : 'hadith' }}…" autocomplete="off">
-                            <button type="submit">
-                                <span data-i18n="search_btn">Tafuta</span>
-                                <span aria-hidden="true">→</span>
-                            </button>
-                        </form>
                     @endif
 
                     @if($search !== '')
@@ -311,7 +315,13 @@
                             <button wire:click="previousPage" @disabled($hadiths->onFirstPage()) class="page-nav-btn">
                                 <span>←</span> <span data-i18n="page_prev">Iliyotangulia</span>
                             </button>
-                            <span class="page-indicator">Ukurasa {{ $hadiths->currentPage() }} / {{ $hadiths->lastPage() }}</span>
+                            <span class="page-indicator page-jump" x-data>
+                                <label for="page-jump-input">Ukurasa</label>
+                                <input id="page-jump-input" type="number" inputmode="numeric" min="1" max="{{ $hadiths->lastPage() }}" value="{{ $hadiths->currentPage() }}"
+                                       x-on:change="$wire.gotoPage(Math.min(Math.max(parseInt($event.target.value) || 1, 1), {{ $hadiths->lastPage() }}))"
+                                       x-on:keydown.enter.prevent="$event.target.blur()">
+                                <span>/ {{ $hadiths->lastPage() }}</span>
+                            </span>
                             <button wire:click="nextPage" @disabled(!$hadiths->hasMorePages()) class="page-nav-btn">
                                 <span data-i18n="page_next">Inayofuata</span> <span>→</span>
                             </button>
