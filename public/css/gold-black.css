@@ -20,7 +20,7 @@
     --text-primary: #ffffff;
     --text-secondary: #cbd5e1;
     --text-muted: #8295a0;
-    --text-dim: #64748b;
+    --text-dim: #7f90a6;
 
     /* Signature Platinum & Silver Titanium (Zero gold / zero yellow) */
     --gold: #f1f5f9;
@@ -70,8 +70,8 @@
 
     --text-primary: #0f172a;
     --text-secondary: #334155;
-    --text-muted: #64748b;
-    --text-dim: #94a3b8;
+    --text-muted: #4b5a6e;
+    --text-dim: #5f6e83;
 
     --gold: #0f172a;
     --gold-light: #334155;
@@ -11094,3 +11094,54 @@ a, button, select, input {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.3s !important;
 }
 .nav-drawer.is-open { visibility: visible; }
+
+/* ==========================================================================
+   Usomekaji (contrast) — light & dark mode
+   ========================================================================== */
+
+/* Light: kitufe cha pili cha hero kilikuwa cheupe juu ya cheupe (!important ya .hero-button) */
+[data-theme="light"] .hero-button.hero-button-secondary,
+[data-theme="light"] .hero-button.hero-button-secondary:hover {
+    color: #0f172a !important;
+}
+
+/* Light: kadi za Nyakati za Swala na Qibla ni nyeusi — maandishi yawe meupe */
+[data-theme="light"] .prayer-live-clock,
+[data-theme="light"] .prayer-target-name,
+[data-theme="light"] .prayer-target-time {
+    color: #ffffff;
+}
+[data-theme="light"] .countdown-heading-label,
+[data-theme="light"] .prayer-hero-card .p-sep {
+    color: rgba(226, 232, 240, 0.8);
+}
+[data-theme="light"] .qibla-instrument-card .m-val,
+[data-theme="light"] .qibla-instrument-card .btn-sensor-activate {
+    color: #ffffff;
+}
+[data-theme="light"] .qibla-instrument-card .m-label,
+[data-theme="light"] .qibla-instrument-card .qibla-minimal-hint {
+    color: rgba(226, 232, 240, 0.85);
+}
+[data-theme="light"] .qibla-instrument-card .btn-sensor-activate {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+/* Light: dhahabu/bluu nyepesi juu ya nyeupe haisomeki — tumia rangi nzito */
+[data-theme="light"] .hub-target,
+[data-theme="light"] .support-link-btn,
+[data-theme="light"] .p-pill.p-pill-next { color: #92400e; }
+[data-theme="light"] .dua-type { color: #0369a1; }
+[data-theme="light"] .footer-link-bullet { color: #0369a1; }
+
+/* Dark: lebo za Nyakati za Swala */
+[data-theme="dark"] .p-pill,
+[data-theme="dark"] .p-pill.p-pill-passed { color: #a3b3c4; }
+
+/* Light: maandishi madogo ya kijivu yaliyobaki chini ya 4.5:1 */
+[data-theme="light"] .curr-toggle-btn,
+[data-theme="light"] .p-pill.p-pill-passed { color: #4b5a6e; }
+[data-theme="light"] .p-sub-name { color: #3f4d61; }
+[data-theme="light"] .month-ar { color: #64748b; }
+[data-theme="light"] .qibla-instrument-card .qibla-minimal-hint { color: #f1f5f9; }
