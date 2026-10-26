@@ -9,43 +9,43 @@
 [data-theme="dark"] {
     color-scheme: dark;
     /* The Platinum & Silver Minimalist Edition (Monochrome Modern Luxury) */
-    --bg-body: #02151e;
-    --bg-surface: #06202c;
-    --bg-surface-elevated: #092c3d;
-    --bg-surface-hover: #0d384d;
+    --bg-body: #0b1a16;
+    --bg-surface: #12261f;
+    --bg-surface-elevated: #183229;
+    --bg-surface-hover: #1f3d32;
     --border-color: rgba(255, 255, 255, 0.12);
     --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-focus: #f1f5f9;
+    --border-focus: #34d399;
     
-    --text-primary: #ffffff;
-    --text-secondary: #cbd5e1;
-    --text-muted: #8295a0;
-    --text-dim: #7f90a6;
+    --text-primary: #eaf2ee;
+    --text-secondary: #c3d4cb;
+    --text-muted: #a9bdb3;
+    --text-dim: #8aa196;
 
     /* Signature Platinum & Silver Titanium (Zero gold / zero yellow) */
-    --gold: #f1f5f9;
-    --gold-light: #ffffff;
-    --gold-dark: #cbd5e1;
-    --gold-gradient: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #94a3b8 100%);
-    --gold-subtle: rgba(241, 245, 249, 0.10);
-    --btn-gold-text: #02151e;
+    --gold: #34d399;
+    --gold-light: #6ee7b7;
+    --gold-dark: #10b981;
+    --gold-gradient: linear-gradient(135deg, #6ee7b7 0%, #34d399 55%, #10b981 100%);
+    --gold-subtle: rgba(52, 211, 153, 0.12);
+    --btn-gold-text: #04251a;
 
-    --emerald: #38bdf8;
-    --emerald-subtle: rgba(56, 189, 248, 0.14);
+    --emerald: #e5b84b;
+    --emerald-subtle: rgba(229, 184, 75, 0.14);
 
-    --arabic-bg: rgba(6, 32, 44, 0.85);
+    --arabic-bg: rgba(18, 38, 31, 0.85);
     --arabic-border: rgba(255, 255, 255, 0.14);
-    --arabic-text: #ffffff;
+    --arabic-text: #f4f8f5;
 
-    --header-bg: rgba(2, 21, 30, 0.94);
+    --header-bg: rgba(11, 26, 22, 0.94);
     --header-border: rgba(255, 255, 255, 0.10);
 
-    --hero-overlay: linear-gradient(90deg, rgba(2, 21, 30, 0.98) 0%, rgba(6, 32, 44, 0.88) 50%, rgba(6, 32, 44, 0.4) 100%);
+    --hero-overlay: linear-gradient(90deg, rgba(11, 26, 22, 0.98) 0%, rgba(18, 38, 31, 0.88) 50%, rgba(18, 38, 31, 0.4) 100%);
     --hero-border: rgba(255, 255, 255, 0.16);
 
     --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.10);
-    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 0 1.5px rgba(241, 245, 249, 0.6);
-    --glow-gold: 0 0 25px rgba(241, 245, 249, 0.20);
+    --card-hover-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 0 1.5px rgba(52, 211, 153, 0.6);
+    --glow-gold: 0 0 25px rgba(52, 211, 153, 0.20);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -59,43 +59,43 @@
 [data-theme="light"] {
     color-scheme: light;
     /* Clean Porcelain White & Polished Titanium Slate */
-    --bg-body: #f8fafc;
+    --bg-body: #f7f5ee;
     --bg-surface: #ffffff;
-    --bg-surface-elevated: #f1f5f9;
-    --bg-surface-hover: #e2e8f0;
+    --bg-surface-elevated: #efece1;
+    --bg-surface-hover: #e4e0d1;
     
     --border-color: rgba(15, 23, 42, 0.10);
     --border-subtle: rgba(15, 23, 42, 0.05);
-    --border-focus: #0f172a;
+    --border-focus: #0f5132;
 
-    --text-primary: #0f172a;
-    --text-secondary: #334155;
-    --text-muted: #4b5a6e;
-    --text-dim: #5f6e83;
+    --text-primary: #1c2b26;
+    --text-secondary: #34463f;
+    --text-muted: #4b5e56;
+    --text-dim: #5c6f66;
 
-    --gold: #0f172a;
-    --gold-light: #334155;
-    --gold-dark: #020617;
-    --gold-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    --gold-subtle: rgba(15, 23, 42, 0.06);
+    --gold: #0f5132;
+    --gold-light: #2f7355;
+    --gold-dark: #0a3a24;
+    --gold-gradient: linear-gradient(135deg, #17704a 0%, #0f5132 100%);
+    --gold-subtle: rgba(15, 81, 50, 0.07);
     --btn-gold-text: #ffffff;
 
-    --emerald: #0284c7;
-    --emerald-subtle: rgba(2, 132, 199, 0.10);
+    --emerald: #8a6508;
+    --emerald-subtle: rgba(184, 134, 11, 0.12);
 
-    --arabic-bg: #f8fafc;
+    --arabic-bg: #fbfaf5;
     --arabic-border: rgba(15, 23, 42, 0.12);
-    --arabic-text: #0f172a;
+    --arabic-text: #1c2b26;
 
-    --header-bg: rgba(255, 255, 255, 0.95);
+    --header-bg: rgba(247, 245, 238, 0.95);
     --header-border: rgba(15, 23, 42, 0.08);
 
-    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 60%, rgba(241, 245, 249, 0.9) 100%);
+    --hero-overlay: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 245, 238, 0.95) 60%, rgba(239, 236, 225, 0.9) 100%);
     --hero-border: rgba(15, 23, 42, 0.14);
 
     --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
-    --card-hover-shadow: 0 14px 30px -4px rgba(15, 23, 42, 0.14), 0 0 0 1.5px #0f172a;
-    --glow-gold: 0 0 20px rgba(15, 23, 42, 0.12);
+    --card-hover-shadow: 0 14px 30px -4px rgba(15, 81, 50, 0.18), 0 0 0 1.5px #0f5132;
+    --glow-gold: 0 0 20px rgba(15, 81, 50, 0.15);
 
     /* Legacy Mappings */
     --paper: var(--bg-body);
@@ -448,7 +448,7 @@ button {
     min-height: 400px;
     margin: 24px auto 0;
     background: radial-gradient(circle at 85% 30%, rgba(241, 245, 249, 0.06) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(6, 32, 44, 0.98) 0%, rgba(2, 21, 30, 0.99) 100%);
+                linear-gradient(135deg, rgba(18, 38, 31, 0.98) 0%, rgba(11, 26, 22, 0.99) 100%);
     border: 1.5px solid var(--hero-border);
     border-radius: 20px;
     box-shadow: var(--card-shadow);
@@ -810,13 +810,13 @@ button {
 
 .collection-button.active {
     background: var(--gold-gradient);
-    color: #03212c;
+    color: #04251a;
     font-weight: 800;
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.35);
 }
 
 [data-theme="dark"] .collection-button.active {
-    color: #02151e;
+    color: #0b1a16;
 }
 
 [data-theme="light"] .collection-button.active {
@@ -973,7 +973,7 @@ button {
     align-items: center;
     gap: 8px;
     background: var(--gold-gradient);
-    color: #03212c;
+    color: #04251a;
     font-weight: 800;
     font-size: 13px;
     padding: 10px 22px;
@@ -983,7 +983,7 @@ button {
 }
 
 [data-theme="dark"] .search-form button {
-    color: #02151e;
+    color: #0b1a16;
 }
 
 [data-theme="light"] .search-form button {
@@ -994,7 +994,7 @@ button {
 .search-form button:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.4);
-    color: #02161e;
+    color: #04251a;
 }
 
 /* Quick Topics */
@@ -1051,7 +1051,7 @@ button {
 .topic-chip.active {
     background: var(--gold-gradient);
     border-color: transparent;
-    color: #03212c;
+    color: #04251a;
     font-weight: 800;
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.35);
 }
@@ -1181,8 +1181,8 @@ button {
 
 [data-theme="light"] .hadith-book-row-card {
     background: #ffffff;
-    border-color: rgba(2, 32, 43, 0.12);
-    box-shadow: 0 4px 16px -2px rgba(2, 32, 43, 0.06);
+    border-color: rgba(15, 81, 50, 0.12);
+    box-shadow: 0 4px 16px -2px rgba(15, 81, 50, 0.06);
 }
 
 .hadith-book-row-card:hover {
@@ -1195,7 +1195,7 @@ button {
 [data-theme="light"] .hadith-book-row-card:hover {
     border-color: var(--gold);
     background: #ffffff;
-    box-shadow: 0 12px 28px -4px rgba(2, 32, 43, 0.12), 0 0 0 1.5px var(--gold);
+    box-shadow: 0 12px 28px -4px rgba(15, 81, 50, 0.12), 0 0 0 1.5px var(--gold);
 }
 
 .book-emblem-wrap {
@@ -1726,7 +1726,7 @@ mark {
 
 .page-nav-btn:not(:disabled):hover {
     background: var(--gold);
-    color: #03212c;
+    color: #04251a;
     border-color: var(--gold);
     font-weight: 800;
 }
@@ -1803,7 +1803,7 @@ svg.h-5 {
 
 .primary-button {
     background: var(--gold-gradient);
-    color: #03212c;
+    color: #04251a;
     font-weight: 800;
     font-size: 13px;
     padding: 12px 26px;
@@ -1816,7 +1816,7 @@ svg.h-5 {
 .primary-button:hover {
     transform: translateY(-1px);
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.45);
-    color: #02161e;
+    color: #04251a;
 }
 
 .status-pill {
@@ -2855,7 +2855,7 @@ svg.h-5 {
     width: 50px;
     height: 50px;
     border-radius: 14px;
-    background: rgba(2, 21, 30, 0.85);
+    background: rgba(11, 26, 22, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.16);
     padding: 4px;
     display: flex;
@@ -3827,7 +3827,7 @@ a, button, select, input {
     }
 }
 
-#pwa-install { border:1px solid #f1f5f9; border-radius:8px; background:#f1f5f9; color:#02151e; padding:10px 18px; font:inherit; cursor:pointer; }
+#pwa-install { border:1px solid #f1f5f9; border-radius:8px; background:#f1f5f9; color:#0b1a16; padding:10px 18px; font:inherit; cursor:pointer; }
 #pwa-install[hidden], #pwa-help[hidden] { display:none; }
 #pwa-help { max-width:360px; font-size:13px; line-height:1.7; }
 #pwa-help summary { cursor:pointer; }
@@ -4360,7 +4360,7 @@ a, button, select, input {
 
     .nav-drawer-btn--login {
         background: var(--gold-gradient) !important;
-        color: #03212c !important;
+        color: #04251a !important;
         font-weight: 800 !important;
         border: none !important;
         box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3) !important;
@@ -6349,7 +6349,7 @@ a, button, select, input {
 }
 
 [data-theme="light"] .ayah-arabic-text {
-    color: #03212c !important;
+    color: #04251a !important;
 }
 
 [data-theme="light"] .ayah-translation-sw {
@@ -7476,7 +7476,7 @@ a, button, select, input {
 [data-theme="light"] .surah-jump-btn {
     background: #fbf9f4 !important;
     border-color: rgba(15, 23, 42, 0.25) !important;
-    color: #03212c !important;
+    color: #04251a !important;
 }
 
 [data-theme="light"] .surah-pager-btn:hover,
@@ -7598,7 +7598,7 @@ a, button, select, input {
 }
 
 [data-theme="light"] .scaler-btn {
-    color: #03212c;
+    color: #04251a;
 }
 
 [data-theme="light"] .scaler-btn:hover {
@@ -8621,7 +8621,7 @@ a, button, select, input {
 
 .btn-image {
     background: linear-gradient(135deg, #ffffff, #cbd5e1);
-    color: #02151e;
+    color: #0b1a16;
     font-weight: 800;
 }
 
@@ -8718,8 +8718,8 @@ a, button, select, input {
 
 [data-theme="light"] .topic-box-card {
     background: #ffffff;
-    border-color: rgba(2, 32, 43, 0.12);
-    box-shadow: 0 4px 16px -2px rgba(2, 32, 43, 0.06);
+    border-color: rgba(15, 81, 50, 0.12);
+    box-shadow: 0 4px 16px -2px rgba(15, 81, 50, 0.06);
 }
 
 .topic-box-card:hover {
@@ -8732,7 +8732,7 @@ a, button, select, input {
 [data-theme="light"] .topic-box-card:hover {
     border-color: var(--gold);
     background: #ffffff;
-    box-shadow: 0 12px 28px -4px rgba(2, 32, 43, 0.12), 0 0 0 1.5px var(--gold);
+    box-shadow: 0 12px 28px -4px rgba(15, 81, 50, 0.12), 0 0 0 1.5px var(--gold);
 }
 
 .topic-card-top {
@@ -8827,8 +8827,8 @@ a, button, select, input {
 
 [data-theme="light"] .topic-active-banner {
     background: #ffffff;
-    border-color: rgba(2, 32, 43, 0.12);
-    box-shadow: 0 8px 24px -4px rgba(2, 32, 43, 0.08);
+    border-color: rgba(15, 81, 50, 0.12);
+    box-shadow: 0 8px 24px -4px rgba(15, 81, 50, 0.08);
 }
 
 .topic-banner-top-nav {
@@ -8889,7 +8889,7 @@ a, button, select, input {
 /* 1. Hero Mehrab Spotlight Card */
 .rawdah-mehrab-hero {
     border-radius: 36px 36px 22px 22px;
-    background: linear-gradient(160deg, rgba(5, 41, 54, 0.98) 0%, rgba(2, 32, 43, 0.98) 60%, rgba(3, 26, 35, 1) 100%);
+    background: linear-gradient(160deg, rgba(5, 41, 54, 0.98) 0%, rgba(15, 81, 50, 0.98) 60%, rgba(3, 26, 35, 1) 100%);
     border: 1.5px solid var(--border-color);
     padding: 32px 36px;
     box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-color);
@@ -8900,8 +8900,8 @@ a, button, select, input {
 
 [data-theme="light"] .rawdah-mehrab-hero {
     background: linear-gradient(160deg, #ffffff 0%, #edf5f7 100%);
-    border-color: rgba(2, 32, 43, 0.12);
-    box-shadow: 0 8px 30px -6px rgba(2, 32, 43, 0.08), 0 0 0 1px rgba(2, 32, 43, 0.08);
+    border-color: rgba(15, 81, 50, 0.12);
+    box-shadow: 0 8px 30px -6px rgba(15, 81, 50, 0.08), 0 0 0 1px rgba(15, 81, 50, 0.08);
 }
 
 .rawdah-arch-watermark {
@@ -9513,7 +9513,7 @@ a, button, select, input {
     height: 100vh;
     height: 100dvh;
     z-index: 9999999;
-    background: radial-gradient(circle at 50% 45%, #062b3a 0%, #02151e 55%, #010c12 100%);
+    background: radial-gradient(circle at 50% 45%, #062b3a 0%, #0b1a16 55%, #010c12 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9838,7 +9838,7 @@ a, button, select, input {
 }
 
 .qibla-instrument-card {
-    background: radial-gradient(circle at 50% 30%, rgba(10, 41, 56, 0.7) 0%, rgba(6, 32, 44, 0.95) 100%);
+    background: radial-gradient(circle at 50% 30%, rgba(10, 41, 56, 0.7) 0%, rgba(18, 38, 31, 0.95) 100%);
     border: 1px solid var(--border-color);
     border-radius: 28px;
     padding: 36px 24px;
@@ -9893,7 +9893,7 @@ a, button, select, input {
     width: 124px;
     height: 124px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(2, 21, 30, 0.92) 0%, rgba(1, 15, 22, 0.98) 100%);
+    background: radial-gradient(circle, rgba(11, 26, 22, 0.92) 0%, rgba(1, 15, 22, 0.98) 100%);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     display: flex;
@@ -9940,7 +9940,7 @@ a, button, select, input {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background: rgba(2, 21, 30, 0.65);
+    background: rgba(11, 26, 22, 0.65);
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 14px 20px;
@@ -10425,7 +10425,7 @@ a, button, select, input {
 
 /* Prayer Hero Card */
 .prayer-hero-card {
-    background: radial-gradient(circle at 50% 25%, rgba(10, 41, 56, 0.8) 0%, rgba(6, 32, 44, 0.98) 100%);
+    background: radial-gradient(circle at 50% 25%, rgba(10, 41, 56, 0.8) 0%, rgba(18, 38, 31, 0.98) 100%);
     border: 1px solid var(--border-color);
     border-radius: 24px;
     padding: 32px 28px;
@@ -10531,7 +10531,7 @@ a, button, select, input {
 }
 
 .prayer-countdown-wrap {
-    background: rgba(2, 21, 30, 0.7);
+    background: rgba(11, 26, 22, 0.7);
     border: 1px solid var(--border-color);
     border-radius: 18px;
     padding: 20px 24px;
@@ -10659,7 +10659,7 @@ a, button, select, input {
 }
 
 .prayer-row-astro {
-    background: rgba(2, 21, 30, 0.25);
+    background: rgba(11, 26, 22, 0.25);
     border-style: dashed;
 }
 
@@ -10767,7 +10767,7 @@ a, button, select, input {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: rgba(2, 21, 30, 0.65);
+    background: rgba(11, 26, 22, 0.65);
     border: 1px solid var(--border-color);
     border-radius: 14px;
     padding: 14px 18px;
@@ -11145,3 +11145,14 @@ a, button, select, input {
 [data-theme="light"] .p-sub-name { color: #3f4d61; }
 [data-theme="light"] .month-ar { color: #64748b; }
 [data-theme="light"] .qibla-instrument-card .qibla-minimal-hint { color: #f1f5f9; }
+
+/* Palette ya Zumaridi na Dhahabu: marekebisho madogo ya mwisho */
+[data-theme="light"] .reader-top-nav {
+    background: transparent !important;
+    border-color: transparent !important;
+}
+[data-theme="dark"] { --text-muted: #a9bdb3; }
+[data-theme="dark"] .pill-count,
+[data-theme="dark"] .bookmark-tab-badge { color: #6ee7b7; }
+[data-theme="light"] .p-pill.p-pill-passed { color: #34463f; }
+[data-theme="light"] .month-ar { color: #4b5e56; }

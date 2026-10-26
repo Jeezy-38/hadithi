@@ -17,7 +17,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:image" content="{{ url('images/logo.png') }}">
     <link rel="icon" href="{{ asset('images/logo.png') }}">
-    <meta name="theme-color" content="#03212c">
+    <meta name="theme-color" content="#0b1a16">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
