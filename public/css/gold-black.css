@@ -11039,3 +11039,9 @@ a, button, select, input {
     .rawdah-book-cover-wrap { width: 62px; }
     .rawdah-book-card { padding: 14px 12px; }
 }
+
+/* Maktaba: kwenye simu ndogo kitufe cha "Tafuta" kinabanwa na kubaki kidoti cheusi.
+   Utafutaji ni live (na Enter inafanya kazi), kwa hiyo tunakiondoa. */
+@media (max-width: 480px) {
+    .library-search button[type="submit"] { display: none; }
+}
