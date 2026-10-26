@@ -305,18 +305,14 @@
         const optedOut = isNotificationOptedOut();
 
         if (permission === 'granted' && !optedOut) {
-            if (notifBadge) {
-                notifBadge.textContent = 'Imewashwa';
-                notifBadge.classList.add('is-installed');
-            }
+            if (notifBadge) notifBadge.classList.add('is-on');
+            notifBtn.setAttribute('aria-checked', 'true');
             if (notifSub) {
                 notifSub.textContent = 'Unapokea Hadithi kila asubuhi';
             }
         } else {
-            if (notifBadge) {
-                notifBadge.textContent = 'Washa';
-                notifBadge.classList.remove('is-installed');
-            }
+            if (notifBadge) notifBadge.classList.remove('is-on');
+            notifBtn.setAttribute('aria-checked', 'false');
             if (notifSub) {
                 notifSub.textContent = optedOut ? 'Arifa zimezimwa kwa hiari' : 'Hadithi ya siku kila asubuhi';
             }
