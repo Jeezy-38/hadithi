@@ -717,7 +717,7 @@
 }
 
 [data-theme="light"] .purpose-tab-btn {
-    color: #4b5e56;
+    color: #44607a;
 }
 
 [data-theme="light"] .purpose-tab-btn strong {
@@ -725,8 +725,8 @@
 }
 
 [data-theme="light"] .purpose-tab-btn.active {
-    background: #0f5132 !important;
-    border-color: #0f5132 !important;
+    background: #0a3f66 !important;
+    border-color: #0a3f66 !important;
     color: #ffffff !important;
     box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
 }
@@ -742,11 +742,11 @@
 }
 
 [data-theme="light"] .curr-toggle-btn {
-    color: #4b5e56;
+    color: #44607a;
 }
 
 [data-theme="light"] .curr-toggle-btn.active {
-    background: #0f5132 !important;
+    background: #0a3f66 !important;
     color: #ffffff !important;
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.18);
 }
@@ -758,12 +758,12 @@
 }
 
 [data-theme="light"] .preset-chip-btn:hover {
-    border-color: #0f5132;
+    border-color: #0a3f66;
 }
 
 [data-theme="light"] .preset-chip-btn.active {
-    background: #0f5132 !important;
-    border-color: #0f5132 !important;
+    background: #0a3f66 !important;
+    border-color: #0a3f66 !important;
     color: #ffffff !important;
     font-weight: 800;
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
@@ -779,14 +779,14 @@
 }
 
 [data-theme="light"] .payment-method-card span {
-    color: #4b5e56;
+    color: #44607a;
 }
 
 [data-theme="light"] .payment-method-card.active,
 [data-theme="light"] .payment-method-card:has(input:checked) {
     background: #ffffff !important;
-    border-color: #0f5132 !important;
-    box-shadow: 0 0 0 2px #0f5132;
+    border-color: #0a3f66 !important;
+    box-shadow: 0 0 0 2px #0a3f66;
 }
 
 [data-theme="light"] .support-label {
@@ -802,7 +802,7 @@
 
 [data-theme="light"] .support-input:focus,
 [data-theme="light"] .support-textarea:focus {
-    border-color: #0f5132;
+    border-color: #0a3f66;
     box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.10);
 }
 
@@ -815,7 +815,7 @@
 }
 
 [data-theme="light"] .support-submit-btn {
-    background: linear-gradient(135deg, #1e293b 0%, #0f5132 100%) !important;
+    background: linear-gradient(135deg, #1e293b 0%, #0a3f66 100%) !important;
     color: #ffffff !important;
     font-weight: 800;
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
