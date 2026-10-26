@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Soma na tafuta hadith za Sahih al-Bukhari na Sahih Muslim kwa Kiarabu na Kiswahili.">
     <title>{{ $title ?? 'Maktaba ya Hadith' }} · Hadith</title>
+    {{-- Link preview (WhatsApp, Facebook, Telegram, X) --}}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Maktaba ya Hadith">
+    <meta property="og:title" content="{{ $title ?? 'Maktaba ya Hadith' }} · Hadith">
+    <meta property="og:description" content="Soma na tafuta hadith za Sahih al-Bukhari na Sahih Muslim kwa Kiarabu na Kiswahili.">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ url('images/logo.png') }}">
+    <meta property="og:image:width" content="689">
+    <meta property="og:image:height" content="795">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="{{ url('images/logo.png') }}">
     <link rel="icon" href="{{ asset('images/logo.png') }}">
     <meta name="theme-color" content="#03212c">
     <meta name="mobile-web-app-capable" content="yes">
