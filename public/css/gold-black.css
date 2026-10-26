@@ -214,20 +214,20 @@ button {
 [data-theme="light"] .brand-logo {
     border: none;
     box-shadow: none;
-    filter: brightness(0.12) drop-shadow(0 2px 8px rgba(15, 23, 42, 0.16));
+    filter: drop-shadow(0 2px 8px rgba(15, 23, 42, 0.16));
 }
 
 [data-theme="light"] .brand:hover .brand-logo {
     border: none;
     box-shadow: none;
     transform: scale(1.08);
-    filter: brightness(0.08) drop-shadow(0 4px 14px rgba(15, 23, 42, 0.24));
+    filter: drop-shadow(0 4px 14px rgba(15, 23, 42, 0.24));
 }
 
 [data-theme="light"] .nav-drawer-logo,
 [data-theme="light"] .pwa-banner-logo,
 [data-theme="light"] .auth-brand-badge img {
-    filter: brightness(0.12);
+    filter: none;
 }
 
 .brand small {
@@ -2878,7 +2878,7 @@ svg.h-5 {
 }
 
 [data-theme="light"] .footer-logo-img {
-    filter: brightness(0.12) drop-shadow(0 2px 6px rgba(15, 23, 42, 0.15));
+    filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.15));
 }
 
 .footer-brand-headings {
@@ -9593,7 +9593,7 @@ a, button, select, input {
 }
 
 [data-theme="light"] .bayt-splash-logo {
-    filter: brightness(0.12) drop-shadow(0 6px 18px rgba(15, 23, 42, 0.2));
+    filter: drop-shadow(0 6px 18px rgba(15, 23, 42, 0.2));
 }
 
 .bayt-splash-title {
@@ -11156,3 +11156,13 @@ a, button, select, input {
 [data-theme="dark"] .bookmark-tab-badge { color: #6ee7b7; }
 [data-theme="light"] .p-pill.p-pill-passed { color: #34463f; }
 [data-theme="light"] .month-ar { color: #4b5e56; }
+
+/* Logo: toleo la kijani kirefu (logo.png) kwa light; mint kwa dark */
+[data-theme="dark"] .brand-logo,
+[data-theme="dark"] .nav-drawer-logo,
+[data-theme="dark"] .pwa-banner-logo,
+[data-theme="dark"] .auth-brand-badge img,
+[data-theme="dark"] .footer-logo-img,
+[data-theme="dark"] .bayt-splash-logo {
+    content: url("../images/logo-mint.png");
+}
