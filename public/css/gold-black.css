@@ -11045,3 +11045,19 @@ a, button, select, input {
 @media (max-width: 480px) {
     .library-search button[type="submit"] { display: none; }
 }
+
+/* Light theme: --gold ni navy, kwa hiyo maandishi/ikoni juu yake lazima ziwe nyeupe
+   (zilikuwa nyeusi juu ya navy na hazionekani). */
+[data-theme="light"] .quran-tab-btn.active,
+[data-theme="light"] .category-tab-btn.active,
+[data-theme="light"] .display-mode-btn.active,
+[data-theme="light"] .quran-play-all-btn:hover,
+[data-theme="light"] .quran-play-all-btn.is-playing,
+[data-theme="light"] .page-nav-btn:not(:disabled):hover,
+[data-theme="light"] .primary-button,
+[data-theme="light"] .qf-play-pause-btn,
+[data-theme="light"] .back-to-top-btn:hover,
+[data-theme="light"] .quran-surah-card:hover .surah-card-num-box,
+[data-theme="light"] .quran-surah-card:hover .surah-card-num {
+    color: #ffffff;
+}
