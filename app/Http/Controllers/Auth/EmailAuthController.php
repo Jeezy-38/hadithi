@@ -71,7 +71,7 @@ class EmailAuthController extends Controller
 
             $googleOnly = User::where('email', $credentials['email'])->whereNull('password')->exists();
             $this->fail($googleOnly
-                ? 'Akaunti hii ilifunguliwa kwa Google. Tumia kitufe cha "Endelea na Google".'
+                ? 'Akaunti hii ilifunguliwa kwa Google na haina nenosiri bado. Tumia "Endelea na Google", au bonyeza "Umesahau nenosiri?" ili uweke nenosiri jipya.'
                 : 'Email au nenosiri si sahihi.');
         }
 
