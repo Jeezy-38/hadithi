@@ -266,7 +266,7 @@
                         {{ number_format($views7Days) }}
                     </div>
                     <div style="font-size: 13px; color: var(--adm-text-sub);">
-                        Wageni wa Kipekee: <strong style="color: var(--adm-blue);">{{ number_format($unique7Days) }}</strong>
+                        Wageni (jumla ya kila siku): <strong style="color: var(--adm-blue);">{{ number_format($unique7Days) }}</strong>
                     </div>
                 </div>
 
@@ -880,6 +880,37 @@
                     </div>
                 </div>
 
+            </div>
+
+            {{-- Kumbukumbu za vitendo vya Admin --}}
+            <div class="adm-kpi-card" style="margin-top: 20px;">
+                <h2 style="font-size: 16px; font-weight: 800; margin: 0 0 14px; color: var(--adm-text-main);">
+                    📝 Shughuli za Admin za Karibuni
+                </h2>
+                <div style="overflow-x: auto;">
+                    <table class="adm-table">
+                        <thead>
+                            <tr>
+                                <th>Tarehe</th>
+                                <th>Admin</th>
+                                <th>Kitendo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($adminLogs as $log)
+                                <tr>
+                                    <td style="white-space: nowrap;">{{ $log->created_at?->format('d M Y H:i') }}</td>
+                                    <td>{{ $log->user?->email ?? '—' }}</td>
+                                    <td>{{ $log->description }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3" style="text-align: center; color: var(--adm-text-sub); padding: 24px;">Bado hakuna shughuli zilizorekodiwa.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
         @endif
 

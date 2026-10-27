@@ -63,17 +63,27 @@ class User extends Authenticatable
             return true;
         }
 
+        // Barua pepe zilizo kwenye .env zinatoa admin TU zikiwa zimethibitishwa;
+        // vinginevyo mtu angejisajili kwa email ya admin kabla ya mwenyewe.
+        return $this->email_verified_at !== null && $this->hasConfiguredAdminEmail();
+    }
+
+    public function hasConfiguredAdminEmail(): bool
+    {
+        $mine = strtolower(trim((string) $this->email));
+        if ($mine === '') {
+            return false;
+        }
+
         $envAdmin = config('app.admin_email');
-        if ($envAdmin && strtolower(trim($this->email)) === strtolower(trim($envAdmin))) {
+        if ($envAdmin && $mine === strtolower(trim($envAdmin))) {
             return true;
         }
 
         $adminList = config('app.admin_emails', '');
         if ($adminList) {
             $emails = array_map('strtolower', array_map('trim', explode(',', $adminList)));
-            if (in_array(strtolower(trim($this->email)), $emails, true)) {
-                return true;
-            }
+            return in_array($mine, $emails, true);
         }
 
         return false;

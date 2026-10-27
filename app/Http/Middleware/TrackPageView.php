@@ -14,7 +14,7 @@ class TrackPageView
         $response = $next($request);
 
         // Track only successful GET HTML requests
-        if ($request->isMethod('GET') && !$request->ajax() && !$request->prefetch()) {
+        if ($request->isMethod('GET') && !$request->ajax() && !$request->prefetch() && $response->getStatusCode() === 200) {
             $path = '/' . ltrim($request->path(), '/');
 
             // Skip admin, webhooks, livewire internals, and audio streams
@@ -35,6 +35,12 @@ class TrackPageView
 
     protected function recordVisit(Request $request, string $path): void
     {
+        // Ruka roboti/crawlers na maombi yasiyo na User-Agent (hayana thamani kwa takwimu za wageni)
+        $ua = (string) $request->userAgent();
+        if ($ua === '' || preg_match('/bot|crawl|spider|slurp|facebookexternalhit|whatsapp|telegram|preview|curl|wget|python-requests|headless|monitor|uptime/i', $ua)) {
+            return;
+        }
+
         try {
             $today = now()->toDateString();
             $ip = $request->ip() ?? '127.0.0.1';

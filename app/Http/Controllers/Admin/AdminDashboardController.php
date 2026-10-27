@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminLog;
 use App\Models\Dua;
 use App\Models\Hadith;
 use App\Models\PageView;
@@ -10,6 +11,7 @@ use App\Models\Payment;
 use App\Models\QuranAyah;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -18,29 +20,53 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class AdminDashboardController extends Controller
 {
+    private const TABS = ['overview', 'users', 'payments', 'content', 'system'];
+
     public function index(Request $request)
     {
-        $activeTab = $request->get('tab', 'overview');
+        $tab = $request->get('tab');
+        $activeTab = in_array($tab, self::TABS, true) ? $tab : 'overview';
 
+        // Namba za vichwa vya tabs (nafuu) + data ya tab inayotumika TU
+        $data = [
+            'activeTab' => $activeTab,
+            'totalUsers' => User::count(),
+            'totalHadith' => Hadith::count(),
+            'paymentsCompletedCount' => Payment::where('status', 'completed')->count(),
+        ];
+
+        $data += match ($activeTab) {
+            'users' => $this->usersData($request),
+            'payments' => $this->paymentsData($request),
+            'content' => $this->contentData($request),
+            'system' => $this->systemData(),
+            default => $this->overviewData(),
+        };
+
+        return view('admin.dashboard', $data);
+    }
+
+    /**
+     * Wageni wa kipekee kwa "mgeni-siku": ip_hash hubadilika kila siku (faragha),
+     * kwa hiyo jumla ya siku nyingi ni jumla ya wageni wa kila siku, si watu tofauti.
+     */
+    private function uniqueVisitorDays(string $from): int
+    {
+        $distinct = PageView::query()
+            ->select('viewed_date', 'ip_hash')
+            ->where('viewed_date', '>=', $from)
+            ->whereNotNull('ip_hash')
+            ->distinct();
+
+        return DB::query()->fromSub($distinct, 't')->count();
+    }
+
+    private function overviewData(): array
+    {
         $today = Carbon::today()->toDateString();
         $sevenDaysAgo = Carbon::today()->subDays(6)->toDateString();
         $thirtyDaysAgo = Carbon::today()->subDays(29)->toDateString();
 
-        // ---------------------------------------------------------
-        // 1. TRAFIKI & WATAZAMAJI (Analytics)
-        // ---------------------------------------------------------
-        $viewsToday = PageView::where('viewed_date', $today)->count();
-        $uniqueToday = PageView::where('viewed_date', $today)->distinct('ip_hash')->count('ip_hash');
-
-        $views7Days = PageView::where('viewed_date', '>=', $sevenDaysAgo)->count();
-        $unique7Days = PageView::where('viewed_date', '>=', $sevenDaysAgo)->distinct('ip_hash')->count('ip_hash');
-
-        $views30Days = PageView::where('viewed_date', '>=', $thirtyDaysAgo)->count();
-        $unique30Days = PageView::where('viewed_date', '>=', $thirtyDaysAgo)->distinct('ip_hash')->count('ip_hash');
-
-        $viewsAllTime = PageView::count();
-
-        // Takwimu za siku 7 za karibuni
         $rawDailyViews = PageView::select('viewed_date', DB::raw('count(*) as total'))
             ->where('viewed_date', '>=', $sevenDaysAgo)
             ->groupBy('viewed_date')
@@ -50,87 +76,42 @@ class AdminDashboardController extends Controller
         $dailyStats = [];
         for ($i = 6; $i >= 0; $i--) {
             $date = Carbon::today()->subDays($i)->toDateString();
-            $label = Carbon::today()->subDays($i)->isoFormat('ddd D');
             $dailyStats[] = [
                 'date' => $date,
-                'label' => $label,
+                'label' => Carbon::today()->subDays($i)->isoFormat('ddd D'),
                 'count' => $rawDailyViews[$date] ?? 0,
             ];
         }
 
-        // Kurasa zinazoongoza
-        $topPages = PageView::select('path', DB::raw('count(*) as total'))
-            ->where('viewed_date', '>=', $thirtyDaysAgo)
-            ->groupBy('path')
-            ->orderByDesc('total')
-            ->limit(7)
-            ->get();
+        $views7Days = array_sum(array_column($dailyStats, 'count'));
+        $viewsToday = $rawDailyViews[$today] ?? 0;
 
-        // Vifaa
-        $deviceMobile = PageView::whereIn('device_type', ['mobile', 'tablet'])->count();
-        $deviceDesktop = PageView::where('device_type', 'desktop')->count();
-        $deviceTotal = $deviceMobile + $deviceDesktop;
-        $mobilePercent = $deviceTotal > 0 ? round(($deviceMobile / $deviceTotal) * 100) : 0;
-        $desktopPercent = $deviceTotal > 0 ? (100 - $mobilePercent) : 0;
+        return [
+            'viewsToday' => $viewsToday,
+            'uniqueToday' => PageView::where('viewed_date', $today)->distinct('ip_hash')->count('ip_hash'),
+            'views7Days' => $views7Days,
+            'unique7Days' => $this->uniqueVisitorDays($sevenDaysAgo),
+            'dailyStats' => $dailyStats,
+            'topPages' => PageView::select('path', DB::raw('count(*) as total'))
+                ->where('viewed_date', '>=', $thirtyDaysAgo)
+                ->groupBy('path')
+                ->orderByDesc('total')
+                ->limit(7)
+                ->get(),
+            'recentViews' => PageView::with('user')->latest('id')->limit(12)->get(),
+            'totalAdmins' => User::where('is_admin', true)->count(),
+            'totalSupporters' => User::where('is_supporter', true)->count(),
+            'totalTzs' => Payment::where('status', 'completed')->where('currency', 'TZS')->sum('amount'),
+            'totalUsd' => Payment::where('status', 'completed')->where('currency', 'USD')->sum('amount'),
+            'monthTzs' => Payment::where('status', 'completed')
+                ->where('currency', 'TZS')
+                ->where('completed_at', '>=', Carbon::now()->startOfMonth())
+                ->sum('amount'),
+        ];
+    }
 
-        // Ziara za karibuni zaidi (Real-time live visitor stream)
-        $recentViews = PageView::with('user')->latest('id')->limit(12)->get();
-
-        // ---------------------------------------------------------
-        // 2. MAPATO YA SADAKA & MALIPO (ClickPesa / Pesapal)
-        // ---------------------------------------------------------
-        $totalTzs = Payment::where('status', 'completed')
-            ->where('currency', 'TZS')
-            ->sum('amount');
-
-        $totalUsd = Payment::where('status', 'completed')
-            ->where('currency', 'USD')
-            ->sum('amount');
-
-        $startOfMonth = Carbon::now()->startOfMonth();
-        $monthTzs = Payment::where('status', 'completed')
-            ->where('currency', 'TZS')
-            ->where('completed_at', '>=', $startOfMonth)
-            ->sum('amount');
-
-        $monthUsd = Payment::where('status', 'completed')
-            ->where('currency', 'USD')
-            ->where('completed_at', '>=', $startOfMonth)
-            ->sum('amount');
-
-        $paymentsCompletedCount = Payment::where('status', 'completed')->count();
-        $paymentsPendingCount = Payment::where('status', 'pending')->count();
-        $paymentsFailedCount = Payment::where('status', 'failed')->count();
-
-        // Orodha ya malipo yenye uchujaji na utafutaji
-        $paymentStatus = $request->get('payment_status', 'all');
-        $paymentSearch = trim((string) $request->get('payment_search', ''));
-
-        $paymentsQuery = Payment::query()->latest();
-
-        if ($paymentStatus !== 'all' && in_array($paymentStatus, ['completed', 'pending', 'failed'])) {
-            $paymentsQuery->where('status', $paymentStatus);
-        }
-
-        if ($paymentSearch !== '') {
-            $paymentsQuery->where(function ($q) use ($paymentSearch) {
-                $q->where('reference', 'like', "%{$paymentSearch}%")
-                    ->orWhere('donor_name', 'like', "%{$paymentSearch}%")
-                    ->orWhere('donor_email', 'like', "%{$paymentSearch}%")
-                    ->orWhere('donor_phone', 'like', "%{$paymentSearch}%");
-            });
-        }
-
-        $payments = $paymentsQuery->paginate(15, ['*'], 'payments_page')->withQueryString();
-
-        // ---------------------------------------------------------
-        // 3. USIMAMIZI KAMILI WA WATUMIAJI (User Management)
-        // ---------------------------------------------------------
-        $totalUsers = User::count();
-        $totalAdmins = User::where('is_admin', true)->count();
-        $totalSupporters = User::where('is_supporter', true)->count();
-        $totalRegularUsers = $totalUsers - $totalAdmins;
-
+    private function usersData(Request $request): array
+    {
         $userRole = $request->get('user_role', 'all');
         $userSearch = trim((string) $request->get('user_search', ''));
 
@@ -147,90 +128,123 @@ class AdminDashboardController extends Controller
         }
 
         if ($userSearch !== '') {
-            $usersQuery->where(function ($q) use ($userSearch) {
-                $q->where('name', 'like', "%{$userSearch}%")
-                    ->orWhere('email', 'like', "%{$userSearch}%");
+            $like = '%' . $this->escapeLike($userSearch) . '%';
+            $usersQuery->where(function ($q) use ($like) {
+                $q->where('name', 'like', $like)->orWhere('email', 'like', $like);
             });
         }
 
-        $users = $usersQuery->paginate(12, ['*'], 'users_page')->withQueryString();
+        return [
+            'totalAdmins' => User::where('is_admin', true)->count(),
+            'totalSupporters' => User::where('is_supporter', true)->count(),
+            'userRole' => $userRole,
+            'userSearch' => $userSearch,
+            'users' => $usersQuery->paginate(12, ['*'], 'users_page')->withQueryString(),
+        ];
+    }
 
-        // ---------------------------------------------------------
-        // 4. MAUDHUI (Hadith, Duaa, Quran)
-        // ---------------------------------------------------------
-        $totalHadith = Hadith::count();
-        $totalHadithPublished = Hadith::where('is_published', true)->count();
+    private function paymentsData(Request $request): array
+    {
+        $paymentStatus = $request->get('payment_status', 'all');
+        $paymentSearch = trim((string) $request->get('payment_search', ''));
 
-        $totalDuas = Dua::count();
-        $totalDuasPublished = Dua::where('is_published', true)->count();
+        $paymentsQuery = Payment::query()->latest();
 
-        $totalAyahs = QuranAyah::count();
+        if (in_array($paymentStatus, ['completed', 'pending', 'failed'], true)) {
+            $paymentsQuery->where('status', $paymentStatus);
+        } else {
+            $paymentStatus = 'all';
+        }
 
+        if ($paymentSearch !== '') {
+            $like = '%' . $this->escapeLike($paymentSearch) . '%';
+            $paymentsQuery->where(function ($q) use ($like) {
+                $q->where('reference', 'like', $like)
+                    ->orWhere('donor_name', 'like', $like)
+                    ->orWhere('donor_email', 'like', $like)
+                    ->orWhere('donor_phone', 'like', $like);
+            });
+        }
+
+        return [
+            'paymentsPendingCount' => Payment::where('status', 'pending')->count(),
+            'paymentsFailedCount' => Payment::where('status', 'failed')->count(),
+            'paymentStatus' => $paymentStatus,
+            'paymentSearch' => $paymentSearch,
+            'payments' => $paymentsQuery->paginate(15, ['*'], 'payments_page')->withQueryString(),
+        ];
+    }
+
+    private function contentData(Request $request): array
+    {
         $hadithSearch = trim((string) $request->get('hadith_search', ''));
         $hadithsQuery = Hadith::with('chapter.book.collection')->latest('id');
 
         if ($hadithSearch !== '') {
-            $hadithsQuery->where(function ($q) use ($hadithSearch) {
-                $q->where('swahili_text', 'like', "%{$hadithSearch}%")
-                    ->orWhere('hadith_number', 'like', "%{$hadithSearch}%");
+            $like = '%' . $this->escapeLike($hadithSearch) . '%';
+            $hadithsQuery->where(function ($q) use ($like) {
+                $q->where('swahili_text', 'like', $like)->orWhere('hadith_number', 'like', $like);
             });
         }
 
-        $hadiths = $hadithsQuery->paginate(10, ['*'], 'hadiths_page')->withQueryString();
-
-        // ---------------------------------------------------------
-        // 5. TAARIFA ZA MFUMO (System Info & Gateways)
-        // ---------------------------------------------------------
-        $systemInfo = [
-            'payment_gateway' => config('services.payment_gateway', 'auto'),
-            'clickpesa_configured' => ! empty(config('services.clickpesa.client_id')) && ! empty(config('services.clickpesa.api_key')),
-            'pesapal_configured' => ! empty(config('services.pesapal.consumer_key')) && ! empty(config('services.pesapal.consumer_secret')),
-            'php_version' => PHP_VERSION,
-            'laravel_version' => app()->version(),
-            'db_driver' => config('database.default'),
-            'server_time' => now()->isoFormat('LLLL'),
+        return [
+            'totalHadithPublished' => Hadith::where('is_published', true)->count(),
+            'totalDuas' => Dua::count(),
+            'totalDuasPublished' => Dua::where('is_published', true)->count(),
+            'totalAyahs' => QuranAyah::count(),
+            'hadithSearch' => $hadithSearch,
+            'hadiths' => $hadithsQuery->paginate(10, ['*'], 'hadiths_page')->withQueryString(),
         ];
+    }
 
-        return view('admin.dashboard', compact(
-            'activeTab',
-            'viewsToday',
-            'uniqueToday',
-            'views7Days',
-            'unique7Days',
-            'views30Days',
-            'unique30Days',
-            'viewsAllTime',
-            'dailyStats',
-            'topPages',
-            'mobilePercent',
-            'desktopPercent',
-            'recentViews',
-            'totalTzs',
-            'totalUsd',
-            'monthTzs',
-            'monthUsd',
-            'paymentsCompletedCount',
-            'paymentsPendingCount',
-            'paymentsFailedCount',
-            'payments',
-            'paymentStatus',
-            'paymentSearch',
-            'totalUsers',
-            'totalAdmins',
-            'totalSupporters',
-            'totalRegularUsers',
-            'users',
-            'userRole',
-            'userSearch',
-            'totalHadith',
-            'totalHadithPublished',
-            'totalDuas',
-            'totalDuasPublished',
-            'totalAyahs',
-            'hadiths',
-            'hadithSearch',
-            'systemInfo'
-        ));
+    private function systemData(): array
+    {
+        return [
+            'systemInfo' => [
+                'payment_gateway' => config('services.payment_gateway', 'auto'),
+                'clickpesa_configured' => ! empty(config('services.clickpesa.client_id')) && ! empty(config('services.clickpesa.api_key')),
+                'pesapal_configured' => ! empty(config('services.pesapal.consumer_key')) && ! empty(config('services.pesapal.consumer_secret')),
+                'php_version' => PHP_VERSION,
+                'laravel_version' => app()->version(),
+                'db_driver' => config('database.default'),
+                'server_time' => now()->isoFormat('LLLL'),
+            ],
+            'adminLogs' => AdminLog::with('user')->latest('id')->limit(15)->get(),
+        ];
+    }
+
+    private function escapeLike(string $value): string
+    {
+        return addcslashes($value, '%_\\');
+    }
+
+    /** Hifadhi kumbukumbu ya kitendo cha admin (haivunji kitendo kikishindwa). */
+    private function audit(string $action, string $description, ?Model $target = null): void
+    {
+        try {
+            AdminLog::create([
+                'user_id' => auth()->id(),
+                'action' => $action,
+                'description' => mb_substr($description, 0, 255),
+                'target_type' => $target ? class_basename($target) : null,
+                'target_id' => $target?->getKey(),
+                'ip_address' => request()->ip(),
+            ]);
+        } catch (\Throwable $e) {
+            report($e);
+        }
+    }
+
+    /** Zuia CSV/Excel formula injection (=, +, -, @) kwenye data iliyoandikwa na watumiaji. */
+    private function csvSafe(mixed $value): string
+    {
+        $value = (string) $value;
+
+        if ($value !== '' && preg_match('/^[=+\-@\t\r]/', $value) && ! preg_match('/^\+?[0-9][0-9\s\-]*$/', $value)) {
+            return "'" . $value;
+        }
+
+        return $value;
     }
 
     /**
@@ -242,10 +256,15 @@ class AdminDashboardController extends Controller
             return redirect()->back()->with('error', 'Huwezi kujiondolea u-admin mwenyewe ili usijifungie nje ya jopo.');
         }
 
+        if ($user->is_admin && User::where('is_admin', true)->count() <= 1) {
+            return redirect()->back()->with('error', 'Huwezi kumwondolea u-admin admin wa mwisho aliyebaki.');
+        }
+
         $user->is_admin = ! $user->is_admin;
         $user->save();
 
         $action = $user->is_admin ? 'amepewa' : 'ameondolewa';
+        $this->audit($user->is_admin ? 'user.admin_granted' : 'user.admin_revoked', "{$user->email} {$action} hadhi ya Admin", $user);
 
         return redirect()->back()->with('success', "Mtumiaji {$user->name} ({$user->email}) {$action} hadhi ya Admin kikamilifu.");
     }
@@ -262,6 +281,7 @@ class AdminDashboardController extends Controller
         $user->save();
 
         $action = $user->is_supporter ? 'amewezeshwa kuwa' : 'ameondolewa kwenye';
+        $this->audit($user->is_supporter ? 'user.supporter_on' : 'user.supporter_off', "{$user->email} {$action} Supporter", $user);
 
         return redirect()->back()->with('success', "Mtumiaji {$user->name} {$action} orodha ya Waungaji Mkono (Supporters).");
     }
@@ -275,6 +295,7 @@ class AdminDashboardController extends Controller
         $hadith->save();
 
         $status = $hadith->is_published ? 'imechapishwa hadharani' : 'imefichwa (draft)';
+        $this->audit($hadith->is_published ? 'hadith.published' : 'hadith.hidden', "Hadithi #{$hadith->hadith_number} {$status}", $hadith);
 
         return redirect()->back()->with('success', "Hadithi #{$hadith->hadith_number} sasa {$status}.");
     }
@@ -288,6 +309,7 @@ class AdminDashboardController extends Controller
         $dua->save();
 
         $status = $dua->is_published ? 'imechapishwa' : 'imefichwa';
+        $this->audit($dua->is_published ? 'dua.published' : 'dua.hidden', "Duaa '{$dua->title}' {$status}", $dua);
 
         return redirect()->back()->with('success', "Duaa '{$dua->title}' sasa {$status}.");
     }
@@ -299,6 +321,7 @@ class AdminDashboardController extends Controller
     {
         try {
             Artisan::call('optimize:clear');
+            $this->audit('system.cache_cleared', 'Cache ya mfumo imesafishwa');
 
             return redirect()->back()->with('success', 'Cache ya mfumo, views, routes, na usanidi (config) zimesafishwa kwa ukamilifu!');
         } catch (\Throwable $e) {
@@ -311,6 +334,8 @@ class AdminDashboardController extends Controller
      */
     public function exportPayments(): StreamedResponse
     {
+        $this->audit('payments.exported', 'Malipo yamehamishwa kwenye CSV');
+
         $fileName = 'malipo_hadith_app_' . now()->format('Y_m_d_His') . '.csv';
 
         $headers = [
@@ -344,17 +369,17 @@ class AdminDashboardController extends Controller
             Payment::latest()->chunk(200, function ($payments) use ($file) {
                 foreach ($payments as $p) {
                     fputcsv($file, [
-                        $p->reference,
+                        $this->csvSafe($p->reference),
                         $p->created_at ? $p->created_at->format('Y-m-d H:i') : '',
-                        $p->is_anonymous ? 'Binafsi (Anonymous)' : ($p->donor_name ?: 'Bila Jina'),
-                        $p->donor_email ?: '-',
-                        $p->donor_phone ?: '-',
+                        $p->is_anonymous ? 'Binafsi (Anonymous)' : $this->csvSafe($p->donor_name ?: 'Bila Jina'),
+                        $this->csvSafe($p->donor_email ?: '-'),
+                        $this->csvSafe($p->donor_phone ?: '-'),
                         number_format($p->amount, 2, '.', ''),
-                        $p->currency,
-                        strtoupper((string) $p->gateway),
-                        $p->payment_method ?: '-',
+                        $this->csvSafe($p->currency),
+                        $this->csvSafe(strtoupper((string) $p->gateway)),
+                        $this->csvSafe($p->payment_method ?: '-'),
                         strtoupper($p->status),
-                        $p->message ?: '',
+                        $this->csvSafe($p->message ?: ''),
                     ]);
                 }
             });
