@@ -70,6 +70,12 @@
                             <span data-i18n="pg_ft_topics">Mada za Kiislamu</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('tasbih') }}" class="footer-link-item">
+                            <span class="footer-link-bullet">✦</span>
+                            <span data-i18n="pg_ft_tasbih">Digital Tasbih</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 

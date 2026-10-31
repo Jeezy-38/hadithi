@@ -59,7 +59,6 @@
                     <a href="{{ route('topics.index') }}" class="{{ request()->routeIs('topics.*') ? 'active' : '' }}">Mada za Kiislamu</a>
                     <a href="{{ route('quran.index') }}" class="{{ request()->routeIs('quran.*') ? 'active' : '' }}" data-i18n="nav_quran">Qur'ani</a>
                     <a href="{{ route('duaa.index') }}" class="{{ request()->routeIs('duaa.*') ? 'active' : '' }}" data-i18n="nav_duaa">Dua & Adhkar</a>
-                    <a href="{{ route('tasbih') }}" class="{{ request()->routeIs('tasbih') ? 'active' : '' }}" data-i18n="nav_tasbih">Tasbih</a>
                     <a href="{{ route('bookmarks') }}" class="{{ request()->routeIs('bookmarks') ? 'active' : '' }}" data-i18n="nav_bookmarks">Vipendwa</a>
                     <a href="{{ route('support') }}" class="{{ request()->routeIs('support*') ? 'active' : '' }}">Sadaka &amp; Changia</a>
                 </div>

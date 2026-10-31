@@ -11,23 +11,6 @@
         <span class="mobile-nav-label" data-i18n="nav_library">Maktaba</span>
     </a>
 
-    <a href="{{ route('tasbih') }}" class="mobile-nav-item {{ request()->routeIs('tasbih') ? 'active' : '' }}">
-        <span class="mobile-nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle class="nav-tint" cx="12" cy="12" r="6" stroke="none"></circle>
-                <circle cx="12" cy="4.2" r="1.7" fill="currentColor" stroke="none"></circle>
-                <circle cx="17.8" cy="6.6" r="1.7" fill="currentColor" stroke="none"></circle>
-                <circle cx="20" cy="12" r="1.7" fill="currentColor" stroke="none"></circle>
-                <circle cx="17.8" cy="17.4" r="1.7" fill="currentColor" stroke="none"></circle>
-                <circle cx="12" cy="19.8" r="1.7" fill="currentColor" stroke="none"></circle>
-                <circle cx="6.2" cy="17.4" r="1.7" fill="currentColor" stroke="none"></circle>
-                <circle cx="4" cy="12" r="1.7" fill="currentColor" stroke="none"></circle>
-                <circle cx="6.2" cy="6.6" r="1.7" fill="currentColor" stroke="none"></circle>
-            </svg>
-        </span>
-        <span class="mobile-nav-label" data-i18n="nav_tasbih">Tasbih</span>
-    </a>
-
     <a href="{{ route('bookmarks') }}" class="mobile-nav-item {{ request()->routeIs('bookmarks') ? 'active' : '' }}">
         <span class="mobile-nav-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">

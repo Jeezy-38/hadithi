@@ -25,6 +25,7 @@
             pg_ft_quran: "Qur'ani Tukufu",
             pg_ft_duaa: 'Dua & Adhkar',
             pg_ft_topics: 'Mada za Kiislamu',
+            pg_ft_tasbih: 'Digital Tasbih',
 
             // ---- Nyakati za swala ----
             pg_pt_title: 'Nyakati za Swala',
@@ -151,6 +152,7 @@
             pg_ft_quran: "Qur'an",
             pg_ft_duaa: 'Dua & Dhikr',
             pg_ft_topics: 'Islamic Topics',
+            pg_ft_tasbih: 'Digital Tasbih',
 
             pg_pt_title: 'Prayer Times',
             pg_pt_location: 'Dar es Salaam, Tanzania · EAT (UTC+3)',
@@ -272,6 +274,7 @@
             pg_ft_quran: 'القرآن الكريم',
             pg_ft_duaa: 'الأدعية والأذكار',
             pg_ft_topics: 'موضوعات إسلامية',
+            pg_ft_tasbih: 'المسبحة الإلكترونية',
 
             pg_pt_title: 'مواقيت الصلاة',
             pg_pt_location: 'دار السلام، تنزانيا · توقيت شرق أفريقيا (UTC+3)',
