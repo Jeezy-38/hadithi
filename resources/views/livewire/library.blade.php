@@ -250,16 +250,6 @@
                         </div>
                         </section>
 
-                        <section class="about-card" aria-labelledby="about-title">
-                            <h2 id="about-title" class="platform-modules-title" data-i18n="pg_ab_title">Kuhusu Bayt Ul Hadith</h2>
-                            <p class="about-text" data-i18n="pg_ab_text">Bayt Ul Hadith ni maktaba ya hadith za Mtume Muhammad ﷺ kwa Kiswahili, Kiingereza na Kiarabu. Lengo letu ni kurahisisha kusoma, kuelewa na kuhifadhi hadith, tukionyesha maandishi asilia ya Kiarabu, chanzo na daraja la kila hadith.</p>
-                            <ul class="about-points">
-                                <li data-i18n="pg_ab_p1">Kiarabu asilia pamoja na tafsiri</li>
-                                <li data-i18n="pg_ab_p2">Chanzo na daraja la kila hadith</li>
-                                <li data-i18n="pg_ab_p3">Jifunze, hifadhi na fanya utafiti</li>
-                            </ul>
-                            <a href="{{ route('about') }}" class="about-more"><span data-i18n="pg_about_more">Soma zaidi</span> <span aria-hidden="true">→</span></a>
-                        </section>
 
 
                     </div>
