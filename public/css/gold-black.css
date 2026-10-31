@@ -11459,3 +11459,19 @@ a.rs-chip:hover { border-color: var(--gold); }
     .library-hero .hero-media::after { background: linear-gradient(90deg, rgba(7, 41, 63, .95) 0%, rgba(7, 41, 63, 0) 40%); }
     [data-theme="light"] .library-hero .hero-media::after { background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 40%); }
 }
+
+/* ---- Landing hero title: one line, Cinzel ---- */
+.library-hero h1 {
+    font-family: 'Cinzel', 'Playfair Display', serif !important;
+    font-weight: 800 !important;
+    font-size: clamp(1.2rem, 6vw, 2.1rem) !important;
+    letter-spacing: .06em !important;
+    line-height: 1.15 !important;
+    white-space: nowrap;
+}
+.library-hero h1 em {
+    font-style: normal !important;
+    color: var(--gold) !important;
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+}

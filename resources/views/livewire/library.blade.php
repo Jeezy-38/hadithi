@@ -19,7 +19,7 @@
                 <img src="{{ asset('images/hero-1200.jpg') }}" srcset="{{ asset('images/hero-640.jpg') }} 640w, {{ asset('images/hero-1200.jpg') }} 1200w" sizes="(max-width: 860px) 100vw, 55vw" alt="" width="1200" height="675" decoding="async" fetchpriority="high">
             </div>
             <div class="hero-copy">
-                <h1 data-i18n="hero_h1">BAYT UL<br><em>HADITH.</em></h1>
+                <h1 data-i18n="hero_h1">BAYT UL <em>HADITH</em></h1>
                 <p class="hero-sub" data-i18n="pg_hero_sub">Jukwaa Kuu la Maarifa ya Hadith ya Kiislamu</p>
             </div>
         </section>
