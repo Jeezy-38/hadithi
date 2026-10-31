@@ -31,10 +31,10 @@
         </div>
 
         <div class="rs-legend">
-            <span class="rs-dot kg-dot-book"></span><span data-i18n="pg_rs_lg_book">Kitabu</span>
-            <span class="rs-dot kg-dot-chapter"></span><span data-i18n="pg_rs_lg_chapter">Mlango</span>
-            <span class="rs-dot kg-dot-topic"></span><span data-i18n="pg_rs_lg_topic">Mada</span>
-            <span class="rs-dot kg-dot-similar"></span><span data-i18n="pg_rs_lg_similar">Hadith inayofanana</span>
+            <span class="rs-lg"><span class="rs-dot kg-dot-book"></span><span data-i18n="pg_rs_lg_book">Kitabu</span></span>
+            <span class="rs-lg"><span class="rs-dot kg-dot-chapter"></span><span data-i18n="pg_rs_lg_chapter">Mlango</span></span>
+            <span class="rs-lg"><span class="rs-dot kg-dot-topic"></span><span data-i18n="pg_rs_lg_topic">Mada</span></span>
+            <span class="rs-lg"><span class="rs-dot kg-dot-similar"></span><span data-i18n="pg_rs_lg_similar">Hadith inayofanana</span></span>
         </div>
 
         @if($topics->isNotEmpty())

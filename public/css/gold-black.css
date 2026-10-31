@@ -11315,5 +11315,6 @@ a.rs-chip:hover { border-color: var(--gold); }
 .kg-center circle { fill: var(--gold); stroke: none; }
 .kg-center text { fill: var(--btn-gold-text); font-size: 11px; font-weight: 800; }
 .rs-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; justify-content: center; margin: 4px 0 14px; font-size: .82rem; color: var(--text-secondary); }
-.rs-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--gold); background: var(--bg-surface-elevated); margin-right: -6px; }
+.rs-lg { display: inline-flex; align-items: center; gap: 6px; }
+.rs-dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--gold); background: var(--bg-surface-elevated); }
 .kg-dot-book { border-color: var(--text-muted); } .kg-dot-topic { border-color: var(--emerald); } .kg-dot-similar { border-style: dashed; }
