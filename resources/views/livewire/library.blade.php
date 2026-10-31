@@ -145,14 +145,13 @@
                                     <span class="module-desc" data-i18n="pg_mod_res_d">Ulinganisho na Isnad</span>
                                 </span>
                             </a>
-                            <div class="module-card module-card-soon" aria-disabled="true">
+                            <a class="module-card module-card-live" href="{{ route('arabic.index') }}">
                                 <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M4 12h6M4 17h12"/><path d="M17 5l3 3-3 3"/></svg></span>
                                 <span class="module-body">
                                     <span class="module-title" data-i18n="pg_mod_ara">Arabic Analyzer</span>
                                     <span class="module-desc" data-i18n="pg_mod_ara_d">Lugha na mofolojia</span>
-                                    <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
                                 </span>
-                            </div>
+                            </a>
                             <a class="module-card module-card-live" href="{{ route('research.hub') }}#ramani">
                                 <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M6.5 6.5l4 4M17.5 6.5l-4 4M6.5 17.5l4-4M17.5 17.5l-4-4"/></svg></span>
                                 <span class="module-body">

@@ -95,6 +95,12 @@ Route::prefix('utafiti')->name('research.')->group(function () {
     Route::get('/ramani/{hadith}', [\App\Http\Controllers\ResearchController::class, 'graph'])->middleware('throttle:60,1')->name('graph');
 });
 
+// ---- Arabic Analyzer (lite) ----
+Route::prefix('kiarabu')->name('arabic.')->group(function () {
+    Route::get('/neno', [\App\Http\Controllers\ArabicController::class, 'word'])->middleware('throttle:90,1')->name('word');
+    Route::get('/{hadith?}', [\App\Http\Controllers\ArabicController::class, 'index'])->name('index');
+});
+
 // ---- Learning Centre ----
 Route::prefix('jifunze')->name('learning.')->group(function () {
     Route::get('/', [\App\Http\Controllers\LearningController::class, 'index'])->name('index');
