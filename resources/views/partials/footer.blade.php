@@ -53,6 +53,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('hadith.today') }}" class="footer-link-item">
+                            <span class="footer-link-bullet">✦</span>
+                            <span data-i18n="pg_ft_today">Hadith ya Leo</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('duaa.index') }}" class="footer-link-item">
                             <span class="footer-link-bullet">✦</span>
                             <span data-i18n="pg_ft_duaa">Dua & Adhkar</span>

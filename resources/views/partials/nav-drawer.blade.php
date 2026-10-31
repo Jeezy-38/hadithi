@@ -30,47 +30,6 @@
                 <span class="nav-drawer-text" data-i18n="nav_library">Maktaba</span>
                 <span class="nav-drawer-arrow" aria-hidden="true">→</span>
             </a>
-            <a href="{{ route('topics.index') }}" class="nav-drawer-link {{ request()->routeIs('topics.*') ? 'active' : '' }}">
-                <span class="nav-drawer-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                        <path d="M2 12h20"></path>
-                    </svg>
-                </span>
-                <span class="nav-drawer-text">Mada za Kiislamu</span>
-                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
-            </a>
-            <a href="{{ route('quran.index') }}" class="nav-drawer-link {{ request()->routeIs('quran.*') ? 'active' : '' }}">
-                <span class="nav-drawer-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                    </svg>
-                </span>
-                <span class="nav-drawer-text" data-i18n="nav_quran">Qur'ani Tukufu</span>
-                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
-            </a>
-            <a href="{{ route('hadith.today') }}" class="nav-drawer-link {{ request()->routeIs('hadith.today') ? 'active' : '' }}">
-                <span class="nav-drawer-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                </span>
-                <span class="nav-drawer-text" data-i18n="nav_today">Hadith ya leo</span>
-                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
-            </a>
-            <a href="{{ route('duaa.index') }}" class="nav-drawer-link {{ request()->routeIs('duaa.*') ? 'active' : '' }}">
-                <span class="nav-drawer-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M7 11v-1a5 5 0 0 1 10 0v1"></path>
-                        <path d="M12 4v2"></path>
-                        <path d="M18 18a6 6 0 0 1-12 0c0-3.5 3-7 6-11 3 4 6 7.5 6 11z"></path>
-                    </svg>
-                </span>
-                <span class="nav-drawer-text" data-i18n="nav_duaa">Dua & Adhkar</span>
-                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
-            </a>
             <a href="{{ route('tasbih') }}" class="nav-drawer-link {{ request()->routeIs('tasbih') ? 'active' : '' }}">
                 <span class="nav-drawer-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

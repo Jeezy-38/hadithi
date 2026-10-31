@@ -21,6 +21,7 @@
         sw: {
             // ---- Footer ----
             pg_ft_related: 'Kurasa Zinazohusiana',
+            pg_ft_today: 'Hadith ya Leo',
             pg_ft_quran: "Qur'ani Tukufu",
             pg_ft_duaa: 'Dua & Adhkar',
             pg_ft_topics: 'Mada za Kiislamu',
@@ -146,6 +147,7 @@
         en: {
             // ---- Footer ----
             pg_ft_related: 'Related Pages',
+            pg_ft_today: 'Hadith of the Day',
             pg_ft_quran: "Qur'an",
             pg_ft_duaa: 'Dua & Dhikr',
             pg_ft_topics: 'Islamic Topics',
@@ -266,6 +268,7 @@
         ar: {
             // ---- Footer ----
             pg_ft_related: 'صفحات ذات صلة',
+            pg_ft_today: 'حديث اليوم',
             pg_ft_quran: 'القرآن الكريم',
             pg_ft_duaa: 'الأدعية والأذكار',
             pg_ft_topics: 'موضوعات إسلامية',
