@@ -83,6 +83,24 @@ Route::get('/hadith-ya-leo', function () {
     return redirect()->route('hadith.show', $hadith);
 })->name('hadith.today');
 
+// ---- Learning Centre ----
+Route::prefix('jifunze')->name('learning.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\LearningController::class, 'index'])->name('index');
+    Route::get('/kozi/{book}', [\App\Http\Controllers\LearningController::class, 'course'])->name('course');
+    Route::get('/somo/{hadith}', [\App\Http\Controllers\LearningController::class, 'lesson'])->name('lesson');
+    Route::get('/quiz/{book?}', [\App\Http\Controllers\LearningController::class, 'quiz'])->name('quiz');
+    Route::get('/quiz-data/{book?}', [\App\Http\Controllers\LearningController::class, 'quizData'])->middleware('throttle:60,1')->name('quiz.data');
+    Route::get('/kuhifadhi', [\App\Http\Controllers\LearningController::class, 'memorize'])->name('memorize');
+
+    Route::middleware(['auth', 'throttle:120,1'])->group(function () {
+        Route::get('/kuhifadhi/data', [\App\Http\Controllers\LearningController::class, 'memorizeData'])->name('memorize.data');
+        Route::post('/somo/{hadith}/kamilisha', [\App\Http\Controllers\LearningController::class, 'toggleComplete'])->name('complete');
+        Route::post('/kuhifadhi/{hadith}/ongeza', [\App\Http\Controllers\LearningController::class, 'addCard'])->name('card.add');
+        Route::post('/kuhifadhi/{hadith}/review', [\App\Http\Controllers\LearningController::class, 'reviewCard'])->name('card.review');
+        Route::post('/shughuli', [\App\Http\Controllers\LearningController::class, 'activity'])->name('activity');
+    });
+});
+
 Route::get('/vipendwa', fn () => view('bookmarks'))->name('bookmarks');
 
 Route::get('/vipendwa/ids', function () {

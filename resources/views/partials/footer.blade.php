@@ -76,6 +76,12 @@
                             <span data-i18n="pg_ft_tasbih">Digital Tasbih</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('learning.index') }}" class="footer-link-item">
+                            <span class="footer-link-bullet">✦</span>
+                            <span data-i18n="pg_ft_learn">Learning Centre</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 

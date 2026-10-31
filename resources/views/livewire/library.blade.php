@@ -170,14 +170,13 @@
                                     <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
                                 </span>
                             </div>
-                            <div class="module-card module-card-next" aria-disabled="true">
+                            <a class="module-card module-card-live" href="{{ route('learning.index') }}">
                                 <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
                                 <span class="module-body">
                                     <span class="module-title" data-i18n="pg_mod_learn">Learning Centre</span>
                                     <span class="module-desc" data-i18n="pg_mod_learn_d">Kozi na kuhifadhi</span>
-                                    <span class="module-badge module-badge-next" data-i18n="pg_mod_next">Inayofuata · Inakuja Hivi Karibuni</span>
                                 </span>
-                            </div>
+                            </a>
                             </div>
                         </section>
 
