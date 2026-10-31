@@ -11,29 +11,6 @@
         <span class="mobile-nav-label" data-i18n="nav_library">Maktaba</span>
     </a>
 
-    <a href="{{ route('quran.index') }}" class="mobile-nav-item {{ request()->routeIs('quran.*') ? 'active' : '' }}">
-        <span class="mobile-nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 4.5C5 3 8 3.5 12 5.5C16 3.5 19 3 22 4.5V16C19 14.5 16 15 12 17C8 15 5 14.5 2 16V4.5Z"></path>
-                <line x1="12" y1="5.5" x2="12" y2="17"></line>
-                <path d="M6 18l12 3.5"></path>
-                <path d="M18 18l-12 3.5"></path>
-            </svg>
-        </span>
-        <span class="mobile-nav-label" data-i18n="nav_quran">Qur'ani</span>
-    </a>
-
-    <a href="{{ route('duaa.index') }}" class="mobile-nav-item {{ request()->routeIs('duaa.*') ? 'active' : '' }}">
-        <span class="mobile-nav-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path class="nav-tint" d="M19.5 14.5A8 8 0 1 1 9.5 4.5a6.5 6.5 0 0 0 10 10z" stroke="none"></path>
-                <path d="M19.5 14.5A8 8 0 1 1 9.5 4.5a6.5 6.5 0 0 0 10 10z"></path>
-                <path d="M17 5.2l.7 1.5 1.6.2-1.2 1.1.3 1.6L17 8.8l-1.4.8.3-1.6-1.2-1.1 1.6-.2z" fill="currentColor" stroke="none"></path>
-            </svg>
-        </span>
-        <span class="mobile-nav-label" data-i18n="nav_duaa_short">Dua</span>
-    </a>
-
     <a href="{{ route('tasbih') }}" class="mobile-nav-item {{ request()->routeIs('tasbih') ? 'active' : '' }}">
         <span class="mobile-nav-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
