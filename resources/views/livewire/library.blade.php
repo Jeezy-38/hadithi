@@ -17,16 +17,7 @@
             <div class="hero-glow" aria-hidden="true"></div>
             <div class="hero-copy">
                 <h1 data-i18n="hero_h1">BAYT UL<br><em>HADITH.</em></h1>
-                <p data-i18n="hero_desc">
-    Karibu Bayt Ul Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.</p>
-                <div class="hero-actions">
-                    <a class="hero-button" href="#maktaba">
-                        <span data-i18n="hero_btn_start">Anza kusoma</span>
-                        <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                </div>
+                <p class="hero-sub" data-i18n="pg_hero_sub">Jukwaa Kuu la Maarifa ya Hadith ya Kiislamu</p>
             </div>
         </section>
     @endif
@@ -135,8 +126,63 @@
                             </a>
                         </div>
 
+                        {{-- 2b. Platform modules --}}
+                        <section class="platform-modules" aria-labelledby="platform-modules-title">
+                            <h2 id="platform-modules-title" class="platform-modules-title" data-i18n="pg_mod_title">Jukwaa la Maarifa</h2>
+                            <div class="module-grid">
+                            <a class="module-card module-card-live" href="#makusanyo">
+                                <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+                                <span class="module-body">
+                                    <span class="module-title" data-i18n="pg_mod_lib">Hadith Library</span>
+                                    <span class="module-desc" data-i18n="pg_mod_lib_d">Makusanyo, vitabu na sura</span>
+                                    
+                                </span>
+                            </a>
+                            <div class="module-card module-card-soon" aria-disabled="true">
+                                <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3 8M16 7.5l-3 8M8.5 6h7"/></svg></span>
+                                <span class="module-body">
+                                    <span class="module-title" data-i18n="pg_mod_res">Research Intelligence</span>
+                                    <span class="module-desc" data-i18n="pg_mod_res_d">Ulinganisho na Isnad</span>
+                                    <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
+                                </span>
+                            </div>
+                            <div class="module-card module-card-soon" aria-disabled="true">
+                                <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M4 12h6M4 17h12"/><path d="M17 5l3 3-3 3"/></svg></span>
+                                <span class="module-body">
+                                    <span class="module-title" data-i18n="pg_mod_ara">Arabic Analyzer</span>
+                                    <span class="module-desc" data-i18n="pg_mod_ara_d">Lugha na mofolojia</span>
+                                    <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
+                                </span>
+                            </div>
+                            <div class="module-card module-card-soon" aria-disabled="true">
+                                <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M6.5 6.5l4 4M17.5 6.5l-4 4M6.5 17.5l4-4M17.5 17.5l-4-4"/></svg></span>
+                                <span class="module-body">
+                                    <span class="module-title" data-i18n="pg_mod_kg">Knowledge Graph</span>
+                                    <span class="module-desc" data-i18n="pg_mod_kg_d">Maarifa yaliyounganishwa</span>
+                                    <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
+                                </span>
+                            </div>
+                            <div class="module-card module-card-soon" aria-disabled="true">
+                                <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 1.8L21.5 19.5l-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
+                                <span class="module-body">
+                                    <span class="module-title" data-i18n="pg_mod_ai">AI Research</span>
+                                    <span class="module-desc" data-i18n="pg_mod_ai_d">Msaidizi anayetegemea vyanzo</span>
+                                    <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
+                                </span>
+                            </div>
+                            <div class="module-card module-card-next" aria-disabled="true">
+                                <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
+                                <span class="module-body">
+                                    <span class="module-title" data-i18n="pg_mod_learn">Learning Centre</span>
+                                    <span class="module-desc" data-i18n="pg_mod_learn_d">Kozi na kuhifadhi</span>
+                                    <span class="module-badge module-badge-next" data-i18n="pg_mod_next">Inayofuata · Inakuja Hivi Karibuni</span>
+                                </span>
+                            </div>
+                            </div>
+                        </section>
+
                         {{-- 3. The Gilded Bookshelf: Collections --}}
-                        <section class="gilded-bookshelf-section" aria-label="Collections za Vitabu">
+                        <section id="makusanyo" class="gilded-bookshelf-section" aria-label="Collections za Vitabu">
                             <div class="bookshelf-header">
                                 <div class="bookshelf-title-wrap">
                                     <div class="hadith-header-art" aria-hidden="true">
