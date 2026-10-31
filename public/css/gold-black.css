@@ -11181,3 +11181,6 @@ a, button, select, input {
 
 [data-theme="dark"] .p-pill,
 [data-theme="dark"] .p-pill.p-pill-passed { color: #c3d7e6; }
+
+/* Footer: Related Pages */
+.footer-related-title { margin-top: 18px; }

@@ -19,6 +19,12 @@
 
     const D = {
         sw: {
+            // ---- Footer ----
+            pg_ft_related: 'Kurasa Zinazohusiana',
+            pg_ft_quran: "Qur'ani Tukufu",
+            pg_ft_duaa: 'Dua & Adhkar',
+            pg_ft_topics: 'Mada za Kiislamu',
+
             // ---- Nyakati za swala ----
             pg_pt_title: 'Nyakati za Swala',
             pg_pt_location: 'Dar es Salaam, Tanzania · EAT (UTC+3)',
@@ -138,6 +144,12 @@
         },
 
         en: {
+            // ---- Footer ----
+            pg_ft_related: 'Related Pages',
+            pg_ft_quran: "Qur'an",
+            pg_ft_duaa: 'Dua & Dhikr',
+            pg_ft_topics: 'Islamic Topics',
+
             pg_pt_title: 'Prayer Times',
             pg_pt_location: 'Dar es Salaam, Tanzania · EAT (UTC+3)',
             pg_pt_subtitle: 'Accurate times for the five daily prayers, astronomically calculated for Dar es Salaam.',
@@ -252,6 +264,12 @@
         },
 
         ar: {
+            // ---- Footer ----
+            pg_ft_related: 'صفحات ذات صلة',
+            pg_ft_quran: 'القرآن الكريم',
+            pg_ft_duaa: 'الأدعية والأذكار',
+            pg_ft_topics: 'موضوعات إسلامية',
+
             pg_pt_title: 'مواقيت الصلاة',
             pg_pt_location: 'دار السلام، تنزانيا · توقيت شرق أفريقيا (UTC+3)',
             pg_pt_subtitle: 'مواقيت الصلوات الخمس اليومية محسوبة فلكيًا لمدينة دار السلام.',

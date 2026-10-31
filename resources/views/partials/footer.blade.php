@@ -43,6 +43,28 @@
                         </a>
                     </li>
                 </ul>
+
+                <h3 class="footer-section-title footer-related-title" data-i18n="pg_ft_related">Kurasa Zinazohusiana</h3>
+                <ul class="footer-links-list">
+                    <li>
+                        <a href="{{ route('quran.index') }}" class="footer-link-item">
+                            <span class="footer-link-bullet">✦</span>
+                            <span data-i18n="pg_ft_quran">Qur'ani Tukufu</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('duaa.index') }}" class="footer-link-item">
+                            <span class="footer-link-bullet">✦</span>
+                            <span data-i18n="pg_ft_duaa">Dua & Adhkar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('topics.index') }}" class="footer-link-item">
+                            <span class="footer-link-bullet">✦</span>
+                            <span data-i18n="pg_ft_topics">Mada za Kiislamu</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
 
             <!-- Shiriki na Wengine -->
