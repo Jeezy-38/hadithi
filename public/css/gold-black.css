@@ -11496,3 +11496,7 @@ a.rs-chip:hover { border-color: var(--gold); }
 @media (max-width:768px){
     .footer-related-links{width:100%}
 }
+
+/* ---- Footer brand name = hero title style ---- */
+.footer-brand-name { font-family: 'Cinzel', 'Playfair Display', serif; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.footer-brand-name span, [data-theme="light"] .footer-brand-name span { font-family: inherit; font-style: normal; color: var(--gold); }

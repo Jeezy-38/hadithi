@@ -8,7 +8,7 @@
                         <img src="{{ asset('images/logo.png') }}" alt="Bayt Ul Hadith" class="footer-logo-img">
                     </div>
                     <div class="footer-brand-headings">
-                        <span class="footer-brand-name">Bayt Ul <span>Hadith</span></span>
+                        <span class="footer-brand-name">BAYT UL <span>HADITH</span></span>
                         <span class="footer-brand-sub" data-i18n="pg_ft_tag">Maktaba Kuu ya Hadithi za Mtume ﷺ</span>
                     </div>
                 </a>
