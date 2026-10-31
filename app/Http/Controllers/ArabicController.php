@@ -32,7 +32,7 @@ class ArabicController extends Controller
         $w = Hadith::normalize(Str::limit(trim((string) $request->query('w', '')), 40, ''));
         $w = preg_replace('/[^\p{Arabic}]/u', '', $w);
         if (mb_strlen($w) < 2) {
-            return response()->json(['word' => $w, 'total' => 0, 'items' => []]);
+            return response()->json(['word' => $w, 'total' => 0, 'items' => [], 'analysis' => null]);
         }
         $like = '%'.str_replace(['!', '%', '_'], ['!!', '!%', '!_'], $w).'%';
         $base = Hadith::published()->whereRaw("search_arabic like ? escape '!'", [$like]);
@@ -45,6 +45,18 @@ class ArabicController extends Controller
             'ref' => trim(($h->chapter?->book?->collection?->name ?? '').' · '.$h->number, ' ·'),
         ]);
 
-        return response()->json(['word' => $w, 'total' => $total, 'items' => $items]);
+        return response()->json(['word' => $w, 'total' => $total, 'items' => $items, 'analysis' => $this->lexicon()[$w] ?? null]);
+    }
+
+    /** Kamusi ya mizizi/aina (scripts/build-arabic-lexicon.py); makadirio ya kiotomatiki. */
+    private function lexicon(): array
+    {
+        static $lex = null;
+        if ($lex === null) {
+            $file = database_path('data/arabic-lexicon.json');
+            $lex = is_file($file) ? (json_decode((string) file_get_contents($file), true) ?: []) : [];
+        }
+
+        return $lex;
     }
 }
