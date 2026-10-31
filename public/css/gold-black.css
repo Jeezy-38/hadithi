@@ -11434,3 +11434,11 @@ a.rs-chip:hover { border-color: var(--gold); }
     .nav-drawer-footer::before { content: "✦ ✦ ✦" !important; display: block !important; color: var(--gold) !important; font-size: 10px !important; letter-spacing: 6px !important; margin-bottom: 8px !important; }
     .nav-drawer-quote { font-style: italic !important; line-height: 1.55 !important; }
 }
+
+/* ---- Landing: stats strip + section subtitles ---- */
+.stats-strip{display:grid;grid-template-columns:repeat(3,1fr);margin:12px 0;border:1px solid var(--border-color);border-radius:14px;background:var(--bg-surface);overflow:hidden}
+.stats-strip>div{padding:10px 6px;text-align:center;display:flex;flex-direction:column;gap:2px}
+.stats-strip>div+div{border-left:1px solid var(--border-color)}
+.stats-strip b{font-size:1.15rem;color:var(--gold);line-height:1.1}
+.stats-strip span{font-size:.72rem;color:var(--text-muted);font-weight:600}
+.section-sub{margin:-6px 0 10px;font-size:.8rem;color:var(--text-muted)}
