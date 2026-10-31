@@ -2,44 +2,47 @@
     <div class="admin-dashboard-root" style="max-width: 1320px; margin: 0 auto; padding: 24px 16px 90px;">
 
         <style>
+            /* Ocean Blue & Gold — follows the site theme (data-theme) */
             :root {
-                --adm-emerald: #059669;
-                --adm-emerald-glow: #10b981;
-                --adm-emerald-subtle: rgba(16, 185, 129, 0.12);
-                --adm-gold: #d97706;
-                --adm-gold-glow: #f59e0b;
-                --adm-gold-subtle: rgba(245, 158, 11, 0.12);
-                --adm-blue: #0284c7;
-                --adm-blue-glow: #38bdf8;
-                --adm-blue-subtle: rgba(56, 189, 248, 0.12);
-                --adm-purple: #7c3aed;
-                --adm-purple-subtle: rgba(124, 58, 237, 0.12);
+                --adm-emerald: #0a3f66;
+                --adm-emerald-glow: #165a8a;
+                --adm-emerald-subtle: rgba(10, 63, 102, 0.09);
+                --adm-gold: #a97c12;
+                --adm-gold-glow: #c09828;
+                --adm-gold-subtle: rgba(192, 152, 40, 0.14);
+                --adm-blue: #0e6aa8;
+                --adm-blue-glow: #38a0d8;
+                --adm-blue-subtle: rgba(14, 106, 168, 0.10);
+                --adm-purple: #6d4fc2;
+                --adm-purple-subtle: rgba(109, 79, 194, 0.10);
                 --adm-card-bg: #ffffff;
-                --adm-card-border: #e2e8f0;
-                --adm-card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
-                --adm-text-main: #0f172a;
-                --adm-text-sub: #64748b;
-                --adm-hover-bg: #f8fafc;
+                --adm-card-border: #cfdfeb;
+                --adm-card-shadow: 0 4px 20px -2px rgba(7, 41, 63, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
+                --adm-text-main: #07293f;
+                --adm-text-sub: #4b6a80;
+                --adm-hover-bg: #eaf2f8;
+                --adm-ring: rgba(10, 63, 102, 0.30);
             }
 
-            .dark {
-                --adm-emerald: #10b981;
-                --adm-emerald-glow: #34d399;
-                --adm-emerald-subtle: rgba(16, 185, 129, 0.16);
-                --adm-gold: #f59e0b;
-                --adm-gold-glow: #fbbf24;
-                --adm-gold-subtle: rgba(245, 158, 11, 0.16);
-                --adm-blue: #38bdf8;
-                --adm-blue-glow: #7dd3fc;
-                --adm-blue-subtle: rgba(56, 189, 248, 0.16);
+            [data-theme="dark"] {
+                --adm-emerald: #e0c868;
+                --adm-emerald-glow: #f0dc8c;
+                --adm-emerald-subtle: rgba(224, 200, 104, 0.14);
+                --adm-gold: #e0c868;
+                --adm-gold-glow: #f0dc8c;
+                --adm-gold-subtle: rgba(224, 200, 104, 0.14);
+                --adm-blue: #5db8ee;
+                --adm-blue-glow: #8ed0f5;
+                --adm-blue-subtle: rgba(93, 184, 238, 0.16);
                 --adm-purple: #a78bfa;
                 --adm-purple-subtle: rgba(167, 139, 250, 0.16);
-                --adm-card-bg: #0d1522;
-                --adm-card-border: rgba(255, 255, 255, 0.08);
+                --adm-card-bg: #0a3552;
+                --adm-card-border: rgba(224, 200, 104, 0.16);
                 --adm-card-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.4);
-                --adm-text-main: #f8fafc;
-                --adm-text-sub: #94a3b8;
-                --adm-hover-bg: #141f30;
+                --adm-text-main: #f2f7fb;
+                --adm-text-sub: #9db8cb;
+                --adm-hover-bg: #124666;
+                --adm-ring: rgba(224, 200, 104, 0.35);
             }
 
             .adm-tab-btn {
@@ -62,8 +65,8 @@
             .adm-tab-btn.active {
                 background: var(--adm-emerald-subtle);
                 color: var(--adm-emerald);
-                border-color: rgba(16, 185, 129, 0.3);
-                box-shadow: 0 2px 8px -2px rgba(16, 185, 129, 0.2);
+                border-color: var(--adm-ring);
+                box-shadow: 0 2px 8px -2px var(--adm-ring);
             }
 
             .adm-kpi-card {
@@ -91,7 +94,7 @@
                 line-height: 1;
             }
 
-            .adm-badge-emerald { background: var(--adm-emerald-subtle); color: var(--adm-emerald); border: 1px solid rgba(16, 185, 129, 0.25); }
+            .adm-badge-emerald { background: var(--adm-emerald-subtle); color: var(--adm-emerald); border: 1px solid var(--adm-ring); }
             .adm-badge-gold { background: var(--adm-gold-subtle); color: var(--adm-gold); border: 1px solid rgba(245, 158, 11, 0.25); }
             .adm-badge-blue { background: var(--adm-blue-subtle); color: var(--adm-blue); border: 1px solid rgba(56, 189, 248, 0.25); }
             .adm-badge-purple { background: var(--adm-purple-subtle); color: var(--adm-purple); border: 1px solid rgba(167, 139, 250, 0.25); }
@@ -115,7 +118,7 @@
                 border-bottom: 1px solid var(--adm-card-border);
                 background: rgba(0, 0, 0, 0.02);
             }
-            .dark .adm-table th {
+            [data-theme="dark"] .adm-table th {
                 background: rgba(255, 255, 255, 0.02);
             }
             .adm-table td {
@@ -147,11 +150,30 @@
             .adm-action-btn:hover {
                 transform: scale(1.02);
             }
+
+            /* Responsive: tablet & phone (360px) */
+            .admin-dashboard-root { overflow-x: hidden; }
+            .admin-dashboard-root img { max-width: 100%; }
+            @media (max-width: 768px) {
+                .admin-dashboard-root { padding: 14px 10px 90px !important; }
+                .adm-tab-btn { padding: 8px 12px; font-size: 12.5px; }
+                .adm-kpi-card { padding: 16px; border-radius: 14px; }
+                .adm-table th, .adm-table td { padding: 10px 10px; }
+                .admin-dashboard-root table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+                .admin-dashboard-root div[style*="grid-template-columns"] { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important; gap: 12px !important; }
+            }
+            @media (max-width: 480px) {
+                .admin-dashboard-root div[style*="minmax(360px"],
+                .admin-dashboard-root div[style*="minmax(260px"] { grid-template-columns: 1fr !important; }
+                .admin-dashboard-root [style*="flex-wrap"] { gap: 8px !important; }
+                .admin-dashboard-root h1 { font-size: 22px !important; }
+                .adm-action-btn { padding: 6px 10px; font-size: 12px; }
+            }
         </style>
 
         {{-- Flash Alerts --}}
         @if(session('success'))
-            <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 14px; padding: 14px 18px; margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; color: var(--adm-emerald); font-size: 14px; font-weight: 700;">
+            <div style="background: var(--adm-emerald-subtle); border: 1px solid var(--adm-ring); border-radius: 14px; padding: 14px 18px; margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; color: var(--adm-emerald); font-size: 14px; font-weight: 700;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <span style="font-size: 18px;">✓</span>
                     <span>{{ session('success') }}</span>
