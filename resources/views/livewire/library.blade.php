@@ -108,24 +108,6 @@
                             </section>
                         @endif
 
-                        {{-- 2. Thematic Topics Quick Row --}}
-                        <div class="rawdah-topics-row" role="region" aria-label="Gundua kwa Mada">
-                            <span class="rawdah-topics-label" data-i18n="pg_lib_topics">Gundua kwa Mada:</span>
-                            @php
-                                $topicsSlice = array_slice($topics, 0, 6, true);
-                            @endphp
-                            @foreach($topicsSlice as $t)
-                                <a href="{{ route('topics.show', $t['slug']) }}" class="rawdah-topic-pill">
-                                    <span class="rawdah-topic-star" aria-hidden="true">✦</span>
-                                    <span>{{ $t['title_sw'] }}</span>
-                                </a>
-                            @endforeach
-                            <a href="{{ route('topics.index') }}" class="rawdah-topic-all-link">
-                                <span>Tazama Mada Zote 12</span>
-                                <span aria-hidden="true">→</span>
-                            </a>
-                        </div>
-
                         {{-- 2b. Platform modules --}}
                         <section class="platform-modules" aria-labelledby="platform-modules-title">
                             <h2 id="platform-modules-title" class="platform-modules-title" data-i18n="pg_mod_title">Jukwaa la Maarifa</h2>
