@@ -196,7 +196,7 @@
         <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--adm-card-border);">
             <div>
                 <div style="display: flex; align-items: center; gap: 12px;">
-                    <span style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 12px; background: linear-gradient(135deg, var(--adm-emerald), #047857); color: #fff; font-size: 20px; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);">
+                    <span style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 12px; background: linear-gradient(135deg, var(--adm-emerald), var(--adm-emerald-glow)); color: #fff; font-size: 20px; box-shadow: 0 4px 14px var(--adm-ring);">
                         🛡️
                     </span>
                     <div>
@@ -341,7 +341,7 @@
                             @php $height = max(12, round(($stat['count'] / $maxDaily) * 125)); @endphp
                             <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;">
                                 <span style="font-size: 11px; font-weight: 800; color: var(--adm-emerald);">{{ $stat['count'] }}</span>
-                                <div style="width: 100%; max-width: 32px; height: {{ $height }}px; border-radius: 6px 6px 0 0; background: linear-gradient(180deg, var(--adm-emerald), rgba(16, 185, 129, 0.4));"></div>
+                                <div style="width: 100%; max-width: 32px; height: {{ $height }}px; border-radius: 6px 6px 0 0; background: linear-gradient(180deg, var(--adm-emerald), var(--adm-emerald-subtle));"></div>
                                 <span style="font-size: 11px; color: var(--adm-text-sub); white-space: nowrap;">{{ $stat['label'] }}</span>
                             </div>
                         @endforeach
