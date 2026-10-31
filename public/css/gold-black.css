@@ -11506,3 +11506,17 @@ a.rs-chip:hover { border-color: var(--gold); }
 .library-hero .hero-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .library-hero .hero-chips li { font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(224, 200, 104, .4); color: var(--gold); white-space: nowrap; }
 [data-theme="light"] .library-hero .hero-chips li { border-color: rgba(10, 63, 102, .3); }
+
+/* ---- Landing hero (mobile): centered, ornament, framed image ---- */
+@media (max-width: 860px) {
+    .library-hero { background: radial-gradient(120% 70% at 50% 0%, rgba(224, 200, 104, .16) 0%, transparent 60%), linear-gradient(160deg, #0d4a74 0%, #07293f 70%) !important; border-color: rgba(224, 200, 104, .35) !important; }
+    [data-theme="light"] .library-hero { background: radial-gradient(120% 70% at 50% 0%, rgba(10, 63, 102, .10) 0%, transparent 60%), #fff !important; }
+    .library-hero .hero-copy { text-align: center; padding: 22px 16px 14px !important; }
+    .library-hero .hero-copy::before { content: "✦  ✦  ✦"; display: block; color: var(--gold); font-size: 10px; letter-spacing: 6px; margin-bottom: 10px; }
+    .library-hero h1 { margin: 0 0 8px !important; }
+    .library-hero .hero-meaning { font-size: .85rem; margin: 0 0 10px; opacity: .95; }
+    .library-hero .hero-chips { justify-content: center; gap: 5px; }
+    .library-hero .hero-chips li { font-size: .66rem; padding: 3px 8px; }
+    .library-hero .hero-media { width: auto; margin: 0 14px 14px; border-radius: 16px; aspect-ratio: 16 / 9; border: 1px solid rgba(224, 200, 104, .45); box-shadow: 0 12px 28px -10px rgba(0, 0, 0, .55), 0 0 0 4px rgba(224, 200, 104, .08); }
+    .library-hero .hero-media::after { background: linear-gradient(180deg, transparent 60%, rgba(7, 41, 63, .5) 100%) !important; }
+}
