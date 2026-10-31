@@ -71,6 +71,27 @@
                             <span class="btn-text">Mitandao Mingine</span>
                         </button>
 
+                        {{-- Shiriki kama picha --}}
+                        <button type="button" class="more-dropdown-item" data-share-image
+                            data-arabic="{{ \Illuminate\Support\Str::limit($shareArabic, 420, '') }}"
+                            data-sw="{{ \Illuminate\Support\Str::limit($hadith->swahili, 520) }}"
+                            data-en="{{ \Illuminate\Support\Str::limit((string) $hadith->english, 520) }}"
+                            data-ref="{{ $hadith->chapter->book->collection->name }} · Na. {{ $hadith->number }}"
+                            data-sub="{{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }}"
+                            data-number="{{ $hadith->number }}"
+                            data-url="{{ route('hadith.show', $hadith) }}"
+                            data-logo="{{ asset('images/logo-gold.png') }}"
+                            title="Shiriki kama picha">
+                            <span class="dropdown-item-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                            </span>
+                            <span class="btn-text" data-i18n="pg_sh_image">Shiriki kama picha</span>
+                        </button>
+
                         <div class="dropdown-divider" role="separator"></div>
 
                         {{-- 4. Hifadhi --}}
@@ -563,4 +584,5 @@
             }
         });
     </script>
+    <script src="{{ asset('js/share-card.js') }}?v={{ filemtime(public_path('js/share-card.js')) }}" defer></script>
 </x-layouts.app>
