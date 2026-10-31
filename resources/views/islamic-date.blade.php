@@ -1,4 +1,4 @@
-<x-layouts.app title="Tarehe ya Kiislamu (Hijri Date) · Bayt Al-Hadith">
+<x-layouts.app title="Tarehe ya Kiislamu (Hijri Date) · Bayt Ul Hadith">
     <div class="reader-shell islamic-date-shell">
         <div class="reader-top-nav">
             <a class="back-link" href="{{ route('library') }}">

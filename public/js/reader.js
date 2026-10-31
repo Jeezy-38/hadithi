@@ -168,7 +168,7 @@
             theme_light_mode: 'Nuru (Mchana)',
             hero_eyebrow: 'BUKHARI · MUSLIM · TIRMIDHI · ABU DAWUD · AHMAD',
             hero_title: 'HAZINA YA <br><em>HADITHI .</em>',
-            hero_desc: 'Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.',
+            hero_desc: 'Karibu Bayt Ul Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.',
             hero_start: 'Anza kusoma',
             hero_today: 'Hadith ya leo',
             hero_caption: 'MAKTABA YA HADITH ✦ ELIMU YENYE REJEA',
@@ -250,10 +250,10 @@
             bm_empty_title: 'Bado hujahifadhi hadith yoyote.',
             bm_empty_desc: 'Fungua hadith yoyote na bonyeza “Hifadhi kwenye Vipendwa” ili ionekane hapa kwa ajili ya kusoma tena wakati wowote.',
             bm_explore: 'Gundua maktaba sasa →',
-            footer_brand: 'Hadith · Maktaba ya elimu',
+            footer_brand: 'Bayt Ul Hadith · Maktaba ya elimu',
             footer_desc: 'Urithi wa mafundisho sahihi ya Mtume Muhammad ﷺ kwa lugha ya Kiarabu, Kiswahili na Kiingereza.',
             footer_meta: 'Kiarabu na Kiswahili · Rejea katika kila hadith',
-            footer_copy: '© 2026 Bayt Al-Hadith. Haki zote zimehifadhiwa.',
+            footer_copy: '© 2026 Bayt Ul Hadith. Haki zote zimehifadhiwa.',
 
             // Dua & Adhkar Module
             dua_eyebrow: '<span class="eyebrow-dot"></span> HISN AL-MUSLIM · NGOME YA MUISLAMU',
@@ -342,7 +342,7 @@
             theme_light_mode: 'Light (Day)',
             hero_eyebrow: 'BUKHARI · MUSLIM · TIRMIDHI · ABU DAWUD · AHMAD',
             hero_title: 'TREASURY OF <br><em>HADITH .</em>',
-            hero_desc: 'Welcome to Bayt Al-Hadith — home of the timeless authentic teachings of Prophet Muhammad ﷺ.<br> Explore verified Hadiths, deepen your understanding of the Sunnah, and make its guidance part of your daily life.',
+            hero_desc: 'Welcome to Bayt Ul Hadith — home of the timeless authentic teachings of Prophet Muhammad ﷺ.<br> Explore verified Hadiths, deepen your understanding of the Sunnah, and make its guidance part of your daily life.',
             hero_start: 'Start reading',
             hero_today: 'Hadith of the day',
             hero_caption: 'HADITH LIBRARY ✦ AUTHENTIC KNOWLEDGE',
@@ -424,10 +424,10 @@
             bm_empty_title: 'You have not saved any hadiths yet.',
             bm_empty_desc: 'Open any hadith and click “Save to Favorites” to save it here for quick reference.',
             bm_explore: 'Explore library now →',
-            footer_brand: 'Hadith · Knowledge Library',
+            footer_brand: 'Bayt Ul Hadith · Knowledge Library',
             footer_desc: 'The heritage of authentic teachings of the Prophet Muhammad ﷺ in Arabic, Swahili, and English.',
             footer_meta: 'Arabic, Swahili & English · Verified references',
-            footer_copy: '© 2026 Bayt Al-Hadith. All rights reserved.',
+            footer_copy: '© 2026 Bayt Ul Hadith. All rights reserved.',
 
             // Dua & Adhkar Module
             dua_eyebrow: '<span class="eyebrow-dot"></span> HISN AL-MUSLIM · FORTRESS OF THE MUSLIM',

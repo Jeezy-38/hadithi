@@ -1,4 +1,4 @@
-<x-layouts.app title="Live Prayer Time Counter · Dar es Salaam · Bayt Al-Hadith">
+<x-layouts.app title="Live Prayer Time Counter · Dar es Salaam · Bayt Ul Hadith">
     <div class="reader-shell prayer-shell">
         <div class="reader-top-nav">
             <a class="back-link" href="{{ route('library') }}">

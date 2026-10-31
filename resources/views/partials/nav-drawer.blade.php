@@ -5,7 +5,7 @@
         <a href="{{ route('library') }}" class="nav-drawer-brand">
             <img src="{{ asset('images/logo.png') }}" alt="" class="nav-drawer-logo" width="44" height="44">
             <div class="nav-drawer-brand-text">
-                <span class="nav-drawer-title">Bayt Al-Hadith</span>
+                <span class="nav-drawer-title">Bayt Ul Hadith</span>
                 <span class="nav-drawer-sub" data-i18n="brand_sub">MAKTABA YA ELIMU</span>
             </div>
         </a>
@@ -169,6 +169,6 @@
 
     <div class="nav-drawer-footer">
         <p class="nav-drawer-quote">"Mwenye kufuata njia akitafuta elimu, Mwenyezi Mungu humsahilishia njia ya kuelekea Peponi."</p>
-        <span class="nav-drawer-copy">© {{ date('Y') }} Bayt Al-Hadith</span>
+        <span class="nav-drawer-copy">© {{ date('Y') }} Bayt Ul Hadith</span>
     </div>
 </aside>

@@ -1,4 +1,4 @@
-<x-layouts.app title="Weka nenosiri jipya · Bayt al-Hadith">
+<x-layouts.app title="Weka nenosiri jipya · Bayt Ul Hadith">
     <section class="auth-page">
         <div class="auth-card">
             <div class="auth-hero auth-hero--compact">

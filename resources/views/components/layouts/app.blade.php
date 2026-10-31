@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Soma na tafuta hadith za Sahih al-Bukhari na Sahih Muslim kwa Kiarabu na Kiswahili.">
-    <title>{{ $title ?? 'Maktaba ya Hadith' }} · Hadith</title>
+    <title>{{ $title ?? 'Maktaba ya Hadith' }} · Bayt Ul Hadith</title>
     {{-- Link preview (WhatsApp, Facebook, Telegram, X) --}}
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Maktaba ya Hadith">
-    <meta property="og:title" content="{{ $title ?? 'Maktaba ya Hadith' }} · Hadith">
+    <meta property="og:site_name" content="Bayt Ul Hadith">
+    <meta property="og:title" content="{{ $title ?? 'Maktaba ya Hadith' }} · Bayt Ul Hadith">
     <meta property="og:description" content="Soma na tafuta hadith za Sahih al-Bukhari na Sahih Muslim kwa Kiarabu na Kiswahili.">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="{{ url('images/logo.png') }}">
@@ -21,7 +21,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Hadith">
+    <meta name="apple-mobile-web-app-title" content="Bayt Ul Hadith">
     <link rel="manifest" href="{{ url('manifest.webmanifest') }}">
     <link rel="apple-touch-icon" href="{{ url('icons/apple-touch-icon.png') }}">
     <script>
@@ -51,7 +51,7 @@
     <header class="site-header">
         <div class="header-container">
             <a href="{{ route('library') }}" class="brand" aria-label="Hadith — ukurasa wa mwanzo">
-                <img src="{{ asset('images/logo.png') }}" alt="Hadith Logo" class="brand-logo">
+                <img src="{{ asset('images/logo.png') }}" alt="Bayt Ul Hadith" class="brand-logo">
             </a>
             <nav class="main-nav" aria-label="Urambazaji mkuu">
                 <div class="nav-links">

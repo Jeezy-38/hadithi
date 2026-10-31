@@ -16,9 +16,9 @@
         <section class="hero library-hero">
             <div class="hero-glow" aria-hidden="true"></div>
             <div class="hero-copy">
-                <h1 data-i18n="hero_h1">BAYT AL<br><em>HADITH.</em></h1>
+                <h1 data-i18n="hero_h1">BAYT UL<br><em>HADITH.</em></h1>
                 <p data-i18n="hero_desc">
-    Karibu Bayt Al-Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.</p>
+    Karibu Bayt Ul Hadith — nyumbani kwa mafundisho yenye thamani ya kudumu ya Mtume Muhammad ﷺ.<br> Gundua Hadith sahihi, ongeza uelewa wako wa Sunnah, na yafanye mafundisho yake kuwa sehemu ya maisha yako ya kila siku.</p>
                 <div class="hero-actions">
                     <a class="hero-button" href="#maktaba">
                         <span data-i18n="hero_btn_start">Anza kusoma</span>
@@ -105,7 +105,7 @@
                                         </button>
 
                                         @php
-                                            $shareText = urlencode("Hadithi ya Leo kutoka Bayt Al-Hadith:\n\n\"" . Str::limit($todayHadith->swahili, 220) . "\"\n\nSoma zaidi: " . route('hadith.show', $todayHadith));
+                                            $shareText = urlencode("Hadithi ya Leo kutoka Bayt Ul Hadith:\n\n\"" . Str::limit($todayHadith->swahili, 220) . "\"\n\nSoma zaidi: " . route('hadith.show', $todayHadith));
                                         @endphp
                                         <a href="https://wa.me/?text={{ $shareText }}" target="_blank" rel="noopener noreferrer" class="rawdah-btn-icon" title="Shiriki WhatsApp">
                                             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">

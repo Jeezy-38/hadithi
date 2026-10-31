@@ -128,8 +128,8 @@ class PesapalService implements PaymentGatewayInterface
         $lastName = $names[1] ?? 'Mkarimu';
 
         $description = $payment->purpose === 'supporter_membership'
-            ? 'Uanachama wa Supporter · Bayt Al-Hadith'
-            : 'Sadaka Jariya · Bayt Al-Hadith';
+            ? 'Uanachama wa Supporter · Bayt Ul Hadith'
+            : 'Sadaka Jariya · Bayt Ul Hadith';
 
         $payload = [
             'id' => $payment->reference,

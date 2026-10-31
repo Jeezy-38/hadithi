@@ -386,16 +386,16 @@
 
             if ('serviceWorker' in navigator) {
                 const reg = await navigator.serviceWorker.ready;
-                reg.showNotification(data.title || 'Hadithi ya Siku · Bayt Al-Hadith', {
-                    body: data.body || 'Karibu Bayt Al-Hadith kusoma Sunnah za Mtume ﷺ.',
+                reg.showNotification(data.title || 'Hadithi ya Siku · Bayt Ul Hadith', {
+                    body: data.body || 'Karibu Bayt Ul Hadith kusoma Sunnah za Mtume ﷺ.',
                     icon: data.icon || '/icons/icon-192.png',
                     badge: data.badge || '/icons/icon-192.png',
                     data: { url: data.url || '/hadith-ya-leo' },
                     tag: 'daily-hadith-' + todayDate
                 });
             } else {
-                new Notification(data.title || 'Hadithi ya Siku · Bayt Al-Hadith', {
-                    body: data.body || 'Karibu Bayt Al-Hadith kusoma Sunnah za Mtume ﷺ.',
+                new Notification(data.title || 'Hadithi ya Siku · Bayt Ul Hadith', {
+                    body: data.body || 'Karibu Bayt Ul Hadith kusoma Sunnah za Mtume ﷺ.',
                     icon: '/icons/icon-192.png'
                 });
             }
@@ -492,7 +492,7 @@
                     // Onyesha arifa ya kwanza ya uthibitisho papo hapo
                     if ('serviceWorker' in navigator) {
                         const reg = await navigator.serviceWorker.ready;
-                        reg.showNotification('Hadithi ya Siku · Bayt Al-Hadith', {
+                        reg.showNotification('Hadithi ya Siku · Bayt Ul Hadith', {
                             body: 'Arifa zimewashwa kikamilifu! Utapokea Hadithi ya Siku kila asubuhi.',
                             icon: '/icons/icon-192.png',
                             badge: '/icons/icon-192.png',

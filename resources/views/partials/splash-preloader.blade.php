@@ -12,10 +12,10 @@
     <div class="bayt-splash-glow"></div>
     <div class="bayt-splash-body">
         <div class="bayt-splash-logo-wrap">
-            <img src="{{ asset('images/logo.png') }}" alt="Bayt Al-Hadith" class="bayt-splash-logo">
+            <img src="{{ asset('images/logo.png') }}" alt="Bayt Ul Hadith" class="bayt-splash-logo">
         </div>
         <div class="bayt-splash-title">
-            Bayt Al-<span>Hadith</span>
+            Bayt Ul <span>Hadith</span>
         </div>
         <div class="bayt-splash-spinner-wrap">
             <div class="bayt-splash-spinner">

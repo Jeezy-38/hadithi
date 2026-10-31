@@ -35,7 +35,7 @@ self.addEventListener('fetch', (event) => {
    ========================================================================== */
 self.addEventListener('push', (event) => {
     let payload = {
-        title: 'Hadithi ya Siku · Bayt Al-Hadith',
+        title: 'Hadithi ya Siku · Bayt Ul Hadith',
         body: 'Soma Hadithi ya leo upate mafundisho sahihi ya Mtume Muhammad ﷺ.',
         url: '/hadith-ya-leo',
         icon: '/icons/icon-192.png',

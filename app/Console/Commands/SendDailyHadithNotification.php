@@ -27,7 +27,7 @@ class SendDailyHadithNotification extends Command
             ->skip($dayIndex % $total)
             ->first();
 
-        $collectionName = $hadith->chapter->book->collection->name ?? 'Bayt Al-Hadith';
+        $collectionName = $hadith->chapter->book->collection->name ?? 'Bayt Ul Hadith';
         $shortSwahili = Str::limit($hadith->swahili, 140);
 
         $payload = [

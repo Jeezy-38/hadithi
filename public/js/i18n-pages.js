@@ -1,5 +1,5 @@
 /*
- * Bayt Al-Hadith: tafsiri za kurasa (Kiswahili / English / العربية).
+ * Bayt Ul Hadith: tafsiri za kurasa (Kiswahili / English / العربية).
  *
  * Inakamilisha reader.js (ambayo inashughulikia funguo zake yenyewe). Faili hii
  * inashughulikia funguo zenye kiambishi "pg_" pekee, kwa hiyo hakuna mgongano.

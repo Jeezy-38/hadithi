@@ -1,4 +1,4 @@
-<x-layouts.app title="Mwezi Mtukufu wa Ramadhan · Bayt Al-Hadith">
+<x-layouts.app title="Mwezi Mtukufu wa Ramadhan · Bayt Ul Hadith">
     <div class="reader-shell ramadhan-shell">
         <div class="reader-top-nav">
             <a class="back-link" href="{{ route('library') }}">

@@ -1,4 +1,4 @@
-<x-layouts.app title="Risiti ya Mchango · Bayt Al-Hadith">
+<x-layouts.app title="Risiti ya Mchango · Bayt Ul Hadith">
     <div class="support-page-shell" style="max-width: 680px; margin: 2rem auto; padding: 0 1rem;">
         
         {{-- Kadi Kuu ya Risiti --}}

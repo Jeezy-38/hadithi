@@ -1,4 +1,4 @@
-<x-layouts.app title="Mwelekeo wa Qibla · Dar es Salaam · Bayt Al-Hadith">
+<x-layouts.app title="Mwelekeo wa Qibla · Dar es Salaam · Bayt Ul Hadith">
     <div class="reader-shell qibla-shell">
         <div class="reader-top-nav">
             <a class="back-link" href="{{ route('library') }}">

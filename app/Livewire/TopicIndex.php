@@ -214,7 +214,7 @@ class TopicIndex extends Component
             'selectedTopic' => $selectedTopic,
             'hadiths' => $hadiths,
         ])->layout('components.layouts.app', [
-            'title' => $selectedTopic ? ($selectedTopic['title_sw'] . ' · Mada za Hadithi') : 'Mada za Kiislamu · Bayt Al-Hadith',
+            'title' => $selectedTopic ? ($selectedTopic['title_sw'] . ' · Mada za Hadithi') : 'Mada za Kiislamu · Bayt Ul Hadith',
         ]);
     }
 }

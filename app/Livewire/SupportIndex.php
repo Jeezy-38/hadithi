@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Sadaka Jariya & Usaidizi · Bayt Al-Hadith')]
+#[Title('Sadaka Jariya & Usaidizi · Bayt Ul Hadith')]
 class SupportIndex extends Component
 {
     public string $currency = 'TZS';
@@ -257,6 +257,6 @@ class SupportIndex extends Component
         return view('livewire.support-index', [
             'recentDonations' => $recentDonations,
             'stats' => $stats,
-        ])->layout('components.layouts.app', ['title' => 'Sadaka Jariya & Usaidizi · Bayt Al-Hadith']);
+        ])->layout('components.layouts.app', ['title' => 'Sadaka Jariya & Usaidizi · Bayt Ul Hadith']);
     }
 }

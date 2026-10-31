@@ -66,7 +66,7 @@ class PushNotificationController extends Controller
         if ($total === 0) {
             return response()->json([
                 'title' => 'Hadithi ya Siku',
-                'body' => 'Karibu Bayt Al-Hadith usome Sunnah za Mtume ﷺ.',
+                'body' => 'Karibu Bayt Ul Hadith usome Sunnah za Mtume ﷺ.',
                 'url' => route('library'),
             ]);
         }
@@ -78,7 +78,7 @@ class PushNotificationController extends Controller
             ->skip($dayIndex % $total)
             ->first();
 
-        $collectionName = $hadith->chapter->book->collection->name ?? 'Bayt Al-Hadith';
+        $collectionName = $hadith->chapter->book->collection->name ?? 'Bayt Ul Hadith';
         $shortSwahili = \Illuminate\Support\Str::limit($hadith->swahili, 140);
 
         return response()->json([

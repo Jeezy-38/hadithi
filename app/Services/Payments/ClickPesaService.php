@@ -112,8 +112,8 @@ class ClickPesaService implements PaymentGatewayInterface
         }
 
         $description = $payment->purpose === 'supporter_membership'
-            ? 'Uanachama wa Supporter · Bayt Al-Hadith'
-            : 'Sadaka Jariya · Bayt Al-Hadith';
+            ? 'Uanachama wa Supporter · Bayt Ul Hadith'
+            : 'Sadaka Jariya · Bayt Ul Hadith';
 
         $amount = (string) (int) round((float) $payment->amount);
         $callbackUrl = route('payments.callback', ['reference' => $payment->reference]);
