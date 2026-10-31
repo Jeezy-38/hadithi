@@ -159,6 +159,15 @@
                                     <span class="module-desc" data-i18n="pg_mod_kg_d">Maarifa yaliyounganishwa</span>
                                 </span>
                             </a>
+                            @if(\App\Http\Controllers\AiResearchController::enabled())
+                            <a class="module-card module-card-live" href="{{ route('ai.index') }}">
+                                <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 1.8L21.5 19.5l-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
+                                <span class="module-body">
+                                    <span class="module-title" data-i18n="pg_mod_ai">AI Research</span>
+                                    <span class="module-desc" data-i18n="pg_mod_ai_d">Msaidizi anayetegemea vyanzo</span>
+                                </span>
+                            </a>
+                            @else
                             <div class="module-card module-card-soon" aria-disabled="true">
                                 <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 1.8L21.5 19.5l-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
                                 <span class="module-body">
@@ -167,6 +176,7 @@
                                     <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
                                 </span>
                             </div>
+                            @endif
                             <a class="module-card module-card-live" href="{{ route('learning.index') }}">
                                 <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
                                 <span class="module-body">

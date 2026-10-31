@@ -95,6 +95,12 @@ Route::prefix('utafiti')->name('research.')->group(function () {
     Route::get('/ramani/{hadith}', [\App\Http\Controllers\ResearchController::class, 'graph'])->middleware('throttle:60,1')->name('graph');
 });
 
+// ---- AI Research (inahitaji AI_API_KEY) ----
+Route::prefix('msaidizi')->name('ai.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\AiResearchController::class, 'index'])->name('index');
+    Route::post('/uliza', [\App\Http\Controllers\AiResearchController::class, 'ask'])->middleware('throttle:10,1')->name('ask');
+});
+
 // ---- Arabic Analyzer (lite) ----
 Route::prefix('kiarabu')->name('arabic.')->group(function () {
     Route::get('/neno', [\App\Http\Controllers\ArabicController::class, 'word'])->middleware('throttle:90,1')->name('word');

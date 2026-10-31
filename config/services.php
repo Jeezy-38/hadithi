@@ -82,4 +82,14 @@ return [
         'mode' => env('CLICKPESA_MODE', 'live'), // 'live' au 'sandbox'
     ],
 
+    /*
+    | AI Research (msaidizi anayetegemea hadith zilizomo). Huzimwa hadi AI_API_KEY iwekwe.
+    */
+    'ai' => [
+        'key' => env('AI_API_KEY'),
+        'model' => env('AI_MODEL', 'claude-haiku-5-5'),
+        'daily_limit' => (int) env('AI_DAILY_LIMIT', 15),
+        'max_tokens' => (int) env('AI_MAX_TOKENS', 700),
+    ],
+
 ];
