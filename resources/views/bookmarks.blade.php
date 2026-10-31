@@ -2,7 +2,7 @@
     <div class="reader-shell bookmarks-shell">
         <a class="back-link" href="{{ route('library') }}">
             <span class="back-arrow" aria-hidden="true">←</span>
-            <span>Nyuma</span>
+            <span data-i18n="pg_lc_back">Nyuma</span>
         </a>
 
         <div class="reader-heading">

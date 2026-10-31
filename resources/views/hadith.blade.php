@@ -18,7 +18,7 @@
         <div class="reader-top-nav">
             <a class="back-link" href="{{ route('library', ['collection' => $hadith->chapter->book->collection->slug, 'book' => $hadith->chapter->book_id, 'chapter' => $hadith->chapter_id]) }}">
                 <span class="back-arrow" aria-hidden="true">←</span>
-                <span>Nyuma</span>
+                <span data-i18n="pg_lc_back">Nyuma</span>
             </a>
 
             <div class="reader-actions no-print">
@@ -336,7 +336,7 @@
                 </div>
             @endif
 
-            <a href="{{ route('library', ['collection' => $hadith->chapter->book->collection->slug, 'book' => $hadith->chapter->book_id, 'chapter' => $hadith->chapter_id]) }}" class="reader-nav-card nav-center" title="Nyuma">
+            <a href="{{ route('library', ['collection' => $hadith->chapter->book->collection->slug, 'book' => $hadith->chapter->book_id, 'chapter' => $hadith->chapter_id]) }}" class="reader-nav-card nav-center" title="Nyuma" data-i18n-title="pg_lc_back">
                 <span class="nav-card-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>

@@ -29,7 +29,7 @@
                 <div class="ar-panel" id="ar-panel" aria-live="polite">
                     <p class="ar-hint" data-i18n="pg_ar_hint">Bonyeza neno ili kuona matumizi yake.</p>
                 </div>
-                <p class="ar-note" data-i18n="pg_ar_note">Toleo la awali: utafutaji wa neno kwa maandishi. Mzizi na sarufi kamili vitakuja baadaye.</p>
+                <p class="ar-note" data-i18n="pg_ar_note">Bonyeza neno kuona mzizi, umbo la msingi na aina yake, pamoja na hadith zinazolitumia.</p>
             </div>
             <script src="{{ asset('js/arabic.js') }}?v=1" defer></script>
         @else

@@ -11,15 +11,22 @@
             <p>{{ $hadith->chapter->title_sw }}</p>
         </div>
 
-        <section class="lc-card">
+        <section class="lc-card" data-reading="ar">
             <h2 class="lc-card-label" data-i18n="pg_lc_arabic">Kiarabu</h2>
             <p class="arabic arabic-text font-arabic lc-arabic" lang="ar" dir="rtl">{{ $hadith->arabic }}</p>
         </section>
 
-        <section class="lc-card">
+        <section class="lc-card" @if($hadith->english) data-reading="sw" @endif>
             <h2 class="lc-card-label" data-i18n="pg_lc_swahili">Tafsiri ya Kiswahili</h2>
             <p class="lc-text">{{ $hadith->swahili }}</p>
         </section>
+
+        @if($hadith->english)
+        <section class="lc-card" data-reading="en">
+            <h2 class="lc-card-label" data-i18n="pg_lc_english">English translation</h2>
+            <p class="lc-text" lang="en">{{ $hadith->english }}</p>
+        </section>
+        @endif
 
         @if(!empty($hadith->explanation))
             <section class="lc-card">

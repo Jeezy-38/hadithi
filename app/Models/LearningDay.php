@@ -10,7 +10,7 @@ class LearningDay extends Model
 
     protected function casts(): array
     {
-        return ['day' => 'date'];
+        return ['day' => 'date:Y-m-d'];
     }
 
     /** Rekodi kuwa mtumiaji amejifunza leo (saa za Dar es Salaam). */

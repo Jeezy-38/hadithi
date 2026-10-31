@@ -3,7 +3,7 @@
         <div class="reader-top-nav tasbih-top-nav">
             <a class="back-link" href="{{ route('duaa.index') }}">
                 <span class="back-arrow" aria-hidden="true">←</span>
-                <span>Nyuma</span>
+                <span data-i18n="pg_lc_back">Nyuma</span>
             </a>
             <h1 class="sr-only">DIGITAL TASBIH</h1>
         </div>
