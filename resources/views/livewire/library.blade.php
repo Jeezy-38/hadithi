@@ -20,7 +20,12 @@
             </div>
             <div class="hero-copy">
                 <h1 data-i18n="hero_h1">BAYT UL <em>HADITH</em></h1>
-                <p class="hero-sub" data-i18n="pg_hero_sub">Jukwaa Kuu la Maarifa ya Hadith ya Kiislamu</p>
+                <p class="hero-meaning" data-i18n="pg_hero_meaning">بيت الحديث — "Nyumba ya Hadith"</p>
+                <ul class="hero-chips">
+                    <li data-i18n="pg_hero_c1">Hadith sahihi</li>
+                    <li data-i18n="pg_hero_c2">Chanzo na daraja</li>
+                    <li>Kiswahili · English · العربية</li>
+                </ul>
             </div>
         </section>
     @endif

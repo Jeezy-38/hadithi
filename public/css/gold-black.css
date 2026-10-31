@@ -11500,3 +11500,9 @@ a.rs-chip:hover { border-color: var(--gold); }
 /* ---- Footer brand name = hero title style ---- */
 .footer-brand-name { font-family: 'Cinzel', 'Playfair Display', serif; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
 .footer-brand-name span, [data-theme="light"] .footer-brand-name span { font-family: inherit; font-style: normal; color: var(--gold); }
+
+/* ---- Landing hero: meaning + small details ---- */
+.library-hero .hero-meaning { margin: 0 0 10px; font-size: .92rem; color: var(--text-secondary); }
+.library-hero .hero-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.library-hero .hero-chips li { font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(224, 200, 104, .4); color: var(--gold); white-space: nowrap; }
+[data-theme="light"] .library-hero .hero-chips li { border-color: rgba(10, 63, 102, .3); }
