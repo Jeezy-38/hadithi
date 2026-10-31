@@ -33,12 +33,12 @@
         {{-- Kadi ya Kichwa cha Sura --}}
         <div class="quran-header-card">
             <div class="quran-header-badge-row">
-                <span class="quran-header-pill">SURA YA {{ $surah->number }}</span>
+                <span class="quran-header-pill" data-i18n="pg_q_sura" data-i18n-vars='{"n":"{{ $surah->number }}"}'>SURA YA {{ $surah->number }}</span>
                 <span class="quran-header-pill {{ in_array(strtolower($surah->revelation_type), ['makki', 'makka']) ? 'pill-makki' : 'pill-madani' }}">
                     {{ in_array(strtolower($surah->revelation_type), ['makki', 'makka']) ? 'MAKKA' : 'MADINA' }}
                 </span>
-                <span class="quran-header-pill">{{ $surah->total_verses }} AYA</span>
-                <span class="quran-header-pill">JUZ {{ $surah->juz_start }}</span>
+                <span class="quran-header-pill" data-i18n="pg_q_ayas" data-i18n-vars='{"n":"{{ $surah->total_verses }}"}'>{{ $surah->total_verses }} AYA</span>
+                <span class="quran-header-pill" data-i18n="pg_q_juz" data-i18n-vars='{"n":"{{ $surah->juz_start }}"}'>JUZ {{ $surah->juz_start }}</span>
             </div>
 
             <h1 class="quran-header-title-ar font-arabic" dir="rtl">{{ $surah->name_ar }}</h1>
@@ -51,7 +51,7 @@
             <div class="quran-bismillah-box" role="region" aria-label="Bismillah">
                 <span class="bismillah-badge">BISMILLAHIR RAHMAANIR RAHIIM</span>
                 <div class="bismillah-ar font-arabic" dir="rtl">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
-                <div class="bismillah-sw">Kwa jina la Mwenyezi Mungu, Mwingi wa Rehema, Mwenye Kurehemu</div>
+                <div class="bismillah-sw" data-i18n="pg_q_bism">Kwa jina la Mwenyezi Mungu, Mwingi wa Rehema, Mwenye Kurehemu</div>
             </div>
 
             <div class="islamic-divider" role="separator" aria-hidden="true">
@@ -65,11 +65,11 @@
         <div class="quran-controls-bar">
             {{-- Mifumo ya Kusoma --}}
             <div class="control-group">
-                <span class="control-group-label">Muonekano:</span>
+                <span class="control-group-label" data-i18n="pg_q_view">Muonekano:</span>
                 <div class="display-mode-buttons">
-                    <button type="button" class="display-mode-btn active" data-mode="both">Yote</button>
-                    <button type="button" class="display-mode-btn" data-mode="ar">Kiarabu</button>
-                    <button type="button" class="display-mode-btn" data-mode="sw">Kiswahili</button>
+                    <button type="button" class="display-mode-btn active" data-mode="both" data-i18n="pg_q_all">Yote</button>
+                    <button type="button" class="display-mode-btn" data-mode="ar" data-i18n="pg_h_btn_ar">Kiarabu</button>
+                    <button type="button" class="display-mode-btn" data-mode="sw" data-i18n="pg_h_btn_sw">Kiswahili</button>
                 </div>
             </div>
 
@@ -82,7 +82,7 @@
                     </svg>
                     <span id="play-all-label">Sikiliza Sura Yote</span>
                 </button>
-                <span class="audio-reciter-note">Msomaji: Mishary Rashid Alafasy</span>
+                <span class="audio-reciter-note" data-i18n="pg_q_reciter">Msomaji: Mishary Rashid Alafasy</span>
             </div>
         </div>
 
@@ -123,7 +123,7 @@
                                 data-share-ref="{{ $ayahRef }}"
                                 data-share-text="{{ $ayahShareText }}"
                                 data-share-url="{{ route('quran.show', $surah->number) }}#ayah-{{ $ayah->verse_number }}"
-                                title="Shiriki aya hii">
+                                data-i18n-title="pg_q_t_share" title="Shiriki aya hii">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
                                     <polyline points="16 6 12 2 8 6"></polyline>
@@ -132,7 +132,7 @@
                                 <span class="sr-only">Shiriki</span>
                             </button>
 
-                            <button type="button" class="ayah-action-btn copy-ayah-btn" data-copy="{{ $ayah->arabic_text }}&#10;&#10;{{ $ayah->translation_sw }} (Qur'an {{ $surah->number }}:{{ $ayah->verse_number }})" title="Nakili aya hii">
+                            <button type="button" class="ayah-action-btn copy-ayah-btn" data-copy="{{ $ayah->arabic_text }}&#10;&#10;{{ $ayah->translation_sw }} (Qur'an {{ $surah->number }}:{{ $ayah->verse_number }})" data-i18n-title="pg_q_t_copy" title="Nakili aya hii">
                                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -168,8 +168,8 @@
                 </article>
             @empty
                 <div class="empty-state">
-                    <p class="empty-title">Aya za Sura Hii Zinapakuliwa...</p>
-                    <p class="empty-desc">Tafadhali subiri kidogo wakati mfumo unapoweka aya za Sura hii kutoka kwenye maktaba au mtandao.</p>
+                    <p class="empty-title" data-i18n="pg_q_loading">Aya za Sura Hii Zinapakuliwa...</p>
+                    <p class="empty-desc" data-i18n="pg_q_loading_d">Tafadhali subiri kidogo wakati mfumo unapoweka aya za Sura hii kutoka kwenye maktaba au mtandao.</p>
                 </div>
             @endforelse
         </div>
@@ -180,7 +180,7 @@
                 <a href="{{ route('quran.show', $prev->number) }}" class="quran-nav-card reader-nav-card nav-prev">
                     <span class="nav-card-icon" aria-hidden="true">←</span>
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">SURA ILIYOTANGULIA</span>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_q_prev">SURA ILIYOTANGULIA</span>
                         <strong class="nav-card-title nav-surah-name">{{ $prev->number }}. {{ $prev->name_sw }}</strong>
                         <span class="nav-card-arabic nav-surah-ar font-arabic" dir="rtl">{{ $prev->name_ar }}</span>
                     </div>
@@ -188,13 +188,13 @@
             @else
                 <div class="quran-nav-card reader-nav-card nav-disabled">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">MWANZO WA QUR'ANI</span>
-                        <strong class="nav-card-title nav-surah-name">Sura ya Kwanza</strong>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_q_start">MWANZO WA QUR'ANI</span>
+                        <strong class="nav-card-title nav-surah-name" data-i18n="pg_q_first">Sura ya Kwanza</strong>
                     </div>
                 </div>
             @endif
 
-            <a href="{{ route('quran.index') }}" class="quran-nav-card reader-nav-card nav-center" title="Orodha ya Sura Zote 114">
+            <a href="{{ route('quran.index') }}" class="quran-nav-card reader-nav-card nav-center" data-i18n-title="pg_q_t_all" title="Orodha ya Sura Zote 114">
                 <span class="nav-card-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
@@ -202,7 +202,7 @@
                     </svg>
                 </span>
                 <div class="nav-card-content">
-                    <span class="nav-card-hint nav-dir-label">MAKTABA</span>
+                    <span class="nav-card-hint nav-dir-label" data-i18n="pg_q_lib">MAKTABA</span>
                     <strong class="nav-card-title nav-surah-name">Sura Zote 114</strong>
                 </div>
             </a>
@@ -210,7 +210,7 @@
             @if($next)
                 <a href="{{ route('quran.show', $next->number) }}" class="quran-nav-card reader-nav-card nav-next">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">SURA INAYOFUATA</span>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_q_next">SURA INAYOFUATA</span>
                         <strong class="nav-card-title nav-surah-name">{{ $next->number }}. {{ $next->name_sw }}</strong>
                         <span class="nav-card-arabic nav-surah-ar font-arabic" dir="rtl">{{ $next->name_ar }}</span>
                     </div>
@@ -219,8 +219,8 @@
             @else
                 <div class="quran-nav-card reader-nav-card nav-disabled">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">MWISHO WA QUR'ANI</span>
-                        <strong class="nav-card-title nav-surah-name">Sura ya Mwisho</strong>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_q_end">MWISHO WA QUR'ANI</span>
+                        <strong class="nav-card-title nav-surah-name" data-i18n="pg_q_last">Sura ya Mwisho</strong>
                     </div>
                 </div>
             @endif

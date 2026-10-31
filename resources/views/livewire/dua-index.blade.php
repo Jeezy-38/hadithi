@@ -17,7 +17,7 @@
         {{-- Kisanduku cha Utafutaji --}}
         <div class="dua-search-bar">
             <div class="search-form">
-                <label for="dua-search" class="visually-hidden">Tafuta dua</label>
+                <label for="dua-search" class="visually-hidden" data-i18n="pg_d_search">Tafuta dua</label>
                 <div class="search-input-wrap">
                     <svg class="search-input-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -44,7 +44,7 @@
                 wire:click="clearFilters"
                 class="category-pill {{ $category === '' ? 'active' : '' }}"
             >
-                <span>Zote</span>
+                <span data-i18n="pg_d_all">Zote</span>
                 <span class="pill-count">{{ $totalCount }}</span>
             </button>
             @foreach($categories as $cat)
@@ -66,9 +66,9 @@
                     <div class="dua-card-header">
                         <span class="dua-category-badge">{{ $dua->category->name_sw }}</span>
                         @if($dua->target_count > 1)
-                            <span class="dua-repeat-badge" title="Idadi ya kurudia">Mara {{ $dua->target_count }}</span>
+                            <span class="dua-repeat-badge" title="Idadi ya kurudia" data-i18n="pg_d_x" data-i18n-vars='{"n":"{{ $dua->target_count }}"}'>Mara {{ $dua->target_count }}</span>
                         @else
-                            <span class="dua-repeat-badge dua-repeat-badge--single">Mara 1</span>
+                            <span class="dua-repeat-badge dua-repeat-badge--single" data-i18n="pg_d_once">Mara 1</span>
                         @endif
                     </div>
 
@@ -98,7 +98,7 @@
 
                     <div class="dua-card-footer">
                         <a href="{{ route('duaa.show', $dua) }}" class="dua-read-btn">
-                            <span>Soma & Hesabu</span>
+                            <span data-i18n="pg_d_readcount">Soma & Hesabu</span>
                             <span class="btn-arrow" aria-hidden="true">→</span>
                         </a>
                     </div>
@@ -112,9 +112,9 @@
                             <path d="M18 18a6 6 0 0 1-12 0c0-3.5 3-7 6-11 3 4 6 7.5 6 11z"></path>
                         </svg>
                     </div>
-                    <h3>Hakuna dua iliyopatikana</h3>
-                    <p>Jaribu maneno mengine ya kutafuta au bonyeza "Zote" ili kuona makundi yote.</p>
-                    <button type="button" wire:click="clearFilters" class="clear-filters-btn">Onyesha Dua Zote</button>
+                    <h3 data-i18n="pg_d_none">Hakuna dua iliyopatikana</h3>
+                    <p data-i18n="pg_d_none_d">Jaribu maneno mengine ya kutafuta au bonyeza "Zote" ili kuona makundi yote.</p>
+                    <button type="button" wire:click="clearFilters" class="clear-filters-btn" data-i18n="pg_d_showall">Onyesha Dua Zote</button>
                 </div>
             @endforelse
         </div>
@@ -123,11 +123,11 @@
         @if($duas->hasPages())
             <nav class="pagination" aria-label="Kurasa za dua">
                 <button wire:click="previousPage" @disabled($duas->onFirstPage()) class="page-nav-btn">
-                    <span>←</span> <span>Iliyotangulia</span>
+                    <span>←</span> <span data-i18n="pg_d_prevp">Iliyotangulia</span>
                 </button>
                 <span class="page-indicator">Ukurasa {{ $duas->currentPage() }} / {{ $duas->lastPage() }}</span>
                 <button wire:click="nextPage" @disabled(!$duas->hasMorePages()) class="page-nav-btn">
-                    <span>Inayofuata</span> <span>→</span>
+                    <span data-i18n="pg_d_nextp">Inayofuata</span> <span>→</span>
                 </button>
             </nav>
         @endif

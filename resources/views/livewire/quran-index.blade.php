@@ -83,7 +83,7 @@
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                 </svg>
-                <span>SURA MAARUFU:</span>
+                <span data-i18n="pg_q_pop">SURA MAARUFU:</span>
             </span>
             <div class="quran-quick-scroll quick-topics-scroll">
                 <a href="{{ route('quran.show', 1) }}" class="quran-quick-chip quick-topic-chip">Al-Faatiha</a>
@@ -126,7 +126,7 @@
                     role="tab"
                     aria-selected="{{ $type === 'all' ? 'true' : 'false' }}"
                 >
-                    <span>Zote ({{ $totalSurahs }})</span>
+                    <span data-i18n="pg_q_f_all" data-i18n-vars='{"n":"{{ $totalSurahs }}"}'>Zote ({{ $totalSurahs }})</span>
                 </button>
                 <button
                     type="button"
@@ -135,7 +135,7 @@
                     role="tab"
                     aria-selected="{{ in_array($type, ['Makka', 'Makki']) ? 'true' : 'false' }}"
                 >
-                    <span>Makka ({{ $makkiCount }})</span>
+                    <span data-i18n="pg_q_f_mk" data-i18n-vars='{"n":"{{ $makkiCount }}"}'>Makka ({{ $makkiCount }})</span>
                 </button>
                 <button
                     type="button"
@@ -144,7 +144,7 @@
                     role="tab"
                     aria-selected="{{ in_array($type, ['Madina', 'Madani']) ? 'true' : 'false' }}"
                 >
-                    <span>Madina ({{ $madaniCount }})</span>
+                    <span data-i18n="pg_q_f_md" data-i18n-vars='{"n":"{{ $madaniCount }}"}'>Madina ({{ $madaniCount }})</span>
                 </button>
             </div>
         </div>
@@ -179,10 +179,10 @@
                 </a>
             @empty
                 <div class="empty-state">
-                    <p class="empty-title">Hakuna Sura Iliyopatikana</p>
-                    <p class="empty-desc">Hakuna Sura inayolingana na vigezo vya utafutaji ulivyoweka.</p>
+                    <p class="empty-title" data-i18n="pg_q_none">Hakuna Sura Iliyopatikana</p>
+                    <p class="empty-desc" data-i18n="pg_q_none_d">Hakuna Sura inayolingana na vigezo vya utafutaji ulivyoweka.</p>
                     <button type="button" wire:click="clearFilters" class="action-pill-btn">
-                        <span>Onyesha Sura Zote 114</span>
+                        <span data-i18n="pg_q_showall">Onyesha Sura Zote 114</span>
                     </button>
                 </div>
             @endforelse

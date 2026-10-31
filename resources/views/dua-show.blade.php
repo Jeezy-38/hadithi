@@ -16,7 +16,7 @@
         <div class="reader-top-nav">
             <a class="back-link" href="{{ route('duaa.index', ['kundi' => $dua->category->slug]) }}">
                 <span class="back-arrow" aria-hidden="true">←</span>
-                <span>Nyuma</span>
+                <span data-i18n="pg_lc_back">Nyuma</span>
             </a>
 
             <div class="reader-actions no-print">
@@ -26,7 +26,7 @@
                             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                         </svg>
                     </span>
-                    <span class="btn-text">Hifadhi</span>
+                    <span class="btn-text" data-i18n="pg_h_save">Hifadhi</span>
                 </button>
 
                 <button type="button" id="share-dua" class="text-button action-pill-btn share-trigger-btn"
@@ -44,7 +44,7 @@
                             <line x1="12" y1="2" x2="12" y2="15"></line>
                         </svg>
                     </span>
-                    <span class="btn-text">Shiriki</span>
+                    <span class="btn-text" data-i18n="pg_d_share">Shiriki</span>
                 </button>
             </div>
         </div>
@@ -61,13 +61,13 @@
             {{-- Sehemu ya Juu ya Kadi --}}
             <div class="dua-detail-header">
                 <span class="dua-category-badge">{{ $dua->category->name_sw }}</span>
-                <span class="dua-repeat-badge">Soma mara {{ $dua->target_count }}</span>
+                <span class="dua-repeat-badge" data-i18n="pg_d_times" data-i18n-vars='{"n":"{{ $dua->target_count }}"}'>Soma mara {{ $dua->target_count }}</span>
             </div>
 
             {{-- 1. Matini ya Kiarabu --}}
             <section class="reading-section" data-reading="ar" aria-labelledby="label-arabic">
                 <div class="section-label-row">
-                    <span id="label-arabic" class="section-label">MAANDISHI YA KIARABU</span>
+                    <span id="label-arabic" class="section-label" data-i18n="pg_h_l_ar">MAANDISHI YA KIARABU</span>
                     <span class="section-script-badge">العربية بالتشكيل</span>
                 </div>
                 <div class="arabic-box dua-arabic-box-detail">
@@ -79,7 +79,7 @@
             @if($dua->transliteration)
                 <section class="reading-section" data-reading="transliteration" aria-labelledby="label-transliteration">
                     <div class="section-label-row">
-                        <span id="label-transliteration" class="section-label">MATAMSHI (NAMNA YA KUSOMA)</span>
+                        <span id="label-transliteration" class="section-label" data-i18n="pg_d_translit">MATAMSHI (NAMNA YA KUSOMA)</span>
                     </div>
                     <div class="transliteration-box">
                         <p class="transliteration-text">"{{ $dua->transliteration }}"</p>
@@ -90,7 +90,7 @@
             {{-- 3. Tafsiri ya Kiswahili --}}
             <section class="reading-section" data-reading="sw" aria-labelledby="label-swahili">
                 <div class="section-label-row">
-                    <span id="label-swahili" class="section-label">TAFSIRI YA KISWAHILI</span>
+                    <span id="label-swahili" class="section-label" data-i18n="pg_h_l_sw">TAFSIRI YA KISWAHILI</span>
                 </div>
                 <div class="swahili-box">
                     <p class="swahili-text">{{ $dua->swahili }}</p>
@@ -101,7 +101,7 @@
             @if($dua->english)
                 <section class="reading-section" data-reading="en" aria-labelledby="label-english">
                     <div class="section-label-row">
-                        <span id="label-english" class="section-label">ENGLISH TRANSLATION</span>
+                        <span id="label-english" class="section-label" data-i18n="pg_h_l_en">ENGLISH TRANSLATION</span>
                     </div>
                     <div class="english-box">
                         <p class="english-text">{{ $dua->english }}</p>
@@ -112,12 +112,12 @@
             {{-- 5. Kaunta ya Kuhesabu Dua Hii (Interactive Repeat Counter) --}}
             <section class="dua-counter-widget" id="dua-counter-widget" data-target="{{ $dua->target_count }}">
                 <div class="counter-widget-header">
-                    <span class="counter-widget-label">KAUNTA YA KUSOMA DUA HII</span>
+                    <span class="counter-widget-label" data-i18n="pg_d_counter">KAUNTA YA KUSOMA DUA HII</span>
                     <span class="counter-target-text">Lengo: Mara {{ $dua->target_count }}</span>
                 </div>
                 
                 <div class="counter-widget-body">
-                    <button type="button" id="dua-count-btn" class="dua-count-btn" aria-label="Gusa ili kuhesabu">
+                    <button type="button" id="dua-count-btn" class="dua-count-btn" data-i18n-aria-label="pg_d_tap" aria-label="Gusa ili kuhesabu">
                         <span class="dua-count-number" id="dua-count-number">0</span>
                         <span class="dua-count-slash">/</span>
                         <span class="dua-count-total">{{ $dua->target_count }}</span>
@@ -125,7 +125,7 @@
                     </button>
                     
                     <div class="counter-widget-controls">
-                        <button type="button" id="dua-count-reset" class="counter-reset-btn" title="Anza upya">
+                        <button type="button" id="dua-count-reset" class="counter-reset-btn" data-i18n-title="pg_d_reset" title="Anza upya">
                             <span aria-hidden="true">↺</span> Anza upya
                         </button>
                     </div>
@@ -140,7 +140,7 @@
             @if($dua->virtue_sw)
                 <div class="dua-virtue-callout">
                     <div class="virtue-header">
-                        <strong>Fadhila za Dua Hii:</strong>
+                        <strong data-i18n="pg_d_virtue">Fadhila za Dua Hii:</strong>
                     </div>
                     <p class="virtue-text">{{ $dua->virtue_sw }}</p>
                 </div>
@@ -159,7 +159,7 @@
                         <h2 class="source-title">Rejea na Chanzo</h2>
                     </div>
                     <div class="source-item">
-                        <dt>Kitabu / Chanzo:</dt>
+                        <dt data-i18n="pg_d_src">Kitabu / Chanzo:</dt>
                         <dd>{{ $dua->reference }}</dd>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
         @if($related->isNotEmpty())
             <section class="related-section dua-related-section">
                 <div class="related-header">
-                    <h2>Dua Nyingine Katika Kundi Hili</h2>
+                    <h2 data-i18n="pg_d_more">Dua Nyingine Katika Kundi Hili</h2>
                 </div>
                 <div class="related-grid">
                     @foreach($related as $rel)
@@ -192,7 +192,7 @@
                 <a href="{{ route('duaa.show', $prev) }}" class="reader-nav-card nav-prev">
                     <span class="nav-card-icon" aria-hidden="true">←</span>
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">DUA ILIYOTANGULIA</span>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_d_prev">DUA ILIYOTANGULIA</span>
                         <strong class="nav-card-title nav-surah-name">{{ $prev->title_sw }}</strong>
                         <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($prev->swahili, 60) }}</span>
                     </div>
@@ -200,8 +200,8 @@
             @else
                 <div class="reader-nav-card nav-disabled">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">MWANZO WA KUNDI</span>
-                        <strong class="nav-card-title nav-surah-name">Dua ya Kwanza</strong>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_d_start">MWANZO WA KUNDI</span>
+                        <strong class="nav-card-title nav-surah-name" data-i18n="pg_d_first">Dua ya Kwanza</strong>
                     </div>
                 </div>
             @endif
@@ -214,7 +214,7 @@
                     </svg>
                 </span>
                 <div class="nav-card-content">
-                    <span class="nav-card-hint nav-dir-label">KUNDI LA DUA</span>
+                    <span class="nav-card-hint nav-dir-label" data-i18n="pg_d_group">KUNDI LA DUA</span>
                     <strong class="nav-card-title nav-surah-name">{{ \Illuminate\Support\Str::limit($dua->category->name_sw, 24) }}</strong>
                 </div>
             </a>
@@ -222,7 +222,7 @@
             @if($next)
                 <a href="{{ route('duaa.show', $next) }}" class="reader-nav-card nav-next">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">DUA INAYOFUATA</span>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_d_next">DUA INAYOFUATA</span>
                         <strong class="nav-card-title nav-surah-name">{{ $next->title_sw }}</strong>
                         <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($next->swahili, 60) }}</span>
                     </div>
@@ -231,8 +231,8 @@
             @else
                 <div class="reader-nav-card nav-disabled">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">MWISHO WA KUNDI</span>
-                        <strong class="nav-card-title nav-surah-name">Dua ya Mwisho</strong>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_d_end">MWISHO WA KUNDI</span>
+                        <strong class="nav-card-title nav-surah-name" data-i18n="pg_d_last">Dua ya Mwisho</strong>
                     </div>
                 </div>
             @endif
