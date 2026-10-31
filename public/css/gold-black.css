@@ -11520,3 +11520,27 @@ a.rs-chip:hover { border-color: var(--gold); }
     .library-hero .hero-media { width: auto; margin: 0 14px 14px; border-radius: 16px; aspect-ratio: 16 / 9; border: 1px solid rgba(224, 200, 104, .45); box-shadow: 0 12px 28px -10px rgba(0, 0, 0, .55), 0 0 0 4px rgba(224, 200, 104, .08); }
     .library-hero .hero-media::after { background: linear-gradient(180deg, transparent 60%, rgba(7, 41, 63, .5) 100%) !important; }
 }
+
+/* ===== Light mode: stronger text contrast (secondary text was too faded) ===== */
+[data-theme="light"] {
+    --text-primary: #061c2e;
+    --text-secondary: #1a3550;
+    --text-muted: #2b4863;
+    --text-dim: #33516b;
+    --arabic-text: #061c2e;
+}
+[data-theme="light"] .hero-caption,
+[data-theme="light"] .rawdah-topic-star,
+[data-theme="light"] .bayt-splash-sub,
+[data-theme="light"] .bayt-splash-caption,
+[data-theme="light"] .month-ar { color: #3a5570; }
+[data-theme="light"] .hero p { color: #1e3347; }
+[data-theme="light"] .ayah-translation-sw { color: #142c36; }
+/* small caps labels and meta lines read better a notch heavier */
+[data-theme="light"] .lc-card-label,
+[data-theme="light"] .section-label,
+[data-theme="light"] .module-desc,
+[data-theme="light"] .section-sub,
+[data-theme="light"] .hero-meaning { color: var(--text-secondary); }
+[data-theme="light"] .lc-card-label,
+[data-theme="light"] .section-label { font-weight: 800; }
