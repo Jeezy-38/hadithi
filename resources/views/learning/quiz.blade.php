@@ -6,7 +6,7 @@
         </a>
 
         <div class="reader-heading">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> <span data-i18n="pg_lc_quiz_title">QUIZ</span></span>
+            <span class="eyebrow"><span class="eyebrow-dot"></span> <b data-i18n="pg_lc_quiz_title">QUIZ</b></span>
             <h1>{{ $book ? $book->title_sw : 'Quiz ya Haraka' }}</h1>
         </div>
 

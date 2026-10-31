@@ -6,7 +6,7 @@
         </a>
 
         <div class="reader-heading">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> <span data-i18n="pg_lc_lesson_label">SOMO</span> · {{ $book->collection->name }} · Na. {{ $hadith->number }}</span>
+            <span class="eyebrow"><span class="eyebrow-dot"></span> <b data-i18n="pg_lc_lesson_label">SOMO</b> · {{ $book->collection->name }} · Na. {{ $hadith->number }}</span>
             <h1>{{ $hadith->title ?: \Illuminate\Support\Str::limit($hadith->swahili, 90) }}</h1>
             <p>{{ $hadith->chapter->title_sw }}</p>
         </div>

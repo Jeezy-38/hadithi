@@ -6,7 +6,7 @@
         </a>
 
         <div class="reader-heading">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> <span data-i18n="pg_lc_eyebrow">LEARNING CENTRE</span></span>
+            <span class="eyebrow"><span class="eyebrow-dot"></span> <b data-i18n="pg_lc_eyebrow">LEARNING CENTRE</b></span>
             <h1 data-i18n="pg_lc_memorize">Kuhifadhi</h1>
             <p data-i18n="pg_lc_mem_hint">Jaribu kusoma hadith kutoka kichwani, kisha bonyeza maneno yaliyofichwa kuyaona.</p>
         </div>
