@@ -11211,3 +11211,9 @@ a.module-card:hover { background: var(--bg-surface-hover); }
     font-size: .75rem; font-weight: 600; border: 1px solid var(--text-muted); color: var(--text-muted);
 }
 .module-badge-next { background: var(--gold-gradient); color: var(--btn-gold-text); border-color: transparent; }
+
+/* Landing hero: compact (no button below) */
+.library-hero .hero-copy { padding: 26px 24px; }
+.library-hero h1 { margin: 0 0 10px; }
+.hero p.hero-sub { margin: 0; font-size: 15px; line-height: 1.5; }
+.library-hero { min-height: 0; }
