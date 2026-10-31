@@ -12,6 +12,8 @@
                         <span class="footer-brand-sub" data-i18n="pg_ft_tag">Maktaba Kuu ya Hadithi za Mtume ﷺ</span>
                     </div>
                 </a>
+                <p class="footer-about-text" data-i18n="pg_about_f_intro">Bayt Ul Hadith ni jukwaa la kisasa la Kiislamu la makusanyo ya hadith sahihi na mafundisho ya Kiislamu.</p>
+                <a href="{{ route('about') }}" class="footer-about-link"><span data-i18n="pg_about_more">Soma zaidi</span> <span aria-hidden="true">→</span></a>
             </div>
 
             <!-- Important Links -->
@@ -44,6 +46,10 @@
                     </li>
                 </ul>
 
+            </div>
+
+            <!-- Related Pages -->
+            <div class="footer-related-links">
                 <h3 class="footer-section-title footer-related-title" data-i18n="pg_ft_related">Kurasa Zinazohusiana</h3>
                 <ul class="footer-links-list">
                     <li>

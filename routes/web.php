@@ -95,6 +95,8 @@ Route::prefix('utafiti')->name('research.')->group(function () {
     Route::get('/ramani/{hadith}', [\App\Http\Controllers\ResearchController::class, 'graph'])->middleware('throttle:60,1')->name('graph');
 });
 
+Route::view('/kuhusu', 'about')->name('about');
+
 // ---- AI Research (inahitaji AI_API_KEY) ----
 Route::prefix('msaidizi')->name('ai.')->group(function () {
     Route::get('/', [\App\Http\Controllers\AiResearchController::class, 'index'])->name('index');

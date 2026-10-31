@@ -258,6 +258,7 @@
                                 <li data-i18n="pg_ab_p2">Chanzo na daraja la kila hadith</li>
                                 <li data-i18n="pg_ab_p3">Jifunze, hifadhi na fanya utafiti</li>
                             </ul>
+                            <a href="{{ route('about') }}" class="about-more"><span data-i18n="pg_about_more">Soma zaidi</span> <span aria-hidden="true">→</span></a>
                         </section>
 
 
