@@ -198,7 +198,7 @@
 
                                 @if($total === 0)
                                     <div class="catalog-empty-status">
-                                        <span class="status-pill"><span></span> Inasubiri maudhui yaliyohakikiwa</span>
+                                        <span class="status-pill"><span></span> <b data-i18n="pg_lib_pending">Inasubiri maudhui yaliyohakikiwa</b></span>
                                     </div>
                                 @endif
                             </div>
@@ -347,7 +347,7 @@
                             <h3 data-i18n="{{ $total === 0 ? 'empty_title_zero' : 'empty_title_search' }}">{{ $total === 0 ? 'Safari ya elimu inaanzia hapa.' : 'Hakuna hadith iliyopatikana.' }}</h3>
                             <p data-i18n="{{ $total === 0 ? 'empty_desc_zero' : 'empty_desc_search' }}">{{ $total === 0 ? 'Hadith za Kiarabu na tafsiri za Kiswahili zitaonekana hapa baada ya kuingizwa na kuhakikiwa pamoja na marejeo yake.' : 'Jaribu maneno machache, namba nyingine, au ondoa vichujio vya kitabu na mlango.' }}</p>
                             @if($total === 0)
-                                <span class="status-pill"><span></span> Inasubiri maudhui yaliyohakikiwa</span>
+                                <span class="status-pill"><span></span> <b data-i18n="pg_lib_pending">Inasubiri maudhui yaliyohakikiwa</b></span>
                             @else
                                 <button class="primary-button" wire:click="clearFilters" data-i18n="empty_show_all">Onyesha hadith zote →</button>
                             @endif

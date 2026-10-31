@@ -11,17 +11,17 @@
         <div class="pwa-banner-body">
             <img src="{{ asset('images/logo.png') }}" alt="" class="pwa-banner-logo" width="40" height="40">
             <div class="pwa-banner-content">
-                <h3 id="pwa-title">Hadith App</h3>
+                <h3 id="pwa-title" data-i18n="pg_pw_title">Hadith App</h3>
             </div>
         </div>
 
         {{-- Vitufe vya Kusakinisha --}}
         <div class="pwa-banner-actions" id="pwa-standard-actions">
             <button type="button" id="pwa-install-action-btn" class="pwa-btn-primary">
-                <span>Install App Now</span>
+                <span data-i18n="pg_dr_install_t">Install App Now</span>
             </button>
             <button type="button" id="pwa-dismiss-btn" class="pwa-btn-secondary">
-                <span>Later</span>
+                <span data-i18n="pg_pw_later">Later</span>
             </button>
         </div>
     </div>

@@ -57,7 +57,7 @@
                 <div class="nav-links">
                     <a href="{{ route('library') }}" class="{{ request()->routeIs('library') ? 'active' : '' }}" data-i18n="nav_library">Maktaba</a>
                     <a href="{{ route('bookmarks') }}" class="{{ request()->routeIs('bookmarks') ? 'active' : '' }}" data-i18n="nav_bookmarks">Vipendwa</a>
-                    <a href="{{ route('support') }}" class="{{ request()->routeIs('support*') ? 'active' : '' }}">Sadaka &amp; Changia</a>
+                    <a href="{{ route('support') }}" class="{{ request()->routeIs('support*') ? 'active' : '' }}" data-i18n="pg_nav_support">Changia</a>
                 </div>
                 <div class="nav-controls">
                     <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Badili mwonekano wa giza au mwanga" title="Badili mwonekano (Giza / Nuru)">

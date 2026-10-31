@@ -4,8 +4,8 @@
     <div class="share-modal-dialog">
         <div class="share-modal-header">
             <div class="share-modal-title-wrap">
-                <span class="share-modal-eyebrow">SHIRIKI ELIMU & MAFUNDISHO</span>
-                <h3 id="share-modal-title" class="share-modal-title">Shiriki Ujumbe</h3>
+                <span class="share-modal-eyebrow" data-i18n="pg_sm_eye">SHIRIKI ELIMU & MAFUNDISHO</span>
+                <h3 id="share-modal-title" class="share-modal-title" data-i18n="pg_sm_title">Shiriki Ujumbe</h3>
             </div>
             <button type="button" class="share-modal-close" id="share-modal-close" aria-label="Funga dirisha la kushiriki">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -45,7 +45,7 @@
                             <polyline points="21 15 16 10 5 21"></polyline>
                         </svg>
                     </span>
-                    <span class="share-btn-text">Kadi ya Picha</span>
+                    <span class="share-btn-text" data-i18n="pg_sm_card">Kadi ya Picha</span>
                 </button>
 
                 {{-- 3. Nakili Matini --}}
@@ -70,7 +70,7 @@
                             <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                         </svg>
                     </span>
-                    <span class="share-btn-text">Mitandao Mingine</span>
+                    <span class="share-btn-text" data-i18n="pg_h_other">Mitandao Mingine</span>
                 </button>
             </div>
         </div>

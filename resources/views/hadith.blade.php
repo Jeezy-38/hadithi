@@ -23,9 +23,9 @@
 
             <div class="reader-actions no-print">
                 <div class="reader-more-menu-wrap">
-                    <button type="button" id="reader-more-btn" class="reader-more-toggle" aria-expanded="false" aria-haspopup="true" title="Chaguzi zaidi">
+                    <button type="button" id="reader-more-btn" class="reader-more-toggle" aria-expanded="false" aria-haspopup="true" title="Chaguzi zaidi" data-i18n-title="pg_h_more">
                         <span class="more-dots" aria-hidden="true">⋯</span>
-                        <span class="sr-only">Chaguzi zaidi</span>
+                        <span class="sr-only" data-i18n="pg_h_more">Chaguzi zaidi</span>
                     </button>
                     <div id="reader-more-dropdown" class="reader-more-dropdown" hidden>
                         {{-- 1. WhatsApp Moja kwa Moja --}}
@@ -68,7 +68,7 @@
                                     <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                                 </svg>
                             </span>
-                            <span class="btn-text">Mitandao Mingine</span>
+                            <span class="btn-text" data-i18n="pg_h_other">Mitandao Mingine</span>
                         </button>
 
                         {{-- Shiriki kama picha --}}
@@ -101,7 +101,7 @@
                                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                                 </svg>
                             </span>
-                            <span class="btn-text">Hifadhi</span>
+                            <span class="btn-text" data-i18n="pg_h_save">Hifadhi</span>
                         </button>
 
                         {{-- 5. Soma kwa sauti (Iliyofichwa kwa ombi la mtumiaji) --}}
@@ -113,7 +113,7 @@
                                     <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
                                 </svg>
                             </span>
-                            <span class="btn-text">Soma kwa sauti</span>
+                            <span class="btn-text" data-i18n="pg_h_listen">Soma kwa sauti</span>
                         </button>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
             @if($hadith->title)
                 <h1 class="reader-title">{{ $hadith->title }}</h1>
             @else
-                <h1 class="reader-title">Hadith Na. {{ $hadith->number }}</h1>
+                <h1 class="reader-title" data-i18n="pg_h_no" data-i18n-vars='{"n":"{{ $hadith->number }}"}'>Hadith Na. {{ $hadith->number }}</h1>
             @endif
         </div>
 
@@ -158,8 +158,8 @@
             </div>
 
             <div class="rawdah-audio-lang-switch" role="group" aria-label="Lugha ya Kisomo">
-                <button type="button" class="lang-switch-btn active" id="reader-btn-ar" data-lang="ar">Kiarabu</button>
-                <button type="button" class="lang-switch-btn" id="reader-btn-sw" data-lang="sw">Kiswahili</button>
+                <button type="button" class="lang-switch-btn active" id="reader-btn-ar" data-i18n="pg_h_btn_ar" data-lang="ar">Kiarabu</button>
+                <button type="button" class="lang-switch-btn" id="reader-btn-sw" data-i18n="pg_h_btn_sw" data-lang="sw">Kiswahili</button>
             </div>
             <audio id="hadith-reader-audio-element" preload="none"></audio>
         </div>
@@ -168,7 +168,7 @@
             {{-- 1. Matini ya Kiarabu --}}
             <section class="reading-section" data-reading="ar" aria-labelledby="label-arabic">
                 <div class="section-label-row">
-                    <span id="label-arabic" class="section-label">MAANDISHI YA KIARABU</span>
+                    <span id="label-arabic" class="section-label" data-i18n="pg_h_l_ar">MAANDISHI YA KIARABU</span>
                     <span class="section-script-badge">العربية بالتشكيل</span>
                 </div>
                 <div class="arabic-box dua-arabic-box-detail">
@@ -179,7 +179,7 @@
             {{-- 2. Tafsiri ya Kiswahili --}}
             <section class="reading-section" data-reading="sw" aria-labelledby="label-swahili">
                 <div class="section-label-row">
-                    <span id="label-swahili" class="section-label">TAFSIRI YA KISWAHILI</span>
+                    <span id="label-swahili" class="section-label" data-i18n="pg_h_l_sw">TAFSIRI YA KISWAHILI</span>
                 </div>
                 <div class="swahili-box">
                     <p id="text-sw" class="swahili-text" lang="sw">{{ $hadith->swahili }}</p>
@@ -190,7 +190,7 @@
             @if($hadith->english)
                 <section class="reading-section" data-reading="en" aria-labelledby="label-english">
                     <div class="section-label-row">
-                        <span id="label-english" class="section-label">ENGLISH TRANSLATION</span>
+                        <span id="label-english" class="section-label" data-i18n="pg_h_l_en">ENGLISH TRANSLATION</span>
                     </div>
                     <div class="english-box">
                         <p id="text-en" class="english-text" lang="en">{{ $hadith->english }}</p>
@@ -208,8 +208,8 @@
 
                 <section class="reading-section lessons-section" aria-labelledby="label-lessons">
                     <div class="section-label-row">
-                        <span id="label-lessons" class="section-label">MAFUNDISHO NA FAIDA ZA HADITHI</span>
-                        <span class="section-script-badge">Faida {{ count($hadith->hints) }}</span>
+                        <span id="label-lessons" class="section-label" data-i18n="pg_h_l_les">MAFUNDISHO NA FAIDA ZA HADITHI</span>
+                        <span class="section-script-badge" data-i18n="pg_h_faida" data-i18n-vars='{"n":"{{ count($hadith->hints) }}"}'>Faida {{ count($hadith->hints) }}</span>
                     </div>
                     <div class="lessons-deck">
                         @foreach($hadith->hints as $index => $hint)
@@ -235,37 +235,37 @@
             {{-- 6. Rejea na Daraja la Hadithi --}}
             <div class="source-box dua-ref-box hadith-source-box">
                 <div class="source-header">
-                    <h2 class="source-title">Rejea na Daraja ya Hadithi</h2>
+                    <h2 class="source-title" data-i18n="pg_h_src">Rejea na Daraja ya Hadithi</h2>
                 </div>
                 <div class="source-item">
-                    <dt>Kitabu na Mlango:</dt>
+                    <dt data-i18n="pg_h_bk">Kitabu na Mlango:</dt>
                     <dd>{{ $hadith->chapter->book->collection->name }} · Hadith Na. {{ $hadith->number }} ({{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }})</dd>
                 </div>
                 <div class="source-item">
-                    <dt>Daraja na Mpokezi:</dt>
+                    <dt data-i18n="pg_h_gr">Daraja na Mpokezi:</dt>
                     <dd><span class="brief-grade-badge">{{ $hadith->grade ?? 'Sahihi' }}</span> · {{ $hadith->attribution ?? ('Imepokelewa na ' . $hadith->chapter->book->collection->name) }}</dd>
                 </div>
                 @if($hadith->reference_url)
                     <div class="source-item">
-                        <dt>Rejea Rasmi:</dt>
-                        <dd><a href="{{ $hadith->reference_url }}" target="_blank" rel="noopener noreferrer">Linganisha kwenye Sunnah.com ↗</a></dd>
+                        <dt data-i18n="pg_h_ref">Rejea Rasmi:</dt>
+                        <dd><a href="{{ $hadith->reference_url }}" target="_blank" rel="noopener noreferrer" data-i18n="pg_h_sunnah">Linganisha kwenye Sunnah.com ↗</a></dd>
                     </div>
                 @endif
                 @if($hadith->translation_source_url || $hadith->translator)
                     <div class="source-item">
-                        <dt>Mfasiri na Chanzo:</dt>
+                        <dt data-i18n="pg_h_tr">Mfasiri na Chanzo:</dt>
                         <dd>
                             {{ $hadith->translator ?? 'Mfasiri Rasmi' }}
                             @if($hadith->translation_source_url)
-                                · <a href="{{ $hadith->translation_source_url }}" target="_blank" rel="noopener noreferrer">Chanzo cha Tafsiri ↗</a>
+                                · <a href="{{ $hadith->translation_source_url }}" target="_blank" rel="noopener noreferrer" data-i18n="pg_h_trsrc">Chanzo cha Tafsiri ↗</a>
                             @endif
                         </dd>
                     </div>
                 @endif
                 @if($hadith->license_url)
                     <div class="source-item">
-                        <dt>Masharti ya Matumizi:</dt>
-                        <dd><a href="{{ $hadith->license_url }}" target="_blank" rel="noopener noreferrer">Leseni ya Maudhui ↗</a></dd>
+                        <dt data-i18n="pg_h_terms">Masharti ya Matumizi:</dt>
+                        <dd><a href="{{ $hadith->license_url }}" target="_blank" rel="noopener noreferrer" data-i18n="pg_h_lic">Leseni ya Maudhui ↗</a></dd>
                     </div>
                 @endif
                 <span class="sr-only">{{ $hadith->reference }}</span>
@@ -276,7 +276,7 @@
         @if($related->isNotEmpty())
             <section class="related-section dua-related-section">
                 <div class="related-header">
-                    <h2>Hadithi Nyingine Katika Mlango Huu</h2>
+                    <h2 data-i18n="pg_h_more_ch">Hadithi Nyingine Katika Mlango Huu</h2>
                 </div>
                 <div class="related-grid">
                     @foreach($related as $rel)
@@ -322,7 +322,7 @@
                 <a href="{{ route('hadith.show', $prev) }}" class="reader-nav-card nav-prev">
                     <span class="nav-card-icon" aria-hidden="true">←</span>
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">HADITH ILIYOTANGULIA</span>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_h_prev">HADITH ILIYOTANGULIA</span>
                         <strong class="nav-card-title nav-surah-name">Na. {{ $prev->number }}</strong>
                         <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($prev->swahili, 60) }}</span>
                     </div>
@@ -330,8 +330,8 @@
             @else
                 <div class="reader-nav-card nav-disabled">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">MWANZO WA MLANGO</span>
-                        <strong class="nav-card-title nav-surah-name">Hadith ya Kwanza</strong>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_h_start">MWANZO WA MLANGO</span>
+                        <strong class="nav-card-title nav-surah-name" data-i18n="pg_h_first">Hadith ya Kwanza</strong>
                     </div>
                 </div>
             @endif
@@ -344,7 +344,7 @@
                     </svg>
                 </span>
                 <div class="nav-card-content">
-                    <span class="nav-card-hint nav-dir-label">MLANGO</span>
+                    <span class="nav-card-hint nav-dir-label" data-i18n="pg_h_chapter">MLANGO</span>
                     <strong class="nav-card-title nav-surah-name">{{ \Illuminate\Support\Str::limit($hadith->chapter->title_sw, 24) }}</strong>
                 </div>
             </a>
@@ -352,7 +352,7 @@
             @if($next)
                 <a href="{{ route('hadith.show', $next) }}" class="reader-nav-card nav-next">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">HADITH INAYOFUATA</span>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_h_next">HADITH INAYOFUATA</span>
                         <strong class="nav-card-title nav-surah-name">Na. {{ $next->number }}</strong>
                         <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($next->swahili, 60) }}</span>
                     </div>
@@ -361,8 +361,8 @@
             @else
                 <div class="reader-nav-card nav-disabled">
                     <div class="nav-card-content">
-                        <span class="nav-card-hint nav-dir-label">MWISHO WA MLANGO</span>
-                        <strong class="nav-card-title nav-surah-name">Hadith ya Mwisho</strong>
+                        <span class="nav-card-hint nav-dir-label" data-i18n="pg_h_end">MWISHO WA MLANGO</span>
+                        <strong class="nav-card-title nav-surah-name" data-i18n="pg_h_last">Hadith ya Mwisho</strong>
                     </div>
                 </div>
             @endif

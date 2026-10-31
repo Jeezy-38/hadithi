@@ -3,7 +3,7 @@
 <aside id="nav-drawer" class="nav-drawer" role="dialog" aria-modal="true" aria-label="Menyu Kuu" aria-hidden="true" tabindex="-1">
     <div class="nav-drawer-header">
         <a href="{{ route('library') }}" class="nav-drawer-brand">
-            <img src="{{ asset('images/logo.png') }}" alt="" class="nav-drawer-logo" width="44" height="44">
+            <img src="{{ asset('images/logo-gold.png') }}" alt="" class="nav-drawer-logo" width="44" height="44">
             <div class="nav-drawer-brand-text">
                 <span class="nav-drawer-title">Bayt Ul Hadith</span>
                 <span class="nav-drawer-sub" data-i18n="brand_sub">MAKTABA YA ELIMU</span>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="nav-drawer-body">
-        <div class="nav-drawer-section-label">KURASA KUU</div>
+        <div class="nav-drawer-section-label" data-i18n="pg_dr_pages">KURASA KUU</div>
         <nav class="nav-drawer-links" aria-label="Kurasa za maktaba">
             <a href="{{ route('library') }}" class="nav-drawer-link {{ request()->routeIs('library') ? 'active' : '' }}">
                 <span class="nav-drawer-icon" aria-hidden="true">
@@ -45,7 +45,7 @@
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
                 </span>
-                <span class="nav-drawer-text">Sadaka &amp; Usaidizi</span>
+                <span class="nav-drawer-text" data-i18n="pg_nav_support">Changia</span>
                 <span class="nav-drawer-arrow" aria-hidden="true">→</span>
             </a>
         </nav>
@@ -71,35 +71,6 @@
                 <button type="button" class="drawer-lang-btn" data-lang-val="en">
                     <span class="drawer-lang-main">English</span>
                     <span class="drawer-lang-sub">+ العربية</span>
-                </button>
-            </div>
-        </div>
-
-        {{-- 2. Mwonekano (Light Mode / Dark Mode) --}}
-        <div class="nav-drawer-setting-item">
-            <div class="nav-drawer-setting-header">
-                <span class="nav-drawer-setting-title" data-i18n="theme_section_title">Mwonekano:</span>
-            </div>
-            <div class="nav-drawer-theme-switch" role="group" aria-label="Mwonekano wa giza au nuru">
-                <button type="button" class="drawer-theme-btn" data-theme-val="dark" aria-label="Giza (Usiku)">
-                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <span data-i18n="theme_dark_mode">Giza (Usiku)</span>
-                </button>
-                <button type="button" class="drawer-theme-btn" data-theme-val="light" aria-label="Nuru (Mchana)">
-                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <span data-i18n="theme_light_mode">Nuru (Mchana)</span>
                 </button>
             </div>
         </div>
@@ -131,7 +102,7 @@
                     </svg>
                 </span>
                 <span class="nav-drawer-pwa-meta">
-                    <span class="nav-drawer-pwa-title" id="drawer-notif-title">Arifa za Kila Siku</span>
+                    <span class="nav-drawer-pwa-title" id="drawer-notif-title" data-i18n="pg_dr_notif_t">Arifa za Kila Siku</span>
                     <span class="nav-drawer-pwa-sub" id="drawer-notif-sub">Hadithi ya siku kila asubuhi</span>
                 </span>
                 <span class="notif-switch" id="drawer-notif-badge" aria-hidden="true"><span class="notif-switch-knob"></span></span>
@@ -140,7 +111,7 @@
 
         @auth
             <div class="nav-drawer-divider"></div>
-            <div class="nav-drawer-section-label">AKAUNTI</div>
+            <div class="nav-drawer-section-label" data-i18n="pg_dr_account">AKAUNTI</div>
             <div class="nav-drawer-account">
                 @php($drawerUser = auth()->user())
                 <div class="nav-drawer-user-info">
@@ -168,7 +139,7 @@
     </div>
 
     <div class="nav-drawer-footer">
-        <p class="nav-drawer-quote">"Mwenye kufuata njia akitafuta elimu, Mwenyezi Mungu humsahilishia njia ya kuelekea Peponi."</p>
+        <p class="nav-drawer-quote" data-i18n="pg_dr_quote">"Mwenye kufuata njia akitafuta elimu, Mwenyezi Mungu humsahilishia njia ya kuelekea Peponi."</p>
         <span class="nav-drawer-copy">© {{ date('Y') }} Bayt Ul Hadith</span>
     </div>
 </aside>

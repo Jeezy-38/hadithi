@@ -6,12 +6,12 @@
         </a>
 
         <div class="reader-heading">
-            <span class="eyebrow"><span class="eyebrow-dot"></span> VIPENDWA VYANGU</span>
-            <h1>Mkusanyiko Uliohifadhiwa</h1>
+            <span class="eyebrow"><span class="eyebrow-dot"></span> <b data-i18n="pg_bm_eye">VIPENDWA VYANGU</b></span>
+            <h1 data-i18n="pg_bm_title">Mkusanyiko Uliohifadhiwa</h1>
             @auth
-                <p>Hadithi ulizohifadhi zinasawazishwa kwenye akaunti yako. Aya za Qur'ani na Dua zimehifadhiwa salama kwenye kifaa hiki.</p>
+                <p data-i18n="pg_bm_p1">Hadithi ulizohifadhi zinasawazishwa kwenye akaunti yako. Aya za Qur'ani na Dua zimehifadhiwa salama kwenye kifaa hiki.</p>
             @else
-                <p>Vipendwa vyako vimehifadhiwa salama kwenye kifaa hiki. Ukiingia au kufungua akaunti, hadithi zitasawazishwa kiotomatiki.</p>
+                <p data-i18n="pg_bm_p2">Vipendwa vyako vimehifadhiwa salama kwenye kifaa hiki. Ukiingia au kufungua akaunti, hadithi zitasawazishwa kiotomatiki.</p>
             @endauth
         </div>
 
@@ -22,7 +22,7 @@
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
-                <span>Hadithi</span>
+                <span data-i18n="pg_bm_hadith">Hadithi</span>
                 <span class="bookmark-tab-badge" id="hadith-count-badge">0</span>
             </button>
 
@@ -31,7 +31,7 @@
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                 </svg>
-                <span>Qur'ani</span>
+                <span data-i18n="pg_bm_quran">Qur'ani</span>
                 <span class="bookmark-tab-badge" id="quran-count-badge">0</span>
             </button>
 
@@ -40,7 +40,7 @@
                     <path d="M12 2a10 10 0 0 1 10 10c0 5.5-4.5 10-10 10S2 17.5 2 12A10 10 0 0 1 12 2z"></path>
                     <path d="m9 12 2 2 4-4"></path>
                 </svg>
-                <span>Dua & Adhkar</span>
+                <span data-i18n="pg_bm_dua">Dua & Adhkar</span>
                 <span class="bookmark-tab-badge" id="duaa-count-badge">0</span>
             </button>
         </div>
@@ -49,7 +49,7 @@
         <div id="bookmarks-list" aria-live="polite">
             <div class="loading">
                 <span class="spinner" aria-hidden="true"></span>
-                <span>Inapakia vipendwa…</span>
+                <span data-i18n="pg_bm_load">Inapakia vipendwa…</span>
             </div>
         </div>
     </div>

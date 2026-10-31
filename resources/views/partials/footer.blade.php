@@ -9,37 +9,37 @@
                     </div>
                     <div class="footer-brand-headings">
                         <span class="footer-brand-name">Bayt Ul <span>Hadith</span></span>
-                        <span class="footer-brand-sub">Maktaba Kuu ya Hadithi za Mtume ﷺ</span>
+                        <span class="footer-brand-sub" data-i18n="pg_ft_tag">Maktaba Kuu ya Hadithi za Mtume ﷺ</span>
                     </div>
                 </a>
             </div>
 
             <!-- Important Links -->
             <div class="footer-important-links">
-                <h3 class="footer-section-title">Important Links</h3>
+                <h3 class="footer-section-title" data-i18n="pg_ft_links">Important Links</h3>
                 <ul class="footer-links-list">
                     <li>
                         <a href="{{ route('qibla') }}" class="footer-link-item">
                             <span class="footer-link-bullet">✦</span>
-                            <span>Qibla direction location Dar es Salaam</span>
+                            <span data-i18n="pg_ft_qibla">Qibla direction location Dar es Salaam</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('islamic.date') }}" class="footer-link-item">
                             <span class="footer-link-bullet">✦</span>
-                            <span>Islamic date</span>
+                            <span data-i18n="pg_ft_idate">Islamic date</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('ramadhan') }}" class="footer-link-item">
                             <span class="footer-link-bullet">✦</span>
-                            <span>Ramadhan</span>
+                            <span data-i18n="pg_ft_ram">Ramadhan</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('prayer.times') }}" class="footer-link-item">
                             <span class="footer-link-bullet">✦</span>
-                            <span>Live prayer time counter</span>
+                            <span data-i18n="pg_ft_prayer">Live prayer time counter</span>
                         </a>
                     </li>
                 </ul>
@@ -69,8 +69,8 @@
 
             <!-- Shiriki na Wengine -->
             <div class="footer-social-wrap">
-                <h3 class="footer-section-title">Shiriki na Wengine</h3>
-                <p class="footer-social-desc">Sambaza mafundisho sahihi ya Sunnah:</p>
+                <h3 class="footer-section-title" data-i18n="pg_ft_share">Shiriki na Wengine</h3>
+                <p class="footer-social-desc" data-i18n="pg_ft_sharedesc">Sambaza mafundisho sahihi ya Sunnah:</p>
                 <div class="footer-social-links">
                     <a href="https://api.whatsapp.com/send?text={{ urlencode('Bayt Ul Hadith — Maktaba ya Kidijitali ya Hadithi za Mtume ﷺ: ' . url('/')) }}" target="_blank" rel="noopener noreferrer" class="social-share-btn share-whatsapp" aria-label="Shiriki WhatsApp" title="WhatsApp">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -117,7 +117,7 @@
         <!-- Copyright -->
         <div class="footer-bottom-bar">
             <p class="footer-copy-text">
-                &copy; {{ date('Y') }} Bayt Ul Hadith. Haki zote zimehifadhiwa.
+                &copy; {{ date('Y') }} Bayt Ul Hadith. <span data-i18n="pg_ft_rights">Haki zote zimehifadhiwa.</span>
             </p>
         </div>
     </div>

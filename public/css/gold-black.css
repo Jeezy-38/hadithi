@@ -3235,8 +3235,18 @@ a, button, select, input {
         margin-left: auto !important;
         gap: 10px !important;
     }
-    .site-header .language,
+    .site-header .language {
+        display: none !important;
+    }
     .site-header .theme-toggle {
+        display: inline-flex !important;
+        justify-content: center !important;
+        width: 36px !important;
+        height: 36px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
+    }
+    .site-header .theme-toggle .theme-label {
         display: none !important;
     }
     .site-header .auth-trigger {
@@ -3884,8 +3894,18 @@ a, button, select, input {
         margin-left: auto !important;
         gap: 8px !important;
     }
-    .site-header .language,
+    .site-header .language {
+        display: none !important;
+    }
     .site-header .theme-toggle {
+        display: inline-flex !important;
+        justify-content: center !important;
+        width: 36px !important;
+        height: 36px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
+    }
+    .site-header .theme-toggle .theme-label {
         display: none !important;
     }
     .site-header .auth-trigger {
@@ -11368,3 +11388,49 @@ a.rs-chip:hover { border-color: var(--gold); }
 .about-points{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .about-points li{font-size:.74rem;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid rgba(224,200,104,.4);color:var(--gold)}
 [data-theme="light"] .about-points li{border-color:rgba(10,63,102,.3)}
+
+/* ---- Drawer v2: richer look (mobile) ---- */
+@media (max-width: 640px) {
+    .nav-drawer { background: linear-gradient(180deg, var(--bg-surface-elevated) 0, var(--bg-surface) 180px) !important; }
+    .nav-drawer-header {
+        position: relative !important; padding: 20px 16px 18px !important; border-bottom: 0 !important;
+        background: linear-gradient(135deg, #0d5486 0%, #07293f 100%) !important;
+    }
+    .nav-drawer-header::after {
+        content: "" !important; position: absolute !important; left: 0; right: 0; bottom: 0; height: 2px;
+        background: linear-gradient(90deg, transparent, #e0c868 30%, #f0dc8c 50%, #e0c868 70%, transparent) !important;
+    }
+    .nav-drawer-logo { width: 48px !important; height: 48px !important; padding: 5px !important; border-radius: 14px !important;
+        background: rgba(255,255,255,.08) !important; border: 1px solid rgba(224,200,104,.35) !important; filter: none !important; }
+    [data-theme="light"] .nav-drawer-logo { filter: none !important; }
+    .nav-drawer-title { color: #f0dc8c !important; font-size: 19px !important; }
+    .nav-drawer-sub { color: rgba(255,255,255,.72) !important; letter-spacing: 2px !important; }
+    .nav-drawer-close { background: rgba(255,255,255,.12) !important; color: #fff !important; border: 1px solid rgba(255,255,255,.25) !important; }
+
+    .nav-drawer-body { padding: 14px 14px 18px !important; gap: 8px !important; }
+    .nav-drawer-section-label { display: flex !important; align-items: center !important; gap: 10px !important; color: var(--gold) !important; margin: 10px 4px 2px !important; }
+    .nav-drawer-section-label::after { content: "" !important; flex: 1 !important; height: 1px !important; background: linear-gradient(90deg, var(--border-color), transparent) !important; }
+
+    .nav-drawer-link { background: var(--bg-surface) !important; border: 1px solid var(--border-color) !important; padding: 10px 12px !important; position: relative !important; overflow: hidden !important; }
+    .nav-drawer-link .nav-drawer-icon { width: 36px !important; height: 36px !important; border-radius: 10px !important; background: var(--gold-subtle) !important; }
+    .nav-drawer-link .nav-drawer-arrow { color: var(--gold) !important; }
+    .nav-drawer-link.active { background: var(--gold-subtle) !important; border-color: var(--gold) !important; color: var(--text-primary) !important; box-shadow: 0 4px 14px -6px var(--gold) !important; }
+    .nav-drawer-link.active::before { content: "" !important; position: absolute !important; left: 0; top: 0; bottom: 0; width: 4px; background: var(--gold-gradient) !important; }
+    .nav-drawer-link.active .nav-drawer-icon { background: var(--gold-gradient) !important; color: var(--btn-gold-text) !important; }
+
+    .nav-drawer-divider { background: none !important; margin: 6px 0 !important; height: 0 !important; }
+    .nav-drawer-setting-item { background: var(--bg-surface) !important; border: 1px solid var(--border-color) !important; border-radius: 14px !important; padding: 10px 10px 12px !important; }
+    .nav-drawer-setting-title { color: var(--text-muted) !important; font-size: 11px !important; font-weight: 800 !important; letter-spacing: .6px !important; text-transform: uppercase !important; }
+    .drawer-lang-btn, .drawer-theme-btn { background: transparent !important; border: 1px solid var(--border-color) !important; color: var(--text-secondary) !important; }
+    .drawer-lang-btn.active, .drawer-theme-btn.active { background: var(--gold-gradient) !important; border-color: transparent !important; color: var(--btn-gold-text) !important; box-shadow: 0 4px 12px -4px var(--gold) !important; }
+    .drawer-lang-btn.active .drawer-lang-sub { color: var(--btn-gold-text) !important; opacity: .8 !important; }
+
+    .nav-drawer-pwa-btn { background: var(--bg-surface) !important; border: 1px solid var(--border-color) !important; border-radius: 14px !important; }
+    .nav-drawer-pwa-btn .nav-drawer-icon { width: 36px !important; height: 36px !important; border-radius: 10px !important; background: var(--gold-subtle) !important; }
+    #drawer-pwa-install-btn { background: var(--gold-subtle) !important; border-color: var(--gold) !important; }
+    .nav-drawer-pwa-badge { background: var(--gold-gradient) !important; color: var(--btn-gold-text) !important; border: 0 !important; font-weight: 800 !important; }
+
+    .nav-drawer-footer { text-align: center !important; padding: 14px 18px 18px !important; border-top: 0 !important; position: relative !important; }
+    .nav-drawer-footer::before { content: "✦ ✦ ✦" !important; display: block !important; color: var(--gold) !important; font-size: 10px !important; letter-spacing: 6px !important; margin-bottom: 8px !important; }
+    .nav-drawer-quote { font-style: italic !important; line-height: 1.55 !important; }
+}

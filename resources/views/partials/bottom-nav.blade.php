@@ -31,7 +31,7 @@
                 <path d="M12 7.5C10 7.5 8 6.5 8 5s2-2 4 2.5c2-4.5 4-3.5 4-2s-2 2.5-4 2.5"></path>
             </svg>
         </span>
-        <span class="mobile-nav-label">Sadaka</span>
+        <span class="mobile-nav-label" data-i18n="pg_nav_support">Changia</span>
     </a>
 </nav>
 

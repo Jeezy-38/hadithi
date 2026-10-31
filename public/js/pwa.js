@@ -62,20 +62,22 @@
         }
     };
 
+    const L = (k, fb) => { try { const v = window.BaytI18n && window.BaytI18n.t(k); return v && v !== k ? v : fb; } catch (_) { return fb; } };
+
     const updateDrawerPwaUi = () => {
         if (!drawerPwaBtn) return;
         if (standalone()) {
-            if (drawerPwaTitle) drawerPwaTitle.textContent = 'App Imesakinishwa';
-            if (drawerPwaSub) drawerPwaSub.textContent = 'Tayari ipo kwenye kifaa chako';
+            if (drawerPwaTitle) drawerPwaTitle.textContent = L('pg_dr_installed_t', 'App Imesakinishwa');
+            if (drawerPwaSub) drawerPwaSub.textContent = L('pg_dr_installed_s', 'Tayari ipo kwenye kifaa chako');
             if (drawerPwaBadge) {
-                drawerPwaBadge.textContent = 'Imewekwa';
+                drawerPwaBadge.textContent = L('pg_dr_installed_b', 'Imewekwa');
                 drawerPwaBadge.classList.add('is-installed');
             }
         } else {
-            if (drawerPwaTitle) drawerPwaTitle.textContent = 'Install App Now';
-            if (drawerPwaSub) drawerPwaSub.textContent = 'Download App Now';
+            if (drawerPwaTitle) drawerPwaTitle.textContent = L('pg_dr_install_t', 'Install App Now');
+            if (drawerPwaSub) drawerPwaSub.textContent = L('pg_dr_install_s', 'Download App Now');
             if (drawerPwaBadge) {
-                drawerPwaBadge.textContent = 'App';
+                drawerPwaBadge.textContent = L('pg_dr_app', 'App');
                 drawerPwaBadge.classList.remove('is-installed');
             }
         }
@@ -308,16 +310,21 @@
             if (notifBadge) notifBadge.classList.add('is-on');
             notifBtn.setAttribute('aria-checked', 'true');
             if (notifSub) {
-                notifSub.textContent = 'Unapokea Hadithi kila asubuhi';
+                notifSub.textContent = L('pg_dr_notif_on', 'Unapokea Hadithi kila asubuhi');
             }
         } else {
             if (notifBadge) notifBadge.classList.remove('is-on');
             notifBtn.setAttribute('aria-checked', 'false');
             if (notifSub) {
-                notifSub.textContent = optedOut ? 'Arifa zimezimwa kwa hiari' : 'Hadithi ya siku kila asubuhi';
+                notifSub.textContent = optedOut ? L('pg_dr_notif_off', 'Arifa zimezimwa kwa hiari') : L('pg_dr_notif_idle', 'Hadithi ya siku kila asubuhi');
             }
         }
     };
+
+    document.addEventListener('bayt:lang', () => {
+        try { updateDrawerPwaUi(); } catch (_) {}
+        try { updateNotificationUi(); } catch (_) {}
+    });
 
     const getStoredEndpoint = () => {
         try {
