@@ -167,6 +167,11 @@
                 .admin-dashboard-root div[style*="minmax(260px"] { grid-template-columns: 1fr !important; }
                 .admin-dashboard-root [style*="flex-wrap"] { gap: 8px !important; }
                 .admin-dashboard-root h1 { font-size: 22px !important; }
+                /* Search boxes with a fixed 220px input overflowed on phones */
+                .admin-dashboard-root form > div:has(> input[type="text"][style*="width: 220px"]) { width: 100%; }
+                .admin-dashboard-root input[type="text"][style*="width: 220px"] { width: auto !important; flex: 1 1 0; min-width: 0; }
+                .admin-dashboard-root form:has(> input[type="text"][style*="width: 240px"]) { width: 100%; }
+                .admin-dashboard-root input[type="text"][style*="width: 240px"] { width: auto !important; flex: 1 1 0; min-width: 0; }
                 .adm-action-btn { padding: 6px 10px; font-size: 12px; }
             }
         </style>
