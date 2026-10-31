@@ -72,7 +72,12 @@ Route::get('/hadith/{hadith}', function (Hadith $hadith) {
         ?? Hadith::published()->where('id', '<', $hadith->id)->orderByDesc('id')->first();
     $next = Hadith::published()->where('chapter_id', $hadith->chapter_id)->where('id', '>', $hadith->id)->orderBy('id')->first()
         ?? Hadith::published()->where('id', '>', $hadith->id)->orderBy('id')->first();
-    return view('hadith', compact('hadith', 'related', 'prev', 'next'));
+    try {
+        $similar = app(\App\Services\Research\HadithSimilarity::class)->for($hadith, 3);
+    } catch (\Throwable $e) {
+        $similar = collect();
+    }
+    return view('hadith', compact('hadith', 'related', 'prev', 'next', 'similar'));
 })->name('hadith.show');
 
 Route::get('/hadith-ya-leo', function () {
@@ -82,6 +87,13 @@ Route::get('/hadith-ya-leo', function () {
     $hadith = Hadith::published()->orderBy('id')->skip($dayIndex % $total)->first();
     return redirect()->route('hadith.show', $hadith);
 })->name('hadith.today');
+
+// ---- Research & Knowledge Graph ----
+Route::prefix('utafiti')->name('research.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\ResearchController::class, 'hub'])->name('hub');
+    Route::get('/linganisha', [\App\Http\Controllers\ResearchController::class, 'compare'])->name('compare');
+    Route::get('/ramani/{hadith}', [\App\Http\Controllers\ResearchController::class, 'graph'])->middleware('throttle:60,1')->name('graph');
+});
 
 // ---- Learning Centre ----
 Route::prefix('jifunze')->name('learning.')->group(function () {

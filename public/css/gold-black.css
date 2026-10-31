@@ -11289,3 +11289,31 @@ a.module-card:hover { background: var(--bg-surface-hover); }
 .lc-grade { background: var(--bg-surface-elevated); color: var(--text-primary); border: 1px solid var(--border-color); }
 .lc-grade-0 { border-color: #ef4444; } .lc-grade-3 { border-color: #10b981; }
 .lc-answer { margin-top: 14px; }
+
+/* ===== Research & Knowledge Graph ===== */
+.rs-results { display: grid; gap: 10px; }
+.rs-result { margin: 0; }
+.rs-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+.rs-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.rs-chip { display: inline-block; padding: 3px 10px; border-radius: 99px; background: var(--bg-surface-elevated); color: var(--text-primary); font-size: .82rem; text-decoration: none; border: 1px solid var(--border-color); }
+a.rs-chip:hover { border-color: var(--gold); }
+.rs-compare { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 900px) { .rs-compare { grid-template-columns: repeat(2, 1fr); } }
+.rs-sw { white-space: pre-line; }
+.rs-sim { padding: 12px 0; border-top: 1px solid var(--border-color); }
+.rs-sim:first-of-type { border-top: 0; }
+.rs-score { margin-left: 8px; font-weight: 700; color: var(--gold); }
+.kg-wrap { max-width: 520px; margin: 14px auto; }
+.kg-svg { width: 100%; height: auto; display: block; }
+.kg-edge { stroke: var(--border-color); stroke-width: 1.5; }
+.kg-node circle { fill: var(--bg-surface-elevated); stroke: var(--gold); stroke-width: 2; }
+.kg-node text { fill: var(--text-primary); font-size: 10px; font-weight: 600; }
+.kg-node:hover circle { fill: var(--bg-surface-hover); }
+.kg-book circle { stroke: var(--text-muted); }
+.kg-topic circle { stroke: var(--emerald); }
+.kg-similar circle { stroke: var(--gold); stroke-dasharray: 4 3; }
+.kg-center circle { fill: var(--gold); stroke: none; }
+.kg-center text { fill: var(--btn-gold-text); font-size: 11px; font-weight: 800; }
+.rs-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; justify-content: center; margin: 4px 0 14px; font-size: .82rem; color: var(--text-secondary); }
+.rs-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--gold); background: var(--bg-surface-elevated); margin-right: -6px; }
+.kg-dot-book { border-color: var(--text-muted); } .kg-dot-topic { border-color: var(--emerald); } .kg-dot-similar { border-style: dashed; }

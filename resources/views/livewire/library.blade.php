@@ -138,14 +138,13 @@
                                     
                                 </span>
                             </a>
-                            <div class="module-card module-card-soon" aria-disabled="true">
+                            <a class="module-card module-card-live" href="{{ route('research.hub') }}">
                                 <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3 8M16 7.5l-3 8M8.5 6h7"/></svg></span>
                                 <span class="module-body">
                                     <span class="module-title" data-i18n="pg_mod_res">Research Intelligence</span>
                                     <span class="module-desc" data-i18n="pg_mod_res_d">Ulinganisho na Isnad</span>
-                                    <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
                                 </span>
-                            </div>
+                            </a>
                             <div class="module-card module-card-soon" aria-disabled="true">
                                 <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h9M4 12h6M4 17h12"/><path d="M17 5l3 3-3 3"/></svg></span>
                                 <span class="module-body">
@@ -154,14 +153,13 @@
                                     <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
                                 </span>
                             </div>
-                            <div class="module-card module-card-soon" aria-disabled="true">
+                            <a class="module-card module-card-live" href="{{ route('research.hub') }}#ramani">
                                 <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M6.5 6.5l4 4M17.5 6.5l-4 4M6.5 17.5l4-4M17.5 17.5l-4-4"/></svg></span>
                                 <span class="module-body">
                                     <span class="module-title" data-i18n="pg_mod_kg">Knowledge Graph</span>
                                     <span class="module-desc" data-i18n="pg_mod_kg_d">Maarifa yaliyounganishwa</span>
-                                    <span class="module-badge" data-i18n="pg_mod_soon">Inakuja Hivi Karibuni</span>
                                 </span>
-                            </div>
+                            </a>
                             <div class="module-card module-card-soon" aria-disabled="true">
                                 <span class="module-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.7 1.8L21.5 19.5l-1.8.7L19 22l-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
                                 <span class="module-body">

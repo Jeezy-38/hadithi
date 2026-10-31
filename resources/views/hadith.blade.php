@@ -272,6 +272,29 @@
             </section>
         @endif
 
+        {{-- Hadith zinazofanana + ramani ya maarifa --}}
+        @if(isset($similar))
+            <section class="related-section dua-related-section">
+                <div class="related-header">
+                    <h2 data-i18n="pg_rs_hp_title">Hadith Zinazofanana</h2>
+                    <a class="lc-link" href="{{ route('research.graph', $hadith) }}" data-i18n="pg_rs_hp_map">Ramani ya maarifa</a>
+                </div>
+                @if($similar->isNotEmpty())
+                    <div class="related-grid">
+                        @foreach($similar as $s)
+                            <a href="{{ route('hadith.show', $s['hadith']) }}" class="related-card">
+                                <div class="related-card-meta">
+                                    <span class="related-col">{{ $s['hadith']->chapter->book->collection->name }}</span>
+                                    <span class="related-no">Na. {{ $s['hadith']->number }}</span>
+                                </div>
+                                <p class="related-excerpt">{{ \Illuminate\Support\Str::limit($s['hadith']->swahili, 100) }}</p>
+                            </a>
+                        @endforeach
+                    </div>
+                @endif
+            </section>
+        @endif
+
         {{-- Urambazaji wa Chini (Next/Prev Navigation Cards) --}}
         <nav class="reader-bottom-nav dua-bottom-nav" aria-label="Urambazaji wa Hadithi">
             @if($prev)

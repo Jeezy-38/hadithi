@@ -82,6 +82,12 @@
                             <span data-i18n="pg_ft_learn">Learning Centre</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('research.hub') }}" class="footer-link-item">
+                            <span class="footer-link-bullet">✦</span>
+                            <span data-i18n="pg_ft_research">Utafiti na Ramani</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
