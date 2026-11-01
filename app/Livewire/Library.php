@@ -53,6 +53,7 @@ class Library extends Component
     {
         return [
             'bukhari' => [
+                'years_ce' => '810 - 870',
                 'author' => 'Imam Muhammad al-Bukhari',
                 'author_ar' => 'الإمام البخاري',
                 'years' => '194 - 256 H',
@@ -64,6 +65,7 @@ class Library extends Component
                 'cover_image' => 'images/covers/sahih-bukhari.jpg',
             ],
             'muslim' => [
+                'years_ce' => '821 - 875',
                 'author' => 'Imam Muslim ibn al-Hajjaj',
                 'author_ar' => 'الإمام مسلم',
                 'years' => '204 - 261 H',
@@ -75,6 +77,7 @@ class Library extends Component
                 'cover_image' => 'images/covers/sahih-muslim.jpg',
             ],
             'nasai' => [
+                'years_ce' => '829 - 915',
                 'author' => 'Imam Ahmad an-Nasa\'i',
                 'author_ar' => 'الإمام النسائي',
                 'years' => '214 - 303 H',
@@ -86,6 +89,7 @@ class Library extends Component
                 'cover_image' => 'images/covers/sunan-an-nasai.jpg',
             ],
             'abudawud' => [
+                'years_ce' => '817 - 889',
                 'author' => 'Imam Abu Dawud as-Sijistani',
                 'author_ar' => 'الإمام أبو داود',
                 'years' => '202 - 275 H',
@@ -97,6 +101,7 @@ class Library extends Component
                 'cover_image' => 'images/covers/sunan-abu-dawud.jpg',
             ],
             'tirmidhi' => [
+                'years_ce' => '824 - 892',
                 'author' => 'Imam Abu Isa at-Tirmidhi',
                 'author_ar' => 'الإمام الترمذي',
                 'years' => '209 - 279 H',
@@ -108,6 +113,7 @@ class Library extends Component
                 'cover_image' => 'images/covers/jami-at-tirmidhi.jpg',
             ],
             'ibnmajah' => [
+                'years_ce' => '824 - 887',
                 'author' => 'Imam Ibn Majah al-Qazwini',
                 'author_ar' => 'الإمام ابن ماجه',
                 'years' => '209 - 273 H',
@@ -119,6 +125,7 @@ class Library extends Component
                 'cover_image' => 'images/covers/sunan-ibn-majah.jpg',
             ],
             'ahmad' => [
+                'years_ce' => '780 - 855',
                 'author' => 'Imam Ahmad ibn Hanbal',
                 'author_ar' => 'الإمام أحمد',
                 'years' => '164 - 241 H',
@@ -130,6 +137,7 @@ class Library extends Component
                 'cover_image' => 'images/covers/musnad-ahmad.jpg',
             ],
             'nawawi40' => [
+                'years_ce' => '1233 - 1277',
                 'author' => 'Imam Yahya an-Nawawi',
                 'author_ar' => 'الإمام النووي',
                 'years' => '631 - 676 H',
@@ -141,6 +149,7 @@ class Library extends Component
                 'cover_image' => 'images/covers/nawawi40.jpg',
             ],
             'riyadhadussalihin' => [
+                'years_ce' => '1233 - 1277',
                 'author' => 'Imam Yahya an-Nawawi',
                 'author_ar' => 'الإمام النووي',
                 'years' => '631 - 676 H',
@@ -173,6 +182,10 @@ class Library extends Component
             ->groupBy('books.collection_id')
             ->pluck('total', 'collection_id');
 
+        $bookCounts = Book::selectRaw('collection_id, count(*) as total')
+            ->groupBy('collection_id')
+            ->pluck('total', 'collection_id');
+
         $collectionPreviews = Hadith::published()
             ->with('chapter.book.collection')
             ->orderBy('id')
@@ -189,6 +202,7 @@ class Library extends Component
         return view('livewire.library', [
             'collections' => Collection::orderBy('id')->get(),
             'collectionCounts' => $collectionCounts,
+            'bookCounts' => $bookCounts,
             'collectionPreviews' => $collectionPreviews,
             'narratorMeta' => $this->getNarratorMeta(),
             'todayHadith' => $todayHadith,

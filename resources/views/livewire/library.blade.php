@@ -274,29 +274,45 @@
                         </div>
 
                         @if($activeCol)
-                            <div class="inside-book-banner {{ !empty($activeMeta['cover_image']) ? 'has-book-cover' : '' }}">
-                                @if(!empty($activeMeta['cover_image']))
-                                    <div class="inside-book-cover-thumb" aria-hidden="true">
-                                        <img src="{{ asset($activeMeta['cover_image']) }}" alt="{{ $activeCol->name }}" class="inside-book-thumb-img" loading="eager" width="90" height="140">
-                                    </div>
-                                @endif
-                                <div class="inside-book-info">
-                                    <div class="inside-book-tagline">
-                                        <span class="badge badge-{{ $activeCol->slug }}">{{ $activeMeta['badge'] ?? 'Hadith' }}</span>
-                                        <span class="inside-book-count">{{ number_format($collectionCounts[$activeCol->id] ?? 0) }} <span data-i18n="pg_lib_inside">Hadithi zilizomo</span></span>
-                                    </div>
-                                    <h2 class="inside-book-heading">{{ $activeCol->name }}</h2>
-                                    @if($activeCol->name_ar)
-                                        <p class="inside-book-ar" lang="ar" dir="rtl">{{ $activeCol->name_ar }}</p>
+                            <div class="inside-book-banner ib-card">
+                                <div class="ib-head">
+                                    @if(!empty($activeMeta['cover_image']))
+                                        <div class="inside-book-cover-thumb" aria-hidden="true">
+                                            <img src="{{ asset($activeMeta['cover_image']) }}" alt="{{ $activeCol->name }}" class="inside-book-thumb-img" loading="eager" width="90" height="140">
+                                        </div>
                                     @endif
-                                    @if($activeMeta)
-                                        <details class="inside-book-more">
-                                            <summary data-i18n="pg_lib_more_book">Soma zaidi kuhusu kitabu hiki</summary>
-                                            <p class="inside-book-author"><strong data-i18n="pg_lib_author">Mkusanyaji:</strong> {{ $activeMeta['author'] }} @if(!empty($activeMeta['years']))({{ $activeMeta['years'] }})@endif</p>
-                                            <p class="inside-book-desc">{{ $activeMeta['desc'] }}</p>
-                                        </details>
-                                    @endif
+                                    <div class="ib-titles">
+                                        <h2 class="inside-book-heading">{{ $activeCol->name }}</h2>
+                                        @if($activeCol->name_ar)
+                                            <p class="inside-book-ar" lang="ar" dir="rtl">{{ $activeCol->name_ar }}</p>
+                                        @endif
+                                    </div>
                                 </div>
+                                @if($activeMeta)
+                                    <dl class="ib-facts">
+                                        <div class="ib-fact ib-fact--wide">
+                                            <dt data-i18n="pg_lib_author">Mkusanyaji:</dt>
+                                            <dd data-i18n="pg_bk_a_{{ $collection }}">{{ $activeMeta['author'] }}</dd>
+                                        </div>
+                                        <div class="ib-fact">
+                                            <dt data-i18n="pg_lib_f_life">Maisha</dt>
+                                            <dd>{{ $activeMeta['years_ce'] ?? '' }} <span class="ib-unit">CE</span><br><span class="ib-sub">{{ $activeMeta['years'] }}</span></dd>
+                                        </div>
+                                        <div class="ib-fact">
+                                            <dt data-i18n="pg_lib_f_books">Vitabu</dt>
+                                            <dd>{{ number_format($bookCounts[$activeCol->id] ?? 0) }}</dd>
+                                        </div>
+                                        <div class="ib-fact">
+                                            <dt data-i18n="pg_lib_f_inapp">Zilizomo hapa</dt>
+                                            <dd>{{ number_format($collectionCounts[$activeCol->id] ?? 0) }}</dd>
+                                        </div>
+                                        <div class="ib-fact">
+                                            <dt data-i18n="pg_lib_f_official">Jumla rasmi</dt>
+                                            <dd>{{ $activeMeta['total_hadiths'] }}</dd>
+                                        </div>
+                                    </dl>
+                                    <p class="inside-book-desc" data-i18n="pg_bk_d_{{ $collection }}">{{ $activeMeta['desc'] }}</p>
+                                @endif
                             </div>
                         @endif
 
