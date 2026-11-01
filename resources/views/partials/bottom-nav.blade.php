@@ -11,14 +11,15 @@
         <span class="mobile-nav-label" data-i18n="nav_library">Maktaba</span>
     </a>
 
-    <a href="{{ route('bookmarks') }}" class="mobile-nav-item {{ request()->routeIs('bookmarks') ? 'active' : '' }}">
+    <a href="{{ route('library') }}#makusanyo" class="mobile-nav-item">
         <span class="mobile-nav-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path class="nav-tint" d="M6.5 3h11A1.5 1.5 0 0 1 19 4.5V21l-7-4.5L5 21V4.5A1.5 1.5 0 0 1 6.5 3z" stroke="none"></path>
-                <path d="M6.5 3h11A1.5 1.5 0 0 1 19 4.5V21l-7-4.5L5 21V4.5A1.5 1.5 0 0 1 6.5 3z"></path>
+                <path class="nav-tint" d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5z" stroke="none"></path>
+                <path d="M12 6.5C10.5 5 8 4.5 4.5 4.5v14c3.5 0 6 .5 7.5 2 1.5-1.5 4-2 7.5-2v-14c-3.5 0-6 .5-7.5 2z"></path>
+                <path d="M12 6.5v14"></path>
             </svg>
         </span>
-        <span class="mobile-nav-label" data-i18n="nav_bookmarks">Vipendwa</span>
+        <span class="mobile-nav-label" data-i18n="pg_lib_collections">Makusanyo</span>
     </a>
 
     <a href="{{ route('support') }}" class="mobile-nav-item {{ request()->routeIs('support*') ? 'active' : '' }}">
