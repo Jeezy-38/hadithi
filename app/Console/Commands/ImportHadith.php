@@ -101,11 +101,14 @@ class ImportHadith extends Command
         }
         DB::transaction(function () use ($rows, $collections) {
             foreach ($rows as $row) {
-                $book = Book::updateOrCreate(
+                // Hadith za Kiarabu+Kiingereza tu (swahili tupu) zisiandike juu ya majina ya vitabu/milango ya Kiswahili yaliyopo.
+                $englishOnly = ($row['swahili'] ?? '') === '';
+                $bookMethod = $englishOnly ? 'firstOrCreate' : 'updateOrCreate';
+                $book = Book::$bookMethod(
                     ['collection_id' => $collections[$row['collection']], 'number' => $row['book']['number']],
                     ['title_sw' => $row['book']['title_sw'], 'title_ar' => $row['book']['title_ar']],
                 );
-                $chapter = Chapter::updateOrCreate(
+                $chapter = Chapter::$bookMethod(
                     ['book_id' => $book->id, 'number' => $row['chapter']['number']],
                     ['title_sw' => $row['chapter']['title_sw'], 'title_ar' => $row['chapter']['title_ar']],
                 );

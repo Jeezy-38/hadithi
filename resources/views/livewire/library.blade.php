@@ -301,14 +301,10 @@
                                         </div>
                                         @endif
                                         <div class="ib-fact">
-                                            <dt data-i18n="pg_lib_f_books">Vitabu</dt>
-                                            <dd>{{ number_format($bookCounts[$activeCol->id] ?? 0) }}</dd>
-                                        </div>
-                                        <div class="ib-fact">
                                             <dt data-i18n="pg_lib_f_inapp">Zilizomo hapa</dt>
                                             <dd>{{ number_format($collectionCounts[$activeCol->id] ?? 0) }}</dd>
                                         </div>
-                                        <div class="ib-fact">
+                                        <div class="ib-fact {{ !empty($activeMeta['years_ce']) ? 'ib-fact--wide' : '' }}">
                                             <dt data-i18n="pg_lib_f_official">Jumla rasmi</dt>
                                             <dd>{{ $activeMeta['total_hadiths'] }}</dd>
                                         </div>

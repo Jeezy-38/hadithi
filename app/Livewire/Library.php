@@ -204,13 +204,15 @@ class Library extends Component
             ->groupBy('books.collection_id')
             ->pluck('total', 'collection_id');
 
-        $bookCounts = Book::selectRaw('collection_id, count(*) as total')
-            ->groupBy('collection_id')
-            ->pluck('total', 'collection_id');
-
-        $collectionPreviews = Hadith::visible()
+        // Hadith ya kwanza ya kila kitabu tu (usipakie hadith zote kwenye kumbukumbu).
+        $firstIds = Hadith::visible()
+            ->join('chapters', 'hadiths.chapter_id', '=', 'chapters.id')
+            ->join('books', 'chapters.book_id', '=', 'books.id')
+            ->groupBy('books.collection_id')
+            ->selectRaw('min(hadiths.id) as first_id')
+            ->pluck('first_id');
+        $collectionPreviews = Hadith::whereIn('id', $firstIds)
             ->with('chapter.book.collection')
-            ->orderBy('id')
             ->get()
             ->groupBy(fn ($h) => $h->chapter->book->collection->slug ?? '')
             ->map(fn ($group) => $group->take(1));
@@ -224,21 +226,19 @@ class Library extends Component
         return view('livewire.library', [
             'collections' => Collection::orderBy('id')->get(),
             'collectionCounts' => $collectionCounts,
-            'bookCounts' => $bookCounts,
             'collectionPreviews' => $collectionPreviews,
             'narratorMeta' => $this->getNarratorMeta(),
             'todayHadith' => $todayHadith,
             'topics' => \App\Livewire\TopicIndex::getIslamicTopics(),
-            'books' => Book::whereHas('chapters.hadiths', fn ($q) => $q->published())
+            'books' => Book::whereHas('chapters')
                 ->when($this->collection !== '', fn ($q) => $q->whereHas('collection', fn ($q) => $q->where('slug', $this->collection)))
                 ->with('collection')->orderBy('collection_id')->orderBy('number')->get(),
             'chapters' => Chapter::where('book_id', $this->book ?: 0)
-                ->whereHas('hadiths', fn ($q) => $q->published())
                 ->when($this->collection !== '', fn ($q) => $q->whereHas('book.collection', fn ($q) => $q->where('slug', $this->collection)))
                 ->orderBy('number')->get(),
             'hadiths' => $query->orderBy('id')->paginate(10),
-            'total' => $totalPublished,
-            'bookCount' => Book::whereHas('chapters.hadiths', fn ($q) => $q->published())->count(),
+            'total' => Hadith::visible()->count(),
+            'bookCount' => Book::count(),
         ])->layout('components.layouts.app', ['title' => 'Maktaba ya Hadith']);
     }
 }

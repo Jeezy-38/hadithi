@@ -22,6 +22,7 @@ class LearningController extends Controller
             ->join('chapters', 'chapters.book_id', '=', 'books.id')
             ->join('hadiths', 'hadiths.chapter_id', '=', 'chapters.id')
             ->where('hadiths.is_published', true)
+            ->where('hadiths.swahili', '!=', '')
             ->groupBy('books.id', 'books.number', 'books.title_sw', 'books.title_ar', 'collections.id', 'collections.slug', 'collections.name', 'collections.name_ar')
             ->orderBy('collections.id')->orderBy('books.number')
             ->get([
