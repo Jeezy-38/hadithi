@@ -239,11 +239,22 @@
                 </div>
                 <div class="source-item">
                     <dt data-i18n="pg_h_bk">Kitabu na Mlango:</dt>
-                    <dd>{{ $hadith->chapter->book->collection->name }} · Hadith Na. {{ $hadith->number }} ({{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }})</dd>
+                    <dd>{{ $hadith->chapter->book->collection->name }} · <span data-i18n="pg_h_no" data-i18n-vars="{{ json_encode(['n' => $hadith->number]) }}">Hadith Na. {{ $hadith->number }}</span> ({{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }})</dd>
                 </div>
                 <div class="source-item">
                     <dt data-i18n="pg_h_gr">Daraja na Mpokezi:</dt>
-                    <dd><span class="brief-grade-badge">{{ $hadith->grade ?? 'Sahihi' }}</span> · {{ $hadith->attribution ?? ('Imepokelewa na ' . $hadith->chapter->book->collection->name) }}</dd>
+                    @php
+                        $gradeText = $hadith->grade ?? 'Sahihi';
+                        $gradeKey = match (mb_strtolower(trim($gradeText))) {
+                            'sahihi' => 'pg_h_gr_sahih',
+                            'dhaifu' => 'pg_h_gr_daif',
+                            'hasan', 'ni nzuri', 'ni nzuri (hasan)' => 'pg_h_gr_hasan',
+                            default => null,
+                        };
+                        $attrText = $hadith->attribution ?? ('Imepokelewa na ' . $hadith->chapter->book->collection->name);
+                        $attrSource = preg_match('/^Imepokele?wa na (.+)$/u', $attrText, $attrMatch) ? trim($attrMatch[1]) : null;
+                    @endphp
+                    <dd><span class="brief-grade-badge" @if($gradeKey) data-i18n="{{ $gradeKey }}" @endif>{{ $gradeText }}</span> · @if($attrSource)<span data-i18n="pg_h_att" data-i18n-vars="{{ json_encode(['c' => $attrSource]) }}">{{ $attrText }}</span>@else{{ $attrText }}@endif</dd>
                 </div>
                 @if($hadith->reference_url)
                     <div class="source-item">
@@ -255,7 +266,7 @@
                     <div class="source-item">
                         <dt data-i18n="pg_h_tr">Mfasiri na Chanzo:</dt>
                         <dd>
-                            {{ $hadith->translator ?? 'Mfasiri Rasmi' }}
+                            @if($hadith->translator){{ $hadith->translator }}@else<span data-i18n="pg_h_off_tr">Mfasiri Rasmi</span>@endif
                             @if($hadith->translation_source_url)
                                 · <a href="{{ $hadith->translation_source_url }}" target="_blank" rel="noopener noreferrer" data-i18n="pg_h_trsrc">Chanzo cha Tafsiri ↗</a>
                             @endif
