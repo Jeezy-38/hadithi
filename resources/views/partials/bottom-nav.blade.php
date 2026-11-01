@@ -33,6 +33,18 @@
         </span>
         <span class="mobile-nav-label" data-i18n="pg_nav_support">Changia</span>
     </a>
+    @auth
+    <a href="{{ route('profile') }}" class="mobile-nav-item {{ request()->routeIs('profile') ? 'active' : '' }}">
+        <span class="mobile-nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle class="nav-tint" cx="12" cy="8" r="4" stroke="none"></circle>
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 20.5c0-3.6 3.6-6 8-6s8 2.4 8 6"></path>
+            </svg>
+        </span>
+        <span class="mobile-nav-label" data-i18n="pg_pf_nav">Wasifu</span>
+    </a>
+    @endauth
 </nav>
 
 {{-- Kitufe cha Kuelea cha "Rudi Juu" (Floating Back-to-Top Button) --}}
