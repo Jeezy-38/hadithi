@@ -10958,3 +10958,5 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:
   .ib-card .inside-book-cover-thumb{width:72px}
 }
 [data-theme="light"] .ib-fact{background:rgba(6,28,46,.05);border-color:rgba(6,28,46,.12)}
+
+.en-only-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:1px 7px;margin-right:6px;border-radius:999px;border:1px solid currentColor;opacity:.75;vertical-align:1px}

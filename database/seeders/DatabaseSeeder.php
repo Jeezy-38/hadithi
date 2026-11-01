@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         Collection::updateOrCreate(['slug' => 'nasai'], ['name' => 'Sunan an-Nasa\'i', 'name_ar' => 'سنن النسائي']);
         Collection::updateOrCreate(['slug' => 'ibnmajah'], ['name' => 'Sunan Ibn Majah', 'name_ar' => 'سنن ابن ماجه']);
         Collection::updateOrCreate(['slug' => 'nawawi40'], ['name' => 'Hadithi 40 za An-Nawawi', 'name_ar' => 'الأربعون النووية']);
+        Collection::updateOrCreate(['slug' => 'malik'], ['name' => 'Muwatta Malik', 'name_ar' => 'موطأ الإمام مالك']);
+        Collection::updateOrCreate(['slug' => 'qudsi'], ['name' => 'Hadithi 40 za Qudsi', 'name_ar' => 'الأحاديث القدسية']);
         Collection::updateOrCreate(['slug' => 'riyadhadussalihin'], ['name' => 'Riyadh as-Salihin', 'name_ar' => 'رياض الصالحين']);
 
         $this->call(DuaSeeder::class);

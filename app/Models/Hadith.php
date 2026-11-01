@@ -63,9 +63,27 @@ class Hadith extends Model
         return $this->belongsToMany(User::class, 'bookmarks')->withTimestamps();
     }
 
+    /** Hadith zilizochapishwa NA zenye tafsiri ya Kiswahili (kwa moduli zote za kujifunza, hadith ya leo, nk.). */
     public function scopePublished(Builder $query): void
     {
+        $query->where('is_published', true)->where('swahili', '!=', '');
+    }
+
+    /** Hadith zote zilizochapishwa, pamoja na zile za Kiarabu + Kiingereza tu (Maktaba na ukurasa wa hadith). */
+    public function scopeVisible(Builder $query): void
+    {
         $query->where('is_published', true);
+    }
+
+    /** Maandishi ya kuonyesha: Kiswahili, au Kiingereza kama Kiswahili hakipo. */
+    public function getDisplayTextAttribute(): string
+    {
+        return (string) (($this->swahili ?? '') !== '' ? $this->swahili : $this->english);
+    }
+
+    public function getHasSwahiliAttribute(): bool
+    {
+        return ($this->swahili ?? '') !== '';
     }
 
     public function scopeSearch(Builder $query, string $term): void

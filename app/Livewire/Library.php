@@ -148,6 +148,28 @@ class Library extends Component
                 'color' => '#e2e8f0',
                 'cover_image' => 'images/covers/nawawi40.jpg',
             ],
+            'malik' => [
+                'years_ce' => '711 - 795',
+                'author' => 'Imam Malik ibn Anas',
+                'author_ar' => 'الإمام مالك',
+                'years' => '93 - 179 H',
+                'desc' => 'Kitabu cha zamani zaidi cha hadith na fikihi ya watu wa Madina. Kina Kiarabu na Kiingereza tu.',
+                'badge' => 'Muwatta',
+                'letter' => 'M',
+                'total_hadiths' => '1,858',
+                'color' => '#cbd5e1',
+            ],
+            'qudsi' => [
+                'years_ce' => '',
+                'author' => 'Mkusanyo wa Hadith Qudsi',
+                'author_ar' => 'الأحاديث القدسية',
+                'years' => '',
+                'desc' => 'Hadith 40 ambazo Mtume ﷺ alizisimulia kutoka kwa Mwenyezi Mungu. Kina Kiarabu na Kiingereza tu.',
+                'badge' => 'Qudsi',
+                'letter' => 'Q',
+                'total_hadiths' => '40',
+                'color' => '#e2e8f0',
+            ],
             'riyadhadussalihin' => [
                 'years_ce' => '1233 - 1277',
                 'author' => 'Imam Yahya an-Nawawi',
@@ -169,13 +191,13 @@ class Library extends Component
             (new \Database\Seeders\HadithSeeder())->run();
         }
 
-        $query = Hadith::published()->with('chapter.book.collection')
+        $query = Hadith::visible()->with('chapter.book.collection')
             ->when($this->collection !== '', fn ($q) => $q->whereHas('chapter.book.collection', fn ($q) => $q->where('slug', $this->collection)))
             ->when($this->book !== '', fn ($q) => $q->whereHas('chapter', fn ($q) => $q->where('book_id', $this->book)))
             ->when($this->chapter !== '', fn ($q) => $q->where('chapter_id', $this->chapter))
             ->when(trim($this->search) !== '', fn ($q) => $q->search(mb_substr($this->search, 0, 200)));
 
-        $collectionCounts = Hadith::published()
+        $collectionCounts = Hadith::visible()
             ->join('chapters', 'hadiths.chapter_id', '=', 'chapters.id')
             ->join('books', 'chapters.book_id', '=', 'books.id')
             ->selectRaw('books.collection_id, count(hadiths.id) as total')
@@ -186,7 +208,7 @@ class Library extends Component
             ->groupBy('collection_id')
             ->pluck('total', 'collection_id');
 
-        $collectionPreviews = Hadith::published()
+        $collectionPreviews = Hadith::visible()
             ->with('chapter.book.collection')
             ->orderBy('id')
             ->get()

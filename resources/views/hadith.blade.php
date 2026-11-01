@@ -3,7 +3,7 @@
         @php
             $shareArabic = trim((string) $hadith->arabic);
             $shareArabicShort = \Illuminate\Support\Str::limit($shareArabic, 320);
-            $shareSwahiliShort = \Illuminate\Support\Str::limit($hadith->swahili, 420);
+            $shareSwahiliShort = \Illuminate\Support\Str::limit($hadith->display_text, 420);
             $shareTitle = "Hadith " . $hadith->number;
             $shareBadge = $hadith->chapter->book->collection->name;
             $shareRef = $hadith->chapter->book->collection->name . " Na. " . $hadith->number . " (" . $hadith->chapter->book->title_sw . " · " . $hadith->chapter->title_sw . ")";
@@ -74,7 +74,7 @@
                         {{-- Shiriki kama picha --}}
                         <button type="button" class="more-dropdown-item" data-share-image
                             data-arabic="{{ \Illuminate\Support\Str::limit($shareArabic, 420, '') }}"
-                            data-sw="{{ \Illuminate\Support\Str::limit($hadith->swahili, 520) }}"
+                            data-sw="{{ \Illuminate\Support\Str::limit($hadith->display_text, 520) }}"
                             data-en="{{ \Illuminate\Support\Str::limit((string) $hadith->english, 520) }}"
                             data-ref="{{ $hadith->chapter->book->collection->name }} · Na. {{ $hadith->number }}"
                             data-sub="{{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }}"
@@ -179,10 +179,14 @@
             {{-- 2. Tafsiri ya Kiswahili --}}
             <section class="reading-section" data-reading="sw" aria-labelledby="label-swahili">
                 <div class="section-label-row">
-                    <span id="label-swahili" class="section-label" data-i18n="pg_h_l_sw">TAFSIRI YA KISWAHILI</span>
+                    @if($hadith->has_swahili)
+                        <span id="label-swahili" class="section-label" data-i18n="pg_h_l_sw">TAFSIRI YA KISWAHILI</span>
+                    @else
+                        <span id="label-swahili" class="section-label" data-i18n="pg_h_l_en_only">TAFSIRI YA KIINGEREZA (Kiswahili bado hakipo)</span>
+                    @endif
                 </div>
                 <div class="swahili-box">
-                    <p id="text-sw" class="swahili-text" lang="sw">{{ $hadith->swahili }}</p>
+                    <p id="text-sw" class="swahili-text" lang="{{ $hadith->has_swahili ? 'sw' : 'en' }}">{{ $hadith->display_text }}</p>
                 </div>
             </section>
 
@@ -297,7 +301,7 @@
                                 <span class="related-no">Na. {{ $rel->number }}</span>
                             </div>
                             <h3 class="related-title">Hadith {{ $rel->number }}</h3>
-                            <p class="related-excerpt">{{ \Illuminate\Support\Str::limit($rel->swahili, 100) }}</p>
+                            <p class="related-excerpt">{{ \Illuminate\Support\Str::limit($rel->display_text, 100) }}</p>
                         </a>
                     @endforeach
                 </div>
@@ -319,7 +323,7 @@
                                     <span class="related-col">{{ $s['hadith']->chapter->book->collection->name }}</span>
                                     <span class="related-no">Na. {{ $s['hadith']->number }}</span>
                                 </div>
-                                <p class="related-excerpt">{{ \Illuminate\Support\Str::limit($s['hadith']->swahili, 100) }}</p>
+                                <p class="related-excerpt">{{ \Illuminate\Support\Str::limit($s['hadith']->display_text, 100) }}</p>
                             </a>
                         @endforeach
                     </div>
@@ -335,7 +339,7 @@
                     <div class="nav-card-content">
                         <span class="nav-card-hint nav-dir-label" data-i18n="pg_h_prev">HADITH ILIYOTANGULIA</span>
                         <strong class="nav-card-title nav-surah-name">Na. {{ $prev->number }}</strong>
-                        <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($prev->swahili, 60) }}</span>
+                        <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($prev->display_text, 60) }}</span>
                     </div>
                 </a>
             @else
@@ -365,7 +369,7 @@
                     <div class="nav-card-content">
                         <span class="nav-card-hint nav-dir-label" data-i18n="pg_h_next">HADITH INAYOFUATA</span>
                         <strong class="nav-card-title nav-surah-name">Na. {{ $next->number }}</strong>
-                        <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($next->swahili, 60) }}</span>
+                        <span class="nav-card-excerpt">{{ \Illuminate\Support\Str::limit($next->display_text, 60) }}</span>
                     </div>
                     <span class="nav-card-icon" aria-hidden="true">→</span>
                 </a>

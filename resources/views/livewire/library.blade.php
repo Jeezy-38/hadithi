@@ -187,7 +187,7 @@
                                         </div>
 
                                         @if($sample)
-                                            <span class="sr-only">{{ $sample->swahili }}</span>
+                                            <span class="sr-only">{{ $sample->display_text }}</span>
                                         @endif
                                     </button>
                                 @endforeach
@@ -294,10 +294,12 @@
                                             <dt data-i18n="pg_lib_author">Mkusanyaji:</dt>
                                             <dd data-i18n="pg_bk_a_{{ $collection }}">{{ $activeMeta['author'] }}</dd>
                                         </div>
+                                        @if(!empty($activeMeta['years_ce']))
                                         <div class="ib-fact">
                                             <dt data-i18n="pg_lib_f_life">Maisha</dt>
-                                            <dd>{{ $activeMeta['years_ce'] ?? '' }} <span class="ib-unit">CE</span><br><span class="ib-sub">{{ $activeMeta['years'] }}</span></dd>
+                                            <dd>{{ $activeMeta['years_ce'] }} <span class="ib-unit">CE</span><br><span class="ib-sub">{{ $activeMeta['years'] }}</span></dd>
                                         </div>
+                                        @endif
                                         <div class="ib-fact">
                                             <dt data-i18n="pg_lib_f_books">Vitabu</dt>
                                             <dd>{{ number_format($bookCounts[$activeCol->id] ?? 0) }}</dd>
@@ -341,8 +343,8 @@
                                 <div data-reading="ar" class="arabic-box">
                                     <p class="arabic excerpt" lang="ar" dir="rtl">{{ $hadith->arabic }}</p>
                                 </div>
-                                <p data-reading="sw" lang="sw" class="translation swahili-text excerpt">
-                                    {!! $highlight($hadith->swahili, $search) !!}
+                                <p data-reading="sw" lang="{{ $hadith->has_swahili ? 'sw' : 'en' }}" class="translation swahili-text excerpt">
+                                    @unless($hadith->has_swahili)<span class="en-only-tag" data-i18n="pg_lib_en_only">English</span> @endunless{!! $highlight($hadith->display_text, $search) !!}
                                 </p>
                                 @if($hadith->english)
                                     <p data-reading="en" lang="en" class="translation english-text excerpt">

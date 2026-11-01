@@ -61,17 +61,17 @@ Route::get('/prayer-times', fn () => redirect()->route('prayer.times'));
 Route::get('/hadith/{hadith}', function (Hadith $hadith) {
     abort_unless($hadith->is_published, 404);
     $hadith->load('chapter.book.collection');
-    $related = Hadith::published()
+    $related = Hadith::visible()
         ->where('chapter_id', $hadith->chapter_id)
         ->where('id', '!=', $hadith->id)
         ->orderBy('id')
         ->limit(4)
         ->get();
     // Hadith iliyotangulia na inayofuata kwa ajili ya usomaji mfululizo
-    $prev = Hadith::published()->where('chapter_id', $hadith->chapter_id)->where('id', '<', $hadith->id)->orderByDesc('id')->first()
-        ?? Hadith::published()->where('id', '<', $hadith->id)->orderByDesc('id')->first();
-    $next = Hadith::published()->where('chapter_id', $hadith->chapter_id)->where('id', '>', $hadith->id)->orderBy('id')->first()
-        ?? Hadith::published()->where('id', '>', $hadith->id)->orderBy('id')->first();
+    $prev = Hadith::visible()->where('chapter_id', $hadith->chapter_id)->where('id', '<', $hadith->id)->orderByDesc('id')->first()
+        ?? Hadith::visible()->where('id', '<', $hadith->id)->orderByDesc('id')->first();
+    $next = Hadith::visible()->where('chapter_id', $hadith->chapter_id)->where('id', '>', $hadith->id)->orderBy('id')->first()
+        ?? Hadith::visible()->where('id', '>', $hadith->id)->orderBy('id')->first();
     try {
         $similar = app(\App\Services\Research\HadithSimilarity::class)->for($hadith, 3);
     } catch (\Throwable $e) {
@@ -144,12 +144,12 @@ Route::get('/vipendwa/data', function (Request $request) {
             ->unique();
 
         if ($guestIds->isNotEmpty()) {
-            $validGuestIds = Hadith::published()->whereIn('id', $guestIds)->pluck('id');
+            $validGuestIds = Hadith::visible()->whereIn('id', $guestIds)->pluck('id');
             auth()->user()->bookmarks()->syncWithoutDetaching($validGuestIds);
         }
 
         $hadiths = auth()->user()->bookmarks()
-            ->published()
+            ->visible()
             ->with('chapter.book.collection')
             ->orderByPivot('created_at', 'desc')
             ->get();
@@ -161,7 +161,7 @@ Route::get('/vipendwa/data', function (Request $request) {
             ->take(200)
             ->values();
 
-        $hadiths = Hadith::published()
+        $hadiths = Hadith::visible()
             ->whereIn('id', $ids)
             ->with('chapter.book.collection')
             ->get()
@@ -176,7 +176,7 @@ Route::get('/vipendwa/data', function (Request $request) {
         'collection_slug' => $hadith->chapter->book->collection->slug,
         'book' => $hadith->chapter->book->title_sw,
         'chapter' => $hadith->chapter->title_sw,
-        'excerpt' => Str::limit($hadith->swahili, 160),
+        'excerpt' => Str::limit($hadith->display_text, 160),
         'url' => route('hadith.show', $hadith),
     ]));
 })->name('bookmarks.data');
@@ -209,7 +209,7 @@ Route::post('/vipendwa/sync', function (Request $request) {
         ->unique();
 
     if ($ids->isNotEmpty()) {
-        $validIds = Hadith::published()->whereIn('id', $ids)->pluck('id');
+        $validIds = Hadith::visible()->whereIn('id', $ids)->pluck('id');
         $user->bookmarks()->syncWithoutDetaching($validIds);
     }
 

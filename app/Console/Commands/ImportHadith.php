@@ -48,7 +48,7 @@ class ImportHadith extends Command
         }
 
         $rules = [
-            '*.collection' => ['required', Rule::in(['bukhari', 'muslim', 'tirmidhi', 'abudawud', 'ahmad', 'nasai', 'ibnmajah', 'nawawi40', 'riyadhadussalihin'])],
+            '*.collection' => ['required', Rule::in(['bukhari', 'muslim', 'tirmidhi', 'abudawud', 'ahmad', 'nasai', 'ibnmajah', 'nawawi40', 'riyadhadussalihin', 'malik', 'qudsi'])],
             '*.reference' => ['required', 'string', 'max:255'],
             '*.number' => ['required', 'string', 'max:255'],
             '*.book.number' => ['required', 'integer', 'min:1'],
@@ -58,7 +58,7 @@ class ImportHadith extends Command
             '*.chapter.title_sw' => ['required', 'string', 'max:2000'],
             '*.chapter.title_ar' => ['required', 'string', 'max:2000'],
             '*.arabic' => ['required', 'string'],
-            '*.swahili' => ['required', 'string'],
+            '*.swahili' => ['present', 'string'],
             '*.english' => ['nullable', 'string'],
             '*.source_name' => ['required', 'string', 'max:255'],
             '*.source_url' => ['required', 'url:http,https'],
