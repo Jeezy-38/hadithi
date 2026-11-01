@@ -12,7 +12,7 @@
         </div>
 
         <div class="kg-wrap">
-            <svg class="kg-svg" viewBox="0 0 360 360" role="img" aria-label="Ramani ya maarifa ya hadith">
+            <svg class="kg-svg" viewBox="0 0 360 360" role="img" aria-label="Ramani ya maarifa ya hadith" data-i18n-aria-label="pg_rs_graph_aria">
                 @foreach($ring as $node)
                     <line class="kg-edge" x1="180" y1="180" x2="{{ $node['x'] }}" y2="{{ $node['y'] }}"/>
                 @endforeach

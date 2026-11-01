@@ -51,7 +51,7 @@
             <p class="lc-hint-text" data-i18n="pg_lc_practice_d">Ficha maneno kisha jaribu kusoma kutoka kichwani. Bonyeza neno lililofichwa ili kuliona.</p>
             <label class="lc-range">
                 <span data-i18n="pg_lc_hidden">Zilizofichwa:</span>
-                <input type="range" min="0" max="4" step="1" value="0" data-lc-level aria-label="Kiwango">
+                <input type="range" min="0" max="4" step="1" value="0" data-lc-level aria-label="Kiwango" data-i18n-aria-label="pg_lc_level">
                 <output data-lc-level-out>0%</output>
             </label>
             <p class="arabic arabic-text font-arabic lc-arabic lc-masked" lang="ar" dir="rtl" data-lc-masked></p>
@@ -67,7 +67,7 @@
             <a class="lc-btn lc-btn-ghost" href="{{ route('hadith.show', $hadith) }}" data-i18n="pg_lc_full_reader">Fungua usomaji kamili (sauti)</a>
         </div>
 
-        <nav class="lc-pager" aria-label="Masomo">
+        <nav class="lc-pager" aria-label="Masomo" data-i18n-aria-label="pg_lc_lessons_aria">
             @if($prev)<a class="lc-btn" href="{{ route('learning.lesson', $prev) }}" data-i18n="pg_lc_prev_lesson">← Somo lililopita</a>@endif
             @if($next)<a class="lc-btn" href="{{ route('learning.lesson', $next) }}" data-i18n="pg_lc_next_lesson">Somo linalofuata →</a>@endif
         </nav>
