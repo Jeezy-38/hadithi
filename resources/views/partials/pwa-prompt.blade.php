@@ -12,6 +12,7 @@
             <img src="{{ asset('images/logo.png') }}" alt="" class="pwa-banner-logo" width="40" height="40">
             <div class="pwa-banner-content">
                 <h3 id="pwa-title" data-i18n="pg_pw_title">Hadith App</h3>
+                <p class="pwa-banner-desc" data-i18n="pg_pw_desc">Install our app for faster access and easy use anytime.</p>
             </div>
         </div>
 
