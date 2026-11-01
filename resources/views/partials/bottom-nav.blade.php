@@ -8,7 +8,7 @@
                 <path d="M9.5 20.5v-6h5v6"></path>
             </svg>
         </span>
-        <span class="mobile-nav-label" data-i18n="nav_library">Maktaba</span>
+        <span class="mobile-nav-label" data-i18n="pg_nav_home">Nyumbani</span>
     </a>
 
     <a href="{{ route('library') }}#makusanyo" class="mobile-nav-item">

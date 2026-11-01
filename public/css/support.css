@@ -113,11 +113,6 @@
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.support-pillar-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--border-color);
-}
-
 .support-pillar-icon {
     width: 44px;
     height: 44px;
@@ -268,10 +263,6 @@
     text-align: center;
 }
 
-.preset-chip-btn:hover {
-    border-color: var(--border-color);
-}
-
 .preset-chip-btn.active {
     background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%) !important;
     border-color: #ffffff !important;
@@ -392,10 +383,6 @@
     transition: all 0.2s ease;
 }
 
-.payment-method-card:hover {
-    border-color: var(--border-color);
-}
-
 .payment-method-card.active,
 .payment-method-card:has(input:checked) {
     background: rgba(255, 255, 255, 0.12) !important;
@@ -436,12 +423,6 @@
     gap: 0.5rem;
 }
 
-.support-submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(241, 245, 249, 0.35);
-    filter: brightness(1.05);
-}
-
 .support-submit-btn:disabled {
     opacity: 0.65;
     cursor: not-allowed;
@@ -454,11 +435,6 @@
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-}
-
-.support-submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(226, 232, 240, 0.35);
 }
 
 /* Confirmation / Checkout State Card */
@@ -757,10 +733,6 @@
     color: #0f172a;
 }
 
-[data-theme="light"] .preset-chip-btn:hover {
-    border-color: #0a3f66;
-}
-
 [data-theme="light"] .preset-chip-btn.active {
     background: #0a3f66 !important;
     border-color: #0a3f66 !important;
@@ -819,11 +791,6 @@
     color: #ffffff !important;
     font-weight: 800;
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
-}
-
-[data-theme="light"] .support-submit-btn:hover {
-    color: #ffffff !important;
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.35);
 }
 
 [data-theme="light"] .conf-amount-val {
@@ -921,7 +888,6 @@
 .support-checkbox-row--compact { margin-bottom: 0.75rem; }
 .support-checkbox-hint { display: block; font-size: 0.78rem; opacity: 0.75; font-weight: 400; }
 .support-link-btn { background: none; border: 0; padding: 0.6rem 0; min-height: 44px; color: #f5c75d; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-align: left; }
-.support-link-btn:hover { text-decoration: underline; }
 .support-submit-bar { margin-top: 0.25rem; }
 
 @media (max-width: 860px) {
