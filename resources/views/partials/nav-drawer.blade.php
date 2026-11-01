@@ -130,7 +130,6 @@
                         @if ($drawerUser->email)<span>{{ $drawerUser->email }}</span>@endif
                     </div>
                 </div>
-                <a href="{{ route('profile') }}" class="nav-drawer-btn nav-drawer-btn--login" data-i18n="pg_pf_link">Wasifu wangu</a>
                 <form method="POST" action="{{ route('logout') }}" class="nav-drawer-logout-form">
                     @csrf
                     <button type="submit" class="nav-drawer-btn nav-drawer-btn--logout" data-i18n="auth_logout">Toka kwenye akaunti</button>
