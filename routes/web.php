@@ -239,6 +239,7 @@ Route::middleware(['guest', 'throttle:20,1'])->group(function () {
 });
 
 Route::post('/logout', [SocialAuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get('/wasifu', [\App\Http\Controllers\ProfileController::class, 'show'])->middleware('auth')->name('profile');
 
 // Sauti ya hadith (Mfumo mseto: Studio + Neural)
 Route::get('/audio/hadith/{hadith}/info', [HadithAudioController::class, 'info'])

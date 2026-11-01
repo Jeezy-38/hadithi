@@ -54,6 +54,7 @@
                         <span style="font-size: 11px; padding: 2px 7px; border-radius: 10px; background: var(--emerald); color: #fff;">Admin</span>
                     </a>
                 @endif
+                <a href="{{ route('profile') }}" data-i18n="pg_pf_link">Wasifu wangu</a>
                 <a href="{{ route('bookmarks') }}" data-i18n="nav_bookmarks">Vipendwa</a>
                 <a href="{{ route('support') }}" data-i18n="pg_nav_support">Changia</a>
                 <a href="{{ route('hadith.today') }}" data-i18n="nav_today">Hadith ya leo</a>
