@@ -158,6 +158,7 @@ class Library extends Component
                 'letter' => 'M',
                 'total_hadiths' => '1,858',
                 'color' => '#cbd5e1',
+                'cover_image' => 'images/covers/muwatta-malik.jpg',
             ],
             'qudsi' => [
                 'years_ce' => '',
@@ -169,6 +170,7 @@ class Library extends Component
                 'letter' => 'Q',
                 'total_hadiths' => '40',
                 'color' => '#e2e8f0',
+                'cover_image' => 'images/covers/hadith-qudsi.jpg',
             ],
             'riyadhadussalihin' => [
                 'years_ce' => '1233 - 1277',
