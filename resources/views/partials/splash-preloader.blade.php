@@ -48,7 +48,7 @@
         } catch (_) {}
 
         const startTime = Date.now();
-        const minDisplayMs = 3000;
+        const minDisplayMs = 4200;
 
         function dismissSplash() {
             const elapsed = Date.now() - startTime;
