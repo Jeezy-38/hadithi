@@ -5,9 +5,6 @@
         {{-- Eneo la Fomu ya Malipo Pekee --}}
         <div class="support-card support-card--form">
             <div class="support-card-header support-card-header--form">
-                <span class="support-mini-badge support-mini-badge--form" data-i18n="pg_su_badge">
-                    SADAKA JARIYA
-                </span>
                 <h1 class="support-card-title support-card-title--form" data-i18n="pg_su_title">
                     Fomu ya Mchango &amp; Malipo
                 </h1>
