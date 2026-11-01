@@ -15,11 +15,13 @@
             @endauth
         </div>
 
+        @if($hasQuiz)
         <div class="lc-actions">
             <a class="lc-action" href="{{ route('learning.quiz', $book->id) }}">
                 <span class="lc-action-title" data-i18n="pg_lc_course_quiz">Quiz ya kozi hii</span>
             </a>
         </div>
+        @endif
 
         <ol class="lc-lessons" start="{{ $lessons->firstItem() }}">
             @foreach($lessons as $h)

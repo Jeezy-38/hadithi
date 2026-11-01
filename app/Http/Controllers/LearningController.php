@@ -57,7 +57,7 @@ class LearningController extends Controller
         ]);
     }
 
-    public function course(Book $book)
+    public function course(Book $book, QuizBuilder $quiz)
     {
         $book->load('collection');
         $lessons = Hadith::published()
@@ -81,7 +81,9 @@ class LearningController extends Controller
                 ->where('learning_progress.user_id', auth()->id())->where('chapters.book_id', $book->id)->count()
             : 0;
 
-        return view('learning.course', compact('book', 'lessons', 'done', 'doneTotal'));
+        $hasQuiz = $quiz->canQuiz($book);
+
+        return view('learning.course', compact('book', 'lessons', 'done', 'doneTotal', 'hasQuiz'));
     }
 
     public function lesson(Hadith $hadith)

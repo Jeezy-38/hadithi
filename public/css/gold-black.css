@@ -11562,3 +11562,14 @@ body,
 .hadith-source-box,
 .related-section,
 .reader-bottom-nav { overflow-anchor: none; }
+
+/* ===== Light mode hero (desktop): seamless fade instead of a white overlay =====
+   The old white gradient over the image washed out the lantern and left a visible seam.
+   A mask lets the hero background itself show through, so the edge disappears. */
+@media (min-width: 861px) {
+    [data-theme="light"] .library-hero .hero-media::after { display: none; }
+    [data-theme="light"] .library-hero .hero-media img {
+        -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 9%, #000 24%);
+                mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 9%, #000 24%);
+    }
+}
