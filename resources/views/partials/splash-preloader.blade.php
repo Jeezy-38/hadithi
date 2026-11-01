@@ -9,24 +9,11 @@
 </script>
 
 <div id="bayt-splash-loader" class="bayt-splash-screen" aria-hidden="true">
-    <div class="bayt-splash-glow"></div>
     <div class="bayt-splash-body">
-        <div class="bayt-splash-logo-wrap">
-            <img src="{{ asset('images/logo.png') }}" alt="Bayt Ul Hadith" class="bayt-splash-logo">
-        </div>
-        <div class="bayt-splash-title">
-            Bayt Ul <span>Hadith</span>
-        </div>
-        <div class="bayt-splash-spinner-wrap">
-            <div class="bayt-splash-spinner">
-                <svg class="bayt-spinner-svg" viewBox="0 0 44 44" aria-hidden="true">
-                    <circle class="bayt-spinner-track" cx="22" cy="22" r="18" fill="none" stroke-width="2.5"></circle>
-                    <circle class="bayt-spinner-head" cx="22" cy="22" r="18" fill="none" stroke-width="2.8" stroke-linecap="round"></circle>
-                </svg>
-                <div class="bayt-spinner-core"></div>
-            </div>
-            <span class="bayt-splash-caption">Loading <span class="bayt-splash-dots">...</span></span>
-        </div>
+        <svg class="bayt-splash-calli" viewBox="0 0 300 130" aria-hidden="true"><text x="150" y="98" text-anchor="middle" direction="rtl">بيت الحديث</text></svg>
+        <div class="bayt-splash-rule"></div>
+        <div class="bayt-splash-title">Bayt Ul <span>Hadith</span></div>
+        <div class="bayt-splash-caption" id="bayt-splash-caption">Inapakia…</div>
     </div>
 </div>
 
@@ -53,8 +40,15 @@
             sessionStorage.setItem('bayt_splash_seen', '1');
         } catch (_) {}
 
+        // Maneno ya kupakia kulingana na lugha ya msomaji
+        try {
+            const lang = localStorage.getItem('hadith-language') || 'both';
+            const cap = document.getElementById('bayt-splash-caption');
+            if (cap && lang === 'en') cap.textContent = 'Loading…';
+        } catch (_) {}
+
         const startTime = Date.now();
-        const minDisplayMs = 1200;
+        const minDisplayMs = 1900;
 
         function dismissSplash() {
             const elapsed = Date.now() - startTime;
@@ -74,7 +68,7 @@
             dismissSplash();
         } else {
             window.addEventListener('load', dismissSplash, { once: true });
-            setTimeout(dismissSplash, 2800);
+            setTimeout(dismissSplash, 3000);
         }
     })();
 </script>

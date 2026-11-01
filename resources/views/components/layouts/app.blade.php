@@ -38,12 +38,26 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    {{-- Fonti hazizuii tena ukurasa kuonekana (preload kisha stylesheet) --}}
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@700;800&family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@700;800&family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+    @php
+        // Tumia toleo lililopunguzwa (.min) kama ni la sasa kwa chanzo chake; vinginevyo tumia chanzo. Jenga upya: node scripts/minify-assets.mjs
+        $pickAsset = function (string $src, string $min): string {
+            $s = public_path($src); $m = public_path($min);
+            if (! is_file($s) || ! is_file($m)) { return $src; }
+            return \Illuminate\Support\Facades\Cache::rememberForever('asset-pick:'.$src.':'.filesize($s).':'.filemtime($s).':'.filemtime($m), function () use ($s, $m, $src, $min) {
+                return str_contains((string) file_get_contents($m, false, null, 0, 80), 'src:'.md5_file($s)) ? $min : $src;
+            });
+        };
+        $cssMain = $pickAsset('css/gold-black.css', 'css/gold-black.min.css');
+        $jsReader = $pickAsset('js/reader.js', 'js/reader.min.js');
+        $jsI18n = $pickAsset('js/i18n-pages.js', 'js/i18n-pages.min.js');
+    @endphp
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/gold-black.css') }}?v={{ filemtime(public_path('css/gold-black.css')) }}">
+    <link rel="stylesheet" href="{{ asset($cssMain) }}?v={{ filemtime(public_path($cssMain)) }}">
     <link rel="stylesheet" href="{{ asset('css/auth-drawer.css') }}">
-    @livewireStyles
 </head>
 <body data-auth="{{ auth()->check() ? '1' : '0' }}">
     @include('partials.splash-preloader')
@@ -120,10 +134,10 @@
     @endif
 
 
-    <script src="{{ asset('js/reader.js') }}?v={{ filemtime(public_path('js/reader.js')) }}" defer></script>
-    <script src="{{ asset('js/i18n-pages.js') }}?v={{ filemtime(public_path('js/i18n-pages.js')) }}" defer></script>
+    <script src="{{ asset($jsReader) }}?v={{ filemtime(public_path($jsReader)) }}" defer></script>
+    <script src="{{ asset($jsI18n) }}?v={{ filemtime(public_path($jsI18n)) }}" defer></script>
     <script src="{{ url('js/pwa.js') }}" defer></script>
     <script src="{{ asset('js/auth-drawer.js') }}" defer></script>
-    @livewireScripts
+    {{-- Livewire (assets) huingizwa yenyewe tu kwenye kurasa zenye vipengele vya Livewire --}}
 </body>
 </html>
