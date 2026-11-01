@@ -107,7 +107,9 @@
         </div>
     </header>
     <main id="main">{{ $slot }}</main>
-    @include('partials.footer')
+    @if(request()->routeIs('library'))
+        @include('partials.footer')
+    @endif
     @include('partials.auth-drawer')
     @include('partials.nav-drawer')
     @include('partials.pwa-prompt')
