@@ -11544,3 +11544,21 @@ a.rs-chip:hover { border-color: var(--gold); }
 [data-theme="light"] .hero-meaning { color: var(--text-secondary); }
 [data-theme="light"] .lc-card-label,
 [data-theme="light"] .section-label { font-weight: 800; }
+
+/* ===== Scroll stability on phones (text was shimmering/jumping while scrolling) ===== */
+/* A fixed tiled background forces a full repaint on every scroll frame on mobile browsers. */
+body,
+[data-theme="light"] body { background-attachment: scroll, scroll; }
+
+/* Touch screens keep :hover after a tap, which nudged cards and shifted the text. */
+@media (hover: none) {
+    .quran-nav-card:hover,
+    .reader-nav-card:hover,
+    .related-card:hover,
+    .related-link:hover { transform: none !important; }
+}
+
+/* Reserve room for late-loading content so the text below does not jump. */
+.hadith-source-box,
+.related-section,
+.reader-bottom-nav { overflow-anchor: none; }
