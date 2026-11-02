@@ -231,6 +231,7 @@ class Library extends Component
             'collectionPreviews' => $collectionPreviews,
             'narratorMeta' => $this->getNarratorMeta(),
             'todayHadith' => $todayHadith,
+            'sponsor' => \Illuminate\Support\Facades\Cache::remember('sponsor:today:'.now()->toDateString(), 600, fn () => \App\Models\Sponsor::current('today')),
             'topics' => \App\Livewire\TopicIndex::getIslamicTopics(),
             'books' => Book::whereHas('chapters')
                 ->when($this->collection !== '', fn ($q) => $q->whereHas('collection', fn ($q) => $q->where('slug', $this->collection)))

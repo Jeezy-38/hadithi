@@ -28,6 +28,11 @@ Route::get('/mada', TopicIndex::class)->name('topics.index');
 Route::get('/mada/{slug}', TopicIndex::class)->name('topics.show');
 Route::get('/changia', SupportIndex::class)->name('support');
 Route::view('/wadhamini', 'sponsors')->name('sponsors');
+Route::get('/wadhamini/bofya/{sponsor}', function (\App\Models\Sponsor $sponsor) {
+    abort_unless(preg_match('#^https?://#i', $sponsor->url), 404);
+    $sponsor->increment('clicks');
+    return redirect()->away($sponsor->url);
+})->middleware('throttle:60,1')->name('sponsors.go');
 Route::get('/sadaka', fn () => redirect()->route('support'))->name('support.alias');
 
 // Njia za Malipo (Pesapal Callback, IPN Webhook, Risiti ya Kidigitali, Majaribio)
@@ -274,6 +279,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/users/{user}/toggle-supporter', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleUserSupporter'])->name('users.toggle-supporter');
 
     // Usimamizi wa Maudhui
+    Route::post('/wadhamini', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'storeSponsor'])->name('sponsors.store');
+    Route::post('/wadhamini/{sponsor}/toggle', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleSponsor'])->name('sponsors.toggle');
+    Route::delete('/wadhamini/{sponsor}', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'deleteSponsor'])->name('sponsors.delete');
     Route::post('/hadith/{hadith}/toggle-publish', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleHadithPublish'])->name('hadith.toggle-publish');
     Route::post('/dua/{dua}/toggle-publish', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleDuaPublish'])->name('dua.toggle-publish');
 

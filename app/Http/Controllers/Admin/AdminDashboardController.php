@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class AdminDashboardController extends Controller
 {
-    private const TABS = ['overview', 'users', 'payments', 'content', 'system'];
+    private const TABS = ['overview', 'users', 'payments', 'content', 'sponsors', 'system'];
 
     public function index(Request $request)
     {
@@ -39,6 +39,7 @@ class AdminDashboardController extends Controller
             'users' => $this->usersData($request),
             'payments' => $this->paymentsData($request),
             'content' => $this->contentData($request),
+            'sponsors' => $this->sponsorsData(),
             'system' => $this->systemData(),
             default => $this->overviewData(),
         };
@@ -386,5 +387,54 @@ class AdminDashboardController extends Controller
 
             fclose($file);
         }, 200, $headers);
+    }
+
+    // ---------------------------------------------------------------- Wadhamini
+
+    private function sponsorsData(): array
+    {
+        return ['sponsors' => \App\Models\Sponsor::orderByDesc('is_active')->orderByDesc('id')->get()];
+    }
+
+    private function forgetSponsorCache(): void
+    {
+        \Illuminate\Support\Facades\Cache::forget('sponsor:today:'.now()->toDateString());
+    }
+
+    public function storeSponsor(Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:80'],
+            'tagline' => ['nullable', 'string', 'max:120'],
+            'url' => ['required', 'url:http,https', 'max:500'],
+            'logo_url' => ['nullable', 'url:http,https', 'max:500'],
+            'starts_at' => ['nullable', 'date'],
+            'ends_at' => ['nullable', 'date', 'after_or_equal:starts_at'],
+        ]);
+        $sponsor = \App\Models\Sponsor::create($data + ['slot' => 'today', 'is_active' => true]);
+        $this->forgetSponsorCache();
+        $this->audit('sponsor.created', "Mdhamini '{$sponsor->name}' ameongezwa", $sponsor);
+
+        return redirect()->route('admin.dashboard', ['tab' => 'sponsors'])->with('success', "Mdhamini '{$sponsor->name}' ameongezwa.");
+    }
+
+    public function toggleSponsor(\App\Models\Sponsor $sponsor): RedirectResponse
+    {
+        $sponsor->is_active = ! $sponsor->is_active;
+        $sponsor->save();
+        $this->forgetSponsorCache();
+        $this->audit($sponsor->is_active ? 'sponsor.enabled' : 'sponsor.disabled', "Mdhamini '{$sponsor->name}' ".($sponsor->is_active ? 'amewashwa' : 'amezimwa'), $sponsor);
+
+        return redirect()->route('admin.dashboard', ['tab' => 'sponsors'])->with('success', "Mdhamini '{$sponsor->name}' ".($sponsor->is_active ? 'amewashwa.' : 'amezimwa.'));
+    }
+
+    public function deleteSponsor(\App\Models\Sponsor $sponsor): RedirectResponse
+    {
+        $name = $sponsor->name;
+        $sponsor->delete();
+        $this->forgetSponsorCache();
+        $this->audit('sponsor.deleted', "Mdhamini '{$name}' amefutwa");
+
+        return redirect()->route('admin.dashboard', ['tab' => 'sponsors'])->with('success', "Mdhamini '{$name}' amefutwa.");
     }
 }

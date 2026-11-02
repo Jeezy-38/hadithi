@@ -256,6 +256,10 @@
                 <span>Maudhui (Hadithi & Dua)</span>
                 <span class="adm-badge adm-badge-purple" style="font-size: 11px; padding: 2px 7px;">{{ number_format($totalHadith) }}</span>
             </a>
+            <a href="{{ route('admin.dashboard', ['tab' => 'sponsors']) }}" class="adm-tab-btn {{ $activeTab === 'sponsors' ? 'active' : '' }}">
+                <span>🤝</span>
+                <span>Wadhamini</span>
+            </a>
             <a href="{{ route('admin.dashboard', ['tab' => 'system']) }}" class="adm-tab-btn {{ $activeTab === 'system' ? 'active' : '' }}">
                 <span>⚙️</span>
                 <span>Mfumo & ClickPesa</span>
@@ -713,6 +717,67 @@
                 {{-- Pagination --}}
                 <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--adm-card-border);">
                     {{ $payments->links() }}
+                </div>
+            </div>
+        @endif
+
+        {{-- ========================================================================= --}}
+        {{-- TAB: WADHAMINI (Hadithi ya Leo) --}}
+        {{-- ========================================================================= --}}
+        @if($activeTab === 'sponsors')
+            @php
+                $inp = 'background: var(--adm-card-bg); border: 1px solid var(--adm-card-border); border-radius: 8px; padding: 8px 12px; font-size: 13px; color: var(--adm-text-main); outline: none; width: 100%; box-sizing: border-box;';
+                $today = now()->toDateString();
+            @endphp
+            <div class="adm-kpi-card" style="margin-bottom: 24px;">
+                <h2 style="font-size: 18px; font-weight: 900; margin: 0 0 4px; color: var(--adm-text-main);">🤝 Ongeza Mdhamini wa Hadithi ya Leo</h2>
+                <p style="margin: 0 0 16px; font-size: 13px; color: var(--adm-text-sub);">Atatokea kwenye kadi ya «Hadithi ya Leo» ukurasa wa mwanzo. Wakiwa wengi, wanazunguka kwa siku. Tarehe tupu = bila kikomo.</p>
+                <form method="POST" action="{{ route('admin.sponsors.store') }}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+                    @csrf
+                    <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Jina la mdhamini *<input type="text" name="name" value="{{ old('name') }}" required maxlength="80" style="{{ $inp }}"></label>
+                    <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Ujumbe mfupi<input type="text" name="tagline" value="{{ old('tagline') }}" maxlength="120" placeholder="Mfano: Darasa la Qur'ani kila Jumamosi" style="{{ $inp }}"></label>
+                    <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Kiungo (https://...) *<input type="url" name="url" value="{{ old('url') }}" required maxlength="500" placeholder="https://wa.me/255... au tovuti" style="{{ $inp }}"></label>
+                    <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Kiungo cha logo (si lazima)<input type="url" name="logo_url" value="{{ old('logo_url') }}" maxlength="500" placeholder="https://.../logo.png" style="{{ $inp }}"></label>
+                    <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Anaanza tarehe<input type="date" name="starts_at" value="{{ old('starts_at') }}" style="{{ $inp }}"></label>
+                    <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Anaishia tarehe<input type="date" name="ends_at" value="{{ old('ends_at') }}" style="{{ $inp }}"></label>
+                    <div style="display: flex; align-items: flex-end;"><button type="submit" class="adm-action-btn adm-badge-emerald" style="padding: 10px 18px;">➕ Ongeza Mdhamini</button></div>
+                </form>
+                @if($errors->any())
+                    <div style="margin-top: 12px; font-size: 13px; color: #ef4444;">@foreach($errors->all() as $e)<div>• {{ $e }}</div>@endforeach</div>
+                @endif
+            </div>
+
+            <div class="adm-kpi-card" style="margin-bottom: 24px;">
+                <h2 style="font-size: 16px; font-weight: 800; margin: 0 0 14px; color: var(--adm-text-main);">Orodha ya Wadhamini ({{ $sponsors->count() }})</h2>
+                <div style="overflow-x: auto;">
+                    <table class="adm-table">
+                        <thead><tr><th>Mdhamini</th><th>Kipindi</th><th>Hali</th><th>Waliobofya</th><th>Vitendo</th></tr></thead>
+                        <tbody>
+                            @forelse($sponsors as $sp)
+                                @php
+                                    $live = $sp->is_active && (! $sp->starts_at || $sp->starts_at->toDateString() <= $today) && (! $sp->ends_at || $sp->ends_at->toDateString() >= $today);
+                                    $expired = $sp->ends_at && $sp->ends_at->toDateString() < $today;
+                                @endphp
+                                <tr>
+                                    <td><b>{{ $sp->name }}</b>@if($sp->tagline)<div style="font-size: 12px; color: var(--adm-text-sub);">{{ $sp->tagline }}</div>@endif<a href="{{ $sp->url }}" target="_blank" rel="noopener" style="font-size: 12px;">{{ \Illuminate\Support\Str::limit($sp->url, 38) }}</a></td>
+                                    <td>{{ $sp->starts_at?->format('d/m/Y') ?? 'Mara moja' }} → {{ $sp->ends_at?->format('d/m/Y') ?? 'Bila kikomo' }}</td>
+                                    <td>
+                                        @if($live)<span class="adm-badge adm-badge-emerald">Anaonekana sasa</span>
+                                        @elseif($expired)<span class="adm-badge adm-badge-gray">Muda umeisha</span>
+                                        @elseif(! $sp->is_active)<span class="adm-badge adm-badge-gray">Amezimwa</span>
+                                        @else<span class="adm-badge adm-badge-gold">Anasubiri kuanza</span>@endif
+                                    </td>
+                                    <td><b>{{ number_format($sp->clicks) }}</b></td>
+                                    <td style="white-space: nowrap;">
+                                        <form method="POST" action="{{ route('admin.sponsors.toggle', $sp) }}" style="display: inline;">@csrf<button type="submit" class="adm-action-btn adm-badge-gold">{{ $sp->is_active ? 'Zima' : 'Washa' }}</button></form>
+                                        <form method="POST" action="{{ route('admin.sponsors.delete', $sp) }}" style="display: inline;" onsubmit="return confirm('Futa mdhamini huyu kabisa?');">@csrf @method('DELETE')<button type="submit" class="adm-action-btn adm-badge-red">Futa</button></form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr><td colspan="5" style="text-align: center; padding: 24px; color: var(--adm-text-sub);">Hakuna wadhamini bado. Ongeza wa kwanza juu.</td></tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
         @endif

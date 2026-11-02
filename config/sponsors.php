@@ -17,9 +17,9 @@ return [
             'period' => 'siku 1',
             'featured' => false,
             'features' => [
-                'Jina lako kwenye «Hadith ya Leo» kwa siku nzima',
-                'Ujumbe mfupi wa mstari mmoja na kiungo chako',
-                'Ripoti fupi ya idadi ya waliobofya',
+                'Jina lako kwenye «Hadithi ya Leo» (ukurasa wa mwanzo) kwa siku nzima',
+                'Ujumbe mfupi na kiungo chako (tovuti au WhatsApp)',
+                'Idadi ya waliobofya kiungo chako',
             ],
         ],
         [
@@ -29,10 +29,9 @@ return [
             'period' => 'siku 7',
             'featured' => true,
             'features' => [
-                'Logo na jina lako kwenye «Hadith ya Leo» kwa wiki nzima',
-                'Nafasi kwenye ukurasa wa Changia na wa mada',
-                'Ujumbe wako kwenye arifa ya hadith ya siku (pale inapowezekana)',
-                'Ripoti ya wageni na waliobofya',
+                'Jina, logo na ujumbe wako kwenye «Hadithi ya Leo» kwa wiki nzima',
+                'Kiungo cha moja kwa moja kwa wateja wako',
+                'Ripoti ya idadi ya waliobofya',
             ],
         ],
         [
@@ -42,10 +41,9 @@ return [
             'period' => 'mwezi 1',
             'featured' => false,
             'features' => [
-                'Logo yako kwenye ukurasa wa mwanzo na sehemu ya chini ya kurasa zote',
-                'Nafasi ya kwanza kwenye «Hadith ya Leo» na kurasa za mada',
+                'Jina, logo na ujumbe wako kwenye «Hadithi ya Leo» kwa mwezi mzima',
                 'Chapisho la shukrani kwenye mitandao yetu',
-                'Ripoti kamili ya mwezi na ushauri wa matangazo',
+                'Ripoti ya waliobofya ya mwezi na ushauri wa matangazo',
             ],
         ],
     ],

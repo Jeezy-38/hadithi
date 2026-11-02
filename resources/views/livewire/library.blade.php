@@ -88,6 +88,24 @@
                                     </p>
                                 </div>
 
+                                {{-- Mdhamini wa Leo --}}
+                                @if (! empty($sponsor))
+                                    <a class="rawdah-sponsor" href="{{ route('sponsors.go', $sponsor) }}" target="_blank" rel="sponsored noopener">
+                                        <span class="rawdah-sponsor-label" data-i18n="pg_sp_by">Imedhaminiwa na</span>
+                                        @if ($sponsor->logo_url)
+                                            <img class="rawdah-sponsor-logo" src="{{ $sponsor->logo_url }}" alt="" loading="lazy" width="28" height="28">
+                                        @else
+                                            <span class="rawdah-sponsor-logo rawdah-sponsor-initial" aria-hidden="true">{{ $sponsor->initial }}</span>
+                                        @endif
+                                        <span class="rawdah-sponsor-name">{{ $sponsor->name }}</span>
+                                        @if ($sponsor->tagline)<span class="rawdah-sponsor-tag">— {{ $sponsor->tagline }}</span>@endif
+                                    </a>
+                                @else
+                                    <a class="rawdah-sponsor rawdah-sponsor-invite" href="{{ route('sponsors') }}">
+                                        <span data-i18n="pg_sp_invite">Nafasi ya mdhamini wa leo ipo wazi — tangaza hapa</span>
+                                    </a>
+                                @endif
+
                                 {{-- Action Bar with Quick Links --}}
                                 <div class="rawdah-hero-footer">
                                     <div class="rawdah-hero-buttons">
