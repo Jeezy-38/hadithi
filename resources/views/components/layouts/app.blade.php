@@ -58,6 +58,16 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset($cssMain) }}?v={{ filemtime(public_path($cssMain)) }}">
     <link rel="stylesheet" href="{{ asset('css/auth-drawer.css') }}">
+    @production
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-75CRBZ6QZ9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-75CRBZ6QZ9');
+    </script>
+    @endproduction
 </head>
 <body data-auth="{{ auth()->check() ? '1' : '0' }}">
     @include('partials.splash-preloader')
