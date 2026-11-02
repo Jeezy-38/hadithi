@@ -3,18 +3,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Soma na tafuta hadith za Sahih al-Bukhari na Sahih Muslim kwa Kiarabu na Kiswahili.">
+    @php
+        $seoDefaultDesc = 'Soma na tafuta hadith sahihi za Mtume ﷺ kutoka Sahih al-Bukhari, Sahih Muslim, Abu Dawud, Tirmidhi na makusanyo mengine — kwa Kiarabu, Kiswahili na Kiingereza.';
+        $seoDesc = \Illuminate\Support\Str::limit(trim(preg_replace('/\s+/u', ' ', strip_tags((string) ($description ?? $seoDefaultDesc)))), 180, '…');
+        $seoCanonical = $canonical ?? url()->current();
+        $seoNoindex = (bool) ($noindex ?? false);
+        $seoType = $ogType ?? 'website';
+    @endphp
+    <meta name="description" content="{{ $seoDesc }}">
+    <link rel="canonical" href="{{ $seoCanonical }}">
+    <meta name="robots" content="{{ $seoNoindex ? 'noindex, follow' : 'index, follow, max-image-preview:large' }}">
     <title>{{ $title ?? 'Maktaba ya Hadith' }} · Bayt Ul Hadith</title>
     {{-- Link preview (WhatsApp, Facebook, Telegram, X) --}}
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ $seoType }}">
+    <meta property="og:locale" content="sw_TZ">
     <meta property="og:site_name" content="Bayt Ul Hadith">
     <meta property="og:title" content="{{ $title ?? 'Maktaba ya Hadith' }} · Bayt Ul Hadith">
-    <meta property="og:description" content="Soma na tafuta hadith za Sahih al-Bukhari na Sahih Muslim kwa Kiarabu na Kiswahili.">
-    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:description" content="{{ $seoDesc }}">
+    <meta property="og:url" content="{{ $seoCanonical }}">
     <meta property="og:image" content="{{ url('images/logo.png') }}">
     <meta property="og:image:width" content="689">
     <meta property="og:image:height" content="795">
     <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ $title ?? 'Maktaba ya Hadith' }} · Bayt Ul Hadith">
+    <meta name="twitter:description" content="{{ $seoDesc }}">
     <meta name="twitter:image" content="{{ url('images/logo.png') }}">
     <link rel="icon" href="{{ asset('images/logo.png') }}">
     <meta name="theme-color" content="#07293f">
@@ -58,6 +70,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset($cssMain) }}?v={{ filemtime(public_path($cssMain)) }}">
     <link rel="stylesheet" href="{{ asset('css/auth-drawer.css') }}">
+    @isset($jsonLd)
+    <script type="application/ld+json">{!! json_encode($jsonLd, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) !!}</script>
+    @endisset
     @production
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-75CRBZ6QZ9"></script>

@@ -241,6 +241,18 @@ class Library extends Component
             'hadiths' => $query->orderBy('id')->paginate(10),
             'total' => Hadith::visible()->count(),
             'bookCount' => Book::count(),
-        ])->layout('components.layouts.app', ['title' => 'Maktaba ya Hadith']);
+        ])->layout('components.layouts.app', [
+            'title' => 'Maktaba ya Hadith',
+            'canonical' => url('/'),
+            'jsonLd' => [
+                '@context' => 'https://schema.org',
+                '@type' => 'WebSite',
+                'name' => 'Bayt Ul Hadith',
+                'alternateName' => 'بيت الحديث',
+                'url' => url('/'),
+                'inLanguage' => ['sw', 'ar', 'en'],
+                'description' => 'Maktaba ya hadith sahihi za Mtume ﷺ kwa Kiarabu, Kiswahili na Kiingereza.',
+            ],
+        ]);
     }
 }

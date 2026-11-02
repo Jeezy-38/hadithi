@@ -51,7 +51,7 @@ class DuaIndex extends Component
                 'duas' => new LengthAwarePaginator([], 0, 12),
                 'selectedCategory' => null,
                 'totalCount' => 0,
-            ])->layout('components.layouts.app', ['title' => 'Dua & Adhkar · Hisn al-Muslim']);
+            ])->layout('components.layouts.app', ['title' => 'Dua & Adhkar · Hisn al-Muslim', 'description' => 'Dua na adhkar za Hisn al-Muslim kwa Kiarabu, matamshi na tafsiri ya Kiswahili — asubuhi, jioni, kabla ya kulala, safari na nyinginezo.']);
         }
 
         if (Dua::published()->count() < 1950) {
@@ -77,6 +77,6 @@ class DuaIndex extends Component
             'duas' => $duas,
             'selectedCategory' => $selectedCategory,
             'totalCount' => Dua::published()->count(),
-        ])->layout('components.layouts.app', ['title' => 'Dua & Adhkar · Hisn al-Muslim']);
+        ])->layout('components.layouts.app', ['title' => 'Dua & Adhkar · Hisn al-Muslim', 'description' => 'Dua na adhkar za Hisn al-Muslim kwa Kiarabu, matamshi na tafsiri ya Kiswahili — asubuhi, jioni, kabla ya kulala, safari na nyinginezo.']);
     }
 }

@@ -257,6 +257,6 @@ class SupportIndex extends Component
         return view('livewire.support-index', [
             'recentDonations' => $recentDonations,
             'stats' => $stats,
-        ])->layout('components.layouts.app', ['title' => 'Sadaka Jariya & Usaidizi · Bayt Ul Hadith']);
+        ])->layout('components.layouts.app', ['title' => 'Sadaka Jariya & Usaidizi · Bayt Ul Hadith', 'description' => 'Changia Bayt Ul Hadith kwa M-Pesa, Tigo Pesa, Airtel Money, HaloPesa au kadi, na usaidie kuendeleza maktaba ya hadith ya Kiswahili bila malipo kwa wote.']);
     }
 }

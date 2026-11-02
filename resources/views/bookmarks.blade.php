@@ -1,4 +1,4 @@
-<x-layouts.app title="Vipendwa vyangu · Hadith, Qur'ani na Dua">
+<x-layouts.app :noindex="true" title="Vipendwa vyangu · Hadith, Qur'ani na Dua">
     <div class="reader-shell bookmarks-shell">
         <a class="back-link" href="{{ route('library') }}">
             <span class="back-arrow" aria-hidden="true">←</span>

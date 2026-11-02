@@ -1,4 +1,4 @@
-<x-layouts.app :title="'Admin Panel — Jopo Kuu la Utawala'">
+<x-layouts.app :noindex="true" :title="'Admin Panel — Jopo Kuu la Utawala'">
     <div class="admin-dashboard-root" style="max-width: 1320px; margin: 0 auto; padding: 24px 16px 90px;">
 
         <style>

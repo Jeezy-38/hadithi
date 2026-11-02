@@ -1,4 +1,22 @@
-<x-layouts.app :title="$hadith->chapter->book->collection->name.' · '.$hadith->number">
+@php
+    $seoCol = $hadith->chapter->book->collection->name;
+    $seoText = trim(preg_replace('/\s+/u', ' ', (string) $hadith->display_text));
+    $seoHead = \Illuminate\Support\Str::limit($seoText, 70, '…');
+    $seoTitle = $seoCol.' Na. '.$hadith->number.($seoHead !== '' ? ' — '.$seoHead : '');
+    $seoDescription = $seoCol.' Na. '.$hadith->number.': '.\Illuminate\Support\Str::limit($seoText, 150, '…');
+    $seoLd = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Article',
+        'headline' => \Illuminate\Support\Str::limit($seoTitle, 110, '…'),
+        'inLanguage' => $hadith->has_swahili ? 'sw' : 'en',
+        'url' => route('hadith.show', $hadith),
+        'description' => $seoDescription,
+        'isPartOf' => ['@type' => 'WebSite', 'name' => 'Bayt Ul Hadith', 'url' => url('/')],
+        'publisher' => ['@type' => 'Organization', 'name' => 'Bayt Ul Hadith', 'logo' => ['@type' => 'ImageObject', 'url' => url('images/logo.png')]],
+        'about' => $hadith->chapter->book->title_sw.' · '.$hadith->chapter->title_sw,
+    ];
+@endphp
+<x-layouts.app :title="$seoTitle" :description="$seoDescription" og-type="article" :canonical="route('hadith.show', $hadith)" :noindex="! $hadith->has_swahili" :json-ld="$seoLd">
     <div class="reader-shell hadith-reader-shell dua-detail-shell hadith-detail-shell">
         @php
             $shareArabic = trim((string) $hadith->arabic);

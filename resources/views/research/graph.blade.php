@@ -1,4 +1,4 @@
-<x-layouts.app :title="'Ramani ya Maarifa · Na. ' . $hadith->number">
+<x-layouts.app :noindex="true" :title="'Ramani ya Maarifa · Na. ' . $hadith->number">
     <div class="reader-shell lc-shell">
         <a class="back-link" href="{{ route('hadith.show', $hadith) }}">
             <span class="back-arrow" aria-hidden="true">←</span>

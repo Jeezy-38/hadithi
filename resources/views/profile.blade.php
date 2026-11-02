@@ -1,4 +1,4 @@
-<x-layouts.app title="Wasifu Wangu · Bayt Ul Hadith">
+<x-layouts.app :noindex="true" title="Wasifu Wangu · Bayt Ul Hadith">
     <div class="reader-shell lc-shell pf-shell">
         <a class="back-link" href="{{ route('library') }}">
             <span class="back-arrow" aria-hidden="true">←</span>

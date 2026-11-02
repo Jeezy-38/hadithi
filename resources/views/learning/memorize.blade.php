@@ -1,4 +1,4 @@
-<x-layouts.app title="Kuhifadhi · Learning Centre">
+<x-layouts.app :noindex="true" title="Kuhifadhi · Learning Centre">
     <div class="reader-shell lc-shell">
         <a class="back-link" href="{{ route('learning.index') }}">
             <span class="back-arrow" aria-hidden="true">←</span>

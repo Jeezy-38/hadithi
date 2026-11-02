@@ -17,6 +17,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
+// SEO
+Route::get('/robots.txt', [\App\Http\Controllers\SeoController::class, 'robots']);
+Route::get('/sitemap.xml', [\App\Http\Controllers\SeoController::class, 'index']);
+Route::get('/sitemap-pages.xml', [\App\Http\Controllers\SeoController::class, 'pages']);
+Route::get('/sitemap-hadith-{page}.xml', [\App\Http\Controllers\SeoController::class, 'hadith'])->whereNumber('page');
+
 Route::get('/', Library::class)->name('library');
 Route::get('/mada', TopicIndex::class)->name('topics.index');
 Route::get('/mada/{slug}', TopicIndex::class)->name('topics.show');

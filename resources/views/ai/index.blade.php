@@ -1,4 +1,4 @@
-<x-layouts.app title="AI Research — Msaidizi wa Utafiti">
+<x-layouts.app :noindex="true" title="AI Research — Msaidizi wa Utafiti">
     <div class="reader-shell lc-shell">
         <a class="back-link" href="{{ route('library') }}">
             <span class="back-arrow" aria-hidden="true">←</span>

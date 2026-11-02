@@ -1,4 +1,4 @@
-<x-layouts.app :title="$dua->title_sw.' · Dua & Adhkar'">
+<x-layouts.app :title="$dua->title_sw.' · Dua & Adhkar'" :description="$dua->title_sw.' — '.\Illuminate\Support\Str::limit(trim((string) $dua->swahili), 150, '…').' (Hisn al-Muslim)'" :canonical="route('duaa.show', $dua)" og-type="article">
     <div class="reader-shell dua-detail-shell">
         @php
             $shareArabic = trim((string) $dua->arabic);

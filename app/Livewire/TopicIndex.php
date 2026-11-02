@@ -215,6 +215,10 @@ class TopicIndex extends Component
             'hadiths' => $hadiths,
         ])->layout('components.layouts.app', [
             'title' => $selectedTopic ? ($selectedTopic['title_sw'] . ' · Mada za Hadithi') : 'Mada za Kiislamu · Bayt Ul Hadith',
+            'description' => $selectedTopic
+                ? $selectedTopic['title_sw'].' — hadith sahihi za Mtume ﷺ kwa Kiarabu na Kiswahili. '.$selectedTopic['desc']
+                : 'Hadith za Mtume ﷺ zilizopangwa kwa mada: subira, tabia njema, swala, familia, riziki, dua na dhikri, sadaka, toba na nyinginezo.',
+            'canonical' => $selectedTopic ? route('topics.show', $selectedTopic['slug']) : route('topics.index'),
         ]);
     }
 }
