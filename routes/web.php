@@ -27,6 +27,7 @@ Route::get('/', Library::class)->name('library');
 Route::get('/mada', TopicIndex::class)->name('topics.index');
 Route::get('/mada/{slug}', TopicIndex::class)->name('topics.show');
 Route::get('/changia', SupportIndex::class)->name('support');
+Route::view('/wadhamini', 'sponsors')->name('sponsors');
 Route::get('/sadaka', fn () => redirect()->route('support'))->name('support.alias');
 
 // Njia za Malipo (Pesapal Callback, IPN Webhook, Risiti ya Kidigitali, Majaribio)

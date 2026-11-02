@@ -11005,3 +11005,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:
         gap: 6px;
     }
 }
+
+/* Kiungo cha wadhamini chini ya fomu ya Changia */
+.support-sponsor-link{margin:14px 0 0;text-align:center;font-size:.82rem;color:var(--text-muted)}
+.support-sponsor-link a{color:var(--gold);font-weight:700;text-decoration:none}

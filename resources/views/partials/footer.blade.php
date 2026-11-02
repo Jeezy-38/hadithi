@@ -70,6 +70,12 @@
                             <span data-i18n="pg_ft_tasbih">Digital Tasbih</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('sponsors') }}" class="footer-link-item">
+                            <span class="footer-link-bullet">✦</span>
+                            <span data-i18n="pg_ft_sponsors">Wadhamini & Matangazo</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
 

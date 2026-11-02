@@ -5,6 +5,9 @@
         {{-- Eneo la Fomu ya Malipo Pekee --}}
         <div class="support-card support-card--form">
             <div class="support-card-header support-card-header--form">
+                <span class="support-mini-badge support-mini-badge--form" data-i18n="pg_su_badge">
+                    SADAKA JARIYA
+                </span>
                 <h1 class="support-card-title support-card-title--form" data-i18n="pg_su_title">
                     Fomu ya Mchango &amp; Malipo
                 </h1>
@@ -197,6 +200,7 @@
                         <span wire:loading wire:target="initiatePayment" data-i18n="pg_su_preparing">Inaandaa muamala...</span>
                     </button>
                 </div>
+                <p class="support-sponsor-link"><span data-i18n="pg_su_sp_q">Una biashara au taasisi?</span> <a href="{{ route('sponsors') }}" data-i18n="pg_su_sp_a">Tangaza nasi kama mdhamini</a></p>
                 </div>
                 </div>
             @endif
