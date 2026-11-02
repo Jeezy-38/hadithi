@@ -68,7 +68,8 @@ class AdminDashboardController extends Controller
         $sevenDaysAgo = Carbon::today()->subDays(6)->toDateString();
         $thirtyDaysAgo = Carbon::today()->subDays(29)->toDateString();
 
-        $rawDailyViews = PageView::select('viewed_date', DB::raw('count(*) as total'))
+        // DB::table (si Eloquent) ili 'viewed_date' libaki kuwa "Y-m-d" na isigeuke Carbon (ufunguo wa array)
+        $rawDailyViews = DB::table('page_views')->select('viewed_date', DB::raw('count(*) as total'))
             ->where('viewed_date', '>=', $sevenDaysAgo)
             ->groupBy('viewed_date')
             ->pluck('total', 'viewed_date')
@@ -99,7 +100,17 @@ class AdminDashboardController extends Controller
                 ->orderByDesc('total')
                 ->limit(7)
                 ->get(),
-            'recentViews' => PageView::with('user')->latest('id')->limit(12)->get(),
+            'recentViews' => PageView::with('user')->latest('id')->limit(20)->get(),
+            'views30Days' => PageView::where('viewed_date', '>=', $thirtyDaysAgo)->count(),
+            'unique30Days' => $this->uniqueVisitorDays($thirtyDaysAgo),
+            'newUsers7Days' => User::where('created_at', '>=', Carbon::today()->subDays(6))->count(),
+            'byCountry' => $this->visitorBreakdown('country', $thirtyDaysAgo, 8),
+            'byDevice' => $this->visitorBreakdown('device_type', $thirtyDaysAgo, 4),
+            'byBrowser' => $this->visitorBreakdown('browser', $thirtyDaysAgo, 6),
+            'byOs' => $this->visitorBreakdown('os', $thirtyDaysAgo, 6),
+            'bySource' => $this->sourceBreakdown($thirtyDaysAgo, 8),
+            'trackedSince' => DB::table('page_views')->min('viewed_date'),
+            'recentUsers' => User::latest('id')->limit(6)->get(),
             'totalAdmins' => User::where('is_admin', true)->count(),
             'totalSupporters' => User::where('is_supporter', true)->count(),
             'totalTzs' => Payment::where('status', 'completed')->where('currency', 'TZS')->sum('amount'),
@@ -109,6 +120,75 @@ class AdminDashboardController extends Controller
                 ->where('completed_at', '>=', Carbon::now()->startOfMonth())
                 ->sum('amount'),
         ];
+    }
+
+    /**
+     * Mgawanyo wa wageni (mgeni-siku) kwa safu fulani; null hujumlishwa kama "Haijulikani".
+     */
+    private function visitorBreakdown(string $column, string $from, int $limit): array
+    {
+        $distinct = PageView::query()
+            ->select('viewed_date', 'ip_hash', $column)
+            ->where('viewed_date', '>=', $from)
+            ->whereNotNull('ip_hash')
+            ->distinct();
+
+        $rows = DB::query()->fromSub($distinct, 't')
+            ->select($column, DB::raw('count(*) as total'))
+            ->groupBy($column)
+            ->orderByDesc('total')
+            ->get();
+
+        $sum = max(1, (int) $rows->sum('total'));
+
+        return $rows->map(fn ($r) => [
+            'key' => $r->{$column},
+            'total' => (int) $r->total,
+            'pct' => round($r->total / $sum * 100),
+        ])->take($limit)->values()->all();
+    }
+
+    /**
+     * Vyanzo vya wageni (referer): Google, Facebook, WhatsApp n.k.; ziara za ndani ya tovuti hazihesabiwi.
+     */
+    private function sourceBreakdown(string $from, int $limit): array
+    {
+        $own = strtolower((string) parse_url(config('app.url'), PHP_URL_HOST));
+        $rows = PageView::query()
+            ->select('referer_host', DB::raw('count(*) as total'))
+            ->where('viewed_date', '>=', $from)
+            ->groupBy('referer_host')
+            ->get();
+
+        $groups = [];
+        foreach ($rows as $r) {
+            $host = (string) $r->referer_host;
+            if ($host !== '' && ($host === $own || $host === 'www.'.$own || str_ends_with($host, '.'.$own) || in_array($host, ['localhost', '127.0.0.1'], true))) {
+                continue; // urambazaji wa ndani
+            }
+            $label = match (true) {
+                $host === '' => 'Moja kwa moja',
+                (bool) preg_match('/(^|\.)google\./', $host) => 'Google',
+                (bool) preg_match('/(^|\.)(facebook|fb)\.com$|^l\.facebook|^lm\.facebook/', $host) => 'Facebook',
+                (bool) preg_match('/instagram\.com$/', $host) => 'Instagram',
+                (bool) preg_match('/(^|\.)(wa\.me|whatsapp\.com)$/', $host) => 'WhatsApp',
+                (bool) preg_match('/(^|\.)(t\.co|twitter\.com|x\.com)$/', $host) => 'X (Twitter)',
+                (bool) preg_match('/(^|\.)(t\.me|telegram\.org)$/', $host) => 'Telegram',
+                (bool) preg_match('/youtube\.com$|youtu\.be$/', $host) => 'YouTube',
+                (bool) preg_match('/bing\.com$/', $host) => 'Bing',
+                default => preg_replace('/^www\./', '', $host),
+            };
+            $groups[$label] = ($groups[$label] ?? 0) + (int) $r->total;
+        }
+        arsort($groups);
+        $sum = max(1, array_sum($groups));
+
+        $out = [];
+        foreach (array_slice($groups, 0, $limit, true) as $label => $total) {
+            $out[] = ['key' => $label, 'total' => $total, 'pct' => round($total / $sum * 100)];
+        }
+
+        return $out;
     }
 
     private function usersData(Request $request): array

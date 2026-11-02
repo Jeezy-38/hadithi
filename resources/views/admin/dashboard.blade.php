@@ -45,6 +45,43 @@
                 --adm-ring: rgba(224, 200, 104, 0.35);
             }
 
+
+            .adm-title { font-size: 24px; font-weight: 800; margin: 0; color: var(--adm-text-main); letter-spacing: -0.3px; line-height: 1.2; }
+            .adm-subtitle { margin: 4px 0 0; color: var(--adm-text-sub); font-size: 13.5px; }
+            .adm-grid { display: grid; gap: 16px; margin-bottom: 16px; }
+            .adm-grid-kpi { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+            .adm-grid-2 { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+            .adm-grid-4 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            @media (max-width: 980px) { .adm-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+            @media (max-width: 620px) { .adm-grid-4 { grid-template-columns: 1fr; } .adm-grid-2 { grid-template-columns: 1fr; } }
+            .adm-kpi { padding: 18px 20px; }
+            .adm-kpi-label { font-size: 12px; font-weight: 600; color: var(--adm-text-sub); letter-spacing: .02em; margin-bottom: 8px; }
+            .adm-kpi-value { font-size: 30px; font-weight: 800; color: var(--adm-text-main); line-height: 1.1; letter-spacing: -0.5px; }
+            .adm-kpi-value small { font-size: 13px; font-weight: 700; color: var(--adm-text-sub); letter-spacing: 0; }
+            .adm-kpi-sub { margin-top: 8px; font-size: 12.5px; color: var(--adm-text-sub); }
+            .adm-footnote { margin: 2px 2px 22px; font-size: 12px; line-height: 1.6; color: var(--adm-text-sub); }
+            .adm-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+            .adm-card-head h2 { margin: 0; font-size: 15px; font-weight: 700; color: var(--adm-text-main); }
+            .adm-card-sub { margin: 3px 0 0; font-size: 12.5px; color: var(--adm-text-sub); }
+            .adm-card-note { font-size: 11.5px; font-weight: 600; color: var(--adm-text-sub); white-space: nowrap; }
+            .adm-chart { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; height: 180px; border-bottom: 1px solid var(--adm-card-border); padding-top: 8px; }
+            .adm-chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+            .adm-chart-num { font-size: 11px; font-weight: 700; color: var(--adm-text-sub); }
+            .adm-chart-bar { width: 100%; max-width: 34px; border-radius: 6px 6px 0 0; background: var(--adm-emerald); opacity: .85; }
+            .adm-chart-lbl { font-size: 11px; color: var(--adm-text-sub); white-space: nowrap; margin-bottom: -22px; }
+            .adm-chart { margin-bottom: 26px; }
+            .adm-rows { display: flex; flex-direction: column; gap: 12px; }
+            .adm-row-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 5px; }
+            .adm-row-name { font-size: 13px; font-weight: 600; color: var(--adm-text-main); word-break: break-word; }
+            .adm-row-name code { margin-left: 6px; font-size: 11.5px; font-weight: 500; color: var(--adm-text-sub); }
+            .adm-row-val { font-size: 13px; font-weight: 700; color: var(--adm-text-main); white-space: nowrap; }
+            .adm-row-val small { font-size: 11.5px; font-weight: 600; color: var(--adm-text-sub); margin-left: 4px; }
+            .adm-meter { height: 6px; border-radius: 999px; background: var(--adm-hover-bg); overflow: hidden; }
+            .adm-meter i { display: block; height: 100%; border-radius: 999px; background: var(--adm-emerald); opacity: .85; }
+            .adm-muted { color: var(--adm-text-sub); font-size: 12.5px; }
+            .adm-empty { color: var(--adm-text-sub); font-size: 13px; margin: 0; }
+            .adm-code { font-size: 12.5px; color: var(--adm-text-main); background: transparent; }
+
             .adm-tab-btn {
                 display: inline-flex;
                 align-items: center;
@@ -180,7 +217,7 @@
         @if(session('success'))
             <div style="background: var(--adm-emerald-subtle); border: 1px solid var(--adm-ring); border-radius: 14px; padding: 14px 18px; margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; color: var(--adm-emerald); font-size: 14px; font-weight: 700;">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 18px;">✓</span>
+                    <span style="font-size: 18px;"></span>
                     <span>{{ session('success') }}</span>
                 </div>
                 <button type="button" onclick="this.parentElement.remove()" style="background: transparent; border: none; color: inherit; font-size: 18px; cursor: pointer;">&times;</button>
@@ -190,7 +227,7 @@
         @if(session('error'))
             <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 14px; padding: 14px 18px; margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between; color: #ef4444; font-size: 14px; font-weight: 700;">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 18px;">⚠️</span>
+                    <span style="font-size: 18px;"></span>
                     <span>{{ session('error') }}</span>
                 </div>
                 <button type="button" onclick="this.parentElement.remove()" style="background: transparent; border: none; color: inherit; font-size: 18px; cursor: pointer;">&times;</button>
@@ -200,19 +237,8 @@
         {{-- Top Header Banner --}}
         <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--adm-card-border);">
             <div>
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <span style="display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 12px; background: linear-gradient(135deg, var(--adm-emerald), var(--adm-emerald-glow)); color: #fff; font-size: 20px; box-shadow: 0 4px 14px var(--adm-ring);">
-                        🛡️
-                    </span>
-                    <div>
-                        <h1 style="font-size: 27px; font-weight: 900; margin: 0; color: var(--adm-text-main); letter-spacing: -0.6px; line-height: 1.2;">
-                            Jopo Kuu la Utawala (Super Admin)
-                        </h1>
-                        <p style="margin: 3px 0 0; color: var(--adm-text-sub); font-size: 13.5px; font-weight: 500;">
-                            Usimamizi kamili wa watumiaji, maudhui, takwimu za watazamaji na malipo ya Sadaka.
-                        </p>
-                    </div>
-                </div>
+                <h1 class="adm-title">Jopo la Usimamizi</h1>
+                <p class="adm-subtitle">Takwimu za wageni, watumiaji, maudhui, malipo na wadhamini.</p>
             </div>
 
             <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
@@ -224,7 +250,7 @@
                 <form action="{{ route('admin.system.clear-cache') }}" method="POST" style="margin: 0;">
                     @csrf
                     <button type="submit" class="adm-action-btn adm-badge-gold" style="padding: 7px 14px; border: 1px solid rgba(245, 158, 11, 0.3);" title="Safisha cache za mfumo">
-                        <span>⚡ Safisha Cache</span>
+                        <span>Safisha Cache</span>
                     </button>
                 </form>
 
@@ -238,31 +264,25 @@
         {{-- Modular Navigation Tabs (Pills) --}}
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 28px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch;">
             <a href="{{ route('admin.dashboard', ['tab' => 'overview']) }}" class="adm-tab-btn {{ $activeTab === 'overview' ? 'active' : '' }}">
-                <span>📈</span>
-                <span>Trafiki & Muhtasari</span>
+                <span>Takwimu za Wageni</span>
             </a>
             <a href="{{ route('admin.dashboard', ['tab' => 'users']) }}" class="adm-tab-btn {{ $activeTab === 'users' ? 'active' : '' }}">
-                <span>👥</span>
-                <span>Usimamizi wa Watumiaji</span>
+                <span>Watumiaji</span>
                 <span class="adm-badge adm-badge-blue" style="font-size: 11px; padding: 2px 7px;">{{ number_format($totalUsers) }}</span>
             </a>
             <a href="{{ route('admin.dashboard', ['tab' => 'payments']) }}" class="adm-tab-btn {{ $activeTab === 'payments' ? 'active' : '' }}">
-                <span>💳</span>
-                <span>Malipo & Sadaka</span>
+                <span>Malipo</span>
                 <span class="adm-badge adm-badge-emerald" style="font-size: 11px; padding: 2px 7px;">{{ number_format($paymentsCompletedCount) }}</span>
             </a>
             <a href="{{ route('admin.dashboard', ['tab' => 'content']) }}" class="adm-tab-btn {{ $activeTab === 'content' ? 'active' : '' }}">
-                <span>📖</span>
-                <span>Maudhui (Hadithi & Dua)</span>
+                <span>Maudhui</span>
                 <span class="adm-badge adm-badge-purple" style="font-size: 11px; padding: 2px 7px;">{{ number_format($totalHadith) }}</span>
             </a>
             <a href="{{ route('admin.dashboard', ['tab' => 'sponsors']) }}" class="adm-tab-btn {{ $activeTab === 'sponsors' ? 'active' : '' }}">
-                <span>🤝</span>
                 <span>Wadhamini</span>
             </a>
             <a href="{{ route('admin.dashboard', ['tab' => 'system']) }}" class="adm-tab-btn {{ $activeTab === 'system' ? 'active' : '' }}">
-                <span>⚙️</span>
-                <span>Mfumo & ClickPesa</span>
+                <span>Mfumo</span>
             </a>
         </div>
 
@@ -270,175 +290,177 @@
         {{-- TAB 1: OVERVIEW & TRAFFIC --}}
         {{-- ========================================================================= --}}
         @if($activeTab === 'overview')
-            
-            {{-- KPI Summary Grid --}}
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 30px;">
-                {{-- Watazamaji Leo --}}
-                <div class="adm-kpi-card" style="border-top: 4px solid var(--adm-emerald);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--adm-text-sub); letter-spacing: 0.5px;">Watazamaji Leo</span>
-                        <span style="font-size: 20px;">👁️</span>
-                    </div>
-                    <div style="font-size: 34px; font-weight: 900; color: var(--adm-text-main); line-height: 1.1; margin-bottom: 6px;">
-                        {{ number_format($viewsToday) }}
-                    </div>
-                    <div style="font-size: 13px; color: var(--adm-text-sub);">
-                        Wageni wa Kipekee: <strong style="color: var(--adm-emerald);">{{ number_format($uniqueToday) }}</strong>
-                    </div>
-                </div>
+            @php
+                $countryNames = ['TZ' => 'Tanzania', 'KE' => 'Kenya', 'UG' => 'Uganda', 'RW' => 'Rwanda', 'BI' => 'Burundi', 'CD' => 'DR Congo', 'MZ' => 'Msumbiji', 'ZM' => 'Zambia', 'MW' => 'Malawi', 'ZA' => 'Afrika Kusini', 'SO' => 'Somalia', 'ET' => 'Ethiopia', 'NG' => 'Nigeria', 'EG' => 'Misri', 'SA' => 'Saudi Arabia', 'AE' => 'UAE', 'OM' => 'Oman', 'QA' => 'Qatar', 'KW' => 'Kuwait', 'US' => 'Marekani', 'GB' => 'Uingereza', 'CA' => 'Kanada', 'DE' => 'Ujerumani', 'FR' => 'Ufaransa', 'IN' => 'India', 'PK' => 'Pakistan', 'CN' => 'China', 'AU' => 'Australia'];
+                $deviceNames = ['mobile' => 'Simu', 'tablet' => 'Tablet', 'desktop' => 'Kompyuta'];
+                $pageLabel = function (string $p) {
+                    if ($p === '/') return 'Ukurasa wa mwanzo';
+                    if (preg_match('#^/hadith/\d+#', $p)) return 'Hadith (ukurasa mmoja)';
+                    $map = ['/hadith-ya-leo' => 'Hadith ya Leo', '/mada' => 'Mada', '/duaa' => 'Dua & Adhkar', '/quran' => 'Qur\'ani', '/changia' => 'Changia', '/wadhamini' => 'Wadhamini', '/jifunze' => 'Jifunze', '/kuhusu' => 'Kuhusu', '/vipendwa' => 'Vipendwa', '/tasbih' => 'Tasbih', '/qibla' => 'Qibla', '/ramadhani' => 'Ramadhani', '/nyakati-za-swala' => 'Nyakati za Swala'];
+                    return $map[$p] ?? null;
+                };
+                $breakdowns = [
+                    ['title' => 'Nchi', 'rows' => $byCountry, 'label' => fn ($k) => $k === null ? 'Haijulikani' : ($countryNames[$k] ?? $k)],
+                    ['title' => 'Vyanzo vya wageni', 'rows' => $bySource, 'label' => fn ($k) => $k],
+                    ['title' => 'Kifaa', 'rows' => $byDevice, 'label' => fn ($k) => $deviceNames[$k] ?? ucfirst((string) $k)],
+                    ['title' => 'Kivinjari', 'rows' => $byBrowser, 'label' => fn ($k) => $k ?? 'Haijulikani'],
+                    ['title' => 'Mfumo wa uendeshaji', 'rows' => $byOs, 'label' => fn ($k) => $k ?? 'Haijulikani'],
+                ];
+                $hasCountry = collect($byCountry)->contains(fn ($r) => $r['key'] !== null);
+            @endphp
 
-                {{-- Watazamaji Siku 7 --}}
-                <div class="adm-kpi-card" style="border-top: 4px solid var(--adm-blue);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--adm-text-sub); letter-spacing: 0.5px;">Siku 7 Zilizopita</span>
-                        <span style="font-size: 20px;">📊</span>
-                    </div>
-                    <div style="font-size: 34px; font-weight: 900; color: var(--adm-text-main); line-height: 1.1; margin-bottom: 6px;">
-                        {{ number_format($views7Days) }}
-                    </div>
-                    <div style="font-size: 13px; color: var(--adm-text-sub);">
-                        Wageni (jumla ya kila siku): <strong style="color: var(--adm-blue);">{{ number_format($unique7Days) }}</strong>
-                    </div>
+            {{-- KPI --}}
+            <div class="adm-grid adm-grid-kpi">
+                <div class="adm-kpi-card adm-kpi">
+                    <div class="adm-kpi-label">Wageni leo</div>
+                    <div class="adm-kpi-value">{{ number_format($uniqueToday) }}</div>
+                    <div class="adm-kpi-sub">{{ number_format($viewsToday) }} kurasa zilizofunguliwa</div>
                 </div>
-
-                {{-- Sadaka Zilizolipwa --}}
-                <div class="adm-kpi-card" style="border-top: 4px solid var(--adm-gold);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--adm-text-sub); letter-spacing: 0.5px;">Mapato ya Sadaka</span>
-                        <span style="font-size: 20px;">💰</span>
-                    </div>
-                    <div style="font-size: 28px; font-weight: 900; color: var(--adm-gold); line-height: 1.1; margin-bottom: 4px;">
-                        {{ number_format($totalTzs) }} <span style="font-size: 14px; font-weight: 700;">TZS</span>
-                    </div>
-                    @if($totalUsd > 0)
-                        <div style="font-size: 14px; font-weight: 800; color: var(--adm-text-main); margin-bottom: 4px;">
-                            + ${{ number_format($totalUsd, 2) }} USD
-                        </div>
-                    @endif
-                    <div style="font-size: 13px; color: var(--adm-text-sub);">
-                        Mwezi Huu: <strong style="color: var(--adm-text-main);">{{ number_format($monthTzs) }} TZS</strong>
-                    </div>
+                <div class="adm-kpi-card adm-kpi">
+                    <div class="adm-kpi-label">Siku 7 zilizopita</div>
+                    <div class="adm-kpi-value">{{ number_format($unique7Days) }}</div>
+                    <div class="adm-kpi-sub">{{ number_format($views7Days) }} kurasa zilizofunguliwa</div>
                 </div>
-
-                {{-- Jumla ya Watumiaji --}}
-                <div class="adm-kpi-card" style="border-top: 4px solid var(--adm-purple);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <span style="font-size: 12px; font-weight: 800; text-transform: uppercase; color: var(--adm-text-sub); letter-spacing: 0.5px;">Watumiaji Waliosajiliwa</span>
-                        <span style="font-size: 20px;">👥</span>
-                    </div>
-                    <div style="font-size: 34px; font-weight: 900; color: var(--adm-text-main); line-height: 1.1; margin-bottom: 6px;">
-                        {{ number_format($totalUsers) }}
-                    </div>
-                    <div style="font-size: 13px; color: var(--adm-text-sub);">
-                        Ma-Admin: <strong style="color: var(--adm-emerald);">{{ $totalAdmins }}</strong> &bull; Supporters: <strong style="color: var(--adm-gold);">{{ $totalSupporters }}</strong>
-                    </div>
+                <div class="adm-kpi-card adm-kpi">
+                    <div class="adm-kpi-label">Siku 30 zilizopita</div>
+                    <div class="adm-kpi-value">{{ number_format($unique30Days) }}</div>
+                    <div class="adm-kpi-sub">{{ number_format($views30Days) }} kurasa zilizofunguliwa</div>
+                </div>
+                <div class="adm-kpi-card adm-kpi">
+                    <div class="adm-kpi-label">Watumiaji waliosajiliwa</div>
+                    <div class="adm-kpi-value">{{ number_format($totalUsers) }}</div>
+                    <div class="adm-kpi-sub">+{{ number_format($newUsers7Days) }} wapya wiki hii &bull; {{ $totalSupporters }} supporters</div>
+                </div>
+                <div class="adm-kpi-card adm-kpi">
+                    <div class="adm-kpi-label">Mapato ya sadaka</div>
+                    <div class="adm-kpi-value">{{ number_format($totalTzs) }} <small>TZS</small></div>
+                    <div class="adm-kpi-sub">Mwezi huu: {{ number_format($monthTzs) }} TZS @if($totalUsd > 0) &bull; ${{ number_format($totalUsd, 2) }}@endif</div>
                 </div>
             </div>
+            <p class="adm-footnote">"Wageni" = idadi ya wageni tofauti kwa kila siku (kitambulisho cha mgeni kinabadilika kila siku kwa faragha, kwa hiyo mtu aliyerudi siku mbili anahesabiwa mara mbili). Roboti na crawlers hazihesabiwi.</p>
 
-            {{-- 7-Day Chart & Top Pages --}}
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; margin-bottom: 30px;">
-                
-                {{-- Mwelekeo wa Siku 7 --}}
+            {{-- Trend + Top pages --}}
+            <div class="adm-grid adm-grid-2">
                 <div class="adm-kpi-card">
-                    <h2 style="font-size: 16px; font-weight: 800; margin: 0 0 18px; color: var(--adm-text-main); display: flex; align-items: center; justify-content: space-between;">
-                        <span>📊 Mwelekeo wa Watazamaji (Siku 7)</span>
-                        <span class="adm-badge adm-badge-emerald">Live</span>
-                    </h2>
+                    <div class="adm-card-head"><h2>Mwelekeo wa kurasa zilizofunguliwa (siku 7)</h2></div>
                     @php $maxDaily = max(1, ...array_column($dailyStats, 'count')); @endphp
-                    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; height: 160px; padding-top: 20px; border-bottom: 1px solid var(--adm-card-border);">
+                    <div class="adm-chart">
                         @foreach($dailyStats as $stat)
-                            @php $height = max(12, round(($stat['count'] / $maxDaily) * 125)); @endphp
-                            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                                <span style="font-size: 11px; font-weight: 800; color: var(--adm-emerald);">{{ $stat['count'] }}</span>
-                                <div style="width: 100%; max-width: 32px; height: {{ $height }}px; border-radius: 6px 6px 0 0; background: linear-gradient(180deg, var(--adm-emerald), var(--adm-emerald-subtle));"></div>
-                                <span style="font-size: 11px; color: var(--adm-text-sub); white-space: nowrap;">{{ $stat['label'] }}</span>
+                            @php $height = max(4, round(($stat['count'] / $maxDaily) * 130)); @endphp
+                            <div class="adm-chart-col">
+                                <span class="adm-chart-num">{{ $stat['count'] }}</span>
+                                <div class="adm-chart-bar" style="height: {{ $height }}px;"></div>
+                                <span class="adm-chart-lbl">{{ $stat['label'] }}</span>
                             </div>
                         @endforeach
                     </div>
                 </div>
 
-                {{-- Kurasa Zinazosomwa Zaidi --}}
                 <div class="adm-kpi-card">
-                    <h2 style="font-size: 16px; font-weight: 800; margin: 0 0 18px; color: var(--adm-text-main); display: flex; align-items: center; justify-content: space-between;">
-                        <span>🔥 Kurasa Zinazoongoza (Siku 30)</span>
-                        <span class="adm-badge adm-badge-blue">Top 7</span>
-                    </h2>
-                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div class="adm-card-head"><h2>Kurasa zinazoongoza (siku 30)</h2></div>
+                    @php $maxPage = max(1, (int) ($topPages->first()->total ?? 1)); @endphp
+                    <div class="adm-rows">
                         @forelse($topPages as $page)
-                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-radius: 10px; background: var(--adm-hover-bg);">
-                                <code style="font-size: 12.5px; color: var(--adm-emerald); font-weight: 700; word-break: break-all;">{{ $page->path }}</code>
-                                <span class="adm-badge adm-badge-emerald" style="font-size: 11.5px;">{{ number_format($page->total) }} views</span>
+                            <div class="adm-row">
+                                <div class="adm-row-top">
+                                    <span class="adm-row-name">{{ $pageLabel($page->path) ?? $page->path }}@if($pageLabel($page->path)) <code>{{ $page->path }}</code>@endif</span>
+                                    <span class="adm-row-val">{{ number_format($page->total) }}</span>
+                                </div>
+                                <div class="adm-meter"><i style="width: {{ round($page->total / $maxPage * 100) }}%"></i></div>
                             </div>
                         @empty
-                            <p style="color: var(--adm-text-sub); font-size: 13px;">Bado hakuna data ya kutosha ya kurasa.</p>
+                            <p class="adm-empty">Bado hakuna data ya kutosha.</p>
                         @endforelse
                     </div>
                 </div>
             </div>
 
-            {{-- Recent Live Visitor Activity Log --}}
-            <div class="adm-kpi-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                    <div>
-                        <h2 style="font-size: 16px; font-weight: 800; margin: 0; color: var(--adm-text-main);">
-                            ⚡ Wageni wa Moja kwa Moja (Live Activity Feed)
-                        </h2>
-                        <p style="margin: 2px 0 0; font-size: 12.5px; color: var(--adm-text-sub);">
-                            Ukurasa waliofungua hivi punde, kifaa na muda kamili.
-                        </p>
+            {{-- Visitor breakdowns --}}
+            <div class="adm-grid adm-grid-4">
+                @foreach ($breakdowns as $bd)
+                    <div class="adm-kpi-card">
+                        <div class="adm-card-head"><h2>{{ $bd['title'] }}</h2><span class="adm-card-note">siku 30</span></div>
+                        <div class="adm-rows">
+                            @forelse($bd['rows'] as $r)
+                                <div class="adm-row">
+                                    <div class="adm-row-top">
+                                        <span class="adm-row-name">{{ ($bd['label'])($r['key']) }}</span>
+                                        <span class="adm-row-val">{{ number_format($r['total']) }} <small>{{ $r['pct'] }}%</small></span>
+                                    </div>
+                                    <div class="adm-meter"><i style="width: {{ max(2, $r['pct']) }}%"></i></div>
+                                </div>
+                            @empty
+                                <p class="adm-empty">Bado hakuna data.</p>
+                            @endforelse
+                        </div>
                     </div>
-                    <span class="adm-badge adm-badge-emerald">Ziara 12 za Mwisho</span>
+                @endforeach
+                <div class="adm-kpi-card">
+                    <div class="adm-card-head"><h2>Watumiaji wapya</h2><a class="adm-card-note" href="{{ route('admin.dashboard', ['tab' => 'users']) }}">Wote &rarr;</a></div>
+                    <div class="adm-rows">
+                        @forelse($recentUsers as $u)
+                            <div class="adm-row-top" style="margin: 0;">
+                                <span class="adm-row-name">{{ $u->name }}</span>
+                                <span class="adm-muted">{{ $u->created_at?->diffForHumans() }}</span>
+                            </div>
+                        @empty
+                            <p class="adm-empty">Bado hakuna watumiaji.</p>
+                        @endforelse
+                    </div>
                 </div>
+            </div>
+            @if(! $hasCountry)
+                <p class="adm-footnote">Taarifa za nchi zinaanza kukusanywa kuanzia sasa (zinatoka kwenye CDN ya seva). Ikiwa bado hazionekani baada ya siku moja, seva yako haitumi header ya nchi; tumia Google Analytics kwa mgawanyo wa nchi na mikoa.</p>
+            @endif
 
+            {{-- Recent visits --}}
+            <div class="adm-kpi-card" style="margin-top: 20px;">
+                <div class="adm-card-head">
+                    <div>
+                        <h2>Ziara za hivi karibuni</h2>
+                        <p class="adm-card-sub">Ukurasa waliofungua, mahali, kifaa, chanzo na muda. Anwani za IP hazihifadhiwi.</p>
+                    </div>
+                    <span class="adm-card-note">20 za mwisho</span>
+                </div>
                 <div style="overflow-x: auto;">
                     <table class="adm-table">
                         <thead>
                             <tr>
-                                <th>Ukurasa Uliofunguliwa</th>
-                                <th>Mtumiaji</th>
-                                <th>Kifaa</th>
-                                <th>Chanzo (Referer)</th>
                                 <th>Muda</th>
+                                <th>Ukurasa</th>
+                                <th>Mtumiaji</th>
+                                <th>Nchi</th>
+                                <th>Kifaa</th>
+                                <th>Chanzo</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($recentViews as $view)
+                                @php
+                                    $srcHost = $view->referer_host ?: ($view->referer ? parse_url($view->referer, PHP_URL_HOST) : null);
+                                @endphp
                                 <tr>
-                                    <td>
-                                        <code style="color: var(--adm-emerald); font-weight: 700; font-size: 13px;">{{ $view->path }}</code>
-                                    </td>
+                                    <td title="{{ $view->created_at?->format('d/m/Y H:i:s') }}"><span class="adm-muted">{{ $view->created_at ? $view->created_at->diffForHumans() : '-' }}</span></td>
+                                    <td><code class="adm-code">{{ \Illuminate\Support\Str::limit($view->path, 40) }}</code></td>
                                     <td>
                                         @if($view->user)
-                                            <span style="font-weight: 700; color: var(--adm-text-main);">{{ $view->user->name }}</span>
+                                            <strong>{{ $view->user->name }}</strong>
                                         @else
-                                            <span style="color: var(--adm-text-sub); font-size: 12px;">Mgeni (Bila Kuingia)</span>
+                                            <span class="adm-muted">Mgeni</span>
                                         @endif
                                     </td>
-                                    <td>
-                                        @if($view->device_type === 'mobile')
-                                            <span class="adm-badge adm-badge-blue">📱 Simu</span>
-                                        @elseif($view->device_type === 'tablet')
-                                            <span class="adm-badge adm-badge-purple">📟 Tablet</span>
-                                        @else
-                                            <span class="adm-badge adm-badge-gray">💻 Kompyuta</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <span style="color: var(--adm-text-sub); font-size: 12px;">{{ $view->referer ? parse_url($view->referer, PHP_URL_HOST) ?? $view->referer : 'Moja kwa moja' }}</span>
-                                    </td>
-                                    <td>
-                                        <span style="color: var(--adm-text-sub); font-size: 12px;">{{ $view->created_at ? $view->created_at->diffForHumans() : '-' }}</span>
-                                    </td>
+                                    <td>{{ $view->country ? ($countryNames[$view->country] ?? $view->country) : '-' }}</td>
+                                    <td>{{ $deviceNames[$view->device_type] ?? $view->device_type }}@if($view->browser || $view->os) <span class="adm-muted">&middot; {{ trim(($view->browser ?? '').($view->browser && $view->os ? ' / ' : '').($view->os ?? '')) }}</span>@endif</td>
+                                    <td><span class="adm-muted">{{ $srcHost ? preg_replace('/^www\./', '', $srcHost) : 'Moja kwa moja' }}</span></td>
                                 </tr>
                             @empty
-                                <tr>
-                                    <td colspan="5" style="text-align: center; color: var(--adm-text-sub); padding: 24px;">Hakuna data ya wageni bado.</td>
-                                </tr>
+                                <tr><td colspan="6" class="adm-empty" style="text-align: center; padding: 24px;">Hakuna data ya wageni bado.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
             </div>
+            <p class="adm-footnote">Takwimu hizi zinakusanywa na app yenyewe{{ $trackedSince ? ' tangu '.\Carbon\Carbon::parse($trackedSince)->format('d/m/Y') : '' }}. Kwa ripoti za kina zaidi (umri, mikoa, muda wa kukaa, njia za kufikia), tumia Google Analytics.</p>
 
         @endif
 
@@ -450,7 +472,7 @@
                 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px;">
                     <div>
                         <h2 style="font-size: 18px; font-weight: 900; margin: 0; color: var(--adm-text-main);">
-                            👥 Orodha na Usimamizi wa Watumiaji (Total User Control)
+                            Orodha na Usimamizi wa Watumiaji (Total User Control)
                         </h2>
                         <p style="margin: 3px 0 0; font-size: 13px; color: var(--adm-text-sub);">
                             Tazama kila mtumiaji, badilisha mamlaka ya Admin au Supporter, na angalia shughuli zao.
@@ -462,7 +484,7 @@
                         <input type="hidden" name="tab" value="users">
                         
                         <div style="display: flex; align-items: center; gap: 6px; background: var(--adm-hover-bg); border: 1px solid var(--adm-card-border); border-radius: 10px; padding: 4px 12px;">
-                            <span>🔍</span>
+                            <span></span>
                             <input type="text" name="user_search" value="{{ $userSearch }}" placeholder="Tafuta jina au barua pepe..." style="background: transparent; border: none; outline: none; font-size: 13px; color: var(--adm-text-main); width: 190px;">
                         </div>
 
@@ -527,10 +549,10 @@
                                     <td>
                                         <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
                                             @if($u->isAdmin())
-                                                <span class="adm-badge adm-badge-emerald">👑 ADMIN</span>
+                                                <span class="adm-badge adm-badge-emerald">ADMIN</span>
                                             @endif
                                             @if($u->isSupporter())
-                                                <span class="adm-badge adm-badge-gold">⭐ SUPPORTER</span>
+                                                <span class="adm-badge adm-badge-gold">SUPPORTER</span>
                                             @endif
                                             @if(! $u->isAdmin() && ! $u->isSupporter())
                                                 <span class="adm-badge adm-badge-gray">Mwanachama wa Kawaida</span>
@@ -539,9 +561,9 @@
                                     </td>
                                     <td>
                                         <div style="font-size: 12.5px; color: var(--adm-text-main);">
-                                            <span>🔖 {{ $u->bookmarks_count }} bookmarks</span>
+                                            <span>{{ $u->bookmarks_count }} bookmarks</span>
                                             <br>
-                                            <span style="color: var(--adm-emerald); font-weight: 700;">💳 {{ $u->payments_count }} michango</span>
+                                            <span style="color: var(--adm-emerald); font-weight: 700;">{{ $u->payments_count }} michango</span>
                                         </div>
                                     </td>
                                     <td>
@@ -561,7 +583,7 @@
                                                         </button>
                                                     @else
                                                         <button type="submit" class="adm-action-btn adm-badge-emerald" title="Mpe Admin">
-                                                            <span>👑 Fanya Admin</span>
+                                                            <span>Fanya Admin</span>
                                                         </button>
                                                     @endif
                                                 </form>
@@ -576,7 +598,7 @@
                                                     </button>
                                                 @else
                                                     <button type="submit" class="adm-action-btn adm-badge-gold" title="Washa Supporter">
-                                                        <span>⭐ Washa Supporter</span>
+                                                        <span>Washa Supporter</span>
                                                     </button>
                                                 @endif
                                             </form>
@@ -607,7 +629,7 @@
                 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 22px;">
                     <div>
                         <h2 style="font-size: 18px; font-weight: 900; margin: 0; color: var(--adm-text-main);">
-                            💳 Ufuatiliaji wa Sadaka na Michango (Transactions)
+                            Ufuatiliaji wa Sadaka na Michango (Transactions)
                         </h2>
                         <p style="margin: 3px 0 0; font-size: 13px; color: var(--adm-text-sub);">
                             Malipo yote yaliyopokelewa kupitia ClickPesa, Pesapal au Simulation.
@@ -616,7 +638,7 @@
 
                     <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                         <a href="{{ route('admin.payments.export') }}" class="adm-action-btn adm-badge-emerald" style="padding: 9px 16px; text-decoration: none;">
-                            <span>📥 Pakua Ripoti Kamili (CSV / Excel)</span>
+                            <span>Pakua Ripoti Kamili (CSV / Excel)</span>
                         </a>
                     </div>
                 </div>
@@ -687,11 +709,11 @@
                                     </td>
                                     <td>
                                         @if($p->status === 'completed')
-                                            <span class="adm-badge adm-badge-emerald">✓ Imekamilika</span>
+                                            <span class="adm-badge adm-badge-emerald">Imekamilika</span>
                                         @elseif($p->status === 'pending')
                                             <span class="adm-badge adm-badge-gold">⏳ Inasubiri</span>
                                         @else
-                                            <span class="adm-badge adm-badge-red">✕ Imeshindwa</span>
+                                            <span class="adm-badge adm-badge-red">&times; Imeshindwa</span>
                                         @endif
                                     </td>
                                     <td>
@@ -730,7 +752,7 @@
                 $today = now()->toDateString();
             @endphp
             <div class="adm-kpi-card" style="margin-bottom: 24px;">
-                <h2 style="font-size: 18px; font-weight: 900; margin: 0 0 4px; color: var(--adm-text-main);">🤝 Ongeza Mdhamini wa Hadithi ya Leo</h2>
+                <h2 style="font-size: 18px; font-weight: 900; margin: 0 0 4px; color: var(--adm-text-main);">Ongeza Mdhamini wa Hadithi ya Leo</h2>
                 <p style="margin: 0 0 16px; font-size: 13px; color: var(--adm-text-sub);">Atatokea kwenye kadi ya «Hadithi ya Leo» ukurasa wa mwanzo. Wakiwa wengi, wanazunguka kwa siku. Tarehe tupu = bila kikomo.</p>
                 <form method="POST" action="{{ route('admin.sponsors.store') }}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
                     @csrf
@@ -740,7 +762,7 @@
                     <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Kiungo cha logo (si lazima)<input type="url" name="logo_url" value="{{ old('logo_url') }}" maxlength="500" placeholder="https://.../logo.png" style="{{ $inp }}"></label>
                     <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Anaanza tarehe<input type="date" name="starts_at" value="{{ old('starts_at') }}" style="{{ $inp }}"></label>
                     <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Anaishia tarehe<input type="date" name="ends_at" value="{{ old('ends_at') }}" style="{{ $inp }}"></label>
-                    <div style="display: flex; align-items: flex-end;"><button type="submit" class="adm-action-btn adm-badge-emerald" style="padding: 10px 18px;">➕ Ongeza Mdhamini</button></div>
+                    <div style="display: flex; align-items: flex-end;"><button type="submit" class="adm-action-btn adm-badge-emerald" style="padding: 10px 18px;">Ongeza Mdhamini</button></div>
                 </form>
                 @if($errors->any())
                     <div style="margin-top: 12px; font-size: 13px; color: #ef4444;">@foreach($errors->all() as $e)<div>• {{ $e }}</div>@endforeach</div>
@@ -816,7 +838,7 @@
                 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 18px;">
                     <div>
                         <h2 style="font-size: 17px; font-weight: 900; margin: 0; color: var(--adm-text-main);">
-                            📖 Usimamizi wa Hadithi (Publish / Unpublish)
+                            Usimamizi wa Hadithi (Publish / Unpublish)
                         </h2>
                         <p style="margin: 2px 0 0; font-size: 12.5px; color: var(--adm-text-sub);">
                             Chagua hadithi unayotaka kuweka hadharani au kuificha.
@@ -901,10 +923,10 @@
                 <div class="adm-kpi-card" style="border-top: 4px solid var(--adm-emerald);">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                         <h2 style="font-size: 16px; font-weight: 800; margin: 0; color: var(--adm-text-main);">
-                            💳 Hali ya Lango la ClickPesa
+                            Hali ya Lango la ClickPesa
                         </h2>
                         @if($systemInfo['clickpesa_configured'])
-                            <span class="adm-badge adm-badge-emerald">✓ IMEUNGANISHWA LIVE</span>
+                            <span class="adm-badge adm-badge-emerald">IMEUNGANISHWA LIVE</span>
                         @else
                             <span class="adm-badge adm-badge-gold">BADO KUKAMILIKA</span>
                         @endif
@@ -938,7 +960,7 @@
                 {{-- System Tools & Cache --}}
                 <div class="adm-kpi-card" style="border-top: 4px solid var(--adm-blue);">
                     <h2 style="font-size: 16px; font-weight: 800; margin: 0 0 16px; color: var(--adm-text-main);">
-                        ⚡ Zana za Mfumo (System Operations)
+                        Zana za Mfumo (System Operations)
                     </h2>
 
                     <p style="font-size: 13px; color: var(--adm-text-sub); margin-bottom: 18px;">
@@ -948,7 +970,7 @@
                     <form action="{{ route('admin.system.clear-cache') }}" method="POST" style="margin-bottom: 22px;">
                         @csrf
                         <button type="submit" class="adm-action-btn adm-badge-gold" style="width: 100%; justify-content: center; padding: 12px; font-size: 14px; border: 1px solid rgba(245, 158, 11, 0.4);">
-                            <span>⚡ Safisha Cache Zote za Mfumo (Views, Routes & Config)</span>
+                            <span>Safisha Cache Zote za Mfumo (Views, Routes & Config)</span>
                         </button>
                     </form>
 
@@ -977,7 +999,7 @@
             {{-- Kumbukumbu za vitendo vya Admin --}}
             <div class="adm-kpi-card" style="margin-top: 20px;">
                 <h2 style="font-size: 16px; font-weight: 800; margin: 0 0 14px; color: var(--adm-text-main);">
-                    📝 Shughuli za Admin za Karibuni
+                    Shughuli za Admin za Karibuni
                 </h2>
                 <div style="overflow-x: auto;">
                     <table class="adm-table">

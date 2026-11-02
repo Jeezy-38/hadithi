@@ -16,6 +16,10 @@ class PageView extends Model
         'user_id',
         'device_type',
         'referer',
+        'referer_host',
+        'country',
+        'browser',
+        'os',
         'viewed_date',
     ];
 

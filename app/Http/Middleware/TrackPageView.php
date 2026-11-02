@@ -59,16 +59,57 @@ class TrackPageView
                 $referer = substr($referer, 0, 255);
             }
 
+            // Nchi kutoka header ya CDN/proxy (Cloudflare n.k.); hakuna IP halisi inayohifadhiwa
+            $country = strtoupper((string) ($request->headers->get('CF-IPCountry')
+                ?? $request->headers->get('CloudFront-Viewer-Country')
+                ?? $request->headers->get('X-Country-Code')
+                ?? ''));
+            $country = preg_match('/^[A-Z]{2}$/', $country) && ! in_array($country, ['XX', 'T1'], true) ? $country : null;
+
+            $refererHost = $referer ? parse_url($referer, PHP_URL_HOST) : null;
+            $refererHost = $refererHost ? mb_substr(strtolower($refererHost), 0, 120) : null;
+
             PageView::create([
                 'path' => substr($path, 0, 255),
                 'ip_hash' => $ipHash,
                 'user_id' => auth()->id(),
                 'device_type' => $deviceType,
                 'referer' => $referer,
+                'referer_host' => $refererHost,
+                'country' => $country,
+                'browser' => $this->browser($userAgent),
+                'os' => $this->os($userAgent),
                 'viewed_date' => $today,
             ]);
         } catch (\Throwable $e) {
             // Silently ignore to never compromise user experience or response time
         }
+    }
+
+    protected function browser(string $ua): string
+    {
+        return match (true) {
+            (bool) preg_match('/FBAN|FBAV|Instagram/i', $ua) => 'Facebook/Instagram',
+            (bool) preg_match('/SamsungBrowser/i', $ua) => 'Samsung Internet',
+            (bool) preg_match('/Edg(e|A|iOS)?\//i', $ua) => 'Edge',
+            (bool) preg_match('/OPR\/|Opera/i', $ua) => 'Opera',
+            (bool) preg_match('/UCBrowser|UCWEB/i', $ua) => 'UC Browser',
+            (bool) preg_match('/Firefox|FxiOS/i', $ua) => 'Firefox',
+            (bool) preg_match('/Chrome|CriOS/i', $ua) => 'Chrome',
+            (bool) preg_match('/Safari/i', $ua) => 'Safari',
+            default => 'Nyingine',
+        };
+    }
+
+    protected function os(string $ua): string
+    {
+        return match (true) {
+            (bool) preg_match('/Android/i', $ua) => 'Android',
+            (bool) preg_match('/iPhone|iPad|iPod/i', $ua) => 'iOS',
+            (bool) preg_match('/Windows/i', $ua) => 'Windows',
+            (bool) preg_match('/Mac OS X|Macintosh/i', $ua) => 'macOS',
+            (bool) preg_match('/Linux|X11/i', $ua) => 'Linux',
+            default => 'Nyingine',
+        };
     }
 }
