@@ -305,6 +305,8 @@
             </div>
         </article>
 
+        <x-sponsor-strip />
+
         {{-- Hadithi Nyingine Katika Mlango Huu --}}
         @if($related->isNotEmpty())
             <section class="related-section dua-related-section">

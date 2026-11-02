@@ -760,6 +760,12 @@
                     <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Ujumbe mfupi<input type="text" name="tagline" value="{{ old('tagline') }}" maxlength="120" placeholder="Mfano: Darasa la Qur'ani kila Jumamosi" style="{{ $inp }}"></label>
                     <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Kiungo (https://...) *<input type="url" name="url" value="{{ old('url') }}" required maxlength="500" placeholder="https://wa.me/255... au tovuti" style="{{ $inp }}"></label>
                     <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Kiungo cha logo (si lazima)<input type="url" name="logo_url" value="{{ old('logo_url') }}" maxlength="500" placeholder="https://.../logo.png" style="{{ $inp }}"></label>
+                    <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Kifurushi / nafasi *
+                        <select name="slot" required style="{{ $inp }}">
+                            <option value="today" @selected(old('slot', 'today') === 'today')>Siku / Wiki: Hadithi ya Leo</option>
+                            <option value="main" @selected(old('slot') === 'main')>Mdhamini Mkuu: Hadithi ya Leo + mwanzo + kurasa za hadith</option>
+                        </select>
+                    </label>
                     <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Anaanza tarehe<input type="date" name="starts_at" value="{{ old('starts_at') }}" style="{{ $inp }}"></label>
                     <label style="font-size: 12px; font-weight: 700; color: var(--adm-text-sub);">Anaishia tarehe<input type="date" name="ends_at" value="{{ old('ends_at') }}" style="{{ $inp }}"></label>
                     <div style="display: flex; align-items: flex-end;"><button type="submit" class="adm-action-btn adm-badge-emerald" style="padding: 10px 18px;">Ongeza Mdhamini</button></div>
@@ -773,7 +779,7 @@
                 <h2 style="font-size: 16px; font-weight: 800; margin: 0 0 14px; color: var(--adm-text-main);">Orodha ya Wadhamini ({{ $sponsors->count() }})</h2>
                 <div style="overflow-x: auto;">
                     <table class="adm-table">
-                        <thead><tr><th>Mdhamini</th><th>Kipindi</th><th>Hali</th><th>Waliobofya</th><th>Vitendo</th></tr></thead>
+                        <thead><tr><th>Mdhamini</th><th>Nafasi</th><th>Kipindi</th><th>Hali</th><th>Waliobofya</th><th>Vitendo</th></tr></thead>
                         <tbody>
                             @forelse($sponsors as $sp)
                                 @php
@@ -782,6 +788,7 @@
                                 @endphp
                                 <tr>
                                     <td><b>{{ $sp->name }}</b>@if($sp->tagline)<div style="font-size: 12px; color: var(--adm-text-sub);">{{ $sp->tagline }}</div>@endif<a href="{{ $sp->url }}" target="_blank" rel="noopener" style="font-size: 12px;">{{ \Illuminate\Support\Str::limit($sp->url, 38) }}</a></td>
+                                    <td>{{ $sp->slot === 'main' ? 'Mkuu' : 'Hadithi ya Leo' }}</td>
                                     <td>{{ $sp->starts_at?->format('d/m/Y') ?? 'Mara moja' }} → {{ $sp->ends_at?->format('d/m/Y') ?? 'Bila kikomo' }}</td>
                                     <td>
                                         @if($live)<span class="adm-badge adm-badge-emerald">Anaonekana sasa</span>
@@ -796,7 +803,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="5" style="text-align: center; padding: 24px; color: var(--adm-text-sub);">Hakuna wadhamini bado. Ongeza wa kwanza juu.</td></tr>
+                                <tr><td colspan="6" style="text-align: center; padding: 24px; color: var(--adm-text-sub);">Hakuna wadhamini bado. Ongeza wa kwanza juu.</td></tr>
                             @endforelse
                         </tbody>
                     </table>

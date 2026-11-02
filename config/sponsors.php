@@ -41,7 +41,9 @@ return [
             'period' => 'mwezi 1',
             'featured' => false,
             'features' => [
-                'Jina, logo na ujumbe wako kwenye «Hadithi ya Leo» kwa mwezi mzima',
+                'Jina, logo na ujumbe wako kwenye «Hadithi ya Leo» kwa mwezi mzima (kipaumbele cha kwanza)',
+                'Mstari wa «Mdhamini Mkuu» juu ya footer ya ukurasa wa mwanzo',
+                'Mstari wa «Mdhamini Mkuu» chini ya kila hadith inayosomwa',
                 'Chapisho la shukrani kwenye mitandao yetu',
                 'Ripoti ya waliobofya ya mwezi na ushauri wa matangazo',
             ],

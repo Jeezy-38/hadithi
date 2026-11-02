@@ -479,6 +479,7 @@ class AdminDashboardController extends Controller
     private function forgetSponsorCache(): void
     {
         \Illuminate\Support\Facades\Cache::forget('sponsor:today:'.now()->toDateString());
+        \Illuminate\Support\Facades\Cache::forget('sponsor:main:'.now()->toDateString());
     }
 
     public function storeSponsor(Request $request): RedirectResponse
@@ -488,10 +489,11 @@ class AdminDashboardController extends Controller
             'tagline' => ['nullable', 'string', 'max:120'],
             'url' => ['required', 'url:http,https', 'max:500'],
             'logo_url' => ['nullable', 'url:http,https', 'max:500'],
+            'slot' => ['required', 'in:today,main'],
             'starts_at' => ['nullable', 'date'],
             'ends_at' => ['nullable', 'date', 'after_or_equal:starts_at'],
         ]);
-        $sponsor = \App\Models\Sponsor::create($data + ['slot' => 'today', 'is_active' => true]);
+        $sponsor = \App\Models\Sponsor::create($data + ['is_active' => true]);
         $this->forgetSponsorCache();
         $this->audit('sponsor.created', "Mdhamini '{$sponsor->name}' ameongezwa", $sponsor);
 

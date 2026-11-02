@@ -16,24 +16,40 @@ class Sponsor extends Model
     ];
 
     /** Wadhamini wanaoonekana leo kwenye nafasi husika. */
-    public function scopeActiveFor(Builder $query, string $slot = 'today'): void
+    public function scopeActiveFor(Builder $query, string|array $slot = 'today'): void
     {
         $today = now()->toDateString();
-        $query->where('slot', $slot)
+        $query->whereIn('slot', (array) $slot)
             ->where('is_active', true)
             ->where(fn ($q) => $q->whereNull('starts_at')->orWhere('starts_at', '<=', $today))
             ->where(fn ($q) => $q->whereNull('ends_at')->orWhere('ends_at', '>=', $today));
     }
 
-    /** Mdhamini wa leo: ikiwa wako wengi, wanazunguka kwa siku (haki kwa wote). */
+    public const SLOTS = [
+        'today' => 'Hadithi ya Leo',
+        'main' => 'Mdhamini Mkuu (Hadithi ya Leo, mwanzo na kurasa za hadith)',
+    ];
+
+    /** Chagua mmoja wa orodha; wakiwa wengi wanazunguka kwa siku (haki kwa wote). */
+    private static function rotate($list): ?self
+    {
+        return $list->isEmpty() ? null : $list[(int) now()->format('z') % $list->count()];
+    }
+
+    /** Mdhamini wa nafasi ya «Hadithi ya Leo»: Mkuu ana kipaumbele, kisha wa kawaida. */
     public static function current(string $slot = 'today'): ?self
     {
-        $list = static::activeFor($slot)->orderBy('id')->get();
-        if ($list->isEmpty()) {
-            return null;
+        if ($slot === 'today') {
+            return static::main() ?? static::rotate(static::activeFor('today')->orderBy('id')->get());
         }
 
-        return $list[(int) now()->format('z') % $list->count()];
+        return static::rotate(static::activeFor($slot)->orderBy('id')->get());
+    }
+
+    /** Mdhamini Mkuu (ukurasa wa mwanzo, kurasa za hadith). */
+    public static function main(): ?self
+    {
+        return static::rotate(static::activeFor('main')->orderBy('id')->get());
     }
 
     public function getInitialAttribute(): string

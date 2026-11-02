@@ -147,6 +147,7 @@
     </header>
     <main id="main">{{ $slot }}</main>
     @if(request()->routeIs('library'))
+        <x-sponsor-strip />
         @include('partials.footer')
     @endif
     @include('partials.auth-drawer')
