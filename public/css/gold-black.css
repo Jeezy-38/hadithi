@@ -11024,3 +11024,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:
 .sponsor-strip-wrap{max-width:1240px;margin:18px auto 0;padding:0 24px}
 .reader-shell .sponsor-strip-wrap{max-width:none;padding:0;margin:16px 0}
 .sponsor-strip{justify-content:center;margin:0}
+
+/* Desktop nyembamba (861-1288px): nafasi ya pembeni ili header, hero na kadi visigonge kingo */
+@media (min-width:861px) and (max-width:1288px){
+.site-header .header-container,.hero,.library-summary{width:calc(100% - 48px)}
+}
