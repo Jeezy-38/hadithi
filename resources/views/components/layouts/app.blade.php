@@ -21,13 +21,15 @@
     <meta property="og:title" content="{{ $title ?? 'Maktaba ya Hadith' }} · Bayt Ul Hadith">
     <meta property="og:description" content="{{ $seoDesc }}">
     <meta property="og:url" content="{{ $seoCanonical }}">
-    <meta property="og:image" content="{{ url('images/logo.png') }}">
-    <meta property="og:image:width" content="689">
-    <meta property="og:image:height" content="795">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="{{ url('images/og-image.jpg') }}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Bayt Ul Hadith - Maktaba ya Hadith kwa Kiswahili">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $title ?? 'Maktaba ya Hadith' }} · Bayt Ul Hadith">
     <meta name="twitter:description" content="{{ $seoDesc }}">
-    <meta name="twitter:image" content="{{ url('images/logo.png') }}">
+    <meta name="twitter:image" content="{{ url('images/og-image.jpg') }}">
     <link rel="icon" href="{{ asset('images/logo.png') }}">
     <meta name="theme-color" content="#07293f">
     <meta name="mobile-web-app-capable" content="yes">
