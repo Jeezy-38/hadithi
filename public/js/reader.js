@@ -20,7 +20,7 @@
         const isDark = theme === 'dark';
         if (themeToggle) {
             themeToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-            const curLang = document.documentElement.dataset.readingLanguage || 'both';
+            const curLang = document.documentElement.dataset.uiLanguage || 'en';
             const dictKey = (curLang === 'en' || curLang === 'ar') ? curLang : 'sw';
             const darkTitles = { sw: 'Badili kuwa Nuru (Light Mode)', en: 'Switch to Light Mode', ar: 'التبديل إلى الوضع الفاتح' };
             const lightTitles = { sw: 'Badili kuwa Giza (Dark Mode)', en: 'Switch to Dark Mode', ar: 'التبديل إلى الوضع الداكن' };
@@ -160,7 +160,8 @@
             auth_password_new: "Nenosiri jipya",
             auth_submit_reset: "Hifadhi nenosiri",
             auth_fineprint: 'Hatutachapisha chochote kwenye akaunti zako. Tunatumia jina, email na picha yako tu.',
-            lang_label: 'Lugha:',
+            lang_label: 'Lugha ya hadith:',
+            ui_lang_label: 'Lugha ya app:',
             brand_sub: 'MAKTABA YA ELIMU',
             theme_dark: 'Giza',
             theme_light: 'Nuru',
@@ -335,7 +336,8 @@
             auth_password_new: "New password",
             auth_submit_reset: "Save password",
             auth_fineprint: 'We never post to your accounts. We only use your name, email and photo.',
-            lang_label: 'Language:',
+            lang_label: 'Hadith language:',
+            ui_lang_label: 'App language:',
             brand_sub: 'KNOWLEDGE LIBRARY',
             theme_dark: 'Dark',
             theme_light: 'Light',
@@ -510,7 +512,8 @@
             auth_password_new: "كلمة المرور الجديدة",
             auth_submit_reset: "حفظ كلمة المرور",
             auth_fineprint: 'لن ننشر أي شيء في حساباتك. نستخدم اسمك وبريدك وصورتك فقط.',
-            lang_label: 'اللغة:',
+            lang_label: 'لغة الحديث:',
+            ui_lang_label: 'لغة التطبيق:',
             brand_sub: 'مكتبة المعرفة',
             theme_dark: 'داكن',
             theme_light: 'فاتح',
@@ -913,7 +916,7 @@
     const scheduleTranslation = () => {
         if (translationDebounceTimer) clearTimeout(translationDebounceTimer);
         translationDebounceTimer = setTimeout(() => {
-            const cur = document.documentElement.dataset.readingLanguage || 'both';
+            const cur = document.documentElement.dataset.uiLanguage || 'en';
             runSafeTranslations(cur);
         }, 50);
     };
@@ -937,26 +940,53 @@
         }
 
         // Sync Nav Drawer language buttons
-        document.querySelectorAll('.drawer-lang-btn').forEach(btn => {
+        document.querySelectorAll('.drawer-lang-btn[data-lang-val]').forEach(btn => {
             const isMatch = btn.getAttribute('data-lang-val') === value;
             btn.classList.toggle('active', isMatch);
             btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
         });
 
-        // Apply translations across all elements in the entire app
+        // Maandishi ya app yanafuata lugha ya UI (si lugha ya kusoma hadith)
+        runSafeTranslations(document.documentElement.dataset.uiLanguage || 'en');
+    };
+
+    // Lugha ya app (UI): 'en' (chaguo-msingi) au 'sw'. Imetenganishwa na lugha ya kusoma hadith.
+    const uiLanguages = ['en', 'sw'];
+    let preferredUi = 'en';
+    try { preferredUi = localStorage.getItem('bayt-ui-lang') || 'en'; } catch (_) {}
+    if (!uiLanguages.includes(preferredUi)) preferredUi = 'en';
+    document.documentElement.dataset.uiLanguage = preferredUi;
+
+    const setUiLanguage = value => {
+        if (!uiLanguages.includes(value)) value = 'en';
+        document.documentElement.dataset.uiLanguage = value;
+        try { localStorage.setItem('bayt-ui-lang', value); } catch (_) {}
+        document.querySelectorAll('.drawer-lang-btn[data-ui-val]').forEach(btn => {
+            const isMatch = btn.getAttribute('data-ui-val') === value;
+            btn.classList.toggle('active', isMatch);
+            btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+        });
         runSafeTranslations(value);
     };
 
     setLanguage(preferred);
+    setUiLanguage(preferredUi);
 
     if (selector) {
         selector.addEventListener('change', () => setLanguage(selector.value));
     }
 
-    document.querySelectorAll('.drawer-lang-btn').forEach(btn => {
+    document.querySelectorAll('.drawer-lang-btn[data-lang-val]').forEach(btn => {
         btn.addEventListener('click', () => {
             const targetLang = btn.getAttribute('data-lang-val');
             if (targetLang) setLanguage(targetLang);
+        });
+    });
+
+    document.querySelectorAll('.drawer-lang-btn[data-ui-val]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetUi = btn.getAttribute('data-ui-val');
+            if (targetUi) setUiLanguage(targetUi);
         });
     });
 
@@ -997,7 +1027,7 @@
 
     const updateAllBookmarkUI = () => {
         const savedIds = readBookmarks();
-        const currentLang = document.documentElement.dataset.readingLanguage || 'both';
+        const currentLang = document.documentElement.dataset.uiLanguage || 'en';
         const dictKey = (currentLang === 'en' || currentLang === 'ar') ? currentLang : 'sw';
         const t = UI_TRANSLATIONS[dictKey] || UI_TRANSLATIONS.sw;
 
@@ -1078,7 +1108,7 @@
             e.stopPropagation();
             const text = copyBtn.dataset.copyText || '';
             const icon = copyBtn.querySelector('.copy-icon');
-            const curLang = document.documentElement.dataset.readingLanguage || 'both';
+            const curLang = document.documentElement.dataset.uiLanguage || 'en';
             const curDictKey = (curLang === 'en' || curLang === 'ar') ? curLang : 'sw';
             const curT = UI_TRANSLATIONS[curDictKey] || UI_TRANSLATIONS.sw;
             try {

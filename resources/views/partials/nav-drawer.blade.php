@@ -45,10 +45,25 @@
 
         <div class="nav-drawer-section-label" data-i18n="drawer_settings_label">MIPANGILIO</div>
 
-        {{-- 1. Lugha ya Kusoma --}}
+        {{-- 0. Lugha ya app (UI) --}}
         <div class="nav-drawer-setting-item">
             <div class="nav-drawer-setting-header">
-                <span class="nav-drawer-setting-title" data-i18n="lang_label">Lugha ya kusoma:</span>
+                <span class="nav-drawer-setting-title" data-i18n="ui_lang_label">App language:</span>
+            </div>
+            <div class="nav-drawer-lang-grid" role="group" aria-label="App language">
+                <button type="button" class="drawer-lang-btn" data-ui-val="en" aria-pressed="true">
+                    <span class="drawer-lang-main">English</span>
+                </button>
+                <button type="button" class="drawer-lang-btn" data-ui-val="sw" aria-pressed="false">
+                    <span class="drawer-lang-main">Kiswahili</span>
+                </button>
+            </div>
+        </div>
+
+        {{-- 1. Lugha ya Kusoma hadith --}}
+        <div class="nav-drawer-setting-item">
+            <div class="nav-drawer-setting-header">
+                <span class="nav-drawer-setting-title" data-i18n="lang_label">Hadith language:</span>
             </div>
             <select id="reading-language" class="sr-only" aria-hidden="true" style="display:none;" tabindex="-1">
                 <option value="both">Kiswahili + Kiarabu</option>

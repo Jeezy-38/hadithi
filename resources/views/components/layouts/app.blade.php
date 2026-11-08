@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sw" data-theme="dark">
+<html lang="en" data-theme="dark" data-ui-language="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,6 +45,9 @@
                 var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 var theme = savedTheme || (prefersDark ? 'dark' : 'light');
                 document.documentElement.setAttribute('data-theme', theme);
+                var ui = localStorage.getItem('bayt-ui-lang') || 'en';
+                document.documentElement.setAttribute('data-ui-language', ui === 'sw' ? 'sw' : 'en');
+                document.documentElement.lang = ui === 'sw' ? 'sw' : 'en';
             } catch (e) {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }

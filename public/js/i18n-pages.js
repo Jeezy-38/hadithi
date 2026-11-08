@@ -1431,7 +1431,7 @@
 
     // Lugha ya UI: 'en', 'ar'; nyingine zote (sw, both) hutumia Kiswahili.
     const lang = () => {
-        const l = (document.documentElement.dataset.readingLanguage || 'both');
+        const l = (document.documentElement.dataset.uiLanguage || 'en');
         return (l === 'en' || l === 'ar') ? l : 'sw';
     };
 
@@ -1499,7 +1499,7 @@
 
         new MutationObserver(onLangMaybeChanged).observe(document.documentElement, {
             attributes: true,
-            attributeFilter: ['data-reading-language']
+            attributeFilter: ['data-ui-language']
         });
 
         const main = document.querySelector('main') || document.body;

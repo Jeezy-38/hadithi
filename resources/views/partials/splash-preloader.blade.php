@@ -42,9 +42,9 @@
 
         // Maneno ya kupakia kulingana na lugha ya msomaji
         try {
-            const lang = localStorage.getItem('hadith-language') || 'both';
+            const lang = localStorage.getItem('bayt-ui-lang') || 'en';
             const cap = document.getElementById('bayt-splash-caption');
-            if (cap && lang === 'en') cap.textContent = 'Loading…';
+            if (cap && lang !== 'sw') cap.textContent = 'Loading…';
         } catch (_) {}
 
         const startTime = Date.now();
