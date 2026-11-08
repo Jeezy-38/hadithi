@@ -92,6 +92,10 @@
       gtag('config', 'G-75CRBZ6QZ9');
     </script>
     @endproduction
+    {{-- Google AdSense (haijawashwa kwenye admin wala local) --}}
+    @if (app()->environment('production') && ! request()->is('admin*'))
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8482963668062549" crossorigin="anonymous"></script>
+    @endif
 </head>
 <body data-auth="{{ auth()->check() ? '1' : '0' }}">
     @include('partials.splash-preloader')
