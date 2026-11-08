@@ -213,10 +213,12 @@
             }
 
             /* Responsive: tablet & phone (360px) */
-            .admin-dashboard-root { overflow-x: hidden; }
+            .admin-dashboard-root { overflow-x: hidden; width: 100%; box-sizing: border-box; }
             .admin-dashboard-root img { max-width: 100%; }
             @media (max-width: 768px) {
                 .admin-dashboard-root { padding: 14px 10px 90px !important; }
+                .adm-grid-kpi { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 10px !important; }
+                .adm-grid-2, .adm-grid-4 { grid-template-columns: 1fr !important; }
                 .adm-top-bar {
                     flex-direction: column !important;
                     align-items: stretch !important;
