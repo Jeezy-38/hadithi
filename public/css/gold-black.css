@@ -8750,6 +8750,53 @@ a, button, select, input {
     color: var(--text-muted);
 }
 
+.rawdah-play-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--gold-gradient);
+    border: none;
+    color: #07293f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(224, 200, 104, 0.35);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+[data-theme="light"] .rawdah-play-btn {
+    color: #ffffff !important;
+}
+
+.rawdah-play-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.rawdah-play-btn:active {
+    transform: scale(0.96);
+}
+
+.reader-audio-badge-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.reader-audio-lang-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(224, 200, 104, 0.14), rgba(192, 152, 40, 0.22));
+    border: 1px solid var(--gold);
+    color: var(--gold-light, #f0dc8c);
+    font-weight: 800;
+    font-size: 13px;
+    font-family: var(--font-arabic, 'Amiri', serif);
+}
+
 .rawdah-hero-buttons {
     display: flex;
     align-items: center;

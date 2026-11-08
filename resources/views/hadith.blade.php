@@ -159,38 +159,35 @@
             @endif
         </div>
 
-        {{-- Hybrid Audio Player Bar (Njia ya 3 ndani ya Njia ya 1) --}}
+        {{-- Arabic Recitation Console (Kisomo cha Kiarabu Pekee) --}}
         @php
             $hasStudio = !empty($hadith->getStudioAudioUrl());
             $arAudioUrl = route('hadith.audio', ['hadith' => $hadith, 'lang' => 'ar']);
-            $swAudioUrl = route('hadith.audio', ['hadith' => $hadith, 'lang' => 'sw']);
         @endphp
         <div class="hadith-reader-audio-bar" id="reader-audio-bar"
              data-ar-audio="{{ $arAudioUrl }}"
-             data-sw-audio="{{ $swAudioUrl }}"
              data-has-studio="{{ $hasStudio ? '1' : '0' }}">
             <div class="reader-audio-left">
-                <button type="button" class="rawdah-play-btn" id="reader-audio-btn" aria-label="Sikiliza Kisomo" title="Sikiliza Kisomo cha Sauti">
-                    <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <button type="button" class="rawdah-play-btn" id="reader-audio-btn" aria-label="Sikiliza Kisomo cha Kiarabu" title="Sikiliza Kisomo cha Kiarabu">
+                    <svg class="icon-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                         <path d="M8 5v14l11-7z"/>
                     </svg>
-                    <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display: none;">
+                    <svg class="icon-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display: none;">
                         <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
                     </svg>
                 </button>
                 <div class="reader-audio-text">
                     <span class="reader-audio-title" id="reader-audio-title">Kisomo cha Kiarabu</span>
                     <span class="reader-audio-sub" id="reader-audio-sub">
-                        {{ $hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Kiarabu Fasaha (MP3)' }}
+                        {{ $hasStudio ? 'Sauti Halisi ya Sheikh (MP3)' : 'Kiarabu Fasaha chenye Tajwid (MP3)' }}
                     </span>
                 </div>
             </div>
 
-            <div class="rawdah-audio-lang-switch" role="group" aria-label="Lugha ya Kisomo">
-                <button type="button" class="lang-switch-btn active" id="reader-btn-ar" data-i18n="pg_h_btn_ar" data-lang="ar">Kiarabu</button>
-                <button type="button" class="lang-switch-btn" id="reader-btn-sw" data-i18n="pg_h_btn_sw" data-lang="sw">Kiswahili</button>
+            <div class="reader-audio-badge-wrap">
+                <span class="reader-audio-lang-tag">العربية</span>
             </div>
-            <audio id="hadith-reader-audio-element" preload="none"></audio>
+            <audio id="hadith-reader-audio-element" playsinline preload="none"></audio>
         </div>
 
         <article class="reader-card dua-detail-card hadith-detail-card">
@@ -417,36 +414,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Hadith Reader Hybrid Audio Console (Njia ya 3 ndani ya Njia ya 1)
+            // Hadith Reader Arabic Audio Console (Sauti ya Kiarabu Pekee)
             const readerBar = document.getElementById('reader-audio-bar');
             const readerPlayBtn = document.getElementById('reader-audio-btn');
             const readerAudioEl = document.getElementById('hadith-reader-audio-element');
-            const readerBtnAr = document.getElementById('reader-btn-ar');
-            const readerBtnSw = document.getElementById('reader-btn-sw');
-            const readerTitle = document.getElementById('reader-audio-title');
-            const readerSub = document.getElementById('reader-audio-sub');
-            const readerBadge = document.getElementById('reader-audio-badge');
-            const arabicEl = document.getElementById('text-ar');
-            const swahiliEl = document.getElementById('text-sw');
 
             if (readerBar && readerPlayBtn && readerAudioEl) {
-                let currentLang = 'ar';
                 let isPlaying = false;
-                const hasStudio = readerBar.dataset.hasStudio === '1';
-
-                function updateReaderLabels() {
-                    if (currentLang === 'ar') {
-                        readerTitle.textContent = 'Kisomo cha Kiarabu';
-                        readerSub.textContent = hasStudio ? 'Kisomo Halisi cha Sheikh (MP3)' : 'Kiarabu Fasaha (MP3)';
-                        readerBtnAr.classList.add('active');
-                        readerBtnSw.classList.remove('active');
-                    } else {
-                        readerTitle.textContent = 'Kisomo cha Kiswahili';
-                        readerSub.textContent = 'Tafsiri ya Kiswahili Sanifu (MP3)';
-                        readerBtnSw.classList.add('active');
-                        readerBtnAr.classList.remove('active');
-                    }
-                }
+                const audioUrl = readerBar.dataset.arAudio;
 
                 function setReaderPlayState(playing) {
                     isPlaying = playing;
@@ -458,36 +433,27 @@
                 }
 
                 function playReaderAudio() {
-                    const targetUrl = (currentLang === 'ar') ? readerBar.dataset.arAudio : readerBar.dataset.swAudio;
-                    if (!readerAudioEl.src || !readerAudioEl.src.includes(targetUrl)) {
-                        readerAudioEl.src = targetUrl;
+                    if (!readerAudioEl.src || !readerAudioEl.src.includes(audioUrl)) {
+                        readerAudioEl.src = audioUrl;
                     }
                     const promise = readerAudioEl.play();
                     if (promise !== undefined) {
-                        promise.then(() => setReaderPlayState(true)).catch(() => {
-                            if ('speechSynthesis' in window) {
-                                window.speechSynthesis.cancel();
-                                const text = (currentLang === 'ar') ? (arabicEl?.innerText || '') : (swahiliEl?.innerText || '');
-                                const utterance = new SpeechSynthesisUtterance(text);
-                                utterance.lang = (currentLang === 'ar') ? 'ar-SA' : 'sw-TZ';
-                                utterance.onstart = () => setReaderPlayState(true);
-                                utterance.onend = utterance.onerror = () => setReaderPlayState(false);
-                                window.speechSynthesis.speak(utterance);
-                            } else {
-                                setReaderPlayState(false);
-                            }
+                        promise.then(() => setReaderPlayState(true)).catch((err) => {
+                            setReaderPlayState(false);
+                            console.warn('Playback error:', err);
                         });
                     }
                 }
 
                 function pauseReaderAudio() {
                     readerAudioEl.pause();
-                    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
                     setReaderPlayState(false);
                 }
 
+                readerAudioEl.addEventListener('playing', () => setReaderPlayState(true));
                 readerAudioEl.addEventListener('ended', () => setReaderPlayState(false));
                 readerAudioEl.addEventListener('pause', () => setReaderPlayState(false));
+                readerAudioEl.addEventListener('error', () => setReaderPlayState(false));
 
                 readerPlayBtn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -497,30 +463,6 @@
                         playReaderAudio();
                     }
                 });
-
-                if (readerBtnAr && readerBtnSw) {
-                    readerBtnAr.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        if (currentLang === 'ar') return;
-                        currentLang = 'ar';
-                        updateReaderLabels();
-                        if (isPlaying) {
-                            pauseReaderAudio();
-                            playReaderAudio();
-                        }
-                    });
-
-                    readerBtnSw.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        if (currentLang === 'sw') return;
-                        currentLang = 'sw';
-                        updateReaderLabels();
-                        if (isPlaying) {
-                            pauseReaderAudio();
-                            playReaderAudio();
-                        }
-                    });
-                }
             }
 
             const playBtn = document.getElementById('audio-play');

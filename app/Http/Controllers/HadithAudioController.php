@@ -18,14 +18,15 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class HadithAudioController extends Controller
 {
-    public function __invoke(Request $request, Hadith $hadith, string $lang, HadithAudio $audio): Response
+    public function __invoke(Request $request, Hadith $hadith, string $lang = 'ar', HadithAudio $audio): Response
     {
         abort_unless($hadith->is_published, 404);
-        abort_unless(in_array($lang, HadithAudio::LANGS, true), 400);
-        abort_if($audio->text($hadith, $lang) === '', 404, 'Maandishi ya lugha hii hayapo.');
+        // Mfumo unatumia kisomo cha Kiarabu pekee kama ilivyoombwa
+        $lang = 'ar';
+        abort_if($audio->text($hadith, 'ar') === '', 404, 'Maandishi ya Kiarabu hayapo.');
 
         try {
-            $audioData = $audio->getAudio($hadith, $lang);
+            $audioData = $audio->getAudio($hadith, 'ar');
         } catch (\Throwable $exception) {
             report($exception);
             abort(502, 'Sauti ya hadithi haipatikani kwa sasa. Jaribu tena baadaye.');
@@ -53,13 +54,8 @@ class HadithAudioController extends Controller
             'sources' => [
                 'ar' => [
                     'url' => route('hadith.audio', ['hadith' => $hadith, 'lang' => 'ar']),
-                    'type' => $hasStudio ? 'studio' : 'neural',
-                    'label' => $hasStudio ? 'Kisomo Halisi cha Studio (Sheikh)' : 'Kisomo cha Kiarabu (Hamed Neural)',
-                ],
-                'sw' => [
-                    'url' => route('hadith.audio', ['hadith' => $hadith, 'lang' => 'sw']),
-                    'type' => 'neural',
-                    'label' => 'Kisomo cha Kiswahili (Daudi Neural)',
+                    'type' => $hasStudio ? 'studio' : 'arabic',
+                    'label' => $hasStudio ? 'Kisomo Halisi cha Studio (Sheikh)' : 'Kisomo cha Kiarabu',
                 ],
             ],
         ]);
@@ -73,7 +69,7 @@ class HadithAudioController extends Controller
             'Content-Type' => 'audio/mpeg',
             'Content-Disposition' => 'inline',
             'Accept-Ranges' => 'bytes',
-            'Cache-Control' => 'private, max-age=86400',
+            'Cache-Control' => 'public, max-age=604800, immutable',
         ] + $extraHeaders;
 
         $range = $request->header('Range');

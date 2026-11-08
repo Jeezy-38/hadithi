@@ -184,7 +184,8 @@ class HadithAudio
      */
     public function generate(Hadith $hadith, string $lang, bool $throwOnStoreFailure = false): string
     {
-        $mp3 = $this->synthesize($this->cleanText($this->text($hadith, $lang), $lang), config('speech.voices.'.$lang));
+        $voice = config('speech.voices.'.$lang) ?? 'ar-SA-HamedNeural';
+        $mp3 = $this->synthesize($this->cleanText($this->text($hadith, $lang), $lang), $voice, $lang);
         $key = $this->key($hadith, $lang);
 
         try {
@@ -212,6 +213,7 @@ class HadithAudio
             'ar' => $hadith->arabic,
             'sw' => $hadith->swahili,
             'en' => $hadith->english,
+            default => $hadith->arabic,
         };
     }
 
@@ -232,20 +234,85 @@ class HadithAudio
         return trim($clean);
     }
 
-    private function synthesize(string $text, string $voice): string
+    private function synthesize(string $text, string $voice, string $lang = 'ar'): string
     {
-        $result = Process::input(json_encode(['text' => $text, 'voice' => $voice], JSON_THROW_ON_ERROR))
-            ->timeout(300)
-            ->run([config('speech.python'), base_path('scripts/synthesize-speech.py')]);
+        $python = config('speech.python');
+        if (! empty($python) && (file_exists($python) || is_executable($python))) {
+            try {
+                $result = Process::input(json_encode(['text' => $text, 'voice' => $voice], JSON_THROW_ON_ERROR))
+                    ->timeout(120)
+                    ->run([$python, base_path('scripts/synthesize-speech.py')]);
 
-        $mp3 = $result->output();
-        $isMp3 = str_starts_with($mp3, 'ID3')
-            || (strlen($mp3) >= 2 && ord($mp3[0]) === 0xFF && (ord($mp3[1]) & 0xE0) === 0xE0);
+                if ($result->successful()) {
+                    $mp3 = $result->output();
+                    $isMp3 = str_starts_with($mp3, 'ID3')
+                        || (strlen($mp3) >= 2 && ord($mp3[0]) === 0xFF && (ord($mp3[1]) & 0xE0) === 0xE0);
 
-        if (! $result->successful() || strlen($mp3) <= 100 || ! $isMp3) {
-            throw new RuntimeException('TTS imeshindwa: '.trim(substr($result->errorOutput(), 0, 300)));
+                    if (strlen($mp3) > 100 && $isMp3) {
+                        return $mp3;
+                    }
+                }
+            } catch (\Throwable $e) {
+                // fall through to HTTP synthesis
+            }
         }
 
-        return $mp3;
+        // Pure PHP Fallback: Inafanya kazi kwenye seva yoyote na simu bila kuhitaji Python
+        try {
+            return $this->synthesizeHttp($text, $lang);
+        } catch (\Throwable $e) {
+            report($e);
+            throw new RuntimeException('TTS imeshindwa: '.$e->getMessage(), 0, $e);
+        }
+    }
+
+    /**
+     * Fallback ya moja kwa moja ya HTTP (Pure PHP) isiyotegemea Python au maktaba za ndani.
+     * Inafanya kazi kwenye seva yoyote ya mtandaoni (Laravel Cloud, VPS, n.k.) na simu zote.
+     */
+    public function synthesizeHttp(string $text, string $lang = 'ar'): string
+    {
+        $targetLang = ($lang === 'ar' || str_starts_with($lang, 'ar')) ? 'ar' : 'sw';
+
+        $words = preg_split('/\s+/u', trim($text));
+        $chunks = [];
+        $current = '';
+
+        foreach ($words as $word) {
+            if (mb_strlen($current.' '.$word) > 180) {
+                if ($current !== '') {
+                    $chunks[] = trim($current);
+                }
+                $current = $word;
+            } else {
+                $current .= ($current === '' ? '' : ' ').$word;
+            }
+        }
+        if ($current !== '') {
+            $chunks[] = trim($current);
+        }
+
+        if (empty($chunks)) {
+            throw new RuntimeException('Maandishi ya sauti hayapo.');
+        }
+
+        $combinedMp3 = '';
+        foreach ($chunks as $chunk) {
+            $url = 'https://translate.google.com/translate_tts?ie=UTF-8&q='.urlencode($chunk).'&tl='.$targetLang.'&client=tw-ob';
+            $response = \Illuminate\Support\Facades\Http::timeout(12)
+                ->withHeaders([
+                    'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Referer' => 'https://translate.google.com/',
+                ])
+                ->get($url);
+
+            if (! $response->successful() || strlen($response->body()) < 100) {
+                throw new RuntimeException('Imeshindikana kupata sauti ya Kiarabu kupitia HTTP.');
+            }
+
+            $combinedMp3 .= $response->body();
+        }
+
+        return $combinedMp3;
     }
 }
