@@ -1,0 +1,1 @@
+<span data-reading="sw">{{ $book->titleFor('sw') }}</span><span data-reading="en">{{ $book->titleFor('en') }}</span>

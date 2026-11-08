@@ -179,7 +179,7 @@
                                         $sample = isset($collectionPreviews[$item->slug]) ? $collectionPreviews[$item->slug]->first() : null;
                                         $badge = $meta['badge'] ?? 'SAHIH';
                                     @endphp
-                                    <button type="button" class="rawdah-book-card {{ !empty($meta['cover_image']) ? 'has-custom-cover' : '' }}" wire:key="book-card-{{ $item->id }}" wire:click="chooseCollection('{{ $item->slug }}')">
+                                    <a href="{{ route('collections.show', $item->slug) }}" class="rawdah-book-card {{ !empty($meta['cover_image']) ? 'has-custom-cover' : '' }}" wire:key="book-card-{{ $item->id }}">
                                         @if(!empty($meta['cover_image']))
                                             <div class="rawdah-book-cover-wrap" aria-hidden="true">
                                                 <img src="{{ asset($meta['cover_image']) }}" alt="{{ $item->name }}" class="rawdah-book-cover-img" loading="lazy" width="95" height="148">
@@ -213,7 +213,7 @@
                                         @if($sample)
                                             <span class="sr-only">{{ $sample->display_text }}</span>
                                         @endif
-                                    </button>
+                                    </a>
                                 @endforeach
                             </div>
                         </section>

@@ -24,6 +24,9 @@ Route::get('/sitemap-pages.xml', [\App\Http\Controllers\SeoController::class, 'p
 Route::get('/sitemap-hadith-{page}.xml', [\App\Http\Controllers\SeoController::class, 'hadith'])->whereNumber('page');
 
 Route::get('/', Library::class)->name('library');
+Route::get('/makusanyo/{collection:slug}', [\App\Http\Controllers\CollectionController::class, 'show'])->name('collections.show');
+Route::get('/makusanyo/{collection:slug}/{book}', [\App\Http\Controllers\CollectionController::class, 'book'])->whereNumber('book')->name('collections.book');
+Route::get('/makusanyo/{collection:slug}/{book}/{chapter}', [\App\Http\Controllers\CollectionController::class, 'chapter'])->whereNumber(['book', 'chapter'])->name('collections.chapter');
 Route::get('/mada', TopicIndex::class)->name('topics.index');
 Route::get('/mada/{slug}', TopicIndex::class)->name('topics.show');
 Route::get('/changia', SupportIndex::class)->name('support');

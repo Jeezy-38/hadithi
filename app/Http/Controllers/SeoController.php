@@ -75,6 +75,9 @@ class SeoController extends Controller
                     $add(route($name), 'weekly', '0.6');
                 }
             }
+            \App\Models\Collection::orderBy('id')->get()->each(function ($c) use ($add) {
+                $add(route('collections.show', $c->slug), 'weekly', '0.8');
+            });
             Dua::published()->orderBy('id')->get(['id', 'updated_at'])->each(function ($d) use ($add) {
                 $add(route('duaa.show', $d), 'monthly', '0.5', $d->updated_at);
             });

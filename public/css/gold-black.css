@@ -11038,3 +11038,6 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:
 
 /* Maelezo madogo chini ya chaguo la lugha ya hadith */
 .drawer-lang-note{margin:8px 2px 0;font-size:.74rem;line-height:1.4;color:var(--text-muted)}
+
+/* Kadi za makusanyo ni viungo vya ukurasa wa mkusanyo */
+a.rawdah-book-card{text-decoration:none;color:inherit}
