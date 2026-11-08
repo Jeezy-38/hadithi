@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AdminLog;
 use App\Models\Dua;
+use App\Models\Feedback;
 use App\Models\Hadith;
 use App\Models\PageView;
 use App\Models\Payment;
@@ -16,16 +17,19 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class AdminDashboardController extends Controller
 {
-    private const TABS = ['overview', 'users', 'payments', 'content', 'sponsors', 'system'];
+    private const TABS = ['overview', 'users', 'payments', 'content', 'feedback', 'sponsors', 'system'];
 
     public function index(Request $request)
     {
         $tab = $request->get('tab');
         $activeTab = in_array($tab, self::TABS, true) ? $tab : 'overview';
+
+        $hasFeedbackTable = Schema::hasTable('feedback');
 
         // Namba za vichwa vya tabs (nafuu) + data ya tab inayotumika TU
         $data = [
@@ -33,12 +37,15 @@ class AdminDashboardController extends Controller
             'totalUsers' => User::count(),
             'totalHadith' => Hadith::count(),
             'paymentsCompletedCount' => Payment::where('status', 'completed')->count(),
+            'totalFeedbackCount' => $hasFeedbackTable ? Feedback::count() : 0,
+            'newFeedbackCount' => $hasFeedbackTable ? Feedback::where('status', 'new')->count() : 0,
         ];
 
         $data += match ($activeTab) {
             'users' => $this->usersData($request),
             'payments' => $this->paymentsData($request),
             'content' => $this->contentData($request),
+            'feedback' => $this->feedbackData($request),
             'sponsors' => $this->sponsorsData(),
             'system' => $this->systemData(),
             default => $this->overviewData(),
@@ -518,5 +525,64 @@ class AdminDashboardController extends Controller
         $this->audit('sponsor.deleted', "Mdhamini '{$name}' amefutwa");
 
         return redirect()->route('admin.dashboard', ['tab' => 'sponsors'])->with('success', "Mdhamini '{$name}' amefutwa.");
+    }
+
+    private function feedbackData(Request $request): array
+    {
+        if (! Schema::hasTable('feedback')) {
+            return [
+                'feedbackList' => new \Illuminate\Pagination\LengthAwarePaginator([], 0, 20),
+                'statusFilter' => null,
+                'categoryFilter' => null,
+                'feedbackCounts' => ['all' => 0, 'new' => 0, 'feature' => 0, 'correction' => 0, 'bug' => 0],
+            ];
+        }
+
+        $statusFilter = $request->get('status');
+        $categoryFilter = $request->get('category');
+
+        $query = Feedback::query()->with('user')->latest();
+
+        if ($statusFilter && in_array($statusFilter, ['new', 'read', 'resolved'], true)) {
+            $query->where('status', $statusFilter);
+        }
+
+        if ($categoryFilter && in_array($categoryFilter, ['feature', 'correction', 'bug', 'general'], true)) {
+            $query->where('category', $categoryFilter);
+        }
+
+        return [
+            'feedbackList' => $query->paginate(20)->withQueryString(),
+            'statusFilter' => $statusFilter,
+            'categoryFilter' => $categoryFilter,
+            'feedbackCounts' => [
+                'all' => Feedback::count(),
+                'new' => Feedback::where('status', 'new')->count(),
+                'feature' => Feedback::where('category', 'feature')->count(),
+                'correction' => Feedback::where('category', 'correction')->count(),
+                'bug' => Feedback::where('category', 'bug')->count(),
+            ],
+        ];
+    }
+
+    public function updateFeedbackStatus(Request $request, Feedback $feedback): RedirectResponse
+    {
+        $status = $request->validate([
+            'status' => 'required|in:new,read,resolved',
+        ])['status'];
+
+        $feedback->update(['status' => $status]);
+        $this->audit('feedback.status', "Hali ya maoni #{$feedback->id} imebadilishwa kuwa '{$status}'", $feedback);
+
+        return back()->with('success', "Hali ya maoni imesasishwa kuwa '{$feedback->statusLabel()}'.");
+    }
+
+    public function deleteFeedback(Feedback $feedback): RedirectResponse
+    {
+        $id = $feedback->id;
+        $feedback->delete();
+        $this->audit('feedback.deleted', "Maoni #{$id} yamefutwa");
+
+        return back()->with('success', "Maoni yamefutwa kikamilifu.");
     }
 }

@@ -264,6 +264,13 @@ Route::get('/audio/hadith/{hadith}/{lang}', HadithAudioController::class)
     ->name('hadith.audio');
 
 // =========================================================================
+// Maoni na Mapendekezo ya Watumiaji (User Feedback)
+// =========================================================================
+Route::post('/api/feedback', [\App\Http\Controllers\FeedbackController::class, 'store'])
+    ->middleware('throttle:10,1')
+    ->name('api.feedback.store');
+
+// =========================================================================
 // Arifa za Kila Siku (PWA Push Notifications) & Hadithi ya Siku API
 // =========================================================================
 Route::post('/api/push-subscriptions', [PushNotificationController::class, 'subscribe'])->name('api.push.subscribe');
@@ -280,6 +287,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Usimamizi wa Watumiaji
     Route::post('/users/{user}/toggle-admin', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleUserAdmin'])->name('users.toggle-admin');
     Route::post('/users/{user}/toggle-supporter', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleUserSupporter'])->name('users.toggle-supporter');
+
+    // Usimamizi wa Maoni & Mapendekezo
+    Route::post('/feedback/{feedback}/status', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'updateFeedbackStatus'])->name('feedback.status');
+    Route::delete('/feedback/{feedback}', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'deleteFeedback'])->name('feedback.delete');
 
     // Usimamizi wa Maudhui
     Route::post('/wadhamini', [\App\Http\Controllers\Admin\AdminDashboardController::class, 'storeSponsor'])->name('sponsors.store');

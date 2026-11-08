@@ -278,6 +278,14 @@
                 <span>Maudhui</span>
                 <span class="adm-badge adm-badge-purple" style="font-size: 11px; padding: 2px 7px;">{{ number_format($totalHadith) }}</span>
             </a>
+            <a href="{{ route('admin.dashboard', ['tab' => 'feedback']) }}" class="adm-tab-btn {{ $activeTab === 'feedback' ? 'active' : '' }}">
+                <span>Maoni & Mawazo</span>
+                @if($newFeedbackCount > 0)
+                    <span class="adm-badge adm-badge-emerald" style="font-size: 11px; padding: 2px 7px;">{{ number_format($newFeedbackCount) }} Mpya</span>
+                @else
+                    <span class="adm-badge" style="font-size: 11px; padding: 2px 7px; opacity: 0.7;">{{ number_format($totalFeedbackCount) }}</span>
+                @endif
+            </a>
             <a href="{{ route('admin.dashboard', ['tab' => 'sponsors']) }}" class="adm-tab-btn {{ $activeTab === 'sponsors' ? 'active' : '' }}">
                 <span>Wadhamini</span>
             </a>
@@ -917,6 +925,168 @@
                 <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--adm-card-border);">
                     {{ $hadiths->links() }}
                 </div>
+            </div>
+        @endif
+
+        {{-- ========================================================================= --}}
+        {{-- TAB: MAONI NA MAWAZO YA WATUMIAJI (USER FEEDBACK) --}}
+        {{-- ========================================================================= --}}
+        @if($activeTab === 'feedback')
+            {{-- KPI Summary Cards --}}
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px;">
+                <div class="adm-kpi-card">
+                    <span style="font-size: 11.5px; font-weight: 800; color: var(--adm-text-sub); text-transform: uppercase;">Jumla ya Maoni</span>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--adm-text-main); margin: 6px 0;">
+                        {{ number_format($feedbackCounts['all']) }}
+                    </div>
+                    <span class="adm-badge adm-badge-blue">{{ number_format($feedbackCounts['new']) }} Mapya Hayajasomwa</span>
+                </div>
+                <div class="adm-kpi-card">
+                    <span style="font-size: 11.5px; font-weight: 800; color: var(--adm-text-sub); text-transform: uppercase;">💡 Mawazo Mapya</span>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--adm-text-main); margin: 6px 0;">
+                        {{ number_format($feedbackCounts['feature']) }}
+                    </div>
+                    <span class="adm-badge adm-badge-emerald">Mapendekezo ya Features</span>
+                </div>
+                <div class="adm-kpi-card">
+                    <span style="font-size: 11.5px; font-weight: 800; color: var(--adm-text-sub); text-transform: uppercase;">✍️ Marekebisho</span>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--adm-text-main); margin: 6px 0;">
+                        {{ number_format($feedbackCounts['correction']) }}
+                    </div>
+                    <span class="adm-badge adm-badge-purple">Tafsiri na Tahajia</span>
+                </div>
+                <div class="adm-kpi-card">
+                    <span style="font-size: 11.5px; font-weight: 800; color: var(--adm-text-sub); text-transform: uppercase;">🐛 Hitilafu / Bugs</span>
+                    <div style="font-size: 28px; font-weight: 900; color: var(--adm-text-main); margin: 6px 0;">
+                        {{ number_format($feedbackCounts['bug']) }}
+                    </div>
+                    <span class="adm-badge adm-badge-red">Ripoti za Matatizo</span>
+                </div>
+            </div>
+
+            {{-- Filter & Content Table --}}
+            <div class="adm-kpi-card">
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 20px;">
+                    <div>
+                        <h2 style="font-size: 18px; font-weight: 900; margin: 0; color: var(--adm-text-main);">
+                            Mawazo na Maoni ya Watumiaji
+                        </h2>
+                        <p style="margin: 3px 0 0; font-size: 12.5px; color: var(--adm-text-sub);">
+                            Ujumbe unaotumwa na watumiaji kupitia sanduku la maoni kwenye tovuti.
+                        </p>
+                    </div>
+
+                    {{-- Filters --}}
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <a href="{{ route('admin.dashboard', ['tab' => 'feedback']) }}" class="adm-tab-btn {{ !request('status') && !request('category') ? 'active' : '' }}" style="font-size: 12px; padding: 6px 12px;">Yote</a>
+                        <a href="{{ route('admin.dashboard', ['tab' => 'feedback', 'status' => 'new']) }}" class="adm-tab-btn {{ request('status') === 'new' ? 'active' : '' }}" style="font-size: 12px; padding: 6px 12px;">Mapya Tu</a>
+                        <a href="{{ route('admin.dashboard', ['tab' => 'feedback', 'category' => 'feature']) }}" class="adm-tab-btn {{ request('category') === 'feature' ? 'active' : '' }}" style="font-size: 12px; padding: 6px 12px;">💡 Mawazo</a>
+                        <a href="{{ route('admin.dashboard', ['tab' => 'feedback', 'category' => 'correction']) }}" class="adm-tab-btn {{ request('category') === 'correction' ? 'active' : '' }}" style="font-size: 12px; padding: 6px 12px;">✍️ Marekebisho</a>
+                        <a href="{{ route('admin.dashboard', ['tab' => 'feedback', 'category' => 'bug']) }}" class="adm-tab-btn {{ request('category') === 'bug' ? 'active' : '' }}" style="font-size: 12px; padding: 6px 12px;">🐛 Hitilafu</a>
+                    </div>
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table class="adm-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 140px;">Tarehe & Aina</th>
+                                <th>Mtumiaji & Mawasiliano</th>
+                                <th style="min-width: 280px;">Ujumbe / Wazo</th>
+                                <th>Ukurasa / Rejea</th>
+                                <th>Hali (Status)</th>
+                                <th style="text-align: right; width: 140px;">Vitendo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($feedbackList as $fb)
+                                <tr>
+                                    <td>
+                                        <div style="font-size: 12px; font-weight: 700; color: var(--adm-text-main); margin-bottom: 4px;">
+                                            {{ $fb->created_at?->format('d M Y, H:i') }}
+                                        </div>
+                                        <span class="adm-badge {{ $fb->categoryBadgeColor() }}" style="font-size: 10.5px;">
+                                            {{ $fb->categoryLabel() }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div style="font-weight: 700; color: var(--adm-text-main); font-size: 13px;">
+                                            {{ $fb->name ?: ($fb->user?->name ?: 'Mgeni (Guest)') }}
+                                        </div>
+                                        @if($fb->contact)
+                                            <div style="font-size: 12px; color: var(--adm-gold); margin-top: 2px;">
+                                                {{ $fb->contact }}
+                                            </div>
+                                        @elseif($fb->user?->email)
+                                            <div style="font-size: 12px; color: var(--adm-text-sub); margin-top: 2px;">
+                                                {{ $fb->user->email }}
+                                            </div>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <div style="font-size: 13.5px; line-height: 1.5; color: var(--adm-text-main); white-space: pre-wrap; background: var(--adm-hover-bg); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--adm-card-border);">{{ $fb->message }}</div>
+                                    </td>
+                                    <td style="font-size: 12px; color: var(--adm-text-sub);">
+                                        @if($fb->hadith_ref)
+                                            <div style="font-weight: 700; color: var(--adm-text-main); margin-bottom: 2px;">{{ $fb->hadith_ref }}</div>
+                                        @endif
+                                        @if($fb->page_url)
+                                            <a href="{{ $fb->page_url }}" target="_blank" rel="noopener" style="color: var(--adm-blue); text-decoration: underline; word-break: break-all; font-size: 11.5px;">
+                                                Angalia ukurasa ↗
+                                            </a>
+                                        @else
+                                            —
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($fb->status === 'new')
+                                            <span class="adm-badge adm-badge-blue" style="font-weight: 800;">Mpya</span>
+                                        @elseif($fb->status === 'resolved')
+                                            <span class="adm-badge adm-badge-emerald">Imetatuliwa</span>
+                                        @else
+                                            <span class="adm-badge" style="opacity: 0.8;">Imesomwa</span>
+                                        @endif
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <div style="display: flex; gap: 6px; justify-content: flex-end;">
+                                            @if($fb->status !== 'resolved')
+                                                <form method="POST" action="{{ route('admin.feedback.status', $fb) }}" style="display: inline;">
+                                                    @csrf
+                                                    <input type="hidden" name="status" value="resolved">
+                                                    <button type="submit" class="adm-tab-btn" style="font-size: 11px; padding: 4px 8px; background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);" title="Weka kuwa imetatuliwa">✓ Tatua</button>
+                                                </form>
+                                            @endif
+                                            @if($fb->status === 'new')
+                                                <form method="POST" action="{{ route('admin.feedback.status', $fb) }}" style="display: inline;">
+                                                    @csrf
+                                                    <input type="hidden" name="status" value="read">
+                                                    <button type="submit" class="adm-tab-btn" style="font-size: 11px; padding: 4px 8px;" title="Weka kuwa imesomwa">Soma</button>
+                                                </form>
+                                            @endif
+                                            <form method="POST" action="{{ route('admin.feedback.delete', $fb) }}" style="display: inline;" onsubmit="return confirm('Je, una uhakika unataka kufuta maoni haya?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="adm-tab-btn" style="font-size: 11px; padding: 4px 8px; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" title="Futa">✕</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" style="text-align: center; color: var(--adm-text-sub); padding: 36px;">
+                                        Bado hakuna maoni au mapendekezo yaliyowasilishwa na watumiaji kwa kigezo hiki.
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+
+                @if($feedbackList->hasPages())
+                    <div style="margin-top: 18px;">
+                        {{ $feedbackList->links() }}
+                    </div>
+                @endif
             </div>
         @endif
 
