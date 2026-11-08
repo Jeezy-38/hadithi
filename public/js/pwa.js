@@ -74,8 +74,8 @@
                 drawerPwaBadge.classList.add('is-installed');
             }
         } else {
-            if (drawerPwaTitle) drawerPwaTitle.textContent = L('pg_dr_install_t', 'Install App Now');
-            if (drawerPwaSub) drawerPwaSub.textContent = L('pg_dr_install_s', 'Download App Now');
+            if (drawerPwaTitle) drawerPwaTitle.textContent = L('pg_dr_install_t', 'Weka App Sasa');
+            if (drawerPwaSub) drawerPwaSub.textContent = L('pg_dr_install_s', 'Pakua App kwenye simu yako');
             if (drawerPwaBadge) {
                 drawerPwaBadge.textContent = L('pg_dr_app', 'App');
                 drawerPwaBadge.classList.remove('is-installed');

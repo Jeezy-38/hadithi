@@ -30,15 +30,6 @@
                 <span class="nav-drawer-text" data-i18n="nav_library">Maktaba</span>
                 <span class="nav-drawer-arrow" aria-hidden="true">→</span>
             </a>
-            <a href="{{ route('bookmarks') }}" class="nav-drawer-link {{ request()->routeIs('bookmarks') ? 'active' : '' }}">
-                <span class="nav-drawer-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                </span>
-                <span class="nav-drawer-text" data-i18n="nav_bookmarks">Vipendwa</span>
-                <span class="nav-drawer-arrow" aria-hidden="true">→</span>
-            </a>
             <a href="{{ route('support') }}" class="nav-drawer-link {{ request()->routeIs('support*') ? 'active' : '' }}">
                 <span class="nav-drawer-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
