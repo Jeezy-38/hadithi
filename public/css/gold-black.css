@@ -11041,3 +11041,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:
 
 /* Kadi za makusanyo ni viungo vya ukurasa wa mkusanyo */
 a.rawdah-book-card{text-decoration:none;color:inherit}
+
+/* Vichwa vya vitabu/mada kwa lugha 4: html[data-title-lang] huchagua span (default Kiswahili) */
+[data-tl]{display:none}
+html:not([data-title-lang]) [data-tl~="sw"],
+html[data-title-lang="sw"] [data-tl~="sw"],
+html[data-title-lang="en"] [data-tl~="en"],
+html[data-title-lang="ar"] [data-tl~="ar"],
+html[data-title-lang="es"] [data-tl~="es"]{display:inline}

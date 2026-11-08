@@ -20,15 +20,31 @@ class Book extends Model
         return $this->hasMany(Chapter::class);
     }
 
-    /** Jina la kitabu kwa lugha ya hadith: 'en' = Kiingereza, nyingine = Kiswahili (kama lilivyo). */
+    /** Jina la kitabu: 'sw' (kama lilivyo), 'en', 'es', 'ar'. */
     public function titleFor(string $lang): string
     {
         $title = (string) $this->title_sw;
-        if ($lang !== 'en') {
+        if ($lang === 'sw') {
             return $title;
         }
-        $clean = trim((string) preg_replace('/\s*\(Kiingereza\)\s*$/u', '', $title));
+        $clean = \App\Support\TitleI18n::clean($title);
+        $en = (string) (config('book_titles_en')[$clean] ?? $clean);
+        if ($lang === 'es') {
+            return \App\Support\TitleI18n::es($clean) ?? \App\Support\TitleI18n::es($en) ?? $en;
+        }
+        if ($lang === 'ar') {
+            return \App\Support\TitleI18n::hasArabic($this->title_ar) ? trim((string) $this->title_ar) : $en;
+        }
 
-        return (string) (config('book_titles_en')[$clean] ?? $clean);
+        return $en;
+    }
+
+    /** Spans za lugha 4; CSS huchagua kulingana na html[data-title-lang]. */
+    public function titleHtml(): \Illuminate\Support\HtmlString
+    {
+        return \App\Support\TitleI18n::html([
+            'sw' => $this->titleFor('sw'), 'en' => $this->titleFor('en'),
+            'ar' => $this->titleFor('ar'), 'es' => $this->titleFor('es'),
+        ]);
     }
 }

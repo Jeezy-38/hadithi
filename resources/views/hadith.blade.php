@@ -272,7 +272,7 @@
                 </div>
                 <div class="source-item">
                     <dt data-i18n="pg_h_bk">Kitabu na Mlango:</dt>
-                    <dd>{{ $hadith->chapter->book->collection->name }} · <span data-i18n="pg_h_no" data-i18n-vars="{{ json_encode(['n' => $hadith->number]) }}">Hadith Na. {{ $hadith->number }}</span> (<span data-reading="sw">{{ $bookSw }}</span><span data-reading="en">{{ $bookEn }}</span> · {!! $hadith->chapter->titleHtml() !!})</dd>
+                    <dd>{{ $hadith->chapter->book->collection->name }} · <span data-i18n="pg_h_no" data-i18n-vars="{{ json_encode(['n' => $hadith->number]) }}">Hadith Na. {{ $hadith->number }}</span> ({!! $hadith->chapter->book->titleHtml() !!} · {!! $hadith->chapter->titleHtml() !!})</dd>
                 </div>
                 <div class="source-item">
                     <dt data-i18n="pg_h_gr">Daraja na Mpokezi:</dt>

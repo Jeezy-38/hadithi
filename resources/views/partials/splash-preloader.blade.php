@@ -44,7 +44,7 @@
         try {
             const lang = localStorage.getItem('bayt-ui-lang') || 'en';
             const cap = document.getElementById('bayt-splash-caption');
-            if (cap && lang !== 'sw') cap.textContent = 'Loading…';
+            if (cap) cap.textContent = ({ sw: 'Inapakia…', en: 'Loading…', ar: 'جارٍ التحميل…', es: 'Cargando…' })[lang] || 'Loading…';
         } catch (_) {}
 
         const startTime = Date.now();

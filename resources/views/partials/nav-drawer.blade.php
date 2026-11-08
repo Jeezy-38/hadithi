@@ -57,6 +57,12 @@
                 <button type="button" class="drawer-lang-btn" data-ui-val="sw" aria-pressed="false">
                     <span class="drawer-lang-main">Kiswahili</span>
                 </button>
+                <button type="button" class="drawer-lang-btn" data-ui-val="ar" aria-pressed="false">
+                    <span class="drawer-lang-main" lang="ar">العربية</span>
+                </button>
+                <button type="button" class="drawer-lang-btn" data-ui-val="es" aria-pressed="false">
+                    <span class="drawer-lang-main">Español</span>
+                </button>
             </div>
         </div>
 

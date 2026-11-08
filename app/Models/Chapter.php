@@ -20,37 +20,48 @@ class Chapter extends Model
         return $this->hasMany(Hadith::class);
     }
 
-    /** Kichwa cha mlango kwa lugha ya hadith ('sw' au 'en'). */
+    /** Kichwa cha mlango: 'sw' (kama kilivyo), 'en', 'es', 'ar'. */
     public function titleFor(string $lang): string
     {
-        $title = trim((string) $this->title_sw);
-        if ($lang !== 'en') {
+        $T = \App\Support\TitleI18n::class;
+        $title = $T::norm((string) $this->title_sw);
+        if ($lang === 'sw') {
             return $title;
         }
-        $bookEn = function (string $t): string {
-            $clean = trim((string) preg_replace('/\s*\(Kiingereza\)\s*$/u', '', $t));
+        $ar = trim((string) $this->title_ar);
+        if ($lang === 'ar' && $T::hasArabic($ar)) {
+            return $ar;
+        }
+        $bookEn = function (string $t) use ($T): string {
+            $clean = $T::clean($t);
 
             return (string) (config('book_titles_en')[$clean] ?? $clean);
         };
-        if (preg_match('/^Hadithi ya (\d+):\s*(.+)$/u', $title, $m)) {
-            return 'Hadith '.$m[1].': '.$bookEn($m[2]);
-        }
-        if (preg_match('/^Mlango wa (\d+):\s*(.+)$/u', $title, $m)) {
-            return 'Chapter '.$m[1].': '.$bookEn($m[2]);
-        }
-        if (preg_match('/^[\x20-\x7E]+$/', $title) && ! preg_match('/\b(wa|ya|za|cha|kwa|na)\b/u', $title)) {
-            return $title; // tayari ni Kiingereza (mf. "Zakat")
-        }
-        $ar = trim((string) $this->title_ar);
+        $label = ['en' => ['Hadith', 'Chapter'], 'ar' => ['Hadith', 'Chapter'], 'es' => ['Hadiz', 'Capítulo']][$lang] ?? ['Hadith', 'Chapter'];
+        if (preg_match('/^(Hadithi ya|Mlango wa) (\d+):\s*(.+)$/u', $title, $m)) {
+            $kind = $m[1] === 'Hadithi ya' ? 0 : 1;
+            $rest = $T::clean($m[3]);
+            $name = $lang === 'es' ? ($T::es($rest) ?? $T::es($bookEn($rest)) ?? $bookEn($rest)) : $bookEn($rest);
 
-        return $ar !== '' ? $ar : $title;
+            return $label[$kind].' '.$m[2].': '.$name;
+        }
+        $en = $T::chapterEn($title) ?? (preg_match('/^[\x20-\x7E`\x{2019}]+$/u', $title) && ! preg_match('/\b(wa|ya|za|cha|kwa|na)\b/u', $title) ? $title : null);
+        if ($lang === 'es') {
+            return $T::es($title) ?? $en ?? ($T::hasArabic($ar) ? $ar : $title);
+        }
+        if ($en !== null) {
+            return $en;
+        }
+
+        return $T::hasArabic($ar) ? $ar : $title;
     }
 
-    /** Vichwa viwili vinavyobadilika kwa lugha ya kusoma. */
+    /** Spans za lugha 4; CSS huchagua kulingana na html[data-title-lang]. */
     public function titleHtml(): \Illuminate\Support\HtmlString
     {
-        return new \Illuminate\Support\HtmlString(
-            '<span data-reading="sw">'.e($this->titleFor('sw')).'</span><span data-reading="en">'.e($this->titleFor('en')).'</span>'
-        );
+        return \App\Support\TitleI18n::html([
+            'sw' => $this->titleFor('sw'), 'en' => $this->titleFor('en'),
+            'ar' => $this->titleFor('ar'), 'es' => $this->titleFor('es'),
+        ]);
     }
 }

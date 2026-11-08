@@ -24,7 +24,7 @@
                 <ul class="hero-chips">
                     <li data-i18n="pg_hero_c1">Hadith sahihi</li>
                     <li data-i18n="pg_hero_c2">Chanzo na daraja</li>
-                    <li>Kiswahili · English · العربية</li>
+                    <li>Kiswahili · English · Español · العربية</li>
                 </ul>
             </div>
         </section>
@@ -72,7 +72,7 @@
                                         <span data-i18n="pg_lib_today">Hadithi ya Leo</span>
                                     </span>
                                     <span class="rawdah-hero-ref">
-                                        {{ $todayHadith->chapter->book->collection->name ?? 'Hadithi' }} · Na. {{ $todayHadith->hadith_number ?? $todayHadith->number ?? $todayHadith->reference }}
+                                        {{ $todayHadith->chapter->book->collection->name ?? 'Hadithi' }} · <span data-i18n="pg_lib_no">Na.</span> {{ $todayHadith->hadith_number ?? $todayHadith->number ?? $todayHadith->reference }}
                                     </span>
                                 </div>
 
@@ -379,7 +379,7 @@
                                 <span class="card-location"><span data-i18n="card_book_label">Kitabu</span> {{ $hadith->chapter->book->number }} · <span data-i18n="card_chapter_label">Mlango</span> {{ $hadith->chapter->number }}</span>
                                 <div class="card-actions">
                                     <a href="{{ route('hadith.show', $hadith) }}" class="read-btn">
-                                        <span data-i18n="card_read_btn">Soma</span>
+                                        <span data-i18n="card_read">Soma</span>
                                         <span class="read-arrow" aria-hidden="true">↗</span>
                                     </a>
                                 </div>

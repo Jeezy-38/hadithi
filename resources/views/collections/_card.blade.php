@@ -19,7 +19,7 @@
         <span></span>
         <div class="card-actions">
             <a href="{{ route('hadith.show', $hadith) }}" class="read-btn">
-                <span data-i18n="card_read_btn">Soma</span>
+                <span data-i18n="card_read">Soma</span>
                 <span class="read-arrow" aria-hidden="true">↗</span>
             </a>
         </div>

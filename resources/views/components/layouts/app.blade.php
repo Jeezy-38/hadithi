@@ -46,8 +46,12 @@
                 var theme = savedTheme || (prefersDark ? 'dark' : 'light');
                 document.documentElement.setAttribute('data-theme', theme);
                 var ui = localStorage.getItem('bayt-ui-lang') || 'en';
-                document.documentElement.setAttribute('data-ui-language', ui === 'sw' ? 'sw' : 'en');
-                document.documentElement.lang = ui === 'sw' ? 'sw' : 'en';
+                if (['en', 'sw', 'ar', 'es'].indexOf(ui) < 0) ui = 'en';
+                document.documentElement.setAttribute('data-ui-language', ui);
+                document.documentElement.lang = ui;
+                if (ui === 'ar') document.documentElement.setAttribute('dir', 'rtl');
+                var rd = localStorage.getItem('hadith-language');
+                document.documentElement.setAttribute('data-title-lang', (ui === 'es' || ui === 'ar') ? ui : (rd === 'en' ? 'en' : (ui === 'sw' ? 'sw' : 'en')));
             } catch (e) {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }

@@ -21,11 +21,11 @@
         if (themeToggle) {
             themeToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
             const curLang = document.documentElement.dataset.uiLanguage || 'en';
-            const dictKey = (curLang === 'en' || curLang === 'ar') ? curLang : 'sw';
-            const darkTitles = { sw: 'Badili kuwa Nuru (Light Mode)', en: 'Switch to Light Mode', ar: 'التبديل إلى الوضع الفاتح' };
-            const lightTitles = { sw: 'Badili kuwa Giza (Dark Mode)', en: 'Switch to Dark Mode', ar: 'التبديل إلى الوضع الداكن' };
-            const darkLabels = { sw: 'Giza', en: 'Dark', ar: 'داكن' };
-            const lightLabels = { sw: 'Nuru', en: 'Light', ar: 'فاتح' };
+            const dictKey = (curLang === 'en' || curLang === 'ar' || curLang === 'es') ? curLang : 'sw';
+            const darkTitles = { sw: 'Badili kuwa Nuru (Light Mode)', en: 'Switch to Light Mode', ar: 'التبديل إلى الوضع الفاتح', es: 'Cambiar al modo claro' };
+            const lightTitles = { sw: 'Badili kuwa Giza (Dark Mode)', en: 'Switch to Dark Mode', ar: 'التبديل إلى الوضع الداكن', es: 'Cambiar al modo oscuro' };
+            const darkLabels = { sw: 'Giza', en: 'Dark', ar: 'داكن', es: 'Oscuro' };
+            const lightLabels = { sw: 'Nuru', en: 'Light', ar: 'فاتح', es: 'Claro' };
             themeToggle.setAttribute('title', isDark ? darkTitles[dictKey] : lightTitles[dictKey]);
             const label = themeToggle.querySelector('.theme-label');
             if (label) {
@@ -637,14 +637,189 @@
             quran_stat_ayahs: 'إجمالي الآيات',
             quran_stat_juz: 'جزء شريف',
             quran_stat_note: 'مكية ٨٦ · مدنية ٢٨'
+        },
+        es: {
+            nav_library: "Biblioteca",
+            nav_quran: "Corán",
+            nav_today: "Hadiz del día",
+            nav_duaa: "Súplicas y Adhkar",
+            nav_duaa_short: "Súplicas",
+            nav_tasbih: "Tasbih",
+            nav_bookmarks: "Favoritos",
+            auth_login: "Iniciar sesión",
+            auth_logout: "Cerrar sesión",
+            auth_eyebrow: "CUENTA",
+            auth_title: "Te damos la bienvenida",
+            auth_lead: "Inicia sesión para que tus favoritos y tu lectura te sigan en todos tus dispositivos.",
+            auth_google: "Continuar con Google",
+            auth_gmail: "Entrar con Gmail",
+            auth_facebook: "Continuar con Facebook",
+            auth_x: "Continuar con X",
+            auth_verse: "«Y di: Señor mío, aumenta mi conocimiento». — Ta-Ha 20:114",
+            auth_perk_saved: "Guarda los hadices que amas",
+            auth_perk_resume: "Retoma donde lo dejaste",
+            auth_perk_devices: "En teléfono, tableta y ordenador",
+            auth_title_register: "Crea tu cuenta",
+            auth_lead_register: "Es gratis. Guarda los hadices que amas y sigue leyendo en cualquier lugar.",
+            auth_tab_login: "Iniciar sesión",
+            auth_tab_register: "Registrarse",
+            auth_or_email: "o inicia sesión con correo / Gmail",
+            auth_or_google: "o continúa con Google",
+            auth_email: "Correo electrónico",
+            auth_email_ph: "nombre@ejemplo.com",
+            auth_password: "Contraseña",
+            auth_password_ph: "••••••••",
+            auth_password_new_ph: "Al menos 8 caracteres, con un número",
+            auth_name: "Tu nombre",
+            auth_name_ph: "p. ej. Amina Juma",
+            auth_remember: "Recordarme",
+            auth_submit_login: "Iniciar sesión",
+            auth_submit_register: "Crear cuenta",
+            auth_no_account: "¿No tienes una cuenta?",
+            auth_create_account: "Crear cuenta",
+            auth_have_account: "¿Ya tienes una cuenta?",
+            auth_title_forgot: "¿Olvidaste tu contraseña?",
+            auth_lead_forgot: "No te preocupes. Escribe tu correo y te enviaremos un enlace para crear una contraseña nueva.",
+            auth_forgot_link: "¿Olvidaste la contraseña?",
+            auth_submit_forgot: "Enviar enlace",
+            auth_back_login: "← Volver a iniciar sesión",
+            auth_sent_title: "Revisa tu correo",
+            auth_sent_body: "Si existe una cuenta con este correo, hemos enviado un enlace para crear una contraseña nueva:",
+            auth_sent_hint: "El enlace caduca en una hora. Si no lo ves, revisa tu carpeta de spam.",
+            auth_reset_title: "Crea una contraseña nueva",
+            auth_reset_lead: "Elige una contraseña nueva que no hayas usado antes aquí.",
+            auth_password_new: "Contraseña nueva",
+            auth_submit_reset: "Guardar contraseña",
+            auth_fineprint: "Nunca publicamos en tus cuentas. Solo usamos tu nombre, correo y foto.",
+            lang_label: "Idioma del hadiz:",
+            ui_lang_label: "Idioma de la app:",
+            hadith_lang_note: "El original en árabe siempre se muestra.",
+            brand_sub: "BIBLIOTECA DEL SABER",
+            theme_dark: "Oscuro",
+            theme_light: "Claro",
+            drawer_settings_label: "PREFERENCIAS",
+            drawer_pwa_label: "APP DE HADICES",
+            theme_section_title: "Apariencia:",
+            theme_dark_mode: "Oscuro (noche)",
+            theme_light_mode: "Claro (día)",
+            hero_eyebrow: "BUJARI · MUSLIM · TIRMIDHI · ABU DAWUD · AHMAD",
+            hero_title: "TESORO DE <br><em>HADICES .</em>",
+            hero_desc: "Te damos la bienvenida a Bayt Ul Hadith, el hogar de las enseñanzas auténticas y atemporales del Profeta Muhammad ﷺ.<br> Explora hadices verificados, profundiza tu comprensión de la Sunna y haz de su guía parte de tu vida diaria.",
+            hero_start: "Empezar a leer",
+            hero_today: "Hadiz del día",
+            hero_caption: "BIBLIOTECA DE HADICES ✦ CONOCIMIENTO AUTÉNTICO",
+            quick_topics_label: "Temas populares:",
+            stat_hadiths: "hadices catalogados",
+            stat_collections: "colecciones principales",
+            stat_books: "libros con hadices",
+            stat_languages: "Árabe · Suajili · Inglés",
+            sidebar_collections: "COLECCIONES",
+            col_all: "Todas las colecciones",
+            sidebar_book: "LIBRO",
+            sidebar_book_all: "Todos los libros",
+            sidebar_chapter: "CAPÍTULO",
+            sidebar_chapter_all: "Todos los capítulos",
+            sidebar_select_first: "Elige primero un libro",
+            sidebar_note_title: "Lee con referencias",
+            sidebar_note_desc: "Textos y traducciones de HadeethEnc. En cada hadiz está disponible la referencia al libro y al capítulo.",
+            results_heading: "EXPLORAR LA BIBLIOTECA",
+            search_placeholder: "Busca palabras, números o temas…",
+            search_btn: "Buscar",
+            clear_filters: "Quitar filtros ×",
+            meta_sub: "Textos y traducciones",
+            coverage_note: "Hadices seleccionados de las colecciones indicadas arriba; las colecciones completas se actualizan continuamente.",
+            searching: "Buscando…",
+            hadith_count_suffix: "hadices",
+            card_read: "Leer",
+            card_source_prefix: "Fuente: ",
+            card_preview: "Vista previa",
+            card_book: "Libro",
+            card_chapter: "Capítulo",
+            card_no: "N.º ",
+            page_prev: "Anterior",
+            page_next: "Siguiente",
+            page_label: "Página",
+            empty_search_title: "No se encontró ningún hadiz.",
+            empty_search_desc: "Prueba con menos palabras, otro número o quita los filtros de libro y capítulo.",
+            empty_catalog_title: "El camino del conocimiento empieza aquí.",
+            empty_catalog_desc: "Los hadices en árabe y sus traducciones aparecerán aquí cuando se verifiquen con referencias auténticas.",
+            empty_show_all: "Mostrar todos los hadices →",
+            reader_back: "Atrás",
+            reader_hadith: "Hadiz",
+            btn_bookmark_add: "Guardar en Favoritos",
+            btn_bookmark_saved: "Guardado en Favoritos",
+            btn_share: "Compartir",
+            btn_my_bookmarks: "Mis favoritos",
+            audio_title: "Escuchar el hadiz",
+            audio_badge_hd: "Voz natural HD",
+            audio_desc: "Escucha el hadiz recitado con una dicción clara y natural en suajili, árabe o inglés.",
+            audio_lang: "Idioma del audio",
+            audio_voice: "Voz",
+            audio_speed: "Velocidad de reproducción",
+            audio_play: "Reproducir audio",
+            audio_pause: "Pausa",
+            audio_resume: "Continuar",
+            audio_stop: "Detener",
+            audio_play_both: "Árabe + Suajili",
+            audio_sequence: "Secuencia",
+            audio_autonext: "Continuar con el siguiente hadiz",
+            label_arabic: "TEXTO EN ÁRABE",
+            label_swahili: "TRADUCCIÓN AL SUAJILI",
+            label_english: "TRADUCCIÓN AL INGLÉS",
+            grade_prefix: "Grado según",
+            source_heading: "Referencia y fuente",
+            source_ref: "Referencia",
+            source_book_chapter: "Libro / capítulo",
+            source_numbering: "Sistema de numeración",
+            source_compare: "Comparar referencia",
+            source_arabic: "Fuente en árabe",
+            source_translation: "Traducción al suajili",
+            source_license: "Licencia",
+            source_downloaded: "Descargado",
+            source_reviewed: "Revisión registrada",
+            related_heading: "Hadices relacionados de este capítulo",
+            bm_back: "Atrás",
+            bm_eyebrow: "FAVORITOS",
+            bm_title: "Hadices guardados",
+            bm_desc: "Se guardan solo en tu dispositivo o navegador; no se comparten con nadie.",
+            bm_remove: "Quitar de Favoritos",
+            bm_empty_title: "Aún no has guardado ningún hadiz.",
+            bm_empty_desc: "Abre cualquier hadiz y pulsa «Guardar en Favoritos» para tenerlo aquí a mano.",
+            bm_explore: "Explorar la biblioteca ahora →",
+            footer_brand: "Bayt Ul Hadith · Biblioteca del saber",
+            footer_desc: "El legado de las enseñanzas auténticas del Profeta Muhammad ﷺ en árabe, suajili e inglés.",
+            footer_meta: "Árabe, suajili e inglés · Referencias verificadas",
+            footer_copy: "© 2026 Bayt Ul Hadith. Todos los derechos reservados.",
+            dua_eyebrow: "<span class=\"eyebrow-dot\"></span> HISN AL-MUSLIM · LA FORTALEZA DEL MUSULMÁN",
+            dua_title: "SÚPLICAS Y <br><em>ADHKAR .</em>",
+            dua_desc: "Súplicas y adhkar auténticos del Sagrado Corán y de la Sunna del Profeta Muhammad ﷺ. Paz para el corazón y protección divina en la vida diaria.",
+            dua_btn_tasbih: "Abrir el Tasbih digital",
+            dua_btn_morning: "Adhkar de la mañana",
+            dua_caption: "HISN AL-MUSLIM ✦ SÚPLICAS Y ADHKAR DIARIOS",
+            dua_stat_total: "súplicas disponibles",
+            dua_stat_cats: "categorías principales",
+            dua_stat_tasbih: "contador de tasbih digital",
+            dua_stat_note: "Hisn al-Muslim · Árabe · Suajili · Inglés",
+            quran_eyebrow: "<span class=\"eyebrow-dot\"></span> EL NOBLE CORÁN · LA PALABRA DE ALLAH",
+            quran_title: "NOBLE <br><em>CORÁN .</em>",
+            quran_desc: "«Este es un Libro bendito que te hemos revelado para que mediten sobre sus aleyas y los dotados de entendimiento reflexionen». — Sad 38:29. Explora las 114 suras con el texto árabe original, una traducción auténtica y recitación en audio.",
+            quran_btn_start: "Empezar por Al-Fatiha",
+            quran_btn_yasin: "Sura Ya-Sin",
+            quran_caption: "114 SURAS ✦ 6.236 ALEYAS ✦ TRADUCCIÓN AL SUAJILI ✦ RECITACIÓN EN AUDIO",
+            quran_stat_surahs: "suras completas",
+            quran_stat_ayahs: "aleyas en total",
+            quran_stat_juz: "Yuz / partes",
+            quran_stat_note: "La Meca 86 · Medina 28"
         }
     };
 
+    UI_TRANSLATIONS.es = Object.assign({}, UI_TRANSLATIONS.en, UI_TRANSLATIONS.es);
+
     const applyTranslations = lang => {
-        const dictKey = (lang === 'en' || lang === 'ar') ? lang : 'sw';
+        const dictKey = (lang === 'en' || lang === 'ar' || lang === 'es') ? lang : 'sw';
         const t = UI_TRANSLATIONS[dictKey] || UI_TRANSLATIONS.sw;
         // Vipengele vya hadith (kadi, msomaji, hadithi ya leo) vinafuata lugha ya hadith, si lugha ya app
-        const tH = UI_TRANSLATIONS[document.documentElement.dataset.readingLanguage === 'en' ? 'en' : 'sw'] || UI_TRANSLATIONS.sw;
+        const tH = UI_TRANSLATIONS[(dictKey === 'es' || dictKey === 'ar') ? dictKey : (document.documentElement.dataset.readingLanguage === 'en' ? 'en' : 'sw')] || UI_TRANSLATIONS.sw;
 
         // 1. Text direction & HTML lang
         const targetDir = (lang === 'ar') ? 'rtl' : 'ltr';
@@ -952,20 +1127,29 @@
             btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
         });
 
+        syncTitleLang();
         // Maandishi ya app yanafuata lugha ya UI (si lugha ya kusoma hadith)
         runSafeTranslations(document.documentElement.dataset.uiLanguage || 'en');
     };
 
     // Lugha ya app (UI): 'en' (chaguo-msingi) au 'sw'. Imetenganishwa na lugha ya kusoma hadith.
-    const uiLanguages = ['en', 'sw'];
+    const uiLanguages = ['en', 'sw', 'ar', 'es'];
     let preferredUi = 'en';
     try { preferredUi = localStorage.getItem('bayt-ui-lang') || 'en'; } catch (_) {}
     if (!uiLanguages.includes(preferredUi)) preferredUi = 'en';
     document.documentElement.dataset.uiLanguage = preferredUi;
 
+    // Vichwa vya vitabu/mada: vinafuata lugha ya app (en/sw/ar/es); hadith ikiwa English, vichwa pia ni English.
+    const syncTitleLang = () => {
+        const root = document.documentElement;
+        const ui = root.dataset.uiLanguage;
+        root.dataset.titleLang = (ui === 'es' || ui === 'ar') ? ui : (root.dataset.readingLanguage === 'en' ? 'en' : (ui === 'sw' ? 'sw' : 'en'));
+    };
+
     const setUiLanguage = value => {
         if (!uiLanguages.includes(value)) value = 'en';
         document.documentElement.dataset.uiLanguage = value;
+        syncTitleLang();
         try { localStorage.setItem('bayt-ui-lang', value); } catch (_) {}
         document.querySelectorAll('.drawer-lang-btn[data-ui-val]').forEach(btn => {
             const isMatch = btn.getAttribute('data-ui-val') === value;
@@ -1034,7 +1218,7 @@
     const updateAllBookmarkUI = () => {
         const savedIds = readBookmarks();
         const currentLang = document.documentElement.dataset.uiLanguage || 'en';
-        const dictKey = (currentLang === 'en' || currentLang === 'ar') ? currentLang : 'sw';
+        const dictKey = (currentLang === 'en' || currentLang === 'ar' || currentLang === 'es') ? currentLang : 'sw';
         const t = UI_TRANSLATIONS[dictKey] || UI_TRANSLATIONS.sw;
 
         const mainBtn = document.getElementById('bookmark-toggle');
@@ -1115,7 +1299,7 @@
             const text = copyBtn.dataset.copyText || '';
             const icon = copyBtn.querySelector('.copy-icon');
             const curLang = document.documentElement.dataset.uiLanguage || 'en';
-            const curDictKey = (curLang === 'en' || curLang === 'ar') ? curLang : 'sw';
+            const curDictKey = (curLang === 'en' || curLang === 'ar' || curLang === 'es') ? curLang : 'sw';
             const curT = UI_TRANSLATIONS[curDictKey] || UI_TRANSLATIONS.sw;
             try {
                 await navigator.clipboard.writeText(text);
