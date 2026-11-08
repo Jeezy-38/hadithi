@@ -17,14 +17,22 @@
     ];
 @endphp
 <x-layouts.app :title="$seoTitle" :description="$seoDescription" og-type="article" :canonical="route('hadith.show', $hadith)" :noindex="! $hadith->has_swahili" :json-ld="$seoLd">
-    <div class="reader-shell hadith-reader-shell dua-detail-shell hadith-detail-shell">
+    <div class="reader-shell hadith-reader-shell dua-detail-shell hadith-detail-shell" data-hadith-scope>
         @php
             $shareArabic = trim((string) $hadith->arabic);
             $shareArabicShort = \Illuminate\Support\Str::limit($shareArabic, 320);
             $shareSwahiliShort = \Illuminate\Support\Str::limit($hadith->display_text, 420);
             $shareTitle = "Hadith " . $hadith->number;
             $shareBadge = $hadith->chapter->book->collection->name;
-            $shareRef = $hadith->chapter->book->collection->name . " Na. " . $hadith->number . " (" . $hadith->chapter->book->title_sw . " · " . $hadith->chapter->title_sw . ")";
+            $bookSw = $hadith->chapter->book->titleFor('sw');
+            $bookEn = $hadith->chapter->book->titleFor('en');
+            $shareRef = $hadith->chapter->book->collection->name . " Na. " . $hadith->number . " (" . $bookSw . " · " . $hadith->chapter->title_sw . ")";
+            $shareEnglishShort = \Illuminate\Support\Str::limit((string) ($hadith->english ?: $hadith->display_text), 420);
+            $shareRefEn = $hadith->chapter->book->collection->name . " No. " . $hadith->number . " (" . $bookEn . " · " . $hadith->chapter->title_sw . ")";
+            $shareFormattedEn = "Hadith: " . $shareBadge . " No. " . $hadith->number . "\n\n"
+                . ($shareArabicShort ? $shareArabicShort . "\n\n" : "")
+                . "“" . $shareEnglishShort . "”\n\n"
+                . "Reference: " . $shareRefEn;
             $shareFormatted = "Hadithi: " . $shareBadge . " Na. " . $hadith->number . "\n\n"
                 . ($shareArabicShort ? $shareArabicShort . "\n\n" : "")
                 . "“" . $shareSwahiliShort . "”\n\n"
@@ -75,6 +83,7 @@
                             data-share-sw="{{ $shareSwahiliShort }}"
                             data-share-ref="{{ $shareRef }}"
                             data-share-text="{{ $shareFormatted }}"
+                            data-share-text-en="{{ $shareFormattedEn }}"
                             data-share-url="{{ route('hadith.show', $hadith) }}"
                             title="Shiriki kwenye mitandao mingine">
                             <span class="dropdown-item-icon" aria-hidden="true">
@@ -95,7 +104,9 @@
                             data-sw="{{ \Illuminate\Support\Str::limit($hadith->display_text, 520) }}"
                             data-en="{{ \Illuminate\Support\Str::limit((string) $hadith->english, 520) }}"
                             data-ref="{{ $hadith->chapter->book->collection->name }} · Na. {{ $hadith->number }}"
-                            data-sub="{{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }}"
+                            data-ref-en="{{ $hadith->chapter->book->collection->name }} · No. {{ $hadith->number }}"
+                            data-sub="{{ $bookSw }} · {{ $hadith->chapter->title_sw }}"
+                            data-sub-en="{{ $bookEn }} · {{ $hadith->chapter->title_sw }}"
                             data-number="{{ $hadith->number }}"
                             data-url="{{ route('hadith.show', $hadith) }}"
                             data-logo="{{ asset('images/logo-gold.png') }}"
@@ -195,10 +206,10 @@
             </section>
 
             {{-- 2. Tafsiri ya Kiswahili --}}
-            <section class="reading-section" data-reading="sw" aria-labelledby="label-swahili">
+            <section class="reading-section" data-reading="sw" @unless($hadith->english) data-no-en @endunless aria-labelledby="label-swahili">
                 <div class="section-label-row">
                     @if($hadith->has_swahili)
-                        <span id="label-swahili" class="section-label" data-i18n="pg_h_l_sw">TAFSIRI YA KISWAHILI</span>
+                        <span id="label-swahili" class="section-label" data-i18n="{{ $hadith->english ? 'pg_h_l_sw' : 'pg_h_l_sw_noen' }}">{{ $hadith->english ? 'TAFSIRI YA KISWAHILI' : 'TAFSIRI YA KISWAHILI (Kiingereza bado hakipo)' }}</span>
                     @else
                         <span id="label-swahili" class="section-label" data-i18n="pg_h_l_en_only">TAFSIRI YA KIINGEREZA (Kiswahili bado hakipo)</span>
                     @endif
@@ -261,7 +272,7 @@
                 </div>
                 <div class="source-item">
                     <dt data-i18n="pg_h_bk">Kitabu na Mlango:</dt>
-                    <dd>{{ $hadith->chapter->book->collection->name }} · <span data-i18n="pg_h_no" data-i18n-vars="{{ json_encode(['n' => $hadith->number]) }}">Hadith Na. {{ $hadith->number }}</span> ({{ $hadith->chapter->book->title_sw }} · {{ $hadith->chapter->title_sw }})</dd>
+                    <dd>{{ $hadith->chapter->book->collection->name }} · <span data-i18n="pg_h_no" data-i18n-vars="{{ json_encode(['n' => $hadith->number]) }}">Hadith Na. {{ $hadith->number }}</span> (<span data-reading="sw">{{ $bookSw }}</span><span data-reading="en">{{ $bookEn }}</span> · {{ $hadith->chapter->title_sw }})</dd>
                 </div>
                 <div class="source-item">
                     <dt data-i18n="pg_h_gr">Daraja na Mpokezi:</dt>
@@ -579,14 +590,14 @@
                 copyDirectBtn.addEventListener('click', async function (e) {
                     e.stopPropagation();
                     const shareBtn = document.getElementById('share-hadith');
-                    const textToCopy = shareBtn ? (shareBtn.dataset.shareText + '\n\nSoma zaidi: ' + shareBtn.dataset.shareUrl) : window.location.href;
+                    const textToCopy = shareBtn ? window.baytShareText(shareBtn) : window.location.href;
                     try {
                         await navigator.clipboard.writeText(textToCopy);
                         const label = document.getElementById('reader-copy-label');
                         const icon = document.getElementById('reader-copy-icon');
                         const origLabel = label ? label.textContent : '';
                         const origIcon = icon ? icon.innerHTML : '';
-                        if (label) label.textContent = '✓ Imenakiliwa!';
+                        if (label) label.textContent = (document.documentElement.dataset.readingLanguage === 'en') ? '✓ Copied!' : '✓ Imenakiliwa!';
                         if (icon) icon.innerHTML = '<span style="color:var(--gold);font-weight:700;">✓</span>';
                         setTimeout(() => {
                             if (label) label.textContent = origLabel || 'Nakili Matini';
@@ -606,7 +617,7 @@
                         try {
                             await navigator.share({
                                 title: this.dataset.shareTitle || document.title,
-                                text: `${this.dataset.shareText}\n\nSoma zaidi: ${this.dataset.shareUrl}`,
+                                text: window.baytShareText(this),
                                 url: this.dataset.shareUrl
                             });
                             if (moreDropdown) {
@@ -618,6 +629,24 @@
                 });
             }
         });
+    </script>
+    <script>
+        // Ujumbe wa kushiriki/kunakili unafuata lugha ya hadith (Kiswahili au English)
+        (function () {
+            var root = document.documentElement;
+            var isEn = function () { return root.dataset.readingLanguage === 'en'; };
+            window.baytShareText = function (btn) {
+                var en = isEn() && btn.dataset.shareTextEn;
+                return (en ? btn.dataset.shareTextEn : btn.dataset.shareText) + '\n\n' + (isEn() ? 'Read more' : 'Soma zaidi') + ': ' + btn.dataset.shareUrl;
+            };
+            var sync = function () {
+                var b = document.getElementById('share-hadith');
+                var a = document.getElementById('reader-whatsapp-direct');
+                if (b && a) a.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(window.baytShareText(b));
+            };
+            sync();
+            new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-reading-language'] });
+        })();
     </script>
     <script src="{{ asset('js/share-card.js') }}?v={{ filemtime(public_path('js/share-card.js')) }}" defer></script>
 </x-layouts.app>

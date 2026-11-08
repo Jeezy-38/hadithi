@@ -72,13 +72,12 @@
             <div class="nav-drawer-lang-grid" role="group" aria-label="Lugha ya kusoma hadith">
                 <button type="button" class="drawer-lang-btn" data-lang-val="both">
                     <span class="drawer-lang-main">Kiswahili</span>
-                    <span class="drawer-lang-sub">+ العربية</span>
                 </button>
                 <button type="button" class="drawer-lang-btn" data-lang-val="en">
                     <span class="drawer-lang-main">English</span>
-                    <span class="drawer-lang-sub">+ العربية</span>
                 </button>
             </div>
+            <p class="drawer-lang-note" data-i18n="hadith_lang_note">Kiarabu cha asili kinaonekana kila wakati.</p>
         </div>
 
         <div class="nav-drawer-divider"></div>

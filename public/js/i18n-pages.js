@@ -415,6 +415,7 @@
             pg_lib_author: 'Mkusanyaji:',
             pg_lib_inside: 'Hadithi zilizomo',
             pg_h_l_en_only: "TAFSIRI YA KIINGEREZA (Kiswahili bado hakipo)",
+            pg_h_l_sw_noen: "TAFSIRI YA KISWAHILI (Kiingereza bado hakipo)",
             pg_lib_en_only: "Kiingereza",
             pg_bk_a_malik: "Imam Malik ibn Anas",
             pg_bk_d_malik: "Kitabu cha zamani zaidi cha hadith na fikihi ya watu wa Madina. Kina Kiarabu na Kiingereza tu.",
@@ -886,6 +887,7 @@
             pg_lib_author: 'Compiler:',
             pg_lib_inside: 'Hadiths inside',
             pg_h_l_en_only: "ENGLISH TRANSLATION (no Swahili yet)",
+            pg_h_l_sw_noen: "SWAHILI TRANSLATION (English not available yet)",
             pg_lib_en_only: "English",
             pg_bk_a_malik: "Imam Malik ibn Anas",
             pg_bk_d_malik: "The earliest surviving hadith and fiqh book of the people of Madinah. Arabic and English only.",
@@ -1351,6 +1353,7 @@
             pg_lib_author: 'المؤلف:',
             pg_lib_inside: 'الأحاديث في هذا الكتاب',
             pg_h_l_en_only: "الترجمة الإنجليزية (لا توجد ترجمة سواحلية بعد)",
+            pg_h_l_sw_noen: "الترجمة السواحلية (لا توجد ترجمة إنجليزية بعد)",
             pg_lib_en_only: "English",
             pg_bk_a_malik: "الإمام مالك بن أنس",
             pg_bk_d_malik: "أقدم كتب الحديث والفقه لأهل المدينة. بالعربية والإنجليزية فقط.",
@@ -1437,8 +1440,13 @@
 
     const locale = () => ({ sw: 'sw-TZ', en: 'en-GB', ar: 'ar' }[lang()]);
 
-    const t = (key, vars) => {
-        let s = (D[lang()] && D[lang()][key]);
+    // Lugha ya hadith (tafsiri na vipengele vya hadith): 'en' au 'sw'
+    const hadithLang = () => (document.documentElement.dataset.readingLanguage === 'en' ? 'en' : 'sw');
+    const langFor = el => (el && el.closest && el.closest('[data-hadith-scope]')) ? hadithLang() : lang();
+
+    const t = (key, vars, forced) => {
+        const L = forced || lang();
+        let s = (D[L] && D[L][key]);
         if (s === undefined) s = D.sw[key];
         if (s === undefined) return key;
         if (vars) {
@@ -1462,7 +1470,7 @@
         root.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (!known(key)) return;
-            const v = t(key, readVars(el));
+            const v = t(key, readVars(el), langFor(el));
             if (el.textContent !== v) el.textContent = v;
         });
 
@@ -1470,7 +1478,7 @@
             root.querySelectorAll('[' + attr + ']').forEach(el => {
                 const key = el.getAttribute(attr);
                 if (!known(key)) return;
-                const v = t(key, readVars(el));
+                const v = t(key, readVars(el), langFor(el));
                 if (el.getAttribute(target) !== v) el.setAttribute(target, v);
             });
         });
@@ -1486,11 +1494,11 @@
 
     let lastLang = null;
     const onLangMaybeChanged = () => {
-        const cur = lang();
+        const cur = lang() + '|' + hadithLang();
         apply();
         if (cur !== lastLang) {
             lastLang = cur;
-            document.dispatchEvent(new CustomEvent('bayt:lang', { detail: { lang: cur } }));
+            document.dispatchEvent(new CustomEvent('bayt:lang', { detail: { lang: lang(), hadith: hadithLang() } }));
         }
     };
 
@@ -1499,7 +1507,7 @@
 
         new MutationObserver(onLangMaybeChanged).observe(document.documentElement, {
             attributes: true,
-            attributeFilter: ['data-ui-language']
+            attributeFilter: ['data-ui-language', 'data-reading-language']
         });
 
         const main = document.querySelector('main') || document.body;

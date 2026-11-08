@@ -162,6 +162,7 @@
             auth_fineprint: 'Hatutachapisha chochote kwenye akaunti zako. Tunatumia jina, email na picha yako tu.',
             lang_label: 'Lugha ya hadith:',
             ui_lang_label: 'Lugha ya app:',
+            hadith_lang_note: 'Kiarabu cha asili kinaonekana kila wakati.',
             brand_sub: 'MAKTABA YA ELIMU',
             theme_dark: 'Giza',
             theme_light: 'Nuru',
@@ -338,6 +339,7 @@
             auth_fineprint: 'We never post to your accounts. We only use your name, email and photo.',
             lang_label: 'Hadith language:',
             ui_lang_label: 'App language:',
+            hadith_lang_note: 'The Arabic original is always shown.',
             brand_sub: 'KNOWLEDGE LIBRARY',
             theme_dark: 'Dark',
             theme_light: 'Light',
@@ -514,6 +516,7 @@
             auth_fineprint: 'لن ننشر أي شيء في حساباتك. نستخدم اسمك وبريدك وصورتك فقط.',
             lang_label: 'لغة الحديث:',
             ui_lang_label: 'لغة التطبيق:',
+            hadith_lang_note: 'النص العربي الأصلي يظهر دائمًا.',
             brand_sub: 'مكتبة المعرفة',
             theme_dark: 'داكن',
             theme_light: 'فاتح',
@@ -640,6 +643,8 @@
     const applyTranslations = lang => {
         const dictKey = (lang === 'en' || lang === 'ar') ? lang : 'sw';
         const t = UI_TRANSLATIONS[dictKey] || UI_TRANSLATIONS.sw;
+        // Vipengele vya hadith (kadi, msomaji, hadithi ya leo) vinafuata lugha ya hadith, si lugha ya app
+        const tH = UI_TRANSLATIONS[document.documentElement.dataset.readingLanguage === 'en' ? 'en' : 'sw'] || UI_TRANSLATIONS.sw;
 
         // 1. Text direction & HTML lang
         const targetDir = (lang === 'ar') ? 'rtl' : 'ltr';
@@ -654,14 +659,15 @@
         // 2. Elements with data-i18n attributes
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (t[key]) {
+            const tt = el.closest('[data-hadith-scope]') ? tH : t;
+            if (tt[key]) {
                 if (key.includes('title') || key.includes('desc') || key.includes('h1') || key.includes('eyebrow') || key.includes('caption')) {
-                    if (el.innerHTML !== t[key]) {
-                        el.innerHTML = t[key];
+                    if (el.innerHTML !== tt[key]) {
+                        el.innerHTML = tt[key];
                     }
                 } else {
-                    if (el.textContent !== t[key]) {
-                        el.textContent = t[key];
+                    if (el.textContent !== tt[key]) {
+                        el.textContent = tt[key];
                     }
                 }
             }
@@ -791,13 +797,13 @@
         // 9. Hadith Cards on catalog / bookmarks
         document.querySelectorAll('.library-shell:not(.quran-shell) .hadith-card, #bookmarks-list .hadith-card').forEach(card => {
             const readBtnSpan = card.querySelector('.read-btn span');
-            if (readBtnSpan && readBtnSpan.textContent !== t.card_read) setTxt(readBtnSpan, t.card_read);
+            if (readBtnSpan && readBtnSpan.textContent !== tH.card_read) setTxt(readBtnSpan, tH.card_read);
 
             const cardSrc = card.querySelector('.card-source');
             if (cardSrc && (cardSrc.textContent.includes('Chanzo:') || cardSrc.textContent.includes('Source:') || cardSrc.textContent.includes('المصدر:'))) {
                 const parts = cardSrc.textContent.split('·');
                 const srcPart = parts[0]?.replace(/Chanzo:|Source:|المصدر:/g, '').trim() || '';
-                const expectedSrc = `${t.card_source_prefix}${srcPart}`;
+                const expectedSrc = `${tH.card_source_prefix}${srcPart}`;
                 if (cardSrc.textContent !== expectedSrc) cardSrc.textContent = expectedSrc;
             }
 
@@ -805,7 +811,7 @@
             if (cardLoc) {
                 const match = cardLoc.textContent.match(/(\d+)\D+(\d+)/);
                 if (match) {
-                    const expectedLoc = `${t.card_book} ${match[1]} · ${t.card_chapter} ${match[2]}`;
+                    const expectedLoc = `${tH.card_book} ${match[1]} · ${tH.card_chapter} ${match[2]}`;
                     if (cardLoc.textContent !== expectedLoc) cardLoc.textContent = expectedLoc;
                 }
             }
@@ -814,7 +820,7 @@
             if (hadithNum) {
                 const numMatch = hadithNum.textContent.match(/[\w\d]+$/);
                 if (numMatch) {
-                    const expectedNum = `${t.card_no}${numMatch[0]}`;
+                    const expectedNum = `${tH.card_no}${numMatch[0]}`;
                     if (hadithNum.textContent !== expectedNum) hadithNum.textContent = expectedNum;
                 }
             }
@@ -824,56 +830,56 @@
         const hadithReader = document.querySelector('.hadith-reader-shell, .reader-shell:not(.dua-detail-shell):not(.quran-reader-shell):not(.tasbih-shell):not(.bookmarks-shell):not(.lc-shell)');
         if (hadithReader) {
             const backLinkSpan = hadithReader.querySelector('.back-link span:last-child');
-            if (backLinkSpan && !backLinkSpan.hasAttribute('data-i18n') && backLinkSpan.textContent !== t.reader_back) backLinkSpan.textContent = t.reader_back;
+            if (backLinkSpan && !backLinkSpan.hasAttribute('data-i18n') && backLinkSpan.textContent !== tH.reader_back) backLinkSpan.textContent = tH.reader_back;
             const shareBtnText = hadithReader.querySelector('#share-hadith .btn-text');
-            if (shareBtnText) setTxt(shareBtnText, t.btn_share);
+            if (shareBtnText) setTxt(shareBtnText, tH.btn_share);
             const bmLinkSpan = hadithReader.querySelector('.bookmarks-link span:first-child');
-            if (bmLinkSpan) setTxt(bmLinkSpan, t.btn_my_bookmarks);
+            if (bmLinkSpan) setTxt(bmLinkSpan, tH.btn_my_bookmarks);
 
             const audioTitle = hadithReader.querySelector('.audio-header-title h2');
-            if (audioTitle) setTxt(audioTitle, t.audio_title);
+            if (audioTitle) setTxt(audioTitle, tH.audio_title);
             const audioBadge = hadithReader.querySelector('#audio-badge');
-            if (audioBadge) setTxt(audioBadge, t.audio_badge_hd);
+            if (audioBadge) setTxt(audioBadge, tH.audio_badge_hd);
             const audioDesc = hadithReader.querySelector('.audio-desc');
-            if (audioDesc) setTxt(audioDesc, t.audio_desc);
+            if (audioDesc) setTxt(audioDesc, tH.audio_desc);
 
             const playBtnLabel = hadithReader.querySelector('#audio-play span:last-child, #audio-play .btn-audio-label');
-            if (playBtnLabel) setTxt(playBtnLabel, t.audio_play);
+            if (playBtnLabel) setTxt(playBtnLabel, tH.audio_play);
             const pauseBtnLabel = hadithReader.querySelector('#audio-pause span:last-child, #audio-pause .btn-audio-label');
-            if (pauseBtnLabel) setTxt(pauseBtnLabel, t.audio_pause);
+            if (pauseBtnLabel) setTxt(pauseBtnLabel, tH.audio_pause);
             const stopBtnLabel = hadithReader.querySelector('#audio-stop span:last-child, #audio-stop .btn-audio-label');
-            if (stopBtnLabel) setTxt(stopBtnLabel, t.audio_stop);
+            if (stopBtnLabel) setTxt(stopBtnLabel, tH.audio_stop);
             const bothBtnLabel = hadithReader.querySelector('#audio-play-both .btn-audio-label');
-            if (bothBtnLabel && t.audio_play_both) setTxt(bothBtnLabel, t.audio_play_both);
+            if (bothBtnLabel && tH.audio_play_both) setTxt(bothBtnLabel, tH.audio_play_both);
 
             const audioOptLabels = hadithReader.querySelectorAll('.audio-options label span');
-            if (audioOptLabels[0]) setTxt(audioOptLabels[0], t.audio_lang);
-            if (audioOptLabels[1]) setTxt(audioOptLabels[1], t.audio_voice);
-            if (audioOptLabels[2]) setTxt(audioOptLabels[2], t.audio_speed);
-            if (audioOptLabels[3] && t.audio_sequence) setTxt(audioOptLabels[3], t.audio_sequence);
+            if (audioOptLabels[0]) setTxt(audioOptLabels[0], tH.audio_lang);
+            if (audioOptLabels[1]) setTxt(audioOptLabels[1], tH.audio_voice);
+            if (audioOptLabels[2]) setTxt(audioOptLabels[2], tH.audio_speed);
+            if (audioOptLabels[3] && tH.audio_sequence) setTxt(audioOptLabels[3], tH.audio_sequence);
             const autoNextLabel = hadithReader.querySelector('.audio-autonext span');
-            if (autoNextLabel && t.audio_autonext) setTxt(autoNextLabel, t.audio_autonext);
+            if (autoNextLabel && tH.audio_autonext) setTxt(autoNextLabel, tH.audio_autonext);
 
             const secArabic = hadithReader.querySelector('section[data-reading="ar"] .section-label');
-            if (secArabic) setTxt(secArabic, t.label_arabic);
+            if (secArabic) setTxt(secArabic, tH.label_arabic);
             const secSwahili = hadithReader.querySelector('section[data-reading="sw"] .section-label');
-            if (secSwahili) setTxt(secSwahili, t.label_swahili);
+            if (secSwahili) setTxt(secSwahili, tH.label_swahili);
             const secEnglish = hadithReader.querySelector('section[data-reading="en"] .section-label');
-            if (secEnglish) setTxt(secEnglish, t.label_english);
+            if (secEnglish) setTxt(secEnglish, tH.label_english);
 
             const sourceHeading = hadithReader.querySelector('#source-heading');
-            if (sourceHeading) setTxt(sourceHeading, t.source_heading);
+            if (sourceHeading) setTxt(sourceHeading, tH.source_heading);
             const relatedHeading = hadithReader.querySelector('.related-header h2');
-            if (relatedHeading) setTxt(relatedHeading, t.related_heading);
+            if (relatedHeading) setTxt(relatedHeading, tH.related_heading);
 
             const sourceDts = hadithReader.querySelectorAll('.source-item dt');
-            if (sourceDts[0]) setTxt(sourceDts[0], t.source_ref);
-            if (sourceDts[1]) setTxt(sourceDts[1], t.source_book_chapter);
-            if (sourceDts[2]) setTxt(sourceDts[2], t.source_numbering);
-            if (sourceDts[3]) setTxt(sourceDts[3], t.source_compare);
-            if (sourceDts[4]) setTxt(sourceDts[4], t.source_arabic);
-            if (sourceDts[5]) setTxt(sourceDts[5], t.source_translation);
-            if (sourceDts[6]) setTxt(sourceDts[6], t.source_license);
+            if (sourceDts[0]) setTxt(sourceDts[0], tH.source_ref);
+            if (sourceDts[1]) setTxt(sourceDts[1], tH.source_book_chapter);
+            if (sourceDts[2]) setTxt(sourceDts[2], tH.source_numbering);
+            if (sourceDts[3]) setTxt(sourceDts[3], tH.source_compare);
+            if (sourceDts[4]) setTxt(sourceDts[4], tH.source_arabic);
+            if (sourceDts[5]) setTxt(sourceDts[5], tH.source_translation);
+            if (sourceDts[6]) setTxt(sourceDts[6], tH.source_license);
         }
 
         // 12. Bookmarks page

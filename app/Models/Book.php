@@ -19,4 +19,16 @@ class Book extends Model
     {
         return $this->hasMany(Chapter::class);
     }
+
+    /** Jina la kitabu kwa lugha ya hadith: 'en' = Kiingereza, nyingine = Kiswahili (kama lilivyo). */
+    public function titleFor(string $lang): string
+    {
+        $title = (string) $this->title_sw;
+        if ($lang !== 'en') {
+            return $title;
+        }
+        $clean = trim((string) preg_replace('/\s*\(Kiingereza\)\s*$/u', '', $title));
+
+        return (string) (config('book_titles_en')[$clean] ?? $clean);
+    }
 }

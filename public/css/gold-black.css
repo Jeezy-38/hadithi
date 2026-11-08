@@ -2849,6 +2849,11 @@ html[data-reading-language="ar"] [data-reading="en"] {
     display: none;
 }
 
+/* Hakuna tafsiri ya Kiingereza: onyesha Kiswahili badala ya kuacha tupu */
+html[data-reading-language="en"] [data-reading="sw"][data-no-en] {
+    display: block;
+}
+
 html[data-reading-language="en"] #english-drawer {
     border-color: rgba(224, 200, 104, 0.35);
 }
@@ -11030,3 +11035,6 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible),summary:focus:not(:
 @media (min-width:861px) and (max-width:1288px){
 .site-header .header-container,.hero,.library-summary{width:calc(100% - 48px)}
 }
+
+/* Maelezo madogo chini ya chaguo la lugha ya hadith */
+.drawer-lang-note{margin:8px 2px 0;font-size:.74rem;line-height:1.4;color:var(--text-muted)}

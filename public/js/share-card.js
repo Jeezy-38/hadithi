@@ -136,9 +136,11 @@
         btn.disabled = true;
         if (label) label.textContent = T('pg_sh_busy');
         try {
+            const isEnUi = () => document.documentElement.dataset.readingLanguage === 'en';
             const blob = await render({
                 ar: btn.dataset.arabic || '', sw: btn.dataset.sw || '', en: btn.dataset.en || '',
-                ref: btn.dataset.ref || '', sub: btn.dataset.sub || '', logo: btn.dataset.logo,
+                ref: (isEnUi() && btn.dataset.refEn) || btn.dataset.ref || '',
+                sub: (isEnUi() && btn.dataset.subEn) || btn.dataset.sub || '', logo: btn.dataset.logo,
                 host: (btn.dataset.url || location.href).replace(/^https?:\/\//, ''),
             });
             if (!blob) throw new Error('empty');

@@ -57,7 +57,7 @@
                     <div class="rawdah-layout-container">
                         {{-- 1. Hero Mehrab Spotlight Card --}}
                         @if($todayHadith)
-                            <section class="rawdah-mehrab-hero" aria-label="Hadithi ya Leo">
+                            <section class="rawdah-mehrab-hero" aria-label="Hadithi ya Leo" data-hadith-scope>
                                 <div class="rawdah-arch-watermark" aria-hidden="true">
                                     <svg viewBox="0 0 120 120" width="180" height="180" fill="none">
                                         <path d="M10 110 V50 Q10 10 60 10 Q110 10 110 50 V110" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3"/>
@@ -83,9 +83,14 @@
 
                                 {{-- Swahili Translation --}}
                                 <div class="rawdah-swahili-box">
-                                    <p class="rawdah-swahili-text">
-                                        "{{ Str::limit($todayHadith->swahili, 280) }}"
+                                    <p class="rawdah-swahili-text" data-reading="sw" @unless($todayHadith->english) data-no-en @endunless>
+                                        "{{ Str::limit($todayHadith->swahili ?: $todayHadith->display_text, 280) }}"
                                     </p>
+                                    @if($todayHadith->english)
+                                        <p class="rawdah-swahili-text" data-reading="en" lang="en">
+                                            "{{ Str::limit($todayHadith->english, 280) }}"
+                                        </p>
+                                    @endif
                                 </div>
 
                                 {{-- Mdhamini wa Leo --}}
@@ -114,7 +119,7 @@
                                             <span aria-hidden="true">→</span>
                                         </a>
 
-                                        <button type="button" class="rawdah-btn-icon" id="rawdah-copy-btn" title="Nakili hadithi" data-copy="{{ $todayHadith->swahili }} — {{ $todayHadith->arabic }} ({{ $todayHadith->reference }})">
+                                        <button type="button" class="rawdah-btn-icon" id="rawdah-copy-btn" title="Nakili hadithi" data-copy="{{ $todayHadith->swahili }} — {{ $todayHadith->arabic }} ({{ $todayHadith->reference }})" data-copy-en="{{ $todayHadith->english ?: $todayHadith->swahili }} — {{ $todayHadith->arabic }} ({{ $todayHadith->reference }})">
                                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -123,8 +128,9 @@
 
                                         @php
                                             $shareText = urlencode("Hadithi ya Leo kutoka Bayt Ul Hadith:\n\n\"" . Str::limit($todayHadith->swahili, 220) . "\"\n\nSoma zaidi: " . route('hadith.show', $todayHadith));
+                                            $shareTextEn = urlencode("Hadith of the Day from Bayt Ul Hadith:\n\n\"" . Str::limit($todayHadith->english ?: $todayHadith->swahili, 220) . "\"\n\nRead more: " . route('hadith.show', $todayHadith));
                                         @endphp
-                                        <a href="https://wa.me/?text={{ $shareText }}" target="_blank" rel="noopener noreferrer" class="rawdah-btn-icon" title="Shiriki WhatsApp">
+                                        <a href="https://wa.me/?text={{ $shareText }}" data-href-sw="https://wa.me/?text={{ $shareText }}" data-href-en="https://wa.me/?text={{ $shareTextEn }}" id="rawdah-wa-btn" target="_blank" rel="noopener noreferrer" class="rawdah-btn-icon" title="Shiriki WhatsApp">
                                             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                                 <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm5.78 14.28c-.24.68-1.39 1.3-1.92 1.38-.49.08-.94.12-2.73-.61-2.28-.93-3.76-3.23-3.87-3.38-.11-.15-.93-1.24-.93-2.37s.59-1.68.8-1.91c.21-.23.46-.29.61-.29.15 0 .31 0 .44.01.14.01.33-.05.51.39.19.46.65 1.58.71 1.7.06.12.09.26.02.41-.08.15-.12.24-.23.38-.12.14-.25.31-.35.42-.12.12-.24.25-.1.49.14.24.63 1.04 1.35 1.68.93.83 1.71 1.08 1.95 1.2.24.12.38.1.52-.06.14-.17.61-.71.77-.95.16-.24.33-.2.55-.12.22.08 1.41.67 1.65.79.24.12.4.18.46.28.06.11.06.63-.18 1.31z"/>
                                             </svg>
@@ -344,7 +350,7 @@
                     @endif
 
                     @forelse($hadiths as $hadith)
-                        <article class="hadith-card" wire:key="hadith-{{ $hadith->id }}">
+                        <article class="hadith-card" data-hadith-scope wire:key="hadith-{{ $hadith->id }}">
                             <div class="card-top">
                                 <span class="badge badge-{{ $hadith->chapter->book->collection->slug }}">
                                     {{ $hadith->chapter->book->collection->name }}
@@ -357,7 +363,7 @@
                                 <div data-reading="ar" class="arabic-box">
                                     <p class="arabic excerpt" lang="ar" dir="rtl">{{ $hadith->arabic }}</p>
                                 </div>
-                                <p data-reading="sw" lang="{{ $hadith->has_swahili ? 'sw' : 'en' }}" class="translation swahili-text excerpt">
+                                <p data-reading="sw" @unless($hadith->english) data-no-en @endunless lang="{{ $hadith->has_swahili ? 'sw' : 'en' }}" class="translation swahili-text excerpt">
                                     @unless($hadith->has_swahili)<span class="en-only-tag" data-i18n="pg_lib_en_only">English</span> @endunless{!! $highlight($hadith->display_text, $search) !!}
                                 </p>
                                 @if($hadith->english)
@@ -417,14 +423,24 @@
 
     <script>
         (function() {
+            function syncRawdahShare() {
+                const wa = document.getElementById('rawdah-wa-btn');
+                if (!wa) return;
+                const isEn = document.documentElement.dataset.readingLanguage === 'en';
+                wa.href = (isEn && wa.dataset.hrefEn) || wa.dataset.hrefSw || wa.href;
+            }
+            new MutationObserver(syncRawdahShare).observe(document.documentElement, { attributes: true, attributeFilter: ['data-reading-language'] });
+
             function initRawdahHero() {
+                syncRawdahShare();
                 const copyBtn = document.getElementById('rawdah-copy-btn');
 
                 if (copyBtn && !copyBtn.dataset.bound) {
                     copyBtn.dataset.bound = '1';
                     copyBtn.addEventListener('click', function(e) {
                         e.preventDefault();
-                        const text = copyBtn.getAttribute('data-copy');
+                        const isEn = document.documentElement.dataset.readingLanguage === 'en';
+                        const text = (isEn && copyBtn.getAttribute('data-copy-en')) || copyBtn.getAttribute('data-copy');
                         if (navigator.clipboard) {
                             navigator.clipboard.writeText(text).then(function() {
                                 const originalHTML = copyBtn.innerHTML;
