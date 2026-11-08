@@ -80,8 +80,9 @@ class AiResearchController extends Controller
         $maxTokens = (int) config('services.ai.max_tokens', 800);
 
         if ($provider === 'gemini') {
+            $model = config('services.ai.model') ?: 'gemini-flash-lite-latest';
             $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/'.$model.':generateContent?key='.$key;
-            $res = Http::timeout(30)->post($endpoint, [
+            $payload = [
                 'systemInstruction' => [
                     'parts' => [['text' => $system]],
                 ],
@@ -97,7 +98,15 @@ class AiResearchController extends Controller
                     'maxOutputTokens' => $maxTokens,
                     'temperature' => 0.2,
                 ],
-            ]);
+            ];
+
+            $res = Http::timeout(30)->post($endpoint, $payload);
+
+            // Fallback to gemini-flash-lite-latest if spike/error on primary model
+            if (! $res->ok() && $model !== 'gemini-flash-lite-latest') {
+                $fallbackEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent?key='.$key;
+                $res = Http::timeout(30)->post($fallbackEndpoint, $payload);
+            }
 
             if (! $res->ok()) {
                 throw new \RuntimeException('Gemini API '.$res->status().': '.Str::limit($res->body(), 300));

@@ -88,8 +88,8 @@ return [
     'ai' => [
         'provider' => env('AI_PROVIDER', 'gemini'),
         'key' => env('GEMINI_API_KEY', env('AI_API_KEY')),
-        'model' => env('AI_MODEL', 'gemini-1.5-flash'),
-        'daily_limit' => (int) env('AI_DAILY_LIMIT', 25),
+        'model' => env('AI_MODEL', 'gemini-flash-lite-latest'),
+        'daily_limit' => (int) env('AI_DAILY_LIMIT', 30),
         'max_tokens' => (int) env('AI_MAX_TOKENS', 800),
     ],
 
