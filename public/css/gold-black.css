@@ -3003,6 +3003,32 @@ html[data-reading-language="en"] #english-drawer {
     border-color: rgba(224, 200, 104, 0.35);
 }
 
+/* ==========================================================================
+   Bilingual / Study Mode (Hali ya Ulinganisho)
+   ========================================================================== */
+html[data-bilingual="true"] [data-reading="sw"],
+html[data-bilingual="true"] [data-reading="en"] {
+    display: block !important;
+}
+
+html[data-bilingual="true"] .hadith-texts [data-reading="en"] {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-subtle);
+    color: var(--text-secondary);
+}
+
+html[data-bilingual="true"] .hadith-texts [data-reading="en"]::before {
+    content: "English: ";
+    font-weight: 700;
+    font-style: normal;
+    color: var(--gold);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+}
+
 /* Skip link */
 .skip-link {
     position: absolute;
@@ -4055,6 +4081,21 @@ a, button, select, input {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 6px !important;
+    }
+
+    .nav-drawer-lang-grid--3 {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .drawer-lang-flag {
+        font-size: 15px;
+        line-height: 1;
+        margin-bottom: 3px;
+    }
+
+    .nav-drawer-bilingual-btn {
+        width: 100% !important;
+        cursor: pointer !important;
     }
 
     .drawer-lang-btn {

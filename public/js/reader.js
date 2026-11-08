@@ -1217,6 +1217,11 @@
         btn.addEventListener('click', () => {
             const targetUi = btn.getAttribute('data-ui-val');
             if (targetUi) {
+                if (targetUi === 'sw') {
+                    setLanguage('both');
+                } else if (targetUi === 'en') {
+                    setLanguage('en');
+                }
                 setUiLanguage(targetUi);
                 if (langSwitcher) {
                     langSwitcher.classList.remove('is-open');
@@ -1225,6 +1230,33 @@
             }
         });
     });
+
+    // Bilingual / Study Mode Toggle in Drawer
+    const bilingualBtn = document.getElementById('drawer-bilingual-btn');
+    const bilingualBadge = document.getElementById('drawer-bilingual-badge');
+    let isBilingualActive = false;
+    try { isBilingualActive = localStorage.getItem('hadith-bilingual') === '1'; } catch (_) {}
+
+    const applyBilingualState = (active) => {
+        if (active) {
+            document.documentElement.setAttribute('data-bilingual', 'true');
+        } else {
+            document.documentElement.removeAttribute('data-bilingual');
+        }
+        if (bilingualBtn) bilingualBtn.setAttribute('aria-checked', active ? 'true' : 'false');
+        if (bilingualBadge) bilingualBadge.classList.toggle('is-on', active);
+    };
+
+    applyBilingualState(isBilingualActive);
+
+    if (bilingualBtn) {
+        bilingualBtn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-bilingual') === 'true';
+            const next = !current;
+            try { localStorage.setItem('hadith-bilingual', next ? '1' : '0'); } catch (_) {}
+            applyBilingualState(next);
+        });
+    }
 
     // Safely re-apply translations when Livewire mutates results or user navigates
     if (mainEl && window.MutationObserver) {

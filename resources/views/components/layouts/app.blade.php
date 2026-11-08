@@ -52,6 +52,9 @@
                 if (ui === 'ar') document.documentElement.setAttribute('dir', 'rtl');
                 var rd = localStorage.getItem('hadith-language');
                 document.documentElement.setAttribute('data-title-lang', (ui === 'es' || ui === 'ar') ? ui : (rd === 'en' ? 'en' : (ui === 'sw' ? 'sw' : 'en')));
+                if (localStorage.getItem('hadith-bilingual') === '1') {
+                    document.documentElement.setAttribute('data-bilingual', 'true');
+                }
             } catch (e) {
                 document.documentElement.setAttribute('data-theme', 'dark');
             }
