@@ -111,6 +111,37 @@
                     <a href="{{ route('support') }}" class="{{ request()->routeIs('support*') ? 'active' : '' }}" data-i18n="pg_nav_support">Changia</a>
                 </div>
                 <div class="nav-controls">
+                    {{-- Uteuzi wa Lugha (Language Switcher) --}}
+                    <div class="lang-switcher-dropdown" id="lang-switcher">
+                        <button type="button" class="lang-switcher-btn" id="lang-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Chagua Lugha" title="Chagua Lugha / Language">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lang-globe-icon" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                            <span class="lang-current-label" id="lang-current-label">EN</span>
+                            <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lang-chevron" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="lang-dropdown-menu" id="lang-dropdown-menu" role="menu" aria-labelledby="lang-menu-btn">
+                            <button type="button" class="lang-menu-item" data-ui-val="sw" role="menuitem">
+                                <span class="lang-flag" aria-hidden="true">🇹🇿</span>
+                                <span class="lang-name">Kiswahili</span>
+                                <span class="lang-check-icon" aria-hidden="true">✓</span>
+                            </button>
+                            <button type="button" class="lang-menu-item" data-ui-val="en" role="menuitem">
+                                <span class="lang-flag" aria-hidden="true">🇬🇧</span>
+                                <span class="lang-name">English</span>
+                                <span class="lang-check-icon" aria-hidden="true">✓</span>
+                            </button>
+                            <button type="button" class="lang-menu-item" data-ui-val="ar" role="menuitem">
+                                <span class="lang-flag" aria-hidden="true">🇸🇦</span>
+                                <span class="lang-name" lang="ar">العربية</span>
+                                <span class="lang-check-icon" aria-hidden="true">✓</span>
+                            </button>
+                        </div>
+                    </div>
                     <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Badili mwonekano wa giza au mwanga" title="Badili mwonekano (Giza / Nuru)">
                         <span class="theme-icon sun-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
