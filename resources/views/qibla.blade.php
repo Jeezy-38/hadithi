@@ -177,14 +177,14 @@
                 {{-- Maelekezo Mafupi ya Moja kwa Moja --}}
                 <div class="qibla-minimal-hint">
                     <span class="hint-bullet" aria-hidden="true">✦</span>
-                    <span>Ukiwa Dar es Salaam, Qibla ipo Kaskazini moja kwa moja (North 0° - 1°). Elekeza simu yako Kaskazini.</span>
+                    <span data-i18n="pg_qb_note">Ukiwa Dar es Salaam, Qibla ipo Kaskazini moja kwa moja (North 0° - 1°). Elekeza simu yako Kaskazini.</span>
                 </div>
 
                 {{-- Kitufe cha Sensorer ya iOS Iwapo Inahitajika --}}
                 <div id="sensor-permission-wrap" class="sensor-action-wrap" style="display: none;">
                     <button type="button" id="btn-activate-sensor" class="btn-sensor-activate">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="12 8 8 16 16 16"/></svg>
-                        <span>Washa Dira Moja kwa Moja</span>
+                        <span data-i18n="pg_qb_live">Washa Dira Moja kwa Moja</span>
                     </button>
                 </div>
             </div>

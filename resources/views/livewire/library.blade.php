@@ -196,7 +196,7 @@
                                                 @endif
                                                 @if(!empty($meta['author']))
                                                     <p class="rawdah-book-author">
-                                                        {{ $meta['author'] }}@if(!empty($meta['desc'])) · {{ $meta['desc'] }}@endif
+                                                        <span data-i18n="pg_bk_a_{{ $item->slug }}">{{ $meta['author'] }}</span>@if(!empty($meta['desc'])) · <span data-i18n="pg_bk_d_{{ $item->slug }}">{{ $meta['desc'] }}</span>@endif
                                                     </p>
                                                 @endif
                                             </div>

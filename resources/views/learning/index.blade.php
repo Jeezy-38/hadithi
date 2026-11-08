@@ -44,7 +44,7 @@
                     @foreach($courses as $c)
                         @php $d = (int) ($done[$c->id] ?? 0); $pct = $c->lessons ? min(100, (int) round($d / $c->lessons * 100)) : 0; @endphp
                         <a class="lc-course" href="{{ route('learning.course', $c->id) }}">
-                            <span class="lc-course-title">{{ $c->title_sw }}</span>
+                            <span class="lc-course-title">{!! \App\Support\TitleI18n::bookHtml($c->title_sw, $c->title_ar ?? null) !!}</span>
                             <span class="lc-course-meta" data-i18n="pg_lc_lessons" data-i18n-vars='{"n":{{ (int) $c->lessons }}}'>{{ $c->lessons }} masomo</span>
                             @if($stats)
                                 <span class="lc-bar" role="progressbar" aria-valuenow="{{ $pct }}" aria-valuemin="0" aria-valuemax="100"><span style="width: {{ $pct }}%"></span></span>

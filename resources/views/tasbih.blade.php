@@ -12,32 +12,32 @@
         <div class="tasbih-app-card">
             {{-- Presets za Dhikr --}}
             <div class="tasbih-presets-wrap" role="group" aria-label="Chagua Dhikr">
-                <button type="button" class="tasbih-preset-btn active" data-dhikr-ar="سُبْحَانَ اللَّهِ" data-dhikr-sw="Subhaanallaah" data-meaning="Kutakasika ni kwa Mwenyezi Mungu" data-target="33">
+                <button type="button" class="tasbih-preset-btn active" data-dhikr-ar="سُبْحَانَ اللَّهِ" data-dhikr-sw="Subhaanallaah" data-meaning="Kutakasika ni kwa Mwenyezi Mungu" data-meaning-key="pg_ts_m1" data-target="33">
                     <span class="preset-ar font-arabic">سُبْحَانَ اللَّهِ</span>
                     <span class="preset-sw">Subhaanallaah</span>
                     <span class="preset-target">33</span>
                 </button>
-                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="الْحَمْدُ لِلَّهِ" data-dhikr-sw="Alhamdulillaah" data-meaning="Sifa zote njema ni za Mwenyezi Mungu" data-target="33">
+                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="الْحَمْدُ لِلَّهِ" data-dhikr-sw="Alhamdulillaah" data-meaning="Sifa zote njema ni za Mwenyezi Mungu" data-meaning-key="pg_ts_m2" data-target="33">
                     <span class="preset-ar font-arabic">الْحَمْدُ لِلَّهِ</span>
                     <span class="preset-sw">Alhamdulillaah</span>
                     <span class="preset-target">33</span>
                 </button>
-                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="اللَّهُ أَكْبَرُ" data-dhikr-sw="Allaahu Akbar" data-meaning="Mwenyezi Mungu ni Mkubwa zaidi" data-target="34">
+                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="اللَّهُ أَكْبَرُ" data-dhikr-sw="Allaahu Akbar" data-meaning="Mwenyezi Mungu ni Mkubwa zaidi" data-meaning-key="pg_ts_m3" data-target="34">
                     <span class="preset-ar font-arabic">اللَّهُ أَكْبَرُ</span>
                     <span class="preset-sw">Allaahu Akbar</span>
                     <span class="preset-target">34</span>
                 </button>
-                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="أَسْتَغْفِرُ اللَّهَ" data-dhikr-sw="Astaghfirullaah" data-meaning="Ninamuomba Mwenyezi Mungu msamaha" data-target="100">
+                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="أَسْتَغْفِرُ اللَّهَ" data-dhikr-sw="Astaghfirullaah" data-meaning="Ninamuomba Mwenyezi Mungu msamaha" data-meaning-key="pg_ts_m4" data-target="100">
                     <span class="preset-ar font-arabic">أَسْتَغْفِرُ اللَّهَ</span>
                     <span class="preset-sw">Astaghfirullaah</span>
                     <span class="preset-target">100</span>
                 </button>
-                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="لاَ إِلَهَ إِلاَّ اللَّهُ" data-dhikr-sw="Laa ilaaha illallaah" data-meaning="Hapana mola apasaye kuabudiwa ila Allah" data-target="100">
+                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="لاَ إِلَهَ إِلاَّ اللَّهُ" data-dhikr-sw="Laa ilaaha illallaah" data-meaning="Hapana mola apasaye kuabudiwa ila Allah" data-meaning-key="pg_ts_m5" data-target="100">
                     <span class="preset-ar font-arabic">لاَ إِلَهَ إِلاَّ اللَّهُ</span>
                     <span class="preset-sw">Laa ilaaha illallaah</span>
                     <span class="preset-target">100</span>
                 </button>
-                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ" data-dhikr-sw="Salawaat 'alan-Nabiy" data-meaning="Ewe Mwenyezi Mungu mshushie rehema Mtume Muhammad" data-target="100">
+                <button type="button" class="tasbih-preset-btn" data-dhikr-ar="اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ" data-dhikr-sw="Salawaat 'alan-Nabiy" data-meaning="Ewe Mwenyezi Mungu mshushie rehema Mtume Muhammad" data-meaning-key="pg_ts_m6" data-target="100">
                     <span class="preset-ar font-arabic">صَلِّ عَلَى النَّبِيِّ</span>
                     <span class="preset-sw">Salawat</span>
                     <span class="preset-target">100</span>
@@ -116,9 +116,9 @@
 
                 <div class="tasbih-actions-group">
                     <select id="tasbih-sound-style" class="tasbih-sound-select" aria-label="Mtindo wa Sauti" title="Chagua mtindo wa sauti ya mbofyo">
-                        <option value="bead">Mlio wa Tasbihi</option>
-                        <option value="drop">Tone la Maji</option>
-                        <option value="chime">Kengele Mwanana</option>
+                        <option data-i18n="pg_ts_s1" value="bead">Mlio wa Tasbihi</option>
+                        <option data-i18n="pg_ts_s2" value="drop">Tone la Maji</option>
+                        <option data-i18n="pg_ts_s3" value="chime">Kengele Mwanana</option>
                     </select>
                     <button type="button" id="tasbih-sound-toggle" class="control-toggle-btn active" title="Sauti ya mbofyo">
                         <svg id="sound-icon-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -156,7 +156,7 @@
             </div>
 
             <div class="tasbih-footer-stats">
-                <span>Jumla ya Dhikr Zote zilizohifadhiwa: <strong id="tasbih-lifetime-val">0</strong></span>
+                <span><span data-i18n="pg_ts_total">Jumla ya Dhikr Zote zilizohifadhiwa:</span> <strong id="tasbih-lifetime-val">0</strong></span>
             </div>
         </div>
     </div>
@@ -427,6 +427,12 @@
             });
 
             // Preset Switching
+            const refreshMeaning = () => {
+                const cur = document.querySelector('.tasbih-preset-btn.active');
+                if (cur && cur.dataset.meaningKey && window.BaytI18n) activeMeaning.textContent = window.BaytI18n.t(cur.dataset.meaningKey);
+            };
+            document.addEventListener('bayt:lang', refreshMeaning);
+            window.addEventListener('load', refreshMeaning);
             presetButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     presetButtons.forEach(b => b.classList.remove('active'));
@@ -434,7 +440,7 @@
 
                     activeAr.textContent = btn.dataset.dhikrAr;
                     activeSw.textContent = btn.dataset.dhikrSw;
-                    activeMeaning.textContent = btn.dataset.meaning;
+                    activeMeaning.textContent = (window.BaytI18n && btn.dataset.meaningKey) ? window.BaytI18n.t(btn.dataset.meaningKey) : btn.dataset.meaning;
                     currentTarget = parseInt(btn.dataset.target, 10) || 33;
                     currentCount = 0;
                     updateProgressRing();

@@ -7,7 +7,7 @@
 
         <div class="reader-heading">
             <span class="eyebrow"><span class="eyebrow-dot"></span> {{ $book->collection->name }}</span>
-            <h1>{{ $book->title_sw }}</h1>
+            <h1>{!! \App\Support\TitleI18n::bookHtml($book->title_sw, $book->title_ar ?? null) !!}</h1>
             @auth
                 <p data-i18n="pg_lc_progress" data-i18n-vars='{"a":{{ (int) $doneTotal }},"b":{{ (int) $lessons->total() }}}'>{{ $doneTotal }} / {{ $lessons->total() }} yamekamilika</p>
             @else

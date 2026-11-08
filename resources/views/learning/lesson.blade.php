@@ -2,7 +2,7 @@
     <div class="reader-shell lc-shell" data-lc-lesson="{{ $hadith->id }}">
         <a class="back-link" href="{{ route('learning.course', $book->id) }}">
             <span class="back-arrow" aria-hidden="true">←</span>
-            <span>{{ $book->title_sw }}</span>
+            <span>{!! \App\Support\TitleI18n::bookHtml($book->title_sw, $book->title_ar ?? null) !!}</span>
         </a>
 
         <div class="reader-heading">

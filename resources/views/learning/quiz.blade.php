@@ -7,7 +7,7 @@
 
         <div class="reader-heading">
             <span class="eyebrow"><span class="eyebrow-dot"></span> <b data-i18n="pg_lc_quiz_title">QUIZ</b></span>
-            <h1>{{ $book ? $book->title_sw : 'Quiz ya Haraka' }}</h1>
+            <h1>@if($book){!! \App\Support\TitleI18n::bookHtml($book->title_sw, $book->title_ar ?? null) !!}@else<span data-i18n="pg_lc_quick_quiz">Quiz ya Haraka</span>@endif</h1>
         </div>
 
         <div class="lc-quiz" data-lc-quiz data-url="{{ route('learning.quiz.data', $book?->id) }}" data-retry="{{ url()->current() }}">

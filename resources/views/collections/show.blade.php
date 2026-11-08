@@ -18,7 +18,7 @@
                 <h1 class="coll-title">{{ $collection->name }}</h1>
                 @if (preg_match('/\p{Arabic}/u', (string) $collection->name_ar))<p class="coll-title-ar" lang="ar" dir="rtl">{{ $collection->name_ar }}</p>@endif
                 @if (! empty($meta['author']))
-                    <p class="coll-author">{{ $meta['author'] }}@if (! empty($meta['desc'])) · {{ $meta['desc'] }}@endif</p>
+                    <p class="coll-author"><span data-i18n="pg_bk_a_{{ $collection->slug }}">{{ $meta['author'] }}</span>@if (! empty($meta['desc'])) · <span data-i18n="pg_bk_d_{{ $collection->slug }}">{{ $meta['desc'] }}</span>@endif</p>
                 @endif
             </div>
             <div class="coll-stats">

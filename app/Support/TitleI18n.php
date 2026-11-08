@@ -49,4 +49,12 @@ class TitleI18n
 
         return new HtmlString($out);
     }
+
+    /** Kichwa cha kitabu (kwa lugha 4) kutoka kwa majina ghafi (kwa safu zisizo Eloquent). */
+    public static function bookHtml(?string $titleSw, ?string $titleAr = null): HtmlString
+    {
+        $b = new \App\Models\Book(['title_sw' => (string) $titleSw, 'title_ar' => $titleAr]);
+
+        return $b->titleHtml();
+    }
 }

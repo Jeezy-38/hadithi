@@ -4,20 +4,18 @@
         <section class="hero library-hero">
             <div class="hero-glow" aria-hidden="true"></div>
             <div class="hero-copy">
-                <span class="eyebrow"><span class="eyebrow-dot"></span> MAUDHUI YA KIISLAMU · THEMATIC HADITHS</span>
-                <h1>MADA ZA<br><em>HADITHI.</em></h1>
-                <p>
-                    Gundua mafundisho ya Mtume Muhammad ﷺ yaliyopangwa kwa mada teule za maisha, maadili, ibada na matumaini ya kiroho.
-                </p>
+                <span class="eyebrow"><span class="eyebrow-dot"></span> <span data-i18n="pg_tp_eyebrow">MAUDHUI YA KIISLAMU · THEMATIC HADITHS</span></span>
+                <h1><span data-i18n="pg_tp_h1a">MADA ZA</span><br><em data-i18n="pg_tp_h1b">HADITHI.</em></h1>
+                <p data-i18n="pg_tp_hero_p">Gundua mafundisho ya Mtume Muhammad ﷺ yaliyopangwa kwa mada teule za maisha, maadili, ibada na matumaini ya kiroho.</p>
                 <div class="hero-actions">
                     <a class="hero-button" href="#orodha-ya-mada">
-                        <span>Chagua Mada</span>
+                        <span data-i18n="pg_tp_choose">Chagua Mada</span>
                         <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
                         </svg>
                     </a>
                     <a class="hero-button-secondary" href="{{ route('library') }}">
-                        <span>Collections Zote (7,500)</span>
+                        <span data-i18n="pg_tp_all">Collections Zote (7,500)</span>
                     </a>
                 </div>
             </div>
@@ -36,8 +34,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h2 class="hadith-books-title">Mada Kuu za Kiislamu</h2>
-                            <p style="font-size: 13px; color: var(--text-muted); margin: 3px 0 0;">Miongozo ya Sunnah kulingana na nyanja za maisha</p>
+                            <h2 class="hadith-books-title" data-i18n="pg_tp_cat_title">Mada Kuu za Kiislamu</h2>
+                            <p style="font-size: 13px; color: var(--text-muted); margin: 3px 0 0;" data-i18n="pg_tp_cat_sub">Miongozo ya Sunnah kulingana na nyanja za maisha</p>
                         </div>
                     </div>
                 </div>
@@ -47,19 +45,19 @@
                         <button type="button" wire:click="selectTopic('{{ $slug }}')" class="topic-box-card" wire:key="topic-{{ $slug }}">
                             <div class="topic-card-top">
                                 <div class="topic-emblem" style="border-color: var(--border-color); background: var(--gold-subtle);">
-                                    <span class="topic-badge-pill" style="color: var(--gold);">{{ $t['badge'] }}</span>
+                                    <span class="topic-badge-pill" style="color: var(--gold);" data-i18n="pg_tp_{{ str_replace('-', '_', $slug) }}_b">{{ $t['badge'] }}</span>
                                 </div>
                                 <span class="topic-arabic-tag" dir="rtl" lang="ar">{{ $t['title_ar'] }}</span>
                             </div>
 
                             <div class="topic-card-body">
-                                <h3 class="topic-card-title">{{ $t['title_sw'] }}</h3>
-                                <div class="topic-card-sub">{{ $t['title_en'] }}</div>
-                                <p class="topic-card-desc">{{ $t['desc'] }}</p>
+                                <h3 class="topic-card-title" data-i18n="pg_tp_{{ str_replace('-', '_', $slug) }}_t">{{ $t['title_sw'] }}</h3>
+                                <div class="topic-card-sub" data-i18n="pg_tp_{{ str_replace('-', '_', $slug) }}_s">{{ $t['title_en'] }}</div>
+                                <p class="topic-card-desc" data-i18n="pg_tp_{{ str_replace('-', '_', $slug) }}_d">{{ $t['desc'] }}</p>
                             </div>
 
                             <div class="topic-card-footer">
-                                <span class="topic-cta-text" style="color: var(--gold);">Gundua Hadithi</span>
+                                <span class="topic-cta-text" style="color: var(--gold);" data-i18n="pg_tp_discover">Gundua Hadithi</span>
                                 <span class="topic-chevron" aria-hidden="true">→</span>
                             </div>
                         </button>
@@ -77,28 +75,26 @@
                         <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clip-rule="evenodd" />
                         </svg>
-                        <span>Rudi kwenye Mada Zote</span>
+                        <span data-i18n="pg_tp_back">Rudi kwenye Mada Zote</span>
                     </button>
-                    <span class="badge" style="background: var(--gold-subtle); color: var(--gold); border: 1px solid var(--border-color);">
-                        {{ $selectedTopic['badge'] }}
-                    </span>
+                    <span class="badge" style="background: var(--gold-subtle); color: var(--gold); border: 1px solid var(--border-color);" data-i18n="pg_tp_{{ str_replace('-', '_', $topic) }}_b">{{ $selectedTopic['badge'] }}</span>
                 </div>
 
                 <div class="topic-banner-content">
                     <span class="topic-banner-ar" dir="rtl" lang="ar">{{ $selectedTopic['title_ar'] }}</span>
-                    <h1 class="topic-banner-title">{{ $selectedTopic['title_sw'] }}</h1>
-                    <p class="topic-banner-desc">{{ $selectedTopic['desc'] }}</p>
+                    <h1 class="topic-banner-title" data-i18n="pg_tp_{{ str_replace('-', '_', $topic) }}_t">{{ $selectedTopic['title_sw'] }}</h1>
+                    <p class="topic-banner-desc" data-i18n="pg_tp_{{ str_replace('-', '_', $topic) }}_d">{{ $selectedTopic['desc'] }}</p>
                 </div>
 
                 {{-- Search inside this topic --}}
                 <div class="search-form-wrap" style="margin-top: 20px;">
                     <form class="search-form" wire:submit.prevent="$refresh" role="search">
-                        <label class="sr-only" for="topic-search">Tafuta katika mada hii</label>
+                        <label class="sr-only" for="topic-search" data-i18n="pg_tp_search_label">Tafuta katika mada hii</label>
                         <input
                             id="topic-search"
                             type="search"
                             wire:model.live.debounce.300ms="search"
-                            placeholder="Tafuta hadithi katika mada ya {{ $selectedTopic['title_sw'] }}…"
+                            placeholder="Tafuta hadithi katika mada ya {{ $selectedTopic['title_sw'] }}…" data-i18n-placeholder="pg_tp_search_ph" data-i18n-vars='{"t":"{{ addslashes($selectedTopic['title_sw']) }}"}'
                             autocomplete="off"
                         >
                         <button type="submit" aria-label="Tafuta">
@@ -115,7 +111,7 @@
             <div class="results" style="margin-top: 24px;">
                 <div class="loading" wire:loading role="status">
                     <span class="spinner" aria-hidden="true"></span>
-                    <span>Inatafuta hadithi…</span>
+                    <span data-i18n="pg_tp_searching">Inatafuta hadithi…</span>
                 </div>
 
                 <div wire:loading.class="is-loading">
@@ -161,7 +157,7 @@
                                     @if(!empty($hadith->hints))
                                         <div class="hadith-hints-box" style="margin: 14px 0; padding: 12px 16px; border-radius: 12px; background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle);">
                                             <div style="font-size: 12px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
-                                                ✦ Mafunzo Muhimu
+                                                <span data-i18n="pg_tp_key">✦ Mafunzo Muhimu</span>
                                             </div>
                                             <ul style="margin: 0; padding-left: 18px; font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
                                                 @foreach(array_slice($hadith->hints, 0, 2) as $hint)
@@ -173,11 +169,11 @@
 
                                     <footer class="hadith-footer">
                                         <div class="hadith-ref">
-                                            <span>{{ $hadith->chapter?->book?->title_sw ?? '' }}</span>
+                                            <span>@if($hadith->chapter?->book){!! $hadith->chapter->book->titleHtml() !!}@endif</span>
                                         </div>
                                         <div class="hadith-actions">
                                             <a href="{{ route('hadith.show', $hadith) }}" class="read-btn" title="Fungua hadithi yote">
-                                                <span>Fungua</span>
+                                                <span data-i18n="pg_tp_open">Fungua</span>
                                                 <span aria-hidden="true">→</span>
                                             </a>
                                         </div>
@@ -191,9 +187,9 @@
                         </div>
                     @else
                         <div class="empty-state">
-                            <p>Hakuna hadithi iliyopatikana kwa utafutaji huu katika mada ya <strong>{{ $selectedTopic['title_sw'] }}</strong>.</p>
+                            <p data-i18n="pg_tp_empty" data-i18n-vars='{"t":"{{ addslashes($selectedTopic['title_sw']) }}"}'>Hakuna hadithi iliyopatikana kwa utafutaji huu katika mada ya {{ $selectedTopic['title_sw'] }}.</p>
                             <button type="button" wire:click="$set('search', '')" class="hero-button" style="margin-top: 16px;">
-                                Futa utafutaji
+                                <span data-i18n="pg_tp_clear">Futa utafutaji</span>
                             </button>
                         </div>
                     @endif

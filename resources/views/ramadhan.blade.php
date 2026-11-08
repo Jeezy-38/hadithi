@@ -65,7 +65,7 @@
 
             {{-- Dua Muhimu za Ramadhani --}}
             <section class="ramadhan-duas-section rm-panel" id="rm-panel-duas" role="tabpanel" aria-labelledby="rm-tab-duas">
-                <h2 class="section-title">Dua za Kila Siku za Mfungo</h2>
+                <h2 class="section-title" data-i18n="pg_rm_duas_h">Dua za Kila Siku za Mfungo</h2>
                 <div class="duas-cards-grid">
                     <div class="dua-ramadhan-card">
                         <span class="dua-type" data-i18n="pg_rm_dua1_type">Dua ya Kufungua Swawm (Kufuturu)</span>
@@ -113,7 +113,7 @@
 
             {{-- Hadithi Sahihi za Fadhila za Ramadhani --}}
             <section class="ramadhan-hadiths-section rm-panel" id="rm-panel-hadiths" role="tabpanel" aria-labelledby="rm-tab-hadiths">
-                <h2 class="section-title">Hadithi Sahihi za Ramadhani</h2>
+                <h2 class="section-title" data-i18n="pg_rm_hadiths_h">Hadithi Sahihi za Ramadhani</h2>
                 <div class="hadith-feature-card">
                     <span class="hadith-tag" data-i18n="pg_rm_h1_tag">Milango ya Pepo Kufunguliwa</span>
                     <blockquote class="hadith-quote-ar font-arabic" dir="rtl">
