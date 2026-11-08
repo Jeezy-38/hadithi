@@ -32,7 +32,7 @@
             @foreach ($chapters as $chapter)
                 <a class="coll-row" href="{{ route('collections.chapter', [$collection->slug, $book->id, $chapter->id]) }}">
                     <span class="coll-num" aria-hidden="true">{{ $chapter->number }}</span>
-                    <span class="coll-row-title">{{ $chapter->title_sw }}</span>
+                    <span class="coll-row-title">{!! $chapter->titleHtml() !!}</span>
                     <span class="coll-count"><span data-i18n="pg_cl_hadith_n" data-i18n-vars='{"n":"{{ number_format($stats[$chapter->id]->hadiths) }}"}'>{{ number_format($stats[$chapter->id]->hadiths) }} hadith</span></span>
                     <span class="coll-arrow" aria-hidden="true">→</span>
                 </a>

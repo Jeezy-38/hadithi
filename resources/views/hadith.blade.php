@@ -28,7 +28,7 @@
             $bookEn = $hadith->chapter->book->titleFor('en');
             $shareRef = $hadith->chapter->book->collection->name . " Na. " . $hadith->number . " (" . $bookSw . " · " . $hadith->chapter->title_sw . ")";
             $shareEnglishShort = \Illuminate\Support\Str::limit((string) ($hadith->english ?: $hadith->display_text), 420);
-            $shareRefEn = $hadith->chapter->book->collection->name . " No. " . $hadith->number . " (" . $bookEn . " · " . $hadith->chapter->title_sw . ")";
+            $shareRefEn = $hadith->chapter->book->collection->name . " No. " . $hadith->number . " (" . $bookEn . " · " . $hadith->chapter->titleFor('en') . ")";
             $shareFormattedEn = "Hadith: " . $shareBadge . " No. " . $hadith->number . "\n\n"
                 . ($shareArabicShort ? $shareArabicShort . "\n\n" : "")
                 . "“" . $shareEnglishShort . "”\n\n"
@@ -106,7 +106,7 @@
                             data-ref="{{ $hadith->chapter->book->collection->name }} · Na. {{ $hadith->number }}"
                             data-ref-en="{{ $hadith->chapter->book->collection->name }} · No. {{ $hadith->number }}"
                             data-sub="{{ $bookSw }} · {{ $hadith->chapter->title_sw }}"
-                            data-sub-en="{{ $bookEn }} · {{ $hadith->chapter->title_sw }}"
+                            data-sub-en="{{ $bookEn }} · {{ $hadith->chapter->titleFor('en') }}"
                             data-number="{{ $hadith->number }}"
                             data-url="{{ route('hadith.show', $hadith) }}"
                             data-logo="{{ asset('images/logo-gold.png') }}"
@@ -233,13 +233,13 @@
 
             {{-- 4. Mafundisho na Faida za Hadithi (kama zipo) --}}
             @if(!empty($hadith->hints) && count($hadith->hints) > 0)
-                <div class="islamic-divider" role="separator" aria-hidden="true">
+                <div class="islamic-divider" data-reading="sw" role="separator" aria-hidden="true">
                     <span class="divider-line"></span>
                     <span class="divider-emblem">۞</span>
                     <span class="divider-line"></span>
                 </div>
 
-                <section class="reading-section lessons-section" aria-labelledby="label-lessons">
+                <section class="reading-section lessons-section" data-reading="sw" aria-labelledby="label-lessons">
                     <div class="section-label-row">
                         <span id="label-lessons" class="section-label" data-i18n="pg_h_l_les">MAFUNDISHO NA FAIDA ZA HADITHI</span>
                         <span class="section-script-badge" data-i18n="pg_h_faida" data-i18n-vars='{"n":"{{ count($hadith->hints) }}"}'>Faida {{ count($hadith->hints) }}</span>
@@ -272,7 +272,7 @@
                 </div>
                 <div class="source-item">
                     <dt data-i18n="pg_h_bk">Kitabu na Mlango:</dt>
-                    <dd>{{ $hadith->chapter->book->collection->name }} · <span data-i18n="pg_h_no" data-i18n-vars="{{ json_encode(['n' => $hadith->number]) }}">Hadith Na. {{ $hadith->number }}</span> (<span data-reading="sw">{{ $bookSw }}</span><span data-reading="en">{{ $bookEn }}</span> · {{ $hadith->chapter->title_sw }})</dd>
+                    <dd>{{ $hadith->chapter->book->collection->name }} · <span data-i18n="pg_h_no" data-i18n-vars="{{ json_encode(['n' => $hadith->number]) }}">Hadith Na. {{ $hadith->number }}</span> (<span data-reading="sw">{{ $bookSw }}</span><span data-reading="en">{{ $bookEn }}</span> · {!! $hadith->chapter->titleHtml() !!})</dd>
                 </div>
                 <div class="source-item">
                     <dt data-i18n="pg_h_gr">Daraja na Mpokezi:</dt>
@@ -391,7 +391,7 @@
                 </span>
                 <div class="nav-card-content">
                     <span class="nav-card-hint nav-dir-label" data-i18n="pg_h_chapter">MLANGO</span>
-                    <strong class="nav-card-title nav-surah-name">{{ \Illuminate\Support\Str::limit($hadith->chapter->title_sw, 24) }}</strong>
+                    <strong class="nav-card-title nav-surah-name">{!! $hadith->chapter->titleHtml() !!}</strong>
                 </div>
             </a>
 

@@ -13,14 +13,14 @@
             <span aria-hidden="true">›</span>
             <a href="{{ route('collections.book', [$collection->slug, $book->id]) }}">@include('collections._title')</a>
             <span aria-hidden="true">›</span>
-            <span class="coll-crumb-current">{{ \Illuminate\Support\Str::limit($chapter->title_sw, 60) }}</span>
+            <span class="coll-crumb-current">{!! $chapter->titleHtml() !!}</span>
         </nav>
 
         <header class="coll-head">
             <span class="coll-num coll-num-lg" aria-hidden="true">{{ $chapter->number }}</span>
             <div class="coll-head-body">
                 <p class="coll-kicker" data-i18n="pg_cl_topic">Mada</p>
-                <h1 class="coll-title coll-title-sm">{{ $chapter->title_sw }}</h1>
+                <h1 class="coll-title coll-title-sm">{!! $chapter->titleHtml() !!}</h1>
                 @if ($chapter->title_ar)<p class="coll-title-ar" lang="ar" dir="rtl">{{ $chapter->title_ar }}</p>@endif
             </div>
         </header>

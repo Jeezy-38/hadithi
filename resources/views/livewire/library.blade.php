@@ -357,7 +357,7 @@
                                 </span>
                                 <span class="hadith-num"><span data-i18n="pg_lib_no">Na.</span> {{ $hadith->number }}</span>
                             </div>
-                            <h3>{{ $hadith->chapter->title_sw }}</h3>
+                            <h3>{!! $hadith->chapter->titleHtml() !!}</h3>
                             
                             <div class="hadith-texts">
                                 <div data-reading="ar" class="arabic-box">
