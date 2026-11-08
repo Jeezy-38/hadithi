@@ -1219,7 +1219,7 @@
             if (targetUi) {
                 if (targetUi === 'sw') {
                     setLanguage('both');
-                } else if (targetUi === 'en') {
+                } else if (targetUi === 'en' || targetUi === 'es') {
                     setLanguage('en');
                 }
                 setUiLanguage(targetUi);

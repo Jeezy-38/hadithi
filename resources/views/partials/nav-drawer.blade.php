@@ -50,7 +50,7 @@
             <div class="nav-drawer-setting-header">
                 <span class="nav-drawer-setting-title" data-i18n="ui_lang_label">Lugha (Language):</span>
             </div>
-            <div class="nav-drawer-lang-grid nav-drawer-lang-grid--3" role="group" aria-label="Lugha">
+            <div class="nav-drawer-lang-grid" role="group" aria-label="Lugha">
                 <button type="button" class="drawer-lang-btn" data-ui-val="sw" aria-pressed="false">
                     <span class="drawer-lang-flag" aria-hidden="true">🇹🇿</span>
                     <span class="drawer-lang-main">Kiswahili</span>
@@ -62,6 +62,10 @@
                 <button type="button" class="drawer-lang-btn" data-ui-val="ar" aria-pressed="false">
                     <span class="drawer-lang-flag" aria-hidden="true">🇸🇦</span>
                     <span class="drawer-lang-main" lang="ar">العربية</span>
+                </button>
+                <button type="button" class="drawer-lang-btn" data-ui-val="es" aria-pressed="false">
+                    <span class="drawer-lang-flag" aria-hidden="true">🇪🇸</span>
+                    <span class="drawer-lang-main">Español</span>
                 </button>
             </div>
         </div>

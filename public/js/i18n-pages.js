@@ -1888,6 +1888,8 @@
             pg_dr_notif_on: "Recibes un hadiz cada mañana",
             pg_dr_notif_off: "Notificaciones desactivadas",
             pg_dr_notif_idle: "Hadiz del día cada mañana",
+            pg_dr_bilingual_t: "Traducción bilingüe",
+            pg_dr_bilingual_s: "Mostrar suajili e inglés juntos",
             pg_h_more: "Más opciones",
             pg_h_other: "Otras apps",
             pg_h_save: "Guardar",

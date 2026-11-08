@@ -143,6 +143,11 @@
                                 <span class="lang-name" lang="ar">العربية</span>
                                 <span class="lang-check-icon" aria-hidden="true">✓</span>
                             </button>
+                            <button type="button" class="lang-menu-item" data-ui-val="es" role="menuitem">
+                                <span class="lang-flag" aria-hidden="true">🇪🇸</span>
+                                <span class="lang-name">Español</span>
+                                <span class="lang-check-icon" aria-hidden="true">✓</span>
+                            </button>
                         </div>
                     </div>
                     <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Badili mwonekano wa giza au mwanga" title="Badili mwonekano (Giza / Nuru)">
