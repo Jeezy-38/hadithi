@@ -11089,6 +11089,7 @@ body,
     .site-header,
     .mobile-bottom-nav,
     .back-to-top-btn,
+    .feedback-floating-btn,
     .library-summary,
     .quran-floating-player,
     .prayer-hero-card,
@@ -11244,45 +11245,49 @@ html[data-title-lang="es"] [data-tl~="es"]{display:inline}
    ========================================================================== */
 .feedback-floating-btn {
     position: fixed;
-    left: 20px;
-    bottom: 22px;
-    height: 36px;
-    padding: 0 14px;
-    border-radius: 20px;
-    background: rgba(10, 53, 82, 0.90);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1.5px solid rgba(224, 200, 104, 0.55);
+    left: 24px;
+    bottom: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-surface-elevated, #161b22);
+    border: 1.5px solid var(--gold);
     color: var(--gold);
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 700;
+    justify-content: center;
     cursor: pointer;
-    z-index: 990;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 0 12px rgba(224, 200, 104, 0.16);
-    transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 980;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(224, 200, 104, 0.2);
+    transition: opacity .25s ease, transform .25s cubic-bezier(0.16, 1, 0.3, 1), background-color .2s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     -webkit-tap-highlight-color: transparent;
     user-select: none;
+    padding: 0;
 }
 
 [data-theme="light"] .feedback-floating-btn {
-    background: rgba(255, 255, 255, 0.92);
-    border-color: rgba(10, 63, 102, 0.35);
-    color: #0a3f66;
-    box-shadow: 0 4px 14px rgba(10, 63, 102, 0.12);
+    background: var(--bg-surface-elevated, #ffffff);
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: 0 8px 24px rgba(10, 63, 102, 0.15), 0 0 12px rgba(10, 63, 102, 0.1);
 }
 
 .feedback-floating-btn:hover {
-    transform: translateY(-2px);
-    border-color: var(--gold);
-    color: var(--gold);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 16px rgba(224, 200, 104, 0.3);
+    transform: translateY(-2px) scale(1.04);
+    background: var(--gold);
+    color: var(--btn-gold-text, #07293f);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(224, 200, 104, 0.35);
+}
+
+[data-theme="light"] .feedback-floating-btn:hover {
+    background: var(--gold);
+    color: #ffffff;
 }
 
 .feedback-floating-btn:active {
-    transform: scale(0.95);
+    transform: scale(0.94);
 }
 
 .feedback-btn-icon {
@@ -11291,19 +11296,23 @@ html[data-title-lang="es"] [data-tl~="es"]{display:inline}
     justify-content: center;
 }
 
+.feedback-btn-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.feedback-btn-text {
+    display: none !important;
+}
+
 @media (max-width: 768px) {
     .feedback-floating-btn {
-        left: 12px;
-        bottom: calc(72px + env(safe-area-inset-bottom, 0px));
-        height: 38px;
-        width: 38px;
-        padding: 0;
+        left: 16px;
+        bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+        width: 42px;
+        height: 42px;
         border-radius: 50%;
-        justify-content: center;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-    }
-    .feedback-btn-text {
-        display: none !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 12px rgba(224, 200, 104, 0.15);
     }
 }
 
