@@ -86,14 +86,17 @@
                 display: inline-flex;
                 align-items: center;
                 gap: 8px;
-                padding: 10px 18px;
+                padding: 9px 16px;
                 border-radius: 12px;
-                font-size: 13.5px;
+                font-size: 13px;
                 font-weight: 700;
                 text-decoration: none;
                 transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
                 color: var(--adm-text-sub);
                 border: 1px solid transparent;
+                white-space: nowrap !important;
+                flex-shrink: 0 !important;
+                user-select: none;
             }
             .adm-tab-btn:hover {
                 color: var(--adm-text-main);
@@ -104,6 +107,20 @@
                 color: var(--adm-emerald);
                 border-color: var(--adm-ring);
                 box-shadow: 0 2px 8px -2px var(--adm-ring);
+            }
+
+            .adm-tabs-rail {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 24px;
+                overflow-x: auto;
+                padding: 4px 2px 10px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            .adm-tabs-rail::-webkit-scrollbar {
+                display: none;
             }
 
             .adm-kpi-card {
@@ -138,8 +155,15 @@
             .adm-badge-gray { background: rgba(148, 163, 184, 0.12); color: var(--adm-text-sub); border: 1px solid rgba(148, 163, 184, 0.2); }
             .adm-badge-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
 
+            .adm-table-wrap {
+                width: 100%;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                border-radius: 12px;
+            }
             .adm-table {
                 width: 100%;
+                min-width: 580px;
                 border-collapse: separate;
                 border-spacing: 0;
                 font-size: 13.5px;
@@ -193,17 +217,31 @@
             .admin-dashboard-root img { max-width: 100%; }
             @media (max-width: 768px) {
                 .admin-dashboard-root { padding: 14px 10px 90px !important; }
-                .adm-tab-btn { padding: 8px 12px; font-size: 12.5px; }
-                .adm-kpi-card { padding: 16px; border-radius: 14px; }
-                .adm-table th, .adm-table td { padding: 10px 10px; }
-                .admin-dashboard-root table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
-                .admin-dashboard-root div[style*="grid-template-columns"] { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important; gap: 12px !important; }
+                .adm-top-bar {
+                    flex-direction: column !important;
+                    align-items: stretch !important;
+                    gap: 14px !important;
+                }
+                .adm-top-bar > div:last-child {
+                    display: flex !important;
+                    flex-wrap: wrap !important;
+                    gap: 8px !important;
+                    justify-content: flex-start !important;
+                }
+                .adm-tab-btn { padding: 8px 12px !important; font-size: 12px !important; }
+                .adm-kpi-card { padding: 14px !important; border-radius: 14px !important; }
+                .adm-table th, .adm-table td { padding: 10px 10px; font-size: 12.5px; }
+                .admin-dashboard-root div[style*="grid-template-columns"] {
+                    grid-template-columns: repeat(2, 1fr) !important;
+                    gap: 10px !important;
+                }
             }
             @media (max-width: 480px) {
                 .admin-dashboard-root div[style*="minmax(360px"],
                 .admin-dashboard-root div[style*="minmax(260px"] { grid-template-columns: 1fr !important; }
                 .admin-dashboard-root [style*="flex-wrap"] { gap: 8px !important; }
-                .admin-dashboard-root h1 { font-size: 22px !important; }
+                .admin-dashboard-root h1.adm-title { font-size: 20px !important; }
+                .admin-dashboard-root p.adm-subtitle { font-size: 12px !important; }
                 /* Search boxes with a fixed 220px input overflowed on phones */
                 .admin-dashboard-root form > div:has(> input[type="text"][style*="width: 220px"]) { width: 100%; }
                 .admin-dashboard-root input[type="text"][style*="width: 220px"] { width: auto !important; flex: 1 1 0; min-width: 0; }
@@ -235,7 +273,7 @@
         @endif
 
         {{-- Top Header Banner --}}
-        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--adm-card-border);">
+        <div class="adm-top-bar" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--adm-card-border);">
             <div>
                 <h1 class="adm-title">Jopo la Usimamizi</h1>
                 <p class="adm-subtitle">Takwimu za wageni, watumiaji, maudhui, malipo na wadhamini.</p>
@@ -262,7 +300,7 @@
         </div>
 
         {{-- Modular Navigation Tabs (Pills) --}}
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 28px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch;">
+        <div class="adm-tabs-rail">
             <a href="{{ route('admin.dashboard', ['tab' => 'overview']) }}" class="adm-tab-btn {{ $activeTab === 'overview' ? 'active' : '' }}">
                 <span>Takwimu za Wageni</span>
             </a>
@@ -430,7 +468,7 @@
                     </div>
                     <span class="adm-card-note">20 za mwisho</span>
                 </div>
-                <div style="overflow-x: auto;">
+                <div class="adm-table-wrap">
                     <table class="adm-table">
                         <thead>
                             <tr>
@@ -511,7 +549,7 @@
                 </div>
 
                 {{-- Users Table --}}
-                <div style="overflow-x: auto;">
+                <div class="adm-table-wrap">
                     <table class="adm-table">
                         <thead>
                             <tr>
@@ -670,7 +708,7 @@
                 </form>
 
                 {{-- Payments Table --}}
-                <div style="overflow-x: auto;">
+                <div class="adm-table-wrap">
                     <table class="adm-table">
                         <thead>
                             <tr>
@@ -785,7 +823,7 @@
 
             <div class="adm-kpi-card" style="margin-bottom: 24px;">
                 <h2 style="font-size: 16px; font-weight: 800; margin: 0 0 14px; color: var(--adm-text-main);">Orodha ya Wadhamini ({{ $sponsors->count() }})</h2>
-                <div style="overflow-x: auto;">
+                <div class="adm-table-wrap">
                     <table class="adm-table">
                         <thead><tr><th>Mdhamini</th><th>Nafasi</th><th>Kipindi</th><th>Hali</th><th>Waliobofya</th><th>Vitendo</th></tr></thead>
                         <tbody>
@@ -867,7 +905,7 @@
                     </form>
                 </div>
 
-                <div style="overflow-x: auto;">
+                <div class="adm-table-wrap">
                     <table class="adm-table">
                         <thead>
                             <tr>
@@ -986,7 +1024,7 @@
                     </div>
                 </div>
 
-                <div style="overflow-x: auto;">
+                <div class="adm-table-wrap">
                     <table class="adm-table">
                         <thead>
                             <tr>
@@ -1178,7 +1216,7 @@
                 <h2 style="font-size: 16px; font-weight: 800; margin: 0 0 14px; color: var(--adm-text-main);">
                     Shughuli za Admin za Karibuni
                 </h2>
-                <div style="overflow-x: auto;">
+                <div class="adm-table-wrap">
                     <table class="adm-table">
                         <thead>
                             <tr>
