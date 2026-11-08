@@ -1,4 +1,4 @@
-<article class="hadith-card">
+<article class="hadith-card" data-hadith-scope>
     <div class="card-top">
         <span class="badge badge-{{ $hadith->chapter->book->collection->slug }}">{{ $hadith->chapter->book->collection->name }}</span>
         <span class="hadith-num"><span data-i18n="pg_lib_no">Na.</span> {{ $hadith->number }}</span>

@@ -3,7 +3,7 @@
 @endphp
 <x-layouts.app :title="$collection->name.' - Vitabu na Mada'" :description="$desc" :canonical="route('collections.show', $collection->slug)">
     <link rel="stylesheet" href="{{ asset('css/collections.css') }}?v={{ filemtime(public_path('css/collections.css')) }}">
-    <div class="coll-page" data-hadith-scope>
+    <div class="coll-page">
         <nav class="coll-crumbs" aria-label="Breadcrumb">
             <a href="{{ route('library') }}#makusanyo" data-i18n="pg_cl_crumb">Makusanyo</a>
             <span aria-hidden="true">›</span>
@@ -16,7 +16,7 @@
             @endif
             <div class="coll-head-body">
                 <h1 class="coll-title">{{ $collection->name }}</h1>
-                @if ($collection->name_ar)<p class="coll-title-ar" lang="ar" dir="rtl">{{ $collection->name_ar }}</p>@endif
+                @if (preg_match('/\p{Arabic}/u', (string) $collection->name_ar))<p class="coll-title-ar" lang="ar" dir="rtl">{{ $collection->name_ar }}</p>@endif
                 @if (! empty($meta['author']))
                     <p class="coll-author">{{ $meta['author'] }}@if (! empty($meta['desc'])) · {{ $meta['desc'] }}@endif</p>
                 @endif

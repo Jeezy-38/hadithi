@@ -5,7 +5,7 @@
 @endphp
 <x-layouts.app :title="$collection->name.' - '.\Illuminate\Support\Str::limit($chapter->title_sw, 70)" :description="$desc" :canonical="route('collections.chapter', [$collection->slug, $book->id, $chapter->id])" :noindex="$page > 1">
     <link rel="stylesheet" href="{{ asset('css/collections.css') }}?v={{ filemtime(public_path('css/collections.css')) }}">
-    <div class="coll-page" data-hadith-scope>
+    <div class="coll-page">
         <nav class="coll-crumbs" aria-label="Breadcrumb">
             <a href="{{ route('library') }}#makusanyo" data-i18n="pg_cl_crumb">Makusanyo</a>
             <span aria-hidden="true">›</span>

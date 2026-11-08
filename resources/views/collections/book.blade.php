@@ -4,7 +4,7 @@
 @endphp
 <x-layouts.app :title="$collection->name.' - '.$bookTitle" :description="$desc" :canonical="route('collections.book', [$collection->slug, $book->id])">
     <link rel="stylesheet" href="{{ asset('css/collections.css') }}?v={{ filemtime(public_path('css/collections.css')) }}">
-    <div class="coll-page" data-hadith-scope>
+    <div class="coll-page">
         <nav class="coll-crumbs" aria-label="Breadcrumb">
             <a href="{{ route('library') }}#makusanyo" data-i18n="pg_cl_crumb">Makusanyo</a>
             <span aria-hidden="true">›</span>
