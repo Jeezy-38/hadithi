@@ -47,13 +47,30 @@
                                     <span aria-hidden="true">→</span>
                                 </button>
                                 @if(\App\Http\Controllers\AiResearchController::enabled())
-                                    <a href="{{ route('ai.index') }}" class="search-ai-btn" id="search-ask-ai-btn" title="Uliza Msaidizi wa AI" aria-label="Uliza AI" data-ai-url="{{ route('ai.index') }}">
+                                    <button type="button" class="search-ai-btn" id="search-ask-ai-btn" title="Uliza Msaidizi wa AI" aria-label="Uliza AI">
                                         <span class="search-ai-sparkle" aria-hidden="true">✨</span>
                                         <span class="search-ai-text">AI</span>
-                                    </a>
+                                    </button>
                                 @endif
                             </div>
                         </form>
+
+                        {{-- Instant AI Response Panel on Search --}}
+                        <div id="home-ai-panel" class="home-ai-panel" style="display: none;" role="region" aria-live="polite">
+                            <div class="home-ai-header">
+                                <div class="home-ai-badge">
+                                    <span class="home-ai-sparkle">✨</span>
+                                    <span class="home-ai-badge-text">Jibu la Msaidizi wa AI</span>
+                                </div>
+                                <button type="button" class="home-ai-close-btn" id="home-ai-close-btn" aria-label="Funga jibu la AI">
+                                    <span>✕ Funga</span>
+                                </button>
+                            </div>
+                            <div class="home-ai-content" id="home-ai-content"></div>
+                            <div class="home-ai-footer">
+                                <span>Majibu yanatokana na hadithi zilizo kwenye maktaba hii pekee · Daima thibitisha na mwanazuoni.</span>
+                            </div>
+                        </div>
 
             <div class="loading" wire:loading role="status">
                 <span class="spinner" aria-hidden="true"></span>
@@ -391,7 +408,15 @@
                             @if($total === 0)
                                 <span class="status-pill"><span></span> <b data-i18n="pg_lib_pending">Inasubiri maudhui yaliyohakikiwa</b></span>
                             @else
-                                <button class="primary-button" wire:click="clearFilters" data-i18n="empty_show_all">Onyesha hadith zote →</button>
+                                <div style="display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:14px;">
+                                    <button class="primary-button" wire:click="clearFilters" data-i18n="empty_show_all">Onyesha hadith zote →</button>
+                                    @if(\App\Http\Controllers\AiResearchController::enabled() && $search !== '')
+                                        <button type="button" class="search-ai-btn" id="empty-ask-ai-btn" data-query="{{ $search }}">
+                                            <span class="search-ai-sparkle">✨</span>
+                                            <span>Uliza Msaidizi wa AI kuhusu "{{ Str::limit($search, 30) }}"</span>
+                                        </button>
+                                    @endif
+                                </div>
                             @endif
                         </div>
                     @endforelse
@@ -451,16 +476,117 @@
                 }
             }
 
-            // Handle AI search button inside search bar
+            // Instant AI search on home page search bar
+            function askHomeAi(question) {
+                const panel = document.getElementById('home-ai-panel');
+                const content = document.getElementById('home-ai-content');
+                if (!panel || !content) return;
+
+                const q = (question || '').trim();
+                if (q.length < 3) {
+                    const searchInput = document.getElementById('search');
+                    if (searchInput) searchInput.focus();
+                    alert('Tafadhali andika swali au mada kwenye sehemu ya kutafuta (mfano: "hadithi kuhusu subira").');
+                    return;
+                }
+
+                panel.style.display = 'block';
+                panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                content.innerHTML = `
+                    <div class="home-ai-loading">
+                        <span class="home-ai-spinner" aria-hidden="true"></span>
+                        <div class="home-ai-loading-text">
+                            <strong>AI inachambua maktaba ya hadithi…</strong>
+                            <span>Inatafuta hadithi sahihi na kuandaa jibu lenye marejeo ya moja kwa moja.</span>
+                        </div>
+                    </div>
+                `;
+
+                const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+                fetch('/msaidizi/uliza', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrf,
+                    },
+                    body: JSON.stringify({ q: q })
+                })
+                .then(r => r.json().then(data => ({ status: r.status, data })))
+                .then(({ status, data }) => {
+                    if (status === 429) {
+                        content.innerHTML = `<p class="home-ai-error">⚠️ Umefikia kikomo cha maswali ya leo. Tafadhali rudi kesho.</p>`;
+                        return;
+                    }
+                    if (status >= 400 || data.error) {
+                        content.innerHTML = `<p class="home-ai-error">⚠️ Msaidizi wa AI hakupata jibu kwa sasa. Tafadhali jaribu tena baada ya muda mfupi.</p>`;
+                        return;
+                    }
+                    if (data.none || !data.answer) {
+                        content.innerHTML = `<p class="home-ai-notice">ℹ️ Sikupata hadithi zinazohusiana moja kwa moja na swali hili. Jaribu kueleza kwa maneno tofauti (mfano: "subira", "nia", "sala").</p>`;
+                        return;
+                    }
+
+                    const escapedAnswer = data.answer.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n+/g, '<br><br>');
+                    let sourcesHtml = '';
+                    if (Array.isArray(data.sources) && data.sources.length > 0) {
+                        sourcesHtml = `
+                            <div class="home-ai-sources-wrap">
+                                <span class="home-ai-sources-title">Hadithi Zilizotumika Kama Ushahidi:</span>
+                                <div class="home-ai-sources-chips">
+                                    ${data.sources.map(s => `
+                                        <a href="${s.url}" class="home-ai-source-chip" target="_blank" rel="noopener">
+                                            <span class="chip-num">[${s.n}]</span>
+                                            <span class="chip-ref">${s.ref}</span>
+                                            <span class="chip-arrow">↗</span>
+                                        </a>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    content.innerHTML = `
+                        <div class="home-ai-answer-body">
+                            <p class="home-ai-answer-p">${escapedAnswer}</p>
+                            ${sourcesHtml}
+                        </div>
+                    `;
+                })
+                .catch(err => {
+                    console.error('AI error:', err);
+                    content.innerHTML = `<p class="home-ai-error">⚠️ Hitilafu ya mawasiliano. Tafadhali angalia mtandao wako na ujaribu tena.</p>`;
+                });
+            }
+
+            // Click listener for search actions
             document.addEventListener('click', function(e) {
-                const btn = e.target.closest('#search-ask-ai-btn');
-                if (!btn) return;
-                const searchInput = document.getElementById('search');
-                const val = searchInput ? (searchInput.value || '').trim() : '';
-                const baseUrl = btn.getAttribute('data-ai-url') || btn.getAttribute('href') || '/msaidizi';
-                if (val.length > 0) {
+                // Click on ✨ AI button in search bar
+                const aiBtn = e.target.closest('#search-ask-ai-btn');
+                if (aiBtn) {
                     e.preventDefault();
-                    window.location.href = baseUrl + '?q=' + encodeURIComponent(val);
+                    const searchInput = document.getElementById('search');
+                    const val = searchInput ? (searchInput.value || '').trim() : '';
+                    askHomeAi(val);
+                    return;
+                }
+
+                // Click on Close button
+                const closeBtn = e.target.closest('#home-ai-close-btn');
+                if (closeBtn) {
+                    e.preventDefault();
+                    const panel = document.getElementById('home-ai-panel');
+                    if (panel) panel.style.display = 'none';
+                    return;
+                }
+
+                // Click on Ask AI from empty state
+                const emptyAiBtn = e.target.closest('#empty-ask-ai-btn');
+                if (emptyAiBtn) {
+                    e.preventDefault();
+                    const q = emptyAiBtn.getAttribute('data-query') || '';
+                    askHomeAi(q);
+                    return;
                 }
             });
 
