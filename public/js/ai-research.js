@@ -23,4 +23,14 @@
       }).catch(function () { out.innerHTML = '<p class="ar-hint">' + esc(t('pg_sh_fail', 'Imeshindikana. Jaribu tena.')) + '</p>'; })
       .then(function () { busy = false; });
   });
+
+  // Auto-run if query param 'q' is passed in the URL (e.g. from homepage search bar)
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var queryParam = params.get('q');
+    if (queryParam && q) {
+      q.value = queryParam;
+      form.dispatchEvent(new Event('submit'));
+    }
+  } catch (err) {}
 })();

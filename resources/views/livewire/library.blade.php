@@ -40,11 +40,19 @@
                                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                 </svg>
                             </span>
-                            <input id="search" type="search" wire:model.live.debounce.350ms="search" maxlength="200" placeholder="Tafuta ndani ya {{ $collections->firstWhere('slug', $collection)?->name ?? 'makusanyo yote' }}…" data-i18n-placeholder="{{ $collection === '' ? 'pg_lib_search_all' : 'pg_lib_search_in' }}" data-i18n-vars="{{ json_encode(['name' => $collections->firstWhere('slug', $collection)?->name ?? ''], JSON_UNESCAPED_UNICODE) }}" autocomplete="off">
-                            <button type="submit">
-                                <span data-i18n="search_btn">Tafuta</span>
-                                <span aria-hidden="true">→</span>
-                            </button>
+                            <input id="search" type="search" wire:model.live.debounce.350ms="search" maxlength="200" placeholder="Tafuta ndani ya {{ $collections->firstWhere('slug', $collection)?->name ?? 'makusanyo yote' }} au uliza AI…" data-i18n-placeholder="{{ $collection === '' ? 'pg_lib_search_all' : 'pg_lib_search_in' }}" data-i18n-vars="{{ json_encode(['name' => $collections->firstWhere('slug', $collection)?->name ?? ''], JSON_UNESCAPED_UNICODE) }}" autocomplete="off">
+                            <div class="search-actions-group">
+                                <button type="submit" class="search-submit-btn">
+                                    <span data-i18n="search_btn">Tafuta</span>
+                                    <span aria-hidden="true">→</span>
+                                </button>
+                                @if(\App\Http\Controllers\AiResearchController::enabled())
+                                    <a href="{{ route('ai.index') }}" class="search-ai-btn" id="search-ask-ai-btn" title="Uliza Msaidizi wa AI" aria-label="Uliza AI" data-ai-url="{{ route('ai.index') }}">
+                                        <span class="search-ai-sparkle" aria-hidden="true">✨</span>
+                                        <span class="search-ai-text">AI</span>
+                                    </a>
+                                @endif
+                            </div>
                         </form>
 
             <div class="loading" wire:loading role="status">
@@ -442,6 +450,19 @@
                     });
                 }
             }
+
+            // Handle AI search button inside search bar
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest('#search-ask-ai-btn');
+                if (!btn) return;
+                const searchInput = document.getElementById('search');
+                const val = searchInput ? (searchInput.value || '').trim() : '';
+                const baseUrl = btn.getAttribute('data-ai-url') || btn.getAttribute('href') || '/msaidizi';
+                if (val.length > 0) {
+                    e.preventDefault();
+                    window.location.href = baseUrl + '?q=' + encodeURIComponent(val);
+                }
+            });
 
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', initRawdahHero);
