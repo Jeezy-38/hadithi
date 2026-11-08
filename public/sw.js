@@ -1,38 +1,135 @@
-/* Bump this version whenever the offline screen or assets change. */
-const CACHE = 'hadith-pwa-v3';
-const OFFLINE = new URL('offline.html', self.registration.scope).href;
-
-self.addEventListener('install', (event) => {
-    event.waitUntil(caches.open(CACHE).then((cache) => cache.add(new Request(OFFLINE, { cache: 'reload' }))));
-});
-
-self.addEventListener('activate', (event) => {
-    event.waitUntil((async () => {
-        const keys = await caches.keys();
-        await Promise.all(keys.filter((key) => key.startsWith('hadith-pwa-') && key !== CACHE).map((key) => caches.delete(key)));
-        await self.clients.claim();
-    })());
-});
-
-self.addEventListener('fetch', (event) => {
-    // Never cache Livewire POSTs, session-bearing HTML, API responses, or audio.
-    if (event.request.method !== 'GET' || event.request.mode !== 'navigate' ||
-        !event.request.url.startsWith(self.registration.scope)) return;
-
-    event.respondWith((async () => {
-        try {
-            return await fetch(event.request);
-        } catch {
-            return (await caches.match(OFFLINE)) || new Response('Hakuna mtandao. Tafadhali jaribu tena.', {
-                status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-            });
-        }
-    })());
-});
-
 /* ==========================================================================
-   ARIF ZA KILA SIKU (DAILY PUSH NOTIFICATIONS)
+   BAYT UL HADITH - PRODUCTION PWA SERVICE WORKER (OFFLINE + PUSH)
    ========================================================================== */
+
+const CACHE_STATIC = 'bayt-static-v4';
+const CACHE_DYNAMIC = 'bayt-dynamic-v4';
+const OFFLINE_URL = '/offline.html';
+
+const PRECACHE_ASSETS = [
+    '/',
+    '/offline.html',
+    '/manifest.webmanifest',
+    '/css/gold-black.css',
+    '/css/app.css',
+    '/js/reader.js',
+    '/js/i18n-pages.js',
+    '/js/pwa.js',
+    '/icons/icon-192.png',
+    '/icons/icon-512.png',
+    '/images/logo.png',
+    '/images/logo-gold.png'
+];
+
+/* --------------------------------------------------------------------------
+   1. Install: Pre-cache Essential App Shell
+   -------------------------------------------------------------------------- */
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open(CACHE_STATIC).then((cache) => {
+            return Promise.allSettled(
+                PRECACHE_ASSETS.map((asset) => cache.add(new Request(asset, { cache: 'reload' })))
+            );
+        }).then(() => self.skipWaiting())
+    );
+});
+
+/* --------------------------------------------------------------------------
+   2. Activate: Clean up old caches & take control immediately
+   -------------------------------------------------------------------------- */
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        (async () => {
+            const keys = await caches.keys();
+            await Promise.all(
+                keys.map((key) => {
+                    if (key !== CACHE_STATIC && key !== CACHE_DYNAMIC) {
+                        return caches.delete(key);
+                    }
+                })
+            );
+            await self.clients.claim();
+        })()
+    );
+});
+
+/* --------------------------------------------------------------------------
+   3. Fetch: Smart Caching Strategies
+   -------------------------------------------------------------------------- */
+self.addEventListener('fetch', (event) => {
+    const { request } = event;
+    const url = new URL(request.url);
+
+    // Never intercept non-GET requests
+    if (request.method !== 'GET') return;
+
+    // Do not cache Livewire polling, internal POSTs, or Admin area
+    if (
+        url.pathname.startsWith('/livewire') ||
+        url.pathname.startsWith('/admin') ||
+        url.pathname.startsWith('/api/push') ||
+        request.headers.get('X-Livewire')
+    ) {
+        return;
+    }
+
+    // A. Static Assets (CSS, JS, Fonts, Images, Icons) -> Stale-While-Revalidate
+    const isStaticAsset = (
+        url.pathname.match(/\.(css|js|png|jpg|jpeg|svg|webp|woff2|woff|ttf|ico)$/i) ||
+        url.pathname.startsWith('/icons/') ||
+        url.pathname.startsWith('/css/') ||
+        url.pathname.startsWith('/js/')
+    );
+
+    if (isStaticAsset) {
+        event.respondWith(
+            caches.open(CACHE_STATIC).then(async (cache) => {
+                const cachedResponse = await cache.match(request);
+                const fetchPromise = fetch(request).then((networkResponse) => {
+                    if (networkResponse && networkResponse.status === 200) {
+                        cache.put(request, networkResponse.clone());
+                    }
+                    return networkResponse;
+                }).catch(() => null);
+
+                return cachedResponse || fetchPromise;
+            })
+        );
+        return;
+    }
+
+    // B. Page Navigation (HTML) -> Network-First with Dynamic Cache Fallback
+    if (request.mode === 'navigate') {
+        event.respondWith(
+            (async () => {
+                try {
+                    const networkResponse = await fetch(request);
+                    if (networkResponse && networkResponse.status === 200) {
+                        const cache = await caches.open(CACHE_DYNAMIC);
+                        cache.put(request, networkResponse.clone());
+                    }
+                    return networkResponse;
+                } catch (_) {
+                    // Try to match the page from dynamic or static cache (previously visited hadiths)
+                    const cachedResponse = await caches.match(request);
+                    if (cachedResponse) {
+                        return cachedResponse;
+                    }
+                    // Fallback to offline page
+                    const offlinePage = await caches.match(OFFLINE_URL);
+                    return offlinePage || new Response('Hakuna mtandao. Tafadhali unganisha mtandao kusoma hadith.', {
+                        status: 503,
+                        headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+                    });
+                }
+            })()
+        );
+    }
+});
+
+/* --------------------------------------------------------------------------
+   4. Arifa za Kila Siku (Daily Push Notifications)
+   -------------------------------------------------------------------------- */
 self.addEventListener('push', (event) => {
     let payload = {
         title: 'Hadithi ya Siku · Bayt Ul Hadith',

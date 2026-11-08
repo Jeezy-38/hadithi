@@ -1,27 +1,275 @@
 <!doctype html>
-<html lang="sw">
+<html lang="sw" data-theme="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#0a0e13">
-    <title>Hakuna mtandao · Hadith</title>
+    <meta name="theme-color" content="#07293f">
+    <title>Hali ya Nje ya Mtandao (Offline) · Bayt Ul Hadith</title>
     <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0a0e13; color: #f8fafc; font: 18px/1.7 system-ui, sans-serif; padding: 24px; }
-        main { max-width: 520px; padding: 36px; border: 1px solid #dab56a; border-radius: 20px; background: #121820; }
-        .brand { color: #dab56a; letter-spacing: .12em; font-size: 14px; }
-        h1 { font-size: 30px; line-height: 1.3; }
-        p { color: #cbd5e1; }
-        a { display: inline-block; padding: 10px 20px; border-radius: 8px; background: #dab56a; color: #0a0e13; font-weight: 700; text-decoration: none; }
-        a:focus-visible { outline: 3px solid white; outline-offset: 5px; }
+        :root {
+            --bg-body: #07293f;
+            --bg-card: #0a3552;
+            --bg-surface: #124666;
+            --gold: #e0c868;
+            --gold-subtle: rgba(224, 200, 104, 0.15);
+            --text-primary: #eef6fb;
+            --text-secondary: #c3d7e6;
+            --border-color: rgba(255, 255, 255, 0.12);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(224, 200, 104, 0.08) 0%, transparent 55%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23e0c868' stroke-width='0.8' opacity='0.045'%3E%3Crect x='26' y='26' width='28' height='28'/%3E%3Crect x='26' y='26' width='28' height='28' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='8' stroke-width='0.6'/%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40 Z' stroke-dasharray='3 3' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E");
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .offline-card {
+            width: 100%;
+            max-width: 540px;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px 28px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: var(--gold-subtle);
+            border: 1px solid rgba(224, 200, 104, 0.3);
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .offline-icon-wrap {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: rgba(224, 200, 104, 0.1);
+            border: 1px solid rgba(224, 200, 104, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            color: var(--gold);
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        p.desc {
+            color: var(--text-secondary);
+            font-size: 14.5px;
+            margin-bottom: 24px;
+        }
+        .btn-retry {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 13px 24px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #f0dc8c 0%, #e0c868 60%, #c09828 100%);
+            color: #07293f;
+            font-size: 14.5px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(224, 200, 104, 0.25);
+            transition: all 0.2s ease;
+        }
+        .btn-retry:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(224, 200, 104, 0.35);
+        }
+        .divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 28px 0;
+            position: relative;
+        }
+        .divider span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-card);
+            padding: 0 12px;
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+        /* Offline Tasbih Section */
+        .offline-tasbih {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px;
+            margin-top: 14px;
+        }
+        .tasbih-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .tasbih-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+        .tasbih-dhikr-name {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .tasbih-counter-btn {
+            width: 100%;
+            padding: 18px;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1.5px solid rgba(224, 200, 104, 0.4);
+            color: var(--text-primary);
+            font-size: 32px;
+            font-weight: 800;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s ease;
+        }
+        .tasbih-counter-btn:active {
+            transform: scale(0.98);
+        }
+        .tasbih-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .tasbih-subbtn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .network-toast {
+            display: none;
+            margin-top: 14px;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid #10b981;
+            color: #6ee7b7;
+            font-size: 13px;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
-    <main>
-        <span class="brand">HADITH · MAKTABA YA ELIMU</span>
-        <h1>Hakuna muunganisho wa mtandao</h1>
-        <p>Unganisha kifaa chako na mtandao ili kusoma hadith, kutafuta au kusikiliza sauti.</p>
-        <a href="">Jaribu tena</a>
+    <main class="offline-card">
+        <div class="brand-badge">Bayt Ul Hadith · PWA</div>
+        <div class="offline-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+                <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+                <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+                <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+                <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+            </svg>
+        </div>
+        <h1>Hali ya Nje ya Mtandao</h1>
+        <p class="desc">Kifaa chako hakijaunganishwa na mtandao kwa sasa. Kurasa ulizotembelea hivi karibuni zimehifadhiwa na zinafanya kazi.</p>
+
+        <button type="button" class="btn-retry" onclick="window.location.reload()">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"></polyline>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            Jaribu Kuunganisha Tena
+        </button>
+
+        <div id="online-toast" class="network-toast">
+            ✓ Mtandao umerejea! Inapakia ukurasa...
+        </div>
+
+        <div class="divider"><span>ZANA ZA NJE YA MTANDAO</span></div>
+
+        <!-- Offline Tasbih Component -->
+        <div class="offline-tasbih">
+            <div class="tasbih-header">
+                <span class="tasbih-title">Tasbih ya Haraka (Offline)</span>
+                <span id="tasbih-round" style="font-size: 12px; color: var(--gold);">Mzunguko: 1</span>
+            </div>
+            <div class="tasbih-dhikr-name" id="dhikr-name">سُبْحَانَ اللهِ (Subhanallah)</div>
+            <button type="button" class="tasbih-counter-btn" id="tasbih-btn" onclick="countDhikr()">0</button>
+            <div class="tasbih-actions">
+                <button type="button" class="tasbih-subbtn" onclick="nextDhikr()">Badili Dhikr →</button>
+                <button type="button" class="tasbih-subbtn" onclick="resetDhikr()">Weka Sifuri (Reset)</button>
+            </div>
+        </div>
     </main>
+
+    <script>
+        let count = 0;
+        let dhikrIndex = 0;
+        const dhikrs = [
+            { ar: "سُبْحَانَ اللهِ", sw: "Subhanallah", target: 33 },
+            { ar: "الْحَمْدُ لِلَّهِ", sw: "Alhamdulillah", target: 33 },
+            { ar: "اللهُ أَكْبَرُ", sw: "Allahu Akbar", target: 34 },
+            { ar: "أَسْتَغْفِرُ اللهَ", sw: "Astaghfirullah", target: 100 }
+        ];
+
+        function countDhikr() {
+            count++;
+            document.getElementById('tasbih-btn').textContent = count;
+            if (navigator.vibrate) navigator.vibrate(25);
+            if (count >= dhikrs[dhikrIndex].target) {
+                if (navigator.vibrate) navigator.vibrate([60, 40, 60]);
+            }
+        }
+
+        function nextDhikr() {
+            dhikrIndex = (dhikrIndex + 1) % dhikrs.length;
+            count = 0;
+            document.getElementById('tasbih-btn').textContent = count;
+            document.getElementById('dhikr-name').textContent = dhikrs[dhikrIndex].ar + ' (' + dhikrs[dhikrIndex].sw + ')';
+        }
+
+        function resetDhikr() {
+            count = 0;
+            document.getElementById('tasbih-btn').textContent = count;
+        }
+
+        // Auto reload when internet is restored
+        window.addEventListener('online', () => {
+            const toast = document.getElementById('online-toast');
+            if (toast) toast.style.display = 'block';
+            setTimeout(() => {
+                window.location.reload();
+            }, 1200);
+        });
+    </script>
 </body>
 </html>
