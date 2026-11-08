@@ -63,12 +63,6 @@
                                 <span class="knowledge-ribbon-sub" data-i18n="pg_mod_sub">· Zana za kujifunza na kutafiti</span>
                             </div>
                             <div class="knowledge-ribbon-rail" role="navigation" aria-label="Zana za Jukwaa la Maarifa">
-                                <a class="knowledge-ribbon-chip" href="{{ route('hadith.today') }}">
-                                    <span class="ribbon-chip-icon" aria-hidden="true">
-                                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-                                    </span>
-                                    <span class="ribbon-chip-text" data-i18n="pg_mod_today">Hadith ya Leo</span>
-                                </a>
                                 <a class="knowledge-ribbon-chip" href="{{ route('learning.index') }}">
                                     <span class="ribbon-chip-icon" aria-hidden="true">
                                         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
