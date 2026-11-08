@@ -49,26 +49,14 @@ class AiResearchController extends Controller
             ."Ikiwa hadith hazitoshi kujibu, sema hivyo wazi. Jibu kwa ufupi (aya 2–4).";
 
         try {
-            $res = Http::withHeaders(['x-api-key' => config('services.ai.key'), 'anthropic-version' => '2023-06-01'])
-                ->timeout(30)->post('https://api.anthropic.com/v1/messages', [
-                    'model' => config('services.ai.model'),
-                    'max_tokens' => (int) config('services.ai.max_tokens'),
-                    'system' => $system,
-                    'messages' => [['role' => 'user', 'content' => "Hadith:\n\n{$context}\n\nSwali: {$question}"]],
-                ]);
+            $answer = $this->generateAiAnswer($system, $context, $question);
         } catch (\Throwable $e) {
             report($e);
 
             return response()->json(['error' => 'fail'], 502);
         }
-        if (! $res->ok()) {
-            report(new \RuntimeException('AI API '.$res->status().': '.Str::limit($res->body(), 300)));
-
-            return response()->json(['error' => 'fail'], 502);
-        }
 
         Cache::put($key, $used + 1, now()->addDay());
-        $answer = collect($res->json('content', []))->where('type', 'text')->pluck('text')->implode("\n");
 
         return response()->json([
             'answer' => $answer,
@@ -79,6 +67,64 @@ class AiResearchController extends Controller
                 'url' => route('hadith.show', $h),
             ]),
         ]);
+    }
+
+    /**
+     * Tuma ombi kwa Google Gemini (Bure) au Anthropic Claude.
+     */
+    private function generateAiAnswer(string $system, string $context, string $question): string
+    {
+        $key = (string) config('services.ai.key');
+        $provider = config('services.ai.provider') ?: (str_starts_with($key, 'AIza') ? 'gemini' : 'anthropic');
+        $model = config('services.ai.model') ?: ($provider === 'gemini' ? 'gemini-1.5-flash' : 'claude-haiku-5-5');
+        $maxTokens = (int) config('services.ai.max_tokens', 800);
+
+        if ($provider === 'gemini') {
+            $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/'.$model.':generateContent?key='.$key;
+            $res = Http::timeout(30)->post($endpoint, [
+                'systemInstruction' => [
+                    'parts' => [['text' => $system]],
+                ],
+                'contents' => [
+                    [
+                        'role' => 'user',
+                        'parts' => [
+                            ['text' => "Hadithi zilizotolewa kutoka Bayt Ul Hadith:\n\n{$context}\n\nSwali la mtumiaji: {$question}"],
+                        ],
+                    ],
+                ],
+                'generationConfig' => [
+                    'maxOutputTokens' => $maxTokens,
+                    'temperature' => 0.2,
+                ],
+            ]);
+
+            if (! $res->ok()) {
+                throw new \RuntimeException('Gemini API '.$res->status().': '.Str::limit($res->body(), 300));
+            }
+
+            $answer = $res->json('candidates.0.content.parts.0.text');
+            if (empty($answer)) {
+                throw new \RuntimeException('Gemini API returned empty text');
+            }
+
+            return trim($answer);
+        }
+
+        // Anthropic Claude
+        $res = Http::withHeaders(['x-api-key' => $key, 'anthropic-version' => '2023-06-01'])
+            ->timeout(30)->post('https://api.anthropic.com/v1/messages', [
+                'model' => $model,
+                'max_tokens' => $maxTokens,
+                'system' => $system,
+                'messages' => [['role' => 'user', 'content' => "Hadith:\n\n{$context}\n\nSwali: {$question}"]],
+            ]);
+
+        if (! $res->ok()) {
+            throw new \RuntimeException('AI API '.$res->status().': '.Str::limit($res->body(), 300));
+        }
+
+        return trim(collect($res->json('content', []))->where('type', 'text')->pluck('text')->implode("\n"));
     }
 
     /** Hadith zenye maneno mengi ya swali (si utafutaji wa kisemantiki). */

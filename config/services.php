@@ -83,13 +83,14 @@ return [
     ],
 
     /*
-    | AI Research (msaidizi anayetegemea hadith zilizomo). Huzimwa hadi AI_API_KEY iwekwe.
+    | AI Research (msaidizi anayetegemea hadith zilizomo). Inasaidia Gemini (Bure) na Anthropic.
     */
     'ai' => [
-        'key' => env('AI_API_KEY'),
-        'model' => env('AI_MODEL', 'claude-haiku-5-5'),
-        'daily_limit' => (int) env('AI_DAILY_LIMIT', 15),
-        'max_tokens' => (int) env('AI_MAX_TOKENS', 700),
+        'provider' => env('AI_PROVIDER', 'gemini'),
+        'key' => env('GEMINI_API_KEY', env('AI_API_KEY')),
+        'model' => env('AI_MODEL', 'gemini-1.5-flash'),
+        'daily_limit' => (int) env('AI_DAILY_LIMIT', 25),
+        'max_tokens' => (int) env('AI_MAX_TOKENS', 800),
     ],
 
 ];
