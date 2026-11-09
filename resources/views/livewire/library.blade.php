@@ -46,12 +46,10 @@
                                     <span data-i18n="search_btn">Tafuta</span>
                                     <span aria-hidden="true">→</span>
                                 </button>
-                                @if(\App\Http\Controllers\AiResearchController::enabled())
-                                    <button type="button" class="search-ai-btn" id="search-ask-ai-btn" title="Uliza Msaidizi wa AI" aria-label="Uliza AI">
-                                        <span class="search-ai-sparkle" aria-hidden="true">✨</span>
-                                        <span class="search-ai-text">AI</span>
-                                    </button>
-                                @endif
+                                <button type="button" class="search-ai-btn" id="search-ask-ai-btn" title="Uliza Msaidizi wa AI" aria-label="Uliza AI">
+                                    <span class="search-ai-sparkle" aria-hidden="true">✨</span>
+                                    <span class="search-ai-text">AI</span>
+                                </button>
                             </div>
                         </form>
 
@@ -410,7 +408,7 @@
                             @else
                                 <div style="display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:14px;">
                                     <button class="primary-button" wire:click="clearFilters" data-i18n="empty_show_all">Onyesha hadith zote →</button>
-                                    @if(\App\Http\Controllers\AiResearchController::enabled() && $search !== '')
+                                    @if($search !== '')
                                         <button type="button" class="search-ai-btn" id="empty-ask-ai-btn" data-query="{{ $search }}">
                                             <span class="search-ai-sparkle">✨</span>
                                             <span>Uliza Msaidizi wa AI kuhusu "{{ Str::limit($search, 30) }}"</span>
@@ -514,6 +512,10 @@
                 })
                 .then(r => r.json().then(data => ({ status: r.status, data })))
                 .then(({ status, data }) => {
+                    if (data.error === 'not_configured') {
+                        content.innerHTML = `<p class="home-ai-notice">⚙️ ${data.message || 'Msaidizi wa AI unahitaji GEMINI_API_KEY kuwekwa kwenye faili la .env la seva ya baytulhadith.co.tz.'}</p>`;
+                        return;
+                    }
                     if (status === 429) {
                         content.innerHTML = `<p class="home-ai-error">⚠️ Umefikia kikomo cha maswali ya leo. Tafadhali rudi kesho.</p>`;
                         return;

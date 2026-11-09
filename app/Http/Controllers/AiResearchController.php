@@ -22,7 +22,12 @@ class AiResearchController extends Controller
 
     public function ask(Request $request)
     {
-        abort_unless(self::enabled(), 404);
+        if (! self::enabled()) {
+            return response()->json([
+                'error' => 'not_configured',
+                'message' => 'Msaidizi wa AI unahitaji GEMINI_API_KEY kuwekwa kwenye faili la .env la seva ya baytulhadith.co.tz.',
+            ], 200);
+        }
         $question = Str::limit(trim((string) $request->input('q', '')), 300, '');
         if (mb_strlen($question) < 4) {
             return response()->json(['error' => 'short'], 422);
