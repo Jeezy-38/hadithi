@@ -1066,18 +1066,21 @@ button {
 .search-form .search-submit-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
     background: var(--gold-gradient);
     color: #07293f;
     font-weight: 800;
     font-size: 13px;
-    padding: 10px 18px;
+    padding: 9px 16px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
     transition: all .2s ease;
     white-space: nowrap;
     text-decoration: none;
+    height: 38px;
+    box-sizing: border-box;
 }
 
 .search-form button:hover,
@@ -1086,22 +1089,28 @@ button {
     transform: translateY(-1px);
 }
 
+.search-form .search-submit-btn .search-btn-icon-mobile {
+    display: none;
+}
+
 .search-form .search-ai-btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 5px;
-    background: linear-gradient(135deg, rgba(224, 200, 104, 0.16), rgba(192, 152, 40, 0.28));
+    background: linear-gradient(135deg, rgba(224, 200, 104, 0.18) 0%, rgba(192, 152, 40, 0.32) 100%);
     border: 1.5px solid var(--gold);
-    color: var(--gold-light, #f0dc8c);
+    color: #fceea7;
     font-weight: 800;
     font-size: 12px;
-    padding: 9px 12px;
+    padding: 8px 12px;
     border-radius: 10px;
     cursor: pointer;
     transition: all .2s ease;
     text-decoration: none;
     white-space: nowrap;
-    line-height: 1.2;
+    height: 38px;
+    box-sizing: border-box;
 }
 
 .search-form .search-ai-btn:hover {
@@ -1123,26 +1132,63 @@ button {
     50% { transform: scale(1.18); opacity: 1; }
 }
 
+/* DARK THEME */
 [data-theme="dark"] .search-form button,
 [data-theme="dark"] .search-form .search-submit-btn {
-    color: #07293f;
+    background: var(--gold-gradient);
+    color: #07293f !important;
+}
+
+[data-theme="dark"] .search-form .search-ai-btn {
+    background: linear-gradient(135deg, rgba(224, 200, 104, 0.16) 0%, rgba(192, 152, 40, 0.28) 100%);
+    border-color: #e0c868;
+    color: #fceea7 !important;
+}
+
+[data-theme="dark"] .search-form .search-ai-btn:hover {
+    background: var(--gold-gradient);
+    color: #07293f !important;
+}
+
+/* LIGHT THEME: Vibrant, High-Contrast Luxury Look */
+[data-theme="light"] .search-form {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .search-form input {
+    color: #0f172a;
+}
+
+[data-theme="light"] .search-form input::placeholder {
+    color: #64748b;
 }
 
 [data-theme="light"] .search-form button,
 [data-theme="light"] .search-form .search-submit-btn {
+    background: linear-gradient(135deg, #165a8a 0%, #0a3f66 100%) !important;
     color: #ffffff !important;
-    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.28);
+    box-shadow: 0 2px 8px rgba(10, 63, 102, 0.25);
+    border: none;
 }
 
 [data-theme="light"] .search-form .search-ai-btn {
-    background: rgba(192, 152, 40, 0.12);
-    border-color: #9d7b1a;
-    color: #785a08;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%) !important;
+    border: 1.5px solid #d97706 !important;
+    color: #78350f !important;
+    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.20);
+    font-weight: 800;
+}
+
+[data-theme="light"] .search-form .search-ai-sparkle {
+    filter: drop-shadow(0 0 2px rgba(217, 119, 6, 0.4));
 }
 
 [data-theme="light"] .search-form .search-ai-btn:hover {
-    background: var(--gold-gradient);
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%) !important;
     color: #ffffff !important;
+    border-color: #92400e !important;
 }
 
 /* Home Search AI Response Panel */
@@ -3629,22 +3675,60 @@ a, button, select, input {
         font-size: 24px;
     }
     .search-form {
-        padding: 6px 8px;
-        gap: 8px;
+        padding: 5px 8px;
+        gap: 6px;
+    }
+    .search-actions-group {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        flex-shrink: 0;
     }
     .search-form button,
     .search-form .search-submit-btn {
         padding: 8px 12px;
         font-size: 12px;
+        height: 38px;
         min-height: 38px;
     }
     .search-form .search-ai-btn {
-        padding: 8px 10px;
-        font-size: 11px;
+        padding: 8px 11px;
+        font-size: 11.5px;
+        height: 38px;
         min-height: 38px;
     }
-    .search-actions-group {
-        gap: 5px;
+
+    @media (max-width: 440px) {
+        .search-form {
+            padding: 4px 6px;
+            gap: 4px;
+        }
+        .search-form .search-icon {
+            margin-left: 4px;
+            margin-right: 0;
+        }
+        .search-form button,
+        .search-form .search-submit-btn {
+            padding: 8px 10px;
+            height: 36px;
+            min-height: 36px;
+        }
+        .search-form .search-submit-btn .search-btn-text,
+        .search-form .search-submit-btn .search-btn-arrow {
+            display: none !important;
+        }
+        .search-form .search-submit-btn .search-btn-icon-mobile {
+            display: inline-block !important;
+        }
+        .search-form .search-ai-btn {
+            padding: 8px 10px;
+            font-size: 11px;
+            height: 36px;
+            min-height: 36px;
+        }
+        .search-actions-group {
+            gap: 4px;
+        }
     }
 
     /* Quick Topics Mobile */
@@ -10894,10 +10978,9 @@ a, button, select, input {
     .rawdah-book-card { padding: 14px 12px; }
 }
 
-/* Maktaba: kwenye simu ndogo kitufe cha "Tafuta" kinabanwa na kubaki kidoti cheusi.
-   Utafutaji ni live (na Enter inafanya kazi), kwa hiyo tunakiondoa. */
+/* Maktaba: kwenye simu ndogo vitufe vya Tafuta na AI vimesanifiwa vizuri vikae pamoja */
 @media (max-width: 480px) {
-    .library-search button[type="submit"] { display: none; }
+    .library-search button[type="submit"] { display: inline-flex; }
 }/* Light theme: --gold ni navy,
 kwa hiyo maandishi/ikoni juu yake lazima ziwe nyeupe
    (zilikuwa nyeusi juu ya navy na hazionekani). */
