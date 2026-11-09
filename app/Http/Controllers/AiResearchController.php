@@ -75,6 +75,96 @@ class AiResearchController extends Controller
     }
 
     /**
+     * Pata mafundisho na faida za hadithi (Fawaid al-Hadith) kwa kutumia Gemini.
+     */
+    public function lessons(Hadith $hadith, Request $request)
+    {
+        if (! self::enabled()) {
+            return response()->json([
+                'error' => 'not_configured',
+                'message' => 'Msaidizi wa AI unahitaji GEMINI_API_KEY kuwekwa kwenye faili la .env la seva ya baytulhadith.co.tz.',
+            ], 200);
+        }
+
+        $lang = $request->input('lang') === 'en' ? 'en' : 'sw';
+        $cacheKey = "hadith:lessons:{$hadith->id}:{$lang}";
+
+        $lessons = Cache::rememberForever($cacheKey, function () use ($hadith, $lang) {
+            return $this->generateHadithLessons($hadith, $lang);
+        });
+
+        if (empty($lessons)) {
+            return response()->json(['error' => 'fail', 'message' => 'Haikuwezekana kupata mafundisho ya AI kwa sasa.'], 502);
+        }
+
+        return response()->json([
+            'success' => true,
+            'lessons' => $lessons,
+            'lang' => $lang,
+        ]);
+    }
+
+    /**
+     * Tengeneza mafundisho 3-4 ya hadithi kwa lugha ya Kiswahili au Kiingereza kwa Gemini.
+     */
+    private function generateHadithLessons(Hadith $hadith, string $lang): array
+    {
+        $key = (string) config('services.ai.key');
+        if (blank($key)) {
+            return [];
+        }
+
+        $arabic = trim((string) $hadith->arabic);
+        $translation = $lang === 'en' 
+            ? trim((string) ($hadith->english ?: $hadith->swahili)) 
+            : trim((string) ($hadith->swahili ?: $hadith->english));
+
+        if ($lang === 'en') {
+            $system = "You are an Islamic scholar assistant at Bayt Ul Hadith. Provide 3-4 concise, dignified, practical lessons and moral benefits (Fawaid al-Hadith) derived strictly from this Hadith. Return ONLY a valid JSON array of strings: [\"lesson 1\", \"lesson 2\", \"lesson 3\"]. No markdown formatting outside JSON.";
+            $prompt = "Hadith Reference: {$hadith->chapter?->book?->collection?->name} No. {$hadith->number}\nArabic: {$arabic}\nEnglish Translation: {$translation}";
+        } else {
+            $system = "Wewe ni msaidizi wa kielimu wa Bayt Ul Hadith. Toa mafundisho na faida 3-4 fupi, zenye hekima na mafunzo ya kimaadili (Fawaid za Hadithi) zinazotokana moja kwa moja na hadithi hii. Rudisha JSON array ya strings pekee: [\"faida 1\", \"faida 2\", \"faida 3\"]. Usiweke maelezo mengine nje ya JSON.";
+            $prompt = "Hadithi: {$hadith->chapter?->book?->collection?->name} Na. {$hadith->number}\nMatini ya Kiarabu: {$arabic}\nTafsiri ya Kiswahili: {$translation}";
+        }
+
+        $model = config('services.ai.model') ?: 'gemini-flash-lite-latest';
+        $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/'.$model.':generateContent?key='.$key;
+        $payload = [
+            'systemInstruction' => [
+                'parts' => [['text' => $system]],
+            ],
+            'contents' => [
+                ['role' => 'user', 'parts' => [['text' => $prompt]]],
+            ],
+            'generationConfig' => [
+                'responseMimeType' => 'application/json',
+                'maxOutputTokens' => 600,
+                'temperature' => 0.2,
+            ],
+        ];
+
+        try {
+            $res = Http::timeout(20)->post($endpoint, $payload);
+            if (! $res->ok() && $model !== 'gemini-flash-lite-latest') {
+                $fallback = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent?key='.$key;
+                $res = Http::timeout(20)->post($fallback, $payload);
+            }
+
+            if ($res->ok()) {
+                $raw = $res->json('candidates.0.content.parts.0.text');
+                $parsed = json_decode($raw, true);
+                if (is_array($parsed) && count($parsed) > 0) {
+                    return array_values(array_filter(array_map('trim', $parsed)));
+                }
+            }
+        } catch (\Throwable $e) {
+            report($e);
+        }
+
+        return [];
+    }
+
+    /**
      * Tuma ombi kwa Google Gemini (Bure) au Anthropic Claude.
      */
     private function generateAiAnswer(string $system, string $context, string $question): string

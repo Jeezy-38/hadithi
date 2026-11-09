@@ -116,6 +116,7 @@ Route::view('/kuhusu', 'about')->name('about');
 Route::prefix('msaidizi')->name('ai.')->group(function () {
     Route::get('/', [\App\Http\Controllers\AiResearchController::class, 'index'])->name('index');
     Route::post('/uliza', [\App\Http\Controllers\AiResearchController::class, 'ask'])->middleware('throttle:10,1')->name('ask');
+    Route::post('/faida/{hadith}', [\App\Http\Controllers\AiResearchController::class, 'lessons'])->middleware('throttle:30,1')->name('lessons');
 });
 
 // ---- Arabic Analyzer (lite) ----

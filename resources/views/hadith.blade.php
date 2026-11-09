@@ -177,10 +177,8 @@
                     </svg>
                 </button>
                 <div class="reader-audio-text">
-                    <span class="reader-audio-title" id="reader-audio-title">Kisomo cha Kiarabu</span>
-                    <span class="reader-audio-sub" id="reader-audio-sub">
-                        {{ $hasStudio ? 'Sauti Halisi ya Sheikh (MP3)' : 'Kiarabu Fasaha chenye Tajwid (MP3)' }}
-                    </span>
+                    <span class="reader-audio-title" id="reader-audio-title">Sikiliza Kisomo</span>
+                    <span class="reader-audio-sub" id="reader-audio-sub">{{ $hasStudio ? 'Sheikh · MP3' : 'Kiarabu · MP3' }}</span>
                 </div>
             </div>
 
@@ -228,20 +226,25 @@
                 </section>
             @endif
 
-            {{-- 4. Mafundisho na Faida za Hadithi (kama zipo) --}}
-            @if(!empty($hadith->hints) && count($hadith->hints) > 0)
-                <div class="islamic-divider" data-reading="sw" role="separator" aria-hidden="true">
-                    <span class="divider-line"></span>
-                    <span class="divider-emblem">۞</span>
-                    <span class="divider-line"></span>
+            <div class="islamic-divider" role="separator" aria-hidden="true">
+                <span class="divider-line"></span>
+                <span class="divider-emblem">۞</span>
+                <span class="divider-line"></span>
+            </div>
+
+            {{-- 4. Mafundisho na Faida za Hadithi (Lessons & Insights with Gemini AI) --}}
+            <section class="reading-section lessons-section" id="hadith-lessons-section" aria-labelledby="label-lessons">
+                <div class="section-label-row">
+                    <span id="label-lessons" class="section-label" data-i18n="pg_h_l_les">MAFUNDISHO NA FAIDA ZA HADITHI</span>
+                    <span class="section-script-badge">
+                        <span class="ai-sparkle">✨</span>
+                        <span>Fawaid al-Hadith</span>
+                    </span>
                 </div>
 
-                <section class="reading-section lessons-section" data-reading="sw" aria-labelledby="label-lessons">
-                    <div class="section-label-row">
-                        <span id="label-lessons" class="section-label" data-i18n="pg_h_l_les">MAFUNDISHO NA FAIDA ZA HADITHI</span>
-                        <span class="section-script-badge" data-i18n="pg_h_faida" data-i18n-vars='{"n":"{{ count($hadith->hints) }}"}'>Faida {{ count($hadith->hints) }}</span>
-                    </div>
-                    <div class="lessons-deck">
+                {{-- Mafundisho ya awali ya database (kama yapo) --}}
+                @if(!empty($hadith->hints) && count($hadith->hints) > 0)
+                    <div class="lessons-deck" id="static-lessons-deck">
                         @foreach($hadith->hints as $index => $hint)
                             @if(trim((string)$hint) !== '')
                                 <article class="lesson-card-item">
@@ -253,8 +256,27 @@
                             @endif
                         @endforeach
                     </div>
-                </section>
-            @endif
+                @endif
+
+                {{-- Mafundisho ya AI (Kiswahili & English automatically) --}}
+                <div class="hadith-ai-lessons-card" id="hadith-ai-lessons-card" data-endpoint="{{ route('ai.lessons', $hadith) }}">
+                    <div id="ai-lessons-content">
+                        <div class="ai-lessons-trigger-box">
+                            <div class="ai-lessons-trigger-info">
+                                <span class="ai-lessons-sparkle">✨</span>
+                                <div class="ai-lessons-trigger-text">
+                                    <strong id="ai-lessons-box-title">Mafundisho kwa Msaada wa Gemini AI</strong>
+                                    <p id="ai-lessons-box-desc">Pata uchambuzi wa mafunzo na faida za hadithi hii kwa lugha unayosoma (Kiswahili / Kiingereza).</p>
+                                </div>
+                            </div>
+                            <button type="button" class="ai-lessons-btn" id="btn-fetch-ai-lessons">
+                                <span id="btn-fetch-ai-text">✨ Fafanua kwa AI</span>
+                                <span class="btn-arrow" aria-hidden="true">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <div class="islamic-divider" role="separator" aria-hidden="true">
                 <span class="divider-line"></span>
@@ -462,6 +484,102 @@
                     } else {
                         playReaderAudio();
                     }
+                });
+            }
+
+            // Hadith AI Lessons Generator (Kiswahili & English)
+            const aiLessonsBtn = document.getElementById('btn-fetch-ai-lessons');
+            const aiLessonsContent = document.getElementById('ai-lessons-content');
+            const aiLessonsCard = document.getElementById('hadith-ai-lessons-card');
+
+            if (aiLessonsBtn && aiLessonsContent && aiLessonsCard) {
+                const endpoint = aiLessonsCard.getAttribute('data-endpoint');
+
+                function updateAiLessonsLabels() {
+                    const isEn = document.documentElement.dataset.readingLanguage === 'en';
+                    const title = document.getElementById('ai-lessons-box-title');
+                    const desc = document.getElementById('ai-lessons-box-desc');
+                    const btnText = document.getElementById('btn-fetch-ai-text');
+                    if (title) title.textContent = isEn ? 'Hadith Lessons & Insights with Gemini AI' : 'Mafundisho kwa Msaada wa Gemini AI';
+                    if (desc) desc.textContent = isEn ? 'Extract practical moral lessons and benefits from this Hadith in English.' : 'Pata uchambuzi wa mafunzo na faida za hadithi hii kwa lugha unayosoma (Kiswahili / Kiingereza).';
+                    if (btnText) btnText.textContent = isEn ? '✨ Generate with AI' : '✨ Fafanua kwa AI';
+                }
+
+                new MutationObserver(updateAiLessonsLabels).observe(document.documentElement, { attributes: true, attributeFilter: ['data-reading-language'] });
+                updateAiLessonsLabels();
+
+                aiLessonsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const isEn = document.documentElement.dataset.readingLanguage === 'en';
+                    const lang = isEn ? 'en' : 'sw';
+                    const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+
+                    aiLessonsContent.innerHTML = `
+                        <div class="ai-lessons-loading">
+                            <span class="ai-lessons-spinner" aria-hidden="true"></span>
+                            <div class="ai-lessons-loading-text">
+                                <strong>${isEn ? 'Gemini AI is analyzing this Hadith…' : 'Gemini AI inachambua hadithi hii…'}</strong>
+                                <span>${isEn ? 'Extracting practical moral lessons and benefits.' : 'Inaandaa mafundisho na faida za kimaadili.'}</span>
+                            </div>
+                        </div>
+                    `;
+
+                    fetch(endpoint, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': csrf,
+                        },
+                        body: JSON.stringify({ lang: lang })
+                    })
+                    .then(r => r.json().then(data => ({ status: r.status, data })))
+                    .then(({ status, data }) => {
+                        if (data.error === 'not_configured') {
+                            aiLessonsContent.innerHTML = `<div class="ai-lessons-msg error">⚙️ ${data.message || 'Weka GEMINI_API_KEY kwenye .env ya seva.'}</div>`;
+                            return;
+                        }
+                        if (status >= 400 || !data.lessons || data.lessons.length === 0) {
+                            aiLessonsContent.innerHTML = `
+                                <div class="ai-lessons-msg error">
+                                    <span>⚠️ ${isEn ? 'Could not generate lessons at this time.' : 'Haikuwezekana kupata mafundisho kwa sasa.'}</span>
+                                </div>
+                            `;
+                            return;
+                        }
+
+                        const lessonsHtml = data.lessons.map((lesson, idx) => `
+                            <article class="lesson-card-item ai-lesson-card">
+                                <span class="lesson-num-badge ai-badge" aria-hidden="true">${idx + 1}</span>
+                                <div class="lesson-content">
+                                    <p class="lesson-text">${lesson.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+                                </div>
+                            </article>
+                        `).join('');
+
+                        aiLessonsContent.innerHTML = `
+                            <div class="ai-lessons-results">
+                                <div class="ai-lessons-header-strip">
+                                    <span class="ai-badge-pill">✨ ${isEn ? 'Gemini AI Analysis' : 'Uchambuzi wa Gemini AI'}</span>
+                                    <button type="button" class="ai-refresh-btn" id="btn-re-fetch-lessons" title="${isEn ? 'Regenerate' : 'Sasisha'}">↻</button>
+                                </div>
+                                <div class="lessons-deck">
+                                    ${lessonsHtml}
+                                </div>
+                            </div>
+                        `;
+
+                        const refetchBtn = document.getElementById('btn-re-fetch-lessons');
+                        if (refetchBtn) {
+                            refetchBtn.addEventListener('click', function() {
+                                aiLessonsBtn.click();
+                            });
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Lessons error:', err);
+                        aiLessonsContent.innerHTML = `<div class="ai-lessons-msg error">⚠️ ${isEn ? 'Connection error. Please try again.' : 'Hitilafu ya mtandao. Jaribu tena.'}</div>`;
+                    });
                 });
             }
 
