@@ -2,12 +2,6 @@
 <section class="inpage-feedback-section" id="fomu-ya-maoni" aria-label="Toa Maoni na Ushauri">
     <div class="inpage-feedback-card">
         <div class="inpage-feedback-header">
-            <div class="inpage-feedback-badge">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-                <span class="inpage-feedback-badge-text">BAYT UL HADITH</span>
-            </div>
             <h3 class="inpage-feedback-title">Toa Maoni & Pendekeza Maboresho</h3>
             <p class="inpage-feedback-desc">Una wazo jipya, sahihisho la hadithi, au hitilafu uliyoiona? Maoni yako yanatusaidia kufanya jukwaa hili liwe bora zaidi kwa jamii.</p>
         </div>
