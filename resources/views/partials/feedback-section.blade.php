@@ -3,7 +3,9 @@
     <div class="inpage-feedback-card">
         <div class="inpage-feedback-header">
             <div class="inpage-feedback-badge">
-                <span class="inpage-feedback-icon" aria-hidden="true">💬</span>
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
                 <span class="inpage-feedback-badge-text">BAYT UL HADITH</span>
             </div>
             <h3 class="inpage-feedback-title">Toa Maoni & Pendekeza Maboresho</h3>
@@ -19,16 +21,16 @@
                 <label class="feedback-label">Aina ya Maoni:</label>
                 <div class="feedback-chips" role="radiogroup" aria-label="Aina ya Maoni">
                     <button type="button" class="feedback-chip active" data-cat="feature" onclick="selectInpageFeedbackCat('feature', this)">
-                        💡 Wazo Jipya
+                        Wazo Jipya
                     </button>
                     <button type="button" class="feedback-chip" data-cat="correction" onclick="selectInpageFeedbackCat('correction', this)">
-                        ✍️ Sahihisho
+                        Sahihisho
                     </button>
                     <button type="button" class="feedback-chip" data-cat="bug" onclick="selectInpageFeedbackCat('bug', this)">
-                        🐛 Hitilafu
+                        Hitilafu
                     </button>
                     <button type="button" class="feedback-chip" data-cat="general" onclick="selectInpageFeedbackCat('general', this)">
-                        💬 Ushauri Mkuu
+                        Ushauri Mkuu
                     </button>
                 </div>
             </div>
@@ -77,7 +79,7 @@
                 Wazo na maoni yako yamepokelewa vizuri. Timu yetu itayafanyia kazi kwa ajili ya kuboresha Bayt Ul Hadith.
             </p>
             <button type="button" class="feedback-chip" style="margin: 0 auto; display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px;" onclick="resetInpageFeedback()">
-                <span>✍️ Tuma Maoni Mengine</span>
+                <span>Tuma Maoni Mengine</span>
             </button>
         </div>
     </div>
