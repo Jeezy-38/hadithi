@@ -1055,19 +1055,28 @@ button {
     color: var(--text-dim);
 }
 
-.search-form .search-icon-btn {
+.search-form .search-icon-btn,
+[data-theme="light"] .search-form .search-icon-btn,
+[data-theme="dark"] .search-form .search-icon-btn {
     background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
     border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     padding: 0 4px 0 10px !important;
     margin: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+    width: auto !important;
+    min-width: auto !important;
+    border-radius: 0 !important;
     color: var(--gold) !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
     flex-shrink: 0 !important;
-    box-shadow: none !important;
-    height: auto !important;
     transition: transform 0.15s ease, filter 0.15s ease;
 }
 
@@ -1077,11 +1086,15 @@ button {
 }
 
 [data-theme="light"] .search-form .search-icon-btn {
-    color: #0a3f66 !important;
+    color: #475569 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
 }
 
 [data-theme="light"] .search-form .search-icon-btn:hover {
-    color: #165a8a !important;
+    color: #0284c7 !important;
 }
 
 .search-actions-group {
@@ -1158,7 +1171,6 @@ button {
 }
 
 /* DARK THEME */
-[data-theme="dark"] .search-form button,
 [data-theme="dark"] .search-form .search-submit-btn {
     background: var(--gold-gradient);
     color: #07293f !important;
@@ -1190,7 +1202,6 @@ button {
     color: #64748b;
 }
 
-[data-theme="light"] .search-form button,
 [data-theme="light"] .search-form .search-submit-btn {
     background: linear-gradient(135deg, #165a8a 0%, #0a3f66 100%) !important;
     color: #ffffff !important;
@@ -3709,7 +3720,6 @@ a, button, select, input {
         gap: 5px;
         flex-shrink: 0;
     }
-    .search-form button,
     .search-form .search-submit-btn {
         padding: 8px 12px;
         font-size: 12px;
