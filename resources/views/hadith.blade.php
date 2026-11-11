@@ -48,6 +48,10 @@
             </a>
 
             <div class="reader-actions no-print">
+                <button type="button" id="top-btn-hadith-chat" class="reader-ai-chat-btn-top" title="Uliza au Chat na AI kuhusu hadithi hii" aria-label="Uliza AI">
+                    <span class="ai-sparkle">✨</span>
+                    <span class="btn-text">Chat na AI</span>
+                </button>
                 <div class="reader-more-menu-wrap">
                     <button type="button" id="reader-more-btn" class="reader-more-toggle" aria-expanded="false" aria-haspopup="true" title="Chaguzi zaidi" data-i18n-title="pg_h_more">
                         <span class="more-dots" aria-hidden="true">⋯</span>
@@ -274,6 +278,64 @@
                                 <span class="btn-arrow" aria-hidden="true">→</span>
                             </button>
                         </div>
+                    </div>
+                </div>
+
+                {{-- 4b. AI Chat: Mazungumzo & Ufafanuzi wa Hadithi Hii --}}
+                <div class="hadith-ai-chat-card" id="hadith-ai-chat-card" data-endpoint="{{ route('ai.chat', $hadith) }}">
+                    <div class="ai-chat-trigger-box" id="ai-chat-trigger-box">
+                        <div class="ai-chat-trigger-info">
+                            <span class="ai-chat-sparkle">💬</span>
+                            <div class="ai-chat-trigger-text">
+                                <strong>Hujaelewa au unahitaji maelezo zaidi?</strong>
+                                <p>Uliza swali au zungumza na Msaidizi wa AI kuhusu hadithi hii moja kwa moja.</p>
+                            </div>
+                        </div>
+                        <button type="button" class="ai-chat-open-btn" id="btn-open-ai-chat">
+                            <span>✨ Chat na AI</span>
+                            <span class="btn-arrow" aria-hidden="true">↓</span>
+                        </button>
+                    </div>
+
+                    {{-- Expanded Chat Box --}}
+                    <div class="ai-chat-body" id="ai-chat-body" style="display: none;">
+                        <div class="ai-chat-quick-prompts">
+                            <span class="ai-chat-prompts-label">Maswali ya Haraka:</span>
+                            <div class="ai-chat-chips">
+                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Nieleze kwa lugha rahisi sana maana ya hadithi hii')">
+                                    Nieleze kwa lugha rahisi
+                                </button>
+                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Ni nini mukhtadha au sababu ya hadithi hii kusemwa (Asbabu al-Wurud)?')">
+                                    Mukhtadha wa Hadithi
+                                </button>
+                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Mifano ya utekelezaji wa mafunzo ya hadithi hii leo')">
+                                    Utekelezaji Leo
+                                </button>
+                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Fafanua maneno magumu ya Kiarabu katika hadithi hii')">
+                                    Maneno Magumu
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="ai-chat-messages" id="ai-chat-messages">
+                            <div class="ai-chat-msg ai">
+                                <div class="ai-chat-avatar">✨</div>
+                                <div class="ai-chat-bubble">
+                                    <p>Assalaamu 'alaykum! Mimi ni msaidizi wako wa AI wa hadithi hii ({{ $hadith->chapter?->book?->collection?->name }} Na. {{ $hadith->number }}). Hujaelewa neno au unahitaji ufafanuzi zaidi wa jambo gani?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="ai-chat-input-row" id="hadith-ai-chat-form" onsubmit="handleHadithAiChatSubmit(event)">
+                            <input type="text" id="hadith-ai-chat-input" class="ai-chat-input" placeholder="Andika swali lako kuhusu hadithi hii..." autocomplete="off" required minlength="2" maxlength="400">
+                            <button type="submit" id="hadith-ai-chat-send" class="ai-chat-send-btn" aria-label="Tuma swali">
+                                <span>Tuma</span>
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -580,6 +642,148 @@
                         console.error('Lessons error:', err);
                         aiLessonsContent.innerHTML = `<div class="ai-lessons-msg error">⚠️ ${isEn ? 'Connection error. Please try again.' : 'Hitilafu ya mtandao. Jaribu tena.'}</div>`;
                     });
+                });
+            }
+
+            // Hadith AI Chat Interactive Discussion
+            const chatCard = document.getElementById('hadith-ai-chat-card');
+            const openChatBtn = document.getElementById('btn-open-ai-chat');
+            const topChatBtn = document.getElementById('top-btn-hadith-chat');
+            const chatBody = document.getElementById('ai-chat-body');
+            const chatMessages = document.getElementById('ai-chat-messages');
+            const chatInput = document.getElementById('hadith-ai-chat-input');
+            const chatForm = document.getElementById('hadith-ai-chat-form');
+
+            function toggleHadithAiChat() {
+                if (!chatBody) return;
+                const isHidden = chatBody.style.display === 'none';
+                chatBody.style.display = isHidden ? 'block' : 'none';
+                if (openChatBtn) {
+                    const arrow = openChatBtn.querySelector('.btn-arrow');
+                    if (arrow) arrow.textContent = isHidden ? '↑' : '↓';
+                }
+                if (isHidden && chatCard) {
+                    chatCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    if (chatInput) setTimeout(() => chatInput.focus(), 300);
+                }
+            }
+
+            if (openChatBtn) openChatBtn.addEventListener('click', toggleHadithAiChat);
+            if (topChatBtn) topChatBtn.addEventListener('click', toggleHadithAiChat);
+
+            window.askHadithAi = function(query) {
+                if (!query) return;
+                if (chatBody && chatBody.style.display === 'none') {
+                    chatBody.style.display = 'block';
+                    if (openChatBtn) {
+                        const arrow = openChatBtn.querySelector('.btn-arrow');
+                        if (arrow) arrow.textContent = '↑';
+                    }
+                }
+                sendHadithChatMessage(query);
+            };
+
+            window.handleHadithAiChatSubmit = function(e) {
+                e.preventDefault();
+                if (!chatInput) return;
+                const q = chatInput.value.trim();
+                if (q) {
+                    sendHadithChatMessage(q);
+                    chatInput.value = '';
+                }
+            };
+
+            function sendHadithChatMessage(msg) {
+                if (!chatMessages || !chatCard) return;
+                const endpoint = chatCard.getAttribute('data-endpoint');
+                const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+                const isEn = document.documentElement.dataset.readingLanguage === 'en';
+                const lang = isEn ? 'en' : 'sw';
+
+                // Append user message
+                const userBubble = document.createElement('div');
+                userBubble.className = 'ai-chat-msg user';
+                userBubble.innerHTML = `
+                    <div class="ai-chat-bubble">
+                        <p>${msg.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+                    </div>
+                `;
+                chatMessages.appendChild(userBubble);
+
+                // Append loading bubble
+                const loadingBubble = document.createElement('div');
+                loadingBubble.className = 'ai-chat-msg ai loading';
+                loadingBubble.innerHTML = `
+                    <div class="ai-chat-avatar">✨</div>
+                    <div class="ai-chat-bubble">
+                        <div class="ai-chat-typing">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(loadingBubble);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': csrf,
+                    },
+                    body: JSON.stringify({ message: msg, lang: lang })
+                })
+                .then(r => r.json().then(data => ({ status: r.status, data })))
+                .then(({ status, data }) => {
+                    loadingBubble.remove();
+                    const aiBubble = document.createElement('div');
+                    aiBubble.className = 'ai-chat-msg ai';
+
+                    if (data.error === 'not_configured') {
+                        aiBubble.innerHTML = `
+                            <div class="ai-chat-avatar">⚙️</div>
+                            <div class="ai-chat-bubble error">
+                                <p>${data.message || 'Weka GEMINI_API_KEY kwenye .env ya seva.'}</p>
+                            </div>
+                        `;
+                    } else if (status >= 400 || !data.answer) {
+                        aiBubble.innerHTML = `
+                            <div class="ai-chat-avatar">⚠️</div>
+                            <div class="ai-chat-bubble error">
+                                <p>${isEn ? 'Could not generate answer at this time. Please try again.' : 'Haikuwezekana kupata jibu kwa sasa. Tafadhali jaribu tena.'}</p>
+                            </div>
+                        `;
+                    } else {
+                        const formatted = data.answer
+                            .replace(/&/g, '&amp;')
+                            .replace(/</g, '&lt;')
+                            .replace(/>/g, '&gt;')
+                            .replace(/\n\n+/g, '</p><p>')
+                            .replace(/\n/g, '<br>');
+
+                        aiBubble.innerHTML = `
+                            <div class="ai-chat-avatar">✨</div>
+                            <div class="ai-chat-bubble">
+                                <p>${formatted}</p>
+                            </div>
+                        `;
+                    }
+                    chatMessages.appendChild(aiBubble);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                })
+                .catch(err => {
+                    console.error('Chat error:', err);
+                    loadingBubble.remove();
+                    const errBubble = document.createElement('div');
+                    errBubble.className = 'ai-chat-msg ai';
+                    errBubble.innerHTML = `
+                        <div class="ai-chat-avatar">⚠️</div>
+                        <div class="ai-chat-bubble error">
+                            <p>${isEn ? 'Network error. Please try again.' : 'Hitilafu ya mtandao. Tafadhali jaribu tena.'}</p>
+                        </div>
+                    `;
+                    chatMessages.appendChild(errBubble);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
                 });
             }
 

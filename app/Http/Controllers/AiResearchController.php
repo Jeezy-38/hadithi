@@ -75,6 +75,106 @@ class AiResearchController extends Controller
     }
 
     /**
+     * Msaidizi wa AI wa mazungumzo (chat) kwa ajili ya hadithi maalum.
+     */
+    public function chat(Hadith $hadith, Request $request)
+    {
+        if (! self::enabled()) {
+            return response()->json([
+                'error' => 'not_configured',
+                'message' => 'Msaidizi wa AI unahitaji GEMINI_API_KEY kuwekwa kwenye faili la .env la seva ya baytulhadith.co.tz.',
+            ], 200);
+        }
+
+        $question = Str::limit(trim((string) $request->input('message', '')), 500, '');
+        if (mb_strlen($question) < 2) {
+            return response()->json(['error' => 'Swali ni fupi mno.'], 422);
+        }
+
+        $lang = $request->input('lang') === 'en' ? 'en' : 'sw';
+        $cacheKey = "hadith:chat:{$hadith->id}:" . md5(mb_strtolower($question) . ':' . $lang);
+
+        $answer = Cache::remember($cacheKey, now()->addDays(7), function () use ($hadith, $question, $lang) {
+            return $this->generateHadithChatAnswer($hadith, $question, $lang);
+        });
+
+        if (empty($answer)) {
+            return response()->json(['error' => 'Haikuwezekana kupata jibu la AI kwa sasa. Jaribu tena.'], 502);
+        }
+
+        return response()->json([
+            'success' => true,
+            'answer' => $answer,
+            'question' => $question,
+        ]);
+    }
+
+    /**
+     * Tengeneza ufafanuzi wa kina au jibu la swali la msomaji kuhusu hadithi husika.
+     */
+    private function generateHadithChatAnswer(Hadith $hadith, string $question, string $lang): ?string
+    {
+        $key = (string) config('services.ai.key');
+        if (blank($key)) {
+            return null;
+        }
+
+        $colName = $hadith->chapter?->book?->collection?->name ?? 'Hadithi';
+        $arabic = trim((string) $hadith->arabic);
+        $translation = $lang === 'en' 
+            ? trim((string) ($hadith->english ?: $hadith->swahili)) 
+            : trim((string) ($hadith->swahili ?: $hadith->english));
+
+        if ($lang === 'en') {
+            $system = "You are a dignified, knowledgeable, gentle Islamic scholarly research assistant at Bayt Ul Hadith (baytulhadith.co.tz). "
+                . "A user is reading Hadith {$colName} No. {$hadith->number} and has asked a question or needs clarification. "
+                . "Answer strictly based on authentic Islamic scholarship, explaining the context (Asbab al-Wurud if applicable), meaning of terms, and practical moral lessons with wisdom and respect. "
+                . "Do not issue personal fatwas. If the question involves complex legal rulings, gently advise consulting verified scholars. Keep your response concise, structured (2-4 paragraphs with bullet points if helpful), and warm.";
+            $prompt = "Hadith Reference: {$colName} No. {$hadith->number}\nArabic Text: {$arabic}\nEnglish Translation: {$translation}\n\nReader's Question: {$question}";
+        } else {
+            $system = "Wewe ni Msaidizi wa Kielimu wa Kiislamu mwenye hekima na utulivu katika maktaba ya Bayt Ul Hadith (baytulhadith.co.tz). "
+                . "Msomaji anasoma Hadithi ya {$colName} Na. {$hadith->number} na ameuliza swali au anahitaji ufafanuzi zaidi kwa kuwa hajaelewa vizuri au anataka faida za ziada. "
+                . "Jibu kwa hekima ya Kiislamu, lugha fasaha na nyepesi kueleweka, ukifafanua maana, mukhtadha (asbabu al-wurud kama ipo), na mafunzo ya vitendo. "
+                . "Usitoe fatwa za kibinafsi; kwa masuala magumu ya kisheria mshauri kwa upole kuwasiliana na wanazuoni. Fanya jibu liwe la kuridhisha (aya 2-4 zenye mpangilio nadhifu).";
+            $prompt = "Hadithi: {$colName} Na. {$hadith->number}\nMatini ya Kiarabu: {$arabic}\nTafsiri ya Kiswahili: {$translation}\n\nSwali la Msomaji: {$question}";
+        }
+
+        $model = config('services.ai.model') ?: 'gemini-flash-lite-latest';
+        $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/'.$model.':generateContent?key='.$key;
+        $payload = [
+            'systemInstruction' => [
+                'parts' => [['text' => $system]],
+            ],
+            'contents' => [
+                ['role' => 'user', 'parts' => [['text' => $prompt]]],
+            ],
+            'generationConfig' => [
+                'maxOutputTokens' => 1000,
+                'temperature' => 0.35,
+            ],
+        ];
+
+        try {
+            $res = Http::timeout(25)->post($endpoint, $payload);
+            if (! $res->ok() && $model !== 'gemini-flash-lite-latest') {
+                $fallback = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent?key='.$key;
+                $res = Http::timeout(25)->post($fallback, $payload);
+            }
+
+            if ($res->ok()) {
+                $text = $res->json('candidates.0.content.parts.0.text');
+                if (filled($text)) {
+                    return trim($text);
+                }
+            }
+        } catch (\Throwable $e) {
+            report($e);
+        }
+
+        return null;
+    }
+
+    /**
      * Pata mafundisho na faida za hadithi (Fawaid al-Hadith) kwa kutumia Gemini.
      */
     public function lessons(Hadith $hadith, Request $request)
