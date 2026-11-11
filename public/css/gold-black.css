@@ -12339,3 +12339,97 @@ html[data-title-lang="es"] [data-tl~="es"]{display:inline}
     color: #991b1b;
 }
 
+/* ==========================================================================
+   IN-PAGE FEEDBACK SECTION (CHINI YA COLLECTION)
+   ========================================================================== */
+.inpage-feedback-section {
+    margin-top: 40px;
+    margin-bottom: 24px;
+    padding: 0 4px;
+}
+
+.inpage-feedback-card {
+    background: var(--bg-surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    padding: 32px 28px;
+    box-shadow: var(--card-shadow);
+    max-width: 840px;
+    margin: 0 auto;
+    transition: border-color .2s ease;
+}
+
+[data-theme="light"] .inpage-feedback-card {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
+
+.inpage-feedback-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.inpage-feedback-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: var(--gold-subtle);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    margin-bottom: 12px;
+}
+
+[data-theme="light"] .inpage-feedback-badge {
+    background: #e0f2fe;
+    border-color: #bae6fd;
+}
+
+.inpage-feedback-badge-text {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--gold);
+}
+
+[data-theme="light"] .inpage-feedback-badge-text {
+    color: #0369a1;
+}
+
+.inpage-feedback-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+}
+
+.inpage-feedback-desc {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.inpage-feedback-footer {
+    margin-top: 20px;
+}
+
+@media (max-width: 540px) {
+    .inpage-feedback-section {
+        margin-top: 28px;
+    }
+    .inpage-feedback-card {
+        padding: 22px 16px;
+        border-radius: 16px;
+    }
+    .inpage-feedback-title {
+        font-size: 19px;
+    }
+    .inpage-feedback-desc {
+        font-size: 13px;
+    }
+}
+
+

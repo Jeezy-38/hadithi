@@ -206,7 +206,6 @@
     @include('partials.pwa-prompt')
     @include('partials.bottom-nav')
     @include('partials.share-modal')
-    @include('partials.feedback-modal')
     @if (session('auth_status'))
         <div class="auth-toast" role="status" data-auth-toast>{{ session('auth_status') }}</div>
     @endif

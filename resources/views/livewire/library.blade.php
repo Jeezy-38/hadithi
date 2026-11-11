@@ -293,6 +293,9 @@
                             </div>
                         </section>
 
+                        {{-- Fomu ya Kutoa Maoni na Ushauri (Chini ya Collection) --}}
+                        @include('partials.feedback-section')
+
                     </div>
                 @else
                     {{-- Inside Book / Search Results View --}}
