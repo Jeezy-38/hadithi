@@ -47,7 +47,9 @@
                                     <span class="search-btn-arrow" aria-hidden="true">→</span>
                                 </button>
                                 <button type="button" class="search-ai-btn" id="search-ask-ai-btn" title="Uliza Msaidizi wa AI" aria-label="Uliza AI">
-                                    <span class="search-ai-sparkle" aria-hidden="true">✨</span>
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
                                     <span class="search-ai-text">AI</span>
                                 </button>
                             </div>
@@ -57,7 +59,9 @@
                         <div id="home-ai-panel" class="home-ai-panel" style="display: none;" role="region" aria-live="polite">
                             <div class="home-ai-header">
                                 <div class="home-ai-badge">
-                                    <span class="home-ai-sparkle">✨</span>
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 4px;">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
                                     <span class="home-ai-badge-text">Jibu la Msaidizi wa AI</span>
                                 </div>
                                 <button type="button" class="home-ai-close-btn" id="home-ai-close-btn" aria-label="Funga jibu la AI">
@@ -413,7 +417,9 @@
                                     <button class="primary-button" wire:click="clearFilters" data-i18n="empty_show_all">Onyesha hadith zote →</button>
                                     @if($search !== '')
                                         <button type="button" class="search-ai-btn" id="empty-ask-ai-btn" data-query="{{ $search }}">
-                                            <span class="search-ai-sparkle">✨</span>
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 4px;">
+                                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                            </svg>
                                             <span>Uliza Msaidizi wa AI kuhusu "{{ Str::limit($search, 30) }}"</span>
                                         </button>
                                     @endif
@@ -566,7 +572,7 @@
 
             // Click listener for search actions
             document.addEventListener('click', function(e) {
-                // Click on ✨ AI button in search bar
+                // Click on AI button in search bar
                 const aiBtn = e.target.closest('#search-ask-ai-btn');
                 if (aiBtn) {
                     e.preventDefault();

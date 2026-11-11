@@ -48,9 +48,20 @@
     @endauth
 </nav>
 
-{{-- Kitufe cha Kuelea cha "Rudi Juu" (Floating Back-to-Top Button) --}}
-<button type="button" id="back-to-top" class="back-to-top-btn" aria-label="Rudi juu ya ukurasa" title="Rudi juu">
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-</button>
+{{-- Vitufe vya Kuelea: "Chat na AI" na "Rudi Juu" (Floating Actions Cluster) --}}
+<div class="floating-actions-cluster" id="floating-actions-cluster">
+    @if(isset($hadith) || request()->routeIs('hadith.show'))
+    <button type="button" id="floating-hadith-ai-chat" class="floating-ai-chat-btn" aria-label="Chat na AI kuhusu hadithi hii" title="Chat na AI">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="btn-text">Chat na AI</span>
+    </button>
+    @endif
+
+    <button type="button" id="back-to-top" class="back-to-top-btn" aria-label="Rudi juu ya ukurasa" title="Rudi juu">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+</div>

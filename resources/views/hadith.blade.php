@@ -48,8 +48,10 @@
             </a>
 
             <div class="reader-actions no-print">
-                <button type="button" id="top-btn-hadith-chat" class="reader-ai-chat-btn-top" title="Uliza au Chat na AI kuhusu hadithi hii" aria-label="Uliza AI">
-                    <span class="ai-sparkle">✨</span>
+                <button type="button" id="top-btn-hadith-chat" class="reader-ai-chat-btn-top" title="Uliza au Chat na AI kuhusu hadithi hii" aria-label="Chat na AI">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
                     <span class="btn-text">Chat na AI</span>
                 </button>
                 <div class="reader-more-menu-wrap">
@@ -241,7 +243,6 @@
                 <div class="section-label-row">
                     <span id="label-lessons" class="section-label" data-i18n="pg_h_l_les">MAFUNDISHO NA FAIDA ZA HADITHI</span>
                     <span class="section-script-badge">
-                        <span class="ai-sparkle">✨</span>
                         <span>Fawaid al-Hadith</span>
                     </span>
                 </div>
@@ -267,14 +268,18 @@
                     <div id="ai-lessons-content">
                         <div class="ai-lessons-trigger-box">
                             <div class="ai-lessons-trigger-info">
-                                <span class="ai-lessons-sparkle">✨</span>
+                                <span class="ai-lessons-sparkle">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    </svg>
+                                </span>
                                 <div class="ai-lessons-trigger-text">
                                     <strong id="ai-lessons-box-title">Mafundisho kwa Msaada wa Gemini AI</strong>
                                     <p id="ai-lessons-box-desc">Pata uchambuzi wa mafunzo na faida za hadithi hii kwa lugha unayosoma (Kiswahili / Kiingereza).</p>
                                 </div>
                             </div>
                             <button type="button" class="ai-lessons-btn" id="btn-fetch-ai-lessons">
-                                <span id="btn-fetch-ai-text">✨ Fafanua kwa AI</span>
+                                <span id="btn-fetch-ai-text">Fafanua kwa AI</span>
                                 <span class="btn-arrow" aria-hidden="true">→</span>
                             </button>
                         </div>
@@ -285,14 +290,18 @@
                 <div class="hadith-ai-chat-card" id="hadith-ai-chat-card" data-endpoint="{{ route('ai.chat', $hadith) }}">
                     <div class="ai-chat-trigger-box" id="ai-chat-trigger-box">
                         <div class="ai-chat-trigger-info">
-                            <span class="ai-chat-sparkle">💬</span>
+                            <span class="ai-chat-sparkle">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </span>
                             <div class="ai-chat-trigger-text">
                                 <strong>Hujaelewa au unahitaji maelezo zaidi?</strong>
                                 <p>Uliza swali au zungumza na Msaidizi wa AI kuhusu hadithi hii moja kwa moja.</p>
                             </div>
                         </div>
                         <button type="button" class="ai-chat-open-btn" id="btn-open-ai-chat">
-                            <span>✨ Chat na AI</span>
+                            <span>Chat na AI</span>
                             <span class="btn-arrow" aria-hidden="true">↓</span>
                         </button>
                     </div>
@@ -319,7 +328,11 @@
 
                         <div class="ai-chat-messages" id="ai-chat-messages">
                             <div class="ai-chat-msg ai">
-                                <div class="ai-chat-avatar">✨</div>
+                                <div class="ai-chat-avatar" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                </div>
                                 <div class="ai-chat-bubble">
                                     <p>Assalaamu 'alaykum! Mimi ni msaidizi wako wa AI wa hadithi hii ({{ $hadith->chapter?->book?->collection?->name }} Na. {{ $hadith->number }}). Hujaelewa neno au unahitaji ufafanuzi zaidi wa jambo gani?</p>
                                 </div>
@@ -564,7 +577,7 @@
                     const btnText = document.getElementById('btn-fetch-ai-text');
                     if (title) title.textContent = isEn ? 'Hadith Lessons & Insights with Gemini AI' : 'Mafundisho kwa Msaada wa Gemini AI';
                     if (desc) desc.textContent = isEn ? 'Extract practical moral lessons and benefits from this Hadith in English.' : 'Pata uchambuzi wa mafunzo na faida za hadithi hii kwa lugha unayosoma (Kiswahili / Kiingereza).';
-                    if (btnText) btnText.textContent = isEn ? '✨ Generate with AI' : '✨ Fafanua kwa AI';
+                    if (btnText) btnText.textContent = isEn ? 'Generate with AI' : 'Fafanua kwa AI';
                 }
 
                 new MutationObserver(updateAiLessonsLabels).observe(document.documentElement, { attributes: true, attributeFilter: ['data-reading-language'] });
@@ -622,7 +635,7 @@
                         aiLessonsContent.innerHTML = `
                             <div class="ai-lessons-results">
                                 <div class="ai-lessons-header-strip">
-                                    <span class="ai-badge-pill">✨ ${isEn ? 'Gemini AI Analysis' : 'Uchambuzi wa Gemini AI'}</span>
+                                    <span class="ai-badge-pill">${isEn ? 'Gemini AI Analysis' : 'Uchambuzi wa Gemini AI'}</span>
                                     <button type="button" class="ai-refresh-btn" id="btn-re-fetch-lessons" title="${isEn ? 'Regenerate' : 'Sasisha'}">↻</button>
                                 </div>
                                 <div class="lessons-deck">
@@ -668,8 +681,33 @@
                 }
             }
 
+            function openAndFocusHadithAiChat() {
+                if (!chatBody) return;
+                if (chatBody.style.display === 'none') {
+                    chatBody.style.display = 'block';
+                    if (openChatBtn) {
+                        const arrow = openChatBtn.querySelector('.btn-arrow');
+                        if (arrow) arrow.textContent = '↑';
+                    }
+                }
+                if (chatCard) {
+                    chatCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    if (chatInput) setTimeout(() => chatInput.focus(), 350);
+                }
+            }
+
             if (openChatBtn) openChatBtn.addEventListener('click', toggleHadithAiChat);
-            if (topChatBtn) topChatBtn.addEventListener('click', toggleHadithAiChat);
+            if (topChatBtn) topChatBtn.addEventListener('click', openAndFocusHadithAiChat);
+            const floatingChatBtn = document.getElementById('floating-hadith-ai-chat');
+            if (floatingChatBtn) floatingChatBtn.addEventListener('click', openAndFocusHadithAiChat);
+
+            const aiChatSvgAvatar = `
+                <div class="ai-chat-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </div>
+            `;
 
             window.askHadithAi = function(query) {
                 if (!query) return;
@@ -714,7 +752,7 @@
                 const loadingBubble = document.createElement('div');
                 loadingBubble.className = 'ai-chat-msg ai loading';
                 loadingBubble.innerHTML = `
-                    <div class="ai-chat-avatar">✨</div>
+                    ${aiChatSvgAvatar}
                     <div class="ai-chat-bubble">
                         <div class="ai-chat-typing">
                             <span></span><span></span><span></span>
@@ -762,7 +800,7 @@
                             .replace(/\n/g, '<br>');
 
                         aiBubble.innerHTML = `
-                            <div class="ai-chat-avatar">✨</div>
+                            ${aiChatSvgAvatar}
                             <div class="ai-chat-bubble">
                                 <p>${formatted}</p>
                             </div>

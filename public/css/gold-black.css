@@ -1202,12 +1202,12 @@ button {
     background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
     border: 1.5px solid #0284c7 !important;
     color: #0369a1 !important;
-    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.20);
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.20);
     font-weight: 800;
 }
 
 [data-theme="light"] .search-form .search-ai-sparkle {
-    filter: drop-shadow(0 0 2px rgba(217, 119, 6, 0.4));
+    filter: drop-shadow(0 0 2px rgba(2, 132, 199, 0.35));
 }
 
 [data-theme="light"] .search-form .search-ai-btn:hover {
@@ -8334,6 +8334,79 @@ a, button, select, input {
     display: none;
 }
 
+.floating-actions-cluster {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 980;
+    pointer-events: none;
+}
+
+.floating-actions-cluster > * {
+    pointer-events: auto;
+}
+
+.floating-actions-cluster .back-to-top-btn {
+    position: static;
+    right: auto;
+    bottom: auto;
+}
+
+.floating-actions-cluster .back-to-top-btn:not(.is-visible) {
+    display: none;
+}
+
+.floating-ai-chat-btn {
+    height: 44px;
+    padding: 0 16px 0 14px;
+    border-radius: 999px;
+    background: var(--bg-surface-elevated, #0a3552);
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 12px rgba(56, 189, 248, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    text-decoration: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.floating-ai-chat-btn:hover {
+    background: var(--gold);
+    color: var(--btn-gold-text, #07293f);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 18px rgba(56, 189, 248, 0.4);
+}
+
+.floating-ai-chat-btn:active {
+    transform: translateY(0) scale(0.96);
+}
+
+[data-theme="light"] .floating-ai-chat-btn {
+    background: #ffffff;
+    border-color: #0284c7;
+    color: #0284c7;
+    box-shadow: 0 6px 20px rgba(10, 63, 102, 0.16);
+}
+
+[data-theme="light"] .floating-ai-chat-btn:hover {
+    background: #0284c7;
+    color: #ffffff;
+    border-color: #0284c7;
+    box-shadow: 0 8px 24px rgba(10, 63, 102, 0.25);
+}
+
 .back-to-top-btn {
     position: fixed;
     right: 24px;
@@ -8488,6 +8561,18 @@ a, button, select, input {
             width: 20px;
             height: 20px;
         }
+    }
+
+    .floating-actions-cluster {
+        right: 16px;
+        bottom: calc(74px + env(safe-area-inset-bottom, 0px));
+        gap: 8px;
+    }
+
+    .floating-ai-chat-btn {
+        height: 42px;
+        padding: 0 13px 0 11px;
+        font-size: 12px;
     }
 
     .back-to-top-btn {
