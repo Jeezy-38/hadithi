@@ -61,12 +61,15 @@ class HadithAudioController extends Controller
         ]);
     }
 
-    /** MP3 yenye Content-Length na HTTP Range (206) — Safari haitasogeza audio bila hii. */
+    /** Audio response yenye Content-Length na HTTP Range (206) — Safari na vifaa vya mkononi hucheza bila shida. */
     private function mp3Response(Request $request, string $bytes, array $extraHeaders = []): Response
     {
         $size = strlen($bytes);
+        $isWav = str_starts_with($bytes, 'RIFF');
+        $mime = $isWav ? 'audio/wav' : 'audio/mpeg';
+
         $headers = [
-            'Content-Type' => 'audio/mpeg',
+            'Content-Type' => $mime,
             'Content-Disposition' => 'inline',
             'Accept-Ranges' => 'bytes',
             'Cache-Control' => 'public, max-age=604800, immutable',

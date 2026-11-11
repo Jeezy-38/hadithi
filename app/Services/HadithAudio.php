@@ -28,7 +28,7 @@ class HadithAudio
     {
         $voice = config('speech.voices.'.$lang);
 
-        return 'audio_cache/male-v1/hadith_'.$hadith->id.'_'.$lang.'_'
+        return 'audio_cache/male-v2/hadith_'.$hadith->id.'_'.$lang.'_'
             .hash('sha256', $voice.'|'.$this->rawText($hadith, $lang)).'.mp3';
     }
 
@@ -236,6 +236,14 @@ class HadithAudio
 
     private function synthesize(string $text, string $voice, string $lang = 'ar'): string
     {
+        // 1. Sauti Halisi ya Kiume ya Kiarabu (Sheikh) kupitia Gemini TTS
+        if ($lang === 'ar' || str_starts_with($lang, 'ar')) {
+            $geminiAudio = $this->synthesizeGeminiMale($text);
+            if ($geminiAudio !== null && strlen($geminiAudio) > 500) {
+                return $geminiAudio;
+            }
+        }
+
         $python = config('speech.python');
         if (! empty($python) && (file_exists($python) || is_executable($python))) {
             try {
@@ -245,10 +253,11 @@ class HadithAudio
 
                 if ($result->successful()) {
                     $mp3 = $result->output();
-                    $isMp3 = str_starts_with($mp3, 'ID3')
+                    $isAudio = str_starts_with($mp3, 'ID3')
+                        || str_starts_with($mp3, 'RIFF')
                         || (strlen($mp3) >= 2 && ord($mp3[0]) === 0xFF && (ord($mp3[1]) & 0xE0) === 0xE0);
 
-                    if (strlen($mp3) > 100 && $isMp3) {
+                    if (strlen($mp3) > 100 && $isAudio) {
                         return $mp3;
                     }
                 }
@@ -264,6 +273,71 @@ class HadithAudio
             report($e);
             throw new RuntimeException('TTS imeshindwa: '.$e->getMessage(), 0, $e);
         }
+    }
+
+    /**
+     * Sauti ya kiume ya kisomo cha hadithi (Sheikh) kwa kutumia Gemini TTS API.
+     */
+    private function synthesizeGeminiMale(string $text): ?string
+    {
+        $key = (string) config('services.ai.key');
+        if (blank($key)) {
+            return null;
+        }
+
+        $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key='.$key;
+        $prompt = 'اقرأ بصوت قارئ رجل خاشع وواضح: '.trim($text);
+
+        $payload = [
+            'contents' => [
+                ['parts' => [['text' => $prompt]]],
+            ],
+            'generationConfig' => [
+                'responseModalities' => ['AUDIO'],
+                'speechConfig' => [
+                    'voiceConfig' => [
+                        'prebuiltVoiceConfig' => [
+                            'voiceName' => 'Puck', // Sauti ya kiume ya utulivu na heshima
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        try {
+            $res = \Illuminate\Support\Facades\Http::timeout(30)->post($endpoint, $payload);
+            if ($res->ok()) {
+                $b64 = $res->json('candidates.0.content.parts.0.inlineData.data');
+                if (! empty($b64)) {
+                    $pcm = base64_decode($b64);
+                    if (strlen($pcm) > 100) {
+                        return $this->pcmToWav($pcm, 24000, 1, 16);
+                    }
+                }
+            }
+        } catch (\Throwable $e) {
+            report($e);
+        }
+
+        return null;
+    }
+
+    /**
+     * Badilisha raw PCM bytes kuwa faili sahihi la WAV lenye header ya kiwango cha kimataifa.
+     */
+    private function pcmToWav(string $pcm, int $sampleRate = 24000, int $channels = 1, int $bitsPerSample = 16): string
+    {
+        $dataLen = strlen($pcm);
+        $byteRate = $sampleRate * $channels * ($bitsPerSample / 8);
+        $blockAlign = $channels * ($bitsPerSample / 8);
+
+        $header = 'RIFF'.pack('V', 36 + $dataLen).'WAVEfmt '
+            .pack('V', 16).pack('v', 1).pack('v', $channels)
+            .pack('V', $sampleRate).pack('V', $byteRate)
+            .pack('v', $blockAlign).pack('v', $bitsPerSample)
+            .'data'.pack('V', $dataLen);
+
+        return $header.$pcm;
     }
 
     /**

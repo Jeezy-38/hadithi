@@ -34,21 +34,17 @@
         <div class="results">
                         <form class="search-form book-search-form library-search" wire:submit.prevent="$refresh" role="search">
                             <label class="sr-only" for="search" data-i18n="pg_lib_search_label">Tafuta hadith kwa maneno au namba</label>
-                            <span class="search-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <button type="submit" class="search-icon-btn" aria-label="Tafuta" title="Tafuta">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <circle cx="11" cy="11" r="8"></circle>
                                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                 </svg>
-                            </span>
+                            </button>
                             <input id="search" type="search" wire:model.live.debounce.350ms="search" maxlength="200" placeholder="Tafuta ndani ya {{ $collections->firstWhere('slug', $collection)?->name ?? 'makusanyo yote' }} au uliza AI…" data-i18n-placeholder="{{ $collection === '' ? 'pg_lib_search_all' : 'pg_lib_search_in' }}" data-i18n-vars="{{ json_encode(['name' => $collections->firstWhere('slug', $collection)?->name ?? ''], JSON_UNESCAPED_UNICODE) }}" autocomplete="off">
                             <div class="search-actions-group">
-                                <button type="submit" class="search-submit-btn" aria-label="Tafuta" title="Tafuta">
+                                <button type="submit" class="search-submit-btn search-desktop-btn" aria-label="Tafuta" title="Tafuta">
                                     <span class="search-btn-text" data-i18n="search_btn">Tafuta</span>
                                     <span class="search-btn-arrow" aria-hidden="true">→</span>
-                                    <svg class="search-btn-icon-mobile" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
-                                        <circle cx="11" cy="11" r="8"></circle>
-                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                    </svg>
                                 </button>
                                 <button type="button" class="search-ai-btn" id="search-ask-ai-btn" title="Uliza Msaidizi wa AI" aria-label="Uliza AI">
                                     <span class="search-ai-sparkle" aria-hidden="true">✨</span>

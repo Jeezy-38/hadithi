@@ -606,7 +606,20 @@
 
                     const utterance = new SpeechSynthesisUtterance(textToRead);
                     utterance.lang = 'ar-SA';
-                    utterance.rate = 0.95;
+                    utterance.rate = 0.92;
+                    utterance.pitch = 0.95; // Sauti ya kiume ya Sheikh
+
+                    if ('speechSynthesis' in window) {
+                        const voices = window.speechSynthesis.getVoices();
+                        const arVoices = voices.filter(v => (v.lang || '').startsWith('ar'));
+                        const maleVoice = arVoices.find(v => {
+                            const n = (v.name || '').toLowerCase();
+                            return n.includes('majed') || n.includes('naif') || n.includes('tarik') ||
+                                   n.includes('maged') || n.includes('hamed') || n.includes('shakir') ||
+                                   n.includes('male') || n.includes('bassam');
+                        }) || arVoices[0];
+                        if (maleVoice) utterance.voice = maleVoice;
+                    }
 
                     utterance.onend = utterance.onerror = () => {
                         isSpeechPlaying = false;
