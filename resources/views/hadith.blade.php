@@ -48,11 +48,11 @@
             </a>
 
             <div class="reader-actions no-print">
-                <button type="button" id="top-btn-hadith-chat" class="reader-ai-chat-btn-top" title="Uliza au Chat na AI kuhusu hadithi hii" aria-label="Chat na AI">
+                <button type="button" id="top-btn-hadith-chat" class="reader-ai-chat-btn-top" title="Uliza ufafanuzi kuhusu hadithi hii" aria-label="Uliza Ufafanuzi">
                     <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
-                    <span class="btn-text">Chat na AI</span>
+                    <span class="btn-text">Uliza Ufafanuzi</span>
                 </button>
                 <div class="reader-more-menu-wrap">
                     <button type="button" id="reader-more-btn" class="reader-more-toggle" aria-expanded="false" aria-haspopup="true" title="Chaguzi zaidi" data-i18n-title="pg_h_more">
@@ -274,19 +274,19 @@
                                     </svg>
                                 </span>
                                 <div class="ai-lessons-trigger-text">
-                                    <strong id="ai-lessons-box-title">Mafundisho kwa Msaada wa Gemini AI</strong>
+                                    <strong id="ai-lessons-box-title">Mafundisho na Faida za Hadithi</strong>
                                     <p id="ai-lessons-box-desc">Pata uchambuzi wa mafunzo na faida za hadithi hii kwa lugha unayosoma (Kiswahili / Kiingereza).</p>
                                 </div>
                             </div>
                             <button type="button" class="ai-lessons-btn" id="btn-fetch-ai-lessons">
-                                <span id="btn-fetch-ai-text">Fafanua kwa AI</span>
+                                <span id="btn-fetch-ai-text">Chambua Mafundisho</span>
                                 <span class="btn-arrow" aria-hidden="true">→</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                {{-- 4b. AI Chat: Mazungumzo & Ufafanuzi wa Hadithi Hii --}}
+                {{-- 4b. Ufafanuzi wa Hadithi Hii (Hadith Clarification Assistant) --}}
                 <div class="hadith-ai-chat-card" id="hadith-ai-chat-card" data-endpoint="{{ route('ai.chat', $hadith) }}">
                     <div class="ai-chat-trigger-box" id="ai-chat-trigger-box">
                         <div class="ai-chat-trigger-info">
@@ -297,11 +297,11 @@
                             </span>
                             <div class="ai-chat-trigger-text">
                                 <strong>Hujaelewa au unahitaji maelezo zaidi?</strong>
-                                <p>Uliza swali au zungumza na Msaidizi wa AI kuhusu hadithi hii moja kwa moja.</p>
+                                <p>Uliza swali au pata ufafanuzi wa kina kuhusu hadithi hii moja kwa moja.</p>
                             </div>
                         </div>
                         <button type="button" class="ai-chat-open-btn" id="btn-open-ai-chat">
-                            <span>Chat na AI</span>
+                            <span class="btn-text">Uliza Ufafanuzi</span>
                             <span class="btn-arrow" aria-hidden="true">↓</span>
                         </button>
                     </div>
@@ -311,30 +311,30 @@
                         <div class="ai-chat-quick-prompts">
                             <span class="ai-chat-prompts-label">Maswali ya Haraka:</span>
                             <div class="ai-chat-chips">
-                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Nieleze kwa lugha rahisi sana maana ya hadithi hii')">
-                                    Nieleze kwa lugha rahisi
+                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Nieleze kwa lugha nyepesi sana maana na ujumbe wa hadithi hii')">
+                                    Nieleze kwa lugha nyepesi
                                 </button>
                                 <button type="button" class="ai-chat-chip" onclick="askHadithAi('Ni nini mukhtadha au sababu ya hadithi hii kusemwa (Asbabu al-Wurud)?')">
                                     Mukhtadha wa Hadithi
                                 </button>
-                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Mifano ya utekelezaji wa mafunzo ya hadithi hii leo')">
-                                    Utekelezaji Leo
+                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Mifano ya utekelezaji wa mafunzo ya hadithi hii katika maisha ya leo')">
+                                    Mafunzo ya vitendo leo
                                 </button>
-                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Fafanua maneno magumu ya Kiarabu katika hadithi hii')">
-                                    Maneno Magumu
+                                <button type="button" class="ai-chat-chip" onclick="askHadithAi('Fafanua maneno magumu ya Kiarabu na maana zake katika hadithi hii')">
+                                    Maneno magumu
                                 </button>
                             </div>
                         </div>
 
                         <div class="ai-chat-messages" id="ai-chat-messages">
-                            <div class="ai-chat-msg ai">
+                            <div class="ai-chat-msg ai initial-welcome">
                                 <div class="ai-chat-avatar" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                     </svg>
                                 </div>
                                 <div class="ai-chat-bubble">
-                                    <p>Assalaamu 'alaykum! Mimi ni msaidizi wako wa AI wa hadithi hii ({{ $hadith->chapter?->book?->collection?->name }} Na. {{ $hadith->number }}). Hujaelewa neno au unahitaji ufafanuzi zaidi wa jambo gani?</p>
+                                    <p>Assalaamu 'alaykum! Mimi ni msaidizi wako wa kielimu wa hadithi hii ({{ $hadith->chapter?->book?->collection?->name }} Na. {{ $hadith->number }}). Hujaelewa neno, mukhtadha, au unahitaji ufafanuzi zaidi wa jambo gani?</p>
                                 </div>
                             </div>
                         </div>
@@ -562,7 +562,207 @@
                 });
             }
 
-            // Hadith AI Lessons Generator (Kiswahili & English)
+            // =========================================================================
+            // Hadith Scholarly Clarification & Lessons (Multilingual & Real-time)
+            // =========================================================================
+            const HADITH_CLARIFY_I18N = {
+                sw: {
+                    btnText: 'Uliza Ufafanuzi',
+                    btnTitle: 'Uliza ufafanuzi au maelezo zaidi kuhusu hadithi hii',
+                    lessonsBtn: 'Chambua Mafundisho',
+                    lessonsTitle: 'Mafundisho na Faida za Hadithi',
+                    lessonsDesc: 'Pata uchambuzi wa mafunzo na faida za hadithi hii kwa lugha unayosoma.',
+                    lessonsLoading: 'Inachambua hadithi hii…',
+                    lessonsLoadingSub: 'Inaandaa mafundisho na faida za kimaadili.',
+                    lessonsBadge: 'Uchambuzi wa Hadithi',
+                    triggerTitle: 'Hujaelewa au unahitaji maelezo zaidi?',
+                    triggerDesc: 'Uliza swali au pata ufafanuzi wa kina kuhusu hadithi hii moja kwa moja.',
+                    promptsLabel: 'Maswali ya Haraka:',
+                    prompts: [
+                        { label: 'Nieleze kwa lugha nyepesi', query: 'Nieleze kwa lugha nyepesi sana maana na ujumbe wa hadithi hii' },
+                        { label: 'Mukhtadha wa Hadithi', query: 'Ni nini mukhtadha au sababu ya hadithi hii kusemwa (Asbabu al-Wurud)?' },
+                        { label: 'Mafunzo ya vitendo leo', query: 'Mifano ya utekelezaji wa mafunzo ya hadithi hii katika maisha ya leo' },
+                        { label: 'Maneno magumu', query: 'Fafanua maneno magumu ya Kiarabu na maana zake katika hadithi hii' },
+                    ],
+                    welcome: "Assalaamu 'alaykum! Mimi ni msaidizi wako wa kielimu wa hadithi hii (:col Na. :num). Hujaelewa neno, mukhtadha, au unahitaji ufafanuzi zaidi wa jambo gani?",
+                    placeholder: 'Andika swali lako kuhusu hadithi hii...',
+                    send: 'Tuma',
+                    errorConfig: 'Weka GEMINI_API_KEY kwenye faili la .env la seva ya baytulhadith.co.tz.',
+                    errorGen: 'Haikuwezekana kupata ufafanuzi kwa sasa. Tafadhali jaribu tena.',
+                    errorNet: 'Hitilafu ya mtandao. Tafadhali jaribu tena.',
+                },
+                en: {
+                    btnText: 'Ask Clarification',
+                    btnTitle: 'Ask for clarification or deeper explanation of this Hadith',
+                    lessonsBtn: 'Extract Lessons & Insights',
+                    lessonsTitle: 'Hadith Lessons & Insights',
+                    lessonsDesc: 'Extract practical moral lessons and benefits from this Hadith in English.',
+                    lessonsLoading: 'Analyzing this Hadith…',
+                    lessonsLoadingSub: 'Extracting practical moral lessons and benefits.',
+                    lessonsBadge: 'Hadith Insights',
+                    triggerTitle: 'Need clarification or deeper explanation?',
+                    triggerDesc: 'Ask a question or receive in-depth scholarly clarification on this Hadith.',
+                    promptsLabel: 'Quick Questions:',
+                    prompts: [
+                        { label: 'Explain in simple words', query: 'Explain the core meaning and message of this Hadith in simple terms' },
+                        { label: 'Historical context', query: 'What is the historical context or reason behind this Hadith (Asbab al-Wurud)?' },
+                        { label: 'Practical life lessons', query: 'What are practical everyday applications of this Hadith for us today?' },
+                        { label: 'Difficult Arabic terms', query: 'Explain the key Arabic terms and subtle vocabulary in this Hadith' },
+                    ],
+                    welcome: 'Assalamu alaykum! I am your scholarly assistant for this Hadith (:col No. :num). Would you like clarification on any term, moral lesson, or context?',
+                    placeholder: 'Ask your question about this Hadith...',
+                    send: 'Send',
+                    errorConfig: 'Please configure GEMINI_API_KEY on the server .env file.',
+                    errorGen: 'Could not generate explanation at this time. Please try again.',
+                    errorNet: 'Network error. Please try again.',
+                },
+                ar: {
+                    btnText: 'طلب توضيح',
+                    btnTitle: 'طلب توضيح أو شرح مفصل حول هذا الحديث',
+                    lessonsBtn: 'استخراج الفوائد',
+                    lessonsTitle: 'فوائد الحديث الشريف',
+                    lessonsDesc: 'استخراج الفوائد التربوية والإيمانية من هذا الحديث الشريف.',
+                    lessonsLoading: 'جاري استنباط الفوائد…',
+                    lessonsLoadingSub: 'إعداد الفوائد الإيمانية والعملية.',
+                    lessonsBadge: 'فوائد الحديث',
+                    triggerTitle: 'هل تحتاج إلى مزيد من التوضيح والشرح؟',
+                    triggerDesc: 'اطرح سؤالك أو احصل على توضيح مفصل حول هذا الحديث مباشرة.',
+                    promptsLabel: 'أسئلة سريعة:',
+                    prompts: [
+                        { label: 'شرح مبسط', query: 'اشرح لي المعنى الإجمالي لهذا الحديث بأسلوب سهل ومبسط' },
+                        { label: 'سبب الورود', query: 'ما هو سبب ورود هذا الحديث والمناسبة التي قيل فيها؟' },
+                        { label: 'التطبيق العملي', query: 'كيف نطبق هدايات هذا الحديث في واقعنا المعاصر؟' },
+                        { label: 'معاني المفردات', query: 'وضح معاني المفردات والكلمات في هذا الحديث' },
+                    ],
+                    welcome: 'السلام عليكم ورحمة الله! أنا مساعدك العلمي لهذا الحديث (:col رقم :num). هل تود توضيح مفردة معينة، أو سبب الورود، أو أي استفسار آخر؟',
+                    placeholder: 'اكتب سؤالك حول هذا الحديث...',
+                    send: 'إرسال',
+                    errorConfig: 'يرجى ضبط مفتاح GEMINI_API_KEY في ملف .env بالخادم.',
+                    errorGen: 'تعذر الحصول على الإجابة حالياً. يرجى المحاولة مرة أخرى.',
+                    errorNet: 'خطأ في الاتصال بالشبكة. يرجى المحاولة لاحقاً.',
+                },
+                es: {
+                    btnText: 'Pedir Aclaración',
+                    btnTitle: 'Solicitar aclaración o explicación detallada sobre este hadiz',
+                    lessonsBtn: 'Extraer Enseñanzas',
+                    lessonsTitle: 'Enseñanzas y Beneficios del Hadiz',
+                    lessonsDesc: 'Extrae lecciones prácticas y beneficios morales de este hadiz en español.',
+                    lessonsLoading: 'Analizando este hadiz…',
+                    lessonsLoadingSub: 'Extrayendo lecciones prácticas y beneficios morales.',
+                    lessonsBadge: 'Análisis del Hadiz',
+                    triggerTitle: '¿Necesitas más explicaciones o aclaraciones?',
+                    triggerDesc: 'Haz una pregunta o recibe una explicación detallada sobre este hadiz.',
+                    promptsLabel: 'Preguntas Rápidas:',
+                    prompts: [
+                        { label: 'Explicar en palabras sencillas', query: 'Explícame el significado y mensaje principal de este hadiz de forma sencilla' },
+                        { label: 'Contexto del Hadiz', query: '¿Cuál es el contexto o motivo por el que se dijo este hadiz (Asbab al-Wurud)?' },
+                        { label: 'Aplicación práctica', query: '¿Cómo podemos aplicar las enseñanzas de este hadiz en nuestra vida hoy?' },
+                        { label: 'Términos difíciles', query: 'Explica los términos clave y palabras difíciles en este hadiz' },
+                    ],
+                    welcome: '¡As-salamu alaykum! Soy tu asistente de estudio para este hadiz (:col N.º :num). ¿Qué término, contexto o duda deseas aclarar?',
+                    placeholder: 'Escribe tu pregunta sobre este hadiz...',
+                    send: 'Enviar',
+                    errorConfig: 'Configure la clave GEMINI_API_KEY en el servidor.',
+                    errorGen: 'No fue posible generar la respuesta en este momento. Inténtelo de nuevo.',
+                    errorNet: 'Error de red. Inténtelo de nuevo.',
+                }
+            };
+
+            function getActiveClarifyLanguage() {
+                const root = document.documentElement;
+                const ui = root.dataset.uiLanguage || 'sw';
+                const reading = root.dataset.readingLanguage || 'both';
+
+                if (ui === 'ar' || ui === 'es') return ui;
+                if (reading === 'en' || ui === 'en') return 'en';
+                return 'sw';
+            }
+
+            function syncClarifyLanguageUi() {
+                const lang = getActiveClarifyLanguage();
+                const t = HADITH_CLARIFY_I18N[lang] || HADITH_CLARIFY_I18N.sw;
+                const col = '{{ addslashes($hadith->chapter?->book?->collection?->name ?? 'Hadithi') }}';
+                const num = '{{ $hadith->number }}';
+
+                // 1. Floating button beside back-to-top
+                const floatBtn = document.getElementById('floating-hadith-ai-chat');
+                if (floatBtn) {
+                    floatBtn.setAttribute('title', t.btnTitle);
+                    floatBtn.setAttribute('aria-label', t.btnTitle);
+                    const floatTxt = floatBtn.querySelector('.btn-text');
+                    if (floatTxt) floatTxt.textContent = t.btnText;
+                }
+
+                // 2. Top reader action button
+                const topBtn = document.getElementById('top-btn-hadith-chat');
+                if (topBtn) {
+                    topBtn.setAttribute('title', t.btnTitle);
+                    topBtn.setAttribute('aria-label', t.btnTitle);
+                    const topTxt = topBtn.querySelector('.btn-text');
+                    if (topTxt) topTxt.textContent = t.btnText;
+                }
+
+                // 3. Card open button
+                const cardOpenBtn = document.getElementById('btn-open-ai-chat');
+                if (cardOpenBtn) {
+                    const cardTxt = cardOpenBtn.querySelector('.btn-text') || cardOpenBtn.querySelector('span:first-child');
+                    if (cardTxt) cardTxt.textContent = t.btnText;
+                }
+
+                // 4. Card trigger texts
+                const triggerBox = document.getElementById('ai-chat-trigger-box');
+                if (triggerBox) {
+                    const strong = triggerBox.querySelector('strong');
+                    const p = triggerBox.querySelector('p');
+                    if (strong) strong.textContent = t.triggerTitle;
+                    if (p) p.textContent = t.triggerDesc;
+                }
+
+                // 5. Lessons card texts
+                const lessonsTitle = document.getElementById('ai-lessons-box-title');
+                const lessonsDesc = document.getElementById('ai-lessons-box-desc');
+                const lessonsBtnText = document.getElementById('btn-fetch-ai-text');
+                if (lessonsTitle) lessonsTitle.textContent = t.lessonsTitle;
+                if (lessonsDesc) lessonsDesc.textContent = t.lessonsDesc;
+                if (lessonsBtnText) lessonsBtnText.textContent = t.lessonsBtn;
+
+                // 6. Quick Prompts
+                const promptsLabel = document.querySelector('.ai-chat-prompts-label');
+                if (promptsLabel) promptsLabel.textContent = t.promptsLabel;
+                const chipsWrap = document.querySelector('.ai-chat-chips');
+                if (chipsWrap && t.prompts) {
+                    chipsWrap.innerHTML = t.prompts.map(p => `
+                        <button type="button" class="ai-chat-chip" onclick="askHadithAi('${p.query.replace(/'/g, "\\'")}')">
+                            ${p.label}
+                        </button>
+                    `).join('');
+                }
+
+                // 7. Initial Welcome message
+                const initialWelcomeBubble = document.querySelector('#ai-chat-messages .ai-chat-msg.initial-welcome .ai-chat-bubble p');
+                if (initialWelcomeBubble) {
+                    initialWelcomeBubble.textContent = t.welcome.replace(':col', col).replace(':num', num);
+                }
+
+                // 8. Chat input & send button
+                const input = document.getElementById('hadith-ai-chat-input');
+                if (input) input.setAttribute('placeholder', t.placeholder);
+                const sendBtn = document.getElementById('hadith-ai-chat-send');
+                if (sendBtn) {
+                    const sendTxt = sendBtn.querySelector('span');
+                    if (sendTxt) sendTxt.textContent = t.send;
+                }
+            }
+
+            // Sync on load, on language events, and on documentElement changes
+            syncClarifyLanguageUi();
+            document.addEventListener('bayt:lang', syncClarifyLanguageUi);
+            new MutationObserver(syncClarifyLanguageUi).observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['data-ui-language', 'data-reading-language']
+            });
+
+            // Lessons trigger
             const aiLessonsBtn = document.getElementById('btn-fetch-ai-lessons');
             const aiLessonsContent = document.getElementById('ai-lessons-content');
             const aiLessonsCard = document.getElementById('hadith-ai-lessons-card');
@@ -570,31 +770,18 @@
             if (aiLessonsBtn && aiLessonsContent && aiLessonsCard) {
                 const endpoint = aiLessonsCard.getAttribute('data-endpoint');
 
-                function updateAiLessonsLabels() {
-                    const isEn = document.documentElement.dataset.readingLanguage === 'en';
-                    const title = document.getElementById('ai-lessons-box-title');
-                    const desc = document.getElementById('ai-lessons-box-desc');
-                    const btnText = document.getElementById('btn-fetch-ai-text');
-                    if (title) title.textContent = isEn ? 'Hadith Lessons & Insights with Gemini AI' : 'Mafundisho kwa Msaada wa Gemini AI';
-                    if (desc) desc.textContent = isEn ? 'Extract practical moral lessons and benefits from this Hadith in English.' : 'Pata uchambuzi wa mafunzo na faida za hadithi hii kwa lugha unayosoma (Kiswahili / Kiingereza).';
-                    if (btnText) btnText.textContent = isEn ? 'Generate with AI' : 'Fafanua kwa AI';
-                }
-
-                new MutationObserver(updateAiLessonsLabels).observe(document.documentElement, { attributes: true, attributeFilter: ['data-reading-language'] });
-                updateAiLessonsLabels();
-
                 aiLessonsBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const isEn = document.documentElement.dataset.readingLanguage === 'en';
-                    const lang = isEn ? 'en' : 'sw';
+                    const lang = getActiveClarifyLanguage();
+                    const t = HADITH_CLARIFY_I18N[lang] || HADITH_CLARIFY_I18N.sw;
                     const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
 
                     aiLessonsContent.innerHTML = `
                         <div class="ai-lessons-loading">
                             <span class="ai-lessons-spinner" aria-hidden="true"></span>
                             <div class="ai-lessons-loading-text">
-                                <strong>${isEn ? 'Gemini AI is analyzing this Hadith…' : 'Gemini AI inachambua hadithi hii…'}</strong>
-                                <span>${isEn ? 'Extracting practical moral lessons and benefits.' : 'Inaandaa mafundisho na faida za kimaadili.'}</span>
+                                <strong>${t.lessonsLoading}</strong>
+                                <span>${t.lessonsLoadingSub}</span>
                             </div>
                         </div>
                     `;
@@ -611,13 +798,13 @@
                     .then(r => r.json().then(data => ({ status: r.status, data })))
                     .then(({ status, data }) => {
                         if (data.error === 'not_configured') {
-                            aiLessonsContent.innerHTML = `<div class="ai-lessons-msg error">⚙️ ${data.message || 'Weka GEMINI_API_KEY kwenye .env ya seva.'}</div>`;
+                            aiLessonsContent.innerHTML = `<div class="ai-lessons-msg error">⚙️ ${data.message || t.errorConfig}</div>`;
                             return;
                         }
                         if (status >= 400 || !data.lessons || data.lessons.length === 0) {
                             aiLessonsContent.innerHTML = `
                                 <div class="ai-lessons-msg error">
-                                    <span>⚠️ ${isEn ? 'Could not generate lessons at this time.' : 'Haikuwezekana kupata mafundisho kwa sasa.'}</span>
+                                    <span>⚠️ ${t.errorGen}</span>
                                 </div>
                             `;
                             return;
@@ -635,8 +822,8 @@
                         aiLessonsContent.innerHTML = `
                             <div class="ai-lessons-results">
                                 <div class="ai-lessons-header-strip">
-                                    <span class="ai-badge-pill">${isEn ? 'Gemini AI Analysis' : 'Uchambuzi wa Gemini AI'}</span>
-                                    <button type="button" class="ai-refresh-btn" id="btn-re-fetch-lessons" title="${isEn ? 'Regenerate' : 'Sasisha'}">↻</button>
+                                    <span class="ai-badge-pill">${t.lessonsBadge}</span>
+                                    <button type="button" class="ai-refresh-btn" id="btn-re-fetch-lessons" title="Sasisha">↻</button>
                                 </div>
                                 <div class="lessons-deck">
                                     ${lessonsHtml}
@@ -653,12 +840,12 @@
                     })
                     .catch(err => {
                         console.error('Lessons error:', err);
-                        aiLessonsContent.innerHTML = `<div class="ai-lessons-msg error">⚠️ ${isEn ? 'Connection error. Please try again.' : 'Hitilafu ya mtandao. Jaribu tena.'}</div>`;
+                        aiLessonsContent.innerHTML = `<div class="ai-lessons-msg error">⚠️ ${t.errorNet}</div>`;
                     });
                 });
             }
 
-            // Hadith AI Chat Interactive Discussion
+            // Hadith Clarification Interactive Discussion
             const chatCard = document.getElementById('hadith-ai-chat-card');
             const openChatBtn = document.getElementById('btn-open-ai-chat');
             const topChatBtn = document.getElementById('top-btn-hadith-chat');
@@ -735,8 +922,8 @@
                 if (!chatMessages || !chatCard) return;
                 const endpoint = chatCard.getAttribute('data-endpoint');
                 const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
-                const isEn = document.documentElement.dataset.readingLanguage === 'en';
-                const lang = isEn ? 'en' : 'sw';
+                const lang = getActiveClarifyLanguage();
+                const t = HADITH_CLARIFY_I18N[lang] || HADITH_CLARIFY_I18N.sw;
 
                 // Append user message
                 const userBubble = document.createElement('div');
@@ -781,14 +968,14 @@
                         aiBubble.innerHTML = `
                             <div class="ai-chat-avatar">⚙️</div>
                             <div class="ai-chat-bubble error">
-                                <p>${data.message || 'Weka GEMINI_API_KEY kwenye .env ya seva.'}</p>
+                                <p>${data.message || t.errorConfig}</p>
                             </div>
                         `;
                     } else if (status >= 400 || !data.answer) {
                         aiBubble.innerHTML = `
                             <div class="ai-chat-avatar">⚠️</div>
                             <div class="ai-chat-bubble error">
-                                <p>${isEn ? 'Could not generate answer at this time. Please try again.' : 'Haikuwezekana kupata jibu kwa sasa. Tafadhali jaribu tena.'}</p>
+                                <p>${t.errorGen}</p>
                             </div>
                         `;
                     } else {
@@ -817,7 +1004,7 @@
                     errBubble.innerHTML = `
                         <div class="ai-chat-avatar">⚠️</div>
                         <div class="ai-chat-bubble error">
-                            <p>${isEn ? 'Network error. Please try again.' : 'Hitilafu ya mtandao. Tafadhali jaribu tena.'}</p>
+                            <p>${t.errorNet}</p>
                         </div>
                     `;
                     chatMessages.appendChild(errBubble);
