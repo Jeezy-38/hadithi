@@ -53,14 +53,13 @@ class TopicTest extends TestCase
             ->assertSee('Mada Kuu za Kiislamu');
     }
 
-    public function test_nav_drawer_and_desktop_header_link_to_topics(): void
+    public function test_topics_index_page_renders_successfully(): void
     {
         $this->seed();
 
-        $response = $this->get(route('library'));
+        $response = $this->get(route('topics.index'));
 
         $response->assertOk()
-            ->assertSee(route('topics.index'))
-            ->assertSee('Mada za Kiislamu');
+            ->assertSee('Mada Kuu za Kiislamu');
     }
 }

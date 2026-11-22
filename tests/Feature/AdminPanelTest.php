@@ -188,4 +188,40 @@ class AdminPanelTest extends TestCase
         $user->refresh();
         $this->assertTrue($user->is_admin);
     }
+
+    public function test_admin_can_search_and_toggle_hadith_publish_in_content_tab(): void
+    {
+        $admin = User::factory()->create(['is_admin' => true]);
+        $collection = \App\Models\Collection::create(['slug' => 'bukhari', 'name' => 'Sahih al-Bukhari', 'name_ar' => 'صحيح البخاري']);
+        $book = \App\Models\Book::create(['collection_id' => $collection->id, 'number' => 1, 'title_sw' => 'Kitabu', 'title_ar' => 'كتاب']);
+        $chapter = \App\Models\Chapter::create(['book_id' => $book->id, 'number' => 1, 'title_sw' => 'Mlango', 'title_ar' => 'باب']);
+        $hadith = \App\Models\Hadith::create([
+            'chapter_id' => $chapter->id,
+            'reference' => 'bukhari:admin:1',
+            'number' => '42',
+            'arabic' => 'إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ',
+            'swahili' => 'Hakika matendo yote yanategemea nia.',
+            'english' => 'Actions are by intentions.',
+            'source_name' => 'Test',
+            'source_url' => 'https://example.test/1',
+            'numbering_system' => 'Test',
+            'translator' => 'Test',
+            'translation_source_url' => 'https://example.test/sw/1',
+            'license' => 'CC-BY-4.0',
+            'reviewed_by' => 'Test',
+            'reviewed_at' => '2026-01-01',
+            'is_published' => true,
+        ]);
+
+        $this->actingAs($admin)
+            ->get(route('admin.dashboard', ['tab' => 'content', 'hadith_search' => 'matendo']))
+            ->assertOk()
+            ->assertSee('42');
+
+        $this->actingAs($admin)
+            ->post(route('admin.hadith.toggle-publish', $hadith))
+            ->assertRedirect();
+
+        $this->assertFalse($hadith->fresh()->is_published);
+    }
 }

@@ -77,7 +77,7 @@ class EmailAuthTest extends TestCase
         $user->forceFill(['password' => null])->save();
 
         $this->from('/')->post('/auth/login', ['email' => 'amina@example.com', 'password' => 'chochote1'])
-            ->assertSessionHasErrors(['email' => 'Akaunti hii ilifunguliwa kwa Google. Tumia kitufe cha "Endelea na Google".'], null, 'login');
+            ->assertSessionHasErrors(['email' => 'Akaunti hii ilifunguliwa kwa Google na haina nenosiri bado. Tumia "Endelea na Google", au bonyeza "Umesahau nenosiri?" ili uweke nenosiri jipya.'], null, 'login');
     }
 
     public function test_login_is_rate_limited(): void

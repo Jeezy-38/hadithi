@@ -63,40 +63,40 @@ class HadithAudioTest extends TestCase
         $response->assertNotFound();
     }
 
-    public function test_audio_endpoint_rejects_unsupported_languages(): void
+    public function test_audio_endpoint_defaults_to_arabic_recitation(): void
     {
         $hadith = $this->createTestHadith();
         $response = $this->get('/audio/hadith/'.$hadith->id.'/fr');
-        $response->assertStatus(400);
+        $response->assertOk();
+        $response->assertHeader('Content-Type', 'audio/mpeg');
+        Process::assertRan(fn ($process) => json_decode($process->input, true)['voice'] === 'ar-SA-HamedNeural');
     }
 
     public function test_audio_endpoint_streams_audio_for_published_hadith(): void
     {
         $hadith = $this->createTestHadith();
-        $response = $this->get('/audio/hadith/'.$hadith->id.'/sw');
+        $response = $this->get('/audio/hadith/'.$hadith->id.'/ar');
         $response->assertOk();
         $response->assertHeader('Content-Type', 'audio/mpeg');
         $response->assertHeader('Accept-Ranges', 'bytes');
-        Process::assertRan(fn ($process) => json_decode($process->input, true)['voice'] === 'sw-TZ-DaudiNeural');
+        Process::assertRan(fn ($process) => json_decode($process->input, true)['voice'] === 'ar-SA-HamedNeural');
     }
 
-    public function test_audio_uses_male_voice_for_each_language(): void
+    public function test_audio_uses_male_voice_for_arabic_recitation(): void
     {
         $hadith = $this->createTestHadith();
-        foreach (['ar' => 'ar-SA-HamedNeural', 'en' => 'en-US-GuyNeural'] as $language => $voice) {
-            $this->get('/audio/hadith/'.$hadith->id.'/'.$language)->assertOk();
-            Process::assertRan(fn ($process) => json_decode($process->input, true)['voice'] === $voice);
-        }
+        $this->get('/audio/hadith/'.$hadith->id.'/ar')->assertOk();
+        Process::assertRan(fn ($process) => json_decode($process->input, true)['voice'] === 'ar-SA-HamedNeural');
     }
 
     public function test_audio_is_reused_until_text_changes(): void
     {
         $hadith = $this->createTestHadith();
-        $url = '/audio/hadith/'.$hadith->id.'/sw';
+        $url = '/audio/hadith/'.$hadith->id.'/ar';
         $this->get($url)->assertOk();
         $this->get($url)->assertOk();
         Process::assertRanTimes(fn () => true, 1);
-        $hadith->update(['swahili' => 'Maandishi mapya ya majaribio']);
+        $hadith->update(['arabic' => 'نَصٌّ جَدِيدٌ لِلاخْتِبَارِ']);
         $this->get($url)->assertOk();
         Process::assertRanTimes(fn () => true, 2);
     }
@@ -107,7 +107,7 @@ class HadithAudioTest extends TestCase
         foreach ([Process::result(output: 'ID3'.str_repeat('a', 256), exitCode: 1),
             Process::result(output: str_repeat('<html>Error</html>', 20))] as $result) {
             Process::fake(['*' => $result]);
-            $this->get('/audio/hadith/'.$hadith->id.'/sw')->assertStatus(502);
+            $this->get('/audio/hadith/'.$hadith->id.'/ar')->assertStatus(502);
             $this->assertSame([], Storage::disk('private')->allFiles());
         }
     }
@@ -115,10 +115,10 @@ class HadithAudioTest extends TestCase
     public function test_generated_audio_is_stored_on_private_disk(): void
     {
         $hadith = $this->createTestHadith();
-        $this->get('/audio/hadith/'.$hadith->id.'/sw')->assertOk();
-        $files = Storage::disk('private')->allFiles('audio_cache/male-v1');
+        $this->get('/audio/hadith/'.$hadith->id.'/ar')->assertOk();
+        $files = Storage::disk('private')->allFiles('audio_cache/male-v2');
         $this->assertCount(1, $files);
-        $this->assertStringStartsWith('audio_cache/male-v1/hadith_'.$hadith->id.'_sw_', $files[0]);
+        $this->assertStringStartsWith('audio_cache/male-v2/hadith_'.$hadith->id.'_ar_', $files[0]);
     }
 
     public function test_legacy_audio_is_served_without_regenerating(): void
@@ -156,7 +156,7 @@ class HadithAudioTest extends TestCase
             ->expectsOutputToContain('Zipo tayari: 1 · Za kutengeneza: 2')
             ->assertSuccessful();
         Process::assertRanTimes(fn () => true, 2);
-        $this->assertCount(3, Storage::disk('private')->allFiles('audio_cache/male-v1'));
+        $this->assertCount(3, Storage::disk('private')->allFiles('audio_cache/male-v2'));
 
         // Mara ya pili hakuna kazi.
         $this->artisan('hadith:audio-warm', ['--id' => [$hadith->id]])
@@ -195,15 +195,16 @@ class HadithAudioTest extends TestCase
             'https://example.com/studio-sample.mp3' => \Illuminate\Support\Facades\Http::response('ID3'.str_repeat('s', 300), 200, ['Content-Type' => 'audio/mpeg']),
         ]);
 
-        // Arabic should use studio audio
+        // Studio audio is preferred when configured
         $response = $this->get('/audio/hadith/'.$hadith->id.'/ar');
         $response->assertOk();
         $response->assertHeader('X-Audio-Source', 'studio');
 
-        // Swahili should use neural TTS (Njia ya 1)
-        $responseSw = $this->get('/audio/hadith/'.$hadith->id.'/sw');
-        $responseSw->assertOk();
-        $responseSw->assertHeader('X-Audio-Source', 'neural');
+        // Without studio audio, falls back to neural TTS
+        $hadith->update(['audio_url' => null]);
+        $responseNeural = $this->get('/audio/hadith/'.$hadith->id.'/ar');
+        $responseNeural->assertOk();
+        $responseNeural->assertHeader('X-Audio-Source', 'neural');
     }
 
     public function test_audio_info_endpoint_returns_metadata(): void
@@ -215,7 +216,7 @@ class HadithAudioTest extends TestCase
             'id',
             'reference',
             'has_studio',
-            'sources' => ['ar', 'sw'],
+            'sources' => ['ar'],
         ]);
     }
 }

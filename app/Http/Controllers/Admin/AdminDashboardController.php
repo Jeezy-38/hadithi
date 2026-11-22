@@ -10,15 +10,13 @@ use App\Models\Hadith;
 use App\Models\PageView;
 use App\Models\Payment;
 use App\Models\QuranAyah;
+use App\Models\Sponsor;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class AdminDashboardController extends Controller
 {
@@ -269,10 +267,7 @@ class AdminDashboardController extends Controller
         $hadithsQuery = Hadith::with('chapter.book.collection')->latest('id');
 
         if ($hadithSearch !== '') {
-            $like = '%' . $this->escapeLike($hadithSearch) . '%';
-            $hadithsQuery->where(function ($q) use ($like) {
-                $q->where('swahili_text', 'like', $like)->orWhere('hadith_number', 'like', $like);
-            });
+            $hadithsQuery->search($hadithSearch);
         }
 
         return [
@@ -285,253 +280,16 @@ class AdminDashboardController extends Controller
         ];
     }
 
-    private function systemData(): array
-    {
-        return [
-            'systemInfo' => [
-                'payment_gateway' => config('services.payment_gateway', 'auto'),
-                'clickpesa_configured' => ! empty(config('services.clickpesa.client_id')) && ! empty(config('services.clickpesa.api_key')),
-                'pesapal_configured' => ! empty(config('services.pesapal.consumer_key')) && ! empty(config('services.pesapal.consumer_secret')),
-                'php_version' => PHP_VERSION,
-                'laravel_version' => app()->version(),
-                'db_driver' => config('database.default'),
-                'server_time' => now()->isoFormat('LLLL'),
-            ],
-            'adminLogs' => AdminLog::with('user')->latest('id')->limit(15)->get(),
-        ];
-    }
-
-    private function escapeLike(string $value): string
-    {
-        return addcslashes($value, '%_\\');
-    }
-
-    /** Hifadhi kumbukumbu ya kitendo cha admin (haivunji kitendo kikishindwa). */
-    private function audit(string $action, string $description, ?Model $target = null): void
-    {
-        try {
-            AdminLog::create([
-                'user_id' => auth()->id(),
-                'action' => $action,
-                'description' => mb_substr($description, 0, 255),
-                'target_type' => $target ? class_basename($target) : null,
-                'target_id' => $target?->getKey(),
-                'ip_address' => request()->ip(),
-            ]);
-        } catch (\Throwable $e) {
-            report($e);
-        }
-    }
-
-    /** Zuia CSV/Excel formula injection (=, +, -, @) kwenye data iliyoandikwa na watumiaji. */
-    private function csvSafe(mixed $value): string
-    {
-        $value = (string) $value;
-
-        if ($value !== '' && preg_match('/^[=+\-@\t\r]/', $value) && ! preg_match('/^\+?[0-9][0-9\s\-]*$/', $value)) {
-            return "'" . $value;
-        }
-
-        return $value;
-    }
-
-    /**
-     * Mpe au mnyang'anye mtumiaji mamlaka ya Admin.
-     */
-    public function toggleUserAdmin(User $user): RedirectResponse
-    {
-        if ($user->id === auth()->id()) {
-            return redirect()->back()->with('error', 'Huwezi kujiondolea u-admin mwenyewe ili usijifungie nje ya jopo.');
-        }
-
-        if ($user->is_admin && User::where('is_admin', true)->count() <= 1) {
-            return redirect()->back()->with('error', 'Huwezi kumwondolea u-admin admin wa mwisho aliyebaki.');
-        }
-
-        $user->is_admin = ! $user->is_admin;
-        $user->save();
-
-        $action = $user->is_admin ? 'amepewa' : 'ameondolewa';
-        $this->audit($user->is_admin ? 'user.admin_granted' : 'user.admin_revoked', "{$user->email} {$action} hadhi ya Admin", $user);
-
-        return redirect()->back()->with('success', "Mtumiaji {$user->name} ({$user->email}) {$action} hadhi ya Admin kikamilifu.");
-    }
-
-    /**
-     * Washa au zima uanachama wa Supporter kwa mtumiaji.
-     */
-    public function toggleUserSupporter(User $user): RedirectResponse
-    {
-        $user->is_supporter = ! $user->is_supporter;
-        if ($user->is_supporter && ! $user->supporter_since) {
-            $user->supporter_since = now();
-        }
-        $user->save();
-
-        $action = $user->is_supporter ? 'amewezeshwa kuwa' : 'ameondolewa kwenye';
-        $this->audit($user->is_supporter ? 'user.supporter_on' : 'user.supporter_off', "{$user->email} {$action} Supporter", $user);
-
-        return redirect()->back()->with('success', "Mtumiaji {$user->name} {$action} orodha ya Waungaji Mkono (Supporters).");
-    }
-
-    /**
-     * Washa au zima uchapishaji wa Hadithi.
-     */
-    public function toggleHadithPublish(Hadith $hadith): RedirectResponse
-    {
-        $hadith->is_published = ! $hadith->is_published;
-        $hadith->save();
-
-        $status = $hadith->is_published ? 'imechapishwa hadharani' : 'imefichwa (draft)';
-        $this->audit($hadith->is_published ? 'hadith.published' : 'hadith.hidden', "Hadithi #{$hadith->hadith_number} {$status}", $hadith);
-
-        return redirect()->back()->with('success', "Hadithi #{$hadith->hadith_number} sasa {$status}.");
-    }
-
-    /**
-     * Washa au zima uchapishaji wa Duaa.
-     */
-    public function toggleDuaPublish(Dua $dua): RedirectResponse
-    {
-        $dua->is_published = ! $dua->is_published;
-        $dua->save();
-
-        $status = $dua->is_published ? 'imechapishwa' : 'imefichwa';
-        $this->audit($dua->is_published ? 'dua.published' : 'dua.hidden', "Duaa '{$dua->title}' {$status}", $dua);
-
-        return redirect()->back()->with('success', "Duaa '{$dua->title}' sasa {$status}.");
-    }
-
-    /**
-     * Safisha cache zote za mfumo kwa mbofyo mmoja.
-     */
-    public function clearCache(): RedirectResponse
-    {
-        try {
-            Artisan::call('optimize:clear');
-            $this->audit('system.cache_cleared', 'Cache ya mfumo imesafishwa');
-
-            return redirect()->back()->with('success', 'Cache ya mfumo, views, routes, na usanidi (config) zimesafishwa kwa ukamilifu!');
-        } catch (\Throwable $e) {
-            return redirect()->back()->with('error', 'Hitilafu wakati wa kusafisha cache: ' . $e->getMessage());
-        }
-    }
-
-    /**
-     * Hamisha miamala ya malipo kwenye faili la CSV.
-     */
-    public function exportPayments(): StreamedResponse
-    {
-        $this->audit('payments.exported', 'Malipo yamehamishwa kwenye CSV');
-
-        $fileName = 'malipo_hadith_app_' . now()->format('Y_m_d_His') . '.csv';
-
-        $headers = [
-            'Content-Type' => 'text/csv; charset=utf-8',
-            'Content-Disposition' => "attachment; filename=\"{$fileName}\"",
-            'Pragma' => 'no-cache',
-            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
-            'Expires' => '0',
-        ];
-
-        return response()->stream(function () {
-            $file = fopen('php://output', 'w');
-
-            // UTF-8 BOM kwa ajili ya usomaji mzuri Excel
-            fputs($file, "\xEF\xBB\xBF");
-
-            fputcsv($file, [
-                'Kumbukumbu',
-                'Tarehe',
-                'Mchangiaji',
-                'Barua Pepe',
-                'Simu',
-                'Kiasi',
-                'Sarafu',
-                'Lango',
-                'Njia',
-                'Hali',
-                'Ujumbe',
-            ]);
-
-            Payment::latest()->chunk(200, function ($payments) use ($file) {
-                foreach ($payments as $p) {
-                    fputcsv($file, [
-                        $this->csvSafe($p->reference),
-                        $p->created_at ? $p->created_at->format('Y-m-d H:i') : '',
-                        $p->is_anonymous ? 'Binafsi (Anonymous)' : $this->csvSafe($p->donor_name ?: 'Bila Jina'),
-                        $this->csvSafe($p->donor_email ?: '-'),
-                        $this->csvSafe($p->donor_phone ?: '-'),
-                        number_format($p->amount, 2, '.', ''),
-                        $this->csvSafe($p->currency),
-                        $this->csvSafe(strtoupper((string) $p->gateway)),
-                        $this->csvSafe($p->payment_method ?: '-'),
-                        strtoupper($p->status),
-                        $this->csvSafe($p->message ?: ''),
-                    ]);
-                }
-            });
-
-            fclose($file);
-        }, 200, $headers);
-    }
-
-    // ---------------------------------------------------------------- Wadhamini
-
     private function sponsorsData(): array
     {
-        return ['sponsors' => \App\Models\Sponsor::orderByDesc('is_active')->orderByDesc('id')->get()];
-    }
-
-    private function forgetSponsorCache(): void
-    {
-        \Illuminate\Support\Facades\Cache::forget('sponsor:today:'.now()->toDateString());
-        \Illuminate\Support\Facades\Cache::forget('sponsor:main:'.now()->toDateString());
-    }
-
-    public function storeSponsor(Request $request): RedirectResponse
-    {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:80'],
-            'tagline' => ['nullable', 'string', 'max:120'],
-            'url' => ['required', 'url:http,https', 'max:500'],
-            'logo_url' => ['nullable', 'url:http,https', 'max:500'],
-            'slot' => ['required', 'in:today,main'],
-            'starts_at' => ['nullable', 'date'],
-            'ends_at' => ['nullable', 'date', 'after_or_equal:starts_at'],
-        ]);
-        $sponsor = \App\Models\Sponsor::create($data + ['is_active' => true]);
-        $this->forgetSponsorCache();
-        $this->audit('sponsor.created', "Mdhamini '{$sponsor->name}' ameongezwa", $sponsor);
-
-        return redirect()->route('admin.dashboard', ['tab' => 'sponsors'])->with('success', "Mdhamini '{$sponsor->name}' ameongezwa.");
-    }
-
-    public function toggleSponsor(\App\Models\Sponsor $sponsor): RedirectResponse
-    {
-        $sponsor->is_active = ! $sponsor->is_active;
-        $sponsor->save();
-        $this->forgetSponsorCache();
-        $this->audit($sponsor->is_active ? 'sponsor.enabled' : 'sponsor.disabled', "Mdhamini '{$sponsor->name}' ".($sponsor->is_active ? 'amewashwa' : 'amezimwa'), $sponsor);
-
-        return redirect()->route('admin.dashboard', ['tab' => 'sponsors'])->with('success', "Mdhamini '{$sponsor->name}' ".($sponsor->is_active ? 'amewashwa.' : 'amezimwa.'));
-    }
-
-    public function deleteSponsor(\App\Models\Sponsor $sponsor): RedirectResponse
-    {
-        $name = $sponsor->name;
-        $sponsor->delete();
-        $this->forgetSponsorCache();
-        $this->audit('sponsor.deleted', "Mdhamini '{$name}' amefutwa");
-
-        return redirect()->route('admin.dashboard', ['tab' => 'sponsors'])->with('success', "Mdhamini '{$name}' amefutwa.");
+        return ['sponsors' => Sponsor::orderByDesc('is_active')->orderByDesc('id')->get()];
     }
 
     private function feedbackData(Request $request): array
     {
         if (! Schema::hasTable('feedback')) {
             return [
-                'feedbackList' => new \Illuminate\Pagination\LengthAwarePaginator([], 0, 20),
+                'feedbackList' => new LengthAwarePaginator([], 0, 20),
                 'statusFilter' => null,
                 'categoryFilter' => null,
                 'feedbackCounts' => ['all' => 0, 'new' => 0, 'feature' => 0, 'correction' => 0, 'bug' => 0],
@@ -565,24 +323,24 @@ class AdminDashboardController extends Controller
         ];
     }
 
-    public function updateFeedbackStatus(Request $request, Feedback $feedback): RedirectResponse
+    private function systemData(): array
     {
-        $status = $request->validate([
-            'status' => 'required|in:new,read,resolved',
-        ])['status'];
-
-        $feedback->update(['status' => $status]);
-        $this->audit('feedback.status', "Hali ya maoni #{$feedback->id} imebadilishwa kuwa '{$status}'", $feedback);
-
-        return back()->with('success', "Hali ya maoni imesasishwa kuwa '{$feedback->statusLabel()}'.");
+        return [
+            'systemInfo' => [
+                'payment_gateway' => config('services.payment_gateway', 'auto'),
+                'clickpesa_configured' => ! empty(config('services.clickpesa.client_id')) && ! empty(config('services.clickpesa.api_key')),
+                'pesapal_configured' => ! empty(config('services.pesapal.consumer_key')) && ! empty(config('services.pesapal.consumer_secret')),
+                'php_version' => PHP_VERSION,
+                'laravel_version' => app()->version(),
+                'db_driver' => config('database.default'),
+                'server_time' => now()->isoFormat('LLLL'),
+            ],
+            'adminLogs' => AdminLog::with('user')->latest('id')->limit(15)->get(),
+        ];
     }
 
-    public function deleteFeedback(Feedback $feedback): RedirectResponse
+    private function escapeLike(string $value): string
     {
-        $id = $feedback->id;
-        $feedback->delete();
-        $this->audit('feedback.deleted', "Maoni #{$id} yamefutwa");
-
-        return back()->with('success', "Maoni yamefutwa kikamilifu.");
+        return addcslashes($value, '%_\\');
     }
 }

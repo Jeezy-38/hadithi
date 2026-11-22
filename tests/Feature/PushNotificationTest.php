@@ -2,6 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Models\Book;
+use App\Models\Chapter;
+use App\Models\Collection;
 use App\Models\Hadith;
 use App\Models\PushSubscription;
 use App\Models\User;
@@ -11,6 +14,45 @@ use Tests\TestCase;
 class PushNotificationTest extends TestCase
 {
     use RefreshDatabase;
+
+    private function createPublishedHadith(): Hadith
+    {
+        $collection = Collection::create([
+            'slug' => 'bukhari',
+            'name' => 'Sahih al-Bukhari',
+            'name_ar' => 'صحيح البخاري',
+        ]);
+        $book = Book::create([
+            'collection_id' => $collection->id,
+            'number' => 1,
+            'title_sw' => 'Kitabu cha Wahyi',
+            'title_ar' => 'كتاب بدء الوحي',
+        ]);
+        $chapter = Chapter::create([
+            'book_id' => $book->id,
+            'number' => 1,
+            'title_sw' => 'Mlango wa kwanza',
+            'title_ar' => 'باب',
+        ]);
+
+        return Hadith::create([
+            'chapter_id' => $chapter->id,
+            'reference' => 'bukhari:test:1',
+            'number' => '1',
+            'arabic' => 'إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ',
+            'swahili' => 'Hakika matendo yote yanategemea nia.',
+            'english' => 'Actions are but by intentions.',
+            'source_name' => 'Test Source',
+            'source_url' => 'https://example.test/hadith/1',
+            'numbering_system' => 'Test',
+            'translator' => 'Test Translator',
+            'translation_source_url' => 'https://example.test/sw/1',
+            'license' => 'CC-BY-4.0',
+            'reviewed_by' => 'Test Reviewer',
+            'reviewed_at' => '2026-01-01',
+            'is_published' => true,
+        ]);
+    }
 
     public function test_guest_can_subscribe_to_push_notifications(): void
     {
@@ -70,9 +112,7 @@ class PushNotificationTest extends TestCase
 
     public function test_today_hadith_api_returns_structured_payload(): void
     {
-        $this->seed();
-        $file = database_path('data/hadith-starter.json');
-        $this->artisan('hadith:import', ['file' => $file])->assertSuccessful();
+        $this->createPublishedHadith();
 
         $response = $this->getJson(route('api.hadith.today'));
 
@@ -92,9 +132,7 @@ class PushNotificationTest extends TestCase
 
     public function test_artisan_daily_notification_command_runs_successfully(): void
     {
-        $this->seed();
-        $file = database_path('data/hadith-starter.json');
-        $this->artisan('hadith:import', ['file' => $file])->assertSuccessful();
+        $this->createPublishedHadith();
 
         PushSubscription::create([
             'endpoint' => 'https://fcm.googleapis.com/fcm/send/cli-token-test',

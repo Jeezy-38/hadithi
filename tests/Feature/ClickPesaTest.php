@@ -62,7 +62,7 @@ class ClickPesaTest extends TestCase
 
         $this->assertEquals('success', $result['status']);
         $this->assertEquals('https://checkout.clickpesa.com/pay/abc-123', $result['redirect_url']);
-        $this->assertEquals('SADAKA-CP-001', $result['tracking_id']);
+        $this->assertEquals('SADAKACP001', $result['tracking_id']);
 
         $payment->refresh();
         $this->assertEquals('clickpesa', $payment->gateway);

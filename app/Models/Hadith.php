@@ -88,11 +88,33 @@ class Hadith extends Model
 
     public function scopeSearch(Builder $query, string $term): void
     {
+        $normalized = self::normalize($term);
         // Escape LIKE wildcards so a user's % or _ is treated literally.
-        $term = '%'.str_replace(['!', '%', '_'], ['!!', '!%', '!_'], self::normalize($term)).'%';
-        $query->where(function (Builder $query) use ($term) {
+        $like = '%'.str_replace(['!', '%', '_'], ['!!', '!%', '!_'], $normalized).'%';
+
+        $driver = $query->getConnection()->getDriverName();
+        $tokens = [];
+        if (in_array($driver, ['mysql', 'mariadb'], true)) {
+            preg_match_all('/[\p{L}\p{N}]{3,}/u', $normalized, $matches);
+            $tokens = array_slice(array_values(array_unique($matches[0] ?? [])), 0, 8);
+        }
+
+        $query->where(function (Builder $query) use ($like, $tokens) {
+            if ($tokens !== []) {
+                $booleanQuery = implode(' ', array_map(fn (string $t) => '+'.$t.'*', $tokens));
+                $query->whereRaw(
+                    'MATCH(search_arabic, search_swahili, english) AGAINST(? IN BOOLEAN MODE)',
+                    [$booleanQuery]
+                );
+                foreach (['number', 'reference'] as $column) {
+                    $query->orWhereRaw("LOWER($column) LIKE ? ESCAPE '!'", [$like]);
+                }
+
+                return;
+            }
+
             foreach (['search_arabic', 'search_swahili', 'english', 'number', 'reference'] as $column) {
-                $query->orWhereRaw("LOWER($column) LIKE ? ESCAPE '!'", [$term]);
+                $query->orWhereRaw("LOWER($column) LIKE ? ESCAPE '!'", [$like]);
             }
         });
     }

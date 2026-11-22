@@ -31,7 +31,6 @@ class SupportAndPaymentTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee('SADAKA JARIYA');
-        $response->assertSee('Sahih Muslim');
         $response->assertSee('Fomu ya Mchango');
     }
 

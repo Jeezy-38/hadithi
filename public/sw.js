@@ -2,8 +2,8 @@
    BAYT UL HADITH - PRODUCTION PWA SERVICE WORKER (OFFLINE + PUSH)
    ========================================================================== */
 
-const CACHE_STATIC = 'bayt-static-v4';
-const CACHE_DYNAMIC = 'bayt-dynamic-v4';
+const CACHE_STATIC = 'bayt-static-v5';
+const CACHE_DYNAMIC = 'bayt-dynamic-v5';
 const OFFLINE_URL = '/offline.html';
 
 const PRECACHE_ASSETS = [
@@ -60,15 +60,17 @@ self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
 
-    // Never intercept non-GET requests
+    // Never intercept non-GET requests or out-of-scope URLs
     if (request.method !== 'GET') return;
+    if (self.registration?.scope && !request.url.startsWith(self.registration.scope)) return;
 
-    // Do not cache Livewire polling, internal POSTs, or Admin area
+    // Do not cache Livewire polling, internal POSTs, audio streams, or Admin area
     if (
         url.pathname.startsWith('/livewire') ||
         url.pathname.startsWith('/admin') ||
         url.pathname.startsWith('/api/push') ||
-        request.headers.get('X-Livewire')
+        url.pathname.includes('/audio/') ||
+        request.headers?.get('X-Livewire')
     ) {
         return;
     }

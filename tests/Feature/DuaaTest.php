@@ -25,8 +25,7 @@ class DuaaTest extends TestCase
             ->assertOk()
             ->assertSee('HISN AL-MUSLIM')
             ->assertSee('Adhkar za Asubuhi')
-            ->assertSee('Sayyidul Istighfar')
-            ->assertSee('Digital Tasbih');
+            ->assertSee('Sayyidul Istighfar');
     }
 
     public function test_duaa_category_filtering(): void

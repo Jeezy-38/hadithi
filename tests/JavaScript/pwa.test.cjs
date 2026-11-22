@@ -36,6 +36,8 @@ function createUi({ standalone = false, secure = true, userAgent = '', maxTouchP
     const document = {
         currentScript: { src: 'https://example.test/app/js/pwa.js' },
         getElementById: (id) => nodes[id] || null,
+        addEventListener: () => {},
+        querySelector: () => null,
     };
 
     vm.runInNewContext(fs.readFileSync('public/js/pwa.js', 'utf8'), {
@@ -140,7 +142,7 @@ test('sw.js handles offline navigation fallback and ignores POST or audio', asyn
     // 1. Navigation request offline gets cached fallback
     let handledResponse = null;
     events.fetch({
-        request: { method: 'GET', mode: 'navigate', url: 'https://example.test/app/hadith/1' },
+        request: { method: 'GET', mode: 'navigate', url: 'https://example.test/app/hadith/1', headers: new Headers({ Accept: 'text/html' }) },
         respondWith: (resPromise) => { handledResponse = resPromise; },
     });
     assert.ok(handledResponse);
@@ -155,7 +157,7 @@ test('sw.js handles offline navigation fallback and ignores POST or audio', asyn
     ]) {
         let intercepted = false;
         events.fetch({
-            request: { method, url, mode },
+            request: { method, url, mode, headers: new Headers() },
             respondWith: () => { intercepted = true; },
         });
         assert.equal(intercepted, false, `Expected ${method} ${url} not to be intercepted`);

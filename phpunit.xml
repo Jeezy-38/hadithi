@@ -34,5 +34,7 @@
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="NIGHTWATCH_ENABLED" value="false"/>
         <env name="SPEECH_DISK" value="private"/>
+        <env name="GEMINI_API_KEY" value=""/>
+        <env name="AI_API_KEY" value=""/>
     </php>
 </phpunit>
